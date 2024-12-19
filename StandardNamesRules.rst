@@ -144,8 +144,9 @@ CCPP Standard Name Rules
    **Preferred:** surface_upward_specific_humidity_flux
 
 #. Spell out acronyms unless they are obvious to a vast majority of
-   scientists/developers who may come across them. A
-   list of currently-used acronyms and aliases is below.
+   scientists/developers who may come across them. A list of currently-used
+   aliases is below. Whenever such an alias exist, use the alias in the
+   standard name and the full term in the long name.
 
 #. For control-oriented variables, if the variable is a Fortran logical,
    use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
@@ -275,7 +276,9 @@ Suffixes
 | due_to_diabatic_processes
 | due_to_diffusion
 | due_to_dry_convection
-| due_to_gravity_wave_drag
+| due_to_GWD (long name: due to gravity wave drag)
+| **due_to_convective_GWD** (long name: due to convective gravity wave drag)
+| **due_to_orographic_GWD** (long name: due to orographic gravity wave drag)
 | due_to_gyre
 | due_to_isostatic_adjustment
 | due_to_large_scale_precipitation
@@ -283,13 +286,13 @@ Suffixes
 | due_to_moist_convection
 | due_to_overturning
 | due_to_shallow_convection
+| **due_to_PBL_processes** (long name: due to planetary boundary layer processes)
 | due_to_shortwave_heating
 | due_to_thermodynamics
 | due_to_background
 | **due_to_subgrid_scale_vertical_mixing**
 | **due_to_convective_microphysics**
 | **due_to_model_physics**
-| **due_to_convective_gravity_wave_drag**
 | **due_to_shoc**
 | **due_to_dynamics**
 
