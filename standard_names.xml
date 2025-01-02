@@ -3372,10 +3372,24 @@
                    long_name="surface roughness length over water">
          <type kind="kind_phys" units="cm">real</type>
       </standard_name>
-      <standard_name name="surface_skin_temperature">
+      <standard_name name="skin_temperature_at_surface"
+                     long_name="Skin temperature at surface">
          <type kind="kind_phys" units="K">real</type>
       </standard_name>
-      <standard_name name="surface_skin_temperature_over_land">
+      <standard_name name="skin_temperature_at_surface_over_ice"
+                     long_name="Skin temperature at surface over (or where) ice">
+         <type kind="kind_phys" units="K">real</type>
+      </standard_name>
+      <standard_name name="skin_temperature_at_surface_over_land"
+                     long_name="Skin temperature at surface over (or where) land">
+         <type kind="kind_phys" units="K">real</type>
+      </standard_name>
+      <standard_name name="skin_temperature_at_surface_over_ocean"
+                     long_name="Skin temperature at surface over (or where) ocean">
+         <type kind="kind_phys" units="K">real</type>
+      </standard_name>
+      <standard_name name="skin_temperature_at_surface_over_snow"
+                     long_name="Skin temperature at surface over (or where) snow">
          <type kind="kind_phys" units="K">real</type>
       </standard_name>
       <standard_name name="snow_area_fraction_at_surface_over_ice">
