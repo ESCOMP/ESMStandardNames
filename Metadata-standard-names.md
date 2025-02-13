@@ -9,6 +9,7 @@
 * [diagnostics](#diagnostics)
 * [atmospheric_composition](#atmospheric_composition)
 * [atmospheric_composition: GOCART aerosols](#atmospheric_composition-gocart-aerosols)
+* [emissions: Community Emissions Data System (CEDS)](#emissions-community-emissions-data-system-ceds)
 * [required framework-provided variables](#required-framework-provided-variables)
 * [optional framework-provided variables](#optional-framework-provided-variables)
 * [system variables](#system-variables)
@@ -650,6 +651,61 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = m-1
 * `volume_extinction_in_air_due_to_aerosol_particles_lambda3`: Aerosol extinction at wavelength3
     * `real(kind=kind_phys)`: units = m-1
+## emissions: Community Emissions Data System (CEDS)
+* `emissions_of_co_due_to_anthropogenic`: Carbon monoxide emissions from anthropogenic sources, total
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic`: Nitric oxide emissions from anthropogenic sources, total
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic`: Formaldehyde emissions from anthropogenic sources, total
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_co_due_to_anthropogenic_agriculture`: Carbon monoxide emissions from anthropogenic non-combustion agricultural sector
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic_agriculture`: Nitric oxide emissions from anthropogenic non-combustion agricultural sector
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic_agriculture`: Formaldehyde emissions from anthropogenic non-combustion agricultural sector
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_co_due_to_anthropogenic_energy`: Carbon monoxide emissions from anthropogenic non-combustion energy transformation and extraction
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic_energy`: Nitric oxide emissions from anthropogenic non-combustion energy transformation and extraction
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic_energy`: Formaldehyde emissions from anthropogenic non-combustion energy transformation and extraction
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_co_due_to_anthropogenic_industry`: Carbon monoxide emissions from anthropogenic industrial combustion and processes
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic_industry`: Nitric oxide emissions from anthropogenic industrial combustion and processes
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic_industry`: Formaldehyde emissions from anthropogenic industrial combustion and processes
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_co_due_to_anthropogenic_rco`: Carbon monoxide emissions from anthropogenic residential, commercial, and others
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic_rco`: Nitric oxide emissions from anthropogenic residential, commercial, and others
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic_rco`: Formaldehyde emissions from anthropogenic residential, commercial, and others
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_co_due_to_anthropogenic_shipping`: Carbon monoxide emissions from anthropogenic international shipping
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic_shipping`: Nitric oxide emissions from anthropogenic international shipping
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic_shipping`: Formaldehyde emissions from anthropogenic international shipping
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_co_due_to_anthropogenic_solvents`: Carbon monoxide emissions from anthropogenic solvents
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic_solvents`: Nitric oxide emissions from anthropogenic solvents
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic_solvents`: Formaldehyde emissions from anthropogenic solvents
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_co_due_to_anthropogenic_transportation`: Carbon monoxide emissions from anthropogenic surface Transportation (Road, Rail, Other)
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic_transportation`: Nitric oxide emissions from anthropogenic surface Transportation (Road, Rail, Other)
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic_transportation`: Formaldehyde emissions from anthropogenic surface Transportation (Road, Rail, Other)
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_co_due_to_anthropogenic_waste`: Carbon monoxide emissions from anthropogenic waste disposal and handling
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_no_due_to_anthropogenic_waste`: Nitric oxide emissions from anthropogenic waste disposal and handling
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
+* `emissions_of_hcho_due_to_anthropogenic_waste`: Formaldehyde emissions from anthropogenic waste disposal and handling
+    * `real(kind=kind_phys)`: units = kg m-2 s-1
 ## required framework-provided variables
 Required CCPP framework-provided variables
 * `ccpp_error_message`: Error message for error handling in CCPP

@@ -1277,6 +1277,116 @@
       <type kind="kind_phys" units="m-1">real</type>
     </standard_name>
   </section>
+  <section name="emissions: Community Emissions Data System (CEDS)">
+    <standard_name name="emissions_of_co_due_to_anthropogenic"
+                   long_name="Carbon monoxide emissions from anthropogenic sources, total">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic"
+                   long_name="Nitric oxide emissions from anthropogenic sources, total">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic"
+                   long_name="Formaldehyde emissions from anthropogenic sources, total">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_co_due_to_anthropogenic_agriculture"
+                   long_name="Carbon monoxide emissions from anthropogenic non-combustion agricultural sector">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic_agriculture"
+                   long_name="Nitric oxide emissions from anthropogenic non-combustion agricultural sector">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_agriculture"
+                   long_name="Formaldehyde emissions from anthropogenic non-combustion agricultural sector">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_co_due_to_anthropogenic_energy"
+                   long_name="Carbon monoxide emissions from anthropogenic non-combustion energy transformation and extraction">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic_energy"
+                   long_name="Nitric oxide emissions from anthropogenic non-combustion energy transformation and extraction">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_energy"
+                   long_name="Formaldehyde emissions from anthropogenic non-combustion energy transformation and extraction">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_co_due_to_anthropogenic_industry"
+                   long_name="Carbon monoxide emissions from anthropogenic industrial combustion and processes">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic_industry"
+                   long_name="Nitric oxide emissions from anthropogenic industrial combustion and processes">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_industry"
+                   long_name="Formaldehyde emissions from anthropogenic industrial combustion and processes">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_co_due_to_anthropogenic_rco"
+                   long_name="Carbon monoxide emissions from anthropogenic residential, commercial, and others">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic_rco"
+                   long_name="Nitric oxide emissions from anthropogenic residential, commercial, and others">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_rco"
+                   long_name="Formaldehyde emissions from anthropogenic residential, commercial, and others">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_co_due_to_anthropogenic_shipping"
+                   long_name="Carbon monoxide emissions from anthropogenic international shipping">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic_shipping"
+                   long_name="Nitric oxide emissions from anthropogenic international shipping">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_shipping"
+                   long_name="Formaldehyde emissions from anthropogenic international shipping">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_co_due_to_anthropogenic_solvents"
+                   long_name="Carbon monoxide emissions from anthropogenic solvents">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic_solvents"
+                   long_name="Nitric oxide emissions from anthropogenic solvents">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_solvents"
+                   long_name="Formaldehyde emissions from anthropogenic solvents">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_co_due_to_anthropogenic_transportation"
+                   long_name="Carbon monoxide emissions from anthropogenic surface Transportation (Road, Rail, Other)">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic_transportation"
+                   long_name="Nitric oxide emissions from anthropogenic surface Transportation (Road, Rail, Other)">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_transportation"
+                   long_name="Formaldehyde emissions from anthropogenic surface Transportation (Road, Rail, Other)">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_co_due_to_anthropogenic_waste"
+                   long_name="Carbon monoxide emissions from anthropogenic waste disposal and handling">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_no_due_to_anthropogenic_waste"
+                   long_name="Nitric oxide emissions from anthropogenic waste disposal and handling">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_waste"
+                   long_name="Formaldehyde emissions from anthropogenic waste disposal and handling">
+      <type kind="kind_phys" units="kg m-2 s-1">real</type>
+    </standard_name>
+  </section>
   <section name="required framework-provided variables"
            comment="Required CCPP framework-provided variables">
     <standard_name name="ccpp_error_message"
