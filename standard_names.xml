@@ -1,4 +1,4 @@
-<standard_names name="CCPP Standard Name Library" version="1.0">
+<standard_names name="Earth System Modeling Standard Name Library" version="1.0">
   <section name="base_names"
            comment="Base names are the 'elemental' quantities from which\n
                     the more complex standard names are constructed.\n
@@ -177,7 +177,7 @@
       </standard_name>
     </section>
     <section name="chemical_species"
-             comment="These are the base names for specific chemical species\n">
+             comment="These are the base names for specific chemical species\nThey can all be assumed to have units of '1'">
       <standard_name name="c5h8"
                      long_name="Isoprene">
       </standard_name>
@@ -263,24 +263,31 @@
                       full list of standard names for further details.\n">
       <standard_name name="absolute_vorticity"
                      long_name="absolute_vorticity">
+        <type units="s-1">real</type>
       </standard_name>
       <standard_name name="air_potential_temperature"
                      long_name="air_potential_temperature">
+        <type units="K">real</type>
       </standard_name>
       <standard_name name="air_pressure"
                      long_name="air_pressure">
+        <type units="Pa">real</type>
       </standard_name>
       <standard_name name="air_pressure_thickness"
                      long_name="air_pressure_thickness">
+        <type units="Pa">real</type>
       </standard_name>
       <standard_name name="air_temperature"
                      long_name="air_temperature">
+        <type units="K">real</type>
       </standard_name>
       <standard_name name="albedo"
                      long_name="albedo">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="atmosphere_heat_diffusivity"
                      long_name="atmosphere_heat_diffusivity">
+        <type units="m2 s-1">real</type>
       </standard_name>
       <standard_name name="cloud_area_fraction"
                      long_name="cloud_area_fraction">
@@ -302,21 +309,25 @@
       </standard_name>
       <standard_name name="diffuse_nir_albedo"
                      long_name="diffuse near-infrared albedo">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="diffuse_nir_shortwave_flux"
                      long_name="diffuse near-infrared shortwave flux">
       </standard_name>
       <standard_name name="diffuse_shortwave_albedo"
                      long_name="diffuse_shortwave_albedo">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="diffuse_uv_and_vis_shortwave_flux"
                      long_name="diffuse ultraviolet and visible shortwave flux">
       </standard_name>
       <standard_name name="diffuse_vis_albedo"
                      long_name="diffuse visible albedo">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="direct_nir_albedo"
                      long_name="direct near-infrared albedo">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="direct_nir_shortwave_flux"
                      long_name="direct near-infrared shortwave flux">
@@ -326,6 +337,7 @@
       </standard_name>
       <standard_name name="direct_vis_albedo"
                      long_name="direct visible albedo">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="divergence"
                      long_name="divergence">
@@ -428,6 +440,7 @@
       </standard_name>
       <standard_name name="soil_temperature"
                      long_name="soil_temperature">
+        <type units="K">real</type>
       </standard_name>
       <standard_name name="solar_declination_angle"
                      long_name="solar_declination_angle">
@@ -440,15 +453,19 @@
       </standard_name>
       <standard_name name="surface_skin_temperature"
                      long_name="surface_skin_temperature">
+        <type units="K">real</type>
       </standard_name>
       <standard_name name="temperature"
                      long_name="temperature">
+        <type units="K">real</type>
       </standard_name>
       <standard_name name="temperature_flux"
                      long_name="temperature_flux">
+        <type units="K m s-1">real</type>
       </standard_name>
       <standard_name name="time"
                      long_name="time">
+        <type units="s">real</type>
       </standard_name>
       <standard_name name="total_energy"
                      long_name="total_energy">
@@ -470,9 +487,11 @@
       </standard_name>
       <standard_name name="virtual_potential_temperature"
                      long_name="virtual_potential_temperature">
+        <type units="K">real</type>
       </standard_name>
       <standard_name name="virtual_temperature"
                      long_name="virtual_temperature">
+        <type units="K">real</type>
       </standard_name>
       <standard_name name="water_vapor"
                      long_name="water_vapor">
@@ -555,12 +574,8 @@
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="number_of_openmp_threads"
-                   long_name="Total number of thread blocks which the host model may use to call CCPP physics run groups during the CCPP run phase.">
+                   long_name="Total number of thread blocks OpenMP (shared-memory) parallel threads.">
       <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="ccpp_thread_number"
-                   long_name="Number of current thread block. This variable may only be used during CCPP run phase">
-      <type units="index">integer</type>
     </standard_name>
   </section>
   <section name="constants">
@@ -1277,7 +1292,8 @@
       <type kind="kind_phys" units="m-1">real</type>
     </standard_name>
   </section>
-  <section name="emissions: Community Emissions Data System (CEDS)">
+  <section name="emissions"
+           comment="Emissions variables, contributed for the Community Emissions Data System (CEDS)">
     <standard_name name="emissions_of_co_due_to_anthropogenic"
                    long_name="Carbon monoxide emissions from anthropogenic sources, total">
       <type kind="kind_phys" units="kg m-2 s-1">real</type>
@@ -1387,39 +1403,51 @@
       <type kind="kind_phys" units="kg m-2 s-1">real</type>
     </standard_name>
   </section>
-  <section name="required framework-provided variables"
-           comment="Required CCPP framework-provided variables">
-    <standard_name name="ccpp_error_message"
-                   long_name="Error message for error handling in CCPP">
-      <type kind="len=512" units="none">character</type>
-    </standard_name>
-    <standard_name name="ccpp_error_code"
-                   long_name="Error code for error handling in CCPP">
-      <type kind="" units="1">integer</type>
-    </standard_name>
-  </section>
-  <section name="optional framework-provided variables"
-           comment="Optional CCPP framework-provided variables">
-    <standard_name name="scheme_name"
-                   long_name="CCPP physics scheme name">
-      <type kind="len=64" units="none">character</type>
-    </standard_name>
-    <standard_name name="ccpp_constituent_properties"
-                   long_name="CCPP Constituent Properties">
-      <type kind="" units="none">ccpp_constituent_prop_ptr_t</type>
-    </standard_name>
-    <standard_name name="ccpp_constituents"
-                   long_name="Array of constituents managed by CCPP Framework">
-      <type kind="kind_phys" units="none">real</type>
-    </standard_name>
-    <standard_name name="ccpp_constituent_minimum_values"
-                   long_name="CCPP constituent minimum values">
-      <type kind="kind_phys" units="none">real</type>
-    </standard_name>
-    <standard_name name="number_of_ccpp_constituents"
-                   long_name="Number of constituents managed by CCPP Framework">
-      <type kind="" units="count">integer</type>
-    </standard_name>
+  <section name="Application-specific variables">
+    <section name="required framework-provided variables"
+             comment="Required CCPP framework-provided variables">
+      <standard_name name="ccpp_error_message"
+                     long_name="Error message for error handling in CCPP">
+        <type kind="len=512" units="none">character</type>
+      </standard_name>
+      <standard_name name="ccpp_error_code"
+                     long_name="Error code for error handling in CCPP">
+        <type kind="" units="1">integer</type>
+      </standard_name>
+    </section>
+    <section name="optional framework-provided variables"
+             comment="Optional CCPP framework-provided variables">
+      <standard_name name="scheme_name"
+                     long_name="CCPP physics scheme name">
+        <type kind="len=64" units="none">character</type>
+      </standard_name>
+      <standard_name name="ccpp_constituent_properties"
+                     long_name="CCPP Constituent Properties">
+        <type kind="" units="none">ccpp_constituent_prop_ptr_t</type>
+      </standard_name>
+      <standard_name name="ccpp_constituents"
+                     long_name="Array of constituents managed by CCPP Framework">
+        <type kind="kind_phys" units="none">real</type>
+      </standard_name>
+      <standard_name name="ccpp_constituent_minimum_values"
+                     long_name="CCPP constituent minimum values">
+        <type kind="kind_phys" units="none">real</type>
+      </standard_name>
+      <standard_name name="number_of_ccpp_constituents"
+                     long_name="Number of constituents managed by CCPP Framework">
+        <type kind="" units="count">integer</type>
+      </standard_name>
+      <standard_name name="ccpp_block_count">
+         <type kind="" units="count">integer</type>
+      </standard_name>
+      <standard_name name="ccpp_block_sizes">
+         <type kind="" units="count">integer</type>
+      </standard_name>
+      <standard_name name="ccpp_thread_number"
+                     long_name="Number of current thread block. This variable may only be used during CCPP run phase">
+        <type units="index">integer</type>
+      </standard_name> 
+    </section>
   </section>
   <section name="system variables"
            comment="Variables related to the compute environment">
@@ -1468,12 +1496,6 @@
       </standard_name>
       <standard_name name="sigma_pressure_hybrid_coordinate_b_coefficient">
          <type kind="kind_phys" units="1">real</type>
-      </standard_name>
-      <standard_name name="ccpp_block_count">
-         <type kind="" units="count">integer</type>
-      </standard_name>
-      <standard_name name="ccpp_block_sizes">
-         <type kind="" units="count">integer</type>
       </standard_name>
       <standard_name name="cellular_automata_finer_grid">
          <type kind="" units="count">integer</type>

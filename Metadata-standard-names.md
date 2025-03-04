@@ -1,4 +1,4 @@
-# CCPP Standard Name Library
+# Earth System Modeling Standard Name Library
 #### Table of Contents
 * [base_names](#base_names)
 * [dimensions](#dimensions)
@@ -9,9 +9,8 @@
 * [diagnostics](#diagnostics)
 * [atmospheric_composition](#atmospheric_composition)
 * [atmospheric_composition: GOCART aerosols](#atmospheric_composition-gocart-aerosols)
-* [emissions: Community Emissions Data System (CEDS)](#emissions-community-emissions-data-system-ceds)
-* [required framework-provided variables](#required-framework-provided-variables)
-* [optional framework-provided variables](#optional-framework-provided-variables)
+* [emissions](#emissions)
+* [Application-specific variables](#application-specific-variables)
 * [system variables](#system-variables)
 * [GFS_typedefs_GFS_control_type](#gfs_typedefs_gfs_control_type)
 * [GFS_typedefs_GFS_interstitial_type](#gfs_typedefs_gfs_interstitial_type)
@@ -118,6 +117,7 @@ more specific standard names.
     * `real`: units = s-1
 ### chemical_species
 These are the base names for specific chemical species
+They can all be assumed to have units of '1'
 * `c5h8`: Isoprene
 * `co2`: Carbon dioxide
 * `co`: Carbon monoxide
@@ -149,12 +149,19 @@ These names are used as bases for other names, but may
 also be considered standard names on their own. See the
 full list of standard names for further details.
 * `absolute_vorticity`: absolute_vorticity
+    * `real`: units = s-1
 * `air_potential_temperature`: air_potential_temperature
+    * `real`: units = K
 * `air_pressure`: air_pressure
+    * `real`: units = Pa
 * `air_pressure_thickness`: air_pressure_thickness
+    * `real`: units = Pa
 * `air_temperature`: air_temperature
+    * `real`: units = K
 * `albedo`: albedo
+    * `real`: units = 1
 * `atmosphere_heat_diffusivity`: atmosphere_heat_diffusivity
+    * `real`: units = m2 s-1
 * `cloud_area_fraction`: cloud_area_fraction
 * `cloud_condensate`: cloud_condensate
 * `cloud_ice`: cloud_ice
@@ -162,14 +169,19 @@ full list of standard names for further details.
 * `date`: date
 * `density`: density
 * `diffuse_nir_albedo`: diffuse near-infrared albedo
+    * `real`: units = 1
 * `diffuse_nir_shortwave_flux`: diffuse near-infrared shortwave flux
 * `diffuse_shortwave_albedo`: diffuse_shortwave_albedo
+    * `real`: units = 1
 * `diffuse_uv_and_vis_shortwave_flux`: diffuse ultraviolet and visible shortwave flux
 * `diffuse_vis_albedo`: diffuse visible albedo
+    * `real`: units = 1
 * `direct_nir_albedo`: direct near-infrared albedo
+    * `real`: units = 1
 * `direct_nir_shortwave_flux`: direct near-infrared shortwave flux
 * `direct_uv_and_vis_shortwave_flux`: direct ultraviolet and visible shortwave flux
 * `direct_vis_albedo`: direct visible albedo
+    * `real`: units = 1
 * `divergence`: divergence
 * `dry_air_density`: dry_air_density
 * `dry_air_enthalpy`: dry_air_enthalpy
@@ -204,13 +216,18 @@ full list of standard names for further details.
 * `snow_area_fraction`: snow_area_fraction
 * `soil_moisture`: soil_moisture
 * `soil_temperature`: soil_temperature
+    * `real`: units = K
 * `solar_declination_angle`: solar_declination_angle
 * `solar_zenith_angle`: solar_zenith_angle
 * `streamfunction`: streamfunction
 * `surface_skin_temperature`: surface_skin_temperature
+    * `real`: units = K
 * `temperature`: temperature
+    * `real`: units = K
 * `temperature_flux`: temperature_flux
+    * `real`: units = K m s-1
 * `time`: time
+    * `real`: units = s
 * `total_energy`: total_energy
 * `total_water`: All water phases (solid, liquid, gas)
 * `tracer`: tracer
@@ -218,7 +235,9 @@ full list of standard names for further details.
 * `turbulent_kinetic_energy`: turbulent_kinetic_energy
 * `velocity_potential`: velocity_potential
 * `virtual_potential_temperature`: virtual_potential_temperature
+    * `real`: units = K
 * `virtual_temperature`: virtual_temperature
+    * `real`: units = K
 * `water_vapor`: water_vapor
 * `wind`: wind
 * `wind_speed`: wind_speed
@@ -261,10 +280,8 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `integer`: units = index
 * `vertical_index_at_top_interface`: Vertical index at top interface
     * `integer`: units = index
-* `number_of_openmp_threads`: Total number of thread blocks which the host model may use to call CCPP physics run groups during the CCPP run phase.
+* `number_of_openmp_threads`: Total number of thread blocks OpenMP (shared-memory) parallel threads.
     * `integer`: units = count
-* `ccpp_thread_number`: Number of current thread block. This variable may only be used during CCPP run phase
-    * `integer`: units = index
 ## constants
 * `avogadro_number`: Avogadro number
     * `real(kind=kind_phys)`: units = molecules mol-1
@@ -651,7 +668,8 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = m-1
 * `volume_extinction_in_air_due_to_aerosol_particles_lambda3`: Aerosol extinction at wavelength3
     * `real(kind=kind_phys)`: units = m-1
-## emissions: Community Emissions Data System (CEDS)
+## emissions
+Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_co_due_to_anthropogenic`: Carbon monoxide emissions from anthropogenic sources, total
     * `real(kind=kind_phys)`: units = kg m-2 s-1
 * `emissions_of_no_due_to_anthropogenic`: Nitric oxide emissions from anthropogenic sources, total
@@ -706,13 +724,14 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg m-2 s-1
 * `emissions_of_hcho_due_to_anthropogenic_waste`: Formaldehyde emissions from anthropogenic waste disposal and handling
     * `real(kind=kind_phys)`: units = kg m-2 s-1
-## required framework-provided variables
+## Application-specific variables
+### required framework-provided variables
 Required CCPP framework-provided variables
 * `ccpp_error_message`: Error message for error handling in CCPP
     * `character(kind=len=512)`: units = none
 * `ccpp_error_code`: Error code for error handling in CCPP
     * `integer(kind=)`: units = 1
-## optional framework-provided variables
+### optional framework-provided variables
 Optional CCPP framework-provided variables
 * `scheme_name`: CCPP physics scheme name
     * `character(kind=len=64)`: units = none
@@ -724,6 +743,12 @@ Optional CCPP framework-provided variables
     * `real(kind=kind_phys)`: units = none
 * `number_of_ccpp_constituents`: Number of constituents managed by CCPP Framework
     * `integer(kind=)`: units = count
+* `ccpp_block_count`: Ccpp block count
+    * `integer(kind=)`: units = count
+* `ccpp_block_sizes`: Ccpp block sizes
+    * `integer(kind=)`: units = count
+* `ccpp_thread_number`: Number of current thread block. This variable may only be used during CCPP run phase
+    * `integer`: units = index
 ## system variables
 Variables related to the compute environment
 * `flag_for_mpi_root`: Flag for MPI root
@@ -755,10 +780,6 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m2 s-1
 * `sigma_pressure_hybrid_coordinate_b_coefficient`: Sigma pressure hybrid coordinate b coefficient
     * `real(kind=kind_phys)`: units = 1
-* `ccpp_block_count`: Ccpp block count
-    * `integer(kind=)`: units = count
-* `ccpp_block_sizes`: Ccpp block sizes
-    * `integer(kind=)`: units = count
 * `cellular_automata_finer_grid`: Cellular automata finer grid
     * `integer(kind=)`: units = count
 * `cellular_automata_lifetime`: Cellular automata lifetime
