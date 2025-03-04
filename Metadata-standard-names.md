@@ -1,5 +1,6 @@
 # CCPP Standard Name Library
 #### Table of Contents
+* [base_names](#base_names)
 * [dimensions](#dimensions)
 * [constants](#constants)
 * [coordinates](#coordinates)
@@ -22,6 +23,204 @@
 * [GFS_typedefs_GFS_grid_type](#gfs_typedefs_gfs_grid_type)
 * [GFS_typedefs_GFS_stateout_type](#gfs_typedefs_gfs_stateout_type)
 
+## base_names
+Base names are the 'elemental' quantities from which
+the more complex standard names are constructed.
+Base names can roughly be broken down into three categories:
+### generic_names
+The following names are too general to be chosen as
+standard names, but they can serve as base names for
+more specific standard names.
+* `amount`: amount
+    * `real`: units = kg m-2
+* `area`: area
+    * `real`: units = m2
+* `area_fraction`: area_fraction
+    * `real`: units = 1
+* `binary_mask`: binary_mask
+    * `integer`: units = 1
+* `coefficient`: coefficient
+    * `real`: units = 1
+* `data_mask`: data_mask
+    * `real`: units = 1
+* `density`: density
+    * `real`: units = kg m-3
+* `energy`: energy
+    * `real`: units = J
+* `energy_content`: energy_content
+    * `real`: units = J m-2
+* `energy_density`: energy_density
+    * `real`: units = J m-3
+* `frequency`: frequency
+    * `real`: units = s-1
+* `heat_flux`: heat_flux
+    * `real`: units = W m-2
+* `heat_transport`: heat_transport
+    * `real`: units = W
+* `mass`: mass
+    * `real`: units = kg
+* `mass_flux`: mass_flux
+    * `real`: units = kg m-2 s-1
+* `mass_fraction`: mass_fraction
+    * `real`: units = 1
+* `mixing_ratio`: mixing_ratio
+    * `real`: units = kg kg-1
+* `mass_transport`: mass_transport
+    * `real`: units = kg s-1
+* `mole_fraction`: mole_fraction
+    * `real`: units = 1
+* `mole_flux`: mole_flux
+    * `real`: units = mol m-2 s-1
+* `momentum_flux`: momentum_flux
+    * `real`: units = Pa
+* `partial_pressure`: partial_pressure
+    * `real`: units = Pa
+* `period`: period
+    * `real`: units = s
+* `power`: power
+    * `real`: units = W
+* `pressure`: pressure
+    * `real`: units = Pa
+* `probability`: probability
+    * `real`: units = 1
+* `radiative_flux`: radiative_flux
+    * `real`: units = W m-2
+* `radius`: radius
+    * `real`: units = m
+* `specific_eddy_kinetic_energy`: specific_eddy_kinetic_energy
+    * `real`: units = m2 s-2
+* `speed`: speed
+    * `real`: units = m s-1
+* `stress`: stress
+    * `real`: units = Pa
+* `streamfunction`: streamfunction
+    * `real`: units = m2 s-1
+* `temperature`: temperature
+    * `real`: units = K
+* `thickness`: thickness
+    * `real`: units = m
+* `velocity`: velocity
+    * `real`: units = m s-1
+* `velocity_potential`: velocity_potential
+    * `real`: units = m2 s-1
+* `volume`: volume
+    * `real`: units = m3
+* `volume_flux`: volume_flux
+    * `real`: units = m s-1
+* `volume_fraction`: volume_fraction
+    * `real`: units = 1
+* `volume_mixing_ratio`: volume_mixing_ratio
+    * `real`: units = mol mol-1
+* `volume_transport`: volume_transport
+    * `real`: units = m3 s-1
+* `vorticity`: vorticity
+    * `real`: units = s-1
+### chemical_species
+These are the base names for specific chemical species
+* `c5h8`: Isoprene
+* `co2`: Carbon dioxide
+* `co`: Carbon monoxide
+* `ccl4`: Tetrachloromethane
+* `cfc11`: Trichlorofluoromethane
+* `cfc12`: Dichlorodifluoromethane
+* `cfc113`: 1,1,2-Trichloro-1,2,2-trifluoroethane
+* `cfc22`: Chlorodifluoromethane
+* `dimethyl_sulfide`: Dimethyl sulfide; DMS
+* `hcho`: Formaldehyde
+* `hydrophilic_black_carbon`: hydrophilic_black_carbon
+* `hydrophobic_black_carbon`: hydrophobic_black_carbon
+* `hydrophilic_organic_carbon`: hydrophilic_organic_carbon
+* `hydrophobic_organic_carbon`: hydrophobic_organic_carbon
+* `methane`: ch4
+* `n2o`: Nitrous Oxide, N_2O
+* `nitrate`: Chemical species containing the nitrate ion
+* `nitrite`: Chemical species containing the nitrite ion
+* `no2`: Nitrogen dioxide
+* `no`: Nitric oxide NO (Nitrogen oxide, Nitrogen monoxide)
+* `oxygen`: Molecular oxygen, O_2
+* `ozone`: Ozone, O_3
+* `phosphate`: Chemical species containing the phosphate ion
+* `silicate`: Chemical species containing the silicate ion
+* `sulfate`: Chemical species containing the sulfate ion
+* `sulfur_dioxide`: so2
+### base_standard_names
+These names are used as bases for other names, but may
+also be considered standard names on their own. See the
+full list of standard names for further details.
+* `absolute_vorticity`: absolute_vorticity
+* `air_potential_temperature`: air_potential_temperature
+* `air_pressure`: air_pressure
+* `air_pressure_thickness`: air_pressure_thickness
+* `air_temperature`: air_temperature
+* `albedo`: albedo
+* `atmosphere_heat_diffusivity`: atmosphere_heat_diffusivity
+* `cloud_area_fraction`: cloud_area_fraction
+* `cloud_condensate`: cloud_condensate
+* `cloud_ice`: cloud_ice
+* `cloud_liquid_water`: cloud_liquid_water
+* `date`: date
+* `density`: density
+* `diffuse_nir_albedo`: diffuse near-infrared albedo
+* `diffuse_nir_shortwave_flux`: diffuse near-infrared shortwave flux
+* `diffuse_shortwave_albedo`: diffuse_shortwave_albedo
+* `diffuse_uv_and_vis_shortwave_flux`: diffuse ultraviolet and visible shortwave flux
+* `diffuse_vis_albedo`: diffuse visible albedo
+* `direct_nir_albedo`: direct near-infrared albedo
+* `direct_nir_shortwave_flux`: direct near-infrared shortwave flux
+* `direct_uv_and_vis_shortwave_flux`: direct ultraviolet and visible shortwave flux
+* `direct_vis_albedo`: direct visible albedo
+* `divergence`: divergence
+* `dry_air_density`: dry_air_density
+* `dry_air_enthalpy`: dry_air_enthalpy
+* `exner_function`: exner_function
+* `filename`: filename
+* `forecast_time`: forecast_time
+* `geopotential`: geopotential
+* `geopotential_height`: geopotential_height
+* `graupel`: graupel
+* `gravitational_acceleration`: gravitational_acceleration
+* `hail`: hail
+* `heat_flux`: heat_flux
+* `hygroscopic_aerosols`: hygroscopic_aerosols
+* `ice`: ice
+* `latent_heat_flux`: latent_heat_flux
+* `liquid_water`: liquid_water
+* `longwave_flux`: longwave_flux
+* `momentum_flux`: momentum_flux
+* `nonhygroscopic_ice_nucleating_aerosols`: nonhygroscopic_ice_nucleating_aerosols
+* `ozone`: ozone
+* `pressure`: pressure
+* `rain`: rain
+* `rain_water`: rain_water
+* `random_number`: random_number
+* `random_number_seed`: random_number_seed
+* `reference_pressure`: reference_pressure
+* `relative_humidity`: relative_humidity
+* `roughness_length`: roughness_length
+* `sensible_heat_flux`: sensible_heat_flux
+* `shortwave_flux`: shortwave_flux
+* `snow`: snow
+* `snow_area_fraction`: snow_area_fraction
+* `soil_moisture`: soil_moisture
+* `soil_temperature`: soil_temperature
+* `solar_declination_angle`: solar_declination_angle
+* `solar_zenith_angle`: solar_zenith_angle
+* `streamfunction`: streamfunction
+* `surface_skin_temperature`: surface_skin_temperature
+* `temperature`: temperature
+* `temperature_flux`: temperature_flux
+* `time`: time
+* `total_energy`: total_energy
+* `total_water`: All water phases (solid, liquid, gas)
+* `tracer`: tracer
+* `tracers`: tracers
+* `turbulent_kinetic_energy`: turbulent_kinetic_energy
+* `velocity_potential`: velocity_potential
+* `virtual_potential_temperature`: virtual_potential_temperature
+* `virtual_temperature`: virtual_temperature
+* `water_vapor`: water_vapor
+* `wind`: wind
+* `wind_speed`: wind_speed
 ## dimensions
 Dimension standard names may come in sets of six related standard names for each dimension:
 ```
@@ -115,7 +314,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = Pa
 * `surface_pressure_of_dry_air`: Surface pressure of dry air
     * `real(kind=kind_phys)`: units = Pa
-* `surface_geopotential`: Surface geopotential
+* `geopotential_at_surface`: Geopotential at surface
     * `real(kind=kind_phys)`: units = m2 s-2
 * `air_temperature`: Air temperature
     * `real(kind=kind_phys)`: units = K
@@ -165,7 +364,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = 1
 * `ln_air_pressure_of_dry_air`: Ln air pressure of dry air
     * `real(kind=kind_phys)`: units = 1
-* `reciprocal_of_dimensionless_exner_function_wrt_surface_air_pressure`: inverse exner function w.r.t. surface pressure, (ps/p)^(R/cp)
+* `reciprocal_of_exner_function_wrt_air_pressure_at_surface`: inverse exner function w.r.t. surface pressure, (ps/p)^(R/cp)
     * `real(kind=kind_phys)`: units = 1
 * `geopotential_height`: geopotential height w.r.t. sea level
     * `real(kind=kind_phys)`: units = m
@@ -231,15 +430,15 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = m s-2
 * `tendency_of_northward_wind_due_to_model_physics`: Total change in northward wind from a physics suite
     * `real(kind=kind_phys)`: units = m s-2
-* `air_horizontal_streamfunction`: Scalar function describing the streamlines of the horizontal wind
+* `horizontal_streamfunction_of_air`: Scalar function describing the streamlines of the horizontal wind
     * `real(kind=kind_phys)`: units = m2 s-1
-* `air_horizontal_velocity_potential`: Scalar potential of the horizontal wind
+* `horizontal_velocity_potential_of_air`: Scalar potential of the horizontal wind
     * `real(kind=kind_phys)`: units = m2 s-1
-* `air_upward_absolute_vorticity`: The upward (kth) component of the curl of the vector wind field
+* `upward_absolute_vorticity_of_air`: The upward (kth) component of the curl of the vector wind field
     * `real(kind=kind_phys)`: units = s-1
-* `air_horizontal_divergence`: The (horizontal) divergence of the 2-D vector wind field
+* `horizontal_divergence_of_air`: The (horizontal) divergence of the 2-D vector wind field
     * `real(kind=kind_phys)`: units = s-1
-* `surface_upward_heat_flux_in_air`: Surface upward heat flux in air
+* `upward_heat_flux_in_air_at_surface`: Upward heat flux in air at surface
     * `real(kind=kind_phys)`: units = W m-2
 * `cumulative_boundary_flux_of_total_energy`: Cumulative boundary flux of total energy
     * `real(kind=kind_phys)`: units = W m-2
@@ -251,11 +450,11 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = Pa
 * `reference_pressure_in_atmosphere_layer`: reference pressure in atmosphere layer
     * `real(kind=kind_phys)`: units = Pa
-* `reference_air_pressure_normalized_by_surface_air_pressure`: reference pressure normalized by surface pressure
+* `reference_air_pressure_normalized_by_air_pressure_at_surface`: reference pressure normalized by surface pressure
     * `real(kind=kind_phys)`: units = 1
 * `reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure`: Reference pressure in atmosphere layer normalized by surface reference pressure
     * `real(kind=kind_phys)`: units = 1
-* `dimensionless_exner_function`: exner function
+* `exner_function`: exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa
     * `real(kind=kind_phys)`: units = 1
 * `air_potential_temperature`: air potential temperature
     * `real(kind=kind_phys)`: units = K
@@ -298,7 +497,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = frac
 * `mass_content_of_water_in_top_soil_layer`: content per unit area of water in top layer of soil
     * `real(kind=kind_phys)`: units = kg m-2
-* `surface_snow_density`: Surface snow density
+* `density_of_snow_at_surface`: Density of snow at surface
     * `real(kind=kind_phys)`: units = kg m-3
 * `urban_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is urban
     * `real(kind=kind_phys)`: units = frac
@@ -364,9 +563,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg kg-1
 * `total_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: ratio of the mass of water to the mass of dry air at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_assuming_saturation`: saturated water vapor mixing ratio with respect to moist air and condensed water
+* `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_assuming_saturation`: saturated water vapor mass mixing ratio with respect to moist air and condensed water
     * `real(kind=kind_phys)`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces_assuming_saturation`: saturated water vapor mixing ratio with respect to moist air and condensed water at all interfaces excluding surface
+* `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces_assuming_saturation`: saturated water vapor mass mixing ratio with respect to moist air and condensed water at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
 * `derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature`: log derivative of the water vapor partial pressure at saturation with respect to air temperature
     * `real(kind=kind_phys)`: units = K-1
@@ -374,7 +573,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = K-1
 * `mole_fraction_of_ozone_in_air`: Mole fraction of ozone in air
     * `real(kind=kind_phys)`: units = mol mol-1
-* `mole_fraction_of_carbon_dioxide_in_air`: Mole fraction of carbon dioxide in air
+* `mole_fraction_of_co2_in_air`: Mole fraction of co2 in air
     * `real(kind=kind_phys)`: units = mol mol-1
 * `volume_mixing_ratio_of_ch4`: Methane volume mixing ratio
     * `real(kind=kind_phys)`: units = mol mol-1
@@ -836,7 +1035,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_read_surface_albedo_for_diffused_shortwave_from_input`: Do read surface albedo for diffused shortwave from input
     * `logical(kind=)`: units = flag
-* `do_limited_surface_roughness_length_over_ocean`: Do limited surface roughness length over ocean
+* `do_limited_roughness_length_over_ocean`: Do limited surface roughness length over ocean
     * `logical(kind=)`: units = flag
 * `do_reference_pressure_theta`: Do reference pressure theta
     * `logical(kind=)`: units = flag
@@ -1006,19 +1205,19 @@ Variables related to the compute environment
     * `integer(kind=)`: units = index
 * `index_of_convective_cloud_area_fraction_in_xyz_dimensioned_restart_array`: Index of convective cloud area fraction in xyz dimensioned restart array
     * `integer(kind=)`: units = index
-* `index_of_convective_cloud_condensate_mixing_ratio_wrt_moist_air_in_xyz_dimensioned_restart_array`: Index of convective cloud condensate mixing ratio wrt moist air in xyz dimensioned restart array
+* `index_of_convective_cloud_condensate_mixing_ratio_wrt_moist_air_in_xyz_dimensioned_restart_array`: Index of convective cloud condensate mass mixing ratio with respect to moist air in the XYZ-dimensioned restart array
     * `integer(kind=)`: units = index
 * `index_of_horizontal_gridpoint_for_debug_output`: Index of horizontal gridpoint for debug output
     * `integer(kind=)`: units = index
 * `index_of_first_chemical_tracer_in_tracer_concentration_array`: Index of first chemical tracer in tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_graupel_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of graupel mixing ratio wrt moist air in tracer concentration array
+* `index_of_graupel_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of graupel mass mixing ratio with respect to moist air in the tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_graupel_effective_radius_in_xyz_dimensioned_restart_array`: Index of graupel effective radius in xyz dimensioned restart array
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_graupel_in_tracer_concentration_array`: Index of mass number concentration of graupel in tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_cloud_ice_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of cloud ice mixing ratio wrt moist air in tracer concentration array
+* `index_of_cloud_ice_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of cloud ice mass mixing ratio with respect to moist air in the tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_cloud_ice_in_tracer_concentration_array`: Index of mass number concentration of cloud ice in tracer concentration array
     * `integer(kind=)`: units = index
@@ -1026,35 +1225,35 @@ Variables related to the compute environment
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_in_tracer_concentration_array`: Index of mass number concentration of nonhygroscopic ice nucleating aerosols in tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_cloud_liquid_water_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of cloud liquid water mixing ratio wrt moist air in tracer concentration array
+* `index_of_cloud_liquid_water_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of liquid water mass mixing ratio with respect to moist air in the tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_cloud_droplets_in_tracer_concentration_array`: Index of mass number concentration of cloud droplets in tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_mass_weighted_rime_factor_in_tracer_concentration_array`: Index of mass weighted rime factor in tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_ozone_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of ozone mixing ratio wrt moist air in tracer concentration array
+* `index_of_ozone_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of ozone mass mixing ratio with respect to moist air in the tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_rain_effective_radius_in_xyz_dimensioned_restart_array`: Index of rain effective radius in xyz dimensioned restart array
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_rain_in_tracer_concentration_array`: Index of mass number concentration of rain in tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_rain_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of rain mixing ratio wrt moist air in tracer concentration array
+* `index_of_rain_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of rain mass mixing ratio with respect to moist air in the tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_snow_effective_radius_in_xyz_dimensioned_restart_array`: Index of snow effective radius in xyz dimensioned restart array
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_snow_in_tracer_concentration_array`: Index of mass number concentration of snow in tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_snow_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of snow mixing ratio wrt moist air in tracer concentration array
+* `index_of_snow_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of snow mass mixing ratio with respect to moist air in the tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_specific_humidity_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of specific humidity on previous timestep in xyz dimensioned restart array
+* `index_of_water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in xyz dimensioned restart array
     * `integer(kind=)`: units = index
-* `index_of_specific_humidity_two_timesteps_back_in_xyz_dimensioned_restart_array`: Index of specific humidity two timesteps back in xyz dimensioned restart array
+* `index_of_water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back_in_xyz_dimensioned_restart_array`: Index of specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back in xyz dimensioned restart array
     * `integer(kind=)`: units = index
 * `control_for_stochastic_land_surface_perturbation`: Control for stochastic land surface perturbation
     * `integer(kind=)`: units = 1
-* `index_of_surface_air_pressure_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of surface air pressure on previous timestep in xyz dimensioned restart array
+* `index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of air pressure at surface on previous timestep in xyz dimensioned restart array
     * `integer(kind=)`: units = index
-* `index_of_surface_air_pressure_two_timesteps_back_in_xyz_dimensioned_tracer_array`: Index of surface air pressure two timesteps back in xyz dimensioned tracer array
+* `index_of_air_pressure_at_surface_two_timesteps_back_in_xyz_dimensioned_tracer_array`: Index of air pressure at surface two timesteps back in xyz dimensioned tracer array
     * `integer(kind=)`: units = index
 * `index_of_enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convectionin_in_xy_dimensioned_restart_array`: Index of enhancement to wind speed at surface adjacent layer due to convectionin in xy dimensioned restart array
     * `integer(kind=)`: units = index
@@ -1062,7 +1261,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_hygroscopic_aerosols_in_tracer_concentration_array`: Index of mass number concentration of hygroscopic aerosols in tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_specific_humidity_in_tracer_concentration_array`: Index of specific humidity in tracer concentration array
+* `index_of_water_vapor_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of specific humidity (water vapor mass mixing ratio with respect to moist air) in tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_atmosphere_heat_diffusivity_in_xyz_dimensioned_restart_array`: Index of atmosphere heat diffusivity in xyz dimensioned restart array
     * `integer(kind=)`: units = index
@@ -1132,11 +1331,11 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m-3
 * `prescribed_number_concentration_of_cloud_ice`: Prescribed number concentration of cloud ice
     * `real(kind=kind_phys)`: units = m-3
-* `minimum_cloud_condensate_mixing_ratio_wrt_moist_air_threshold`: Minimum cloud condensate mixing ratio wrt moist air threshold
+* `minimum_cloud_condensate_mixing_ratio_wrt_moist_air_threshold`: Minimum threshold cloud condensate mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `minimum_cloud_liquid_water_mixing_ratio_wrt_moist_air_threshold`: Minimum cloud liquid water mixing ratio wrt moist air threshold
+* `minimum_cloud_liquid_water_mixing_ratio_wrt_moist_air_threshold`: Minimum threshold cloud liquid water mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `minimum_cloud_ice_mixing_ratio_wrt_moist_air_threshold`: Minimum cloud ice mixing ratio wrt moist air threshold
+* `minimum_cloud_ice_mixing_ratio_wrt_moist_air_threshold`: Minimum threshold cloud ice mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
 * `relative_humidity_threshold_for_ice_nucleation`: Relative humidity threshold for ice nucleation
     * `real(kind=kind_phys)`: units = fraction
@@ -1375,9 +1574,9 @@ Variables related to the compute environment
 * `filename_of_micm_configuration`: Filename of micm configuration
     * `character(kind=len=*)`: units = none
 ## GFS_typedefs_GFS_interstitial_type
-* `cloud_ice_mixing_ratio_wrt_moist_air_interstitial`: Cloud ice mixing ratio wrt moist air interstitial
+* `cloud_ice_mixing_ratio_wrt_moist_air_interstitial`: Cloud ice mass mixing ratio with respect to moist air in interstitial scheme
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_interstitial`: Cloud liquid water mixing ratio wrt moist air interstitial
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_interstitial`: Cloud liquid water mass mixing ratio with respect to moist air in interstitial scheme
     * `real(kind=kind_phys)`: units = kg kg-1
 * `radiatively_active_gases`: Radiatively active gases
     * `character(kind=len=128)`: units = none
@@ -1385,21 +1584,21 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K s-1
 * `process_split_cumulative_tendency_of_mass_number_concentration_of_cloud_liquid_water_particles_in_air`: Process split cumulative tendency of mass number concentration of cloud liquid water particles in air
     * `real(kind=kind_phys)`: units = kg-1 s-1
-* `process_split_cumulative_tendency_of_graupel_mixing_ratio_wrt_moist_air`: Process split cumulative tendency of graupel mixing ratio wrt moist air
+* `process_split_cumulative_tendency_of_graupel_mixing_ratio_wrt_moist_air`: Process-split cumulative tendency of the graupel mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
-* `process_split_cumulative_tendency_of_cloud_ice_mixing_ratio_wrt_moist_air`: Process split cumulative tendency of cloud ice mixing ratio wrt moist air
+* `process_split_cumulative_tendency_of_cloud_ice_mixing_ratio_wrt_moist_air`: Process-split cumulative tendency of the cloud ice mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
 * `process_split_cumulative_tendency_of_mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols`: Process split cumulative tendency of mass number concentration of nonhygroscopic ice nucleating aerosols
     * `real(kind=kind_phys)`: units = kg-1 s-1
 * `process_split_cumulative_tendency_of_mass_number_concentration_of_cloud_ice_water_crystals_in_air`: Process split cumulative tendency of mass number concentration of cloud ice water crystals in air
     * `real(kind=kind_phys)`: units = kg-1 s-1
-* `process_split_cumulative_tendency_of_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Process split cumulative tendency of cloud liquid water mixing ratio wrt moist air
+* `process_split_cumulative_tendency_of_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Process-split cumulative tendency of the cloud liquid water mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
-* `process_split_cumulative_tendency_of_ozone_mixing_ratio_wrt_moist_air`: Process split cumulative tendency of ozone mixing ratio wrt moist air
+* `process_split_cumulative_tendency_of_ozone_mixing_ratio_wrt_moist_air`: Process-split cumulative tendency of the ozone mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
-* `process_split_cumulative_tendency_of_rain_mixing_ratio_wrt_moist_air`: Process split cumulative tendency of rain mixing ratio wrt moist air
+* `process_split_cumulative_tendency_of_rain_mixing_ratio_wrt_moist_air`: Process-split cumulative tendency of the rain mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
-* `process_split_cumulative_tendency_of_snow_mixing_ratio_wrt_moist_air`: Process split cumulative tendency of snow mixing ratio wrt moist air
+* `process_split_cumulative_tendency_of_snow_mixing_ratio_wrt_moist_air`: Process-split cumulative tendency of the snow mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
 * `process_split_cumulative_tendency_of_tracers`: Process split cumulative tendency of tracers
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
@@ -1407,7 +1606,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = J s-1
 * `process_split_cumulative_tendency_of_mass_number_concentration_of_hygroscopic_aerosols`: Process split cumulative tendency of mass number concentration of hygroscopic aerosols
     * `real(kind=kind_phys)`: units = kg-1 s-1
-* `process_split_cumulative_tendency_of_specific_humidity`: Process split cumulative tendency of specific humidity
+* `process_split_cumulative_tendency_of_water_vapor_mixing_ratio_wrt_moist_air`: Process-split cumulative tendency of specific humidity (water vapor mass mixing ratio with respect to moist air)
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
 * `process_split_cumulative_tendency_of_x_wind`: Process split cumulative tendency of x wind
     * `real(kind=kind_phys)`: units = m s-2
@@ -1438,7 +1637,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = count
 * `convective_cloud_area_fraction`: Convective cloud area fraction
     * `real(kind=kind_phys)`: units = fraction
-* `convective_cloud_condensate_mixing_ratio_wrt_moist_air`: Convective cloud condensate mixing ratio wrt moist air
+* `convective_cloud_condensate_mixing_ratio_wrt_moist_air`: Convective cloud condensate mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
 * `effective_radius_of_stratiform_cloud_graupel_particle`: Effective radius of stratiform cloud graupel particle
     * `real(kind=kind_phys)`: units = um
@@ -1458,7 +1657,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg-1
 * `upward_virtual_potential_temperature_flux`: Upward virtual potential temperature flux
     * `real(kind=kind_phys)`: units = K m s-1
-* `surface_upward_specific_humidity_flux_for_mellor_yamada_janjic_surface_layer_scheme`: Surface upward specific humidity flux for mellor yamada janjic surface layer scheme
+* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_mellor_yamada_janjic_surface_layer_scheme`: Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme
     * `real(kind=kind_phys)`: units = m s-1 kg kg-1
 * `cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative max vertical index at cloud base between sw radiation calls
     * `real(kind=kind_phys)`: units = 1
@@ -1468,9 +1667,9 @@ Variables related to the compute environment
     * `integer(kind=)`: units = index
 * `turbulent_mixing_length`: Turbulent mixing length
     * `real(kind=kind_phys)`: units = m
-* `specific_humidity_on_previous_timestep`: Specific humidity on previous timestep
+* `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep
     * `real(kind=kind_phys)`: units = kg kg-1
-* `tendency_of_specific_humidity_due_to_nonphysics`: Tendency of specific humidity due to nonphysics
+* `tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_nonphysics`: Tendency of specific humidity (water vapor mass mixing ratio with respect to moist air) due to nonphysics
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
 * `momentum_exchange_coefficient_for_myj_schemes`: Momentum exchange coefficient for myj schemes
     * `real(kind=kind_phys)`: units = m s-1
@@ -1478,7 +1677,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = various
 * `air_potential_temperature_at_top_of_viscous_sublayer`: Air potential temperature at top of viscous sublayer
     * `real(kind=kind_phys)`: units = K
-* `variance_of_specific_humidity`: Variance of specific humidity
+* `variance_of_water_vapor_mixing_ratio_wrt_moist_air`: Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)
     * `real(kind=kind_phys)`: units = kg2 kg-2
 * `random_number`: Random number
     * `real(kind=kind_phys)`: units = 1
@@ -1488,29 +1687,29 @@ Variables related to the compute environment
     * `integer(kind=)`: units = 1
 * `cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative min vertical index at cloud base between sw radiation calls
     * `real(kind=kind_phys)`: units = 1
-* `specific_humidity_at_top_of_viscous_sublayer`: Specific humidity at top of viscous sublayer
+* `water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
     * `real(kind=kind_phys)`: units = kg kg-1
 * `stability_function_for_heat`: Stability function for heat
     * `real(kind=kind_phys)`: units = 1
 * `subgrid_scale_cloud_area_fraction_in_atmosphere_layer`: Subgrid scale cloud area fraction in atmosphere layer
     * `real(kind=kind_phys)`: units = fraction
-* `subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air`: Subgrid scale cloud ice mixing ratio wrt moist air
+* `subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud ice mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid scale cloud liquid water mixing ratio wrt moist air
+* `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
 * `subgrid_scale_cloud_fraction_from_shoc`: Subgrid scale cloud fraction from shoc
     * `real(kind=kind_phys)`: units = fraction
-* `surface_air_pressure_on_previous_timestep`: Surface air pressure on previous timestep
+* `air_pressure_at_surface_on_previous_timestep`: Air pressure at surface on previous timestep
     * `real(kind=kind_phys)`: units = Pa
-* `surface_air_pressure_two_timesteps_back`: Surface air pressure two timesteps back
+* `air_pressure_at_surface_two_timesteps_back`: Air pressure at surface two timesteps back
     * `real(kind=kind_phys)`: units = Pa
 * `control_for_surface_layer_evaporation`: Control for surface layer evaporation
     * `real(kind=kind_phys)`: units = 1
-* `surface_specific_humidity_for_myj_schemes`: Surface specific humidity for myj schemes
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes`: Surface specific humidity (water vapor mass mixing ratio with respect to moist air) for MYJ schemes
     * `real(kind=kind_phys)`: units = kg kg-1
 * `enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection`: Enhancement to wind speed at surface adjacent layer due to convection
     * `real(kind=kind_phys)`: units = m s-1
-* `covariance_of_air_temperature_and_specific_humidity`: Covariance of air temperature and specific humidity
+* `covariance_of_air_temperature_and_water_vapor_mixing_ratio_wrt_moist_air`: Covariance of air temperature and specific humidity (water vapor mass mixing ratio with respect to moist air)
     * `real(kind=kind_phys)`: units = K kg kg-1
 * `variance_of_air_temperature`: Variance of air temperature
     * `real(kind=kind_phys)`: units = K2
@@ -1530,22 +1729,22 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m s-1
 * `y_wind_at_top_of_viscous_sublayer`: Y wind at top of viscous sublayer
     * `real(kind=kind_phys)`: units = m s-1
-* `specific_humidity_on_previous_timestep_in_xyz_dimensioned_restart_array`: Specific humidity on previous timestep in xyz dimensioned restart array
+* `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array
     * `real(kind=kind_phys)`: units = kg kg-1
-* `specific_humidity_two_timesteps_back`: Specific humidity two timesteps back
+* `water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back`: Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back
     * `real(kind=kind_phys)`: units = kg kg-1
 * `weight_for_momentum_at_top_of_viscous_sublayer`: Weight for momentum at top of viscous sublayer
     * `real(kind=kind_phys)`: units = 1
 * `weight_for_potential_temperature_at_top_of_viscous_sublayer`: Weight for potential temperature at top of viscous sublayer
     * `real(kind=kind_phys)`: units = 1
-* `weight_for_specific_humidity_at_top_of_viscous_sublayer`: Weight for specific humidity at top of viscous sublayer
+* `weight_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Weight for specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
     * `real(kind=kind_phys)`: units = 1
 ## GFS_typedefs_GFS_sfcprop_type
 * `wet_canopy_area_fraction`: Wet canopy area fraction
     * `real(kind=kind_phys)`: units = fraction
 * `baseline_surface_longwave_emissivity`: Baseline surface longwave emissivity
     * `real(kind=kind_phys)`: units = fraction
-* `baseline_surface_roughness_length`: Baseline surface roughness length
+* `baseline_roughness_length`: Baseline surface roughness length
     * `real(kind=kind_phys)`: units = m
 * `air_temperature_in_canopy`: Air temperature in canopy
     * `real(kind=kind_phys)`: units = K
@@ -1557,9 +1756,9 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = mm
 * `canopy_water_amount`: Canopy water amount
     * `real(kind=kind_phys)`: units = kg m-2
-* `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Cloud condensed water mixing ratio wrt moist air at surface over ice
+* `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Cloud condensed water mass mixing ratio with respect to moist air at surface over ice
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land`: Cloud condensed water mixing ratio wrt moist air at surface over land
+* `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land`: Cloud condensed water mass mixing ratio with respect to moist air at surface over land
     * `real(kind=kind_phys)`: units = kg kg-1
 * `coefficient_c_0`: Coefficient c 0
     * `real(kind=kind_phys)`: units = 1
@@ -1613,9 +1812,9 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = 1
 * `temperature_in_ice_layer`: Temperature in ice layer
     * `real(kind=kind_phys)`: units = K
-* `surface_upward_specific_humidity_flux`: Surface upward specific humidity flux
+* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Upward flux of water vapor mixing ratio wrt moist air at surface
     * `real(kind=kind_phys)`: units = kg kg-1 m s-1
-* `surface_upward_temperature_flux`: Surface upward temperature flux
+* `upward_temperature_flux_at_surface`: Upward temperature flux at surface
     * `real(kind=kind_phys)`: units = K m s-1
 * `lake_area_fraction`: Lake area fraction
     * `real(kind=kind_phys)`: units = fraction
@@ -1643,7 +1842,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m
 * `max_vegetation_area_fraction`: Max vegetation area fraction
     * `real(kind=kind_phys)`: units = fraction
-* `nir_albedo_strong_cosz`: Nir albedo strong cosz
+* `nir_albedo_strong_cosz`: albedo for near-infrared radiation with strong dependence on cosine of the zenith angle
     * `real(kind=kind_phys)`: units = fraction
 * `nir_albedo_weak_cosz`: Nir albedo weak cosz
     * `real(kind=kind_phys)`: units = fraction
@@ -1703,7 +1902,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m K-1
 * `slow_soil_pool_mass_content_of_carbon`: Slow soil pool mass content of carbon
     * `real(kind=kind_phys)`: units = g m-2
-* `surface_albedo_assuming_deep_snow_on_previous_timestep`: Surface albedo assuming deep snow on previous timestep
+* `albedo_on_previous_timestep_assuming_deep_snow`: Albedo on previous timestep assuming deep snow
     * `real(kind=kind_phys)`: units = fraction
 * `lwe_thickness_of_ice_in_surface_snow`: Lwe thickness of ice in surface snow
     * `real(kind=kind_phys)`: units = mm
@@ -1727,13 +1926,13 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K
 * `volumetric_soil_moisture_between_soil_bottom_and_water_table`: Volumetric soil moisture between soil bottom and water table
     * `real(kind=kind_phys)`: units = m3 m-3
-* `water_vapor_mixing_ratio_wrt_moist_air_at_2m`: mixing ratio of the mass of water vapor to the mass of moist air, at two meters above surface
+* `water_vapor_mixing_ratio_wrt_moist_air_at_2m`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface
     * `real(kind=kind_phys)`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m`: mixing ratio of the mass of water vapor to the mass of moist air and hydrometeors, at two meters above surface
     * `real(kind=kind_phys)`: units = kg kg-1
-* `specified_surface_upward_specific_humidity_flux`: Specified surface upward specific humidity flux
+* `specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
     * `real(kind=kind_phys)`: units = kg kg-1 m s-1
-* `specified_surface_upward_temperature_flux`: Specified surface upward temperature flux
+* `specified_upward_temperature_flux_at_surface`: Specified upward temperature flux at surface
     * `real(kind=kind_phys)`: units = K m s-1
 * `standard_deviation_of_subgrid_orography`: Standard deviation of subgrid orography
     * `real(kind=kind_phys)`: units = m
@@ -1747,25 +1946,25 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K
 * `molecular_sublayer_thickness_in_sea_water`: Molecular sublayer thickness in sea water
     * `real(kind=kind_phys)`: units = m
-* `surface_albedo_diffuse_nir_over_ice`: Surface albedo diffuse nir over ice
+* `diffuse_nir_albedo_of_ice`: ice surface albedo for diffuse near-infrared radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_albedo_diffuse_nir_over_land`: Surface albedo diffuse nir over land
+* `diffuse_nir_albedo_of_land`: land surface albedo for diffuse near-infrared radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_albedo_diffuse_visible_over_ice`: Surface albedo diffuse visible over ice
+* `diffuse_vis_albedo_of_ice`: ice surface albedo for diffuse visible radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_albedo_diffuse_visible_over_land`: Surface albedo diffuse visible over land
+* `diffuse_vis_albedo_of_land`: land surface albedo for diffuse visible radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_albedo_direct_nir_over_ice`: Surface albedo direct nir over ice
+* `direct_nir_albedo_of_ice`: ice surface albedo for direct near-infrared radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_albedo_direct_nir_over_land`: Surface albedo direct nir over land
+* `direct_nir_albedo_of_land`: land surface albedo for direct near-infrared radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_albedo_direct_visible_over_ice`: Surface albedo direct visible over ice
+* `direct_vis_albedo_of_ice`: ice surface albedo for direct visible radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_albedo_direct_visible_over_land`: Surface albedo direct visible over land
+* `direct_vis_albedo_of_land`: land surface albedo for direct visible radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_diffused_shortwave_albedo_over_ice`: Surface diffused shortwave albedo over ice
+* `diffuse_shortwave_albedo_of_ice`: ice surface albedo for diffuse shortwave radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_diffused_shortwave_albedo_over_land`: Surface diffused shortwave albedo over land
+* `diffuse_shortwave_albedo_of_land`: land surface albedo for diffuse shortwave radiation
     * `real(kind=kind_phys)`: units = fraction
 * `surface_drag_coefficient_for_heat_and_moisture_for_noahmp`: Surface drag coefficient for heat and moisture for noahmp
     * `real(kind=kind_phys)`: units = 1
@@ -1783,35 +1982,35 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m s-1
 * `surface_friction_velocity_for_momentum`: Surface friction velocity for momentum
     * `real(kind=kind_phys)`: units = m s-1
-* `surface_upward_latent_heat_flux`: Surface upward latent heat flux
+* `upward_latent_heat_flux_at_surface`: Upward latent heat flux at surface
     * `real(kind=kind_phys)`: units = W m-2
 * `surface_longwave_emissivity_over_ice`: Surface longwave emissivity over ice
     * `real(kind=kind_phys)`: units = fraction
 * `surface_longwave_emissivity_over_land`: Surface longwave emissivity over land
     * `real(kind=kind_phys)`: units = fraction
-* `surface_roughness_length`: Surface roughness length
+* `roughness_length`: surface roughness length
     * `real(kind=kind_phys)`: units = cm
-* `surface_roughness_length_from_wave_model`: Surface roughness length from wave model
+* `roughness_length_from_wave_model`: surface roughness length from wave model
     * `real(kind=kind_phys)`: units = cm
-* `surface_roughness_length_over_ice`: Surface roughness length over ice
+* `roughness_length_over_ice`: surface roughness length over ice
     * `real(kind=kind_phys)`: units = cm
-* `surface_roughness_length_over_land`: Surface roughness length over land
+* `roughness_length_over_land`: surface roughness length over land
     * `real(kind=kind_phys)`: units = cm
-* `surface_roughness_length_over_water`: Surface roughness length over water
+* `roughness_length_over_water`: surface roughness length over water
     * `real(kind=kind_phys)`: units = cm
 * `surface_skin_temperature`: Surface skin temperature
     * `real(kind=kind_phys)`: units = K
 * `surface_skin_temperature_over_land`: Surface skin temperature over land
     * `real(kind=kind_phys)`: units = K
-* `surface_snow_area_fraction_over_ice`: Surface snow area fraction over ice
+* `snow_area_fraction_at_surface_over_ice`: Snow area fraction at surface over ice
     * `real(kind=kind_phys)`: units = fraction
-* `surface_snow_area_fraction_over_land`: Surface snow area fraction over land
+* `snow_area_fraction_at_surface_over_land`: Snow area fraction at surface over land
     * `real(kind=kind_phys)`: units = fraction
-* `surface_snow_free_albedo_over_land`: Surface snow free albedo over land
+* `albedo_of_land_assuming_no_snow_cover`: surface snow-free albedo over land
     * `real(kind=kind_phys)`: units = fraction
 * `lwe_surface_snow`: Lwe surface snow
     * `real(kind=kind_phys)`: units = mm
-* `surface_specific_humidity`: Surface specific humidity
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface
     * `real(kind=kind_phys)`: units = kg kg-1
 * `ratio_of_height_to_monin_obukhov_length`: Ratio of height to monin obukhov length
     * `real(kind=kind_phys)`: units = 1
@@ -1853,9 +2052,9 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m
 * `water_table_recharge_assuming_shallow`: Water table recharge assuming shallow
     * `real(kind=kind_phys)`: units = m
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Water vapor mixing ratio wrt moist air at surface over ice
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over ice
     * `real(kind=kind_phys)`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land`: Water vapor mixing ratio wrt moist air at surface over land
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over land
     * `real(kind=kind_phys)`: units = kg kg-1
 * `wood_mass_content`: Wood mass content
     * `real(kind=kind_phys)`: units = g m-2
@@ -1864,85 +2063,85 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = 1
 * `convective_cloud_condensate_after_rainout`: Convective cloud condensate after rainout
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cumulative_surface_downwelling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface downwelling diffuse nir shortwave flux for coupling multiplied by timestep
+* `cumulative_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling diffuse near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface downwelling diffuse uv and vis shortwave flux for coupling multiplied by timestep
+* `cumulative_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_downwelling_direct_nir_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface downwelling direct nir shortwave flux for coupling multiplied by timestep
+* `cumulative_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling direct near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_downwelling_direct_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface downwelling direct uv and vis shortwave flux for coupling multiplied by timestep
+* `cumulative_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_downwelling_longwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface downwelling longwave flux for coupling multiplied by timestep
+* `cumulative_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative downwelling longwave flux at surface for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_downwelling_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface downwelling shortwave flux for coupling multiplied by timestep
+* `cumulative_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative downwelling shortwave flux at surface for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_net_downwelling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwelling diffuse nir shortwave flux for coupling multiplied by timestep
+* `cumulative_net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling diffuse near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_net_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwelling diffuse uv and vis shortwave flux for coupling multiplied by timestep
+* `cumulative_net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_net_downwelling_direct_nir_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwelling direct nir shortwave flux for coupling multiplied by timestep
+* `cumulative_net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling direct near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_net_downwelling_direct_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwelling direct uv and vis shortwave flux for coupling multiplied by timestep
+* `cumulative_net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_net_downwelling_longwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwelling longwave flux for coupling multiplied by timestep
+* `cumulative_net_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative net downwelling longwave flux at surface for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_net_downwelling_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwelling shortwave flux for coupling multiplied by timestep
+* `cumulative_net_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative net downwelling shortwave flux at surface for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_upward_latent_heat_flux_for_coupling_multiplied_by_timestep`: Cumulative surface upward latent heat flux for coupling multiplied by timestep
+* `cumulative_upward_latent_heat_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative upward latent heat flux at surface for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_upward_sensible_heat_flux_for_coupling_multiplied_by_timestep`: Cumulative surface upward sensible heat flux for coupling multiplied by timestep
+* `cumulative_upward_sensible_heat_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative upward sensible heat flux at surface for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_x_momentum_flux_for_coupling_multiplied_by_timestep`: Cumulative surface x momentum flux for coupling multiplied by timestep
+* `cumulative_x_momentum_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative x momentum flux at surface for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = Pa s
-* `cumulative_surface_y_momentum_flux_for_coupling_multiplied_by_timestep`: Cumulative surface y momentum flux for coupling multiplied by timestep
+* `cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative y momentum flux at surface for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = Pa s
 * `cellular_automata_area_fraction_for_deep_convection_from_coupled_process`: Cellular automata area fraction for deep convection from coupled process
     * `real(kind=kind_phys)`: units = fraction
 * `atmosphere_heat_diffusivity_for_chemistry_coupling`: Atmosphere heat diffusivity for chemistry coupling
     * `real(kind=kind_phys)`: units = m2 s-1
-* `specific_humidity_at_2m_for_coupling`: Specific humidity at 2m for coupling
+* `water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at 2 meters above surface used for coupling
     * `real(kind=kind_phys)`: units = kg kg-1
-* `surface_air_pressure_for_coupling`: Surface air pressure for coupling
+* `air_pressure_at_surface_for_coupling`: Air pressure at surface for coupling
     * `real(kind=kind_phys)`: units = Pa
-* `surface_downwelling_diffuse_nir_shortwave_flux_for_coupling`: Surface downwelling diffuse nir shortwave flux for coupling
+* `downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling`: downwelling diffuse near-infrared shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling`: Surface downwelling diffuse uv and vis shortwave flux for coupling
+* `downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling`: downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_direct_nir_shortwave_flux_for_coupling`: Surface downwelling direct nir shortwave flux for coupling
+* `downwelling_direct_nir_shortwave_flux_at_surface_for_coupling`: downwelling direct near-infrared shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_direct_uv_and_vis_shortwave_flux_for_coupling`: Surface downwelling direct uv and vis shortwave flux for coupling
+* `downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling`: downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_longwave_flux_for_coupling`: Surface downwelling longwave flux for coupling
+* `downwelling_longwave_flux_at_surface_for_coupling`: Downwelling longwave flux at surface for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_shortwave_flux_for_coupling`: Surface downwelling shortwave flux for coupling
+* `downwelling_shortwave_flux_at_surface_for_coupling`: Downwelling shortwave flux at surface for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_net_downwelling_diffuse_nir_shortwave_flux_for_coupling`: Surface net downwelling diffuse nir shortwave flux for coupling
+* `net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse near-infrared shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_net_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling`: Surface net downwelling diffuse uv and vis shortwave flux for coupling
+* `net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_net_downwelling_direct_nir_shortwave_flux_for_coupling`: Surface net downwelling direct nir shortwave flux for coupling
+* `net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling`: net downwelling direct near-infrared shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_net_downwelling_direct_uv_and_vis_shortwave_flux_for_coupling`: Surface net downwelling direct uv and vis shortwave flux for coupling
+* `net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling`: downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_net_downwelling_longwave_flux_for_coupling`: Surface net downwelling longwave flux for coupling
+* `net_downwelling_longwave_flux_at_surface_for_coupling`: Net downwelling longwave flux at surface for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_net_downwelling_shortwave_flux_for_coupling`: Surface net downwelling shortwave flux for coupling
+* `net_downwelling_shortwave_flux_at_surface_for_coupling`: Net downwelling shortwave flux at surface for coupling
     * `real(kind=kind_phys)`: units = W m-2
 * `surface_skin_temperature_for_coupling`: Surface skin temperature for coupling
     * `real(kind=kind_phys)`: units = K
-* `surface_upward_latent_heat_flux_for_coupling`: Surface upward latent heat flux for coupling
+* `upward_latent_heat_flux_at_surface_for_coupling`: Upward latent heat flux at surface for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upward_sensible_heat_flux_for_chemistry_coupling`: Surface upward sensible heat flux for chemistry coupling
+* `upward_sensible_heat_flux_at_surface_for_chemistry_coupling`: Upward sensible heat flux at surface for chemistry coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upward_sensible_heat_flux_for_coupling`: Surface upward sensible heat flux for coupling
+* `upward_sensible_heat_flux_at_surface_for_coupling`: Upward sensible heat flux at surface for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_x_momentum_flux_for_coupling`: Surface x momentum flux for coupling
+* `x_momentum_flux_at_surface_for_coupling`: X momentum flux at surface for coupling
     * `real(kind=kind_phys)`: units = Pa
-* `surface_y_momentum_flux_for_coupling`: Surface y momentum flux for coupling
+* `y_momentum_flux_at_surface_for_coupling`: Y momentum flux at surface for coupling
     * `real(kind=kind_phys)`: units = Pa
 * `temperature_at_2m_for_coupling`: Temperature at 2m for coupling
     * `real(kind=kind_phys)`: units = K
-* `tendency_of_specific_humidity_due_to_moist_convection_for_coupling`: Tendency of specific humidity due to moist convection for coupling
+* `tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_moist_convection_for_coupling`: Tendency of water vapor mixing ratio wrt moist air due to moist convection for coupling
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
 * `x_wind_at_10m_for_coupling`: X wind at 10m for coupling
     * `real(kind=kind_phys)`: units = m s-1
@@ -1964,49 +2163,49 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = W m-2
 * `area_type_from_coupled_process`: Area type from coupled process
     * `real(kind=kind_phys)`: units = 1
-* `surface_downwelling_diffuse_nir_shortwave_flux_on_radiation_timestep`: Surface downwelling diffuse nir shortwave flux on radiation timestep
+* `downwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: downwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_diffuse_uv_and_vis_shortwave_flux_on_radiation_timestep`: Surface downwelling diffuse uv and vis shortwave flux on radiation timestep
+* `downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: downwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_direct_nir_shortwave_flux_on_radiation_timestep`: Surface downwelling direct nir shortwave flux on radiation timestep
+* `downwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep`: downwelling direct near-infrared shortwave flux at the surface level on the radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_direct_uv_and_vis_shortwave_flux_on_radiation_timestep`: Surface downwelling direct uv and vis shortwave flux on radiation timestep
+* `downwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: downwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_longwave_flux_on_radiation_timestep`: Surface downwelling longwave flux on radiation timestep
+* `downwelling_longwave_flux_at_surface_on_radiation_timestep`: Downwelling longwave flux at surface on radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_downwelling_shortwave_flux_on_radiation_timestep`: Surface downwelling shortwave flux on radiation timestep
+* `downwelling_shortwave_flux_at_surface_on_radiation_timestep`: Downwelling shortwave flux at surface on radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_net_downwelling_shortwave_flux_on_radiation_timestep`: Surface net downwelling shortwave flux on radiation timestep
+* `net_downwelling_shortwave_flux_at_surface_on_radiation_timestep`: Net downwelling shortwave flux at surface on radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_nir_albedo_diffuse_rad_for_coupling`: Surface nir albedo diffuse rad for coupling
+* `diffuse_nir_albedo_for_coupling`: surface albedo for diffuse near-infrared radiation for coupling
     * `real(kind=kind_phys)`: units = fraction
-* `surface_nir_albedo_direct_rad_for_coupling`: Surface nir albedo direct rad for coupling
+* `direct_nir_albedo_for_coupling`: surface albedo for direct near-infrared radiation for coupling
     * `real(kind=kind_phys)`: units = fraction
 * `lwe_surface_snow_from_coupled_process`: Lwe surface snow from coupled process
     * `real(kind=kind_phys)`: units = m
-* `surface_upward_latent_heat_flux_from_coupled_process`: Surface upward latent heat flux from coupled process
+* `upward_latent_heat_flux_at_surface_from_coupled_process`: Upward latent heat flux at surface from coupled process
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upward_sensible_heat_flux_from_coupled_process`: Surface upward sensible heat flux from coupled process
+* `upward_sensible_heat_flux_at_surface_from_coupled_process`: Upward sensible heat flux at surface from coupled process
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upwelling_diffuse_nir_shortwave_flux_on_radiation_timestep`: Surface upwelling diffuse nir shortwave flux on radiation timestep
+* `upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upwelling_diffuse_uv_and_vis_shortwave_flux_on_radiation_timestep`: Surface upwelling diffuse uv and vis shortwave flux on radiation timestep
+* `upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upwelling_direct_nir_shortwave_flux_on_radiation_timestep`: Surface upwelling direct nir shortwave flux on radiation timestep
+* `upwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling direct near-infrared shortwave flux at the surface level on the radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upwelling_direct_uv_and_vis_shortwave_flux_on_radiation_timestep`: Surface upwelling direct uv and vis shortwave flux on radiation timestep
+* `upwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: upwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upwelling_longwave_flux_from_coupled_process`: Surface upwelling longwave flux from coupled process
+* `upwelling_longwave_flux_at_surface_from_coupled_process`: Upwelling longwave flux at surface from coupled process
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_upwelling_longwave_flux_on_radiation_timestep`: Surface upwelling longwave flux on radiation timestep
+* `upwelling_longwave_flux_at_surface_on_radiation_timestep`: Upwelling longwave flux at surface on radiation timestep
     * `real(kind=kind_phys)`: units = W m-2
-* `surface_vis_albedo_diffuse_rad_for_coupling`: Surface vis albedo diffuse rad for coupling
+* `diffuse_vis_albedo_for_coupling`: surface albedo for diffuse visible radiation for coupling
     * `real(kind=kind_phys)`: units = fraction
-* `surface_vis_albedo_direct_rad_for_coupling`: Surface vis albedo direct rad for coupling
+* `direct_vis_albedo_for_coupling`: surface albedo for direct visible radiation for coupling
     * `real(kind=kind_phys)`: units = fraction
-* `surface_x_momentum_flux_from_coupled_process`: Surface x momentum flux from coupled process
+* `x_momentum_flux_at_surface_from_coupled_process`: X momentum flux at surface from coupled process
     * `real(kind=kind_phys)`: units = Pa
-* `surface_y_momentum_flux_from_coupled_process`: Surface y momentum flux from coupled process
+* `y_momentum_flux_at_surface_from_coupled_process`: Y momentum flux at surface from coupled process
     * `real(kind=kind_phys)`: units = Pa
 * `tendency_of_nonhygroscopic_ice_nucleating_aerosols_at_surface_adjacent_layer`: Tendency of nonhygroscopic ice nucleating aerosols at surface adjacent layer
     * `real(kind=kind_phys)`: units = kg-1 s-1
@@ -2033,15 +2232,15 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = Pa
 * `air_temperature_at_surface_adjacent_layer`: Air temperature at surface adjacent layer
     * `real(kind=kind_phys)`: units = K
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer`: Cloud liquid water mixing ratio wrt moist air at surface adjacent layer
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer`: Cloud liquid water mass mixing ratio with respect to moist air at surface-adjacent layer
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_cloud_liquid_water_particles_in_air`: Mass number concentration of cloud liquid water particles in air
     * `real(kind=kind_phys)`: units = kg-1
-* `surface_dimensionless_exner_function`: Surface dimensionless exner function
+* `exner_function_wrt_surface_pressure`: exner function w.r.t. surface pressure, (p/ps)^(Rd/cp)
     * `real(kind=kind_phys)`: units = 1
-* `dimensionless_exner_function_at_surface_adjacent_layer`: Dimensionless exner function at surface adjacent layer
+* `exner_function_at_surface_adjacent_layer`: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface adjacent layer
     * `real(kind=kind_phys)`: units = 1
-* `dimensionless_exner_function_at_interfaces`: Dimensionless exner function at interfaces
+* `exner_function_at_interfaces`: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at vertical layer interfaces
     * `real(kind=kind_phys)`: units = 1
 * `dissipation_estimate_of_air_temperature_at_model_layers`: Dissipation estimate of air temperature at model layers
     * `real(kind=kind_phys)`: units = K
@@ -2049,7 +2248,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m2 s-2
 * `geopotential_at_interfaces`: Geopotential at interfaces
     * `real(kind=kind_phys)`: units = m2 s-2
-* `graupel_mixing_ratio_wrt_moist_air`: Graupel mixing ratio wrt moist air
+* `graupel_mixing_ratio_wrt_moist_air`: Graupel mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_graupel_in_air`: Mass number concentration of graupel in air
     * `real(kind=kind_phys)`: units = kg-1
@@ -2057,13 +2256,13 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg-1
 * `mass_number_concentration_of_cloud_ice_water_crystals_in_air`: Mass number concentration of cloud ice water crystals in air
     * `real(kind=kind_phys)`: units = kg-1
-* `ozone_mixing_ratio_wrt_moist_air`: Ozone mixing ratio wrt moist air
+* `ozone_mixing_ratio_wrt_moist_air`: Ozone mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_rain_water_in_air`: Mass number concentration of rain water in air
     * `real(kind=kind_phys)`: units = kg-1
 * `mass_number_concentration_of_snow_in_air`: Mass number concentration of snow in air
     * `real(kind=kind_phys)`: units = kg-1
-* `snow_mixing_ratio_wrt_moist_air`: Snow mixing ratio wrt moist air
+* `snow_mixing_ratio_wrt_moist_air`: Snow mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
 * `tracer_concentration`: Tracer concentration
     * `real(kind=kind_phys)`: units = kg kg-1
@@ -2071,7 +2270,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = J
 * `mass_number_concentration_of_hygroscopic_aerosols`: Mass number concentration of hygroscopic aerosols
     * `real(kind=kind_phys)`: units = kg-1
-* `specific_humidity_at_surface_adjacent_layer`: Specific humidity at surface adjacent layer
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface-adjacent layer
     * `real(kind=kind_phys)`: units = kg kg-1
 * `x_wind_at_surface_adjacent_layer`: X wind at surface adjacent layer
     * `real(kind=kind_phys)`: units = m s-1
@@ -2091,7 +2290,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = 1
 * `surface_lw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep`: Surface lw fluxes assuming total and clear sky on radiation timestep
     * `sfcflw_type(kind=)`: units = W m-2
-* `surface_albedo_for_diffused_shortwave_on_radiation_timestep`: Surface albedo for diffused shortwave on radiation timestep
+* `diffuse_shortwave_albedo_on_radiation_timestep`: surface albedo for diffuse shortwave radiation on the timestep for radiation physics
     * `real(kind=kind_phys)`: units = fraction
 * `surface_longwave_emissivity`: Surface longwave emissivity
     * `real(kind=kind_phys)`: units = fraction
@@ -2165,13 +2364,13 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K
 * `air_temperature_of_new_state`: Air temperature of new state
     * `real(kind=kind_phys)`: units = K
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state`: Cloud liquid water mixing ratio wrt moist air of new state
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state`: Cloud liquid water mass mixing ratio with respect to moist air of new state
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state`: Mass number concentration of cloud liquid water particles in air of new state
     * `real(kind=kind_phys)`: units = kg-1
 * `nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state`: Nonconvective cloud area fraction in atmosphere layer of new state
     * `real(kind=kind_phys)`: units = fraction
-* `graupel_mixing_ratio_wrt_moist_air_of_new_state`: Graupel mixing ratio wrt moist air of new state
+* `graupel_mixing_ratio_wrt_moist_air_of_new_state`: Graupel mass mixing ratio with respect to moist air of new state
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_graupel_of_new_state`: Mass number concentration of graupel of new state
     * `real(kind=kind_phys)`: units = kg-1
@@ -2179,7 +2378,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg-1
 * `mass_number_concentration_of_cloud_ice_water_crystals_in_air_of_new_state`: Mass number concentration of cloud ice water crystals in air of new state
     * `real(kind=kind_phys)`: units = kg-1
-* `cloud_ice_mixing_ratio_wrt_moist_air_of_new_state`: Cloud ice mixing ratio wrt moist air of new state
+* `cloud_ice_mixing_ratio_wrt_moist_air_of_new_state`: Cloud ice mass mixing ratio with respect to moist air of new state
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_weighted_rime_factor_of_new_state`: Mass weighted rime factor of new state
     * `real(kind=kind_phys)`: units = kg kg-1
@@ -2187,19 +2386,19 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_rain_of_new_state`: Mass number concentration of rain of new state
     * `real(kind=kind_phys)`: units = kg-1
-* `rain_mixing_ratio_wrt_moist_air_of_new_state`: Rain mixing ratio wrt moist air of new state
+* `rain_mixing_ratio_wrt_moist_air_of_new_state`: Rain mass mixing ratio with respect to moist air of new state
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_snow_of_new_state`: Mass number concentration of snow of new state
     * `real(kind=kind_phys)`: units = kg-1
-* `snow_mixing_ratio_wrt_moist_air_of_new_state`: Snow mixing ratio wrt moist air of new state
+* `snow_mixing_ratio_wrt_moist_air_of_new_state`: Snow mass mixing ratio with respect to moist air of new state
     * `real(kind=kind_phys)`: units = kg kg-1
 * `tracer_concentration_of_new_state`: Tracer concentration of new state
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_hygroscopic_aerosols_of_new_state`: Mass number concentration of hygroscopic aerosols of new state
     * `real(kind=kind_phys)`: units = kg-1
-* `specific_humidity_of_new_state_at_surface_adjacent_layer`: Specific humidity of new state at surface adjacent layer
+* `water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state at surface-adjacent layer
     * `real(kind=kind_phys)`: units = kg kg-1
-* `specific_humidity_of_new_state`: Specific humidity of new state
+* `water_vapor_mixing_ratio_wrt_moist_air_of_new_state`: Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state
     * `real(kind=kind_phys)`: units = kg kg-1
 * `x_wind_of_new_state_at_surface_adjacent_layer`: X wind of new state at surface adjacent layer
     * `real(kind=kind_phys)`: units = m s-1

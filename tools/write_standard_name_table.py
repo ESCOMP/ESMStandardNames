@@ -129,7 +129,7 @@ def parse_command_line(args, description):
 def convert_xml_to_markdown(root, library_name, snl):
 ###############################################################################
     snl.write('# {}\n'.format(library_name))
-    # Write a table of contents
+    # Write a table of contents for top-level sections
     snl.write('#### Table of Contents\n')
     for section in root:
         sec_name = section.get('name')
@@ -138,15 +138,19 @@ def convert_xml_to_markdown(root, library_name, snl):
     # end for
     snl.write('\n')
     for section in root:
+        parse_section(snl, section)
+
+###############################################################################
+def parse_section(snl, sec, level='##'):
+###############################################################################
         # Step through the sections
-        sec_name = section.get('name')
-        sec_comment = section.get('comment')
-        snl.write('## {}\n'.format(sec_name))
+        sec_name = sec.get('name')
+        sec_comment = sec.get('comment')
+        snl.write(f'{level} {sec_name}\n')
         if sec_comment is not None:
             # First, squeeze out the spacing
             while sec_comment.find('  ') >= 0:
                 sec_comment = sec_comment.replace('  ', ' ')
-            # end while
             while sec_comment:
                 sec_comment = sec_comment.lstrip()
                 cind = sec_comment.find('\\n')
@@ -156,10 +160,10 @@ def convert_xml_to_markdown(root, library_name, snl):
                 else:
                     snl.write('{}\n'.format(sec_comment))
                     sec_comment = ''
-                # end if
-            # end while
-        # end if
-        for std_name in section:
+        for std_name in sec:
+            if std_name.tag == 'section':
+                parse_section(snl, std_name, level + '#')
+                continue
             stdn_name = std_name.get('name')
             stdn_longname = std_name.get('long_name')
             if stdn_longname is None:
@@ -183,10 +187,6 @@ def convert_xml_to_markdown(root, library_name, snl):
                 else:
                     emsg = "Unknown standard name property, '{}'"
                     raise ValueError(emsg.format(item.tag))
-                # end if
-            # end for
-        # end for
-    # end for
 
 ###############################################################################
 def main_func():

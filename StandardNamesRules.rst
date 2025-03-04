@@ -32,14 +32,14 @@ CCPP Standard Name Rules
    while the words in ``this font`` indicate other words or phrases to be substituted.
    The new standard name is constructed by joining the base standard name to the qualifiers using underscores.
 
-   [``transformation``] [``component``] base_name [*at* ``level``] [*in* ``medium``] [*due_to* ``process``] [*assuming* ``condition``]
+   [``transformation``] [``component``] [``non-instant time``] base_name [*in* ``medium``] [*at* ``level``] [*due_to* ``process``] [``non-current time``] [*assuming* ``condition``]
 
    This construction was originally based on rules set forth in the
    `CF guidelines <http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html>`_),
    but have since evolved for better consistency and generality across a broader set of fields
    than was originally envisioned by the CF conventions. "``medium``" should be specified when
    the variable in question is a substance or other quantity contained within some other medium
-   (e.g. for "mole_fraction_of_ozone_in_air", the base name is "ozone", while the medium is "air"). 
+   (e.g. for ``mole_fraction_of_ozone_in_air``, the base name is "ozone", while the medium is "air"). 
    "Transformation" refers to descriptors such as "``tendency_of``", "``log10``", or other operations or processes describing some transformation or adjustment of a variable; a detailed list of possible transformations can be found `later in this document <#transformations>`_.
    Other parts of the construction provide information about a variable's horizontal surface
    (e.g. ``at_cloud_base``), component (i.e. direction of variable, e.g. ``downward``), process (e.g.
@@ -52,6 +52,19 @@ CCPP Standard Name Rules
 
 .. image:: https://raw.githubusercontent.com/wiki/ESCOMP/CCPPStandardNames/images/standard_name_construction_examples.png
    :alt: image of table providing standard name construction examples
+
+   Note that "transformations" are a special case, where multiple transformations may be applied,
+   and multiple quantities may be compared, operated on, etc. For transformations involving
+   multiple quantities (e.g. ``ratio_of_X_to_Y``; see the `section on Transformations <#transformations>`_
+   for more information), the above formula may be extended around multiple base names.
+
+.. image:: https://raw.githubusercontent.com/wiki/ESCOMP/CCPPStandardNames/images/standard_name_transformation_examples.png
+   :alt: image of table providing standard name construction examples with multiple transformations
+
+   In the latter example, ``ln`` is operating on the quantity ``water_vapor_partial_pressure_assuming_saturation``,
+   while ``derivative_of`` is a combined transformation of ``water_vapor_partial_pressure_assuming_saturation``
+   and ``air_temperature``. When multiple transformations are present, a more detailed description
+   should be provided in the ``long_name`` field to prevent any possible ambiguity.
 
 #. Variables are current and instantaneous unless specified. Variables that are not
    current (e.g., previous timestep) or non-instantaneous (e.g., accumulated values)
@@ -87,14 +100,15 @@ CCPP Standard Name Rules
    with respect to what quantity they are defined, and options are *wrt_dry_air*,
    *wrt_moist_air*, or *wrt_moist_air_and_condensed_water*, where *moist_air*
    refers to dry air plus vapor and *moist_air_and_condensed_water* refers
-   to dry air plus vapor and hydrometeors. Use of *specific_humidity* should
-   be avoided as there is no consensus on whether it refers to
-   *mixing_ratio_of_water_vapor_wrt_moist_air* or
-   *mixing_ratio_of_water_vapor_wrt_moist_air_and_condensed_water*.
+   to dry air plus vapor and hydrometeors.
+
+   Use of the term *specific_humidity* should be avoided, as there is no consensus on
+   whether it refers to *water_vapor_mixing_ratio_wrt_moist_air* or
+   *water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water*.
    *total_water* can be used to designate water in every form, i.e. water
    vapor plus condensed water.
 
-#. Volume mixing ratios should be qualified as *volume_mixing_ratio*.
+   Volume mixing ratios should be qualified as *volume_mixing_ratio*.
 
 #. By default, *mole_fraction_of_X_in_Y* refers to the total amount of *Y*. So, for example,
    *mole_fraction_of_ozone_in_air* refers to the total amount of (moist) air. (In the case of air,
@@ -311,6 +325,7 @@ Suffixes
 | **on_radiation_timestep**
 | **on_previous_timestep**
 | ``N`` **_timesteps_back**
+| **since_** ``T``
 
 Computational
 -------------
@@ -372,6 +387,7 @@ Prefixes
 | change_over_time_in ``_X``
 | convergence_of ``_X`` or horizontal_convergence_of ``_X``
 | correlation_of ``_X`` _and ``_Y`` [_over ``_Z``]
+| cosine_of ``_X``
 | covariance_of ``_X`` _and ``_Y`` [_over ``_Z``]
 | component_derivative_of ``_X``
 | derivative_of ``_X`` _wrt ``_Y``
@@ -381,18 +397,19 @@ Prefixes
 | integral_of ``_Y`` _wrt ``_X``
 | ln ``_X``
 | log10 ``_X``
+| lwe_thickness_of ``_X``
 | magnitude_of ``_X``
 | probability_distribution_of ``_X`` [_over ``_Z``]
 | probability_density_function_of ``_X`` [_over ``_Z``]
 | product_of ``_X`` _and ``_Y``
 | ratio_of ``_X`` _to ``_Y``
+| reciprocal_of ``_X``
+| sine_of ``_X``
 | square_of ``_X``
+| standard_deviation_of ``_X``
 | tendency_of ``_X``
-| **standard_deviation_of** ``_X``
-| **reciprocal_of** ``_X``
-| **cosine_of** ``_X``
-| **sine_of** ``_X``
-| **variance_of** ``_X``
+| variance_of ``_X``
+| volume_mixing_ratio_of ``_X``
 
 Suffixes
 ^^^^^^^^
@@ -429,13 +446,13 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 |frozen_water            | ice                                                                                 |
 +------------------------+-------------------------------------------------------------------------------------+
-| longwave               | longwave radiation                                                                  |
+| longwave               | Longwave radiation. Defined as thermal emission of radiation from the planet.       |
 +------------------------+-------------------------------------------------------------------------------------+
 | moisture               | water in all phases contained in soil                                               |
 +------------------------+-------------------------------------------------------------------------------------+
 | ocean                  | used instead of in_sea_water for quantities which are large-scale rather than local |
 +------------------------+-------------------------------------------------------------------------------------+
-| shortwave              | shortwave radiation                                                                 |
+| shortwave              | Shortwave radiation. Defined as electromagnetic emissions from the sun              |
 +------------------------+-------------------------------------------------------------------------------------+
 | specific               | per unit mass unless otherwise stated                                               |
 +------------------------+-------------------------------------------------------------------------------------+
