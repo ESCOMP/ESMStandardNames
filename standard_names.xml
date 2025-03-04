@@ -1,4 +1,4 @@
-<standard_names name="CCPP Standard Name Library" version="1.0">
+<standard_names name="Earth System Model Standard Name Library" version="1.0">
   <section name="dimensions"
            comment="Dimension standard names may come in sets of six
                     related standard names for each dimension:\n
@@ -69,12 +69,8 @@
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="number_of_openmp_threads"
-                   long_name="Total number of thread blocks which the host model may use to call CCPP physics run groups during the CCPP run phase.">
+                   long_name="Total number of thread blocks OpenMP (shared-memory) parallel threads.">
       <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="ccpp_thread_number"
-                   long_name="Number of current thread block. This variable may only be used during CCPP run phase">
-      <type units="index">integer</type>
     </standard_name>
   </section>
   <section name="constants">
@@ -791,7 +787,8 @@
       <type kind="kind_phys" units="m-1">real</type>
     </standard_name>
   </section>
-  <section name="emissions: Community Emissions Data System (CEDS)">
+  <section name="emissions"
+           comment="Emissions variables, contributed for the Community Emissions Data System (CEDS)">
     <standard_name name="emissions_of_co_due_to_anthropogenic"
                    long_name="Carbon monoxide emissions from anthropogenic sources, total">
       <type kind="kind_phys" units="kg m-2 s-1">real</type>
@@ -901,39 +898,52 @@
       <type kind="kind_phys" units="kg m-2 s-1">real</type>
     </standard_name>
   </section>
-  <section name="required framework-provided variables"
-           comment="Required CCPP framework-provided variables">
-    <standard_name name="ccpp_error_message"
-                   long_name="Error message for error handling in CCPP">
-      <type kind="len=512" units="none">character</type>
-    </standard_name>
-    <standard_name name="ccpp_error_code"
-                   long_name="Error code for error handling in CCPP">
-      <type kind="" units="1">integer</type>
-    </standard_name>
-  </section>
-  <section name="optional framework-provided variables"
-           comment="Optional CCPP framework-provided variables">
-    <standard_name name="scheme_name"
-                   long_name="CCPP physics scheme name">
-      <type kind="len=64" units="none">character</type>
-    </standard_name>
-    <standard_name name="ccpp_constituent_properties"
-                   long_name="CCPP Constituent Properties">
-      <type kind="" units="none">ccpp_constituent_prop_ptr_t</type>
-    </standard_name>
-    <standard_name name="ccpp_constituents"
-                   long_name="Array of constituents managed by CCPP Framework">
-      <type kind="kind_phys" units="none">real</type>
-    </standard_name>
-    <standard_name name="ccpp_constituent_minimum_values"
-                   long_name="CCPP constituent minimum values">
-      <type kind="kind_phys" units="none">real</type>
-    </standard_name>
-    <standard_name name="number_of_ccpp_constituents"
-                   long_name="Number of constituents managed by CCPP Framework">
-      <type kind="" units="count">integer</type>
-    </standard_name>
+  <section name="Application-specific variables"
+           comment="Variable names only for use with a specific application">
+    <section name="required framework-provided variables"
+             comment="Required CCPP framework-provided variables">
+      <standard_name name="ccpp_error_message"
+                     long_name="Error message for error handling in CCPP">
+        <type kind="len=512" units="none">character</type>
+      </standard_name>
+      <standard_name name="ccpp_error_code"
+                     long_name="Error code for error handling in CCPP">
+        <type kind="" units="1">integer</type>
+      </standard_name>
+    </section>
+    <section name="optional framework-provided variables"
+             comment="Optional CCPP framework-provided variables">
+      <standard_name name="scheme_name"
+                     long_name="CCPP physics scheme name">
+        <type kind="len=64" units="none">character</type>
+      </standard_name>
+      <standard_name name="ccpp_constituent_properties"
+                     long_name="CCPP Constituent Properties">
+        <type kind="" units="none">ccpp_constituent_prop_ptr_t</type>
+      </standard_name>
+      <standard_name name="ccpp_constituents"
+                     long_name="Array of constituents managed by CCPP Framework">
+        <type kind="kind_phys" units="none">real</type>
+      </standard_name>
+      <standard_name name="ccpp_constituent_minimum_values"
+                     long_name="CCPP constituent minimum values">
+        <type kind="kind_phys" units="none">real</type>
+      </standard_name>
+      <standard_name name="number_of_ccpp_constituents"
+                     long_name="Number of constituents managed by CCPP Framework">
+        <type kind="" units="count">integer</type>
+      </standard_name>
+      <standard_name name="ccpp_block_count">
+         <type kind="" units="count">integer</type>
+      </standard_name>
+      <standard_name name="ccpp_block_sizes">
+         <type kind="" units="count">integer</type>
+      </standard_name>
+      <standard_name name="ccpp_thread_number"
+                     long_name="Number of current thread block. This variable may only be used during CCPP run phase">
+        <type units="index">integer</type>
+      </standard_name> 
+    </section>
   </section>
   <section name="system variables"
            comment="Variables related to the compute environment">
@@ -982,12 +992,6 @@
       </standard_name>
       <standard_name name="sigma_pressure_hybrid_coordinate_b_coefficient">
          <type kind="kind_phys" units="1">real</type>
-      </standard_name>
-      <standard_name name="ccpp_block_count">
-         <type kind="" units="count">integer</type>
-      </standard_name>
-      <standard_name name="ccpp_block_sizes">
-         <type kind="" units="count">integer</type>
       </standard_name>
       <standard_name name="cellular_automata_finer_grid">
          <type kind="" units="count">integer</type>
