@@ -1,4 +1,4 @@
-<standard_names name="Earth System Model Standard Name Library" version="1.0">
+<standard_names name="Earth System Modeling Standard Name Library" version="1.0">
   <section name="dimensions"
            comment="Dimension standard names may come in sets of six
                     related standard names for each dimension:\n

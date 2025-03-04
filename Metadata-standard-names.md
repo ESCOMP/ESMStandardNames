@@ -1,4 +1,4 @@
-# Earth System Model Standard Name Library
+# Earth System Modeling Standard Name Library
 #### Table of Contents
 * [dimensions](#dimensions)
 * [constants](#constants)
