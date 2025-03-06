@@ -5,7 +5,7 @@ Standard Names, publishing tools, and search tools.
 
 A Markdown file describing the standard names
 [is included](https://github.com/ESCOMP/ESMStandardNames/blob/main/Metadata-standard-names.md).
-Rules governing the designation and format of standard names can be found in StandardNamesRules.rst 
+Rules governing the designation and format of standard names can be found in [StandardNamesRules.rst](https://github.com/ESCOMP/ESMStandardNames/blob/main/StandardNamesRules.rst) 
 
 Edits to standard names should be made in the xml file, using the included python tools to generate
 the human-readable standard name Markdown file:
