@@ -163,63 +163,90 @@ full list of standard names for further details.
 * `atmosphere_heat_diffusivity`: atmosphere_heat_diffusivity
     * `real`: units = m2 s-1
 * `cloud_area_fraction`: cloud_area_fraction
+    * `real`: units = fraction
 * `cloud_condensate`: cloud_condensate
 * `cloud_ice`: cloud_ice
 * `cloud_liquid_water`: cloud_liquid_water
 * `date`: date
 * `density`: density
+    * `real`: units = kg m-3
 * `diffuse_nir_albedo`: diffuse near-infrared albedo
     * `real`: units = 1
 * `diffuse_nir_shortwave_flux`: diffuse near-infrared shortwave flux
+    * `real`: units = 1
 * `diffuse_shortwave_albedo`: diffuse_shortwave_albedo
     * `real`: units = 1
 * `diffuse_uv_and_vis_shortwave_flux`: diffuse ultraviolet and visible shortwave flux
+    * `real`: units = 1
 * `diffuse_vis_albedo`: diffuse visible albedo
     * `real`: units = 1
 * `direct_nir_albedo`: direct near-infrared albedo
     * `real`: units = 1
 * `direct_nir_shortwave_flux`: direct near-infrared shortwave flux
+    * `real`: units = J m-2
 * `direct_uv_and_vis_shortwave_flux`: direct ultraviolet and visible shortwave flux
+    * `real`: units = J m-2
 * `direct_vis_albedo`: direct visible albedo
     * `real`: units = 1
 * `divergence`: divergence
+    * `real`: units = s-1
 * `dry_air_density`: dry_air_density
+    * `real`: units = kg m-3
 * `dry_air_enthalpy`: dry_air_enthalpy
+    * `real`: units = J kg-1
 * `exner_function`: exner_function
+    * `real`: units = 1
 * `filename`: filename
+    * `character`: units = none
 * `forecast_time`: forecast_time
 * `geopotential`: geopotential
+    * `real`: units = m2 s-2
 * `geopotential_height`: geopotential_height
+    * `real`: units = m
 * `graupel`: graupel
 * `gravitational_acceleration`: gravitational_acceleration
+    * `real`: units = m s-2
 * `hail`: hail
 * `heat_flux`: heat_flux
+    * `real`: units = W m-2
 * `hygroscopic_aerosols`: hygroscopic_aerosols
 * `ice`: ice
 * `latent_heat_flux`: latent_heat_flux
+    * `real`: units = W m-2
 * `liquid_water`: liquid_water
 * `longwave_flux`: longwave_flux
+    * `real`: units = W m-2
 * `momentum_flux`: momentum_flux
 * `nonhygroscopic_ice_nucleating_aerosols`: nonhygroscopic_ice_nucleating_aerosols
 * `ozone`: ozone
 * `pressure`: pressure
+    * `real`: units = Pa
 * `rain`: rain
 * `rain_water`: rain_water
 * `random_number`: random_number
+    * `real`: units = 1
 * `random_number_seed`: random_number_seed
+    * `integer`: units = 1
 * `reference_pressure`: reference_pressure
+    * `real`: units = Pa
 * `relative_humidity`: relative_humidity
+    * `real`: units = fraction
 * `roughness_length`: roughness_length
+    * `real`: units = m
 * `sensible_heat_flux`: sensible_heat_flux
+    * `real`: units = W m-2
 * `shortwave_flux`: shortwave_flux
+    * `real`: units = W m-2
 * `snow`: snow
 * `snow_area_fraction`: snow_area_fraction
+    * `real`: units = fraction
 * `soil_moisture`: soil_moisture
 * `soil_temperature`: soil_temperature
     * `real`: units = K
 * `solar_declination_angle`: solar_declination_angle
 * `solar_zenith_angle`: solar_zenith_angle
 * `streamfunction`: streamfunction
+    * `real`: units = m2 s-1
 * `surface_skin_temperature`: surface_skin_temperature
     * `real`: units = K
 * `temperature`: temperature
@@ -233,7 +260,7 @@ full list of standard names for further details.
 * `tracer`: tracer
 * `tracers`: tracers
 * `turbulent_kinetic_energy`: turbulent_kinetic_energy
-* `velocity_potential`: velocity_potential
+    * `real`: units = m2 s-2
 * `virtual_potential_temperature`: virtual_potential_temperature
     * `real`: units = K
 * `virtual_temperature`: virtual_temperature
@@ -241,6 +268,7 @@ full list of standard names for further details.
 * `water_vapor`: water_vapor
 * `wind`: wind
 * `wind_speed`: wind_speed
+    * `real`: units = m s-1
 ## dimensions
 Dimension standard names may come in sets of six related standard names for each dimension:
 ```

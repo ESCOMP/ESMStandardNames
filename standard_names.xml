@@ -291,6 +291,7 @@
       </standard_name>
       <standard_name name="cloud_area_fraction"
                      long_name="cloud_area_fraction">
+        <type units="fraction">real</type>
       </standard_name>
       <standard_name name="cloud_condensate"
                      long_name="cloud_condensate">
@@ -306,6 +307,7 @@
       </standard_name>
       <standard_name name="density"
                      long_name="density">
+        <type units="kg m-3">real</type>
       </standard_name>
       <standard_name name="diffuse_nir_albedo"
                      long_name="diffuse near-infrared albedo">
@@ -313,6 +315,7 @@
       </standard_name>
       <standard_name name="diffuse_nir_shortwave_flux"
                      long_name="diffuse near-infrared shortwave flux">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="diffuse_shortwave_albedo"
                      long_name="diffuse_shortwave_albedo">
@@ -320,6 +323,7 @@
       </standard_name>
       <standard_name name="diffuse_uv_and_vis_shortwave_flux"
                      long_name="diffuse ultraviolet and visible shortwave flux">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="diffuse_vis_albedo"
                      long_name="diffuse visible albedo">
@@ -331,9 +335,11 @@
       </standard_name>
       <standard_name name="direct_nir_shortwave_flux"
                      long_name="direct near-infrared shortwave flux">
+        <type units="J m-2">real</type>
       </standard_name>
       <standard_name name="direct_uv_and_vis_shortwave_flux"
                      long_name="direct ultraviolet and visible shortwave flux">
+        <type units="J m-2">real</type>
       </standard_name>
       <standard_name name="direct_vis_albedo"
                      long_name="direct visible albedo">
@@ -341,39 +347,48 @@
       </standard_name>
       <standard_name name="divergence"
                      long_name="divergence">
+        <type units="s-1">real</type>
       </standard_name>
       <standard_name name="dry_air_density"
                      long_name="dry_air_density">
+        <type units="kg m-3">real</type>
       </standard_name>
       <standard_name name="dry_air_enthalpy"
                      long_name="dry_air_enthalpy">
+        <type units="J kg-1">real</type>
       </standard_name>
       <standard_name name="exner_function"
                      long_name="exner_function">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="filename"
                      long_name="filename">
+        <type units="none">character</type>
       </standard_name>
       <standard_name name="forecast_time"
                      long_name="forecast_time">
       </standard_name>
       <standard_name name="geopotential"
                      long_name="geopotential">
+        <type units="m2 s-2">real</type>
       </standard_name>
       <standard_name name="geopotential_height"
                      long_name="geopotential_height">
+        <type units="m">real</type>
       </standard_name>
       <standard_name name="graupel"
                      long_name="graupel">
       </standard_name>
       <standard_name name="gravitational_acceleration"
                      long_name="gravitational_acceleration">
+        <type units="m s-2">real</type>
       </standard_name>
       <standard_name name="hail"
                      long_name="hail">
       </standard_name>
       <standard_name name="heat_flux"
                      long_name="heat_flux">
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="hygroscopic_aerosols"
                      long_name="hygroscopic_aerosols">
@@ -383,12 +398,14 @@
       </standard_name>
       <standard_name name="latent_heat_flux"
                      long_name="latent_heat_flux">
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="liquid_water"
                      long_name="liquid_water">
       </standard_name>
       <standard_name name="longwave_flux"
                      long_name="longwave_flux">
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="momentum_flux"
                      long_name="momentum_flux">
@@ -401,6 +418,7 @@
       </standard_name>
       <standard_name name="pressure"
                      long_name="pressure">
+        <type units="Pa">real</type>
       </standard_name>
       <standard_name name="rain"
                      long_name="rain">
@@ -410,30 +428,38 @@
       </standard_name>
       <standard_name name="random_number"
                      long_name="random_number">
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="random_number_seed"
                      long_name="random_number_seed">
+        <type units="1">integer</type>
       </standard_name>
       <standard_name name="reference_pressure"
                      long_name="reference_pressure">
+        <type units="Pa">real</type>
       </standard_name>
       <standard_name name="relative_humidity"
                      long_name="relative_humidity">
+        <type units="fraction">real</type>
       </standard_name>
       <standard_name name="roughness_length"
                      long_name="roughness_length">
+        <type units="m">real</type>
       </standard_name>
       <standard_name name="sensible_heat_flux"
                      long_name="sensible_heat_flux">
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="shortwave_flux"
                      long_name="shortwave_flux">
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="snow"
                      long_name="snow">
       </standard_name>
       <standard_name name="snow_area_fraction"
                      long_name="snow_area_fraction">
+        <type units="fraction">real</type>
       </standard_name>
       <standard_name name="soil_moisture"
                      long_name="soil_moisture">
@@ -450,6 +476,7 @@
       </standard_name>
       <standard_name name="streamfunction"
                      long_name="streamfunction">
+        <type units="m2 s-1">real</type>
       </standard_name>
       <standard_name name="surface_skin_temperature"
                      long_name="surface_skin_temperature">
@@ -481,9 +508,7 @@
       </standard_name>
       <standard_name name="turbulent_kinetic_energy"
                      long_name="turbulent_kinetic_energy">
-      </standard_name>
-      <standard_name name="velocity_potential"
-                     long_name="velocity_potential">
+        <type units="m2 s-2">real</type>
       </standard_name>
       <standard_name name="virtual_potential_temperature"
                      long_name="virtual_potential_temperature">
@@ -501,6 +526,7 @@
       </standard_name>
       <standard_name name="wind_speed"
                      long_name="wind_speed">
+        <type units="m s-1">real</type>
       </standard_name>
     </section>
   </section>
