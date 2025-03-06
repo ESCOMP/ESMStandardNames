@@ -159,6 +159,9 @@ def parse_section(snl, sec, level='##'):
                 else:
                     snl.write('{}\n'.format(sec_comment))
                     sec_comment = ''
+                # end if
+            # end while
+        # end if
         for std_name in sec:
             if std_name.tag == 'section':
                 parse_section(snl, std_name, level + '#')
@@ -186,7 +189,10 @@ def parse_section(snl, sec, level='##'):
                 else:
                     emsg = "Unknown standard name property, '{}'"
                     raise ValueError(emsg.format(item.tag))
-
+                # end if
+            # end for
+        # end for
+    # end for
 ###############################################################################
 def main_func():
 ###############################################################################
