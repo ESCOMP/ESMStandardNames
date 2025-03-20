@@ -12,7 +12,7 @@ import sys
 import re
 
 ################################################
-#Add CCPP framework (lib) modules to python path
+# Add lib modules to python path
 ################################################
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -63,21 +63,20 @@ def convert_text_to_link(text_str):
 def standard_name_to_long_name(prop_dict, context=None):
 ########################################################################
     """Translate a standard_name to its default long_name
-    Note: This code is copied from the CCPP Framework.
     >>> standard_name_to_long_name({'standard_name':'cloud_optical_depth_layers_from_0p55mu_to_0p99mu'})
     'Cloud optical depth layers from 0.55mu to 0.99mu'
     >>> standard_name_to_long_name({'local_name':'foo'}) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert foo to long name
+    KeyError: No standard name to convert foo to long name
     >>> standard_name_to_long_name({}) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert to long name
+    KeyError: No standard name to convert to long name
     >>> standard_name_to_long_name({'local_name':'foo'}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert foo to long name at foo.F90:3
+    KeyError: No standard name to convert foo to long name at foo.F90:3
     >>> standard_name_to_long_name({}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert to long name at foo.F90:3
+    KeyError: No standard name to convert to long name at foo.F90:3
     """
     # We assume that standar_name has been checked for validity
     # Make the first char uppercase and replace each underscore with a space
@@ -104,7 +103,7 @@ def standard_name_to_long_name(prop_dict, context=None):
         # end if
         ctxt = context_string(context)
         emsg = 'No standard name to convert{} to long name{}'
-        raise CCPPError(emsg.format(lname, ctxt))
+        raise KeyError(emsg.format(lname, ctxt))
     # end if
     return long_name
 
@@ -129,7 +128,7 @@ def parse_command_line(args, description):
 def convert_xml_to_markdown(root, library_name, snl):
 ###############################################################################
     snl.write('# {}\n'.format(library_name))
-    # Write a table of contents
+    # Write a table of contents for top-level sections
     snl.write('#### Table of Contents\n')
     for section in root:
         sec_name = section.get('name')
@@ -138,15 +137,19 @@ def convert_xml_to_markdown(root, library_name, snl):
     # end for
     snl.write('\n')
     for section in root:
+        parse_section(snl, section)
+
+###############################################################################
+def parse_section(snl, sec, level='##'):
+###############################################################################
         # Step through the sections
-        sec_name = section.get('name')
-        sec_comment = section.get('comment')
-        snl.write('## {}\n'.format(sec_name))
+        sec_name = sec.get('name')
+        sec_comment = sec.get('comment')
+        snl.write(f'{level} {sec_name}\n')
         if sec_comment is not None:
             # First, squeeze out the spacing
             while sec_comment.find('  ') >= 0:
                 sec_comment = sec_comment.replace('  ', ' ')
-            # end while
             while sec_comment:
                 sec_comment = sec_comment.lstrip()
                 cind = sec_comment.find('\\n')
@@ -159,7 +162,10 @@ def convert_xml_to_markdown(root, library_name, snl):
                 # end if
             # end while
         # end if
-        for std_name in section:
+        for std_name in sec:
+            if std_name.tag == 'section':
+                parse_section(snl, std_name, level + '#')
+                continue
             stdn_name = std_name.get('name')
             stdn_longname = std_name.get('long_name')
             if stdn_longname is None:

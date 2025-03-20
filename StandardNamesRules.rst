@@ -4,13 +4,13 @@
    <br />
 
 *******************
-CCPP Standard Names
+Earth System Modeling Standard Names
 *******************
 
 This document contains information about the rules used to create Standard Names
-for use with the Common Community Physics Package (CCPP). It describes the
+for use with Earth System Models. It describes the
 
-* CCPP Standard Name rules
+* ESM Standard Name rules
 * Standard Name qualifiers
 * Other common standard name components
 * Acronyms, abbreviations, and aliases
@@ -18,7 +18,7 @@ for use with the Common Community Physics Package (CCPP). It describes the
 
 .. _Rules
 
-CCPP Standard Name Rules
+ESM Standard Name Rules
 ========================
 
 #. Standard names should be identical to those from the latest version
