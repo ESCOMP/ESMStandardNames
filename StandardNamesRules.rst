@@ -159,6 +159,35 @@ ESM Standard Name Rules
 
 #. Standard names are case insensitive, i.e. example = EXAMPLE.
 
+.. _tech_specs:
+
+Technical specifications
+========================
+
+#. The standard name dictionary consists of a number of individual XML elements:
+   one "standard_name" element for each entry. A standard name entry consist of a "name" attribute
+   that represents the variable name, and (optionally) a "long_name" attribute that gives
+   a detailed description of what that name represents. The standard_name XML entry also contains a nested
+   "type" entry, indicating the data type that a standard_name should represent, and as attributes the
+   physical units of that variable quantity (see the `section on Units <#units>`_) and the FORTRAN "kind"
+   of the variable quantity. For example, the element
+   for the variable name ``exner_function`` may look similar to this:
+
+    <standard_name name="exner_function"
+                   long_name="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
+      <type kind="kind_phys" units="1">real</type>
+    </standard_name>
+
+   This XML element indicates that the variable ``exner_function`` represents the quantity described by the ``long_name``
+   attribute. It is a real variable of "kind_phys" kind, and units of "1", meaning it is a non-dimensional and
+   does not correspond to a more descriptive non-dimensional type such as "fraction"; see the `section on Units <#units>`_
+   for mode details
+
+   These standard_name elements can optionally be separated by "section" elements. These are parsed out into human-readable sections
+
+#. Only alphanumeric, punctuation, and whitespace characters from the ASCII character set may be used in the standard_names dictionary.
+   The "name" attributes of ``standard_name`` entries (i.e. the standard names themselves) are further restricted to the character set of capital/lowercase letters, numerals, and ``_`` (underscore).
+
 .. _qualifiers:
 
 Qualifiers
