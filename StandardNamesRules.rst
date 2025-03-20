@@ -193,10 +193,6 @@ Technical specifications
 Qualifiers
 ========================
 
-black = existing CF qualifier
-
-**bold** = **proposed new qualifier**
-
 ``this font`` = words or phrases to be substituted
 
 XY-surface
@@ -226,18 +222,18 @@ Suffixes
 | at_top_of_atmosphere_boundary_layer
 | at_top_of_atmosphere_model
 | at_top_of_dry_convection
-| **at_interfaces**
-| **at_toa**
-| **at_tropopause**
-| **at_surface**
-| **at_surface_adjacent_layer**
-| **at_2m**
-| **at_10m**
-| **at_bottom_interface**
-| **at_pressure_levels**
-| **at_top_of_viscous_sublayer**
-| **at_various_atmosphere_layers**
-| **extended_up_by_1**
+| at_interfaces
+| at_toa
+| at_tropopause
+| at_surface
+| at_surface_adjacent_layer
+| at_2m
+| at_10m
+| at_bottom_interface
+| at_pressure_levels
+| at_top_of_viscous_sublayer
+| at_various_atmosphere_layers
+| extended_up_by_1
 
 
 Component
@@ -285,13 +281,13 @@ Suffixes
 | in_troposphere
 | in_atmosphere
 | in_surface_snow
-| **in_diurnal_thermocline**
-| **in_canopy**
-| **in_lake**
-| **in_aquifer**
-| **in_aquifer_and_saturated_soil**
-| **in_convective_tower**
-| **between_soil_bottom_and_water_table**
+| in_diurnal_thermocline
+| in_canopy
+| in_lake
+| in_aquifer
+| in_aquifer_and_saturated_soil
+| in_convective_tower
+| between_soil_bottom_and_water_table
 
 Process
 -------
@@ -305,9 +301,9 @@ Suffixes
 | due_to_diabatic_processes
 | due_to_diffusion
 | due_to_dry_convection
-| due_to_GWD (long name: due to gravity wave drag)
-| **due_to_convective_GWD** (long name: due to convective gravity wave drag)
-| **due_to_orographic_GWD** (long name: due to orographic gravity wave drag)
+| due_to_gwd
+| due_to_convective_
+| due_to_orographic_gwd
 | due_to_gyre
 | due_to_isostatic_adjustment
 | due_to_large_scale_precipitation
@@ -315,15 +311,15 @@ Suffixes
 | due_to_moist_convection
 | due_to_overturning
 | due_to_shallow_convection
-| **due_to_PBL_processes** (long name: due to planetary boundary layer processes)
+| due_to_pbl_processes
 | due_to_shortwave_heating
 | due_to_thermodynamics
 | due_to_background
-| **due_to_subgrid_scale_vertical_mixing**
-| **due_to_convective_microphysics**
-| **due_to_model_physics**
-| **due_to_shoc**
-| **due_to_dynamics**
+| due_to_subgrid_scale_vertical_mixing
+| due_to_convective_microphysics
+| due_to_model_physics
+| due_to_shoc
+| due_to_dynamics
 
 Condition
 ---------
@@ -334,15 +330,15 @@ Suffixes
 | assuming_clear_sky
 | assuming_deep_snow
 | assuming_no_snow
-| **over_land**
-| **over_ocean**
-| **over_ice**
-| **for_momentum**
-| **for_heat**
-| **for_moisture**
-| **for_heat_and_moisture**
-| **assuming_shallow**
-| **assuming_deep**
+| over_land
+| over_ocean
+| over_ice
+| for_momentum
+| for_heat
+| for_moisture
+| for_heat_and_moisture
+| assuming_shallow
+| assuming_deep
 
 Time
 ----
@@ -350,14 +346,14 @@ Time
 Suffixes
 ^^^^^^^^
 
-| **of_new_state**
-| **on_physics_timestep**
-| **on_dynamics_timestep**
+| of_new_state
+| on_physics_timestep
+| on_dynamics_timestep
 
-| **on_radiation_timestep**
-| **on_previous_timestep**
-| ``N`` **_timesteps_back**
-| **since_** ``T``
+| on_radiation_timestep
+| on_previous_timestep
+| ``N`` _timesteps_back
+| since_ ``T``
 
 Computational
 -------------
@@ -365,51 +361,51 @@ Computational
 Prefixes
 ^^^^^^^^
 
-| **lower_bound_of**
-| **upper_bound_of**
-| **unfiltered**
-| **nonnegative**
-| **flag_for**
-| **control_for**
-| **number_of**
-| **index_of**
-| **vertical_index_at**
-| **vertical_dimension_of**
-| **cumulative**
-| **iounit_of**
-| **filename_of**
-| **frequency_of**
-| **period_of**
-| **XYZ_dimensioned**
-| **tendency_of** ``X``
-| **generic_tendency**
-| **one_way_coupling_of** ``_X`` **_to** ``_Y``
-| **tunable_parameter[s]_for** ``_X``
-| **map_of**
+| lower_bound_of
+| upper_bound_of
+| unfiltered
+| nonnegative
+| flag_for
+| control_for
+| number_of
+| index_of
+| vertical_index_at
+| vertical_dimension_of
+| cumulative
+| iounit_of
+| filename_of
+| frequency_of
+| period_of
+| XYZ_dimensioned
+| tendency_of ``X``
+| generic_tendency
+| one_way_coupling_of ``_X`` _to ``_Y``
+| tunable_parameter[s]_for ``_X``
+| map_of
 
 
 Infixes
 ^^^^^^^
 
-| **directory_for** ``_X`` **_source_code**
-| **flag_for_reading** ``_X`` **_from_input**
+| directory_for ``_X`` _source_code
+| flag_for_reading ``_X`` _from_input
 
 Suffixes
 ^^^^^^^^
 
-| **for_coupling**
-| **for_chemistry_coupling**
-| **from_coupled_process**
-| **from_wave_model**
-| **collection_array**
-| **multiplied_by_timestep**
-| **for_current_mpi_rank**
-| **for_current_cubed_sphere_tile**
-| **plus_one**
-| **minus_one**
-| **for_radiation**
-| **for_deep_convection**
-| **for_microphysics**
+| for_coupling
+| for_chemistry_coupling
+| from_coupled_process
+| from_wave_model
+| collection_array
+| multiplied_by_timestep
+| for_current_mpi_rank
+| for_current_cubed_sphere_tile
+| plus_one
+| minus_one
+| for_radiation
+| for_deep_convection
+| for_microphysics
 
 Transformations
 ---------------
@@ -492,13 +488,13 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 | water                  | water in all phases if not otherwise qualified                                      |
 +------------------------+-------------------------------------------------------------------------------------+
-| **dimensionless**      | **lacking units**                                                                   |
+| dimensionless          | lacking units                                                                       |
 +------------------------+-------------------------------------------------------------------------------------+
-| **kinematic**          | **refers to surface fluxes in "native" units (K m s-1 and kg kg-1 m s-1)**          |
+| kinematic              | refers to surface fluxes in "native" units (K m s-1 and kg kg-1 m s-1)              |
 +------------------------+-------------------------------------------------------------------------------------+
-| **direct**             | **used in radiation (as opposed to diffuse)**                                       |
+| direct                 | used in radiation (as opposed to diffuse)                                           |
 +------------------------+-------------------------------------------------------------------------------------+
-| **diffuse**            | **used in radiation (as opposed to direct)**                                        |
+| diffuse                | used in radiation (as opposed to direct)                                            |
 +------------------------+-------------------------------------------------------------------------------------+
 
 Chemical Species
@@ -632,6 +628,8 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | **Short**           |  **Meaning**                                            |
 +=====================+=========================================================+
+| gwd                 | gravity wave drag                                       |
++---------------------+---------------------------------------------------------+
 | ir                  | infrared                                                |
 +---------------------+---------------------------------------------------------+
 | lwe                 | liquid water equivalent                                 |
@@ -640,7 +638,13 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | min                 | minimum                                                 |
 +---------------------+---------------------------------------------------------+
+| myj                 | Mellor-Yamada-Janjic scheme                             |
++---------------------+---------------------------------------------------------+
+| mynn                | Mellor-Yamada-Nakanishi-Niino scheme                    |
++---------------------+---------------------------------------------------------+
 | nir                 | near-infrared part of the EM spectrum (radiation)       |
++---------------------+---------------------------------------------------------+
+| pbl                 | planetary boundary layer                                |
 +---------------------+---------------------------------------------------------+
 | stp                 | standard temperature (0 degC) and pressure (101325 Pa)  |
 +---------------------+---------------------------------------------------------+
