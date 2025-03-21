@@ -816,11 +816,11 @@ Variables related to the compute environment
     * `integer(kind=)`: units = count
 * `cellular_automata_seed_probability`: Cellular automata seed probability
     * `real(kind=kind_phys)`: units = fraction
-* `identifier_for_2018_scale_aware_tke_moist_edmf_pbl`: Identifier for 2018 scale aware tke moist edmf pbl
+* `identifier_for_2018_scale_aware_tke_moist_edmf_pbl`: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `integer(kind=)`: units = 1
-* `control_for_scale_aware_tke_moist_edmf_pbl_scheme`: Control for scale aware tke moist edmf pbl scheme
+* `control_for_scale_aware_tke_moist_edmf_pbl_scheme`: Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `integer(kind=)`: units = 1
-* `identifier_for_2019_scale_aware_tke_moist_edmf_pbl`: Identifier for 2019 scale aware tke moist edmf pbl
+* `identifier_for_2019_scale_aware_tke_moist_edmf_pbl`: Identifier for 2019 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `integer(kind=)`: units = 1
 * `cloud_condensate_autoconversion_threshold_coefficient`: Cloud condensate autoconversion threshold coefficient
     * `real(kind=kind_phys)`: units = 1
@@ -904,7 +904,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_unified_gravity_wave_physics_gwd_scheme`: Do Unifed Gravity Wave Physics gravity wave drag scheme
     * `logical(kind=)`: units = flag
-* `downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Downdraft area fraction in scale aware tke moist edmf pbl scheme
+* `downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Downdraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `real(kind=kind_phys)`: units = fraction
 * `downdraft_fraction_reaching_surface_over_land_for_deep_convection`: Downdraft fraction reaching surface over land for deep convection
     * `real(kind=kind_phys)`: units = fraction
@@ -1038,7 +1038,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_gsl_drag_suite_turbulent_orographic_form_drag`: Do gsl drag suite turbulent orographic form drag
     * `logical(kind=)`: units = flag
-* `do_hybrid_edmf_pbl_scheme`: Do hybrid edmf pbl scheme
+* `do_hybrid_edmf_pbl_scheme`: Do hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `logical(kind=)`: units = flag
 * `identifier_for_hogan_decorrelation_length_method`: Identifier for hogan decorrelation length method
     * `integer(kind=)`: units = 1
@@ -1116,7 +1116,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_nrl_2006_ozone_scheme`: Do nrl 2006 ozone scheme
     * `logical(kind=)`: units = flag
-* `control_for_pdf_shape_for_microphysics`: Control for pdf shape for microphysics
+* `control_for_pdf_shape_for_microphysics`: Control for probability density function shape for microphysics
     * `integer(kind=)`: units = 1
 * `do_surface_layer_scheme_surface_drag_coefficient_for_momentum_in_air_perturbations`: Do surface layer scheme surface drag coefficient for momentum in air perturbations
     * `logical(kind=)`: units = flag
@@ -1164,15 +1164,15 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_scale_aware_shin_hong_pbl_scheme`: Do scale aware shin hong pbl scheme
     * `logical(kind=)`: units = flag
-* `do_scale_aware_tke_moist_edmf_pbl`: Do scale aware tke moist edmf pbl
+* `do_scale_aware_tke_moist_edmf_pbl`: Do scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `logical(kind=)`: units = flag
 * `do_sgs_cellular_automata`: Do sgs cellular automata
     * `logical(kind=)`: units = flag
 * `do_simplified_arakawa_schubert_shallow_convection`: Do simplified arakawa schubert shallow convection
     * `logical(kind=)`: units = flag
-* `do_shoc`: Do Simplified Higher-order Closure scheme
+* `do_shoc`: Do Simplified Higher-order Closure stochastic physics scheme
     * `logical(kind=)`: units = flag
-* `do_shoc_after_convection`: Do Simplified Higher-order Closure scheme after convection parameterization
+* `do_shoc_after_convection`: Do Simplified Higher-order Closure stochastic physics scheme after convection parameterization
     * `logical(kind=)`: units = flag
 * `control_for_land_surface_scheme_soil_and_snow_temperature_time_integration`: Control for land surface scheme soil and snow temperature time integration
     * `integer(kind=)`: units = 1
@@ -1220,7 +1220,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_ugwp_version_1_orographic_gwd`: Do ugwp version 1 orographic gwd
     * `logical(kind=)`: units = flag
-* `do_shoc_cloud_area_fraction_for_radiation`: Do Simplified Higher-order Closure scheme cloud area fraction for radiation
+* `do_shoc_cloud_area_fraction_for_radiation`: Do Simplified Higher-order Closure stochastic physics scheme cloud area fraction for radiation
     * `logical(kind=)`: units = flag
 * `control_for_surface_layer_scheme_skin_temperature_update`: Control for surface layer scheme skin temperature update
     * `integer(kind=)`: units = 1
@@ -1236,13 +1236,13 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `identifier_for_wsm6_microphysics_scheme`: Identifier for wsm6 microphysics scheme
     * `integer(kind=)`: units = 1
-* `do_ysu_pbl_scheme`: Do ysu pbl scheme
+* `do_ysu_pbl_scheme`: Do Yonsei University (YSU) planetary boundary layer scheme
     * `logical(kind=)`: units = flag
 * `identifier_for_zhao_carr_microphysics_scheme`: Identifier for zhao carr microphysics scheme
     * `integer(kind=)`: units = 1
-* `identifier_for_zhao_carr_pdf_microphysics_scheme`: Identifier for zhao carr pdf microphysics scheme
+* `identifier_for_zhao_carr_pdf_microphysics_scheme`: Identifier for Zhao-Carr probability density function microphysics scheme
     * `integer(kind=)`: units = 1
-* `do_hurricane_specific_code_in_hybrid_edmf_pbl_scheme`: Do hurricane specific code in hybrid edmf pbl scheme
+* `do_hurricane_specific_code_in_hybrid_edmf_pbl_scheme`: Do hurricane-specific code in hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `logical(kind=)`: units = flag
 * `do_integrated_dynamics_through_earths_atmosphere`: Do integrated dynamics through earths atmosphere
     * `logical(kind=)`: units = flag
@@ -1490,7 +1490,7 @@ Variables related to the compute environment
     * `character(kind=len=256)`: units = none
 * `number_of_xy_dimensioned_auxiliary_arrays`: Number of xy dimensioned auxiliary arrays
     * `integer(kind=)`: units = count
-* `number_of_pdf_based_variables_in_xyz_dimensioned_restart_array`: Number of pdf based variables in xyz dimensioned restart array
+* `number_of_pdf_based_variables_in_xyz_dimensioned_restart_array`: Number of probability density function-based variables in XYZ-dimensioned restart array
     * `integer(kind=)`: units = count
 * `number_of_xyz_dimensioned_auxiliary_arrays`: Number of xyz dimensioned auxiliary arrays
     * `integer(kind=)`: units = count
@@ -1652,7 +1652,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = 1
 * `do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme`: Do turbulent orographic form drag in Unified Gravity Wave Physics gravity wave drag scheme
     * `logical(kind=)`: units = flag
-* `updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Updraft area fraction in scale aware tke moist edmf pbl scheme
+* `updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Updraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `real(kind=kind_phys)`: units = fraction
 * `tunable_parameter_1_for_max_cloud_base_updraft_velocity_in_chikira_sugiyama_deep_convection`: Tunable parameter 1 for max cloud base updraft velocity in chikira sugiyama deep convection
     * `real(kind=kind_phys)`: units = m s-1
@@ -1732,7 +1732,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K
 * `atmosphere_boundary_layer_thickness`: Atmosphere boundary layer thickness
     * `real(kind=kind_phys)`: units = m
-* `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-order Closure scheme
+* `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-order Closure stochastic physics scheme
     * `real(kind=kind_phys)`: units = m2 s-1
 * `atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type`: Atmosphere updraft convective mass flux at cloud base by cloud type
     * `real(kind=kind_phys)`: units = kg m-2 s-1
@@ -1802,7 +1802,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg kg-1
 * `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `subgrid_scale_cloud_fraction_from_shoc`: Subgrid-scale cloud fraction from Simplified Higher-order Closure scheme
+* `subgrid_scale_cloud_fraction_from_shoc`: Subgrid-scale cloud fraction from Simplified Higher-order Closure stochastic physics scheme
     * `real(kind=kind_phys)`: units = fraction
 * `air_pressure_at_surface_on_previous_timestep`: Air pressure at surface on previous timestep
     * `real(kind=kind_phys)`: units = Pa

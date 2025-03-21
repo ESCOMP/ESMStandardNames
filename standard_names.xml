@@ -1535,13 +1535,16 @@
       <standard_name name="cellular_automata_seed_probability">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
-      <standard_name name="identifier_for_2018_scale_aware_tke_moist_edmf_pbl">
+      <standard_name name="identifier_for_2018_scale_aware_tke_moist_edmf_pbl"
+                   long_name="Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="control_for_scale_aware_tke_moist_edmf_pbl_scheme">
+      <standard_name name="control_for_scale_aware_tke_moist_edmf_pbl_scheme"
+                   long_name="Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="identifier_for_2019_scale_aware_tke_moist_edmf_pbl">
+      <standard_name name="identifier_for_2019_scale_aware_tke_moist_edmf_pbl"
+                   long_name="Identifier for 2019 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
       <standard_name name="cloud_condensate_autoconversion_threshold_coefficient">
@@ -1676,7 +1679,8 @@
                    long_name="Do Unifed Gravity Wave Physics gravity wave drag scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme">
+      <standard_name name="downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme"
+                   long_name="Downdraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
       <standard_name name="downdraft_fraction_reaching_surface_over_land_for_deep_convection">
@@ -1885,7 +1889,8 @@
       <standard_name name="do_gsl_drag_suite_turbulent_orographic_form_drag">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_hybrid_edmf_pbl_scheme">
+      <standard_name name="do_hybrid_edmf_pbl_scheme"
+                   long_name="Do hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_hogan_decorrelation_length_method">
@@ -2005,7 +2010,8 @@
       <standard_name name="do_nrl_2006_ozone_scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="control_for_pdf_shape_for_microphysics">
+      <standard_name name="control_for_pdf_shape_for_microphysics"
+                   long_name="Control for probability density function shape for microphysics">
          <type kind="" units="1">integer</type>
       </standard_name>
       <standard_name name="do_surface_layer_scheme_surface_drag_coefficient_for_momentum_in_air_perturbations">
@@ -2078,7 +2084,8 @@
       <standard_name name="do_scale_aware_shin_hong_pbl_scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_scale_aware_tke_moist_edmf_pbl">
+      <standard_name name="do_scale_aware_tke_moist_edmf_pbl"
+                   long_name="Do scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_sgs_cellular_automata">
@@ -2088,11 +2095,11 @@
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_shoc"
-                   long_name="Do Simplified Higher-order Closure scheme">
+                   long_name="Do Simplified Higher-order Closure stochastic physics scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_shoc_after_convection"
-                   long_name="Do Simplified Higher-order Closure scheme after convection parameterization">
+                   long_name="Do Simplified Higher-order Closure stochastic physics scheme after convection parameterization">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_land_surface_scheme_soil_and_snow_temperature_time_integration">
@@ -2167,7 +2174,7 @@
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_shoc_cloud_area_fraction_for_radiation"
-                   long_name="Do Simplified Higher-order Closure scheme cloud area fraction for radiation">
+                   long_name="Do Simplified Higher-order Closure stochastic physics scheme cloud area fraction for radiation">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_surface_layer_scheme_skin_temperature_update">
@@ -2191,16 +2198,19 @@
       <standard_name name="identifier_for_wsm6_microphysics_scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="do_ysu_pbl_scheme">
+      <standard_name name="do_ysu_pbl_scheme"
+                   long_name="Do Yonsei University (YSU) planetary boundary layer scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_zhao_carr_microphysics_scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="identifier_for_zhao_carr_pdf_microphysics_scheme">
+      <standard_name name="identifier_for_zhao_carr_pdf_microphysics_scheme"
+                   long_name="Identifier for Zhao-Carr probability density function microphysics scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="do_hurricane_specific_code_in_hybrid_edmf_pbl_scheme">
+      <standard_name name="do_hurricane_specific_code_in_hybrid_edmf_pbl_scheme"
+                   long_name="Do hurricane-specific code in hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_integrated_dynamics_through_earths_atmosphere">
@@ -2598,7 +2608,8 @@
       <standard_name name="number_of_xy_dimensioned_auxiliary_arrays">
          <type kind="" units="count">integer</type>
       </standard_name>
-      <standard_name name="number_of_pdf_based_variables_in_xyz_dimensioned_restart_array">
+      <standard_name name="number_of_pdf_based_variables_in_xyz_dimensioned_restart_array"
+                   long_name="Number of probability density function-based variables in XYZ-dimensioned restart array">
          <type kind="" units="count">integer</type>
       </standard_name>
       <standard_name name="number_of_xyz_dimensioned_auxiliary_arrays">
@@ -2844,7 +2855,8 @@
                    long_name="Do turbulent orographic form drag in Unified Gravity Wave Physics gravity wave drag scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme">
+      <standard_name name="updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme"
+                   long_name="Updraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
       <standard_name name="tunable_parameter_1_for_max_cloud_base_updraft_velocity_in_chikira_sugiyama_deep_convection">
@@ -2978,7 +2990,7 @@
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
       <standard_name name="atmosphere_heat_diffusivity_from_shoc"
-                   long_name="Atmospheric heat diffusivity from Simplified Higher-order Closure scheme">
+                   long_name="Atmospheric heat diffusivity from Simplified Higher-order Closure stochastic physics scheme">
          <type kind="kind_phys" units="m2 s-1">real</type>
       </standard_name>
       <standard_name name="atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type">
@@ -3095,7 +3107,7 @@
          <type kind="kind_phys" units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="subgrid_scale_cloud_fraction_from_shoc"
-                   long_name="Subgrid-scale cloud fraction from Simplified Higher-order Closure scheme">
+                   long_name="Subgrid-scale cloud fraction from Simplified Higher-order Closure stochastic physics scheme">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
       <standard_name name="air_pressure_at_surface_on_previous_timestep">
