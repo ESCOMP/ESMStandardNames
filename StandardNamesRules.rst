@@ -646,6 +646,14 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | pbl                 | planetary boundary layer                                |
 +---------------------+---------------------------------------------------------+
+| skeb                | Stochastic Kinetic Energy Backscatter                   |
++---------------------+---------------------------------------------------------+
+| shoc                | simplified higher-order closure boundary layer scheme   |
++---------------------+---------------------------------------------------------+
+| shum                | Stochastic HUMidity stochastic physics option           |
++---------------------+---------------------------------------------------------+
+| sppt                | stochastically perturbed physics tendencies             |
++---------------------+---------------------------------------------------------+
 | stp                 | standard temperature (0 degC) and pressure (101325 Pa)  |
 +---------------------+---------------------------------------------------------+
 | tke                 | turbulent kinetic energy                                |

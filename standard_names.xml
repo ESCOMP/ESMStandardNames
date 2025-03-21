@@ -971,8 +971,7 @@
                    long_name="composition dependent ratio of dry air gas constant to specific heat of dry air at constant pressure">
       <type kind="kind_phys" units="1">real</type>
     </standard_name>
-    <standard_name
-        name="ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one"
+    <standard_name name="ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one"
         long_name="(Rwv / Rdair) - 1.0">
       <type kind="kind_phys" units="1">real</type>
     </standard_name>
@@ -1948,7 +1947,8 @@
       <standard_name name="identifier_for_morrison_gettelman_microphysics_scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="do_mountain_blocking_for_sppt">
+      <standard_name name="do_mountain_blocking_for_sppt"
+                   long_name="Do mountain blocking for stochastically perturbed physics tendencies">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_noah_land_surface_scheme">
@@ -2087,10 +2087,12 @@
       <standard_name name="do_simplified_arakawa_schubert_shallow_convection">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_shoc">
+      <standard_name name="do_shoc"
+                   long_name="Do Simplified Higher-order Closure scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_shoc_after_convection">
+      <standard_name name="do_shoc_after_convection"
+                   long_name="Do Simplified Higher-order Closure scheme after convection parameterization">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_land_surface_scheme_soil_and_snow_temperature_time_integration">
@@ -2114,10 +2116,12 @@
       <standard_name name="do_stochastic_radiative_heating_perturbations">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_stochastic_shum_option">
+      <standard_name name="do_stochastic_shum_option"
+                   long_name="Do Stochastic HUMidity stochastic physics option">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_stochastic_skeb_option">
+      <standard_name name="do_stochastic_skeb_option"
+                   long_name="Do Stochastic Kinetic Energy Backscatter option">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_stratospheric_water_vapor_physics">
@@ -2162,7 +2166,8 @@
       <standard_name name="do_ugwp_version_1_orographic_gwd">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_shoc_cloud_area_fraction_for_radiation">
+      <standard_name name="do_shoc_cloud_area_fraction_for_radiation"
+                   long_name="Do Simplified Higher-order Closure scheme cloud area fraction for radiation">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_surface_layer_scheme_skin_temperature_update">
@@ -2831,7 +2836,8 @@
       <standard_name name="multiplicative_tuning_parameter_for_tke_dissipative_heating">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="total_amplitude_of_sppt_perturbation">
+      <standard_name name="total_amplitude_of_sppt_perturbation"
+                   long_name="Total amplitude of stochastically perturbed physics tendencies perturbation">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
       <standard_name name="do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme"
@@ -2971,7 +2977,8 @@
       <standard_name name="atmosphere_boundary_layer_thickness">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="atmosphere_heat_diffusivity_from_shoc">
+      <standard_name name="atmosphere_heat_diffusivity_from_shoc"
+                   long_name="Atmospheric heat diffusivity from Simplified Higher-order Closure scheme">
          <type kind="kind_phys" units="m2 s-1">real</type>
       </standard_name>
       <standard_name name="atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type">
@@ -3087,7 +3094,8 @@
                    long_name="Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air">
          <type kind="kind_phys" units="kg kg-1">real</type>
       </standard_name>
-      <standard_name name="subgrid_scale_cloud_fraction_from_shoc">
+      <standard_name name="subgrid_scale_cloud_fraction_from_shoc"
+                   long_name="Subgrid-scale cloud fraction from Simplified Higher-order Closure scheme">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
       <standard_name name="air_pressure_at_surface_on_previous_timestep">
@@ -3116,7 +3124,8 @@
       <standard_name name="tendency_of_air_temperature_due_to_nonphysics">
          <type kind="kind_phys" units="K s-1">real</type>
       </standard_name>
-      <standard_name name="tendency_of_air_temperature_to_withhold_from_sppt">
+      <standard_name name="tendency_of_air_temperature_to_withhold_from_sppt"
+                   long_name="Tendency of air temperature to withhold from stochastically perturbed physics tendencies">
          <type kind="kind_phys" units="K s-1">real</type>
       </standard_name>
       <standard_name name="tendency_of_activated_cloud_condensation_nuclei_from_climatology">
@@ -3965,16 +3974,20 @@
       <standard_name name="cellular_automata_vertical_scaling_factor">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
-      <standard_name name="shum_scaling_factors_from_coupled_process">
+      <standard_name name="shum_scaling_factors_from_coupled_process"
+                   long_name="Stochastic HUMidity stochastic physics option scaling factors from coupled process">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="skeb_x_wind_scaling_factors_from_coupled_process">
+      <standard_name name="skeb_x_wind_scaling_factors_from_coupled_process"
+                   long_name="Stochastic Kinetic Energy Backscatter x-wind scaling factors from coupled process">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="skeb_y_wind_scaling_factors_from_coupled_process">
+      <standard_name name="skeb_y_wind_scaling_factors_from_coupled_process"
+                   long_name="Stochastic Kinetic Energy Backscatter y-wind scaling factors from coupled process">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="sppt_scaling_factors_from_coupled_process">
+      <standard_name name="sppt_scaling_factors_from_coupled_process"
+                   long_name="Stochastically perturbed physics tendencies scaling factors from coupled process">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
       <standard_name name="surface_stochastic_scaling_factors_from_coupled_process">

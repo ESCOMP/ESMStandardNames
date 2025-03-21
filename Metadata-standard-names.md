@@ -1078,7 +1078,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `identifier_for_morrison_gettelman_microphysics_scheme`: Identifier for morrison gettelman microphysics scheme
     * `integer(kind=)`: units = 1
-* `do_mountain_blocking_for_sppt`: Do mountain blocking for sppt
+* `do_mountain_blocking_for_sppt`: Do mountain blocking for stochastically perturbed physics tendencies
     * `logical(kind=)`: units = flag
 * `identifier_for_noah_land_surface_scheme`: Identifier for noah land surface scheme
     * `integer(kind=)`: units = 1
@@ -1170,9 +1170,9 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_simplified_arakawa_schubert_shallow_convection`: Do simplified arakawa schubert shallow convection
     * `logical(kind=)`: units = flag
-* `do_shoc`: Do shoc
+* `do_shoc`: Do Simplified Higher-order Closure scheme
     * `logical(kind=)`: units = flag
-* `do_shoc_after_convection`: Do shoc after convection
+* `do_shoc_after_convection`: Do Simplified Higher-order Closure scheme after convection parameterization
     * `logical(kind=)`: units = flag
 * `control_for_land_surface_scheme_soil_and_snow_temperature_time_integration`: Control for land surface scheme soil and snow temperature time integration
     * `integer(kind=)`: units = 1
@@ -1188,9 +1188,9 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_stochastic_radiative_heating_perturbations`: Do stochastic radiative heating perturbations
     * `logical(kind=)`: units = flag
-* `do_stochastic_shum_option`: Do stochastic shum option
+* `do_stochastic_shum_option`: Do Stochastic HUMidity stochastic physics option
     * `logical(kind=)`: units = flag
-* `do_stochastic_skeb_option`: Do stochastic skeb option
+* `do_stochastic_skeb_option`: Do Stochastic Kinetic Energy Backscatter option
     * `logical(kind=)`: units = flag
 * `do_stratospheric_water_vapor_physics`: Do stratospheric water vapor physics
     * `logical(kind=)`: units = flag
@@ -1220,7 +1220,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_ugwp_version_1_orographic_gwd`: Do ugwp version 1 orographic gwd
     * `logical(kind=)`: units = flag
-* `do_shoc_cloud_area_fraction_for_radiation`: Do shoc cloud area fraction for radiation
+* `do_shoc_cloud_area_fraction_for_radiation`: Do Simplified Higher-order Closure scheme cloud area fraction for radiation
     * `logical(kind=)`: units = flag
 * `control_for_surface_layer_scheme_skin_temperature_update`: Control for surface layer scheme skin temperature update
     * `integer(kind=)`: units = 1
@@ -1648,7 +1648,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = 1
 * `multiplicative_tuning_parameter_for_tke_dissipative_heating`: Multiplicative tuning parameter for tke dissipative heating
     * `real(kind=kind_phys)`: units = 1
-* `total_amplitude_of_sppt_perturbation`: Total amplitude of sppt perturbation
+* `total_amplitude_of_sppt_perturbation`: Total amplitude of stochastically perturbed physics tendencies perturbation
     * `real(kind=kind_phys)`: units = 1
 * `do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme`: Do turbulent orographic form drag in Unifed Gravity Wave Physics gravity wave drag scheme
     * `logical(kind=)`: units = flag
@@ -1732,7 +1732,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K
 * `atmosphere_boundary_layer_thickness`: Atmosphere boundary layer thickness
     * `real(kind=kind_phys)`: units = m
-* `atmosphere_heat_diffusivity_from_shoc`: Atmosphere heat diffusivity from shoc
+* `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-order Closure scheme
     * `real(kind=kind_phys)`: units = m2 s-1
 * `atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type`: Atmosphere updraft convective mass flux at cloud base by cloud type
     * `real(kind=kind_phys)`: units = kg m-2 s-1
@@ -1802,7 +1802,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg kg-1
 * `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `subgrid_scale_cloud_fraction_from_shoc`: Subgrid scale cloud fraction from shoc
+* `subgrid_scale_cloud_fraction_from_shoc`: Subgrid-scale cloud fraction from Simplified Higher-order Closure scheme
     * `real(kind=kind_phys)`: units = fraction
 * `air_pressure_at_surface_on_previous_timestep`: Air pressure at surface on previous timestep
     * `real(kind=kind_phys)`: units = Pa
@@ -1820,7 +1820,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K2
 * `tendency_of_air_temperature_due_to_nonphysics`: Tendency of air temperature due to nonphysics
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_air_temperature_to_withhold_from_sppt`: Tendency of air temperature to withhold from sppt
+* `tendency_of_air_temperature_to_withhold_from_sppt`: Tendency of air temperature to withhold from stochastically perturbed physics tendencies
     * `real(kind=kind_phys)`: units = K s-1
 * `tendency_of_activated_cloud_condensation_nuclei_from_climatology`: Tendency of activated cloud condensation nuclei from climatology
     * `real(kind=kind_phys)`: units = kg-1 s-1
@@ -2326,13 +2326,13 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K s-1
 * `cellular_automata_vertical_scaling_factor`: Cellular automata vertical scaling factor
     * `real(kind=kind_phys)`: units = fraction
-* `shum_scaling_factors_from_coupled_process`: Shum scaling factors from coupled process
+* `shum_scaling_factors_from_coupled_process`: Stochastic HUMidity stochastic physics option scaling factors from coupled process
     * `real(kind=kind_phys)`: units = 1
-* `skeb_x_wind_scaling_factors_from_coupled_process`: Skeb x wind scaling factors from coupled process
+* `skeb_x_wind_scaling_factors_from_coupled_process`: Stochastic Kinetic Energy Backscatter x-wind scaling factors from coupled process
     * `real(kind=kind_phys)`: units = 1
-* `skeb_y_wind_scaling_factors_from_coupled_process`: Skeb y wind scaling factors from coupled process
+* `skeb_y_wind_scaling_factors_from_coupled_process`: Stochastic Kinetic Energy Backscatter y-wind scaling factors from coupled process
     * `real(kind=kind_phys)`: units = 1
-* `sppt_scaling_factors_from_coupled_process`: Sppt scaling factors from coupled process
+* `sppt_scaling_factors_from_coupled_process`: Stochastically perturbed physics tendencies scaling factors from coupled process
     * `real(kind=kind_phys)`: units = 1
 * `surface_stochastic_scaling_factors_from_coupled_process`: Surface stochastic scaling factors from coupled process
     * `real(kind=kind_phys)`: units = 1
