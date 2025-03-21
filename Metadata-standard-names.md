@@ -1650,7 +1650,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = 1
 * `total_amplitude_of_sppt_perturbation`: Total amplitude of stochastically perturbed physics tendencies perturbation
     * `real(kind=kind_phys)`: units = 1
-* `do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme`: Do turbulent orographic form drag in Unifed Gravity Wave Physics gravity wave drag scheme
+* `do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme`: Do turbulent orographic form drag in Unified Gravity Wave Physics gravity wave drag scheme
     * `logical(kind=)`: units = flag
 * `updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Updraft area fraction in scale aware tke moist edmf pbl scheme
     * `real(kind=kind_phys)`: units = fraction

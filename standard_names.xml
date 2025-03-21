@@ -2841,7 +2841,7 @@
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
       <standard_name name="do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme"
-                   long_name="Do turbulent orographic form drag in Unifed Gravity Wave Physics gravity wave drag scheme">
+                   long_name="Do turbulent orographic form drag in Unified Gravity Wave Physics gravity wave drag scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme">
