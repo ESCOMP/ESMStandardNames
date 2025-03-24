@@ -11,168 +11,158 @@
                      long_name="amount">
         <type units="kg m-2">real</type>
       </standard_name>
-      <standard_name name="area"
-                     long_name="area">
+      <standard_name name="area">
         <type units="m2">real</type>
       </standard_name>
       <standard_name name="area_fraction"
-                     long_name="area_fraction">
+                     long_name="The fraction of an area where some condition applies">
         <type units="1">real</type>
       </standard_name>
       <standard_name name="binary_mask"
-                     long_name="binary_mask">
+                     long_name="A field consisting of either 0 or 1 at every point">
         <type units="1">integer</type>
       </standard_name>
       <standard_name name="coefficient"
-                     long_name="coefficient">
-        <type units="1">real</type>
-      </standard_name>
-      <standard_name name="data_mask"
-                     long_name="data_mask">
+                     long_name="A real number used in a mathematical equation, typically derived empirically and/or adjusted based on some other physical phenomenon to change the behavior of an equation, scheme, or other modeling unit">
         <type units="1">real</type>
       </standard_name>
       <standard_name name="density"
-                     long_name="density">
+                     long_name="Mass per unit volume">
         <type units="kg m-3">real</type>
       </standard_name>
-      <standard_name name="energy"
-                     long_name="energy">
+      <standard_name name="energy">
         <type units="J">real</type>
       </standard_name>
       <standard_name name="energy_content"
-                     long_name="energy_content">
+                     long_name="Total energy within some surface">
         <type units="J m-2">real</type>
       </standard_name>
       <standard_name name="energy_density"
-                     long_name="energy_density">
+                     long_name="Total energy within some volume">
         <type units="J m-3">real</type>
       </standard_name>
       <standard_name name="frequency"
-                     long_name="frequency">
+                     long_name="Number of instances per unit time">
         <type units="s-1">real</type>
       </standard_name>
+      <standard_name name="heat">
+        <type units="J">real</type>
+      </standard_name>
       <standard_name name="heat_flux"
-                     long_name="heat_flux">
+                     long_name="The amount of heat traveling through an area per unit time">
         <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="heat_transport"
-                     long_name="heat_transport">
+                     long_name="Movement of heat due to advection">
         <type units="W">real</type>
       </standard_name>
-      <standard_name name="mass"
-                     long_name="mass">
+      <standard_name name="mass">
         <type units="kg">real</type>
       </standard_name>
       <standard_name name="mass_flux"
-                     long_name="mass_flux">
+                     long_name="Mass traveling through an area per unit time">
         <type units="kg m-2 s-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction"
-                     long_name="mass_fraction">
+                     long_name="The fraction of a given mass where some condition applies">
         <type units="1">real</type>
       </standard_name>
-      <standard_name name="mixing_ratio"
-                     long_name="mixing_ratio">
-        <type units="kg kg-1">real</type>
-      </standard_name>
       <standard_name name="mass_transport"
-                     long_name="mass_transport">
+                     long_name="Movement of some specified mass by advection">
         <type units="kg s-1">real</type>
       </standard_name>
+      <standard_name name="mixing_ratio"
+                     long_name="A ratio of the amount of one substance to another; when unqualified refers to the ratio of the mass of one substance to the total mass in a given volume"
+                     comment="See Standard Name Rules for further details about disambiguation of this term">
+        <type units="kg kg-1">real</type>
+      </standard_name>
       <standard_name name="mole_fraction"
-                     long_name="mole_fraction">
+                     long_name="The ratio of the number of molecules or atoms of a substance to the total number of molecules/atoms in a given volume">
         <type units="1">real</type>
       </standard_name>
       <standard_name name="mole_flux"
-                     long_name="mole_flux">
+                     long_name="The number of molecules or atoms of a substance traveling through an area per unit time">
         <type units="mol m-2 s-1">real</type>
       </standard_name>
       <standard_name name="momentum_flux"
-                     long_name="momentum_flux">
+                     long_name="The transfer of momentum through an area per unit time">
         <type units="Pa">real</type>
       </standard_name>
       <standard_name name="partial_pressure"
-                     long_name="partial_pressure">
+                     long_name="The pressure of a component gas independent of other components">
         <type units="Pa">real</type>
       </standard_name>
       <standard_name name="period"
-                     long_name="period">
+                     long_name="The amount of time between regular events">
         <type units="s">real</type>
       </standard_name>
       <standard_name name="power"
-                     long_name="power">
+                     long_name="Energy per unit time">
         <type units="W">real</type>
       </standard_name>
       <standard_name name="pressure"
-                     long_name="pressure">
+                     long_name="Force per unit area">
         <type units="Pa">real</type>
       </standard_name>
       <standard_name name="probability"
-                     long_name="probability">
+                     long_name="A number between 0 and 1 indicating the likelihood of an event occurring">
         <type units="1">real</type>
       </standard_name>
       <standard_name name="radiative_flux"
-                     long_name="radiative_flux">
+                     long_name="The amount of radiative energy traveling through an area per unit time">
         <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="radius"
-                     long_name="radius">
+                     long_name="Distance from the center to the perimeter of a circle or sphere">
         <type units="m">real</type>
       </standard_name>
-      <standard_name name="specific_eddy_kinetic_energy"
-                     long_name="specific_eddy_kinetic_energy">
-        <type units="m2 s-2">real</type>
-      </standard_name>
       <standard_name name="speed"
-                     long_name="speed">
+                     long_name="Directionless distance per unit time">
         <type units="m s-1">real</type>
       </standard_name>
       <standard_name name="stress"
-                     long_name="stress">
+                     long_name="A deformation force across a unit area">
         <type units="Pa">real</type>
       </standard_name>
-      <standard_name name="streamfunction"
-                     long_name="streamfunction">
+      <standard_name name="streamfunction">
         <type units="m2 s-1">real</type>
       </standard_name>
-      <standard_name name="temperature"
-                     long_name="temperature">
+      <standard_name name="temperature">
         <type units="K">real</type>
       </standard_name>
       <standard_name name="thickness"
-                     long_name="thickness">
+                     long_name="The vertical distance between two constant-pressure surfaces">
         <type units="m">real</type>
       </standard_name>
       <standard_name name="velocity"
-                     long_name="velocity">
+                     long_name="Distance per unit time">
         <type units="m s-1">real</type>
       </standard_name>
       <standard_name name="velocity_potential"
-                     long_name="velocity_potential">
+                     long_name="A scalar function with its gradient equal to the velocity vector of an irrotational flow">
         <type units="m2 s-1">real</type>
       </standard_name>
-      <standard_name name="volume"
-                     long_name="volume">
+      <standard_name name="volume">
         <type units="m3">real</type>
       </standard_name>
       <standard_name name="volume_flux"
-                     long_name="volume_flux">
+                     long_name="The number of molecules or atoms of a substance traveling through an area per unit time">
         <type units="m s-1">real</type>
       </standard_name>
       <standard_name name="volume_fraction"
-                     long_name="volume_fraction">
+                     long_name="The fraction of a volume where some condition applies">
         <type units="1">real</type>
       </standard_name>
       <standard_name name="volume_mixing_ratio"
-                     long_name="volume_mixing_ratio">
+                     long_name="A ratio of the number of molecules or atoms of a substance to another in a unit volume">
         <type units="mol mol-1">real</type>
       </standard_name>
       <standard_name name="volume_transport"
-                     long_name="volume_transport">
+                     long_name="Movement of some volume of a specified substance by advection">
         <type units="m3 s-1">real</type>
       </standard_name>
       <standard_name name="vorticity"
-                     long_name="vorticity">
+                     long_name="The curl of a velocity vector">
         <type units="s-1">real</type>
       </standard_name>
     </section>
@@ -361,6 +351,10 @@
                      long_name="exner_function">
         <type units="1">real</type>
       </standard_name>
+      <standard_name name="friction_velocity"
+                     long_name="A measure of shear stress within a fluid layer with units of distance per time">
+        <type units="m s-1">real</type>
+      </standard_name>
       <standard_name name="filename"
                      long_name="filename">
         <type units="none">character</type>
@@ -523,6 +517,10 @@
       </standard_name>
       <standard_name name="wind"
                      long_name="wind">
+      </standard_name>
+      <standard_name name="wind_stress"
+                     long_name="Shear stress exerted by wind parallel to the water surface">
+      <type units="Pa">real</type>
       </standard_name>
       <standard_name name="wind_speed"
                      long_name="wind_speed">

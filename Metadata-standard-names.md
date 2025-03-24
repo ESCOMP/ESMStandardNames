@@ -33,87 +33,85 @@ standard names, but they can serve as base names for
 more specific standard names.
 * `amount`: amount
     * `real`: units = kg m-2
-* `area`: area
+* `area`: Area
     * `real`: units = m2
-* `area_fraction`: area_fraction
+* `area_fraction`: The fraction of an area where some condition applies
     * `real`: units = 1
-* `binary_mask`: binary_mask
+* `binary_mask`: A field consisting of either 0 or 1 at every point
     * `integer`: units = 1
-* `coefficient`: coefficient
+* `coefficient`: A real number used in a mathematical equation, typically derived empirically and/or adjusted based on some other physical phenomenon to change the behavior of an equation, scheme, or other modeling unit
     * `real`: units = 1
-* `data_mask`: data_mask
-    * `real`: units = 1
-* `density`: density
+* `density`: Mass per unit volume
     * `real`: units = kg m-3
-* `energy`: energy
+* `energy`: Energy
     * `real`: units = J
-* `energy_content`: energy_content
+* `energy_content`: Total energy within some surface
     * `real`: units = J m-2
-* `energy_density`: energy_density
+* `energy_density`: Total energy within some volume
     * `real`: units = J m-3
-* `frequency`: frequency
+* `frequency`: Number of instances per unit time
     * `real`: units = s-1
-* `heat_flux`: heat_flux
+* `heat`: Heat
+    * `real`: units = J
+* `heat_flux`: The amount of heat traveling through an area per unit time
     * `real`: units = W m-2
-* `heat_transport`: heat_transport
+* `heat_transport`: Movement of heat due to advection
     * `real`: units = W
-* `mass`: mass
+* `mass`: Mass
     * `real`: units = kg
-* `mass_flux`: mass_flux
+* `mass_flux`: Mass traveling through an area per unit time
     * `real`: units = kg m-2 s-1
-* `mass_fraction`: mass_fraction
+* `mass_fraction`: The fraction of a given mass where some condition applies
     * `real`: units = 1
-* `mixing_ratio`: mixing_ratio
-    * `real`: units = kg kg-1
-* `mass_transport`: mass_transport
+* `mass_transport`: Movement of some specified mass by advection
     * `real`: units = kg s-1
-* `mole_fraction`: mole_fraction
+* `mixing_ratio`: A ratio of the amount of one substance to another; when unqualified refers to the ratio of the mass of one substance to the total mass in a given volume
+    * `real`: units = kg kg-1
+* `mole_fraction`: The ratio of the number of molecules or atoms of a substance to the total number of molecules/atoms in a given volume
     * `real`: units = 1
-* `mole_flux`: mole_flux
+* `mole_flux`: The number of molecules or atoms of a substance traveling through an area per unit time
     * `real`: units = mol m-2 s-1
-* `momentum_flux`: momentum_flux
+* `momentum_flux`: The transfer of momentum through an area per unit time
     * `real`: units = Pa
-* `partial_pressure`: partial_pressure
+* `partial_pressure`: The pressure of a component gas independent of other components
     * `real`: units = Pa
-* `period`: period
+* `period`: The amount of time between regular events
     * `real`: units = s
-* `power`: power
+* `power`: Energy per unit time
     * `real`: units = W
-* `pressure`: pressure
+* `pressure`: Force per unit area
     * `real`: units = Pa
-* `probability`: probability
+* `probability`: A number between 0 and 1 indicating the likelihood of an event occurring
     * `real`: units = 1
-* `radiative_flux`: radiative_flux
+* `radiative_flux`: The amount of radiative energy traveling through an area per unit time
     * `real`: units = W m-2
-* `radius`: radius
+* `radius`: Distance from the center to the perimeter of a circle or sphere
     * `real`: units = m
-* `specific_eddy_kinetic_energy`: specific_eddy_kinetic_energy
-    * `real`: units = m2 s-2
-* `speed`: speed
+* `speed`: Directionless distance per unit time
     * `real`: units = m s-1
-* `stress`: stress
+* `stress`: A deformation force across a unit area
     * `real`: units = Pa
-* `streamfunction`: streamfunction
+* `streamfunction`: Streamfunction
     * `real`: units = m2 s-1
-* `temperature`: temperature
+* `temperature`: Temperature
     * `real`: units = K
-* `thickness`: thickness
+* `thickness`: The vertical distance between two constant-pressure surfaces
     * `real`: units = m
-* `velocity`: velocity
+* `velocity`: Distance per unit time
     * `real`: units = m s-1
-* `velocity_potential`: velocity_potential
+* `velocity_potential`: A scalar function with its gradient equal to the velocity vector of an irrotational flow
     * `real`: units = m2 s-1
-* `volume`: volume
+* `volume`: Volume
     * `real`: units = m3
-* `volume_flux`: volume_flux
+* `volume_flux`: The number of molecules or atoms of a substance traveling through an area per unit time
     * `real`: units = m s-1
-* `volume_fraction`: volume_fraction
+* `volume_fraction`: The fraction of a volume where some condition applies
     * `real`: units = 1
-* `volume_mixing_ratio`: volume_mixing_ratio
+* `volume_mixing_ratio`: A ratio of the number of molecules or atoms of a substance to another in a unit volume
     * `real`: units = mol mol-1
-* `volume_transport`: volume_transport
+* `volume_transport`: Movement of some volume of a specified substance by advection
     * `real`: units = m3 s-1
-* `vorticity`: vorticity
+* `vorticity`: The curl of a velocity vector
     * `real`: units = s-1
 ### chemical_species
 These are the base names for specific chemical species
@@ -196,6 +194,8 @@ full list of standard names for further details.
     * `real`: units = J kg-1
 * `exner_function`: exner_function
     * `real`: units = 1
+* `friction_velocity`: A measure of shear stress within a fluid layer with units of distance per time
+    * `real`: units = m s-1
 * `filename`: filename
     * `character`: units = none
 * `forecast_time`: forecast_time
@@ -267,6 +267,8 @@ full list of standard names for further details.
     * `real`: units = K
 * `water_vapor`: water_vapor
 * `wind`: wind
+* `wind_stress`: Shear stress exerted by wind parallel to the water surface
+    * `real`: units = Pa
 * `wind_speed`: wind_speed
     * `real`: units = m s-1
 ## dimensions
