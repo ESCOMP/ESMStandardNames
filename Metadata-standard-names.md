@@ -146,128 +146,122 @@ They can all be assumed to have units of '1'
 These names are used as bases for other names, but may
 also be considered standard names on their own. See the
 full list of standard names for further details.
-* `absolute_vorticity`: absolute_vorticity
+* `absolute_vorticity`: Vorticity of fluid relative to an inertial frame; the sum of relative and planetary vorticities
     * `real`: units = s-1
-* `air_pressure`: air_pressure
+* `air_pressure`: The pressure of air
     * `real`: units = Pa
-* `air_pressure_thickness`: air_pressure_thickness
+* `air_pressure_thickness`: Air pressure thickness
     * `real`: units = Pa
-* `air_temperature`: air_temperature
+* `air_temperature`: The temperature of air
     * `real`: units = K
-* `albedo`: albedo
+* `albedo`: The fraction of incident radiation reflected by a surface
     * `real`: units = 1
-* `atmosphere_heat_diffusivity`: atmosphere_heat_diffusivity
+* `atmosphere_heat_diffusivity`: Atmosphere heat diffusivity
     * `real`: units = m2 s-1
-* `cloud_area_fraction`: cloud_area_fraction
+* `cloud_area_fraction`: Fraction of an area (usually within a grid cell) containing cloud
     * `real`: units = fraction
 * `cloud_condensate`: cloud_condensate
-* `cloud_ice`: cloud_ice
-* `cloud_liquid_water`: cloud_liquid_water
-* `date`: date
-* `density`: density
-    * `real`: units = kg m-3
-* `diffuse_nir_albedo`: diffuse near-infrared albedo
+* `cloud_ice`: Cloud particles consisting of solid water (ice)
+* `cloud_liquid_water`: Cloud particles consisting of liquid water
+* `diffuse_nir_albedo`: Albedo of diffuse incident near-infrared radiation
     * `real`: units = 1
-* `diffuse_nir_shortwave_flux`: diffuse near-infrared shortwave flux
+* `diffuse_nir_shortwave_flux`: Flux of diffuse near-infrared and shortwave radiation
     * `real`: units = 1
-* `diffuse_shortwave_albedo`: diffuse_shortwave_albedo
+* `diffuse_shortwave_albedo`: Albedo of diffuse incident shortwave radiation
     * `real`: units = 1
-* `diffuse_uv_and_vis_shortwave_flux`: diffuse ultraviolet and visible shortwave flux
+* `diffuse_uv_and_vis_shortwave_flux`: Flux of diffuse ultraviolet and visible shortwave radiation
     * `real`: units = 1
-* `diffuse_vis_albedo`: diffuse visible albedo
+* `diffuse_vis_albedo`: Albedo of diffuse incident visible radiation
     * `real`: units = 1
-* `direct_nir_albedo`: direct near-infrared albedo
+* `direct_nir_albedo`: Albedo of diffuse incident near-infrared radiation
     * `real`: units = 1
-* `direct_nir_shortwave_flux`: direct near-infrared shortwave flux
+* `direct_nir_shortwave_flux`: Flux of direct near-infrared shortwave radiation
     * `real`: units = J m-2
-* `direct_uv_and_vis_shortwave_flux`: direct ultraviolet and visible shortwave flux
+* `direct_uv_and_vis_shortwave_flux`: Flux of direct ultraviolet and visible shortwave radiation
     * `real`: units = J m-2
-* `direct_vis_albedo`: direct visible albedo
+* `direct_vis_albedo`: Albedo of direct incident visible light
     * `real`: units = 1
-* `divergence`: divergence
+* `divergence`: Divergence
     * `real`: units = s-1
-* `dry_air_density`: dry_air_density
+* `dry_air_density`: Density of air excluding water vapor component
     * `real`: units = kg m-3
-* `dry_air_enthalpy`: dry_air_enthalpy
+* `dry_air_enthalpy_at_constant_pressure`: Specific enthalpy of dry air, h = Cp*T, Cp = Specific heat of dry air at constant pressure, T = temperature
     * `real`: units = J kg-1
-* `exner_function`: exner_function
-    * `real`: units = 1
+* `exner_function`: Exner function, (p/p0)^(Rd/cp), where p0 is some reference pressure (1000 hPa if not specified)
+    * `real(kind=kind_phys)`: units = 1
 * `friction_velocity`: A measure of shear stress within a fluid layer with units of distance per time
     * `real`: units = m s-1
-* `filename`: filename
+* `filename`: Filename
     * `character`: units = none
-* `forecast_time`: forecast_time
-* `geopotential`: geopotential
-    * `real`: units = m2 s-2
-* `geopotential_height`: geopotential_height
+* `forecast_time`: Forecast time
+    * `real`: units = h
+* `geopotential`: Gravitational potential energy of a unit mass relative to sea level
+    * `real(kind=kind_phys)`: units = m2 s-2
+* `geopotential_height`: Geopotential divided by the gravitational constant
     * `real`: units = m
-* `graupel`: graupel
-* `gravitational_acceleration`: gravitational_acceleration
+* `graupel`: Precipitation consisting of heavily rimed ice crystals
+* `gravitational_acceleration`: Gravitational acceleration
     * `real`: units = m s-2
-* `hail`: hail
-* `heat_flux`: heat_flux
+* `hail`: Precipitation consisting of large pieces of ice formed in convective clouds
+* `hygroscopic_aerosols`: Aerosols with the property of accumulating liquid water
+* `ice`: Ice
+* `latent_heat_flux`: Latent heat flux across a unit surface
     * `real`: units = W m-2
-* `hygroscopic_aerosols`: hygroscopic_aerosols
-* `ice`: ice
-* `latent_heat_flux`: latent_heat_flux
+* `liquid_water`: Liquid water
+* `longwave_flux`: Flux of longwave radiation across a unit surface
     * `real`: units = W m-2
-* `liquid_water`: liquid_water
-* `longwave_flux`: longwave_flux
-    * `real`: units = W m-2
-* `momentum_flux`: momentum_flux
+* `momentum_flux`: Flux of momentum across a unit surface
+    * `real`: units = Pa
 * `nonhygroscopic_ice_nucleating_aerosols`: nonhygroscopic_ice_nucleating_aerosols
-* `ozone`: ozone
-* `pressure`: pressure
+* `pressure`: Pressure
     * `real`: units = Pa
-* `rain`: rain
-* `rain_water`: rain_water
-* `random_number`: random_number
+* `rain`: Precipitation of liquid water from clouds
+* `rain_water`: Liquid water precipitation
+* `random_number`: Random number
     * `real`: units = 1
-* `random_number_seed`: random_number_seed
+* `random_number_seed`: Random number seed
     * `integer`: units = 1
-* `reference_pressure`: reference_pressure
+* `reference_pressure`: Some pressure value for comparison to or calculation of other values
     * `real`: units = Pa
-* `relative_humidity`: relative_humidity
+* `relative_humidity`: Ratio of the vapor pressure to the saturation vapor pressure (for liquid water unless otherwise specified)
     * `real`: units = fraction
-* `roughness_length`: roughness_length
+* `roughness_length`: Also called surface roughness length, the height above a surface where the wind speed would be zero according to an idealized logarithmic wind profile
     * `real`: units = m
-* `sensible_heat_flux`: sensible_heat_flux
+* `sensible_heat_flux`: Flux of sensible heat across a unit surface
     * `real`: units = W m-2
-* `shortwave_flux`: shortwave_flux
+* `shortwave_flux`: Flux of shortwave radiation across a unit surface
     * `real`: units = W m-2
-* `snow`: snow
-* `snow_area_fraction`: snow_area_fraction
+* `snow`: Precipitation of ice crystals from clouds
+* `snow_area_fraction`: Fraction of an area (usually within a grid cell) covered by snow
     * `real`: units = fraction
-* `soil_moisture`: soil_moisture
-* `soil_temperature`: soil_temperature
+* `soil_moisture`: Liquid water contained within a soil layer
+* `soil_temperature`: Temperature of a soil layer
     * `real`: units = K
-* `solar_declination_angle`: solar_declination_angle
-* `solar_zenith_angle`: solar_zenith_angle
-* `streamfunction`: streamfunction
-    * `real`: units = m2 s-1
-* `surface_skin_temperature`: surface_skin_temperature
+* `solar_declination_angle`: The angle between the equator and Earth's orbital plane with the Sun
+* `solar_zenith_angle`: Angle between the direction to the sun and the local zenith (vertical direction)
+* `surface_skin_temperature`: The temperature of the topmost layer of the surface
     * `real`: units = K
-* `temperature`: temperature
+* `temperature`: Temperature
     * `real`: units = K
-* `temperature_flux`: temperature_flux
+* `temperature_flux`: Flux of temperature across a unit surface
     * `real`: units = K m s-1
-* `time`: time
+* `time`: Time
     * `real`: units = s
-* `total_energy`: total_energy
+* `total_energy`: Energy from all sources
 * `total_water`: All water phases (solid, liquid, gas)
-* `tracer`: tracer
-* `tracers`: tracers
-* `tke`: Turbulent kinetic energy
+* `tracer`: A hypothetical zero-mass particle that is advected in fluid flow
+* `tracers`: Tracers
+* `tke`: Specific turbulent kinetic energy
     * `real`: units = m2 s-2
-* `virtual_potential_temperature`: virtual_potential_temperature
+* `virtual_potential_temperature`: The theoretical potential temperature of dry air that would have the same density as moist air
     * `real`: units = K
-* `virtual_temperature`: virtual_temperature
+* `virtual_temperature`: The theoretical temperature of dry air that would have the same density as moist air
     * `real`: units = K
-* `water_vapor`: water_vapor
-* `wind`: wind
+* `water_vapor`: Water in the gaseous phase
+* `wind`: Movement of air with a net displacement
 * `wind_stress`: Shear stress exerted by wind parallel to the water surface
     * `real`: units = Pa
-* `wind_speed`: wind_speed
+* `wind_speed`: Speed of moving air
     * `real`: units = m s-1
 ## dimensions
 Dimension standard names may come in sets of six related standard names for each dimension:
@@ -450,7 +444,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg m-2
 * `vertically_integrated_total_water_of_current_state`: Vertically integrated total water of current state
     * `real(kind=kind_phys)`: units = kg m-2
-* `tendency_of_dry_air_enthalpy_at_constant_pressure`: Tendency of dry air enthalpy at constant pressure
+* `tendency_of_dry_air_enthalpy_at_constant_pressure`: Tendency of dry air enthalpy at constant pressure; d/dt(Cp*T)
     * `real(kind=kind_phys)`: units = J kg-1 s-1
 * `tendency_of_air_temperature`: Change in temperature from a parameterization
     * `real(kind=kind_phys)`: units = K s-1
@@ -2347,7 +2341,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_number_concentration_of_cloud_liquid_water_particles_in_air`: Mass number concentration of cloud liquid water particles in air
     * `real(kind=kind_phys)`: units = kg-1
-* `exner_function_wrt_surface_pressure`: exner function w.r.t. surface pressure, (p/ps)^(Rd/cp)
+* `exner_function_wrt_surface_pressure`: Exner function with respect to surface pressure, (p/ps)^(Rd/cp)
     * `real(kind=kind_phys)`: units = 1
 * `exner_function_at_surface_adjacent_layer`: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface adjacent layer
     * `real(kind=kind_phys)`: units = 1
