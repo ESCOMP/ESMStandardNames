@@ -255,10 +255,6 @@
                      long_name="absolute_vorticity">
         <type units="s-1">real</type>
       </standard_name>
-      <standard_name name="air_potential_temperature"
-                     long_name="air_potential_temperature">
-        <type units="K">real</type>
-      </standard_name>
       <standard_name name="air_pressure"
                      long_name="air_pressure">
         <type units="Pa">real</type>
@@ -856,11 +852,11 @@
                    long_name="Total change in air temperature from a physics suite">
       <type kind="kind_phys" units="K s-1">real</type>
     </standard_name>
-    <standard_name name="tendency_of_air_potential_temperature"
+    <standard_name name="tendency_of_potential_temperature_of_air"
                    long_name="Change in potential temperature from a parameterization">
       <type kind="kind_phys" units="K s-1">real</type>
     </standard_name>
-    <standard_name name="tendency_of_air_potential_temperature_due_to_model_physics">
+    <standard_name name="tendency_of_potential_temperature_of_air_due_to_model_physics">
       <type kind="kind_phys" units="K s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_x_wind"
@@ -942,11 +938,11 @@
                    long_name="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
       <type kind="kind_phys" units="1">real</type>
     </standard_name>
-    <standard_name name="air_potential_temperature"
+    <standard_name name="potential_temperature_of_air"
                    long_name="air potential temperature">
       <type kind="kind_phys" units="K">real</type>
     </standard_name>
-    <standard_name name="air_potential_temperature_on_previous_timestep"
+    <standard_name name="potential_temperature_of_air_on_previous_timestep"
                    long_name="air potential temperature on previous timestep">
       <type kind="kind_phys" units="K">real</type>
     </standard_name>
@@ -2439,7 +2435,7 @@
       <standard_name name="multiplicative_tuning_parameter_for_reduced_latent_heat_flux_due_to_canopy_heat_storage">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="max_tendency_of_air_potential_temperature_due_to_large_scale_precipitation"
+      <standard_name name="max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation"
                    long_name="Maximum tendency of air potential temperature due to large-scale precipitation">
          <type kind="kind_phys" units="K s-1">real</type>
       </standard_name>
@@ -3067,7 +3063,7 @@
       <standard_name name="ozone_forcing">
          <type kind="kind_phys" units="various">real</type>
       </standard_name>
-      <standard_name name="air_potential_temperature_at_top_of_viscous_sublayer">
+      <standard_name name="potential_temperature_of_air_at_top_of_viscous_sublayer">
          <type kind="kind_phys" units="K">real</type>
       </standard_name>
       <standard_name name="variance_of_water_vapor_mixing_ratio_wrt_moist_air"
@@ -3392,7 +3388,7 @@
       <standard_name name="unfiltered_height_above_mean_sea_level">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="air_potential_temperature_at_2m">
+      <standard_name name="potential_temperature_of_air_at_2m">
          <type kind="kind_phys" units="K">real</type>
       </standard_name>
       <standard_name name="ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m">

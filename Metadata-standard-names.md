@@ -148,8 +148,6 @@ also be considered standard names on their own. See the
 full list of standard names for further details.
 * `absolute_vorticity`: absolute_vorticity
     * `real`: units = s-1
-* `air_potential_temperature`: air_potential_temperature
-    * `real`: units = K
 * `air_pressure`: air_pressure
     * `real`: units = Pa
 * `air_pressure_thickness`: air_pressure_thickness
@@ -458,9 +456,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = K s-1
 * `tendency_of_air_temperature_due_to_model_physics`: Total change in air temperature from a physics suite
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_air_potential_temperature`: Change in potential temperature from a parameterization
+* `tendency_of_potential_temperature_of_air`: Change in potential temperature from a parameterization
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_air_potential_temperature_due_to_model_physics`: Tendency of air potential temperature due to model physics
+* `tendency_of_potential_temperature_of_air_due_to_model_physics`: Tendency of potential temperature of air due to model physics
     * `real(kind=kind_phys)`: units = K s-1
 * `tendency_of_x_wind`: Change in x wind from a parameterization
     * `real(kind=kind_phys)`: units = m s-2
@@ -504,9 +502,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = 1
 * `exner_function`: exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa
     * `real(kind=kind_phys)`: units = 1
-* `air_potential_temperature`: air potential temperature
+* `potential_temperature_of_air`: air potential temperature
     * `real(kind=kind_phys)`: units = K
-* `air_potential_temperature_on_previous_timestep`: air potential temperature on previous timestep
+* `potential_temperature_of_air_on_previous_timestep`: air potential temperature on previous timestep
     * `real(kind=kind_phys)`: units = K
 * `virtual_temperature`: virtual temperature
     * `real(kind=kind_phys)`: units = K
@@ -1390,7 +1388,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = fraction
 * `multiplicative_tuning_parameter_for_reduced_latent_heat_flux_due_to_canopy_heat_storage`: Multiplicative tuning parameter for reduced latent heat flux due to canopy heat storage
     * `real(kind=kind_phys)`: units = 1
-* `max_tendency_of_air_potential_temperature_due_to_large_scale_precipitation`: Maximum tendency of air potential temperature due to large-scale precipitation
+* `max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation`: Maximum tendency of air potential temperature due to large-scale precipitation
     * `real(kind=kind_phys)`: units = K s-1
 * `lower_bound_of_vertical_dimension_of_surface_snow`: Lower bound of vertical dimension of surface snow
     * `integer(kind=)`: units = count
@@ -1782,7 +1780,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m s-1
 * `ozone_forcing`: Ozone forcing
     * `real(kind=kind_phys)`: units = various
-* `air_potential_temperature_at_top_of_viscous_sublayer`: Air potential temperature at top of viscous sublayer
+* `potential_temperature_of_air_at_top_of_viscous_sublayer`: Potential temperature of air at top of viscous sublayer
     * `real(kind=kind_phys)`: units = K
 * `variance_of_water_vapor_mixing_ratio_wrt_moist_air`: Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)
     * `real(kind=kind_phys)`: units = kg2 kg-2
@@ -1979,7 +1977,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m
 * `unfiltered_height_above_mean_sea_level`: Unfiltered height above mean sea level
     * `real(kind=kind_phys)`: units = m
-* `air_potential_temperature_at_2m`: Air potential temperature at 2m
+* `potential_temperature_of_air_at_2m`: Potential temperature of air at 2m
     * `real(kind=kind_phys)`: units = K
 * `ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m`: Ratio of wind at surface adjacent layer to wind at 10m
     * `real(kind=kind_phys)`: units = ratio
