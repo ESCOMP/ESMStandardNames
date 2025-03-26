@@ -365,11 +365,11 @@
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
     <standard_name name="air_horizontal_streamfunction"
-                   long_name="Scalar function describing the streamlines of the horizontal wind">
+                   long_name="Scalar function describing the stream lines of the wind">
       <type kind="kind_phys" units="m2 s-1">real</type>
     </standard_name>
     <standard_name name="air_horizontal_velocity_potential"
-                   long_name="Scalar potential of the horizontal wind">
+                   long_name="Scalar potential of the wind">
       <type kind="kind_phys" units="m2 s-1">real</type>
     </standard_name>
     <standard_name name="air_upward_absolute_vorticity"
