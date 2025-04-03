@@ -115,7 +115,7 @@
     </standard_name>
     <standard_name
         name="standard_gravitational_acceleration"
-        long_name="scalar constant representing gravitiational acceleration">
+        long_name="scalar constant representing gravitational acceleration">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
   </section>
@@ -969,7 +969,7 @@
       <standard_name name="aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="number_of_microphysics_varaibles_in_xy_dimensioned_restart_array">
+      <standard_name name="number_of_microphysics_variables_in_xy_dimensioned_restart_array">
          <type kind="" units="count">integer</type>
       </standard_name>
       <standard_name name="number_of_microphysics_variables_in_xyz_dimensioned_restart_array">
@@ -1260,7 +1260,7 @@
       <standard_name name="control_for_land_surface_scheme_dynamic_vegetation">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="indentifier_for_exponential_cloud_overlap_method">
+      <standard_name name="identifier_for_exponential_cloud_overlap_method">
          <type kind="" units="1">integer</type>
       </standard_name>
       <standard_name name="identifier_for_exponential_random_cloud_overlap_method">
@@ -1509,7 +1509,7 @@
       <standard_name name="control_for_land_surface_scheme_runoff_and_groundwater">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="identifer_for_scale_aware_mass_flux_deep_convection">
+      <standard_name name="identifier_for_scale_aware_mass_flux_deep_convection">
          <type kind="" units="1">integer</type>
       </standard_name>
       <standard_name name="identifier_for_scale_aware_mass_flux_shallow_convection">
@@ -1839,7 +1839,7 @@
       <standard_name name="index_of_upward_virtual_potential_temperature_flux_in_xyz_dimensioned_restart_array">
          <type kind="" units="index">integer</type>
       </standard_name>
-      <standard_name name="index_of_subgrid_cloud_area_fracation_in_atmosphere_layer_in_xyz_dimensioned_restart_array">
+      <standard_name name="index_of_subgrid_cloud_area_fraction_in_atmosphere_layer_in_xyz_dimensioned_restart_array">
          <type kind="" units="index">integer</type>
       </standard_name>
       <standard_name name="index_of_timestep">
@@ -1884,7 +1884,7 @@
       <standard_name name="do_allow_supersaturation_after_sedimentation">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="autoconverion_to_snow_size_threshold">
+      <standard_name name="autoconversion_to_snow_size_threshold">
          <type kind="kind_phys" units="um">real</type>
       </standard_name>
       <standard_name name="bergeron_findeisen_process_efficiency_factor">
@@ -2256,7 +2256,7 @@
       <standard_name name="total_amplitude_of_sppt_perturbation">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gravitiy_wave_drag_scheme">
+      <standard_name name="do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gravity_wave_drag_scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme">
@@ -2512,7 +2512,7 @@
       <standard_name name="tendency_of_air_temperature_due_to_nonphysics">
          <type kind="kind_phys" units="K s-1">real</type>
       </standard_name>
-      <standard_name name="tendency_of_air_temperature_to_withold_from_sppt">
+      <standard_name name="tendency_of_air_temperature_to_withhold_from_sppt">
          <type kind="kind_phys" units="K s-1">real</type>
       </standard_name>
       <standard_name name="tendency_of_activated_cloud_condensation_nuclei_from_climatology">
@@ -2542,7 +2542,7 @@
       <standard_name name="weight_for_momentum_at_top_of_viscous_sublayer">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="weight_for_potental_temperature_at_top_of_viscous_sublayer">
+      <standard_name name="weight_for_potential_temperature_at_top_of_viscous_sublayer">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
       <standard_name name="weight_for_specific_humidity_at_top_of_viscous_sublayer">
@@ -3049,7 +3049,7 @@
       <standard_name name="cellular_automata_global_pattern_from_coupled_process">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="convective_cloud_condesate_after_rainout">
+      <standard_name name="convective_cloud_condensate_after_rainout">
          <type kind="kind_phys" units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cumulative_surface_downwelling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep">
@@ -3070,7 +3070,7 @@
       <standard_name name="cumulative_surface_downwelling_shortwave_flux_for_coupling_multiplied_by_timestep">
          <type kind="kind_phys" units="J m-2">real</type>
       </standard_name>
-      <standard_name name="cumulative_surface_net_downwellling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep">
+      <standard_name name="cumulative_surface_net_downwelling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep">
          <type kind="kind_phys" units="J m-2">real</type>
       </standard_name>
       <standard_name name="cumulative_surface_net_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep">

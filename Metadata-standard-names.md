@@ -86,7 +86,7 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `real(kind=kind_phys)`: units = kg m-3
 * `ratio_of_water_vapor_to_dry_air_gas_constants_minus_one`: (Rwv / Rdair) - 1.0
     * `real(kind=kind_phys)`: units = 1
-* `standard_gravitational_acceleration`: scalar constant representing gravitiational acceleration
+* `standard_gravitational_acceleration`: scalar constant representing gravitational acceleration
     * `real(kind=kind_phys)`: units = m s-2
 ## coordinates
 * `latitude`: Latitude
@@ -546,7 +546,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = 1
 * `aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection`: Aerosol aware multiplicative rain conversion parameter for shallow convection
     * `real(kind=kind_phys)`: units = 1
-* `number_of_microphysics_varaibles_in_xy_dimensioned_restart_array`: Number of microphysics varaibles in xy dimensioned restart array
+* `number_of_microphysics_variables_in_xy_dimensioned_restart_array`: Number of microphysics variables in xy dimensioned restart array
     * `integer(kind=)`: units = count
 * `number_of_microphysics_variables_in_xyz_dimensioned_restart_array`: Number of microphysics variables in xyz dimensioned restart array
     * `integer(kind=)`: units = count
@@ -740,7 +740,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = 1
 * `control_for_land_surface_scheme_dynamic_vegetation`: Control for land surface scheme dynamic vegetation
     * `integer(kind=)`: units = 1
-* `indentifier_for_exponential_cloud_overlap_method`: Indentifier for exponential cloud overlap method
+* `identifier_for_exponential_cloud_overlap_method`: Identifier for exponential cloud overlap method
     * `integer(kind=)`: units = 1
 * `identifier_for_exponential_random_cloud_overlap_method`: Identifier for exponential random cloud overlap method
     * `integer(kind=)`: units = 1
@@ -906,7 +906,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = 1
 * `control_for_land_surface_scheme_runoff_and_groundwater`: Control for land surface scheme runoff and groundwater
     * `integer(kind=)`: units = 1
-* `identifer_for_scale_aware_mass_flux_deep_convection`: Identifer for scale aware mass flux deep convection
+* `identifier_for_scale_aware_mass_flux_deep_convection`: Identifier for scale aware mass flux deep convection
     * `integer(kind=)`: units = 1
 * `identifier_for_scale_aware_mass_flux_shallow_convection`: Identifier for scale aware mass flux shallow convection
     * `integer(kind=)`: units = 1
@@ -1126,7 +1126,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = index
 * `index_of_upward_virtual_potential_temperature_flux_in_xyz_dimensioned_restart_array`: Index of upward virtual potential temperature flux in xyz dimensioned restart array
     * `integer(kind=)`: units = index
-* `index_of_subgrid_cloud_area_fracation_in_atmosphere_layer_in_xyz_dimensioned_restart_array`: Index of subgrid cloud area fracation in atmosphere layer in xyz dimensioned restart array
+* `index_of_subgrid_cloud_area_fraction_in_atmosphere_layer_in_xyz_dimensioned_restart_array`: Index of subgrid cloud area fraction in atmosphere layer in xyz dimensioned restart array
     * `integer(kind=)`: units = index
 * `index_of_timestep`: Index of timestep
     * `integer(kind=)`: units = index
@@ -1156,7 +1156,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m
 * `do_allow_supersaturation_after_sedimentation`: Do allow supersaturation after sedimentation
     * `logical(kind=)`: units = flag
-* `autoconverion_to_snow_size_threshold`: Autoconverion to snow size threshold
+* `autoconversion_to_snow_size_threshold`: Autoconversion to snow size threshold
     * `real(kind=kind_phys)`: units = um
 * `bergeron_findeisen_process_efficiency_factor`: Bergeron findeisen process efficiency factor
     * `real(kind=kind_phys)`: units = fraction
@@ -1404,7 +1404,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = 1
 * `total_amplitude_of_sppt_perturbation`: Total amplitude of sppt perturbation
     * `real(kind=kind_phys)`: units = 1
-* `do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gravitiy_wave_drag_scheme`: Do turbulent orographic form drag in unified gravity wave physics gravitiy wave drag scheme
+* `do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gravity_wave_drag_scheme`: Do turbulent orographic form drag in unified gravity wave physics gravity wave drag scheme
     * `logical(kind=)`: units = flag
 * `updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Updraft area fraction in scale aware tke moist edmf pbl scheme
     * `real(kind=kind_phys)`: units = fraction
@@ -1574,7 +1574,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K2
 * `tendency_of_air_temperature_due_to_nonphysics`: Tendency of air temperature due to nonphysics
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_air_temperature_to_withold_from_sppt`: Tendency of air temperature to withold from sppt
+* `tendency_of_air_temperature_to_withhold_from_sppt`: Tendency of air temperature to withhold from sppt
     * `real(kind=kind_phys)`: units = K s-1
 * `tendency_of_activated_cloud_condensation_nuclei_from_climatology`: Tendency of activated cloud condensation nuclei from climatology
     * `real(kind=kind_phys)`: units = kg-1 s-1
@@ -1594,7 +1594,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg kg-1
 * `weight_for_momentum_at_top_of_viscous_sublayer`: Weight for momentum at top of viscous sublayer
     * `real(kind=kind_phys)`: units = 1
-* `weight_for_potental_temperature_at_top_of_viscous_sublayer`: Weight for potental temperature at top of viscous sublayer
+* `weight_for_potential_temperature_at_top_of_viscous_sublayer`: Weight for potential temperature at top of viscous sublayer
     * `real(kind=kind_phys)`: units = 1
 * `weight_for_specific_humidity_at_top_of_viscous_sublayer`: Weight for specific humidity at top of viscous sublayer
     * `real(kind=kind_phys)`: units = 1
@@ -1926,7 +1926,7 @@ Variables related to the compute environment
 ## GFS_typedefs_GFS_coupling_type
 * `cellular_automata_global_pattern_from_coupled_process`: Cellular automata global pattern from coupled process
     * `real(kind=kind_phys)`: units = 1
-* `convective_cloud_condesate_after_rainout`: Convective cloud condesate after rainout
+* `convective_cloud_condensate_after_rainout`: Convective cloud condensate after rainout
     * `real(kind=kind_phys)`: units = kg kg-1
 * `cumulative_surface_downwelling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface downwelling diffuse nir shortwave flux for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
@@ -1940,7 +1940,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = J m-2
 * `cumulative_surface_downwelling_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface downwelling shortwave flux for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
-* `cumulative_surface_net_downwellling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwellling diffuse nir shortwave flux for coupling multiplied by timestep
+* `cumulative_surface_net_downwelling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwelling diffuse nir shortwave flux for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
 * `cumulative_surface_net_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep`: Cumulative surface net downwelling diffuse uv and vis shortwave flux for coupling multiplied by timestep
     * `real(kind=kind_phys)`: units = J m-2
