@@ -302,7 +302,7 @@ Suffixes
 | due_to_diffusion
 | due_to_dry_convection
 | due_to_gwd
-| due_to_convective_
+| due_to_convective_gwd
 | due_to_orographic_gwd
 | due_to_gyre
 | due_to_isostatic_adjustment
