@@ -564,7 +564,7 @@
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="number_of_openmp_threads"
-                   long_name="Total number of thread blocks OpenMP (shared-memory) parallel threads.">
+                   long_name="Total number of OpenMP (shared-memory) parallel threads.">
       <type units="count">integer</type>
     </standard_name>
   </section>
@@ -1426,14 +1426,16 @@
                      long_name="Number of constituents managed by CCPP Framework">
         <type kind="" units="count">integer</type>
       </standard_name>
-      <standard_name name="ccpp_block_count">
+      <standard_name name="ccpp_block_count"
+                     long_name="CCPP block count">
          <type kind="" units="count">integer</type>
       </standard_name>
-      <standard_name name="ccpp_block_sizes">
+      <standard_name name="ccpp_block_sizes"
+                     long_name="CCPP block sizes">
          <type kind="" units="count">integer</type>
       </standard_name>
       <standard_name name="ccpp_thread_number"
-                     long_name="Number of current thread block. This variable may only be used during CCPP run phase">
+                     long_name="Number of current OpenMP thread. This variable may only be used during CCPP run phase">
         <type units="index">integer</type>
       </standard_name> 
     </section>

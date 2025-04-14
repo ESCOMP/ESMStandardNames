@@ -302,7 +302,7 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `integer`: units = index
 * `vertical_index_at_top_interface`: Vertical index at top interface
     * `integer`: units = index
-* `number_of_openmp_threads`: Total number of thread blocks OpenMP (shared-memory) parallel threads.
+* `number_of_openmp_threads`: Total number of OpenMP (shared-memory) parallel threads.
     * `integer`: units = count
 ## constants
 * `avogadro_number`: Avogadro number
@@ -765,11 +765,11 @@ Optional CCPP framework-provided variables
     * `real(kind=kind_phys)`: units = none
 * `number_of_ccpp_constituents`: Number of constituents managed by CCPP Framework
     * `integer(kind=)`: units = count
-* `ccpp_block_count`: Ccpp block count
+* `ccpp_block_count`: CCPP block count
     * `integer(kind=)`: units = count
-* `ccpp_block_sizes`: Ccpp block sizes
+* `ccpp_block_sizes`: CCPP block sizes
     * `integer(kind=)`: units = count
-* `ccpp_thread_number`: Number of current thread block. This variable may only be used during CCPP run phase
+* `ccpp_thread_number`: Number of current OpenMP thread. This variable may only be used during CCPP run phase
     * `integer`: units = index
 ## system variables
 Variables related to the compute environment
