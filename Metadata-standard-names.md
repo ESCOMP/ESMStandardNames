@@ -160,25 +160,25 @@ full list of standard names for further details.
     * `real`: units = m2 s-1
 * `cloud_area_fraction`: Fraction of an area (usually within a grid cell) containing cloud
     * `real`: units = fraction
-* `cloud_condensate`: cloud_condensate
-* `cloud_ice`: Cloud particles consisting of solid water (ice)
+* `cloud_condensate`: Amount of condensed water in cloud
+* `cloud_ice_water`: Cloud particles consisting of solid water (ice)
 * `cloud_liquid_water`: Cloud particles consisting of liquid water
 * `diffuse_nir_albedo`: Albedo of diffuse incident near-infrared radiation
     * `real`: units = 1
 * `diffuse_nir_shortwave_flux`: Flux of diffuse near-infrared and shortwave radiation
-    * `real`: units = 1
+    * `real`: units = W m-2
 * `diffuse_shortwave_albedo`: Albedo of diffuse incident shortwave radiation
     * `real`: units = 1
 * `diffuse_uv_and_vis_shortwave_flux`: Flux of diffuse ultraviolet and visible shortwave radiation
-    * `real`: units = 1
+    * `real`: units = W m-2
 * `diffuse_vis_albedo`: Albedo of diffuse incident visible radiation
     * `real`: units = 1
 * `direct_nir_albedo`: Albedo of diffuse incident near-infrared radiation
     * `real`: units = 1
 * `direct_nir_shortwave_flux`: Flux of direct near-infrared shortwave radiation
-    * `real`: units = J m-2
+    * `real`: units = W m-2
 * `direct_uv_and_vis_shortwave_flux`: Flux of direct ultraviolet and visible shortwave radiation
-    * `real`: units = J m-2
+    * `real`: units = W m-2
 * `direct_vis_albedo`: Albedo of direct incident visible light
     * `real`: units = 1
 * `divergence`: Divergence
@@ -202,7 +202,7 @@ full list of standard names for further details.
 * `graupel`: Precipitation consisting of heavily rimed ice crystals
 * `gravitational_acceleration`: Gravitational acceleration
     * `real`: units = m s-2
-* `hail`: Precipitation consisting of large pieces of ice formed in convective clouds
+* `hail`: Precipitation formed by accretion of supercooled water droplets into a solid piece of ice
 * `hygroscopic_aerosols`: Aerosols with the property of accumulating liquid water
 * `ice`: Ice
 * `latent_heat_flux`: Latent heat flux across a unit surface
@@ -216,7 +216,6 @@ full list of standard names for further details.
 * `pressure`: Pressure
     * `real`: units = Pa
 * `rain`: Precipitation of liquid water from clouds
-* `rain_water`: Liquid water precipitation
 * `random_number`: Random number
     * `real`: units = 1
 * `random_number_seed`: Random number seed
@@ -444,31 +443,31 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg m-2
 * `vertically_integrated_total_water_of_current_state`: Vertically integrated total water of current state
     * `real(kind=kind_phys)`: units = kg m-2
-* `tendency_of_dry_air_enthalpy_at_constant_pressure`: Tendency of dry air enthalpy at constant pressure; d/dt(Cp*T)
+* `tendency_of_dry_air_enthalpy_at_constant_pressure`: Change of dry air enthalpy per unit time at constant pressure; d/dt(Cp*T)
     * `real(kind=kind_phys)`: units = J kg-1 s-1
-* `tendency_of_air_temperature`: Change in temperature from a parameterization
+* `tendency_of_air_temperature`: Change in temperature per unit time
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_air_temperature_due_to_model_physics`: Total change in air temperature from a physics suite
+* `tendency_of_air_temperature_due_to_model_physics`: Change in air temperature due to model physics per unit time
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_potential_temperature_of_air`: Change in potential temperature from a parameterization
+* `tendency_of_potential_temperature_of_air`: Change in potential temperature per unit time
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_potential_temperature_of_air_due_to_model_physics`: Tendency of potential temperature of air due to model physics
+* `tendency_of_potential_temperature_of_air_due_to_model_physics`: Change of potential temperature of air due to model physics per unit time
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_x_wind`: Change in x wind from a parameterization
+* `tendency_of_x_wind`: Change in x wind per unit time
     * `real(kind=kind_phys)`: units = m s-2
-* `tendency_of_x_wind_due_to_model_physics`: Tendency of x wind due to model physics
+* `tendency_of_x_wind_due_to_model_physics`: Change in x wind due to model physics per unit time
     * `real(kind=kind_phys)`: units = m s-2
-* `tendency_of_y_wind`: Change in y wind from a parameterization
+* `tendency_of_y_wind`: Change in y wind per unit time
     * `real(kind=kind_phys)`: units = m s-2
-* `tendency_of_y_wind_due_to_model_physics`: Tendency of y wind due to model physics
+* `tendency_of_y_wind_due_to_model_physics`: Change in y wind due to model physics per unit time
     * `real(kind=kind_phys)`: units = m s-2
-* `tendency_of_eastward_wind`: Change in eastward wind from a parameterization
+* `tendency_of_eastward_wind`: Change in eastward wind per unit time
     * `real(kind=kind_phys)`: units = m s-2
-* `tendency_of_eastward_wind_due_to_model_physics`: Total change in eastward wind from a physics suite
+* `tendency_of_eastward_wind_due_to_model_physics`: Change in eastward wind due to model physics per unit time
     * `real(kind=kind_phys)`: units = m s-2
-* `tendency_of_northward_wind`: Change in northward wind from a parameterization
+* `tendency_of_northward_wind`: Change in northward wind per unit time
     * `real(kind=kind_phys)`: units = m s-2
-* `tendency_of_northward_wind_due_to_model_physics`: Total change in northward wind from a physics suite
+* `tendency_of_northward_wind_due_to_model_physics`: Change in northward wind due to model physics per unit time
     * `real(kind=kind_phys)`: units = m s-2
 * `horizontal_streamfunction_of_air`: Scalar function describing the streamlines of the horizontal wind
     * `real(kind=kind_phys)`: units = m2 s-1
@@ -1164,9 +1163,9 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_simplified_arakawa_schubert_shallow_convection`: Do simplified arakawa schubert shallow convection
     * `logical(kind=)`: units = flag
-* `do_shoc`: Do Simplified Higher-order Closure stochastic physics scheme
+* `do_shoc`: Do Simplified Higher-Order Closure stochastic physics scheme
     * `logical(kind=)`: units = flag
-* `do_shoc_after_convection`: Do Simplified Higher-order Closure stochastic physics scheme after convection parameterization
+* `do_shoc_after_convection`: Do Simplified Higher-Order Closure stochastic physics scheme after convection parameterization
     * `logical(kind=)`: units = flag
 * `control_for_land_surface_scheme_soil_and_snow_temperature_time_integration`: Control for land surface scheme soil and snow temperature time integration
     * `integer(kind=)`: units = 1
@@ -1214,7 +1213,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_ugwp_version_1_orographic_gwd`: Do ugwp version 1 orographic gwd
     * `logical(kind=)`: units = flag
-* `do_shoc_cloud_area_fraction_for_radiation`: Do Simplified Higher-order Closure stochastic physics scheme cloud area fraction for radiation
+* `do_shoc_cloud_area_fraction_for_radiation`: Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation
     * `logical(kind=)`: units = flag
 * `control_for_surface_layer_scheme_skin_temperature_update`: Control for surface layer scheme skin temperature update
     * `integer(kind=)`: units = 1
@@ -1446,13 +1445,13 @@ Variables related to the compute environment
     * `character(kind=len=16)`: units = none
 * `min_large_ice_fraction`: Minimum large ice fraction
     * `real(kind=kind_phys)`: units = fraction
-* `min_pressure_in_rrtmgp`: Min pressure in rrtmgp
+* `min_pressure_in_rrtmgp`: Minimum pressure in RRTMGP
     * `real(kind=kind_phys)`: units = Pa
 * `min_grid_scale`: Min grid scale
     * `real(kind=kind_phys)`: units = m2 rad-2
 * `min_soil_moisture_content_for_land_surface_model`: Minimum soil moisture content for land surface model
     * `real(kind=kind_phys)`: units = m
-* `min_temperature_in_rrtmgp`: Min temperature in rrtmgp
+* `min_temperature_in_rrtmgp`: Minimum temperature in RRTMGP
     * `real(kind=kind_phys)`: units = K
 * `control_for_total_water_mixing_in_mynn_pbl_scheme`: Control for total water mixing in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme
     * `integer(kind=)`: units = 1
@@ -1701,7 +1700,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
 * `process_split_cumulative_tendency_of_tracers`: Process split cumulative tendency of tracers
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
-* `process_split_cumulative_tendency_of_tke`: Process-split cumulative tendency of turbulent kinetic energy
+* `process_split_cumulative_tendency_of_tke`: Process-split cumulative change in turbulent kinetic energy per unit time
     * `real(kind=kind_phys)`: units = J s-1
 * `process_split_cumulative_tendency_of_mass_number_concentration_of_hygroscopic_aerosols`: Process split cumulative tendency of mass number concentration of hygroscopic aerosols
     * `real(kind=kind_phys)`: units = kg-1 s-1
@@ -1726,7 +1725,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K
 * `atmosphere_boundary_layer_thickness`: Atmosphere boundary layer thickness
     * `real(kind=kind_phys)`: units = m
-* `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-order Closure stochastic physics scheme
+* `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme
     * `real(kind=kind_phys)`: units = m2 s-1
 * `atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type`: Atmosphere updraft convective mass flux at cloud base by cloud type
     * `real(kind=kind_phys)`: units = kg m-2 s-1
@@ -1796,7 +1795,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg kg-1
 * `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `subgrid_scale_cloud_fraction_from_shoc`: Subgrid-scale cloud fraction from Simplified Higher-order Closure stochastic physics scheme
+* `subgrid_scale_cloud_fraction_from_shoc`: Subgrid-scale cloud fraction from Simplified Higher-Order Closure stochastic physics scheme
     * `real(kind=kind_phys)`: units = fraction
 * `air_pressure_at_surface_on_previous_timestep`: Air pressure at surface on previous timestep
     * `real(kind=kind_phys)`: units = Pa
@@ -1814,9 +1813,9 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K2
 * `tendency_of_air_temperature_due_to_nonphysics`: Tendency of air temperature due to nonphysics
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_air_temperature_to_withhold_from_sppt`: Tendency of air temperature to withhold from stochastically perturbed physics tendencies
+* `tendency_of_air_temperature_to_withhold_from_sppt`: Change of air temperature to withhold from stochastically perturbed physics tendencies per unit time
     * `real(kind=kind_phys)`: units = K s-1
-* `tendency_of_activated_cloud_condensation_nuclei_from_climatology`: Tendency of activated cloud condensation nuclei from climatology
+* `tendency_of_activated_cloud_condensation_nuclei_from_climatology`: Change of activated cloud condensation nuclei from climatology per unit time
     * `real(kind=kind_phys)`: units = kg-1 s-1
 * `lwe_thickness_of_rain_amount_on_dynamics_timestep_for_coupling`: Liquid water equivalent thickness of rain amount on dynamics timestep for coupling
     * `real(kind=kind_phys)`: units = m
@@ -2363,7 +2362,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg-1
 * `ozone_mixing_ratio_wrt_moist_air`: Ozone mass mixing ratio with respect to moist air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `mass_number_concentration_of_rain_water_in_air`: Mass number concentration of rain water in air
+* `mass_number_concentration_of_rain_in_air`: Mass number concentration of rain in air
     * `real(kind=kind_phys)`: units = kg-1
 * `mass_number_concentration_of_snow_in_air`: Mass number concentration of snow in air
     * `real(kind=kind_phys)`: units = kg-1

@@ -278,9 +278,9 @@
         <type units="fraction">real</type>
       </standard_name>
       <standard_name name="cloud_condensate"
-                     long_name="cloud_condensate">
+                     long_name="Amount of condensed water in cloud">
       </standard_name>
-      <standard_name name="cloud_ice"
+      <standard_name name="cloud_ice_water"
                      long_name="Cloud particles consisting of solid water (ice)">
       </standard_name>
       <standard_name name="cloud_liquid_water"
@@ -292,7 +292,7 @@
       </standard_name>
       <standard_name name="diffuse_nir_shortwave_flux"
                      long_name="Flux of diffuse near-infrared and shortwave radiation">
-        <type units="1">real</type>
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="diffuse_shortwave_albedo"
                      long_name="Albedo of diffuse incident shortwave radiation">
@@ -300,7 +300,7 @@
       </standard_name>
       <standard_name name="diffuse_uv_and_vis_shortwave_flux"
                      long_name="Flux of diffuse ultraviolet and visible shortwave radiation">
-        <type units="1">real</type>
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="diffuse_vis_albedo"
                      long_name="Albedo of diffuse incident visible radiation">
@@ -312,11 +312,11 @@
       </standard_name>
       <standard_name name="direct_nir_shortwave_flux"
                      long_name="Flux of direct near-infrared shortwave radiation">
-        <type units="J m-2">real</type>
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="direct_uv_and_vis_shortwave_flux"
                      long_name="Flux of direct ultraviolet and visible shortwave radiation">
-        <type units="J m-2">real</type>
+        <type units="W m-2">real</type>
       </standard_name>
       <standard_name name="direct_vis_albedo"
                      long_name="Albedo of direct incident visible light">
@@ -362,7 +362,7 @@
         <type units="m s-2">real</type>
       </standard_name>
       <standard_name name="hail"
-                     long_name="Precipitation consisting of large pieces of ice formed in convective clouds">
+                     long_name="Precipitation formed by accretion of supercooled water droplets into a solid piece of ice">
       </standard_name>
       <standard_name name="hygroscopic_aerosols"
                      long_name="Aerosols with the property of accumulating liquid water">
@@ -391,9 +391,6 @@
       </standard_name>
       <standard_name name="rain"
                      long_name="Precipitation of liquid water from clouds">
-      </standard_name>
-      <standard_name name="rain_water"
-                     long_name="Liquid water precipitation">
       </standard_name>
       <standard_name name="random_number">
         <type units="1">real</type>
@@ -811,52 +808,55 @@
       <type kind="kind_phys" units="kg m-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_dry_air_enthalpy_at_constant_pressure"
-                   long_name="Tendency of dry air enthalpy at constant pressure; d/dt(Cp*T)">
+                   long_name="Change of dry air enthalpy per unit time at constant pressure; d/dt(Cp*T)">
       <type kind="kind_phys" units="J kg-1 s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_air_temperature"
-                   long_name="Change in temperature from a parameterization">
+                   long_name="Change in temperature per unit time">
       <type kind="kind_phys" units="K s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_air_temperature_due_to_model_physics"
-                   long_name="Total change in air temperature from a physics suite">
+                   long_name="Change in air temperature due to model physics per unit time">
       <type kind="kind_phys" units="K s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_potential_temperature_of_air"
-                   long_name="Change in potential temperature from a parameterization">
+                   long_name="Change in potential temperature per unit time">
       <type kind="kind_phys" units="K s-1">real</type>
     </standard_name>
-    <standard_name name="tendency_of_potential_temperature_of_air_due_to_model_physics">
+    <standard_name name="tendency_of_potential_temperature_of_air_due_to_model_physics"
+                   long_name="Change of potential temperature of air due to model physics per unit time">
       <type kind="kind_phys" units="K s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_x_wind"
-                   long_name="Change in x wind from a parameterization">
+                   long_name="Change in x wind per unit time">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
-    <standard_name name="tendency_of_x_wind_due_to_model_physics">
+    <standard_name name="tendency_of_x_wind_due_to_model_physics"
+                   long_name="Change in x wind due to model physics per unit time">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_y_wind"
-                   long_name="Change in y wind from a parameterization">
+                   long_name="Change in y wind per unit time">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
-    <standard_name name="tendency_of_y_wind_due_to_model_physics">
+    <standard_name name="tendency_of_y_wind_due_to_model_physics"
+                   long_name="Change in y wind due to model physics per unit time">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_eastward_wind"
-                   long_name="Change in eastward wind from a parameterization">
+                   long_name="Change in eastward wind per unit time">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_eastward_wind_due_to_model_physics"
-                   long_name="Total change in eastward wind from a physics suite">
+                   long_name="Change in eastward wind due to model physics per unit time">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_northward_wind"
-                   long_name="Change in northward wind from a parameterization">
+                   long_name="Change in northward wind per unit time">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_northward_wind_due_to_model_physics"
-                   long_name="Total change in northward wind from a physics suite">
+                   long_name="Change in northward wind due to model physics per unit time">
       <type kind="kind_phys" units="m s-2">real</type>
     </standard_name>
     <standard_name name="horizontal_streamfunction_of_air"
@@ -2061,11 +2061,11 @@
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_shoc"
-                   long_name="Do Simplified Higher-order Closure stochastic physics scheme">
+                   long_name="Do Simplified Higher-Order Closure stochastic physics scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_shoc_after_convection"
-                   long_name="Do Simplified Higher-order Closure stochastic physics scheme after convection parameterization">
+                   long_name="Do Simplified Higher-Order Closure stochastic physics scheme after convection parameterization">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_land_surface_scheme_soil_and_snow_temperature_time_integration">
@@ -2140,7 +2140,7 @@
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_shoc_cloud_area_fraction_for_radiation"
-                   long_name="Do Simplified Higher-order Closure stochastic physics scheme cloud area fraction for radiation">
+                   long_name="Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_surface_layer_scheme_skin_temperature_update">
@@ -2511,7 +2511,8 @@
                    long_name="Minimum large ice fraction">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
-      <standard_name name="min_pressure_in_rrtmgp">
+      <standard_name name="min_pressure_in_rrtmgp"
+                   long_name="Minimum pressure in RRTMGP">
          <type kind="kind_phys" units="Pa">real</type>
       </standard_name>
       <standard_name name="min_grid_scale">
@@ -2521,7 +2522,8 @@
                    long_name="Minimum soil moisture content for land surface model">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="min_temperature_in_rrtmgp">
+      <standard_name name="min_temperature_in_rrtmgp"
+                   long_name="Minimum temperature in RRTMGP">
          <type kind="kind_phys" units="K">real</type>
       </standard_name>
       <standard_name name="control_for_total_water_mixing_in_mynn_pbl_scheme"
@@ -2914,7 +2916,7 @@
          <type kind="kind_phys" units="kg kg-1 s-1">real</type>
       </standard_name>
       <standard_name name="process_split_cumulative_tendency_of_tke"
-                   long_name="Process-split cumulative tendency of turbulent kinetic energy">
+                   long_name="Process-split cumulative change in turbulent kinetic energy per unit time">
          <type kind="kind_phys" units="J s-1">real</type>
       </standard_name>
       <standard_name name="process_split_cumulative_tendency_of_mass_number_concentration_of_hygroscopic_aerosols">
@@ -2956,7 +2958,7 @@
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
       <standard_name name="atmosphere_heat_diffusivity_from_shoc"
-                   long_name="Atmospheric heat diffusivity from Simplified Higher-order Closure stochastic physics scheme">
+                   long_name="Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme">
          <type kind="kind_phys" units="m2 s-1">real</type>
       </standard_name>
       <standard_name name="atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type">
@@ -3073,7 +3075,7 @@
          <type kind="kind_phys" units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="subgrid_scale_cloud_fraction_from_shoc"
-                   long_name="Subgrid-scale cloud fraction from Simplified Higher-order Closure stochastic physics scheme">
+                   long_name="Subgrid-scale cloud fraction from Simplified Higher-Order Closure stochastic physics scheme">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
       <standard_name name="air_pressure_at_surface_on_previous_timestep">
@@ -3103,10 +3105,11 @@
          <type kind="kind_phys" units="K s-1">real</type>
       </standard_name>
       <standard_name name="tendency_of_air_temperature_to_withhold_from_sppt"
-                   long_name="Tendency of air temperature to withhold from stochastically perturbed physics tendencies">
+                   long_name="Change of air temperature to withhold from stochastically perturbed physics tendencies per unit time">
          <type kind="kind_phys" units="K s-1">real</type>
       </standard_name>
-      <standard_name name="tendency_of_activated_cloud_condensation_nuclei_from_climatology">
+      <standard_name name="tendency_of_activated_cloud_condensation_nuclei_from_climatology"
+                   long_name="Change of activated cloud condensation nuclei from climatology per unit time">
          <type kind="kind_phys" units="kg-1 s-1">real</type>
       </standard_name>
       <standard_name name="lwe_thickness_of_rain_amount_on_dynamics_timestep_for_coupling"
@@ -4027,7 +4030,7 @@
                    long_name="Ozone mass mixing ratio with respect to moist air">
          <type kind="kind_phys" units="kg kg-1">real</type>
       </standard_name>
-      <standard_name name="mass_number_concentration_of_rain_water_in_air">
+      <standard_name name="mass_number_concentration_of_rain_in_air">
          <type kind="kind_phys" units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_snow_in_air">

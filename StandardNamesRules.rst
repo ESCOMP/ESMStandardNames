@@ -654,7 +654,7 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | shoc                | simplified higher-order closure stochastic scheme       |
 +---------------------+---------------------------------------------------------+
-| shum                | Stochastic HUMidity stochastic physics option           |
+| shum                | stochastically perturbed boundary-layer humidity scheme |
 +---------------------+---------------------------------------------------------+
 | sppt                | stochastically perturbed physics tendencies             |
 +---------------------+---------------------------------------------------------+
