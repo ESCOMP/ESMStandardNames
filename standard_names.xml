@@ -2243,7 +2243,7 @@
          <type kind="" units="1">integer</type>
       </standard_name>
       <standard_name name="control_for_drag_suite_gwd"
-                   long_name="Control for drag suite gravity wave drag">
+                   long_name="Control for drag option in gravity wave drag scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
       <standard_name name="horizontal_loop_extent">

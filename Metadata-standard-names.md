@@ -259,7 +259,7 @@ full list of standard names for further details.
     * `real`: units = K
 * `water_vapor`: Water in the gaseous phase
 * `wind`: Movement of air with a net displacement
-* `wind_stress`: Shear stress exerted by wind parallel to the water surface
+* `wind_stress`: Shear stress exerted by wind parallel to the surface
     * `real`: units = Pa
 * `wind_speed`: Speed of moving air
     * `real`: units = m s-1
@@ -694,9 +694,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_co_due_to_anthropogenic`: Carbon monoxide emissions from anthropogenic sources, total
     * `real(kind=kind_phys)`: units = kg m-2 s-1
-* `emissions_of_no_due_to_anthropogenic`: Nitric oxide emissions from anthropogenic sources, total
+* `emissions_of_no_due_to_anthropogenic_sources`: Nitric oxide emissions from anthropogenic sources, total
     * `real(kind=kind_phys)`: units = kg m-2 s-1
-* `emissions_of_hcho_due_to_anthropogenic`: Formaldehyde emissions from anthropogenic sources, total
+* `emissions_of_hcho_due_to_anthropogenic_sources`: Formaldehyde emissions from anthropogenic sources, total
     * `real(kind=kind_phys)`: units = kg m-2 s-1
 * `emissions_of_co_due_to_anthropogenic_agriculture`: Carbon monoxide emissions from anthropogenic non-combustion agricultural sector
     * `real(kind=kind_phys)`: units = kg m-2 s-1
@@ -755,7 +755,7 @@ Required CCPP framework-provided variables
     * `integer(kind=)`: units = 1
 ### optional framework-provided variables
 Optional CCPP framework-provided variables
-* `scheme_name`: CCPP physics scheme name
+* `ccpp_scheme_name`: CCPP physics scheme name
     * `character(kind=len=64)`: units = none
 * `ccpp_constituent_properties`: CCPP Constituent Properties
     * `ccpp_constituent_prop_ptr_t(kind=)`: units = none
@@ -1280,7 +1280,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K
 * `control_for_gravitational_settling_of_cloud_droplets`: Control for gravitational settling of cloud droplets
     * `integer(kind=)`: units = 1
-* `control_for_drag_suite_gwd`: Control for drag suite gravity wave drag
+* `control_for_drag_suite_gwd`: Control for drag option in gravity wave drag scheme
     * `integer(kind=)`: units = 1
 * `horizontal_loop_extent`: Horizontal loop extent
     * `integer(kind=)`: units = count
@@ -1356,7 +1356,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = index
 * `index_of_enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convectionin_in_xy_dimensioned_restart_array`: Index of enhancement to wind speed at surface adjacent layer due to convectionin in xy dimensioned restart array
     * `integer(kind=)`: units = index
-* `index_of_tke_in_tracer_concentration_array`: Index of tke in tracer concentration array
+* `index_of_tke_in_tracer_concentration_array`: Index of turbulent kinetic energy in tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_hygroscopic_aerosols_in_tracer_concentration_array`: Index of mass number concentration of hygroscopic aerosols in tracer concentration array
     * `integer(kind=)`: units = index
@@ -1714,7 +1714,7 @@ Variables related to the compute environment
 * `vertical_interface_dimension_interstitial`: Vertical interface dimension interstitial
     * `integer(kind=)`: units = count
 ## GFS_typedefs_GFS_tbd_type
-* `absolute_momentum_flux_due_to_nonorographic_gwd`: Absolute momentum flux due to nonorographic gwd
+* `absolute_momentum_flux_due_to_nonorographic_gwd`: Absolute momentum flux due to nonorographic gravity wave drag
     * `real(kind=kind_phys)`: units = various
 * `cumulative_lwe_thickness_of_convective_precipitation_amount_between_sw_radiation_calls`: Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls
     * `real(kind=kind_phys)`: units = m
@@ -1822,7 +1822,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m
 * `lwe_thickness_of_snowfall_amount_on_dynamics_timestep_for_coupling`: Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling
     * `real(kind=kind_phys)`: units = m
-* `nonadvected_tke_multiplied_by_2`: Nonadvected tke multiplied by 2
+* `nonadvected_tke_multiplied_by_2`: Non-advected turbulent kinetic energy multiplied by 2
     * `real(kind=kind_phys)`: units = m2 s-2
 * `x_wind_at_top_of_viscous_sublayer`: X wind at top of viscous sublayer
     * `real(kind=kind_phys)`: units = m s-1
