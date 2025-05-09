@@ -485,7 +485,7 @@
                      long_name="Movement of air with a net displacement">
       </standard_name>
       <standard_name name="wind_stress"
-                     long_name="Shear stress exerted by wind parallel to the water surface">
+                     long_name="Shear stress exerted by wind parallel to the surface">
       <type units="Pa">real</type>
       </standard_name>
       <standard_name name="wind_speed"
@@ -1287,11 +1287,11 @@
                    long_name="Carbon monoxide emissions from anthropogenic sources, total">
       <type kind="kind_phys" units="kg m-2 s-1">real</type>
     </standard_name>
-    <standard_name name="emissions_of_no_due_to_anthropogenic"
+    <standard_name name="emissions_of_no_due_to_anthropogenic_sources"
                    long_name="Nitric oxide emissions from anthropogenic sources, total">
       <type kind="kind_phys" units="kg m-2 s-1">real</type>
     </standard_name>
-    <standard_name name="emissions_of_hcho_due_to_anthropogenic"
+    <standard_name name="emissions_of_hcho_due_to_anthropogenic_sources"
                    long_name="Formaldehyde emissions from anthropogenic sources, total">
       <type kind="kind_phys" units="kg m-2 s-1">real</type>
     </standard_name>
@@ -1406,7 +1406,7 @@
     </section>
     <section name="optional framework-provided variables"
              comment="Optional CCPP framework-provided variables">
-      <standard_name name="scheme_name"
+      <standard_name name="ccpp_scheme_name"
                      long_name="CCPP physics scheme name">
         <type kind="len=64" units="none">character</type>
       </standard_name>
@@ -2366,7 +2366,7 @@
       <standard_name name="index_of_enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convectionin_in_xy_dimensioned_restart_array">
          <type kind="" units="index">integer</type>
       </standard_name>
-      <standard_name name="index_of_tke_in_tracer_concentration_array">
+      <standard_name name="index_of_tke_in_tracer_concentration_array"
                    long_name="Index of turbulent kinetic energy in tracer concentration array">
          <type kind="" units="index">integer</type>
       </standard_name>
@@ -2935,7 +2935,7 @@
       </standard_name>
    </section>
    <section name="GFS_typedefs_GFS_tbd_type">
-      <standard_name name="absolute_momentum_flux_due_to_nonorographic_gwd">
+      <standard_name name="absolute_momentum_flux_due_to_nonorographic_gwd"
                    long_name="Absolute momentum flux due to nonorographic gravity wave drag">
          <type kind="kind_phys" units="various">real</type>
       </standard_name>
@@ -3117,7 +3117,7 @@
                    long_name="Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="nonadvected_tke_multiplied_by_2">
+      <standard_name name="nonadvected_tke_multiplied_by_2"
                    long_name="Non-advected turbulent kinetic energy multiplied by 2">
          <type kind="kind_phys" units="m2 s-2">real</type>
       </standard_name>
