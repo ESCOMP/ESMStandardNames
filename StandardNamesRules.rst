@@ -4,7 +4,7 @@
    <br />
 
 *******************
-Earth System Modeling Standard Names
+Earth System Modeling (ESM) Standard Names
 *******************
 
 This document contains information about the rules used to create Standard Names
@@ -650,7 +650,7 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | pdf                 | probability density function                            |
 +---------------------+---------------------------------------------------------+
-| skeb                | Stochastic Kinetic Energy Backscatter                   |
+| skeb                | stochastic kinetic energy backscatter                   |
 +---------------------+---------------------------------------------------------+
 | shoc                | simplified higher-order closure stochastic scheme       |
 +---------------------+---------------------------------------------------------+
