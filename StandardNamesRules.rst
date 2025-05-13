@@ -4,13 +4,13 @@
    <br />
 
 *******************
-CCPP Standard Names
+Earth System Modeling (ESM) Standard Names
 *******************
 
 This document contains information about the rules used to create Standard Names
-for use with the Common Community Physics Package (CCPP). It describes the
+for use with Earth System Models. It describes the
 
-* CCPP Standard Name rules
+* ESM Standard Name rules
 * Standard Name qualifiers
 * Other common standard name components
 * Acronyms, abbreviations, and aliases
@@ -18,7 +18,7 @@ for use with the Common Community Physics Package (CCPP). It describes the
 
 .. _Rules
 
-CCPP Standard Name Rules
+ESM Standard Name Rules
 ========================
 
 #. Standard names should be identical to those from the latest version
@@ -144,8 +144,9 @@ CCPP Standard Name Rules
    **Preferred:** surface_upward_specific_humidity_flux
 
 #. Spell out acronyms unless they are obvious to a vast majority of
-   scientists/developers who may come across them. A
-   list of currently-used acronyms and aliases is below.
+   scientists/developers who may come across them. A list of currently-used
+   aliases is below. Whenever such an alias exist, use the alias in the
+   standard name and the full term in the long name.
 
 #. For control-oriented variables, if the variable is a Fortran logical,
    use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
@@ -158,14 +159,39 @@ CCPP Standard Name Rules
 
 #. Standard names are case insensitive, i.e. example = EXAMPLE.
 
+.. _tech_specs:
+
+Technical specifications
+========================
+
+#. The standard name dictionary consists of a number of individual XML elements:
+   one "standard_name" element for each entry. A standard name entry consist of a "name" attribute
+   that represents the variable name, and (optionally) a "long_name" attribute that gives
+   a detailed description of what that name represents. The standard_name XML entry also contains a nested
+   "type" entry, indicating the data type that a standard_name should represent, and as attributes the
+   physical units of that variable quantity (see the `section on Units <#units>`_) and the FORTRAN "kind"
+   of the variable quantity. For example, the element
+   for the variable name ``exner_function`` may look similar to this:
+
+    <standard_name name="exner_function"
+                   long_name="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
+      <type kind="kind_phys" units="1">real</type>
+    </standard_name>
+
+   This XML element indicates that the variable ``exner_function`` represents the quantity described by the ``long_name``
+   attribute. It is a real variable of "kind_phys" kind, and units of "1", meaning it is non-dimensional and
+   does not correspond to a more descriptive non-dimensional type such as "fraction"; see the `section on Units <#units>`_
+   for more details
+
+   These standard_name elements can optionally be separated by "section" elements. These are parsed out into human-readable sections in the generated markdown file (``Metadata-standard-names.md``).
+
+#. Only alphanumeric, punctuation, and whitespace characters from the ASCII character set may be used in the standard_names dictionary.
+   The "name" attributes of ``standard_name`` entries (i.e. the standard names themselves) are further restricted to the character set of capital/lowercase letters, numerals, and ``_`` (underscore).
+
 .. _qualifiers:
 
 Qualifiers
 ========================
-
-black = existing CF qualifier
-
-**bold** = **proposed new qualifier**
 
 ``this font`` = words or phrases to be substituted
 
@@ -196,18 +222,18 @@ Suffixes
 | at_top_of_atmosphere_boundary_layer
 | at_top_of_atmosphere_model
 | at_top_of_dry_convection
-| **at_interfaces**
-| **at_toa**
-| **at_tropopause**
-| **at_surface**
-| **at_surface_adjacent_layer**
-| **at_2m**
-| **at_10m**
-| **at_bottom_interface**
-| **at_pressure_levels**
-| **at_top_of_viscous_sublayer**
-| **at_various_atmosphere_layers**
-| **extended_up_by_1**
+| at_interfaces
+| at_toa
+| at_tropopause
+| at_surface
+| at_surface_adjacent_layer
+| at_2m
+| at_10m
+| at_bottom_interface
+| at_pressure_levels
+| at_top_of_viscous_sublayer
+| at_various_atmosphere_layers
+| extended_up_by_1
 
 
 Component
@@ -255,13 +281,13 @@ Suffixes
 | in_troposphere
 | in_atmosphere
 | in_surface_snow
-| **in_diurnal_thermocline**
-| **in_canopy**
-| **in_lake**
-| **in_aquifer**
-| **in_aquifer_and_saturated_soil**
-| **in_convective_tower**
-| **between_soil_bottom_and_water_table**
+| in_diurnal_thermocline
+| in_canopy
+| in_lake
+| in_aquifer
+| in_aquifer_and_saturated_soil
+| in_convective_tower
+| between_soil_bottom_and_water_table
 
 Process
 -------
@@ -275,7 +301,9 @@ Suffixes
 | due_to_diabatic_processes
 | due_to_diffusion
 | due_to_dry_convection
-| due_to_gravity_wave_drag
+| due_to_gwd
+| due_to_convective_gwd
+| due_to_orographic_gwd
 | due_to_gyre
 | due_to_isostatic_adjustment
 | due_to_large_scale_precipitation
@@ -283,15 +311,15 @@ Suffixes
 | due_to_moist_convection
 | due_to_overturning
 | due_to_shallow_convection
+| due_to_pbl_processes
 | due_to_shortwave_heating
 | due_to_thermodynamics
 | due_to_background
-| **due_to_subgrid_scale_vertical_mixing**
-| **due_to_convective_microphysics**
-| **due_to_model_physics**
-| **due_to_convective_gravity_wave_drag**
-| **due_to_shoc**
-| **due_to_dynamics**
+| due_to_subgrid_scale_vertical_mixing
+| due_to_convective_microphysics
+| due_to_model_physics
+| due_to_shoc
+| due_to_dynamics
 
 Condition
 ---------
@@ -302,15 +330,15 @@ Suffixes
 | assuming_clear_sky
 | assuming_deep_snow
 | assuming_no_snow
-| **over_land**
-| **over_ocean**
-| **over_ice**
-| **for_momentum**
-| **for_heat**
-| **for_moisture**
-| **for_heat_and_moisture**
-| **assuming_shallow**
-| **assuming_deep**
+| over_land
+| over_ocean
+| over_ice
+| for_momentum
+| for_heat
+| for_moisture
+| for_heat_and_moisture
+| assuming_shallow
+| assuming_deep
 
 Time
 ----
@@ -318,14 +346,14 @@ Time
 Suffixes
 ^^^^^^^^
 
-| **of_new_state**
-| **on_physics_timestep**
-| **on_dynamics_timestep**
+| of_new_state
+| on_physics_timestep
+| on_dynamics_timestep
 
-| **on_radiation_timestep**
-| **on_previous_timestep**
-| ``N`` **_timesteps_back**
-| **since_** ``T``
+| on_radiation_timestep
+| on_previous_timestep
+| ``N`` _timesteps_back
+| since_ ``T``
 
 Computational
 -------------
@@ -333,51 +361,51 @@ Computational
 Prefixes
 ^^^^^^^^
 
-| **lower_bound_of**
-| **upper_bound_of**
-| **unfiltered**
-| **nonnegative**
-| **flag_for**
-| **control_for**
-| **number_of**
-| **index_of**
-| **vertical_index_at**
-| **vertical_dimension_of**
-| **cumulative**
-| **iounit_of**
-| **filename_of**
-| **frequency_of**
-| **period_of**
-| **XYZ_dimensioned**
-| **tendency_of** ``X``
-| **generic_tendency**
-| **one_way_coupling_of** ``_X`` **_to** ``_Y``
-| **tunable_parameter[s]_for** ``_X``
-| **map_of**
+| lower_bound_of
+| upper_bound_of
+| unfiltered
+| nonnegative
+| flag_for
+| control_for
+| number_of
+| index_of
+| vertical_index_at
+| vertical_dimension_of
+| cumulative
+| iounit_of
+| filename_of
+| frequency_of
+| period_of
+| XYZ_dimensioned
+| tendency_of ``X``
+| generic_tendency
+| one_way_coupling_of ``_X`` _to ``_Y``
+| tunable_parameter[s]_for ``_X``
+| map_of
 
 
 Infixes
 ^^^^^^^
 
-| **directory_for** ``_X`` **_source_code**
-| **flag_for_reading** ``_X`` **_from_input**
+| directory_for ``_X`` _source_code
+| flag_for_reading ``_X`` _from_input
 
 Suffixes
 ^^^^^^^^
 
-| **for_coupling**
-| **for_chemistry_coupling**
-| **from_coupled_process**
-| **from_wave_model**
-| **collection_array**
-| **multiplied_by_timestep**
-| **for_current_mpi_rank**
-| **for_current_cubed_sphere_tile**
-| **plus_one**
-| **minus_one**
-| **for_radiation**
-| **for_deep_convection**
-| **for_microphysics**
+| for_coupling
+| for_chemistry_coupling
+| from_coupled_process
+| from_wave_model
+| collection_array
+| multiplied_by_timestep
+| for_current_mpi_rank
+| for_current_cubed_sphere_tile
+| plus_one
+| minus_one
+| for_radiation
+| for_deep_convection
+| for_microphysics
 
 Transformations
 ---------------
@@ -460,13 +488,13 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 | water                  | water in all phases if not otherwise qualified                                      |
 +------------------------+-------------------------------------------------------------------------------------+
-| **dimensionless**      | **lacking units**                                                                   |
+| dimensionless          | lacking units                                                                       |
 +------------------------+-------------------------------------------------------------------------------------+
-| **kinematic**          | **refers to surface fluxes in "native" units (K m s-1 and kg kg-1 m s-1)**          |
+| kinematic              | refers to surface fluxes in "native" units (K m s-1 and kg kg-1 m s-1)              |
 +------------------------+-------------------------------------------------------------------------------------+
-| **direct**             | **used in radiation (as opposed to diffuse)**                                       |
+| direct                 | used in radiation (as opposed to diffuse)                                           |
 +------------------------+-------------------------------------------------------------------------------------+
-| **diffuse**            | **used in radiation (as opposed to direct)**                                        |
+| diffuse                | used in radiation (as opposed to direct)                                            |
 +------------------------+-------------------------------------------------------------------------------------+
 
 Chemical Species
@@ -600,6 +628,10 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | **Short**           |  **Meaning**                                            |
 +=====================+=========================================================+
+| edmf                | eddy-diffusivity/mass-flux                              |
++---------------------+---------------------------------------------------------+
+| gwd                 | gravity wave drag                                       |
++---------------------+---------------------------------------------------------+
 | ir                  | infrared                                                |
 +---------------------+---------------------------------------------------------+
 | lwe                 | liquid water equivalent                                 |
@@ -608,7 +640,23 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | min                 | minimum                                                 |
 +---------------------+---------------------------------------------------------+
+| myj                 | Mellor-Yamada-Janjic scheme                             |
++---------------------+---------------------------------------------------------+
+| mynn                | Mellor-Yamada-Nakanishi-Niino scheme                    |
++---------------------+---------------------------------------------------------+
 | nir                 | near-infrared part of the EM spectrum (radiation)       |
++---------------------+---------------------------------------------------------+
+| pbl                 | planetary boundary layer                                |
++---------------------+---------------------------------------------------------+
+| pdf                 | probability density function                            |
++---------------------+---------------------------------------------------------+
+| skeb                | stochastic kinetic energy backscatter                   |
++---------------------+---------------------------------------------------------+
+| shoc                | simplified higher-order closure stochastic scheme       |
++---------------------+---------------------------------------------------------+
+| shum                | stochastically perturbed boundary-layer humidity scheme |
++---------------------+---------------------------------------------------------+
+| sppt                | stochastically perturbed physics tendencies             |
 +---------------------+---------------------------------------------------------+
 | stp                 | standard temperature (0 degC) and pressure (101325 Pa)  |
 +---------------------+---------------------------------------------------------+
