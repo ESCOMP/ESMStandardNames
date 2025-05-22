@@ -1622,7 +1622,8 @@
       <standard_name name="sigma_pressure_threshold_at_upper_extent_of_background_diffusion">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="directory_for_rte_rrtmgp_source_code">
+      <standard_name name="directory_for_rte_rrtmgp_source_code"
+                   long_name="Directory for Radiative Transfer for Energetics/parallelized Rapid Radiative Transfer Model source code">
          <type kind="len=128" units="none">character</type>
       </standard_name>
       <standard_name name="do_myj_pbl_scheme"
@@ -2023,7 +2024,8 @@
       <standard_name name="is_restart">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_rrtmgp_radiation_scheme">
+      <standard_name name="do_rrtmgp_radiation_scheme"
+                   long_name="Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) radiation scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_ruc_land_surface_scheme">
@@ -2194,16 +2196,20 @@
       <standard_name name="do_call_longwave_radiation">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_rrtmg_cloud_optics">
+      <standard_name name="do_rrtmg_cloud_optics"
+                   long_name="Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) cloud optics">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_rrtmgp_cloud_optics_look_up_table">
+      <standard_name name="do_rrtmgp_cloud_optics_lookup_table"
+                   long_name="Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) cloud optics lookup table">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_rrtmgp_cloud_optics_with_pade_approximation">
+      <standard_name name="do_rrtmgp_cloud_optics_with_pade_approximation"
+                   long_name="Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) with Padé approximation">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_rrtmgp_longwave_jacobian">
+      <standard_name name="do_rrtmgp_longwave_jacobian"
+                   long_name="Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave jacobian">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_call_shortwave_radiation">
@@ -2512,7 +2518,7 @@
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
       <standard_name name="min_pressure_in_rrtmgp"
-                   long_name="Minimum pressure in RRTMGP">
+                   long_name="Minimum pressure in Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP)">
          <type kind="kind_phys" units="Pa">real</type>
       </standard_name>
       <standard_name name="min_grid_scale">
@@ -2523,7 +2529,7 @@
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
       <standard_name name="min_temperature_in_rrtmgp"
-                   long_name="Minimum temperature in RRTMGP">
+                   long_name="Minimum temperature in Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP)">
          <type kind="kind_phys" units="K">real</type>
       </standard_name>
       <standard_name name="control_for_total_water_mixing_in_mynn_pbl_scheme"
@@ -2718,19 +2724,24 @@
       <standard_name name="rain_evaporation_coefficient_over_land_for_deep_convection">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
-      <standard_name name="filename_of_rrtmgp_longwave_cloud_optics_coefficients">
+      <standard_name name="filename_of_rrtmgp_longwave_cloud_optics_coefficients"
+                   long_name="File name of Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave cloud optics coefficients">
          <type kind="len=128" units="none">character</type>
       </standard_name>
-      <standard_name name="filename_of_rrtmgp_shortwave_cloud_optics_coefficients">
+      <standard_name name="filename_of_rrtmgp_shortwave_cloud_optics_coefficients"
+                   long_name="File name of Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) shortwave cloud optics coefficients">
          <type kind="len=128" units="none">character</type>
       </standard_name>
-      <standard_name name="filename_of_rrtmgp_longwave_k_distribution">
+      <standard_name name="filename_of_rrtmgp_longwave_k_distribution"
+                   long_name="File name of Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave k-distribution">
          <type kind="len=128" units="none">character</type>
       </standard_name>
-      <standard_name name="filename_of_rrtmgp_shortwave_k_distribution">
+      <standard_name name="filename_of_rrtmgp_shortwave_k_distribution"
+                   long_name="File name of Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) shortwave k-distribution">
          <type kind="len=128" units="none">character</type>
       </standard_name>
-      <standard_name name="do_rrtmgp_shortwave_and_rrtmg_longwave_radiation">
+      <standard_name name="do_rrtmgp_shortwave_and_rrtmg_longwave_radiation"
+                   long_name="Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) shortwave and Rapid Radiative Transfer Model for global climate model (GCM) applications (RRTMG) longwave radiation schemes">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="min_sea_ice_area_fraction">
@@ -3852,13 +3863,16 @@
       <standard_name name="physics_field_for_coupling">
          <type kind="kind_phys" units="m2 s-2">real</type>
       </standard_name>
-      <standard_name name="rrtmgp_jacobian_of_lw_flux_upward">
+      <standard_name name="rrtmgp_jacobian_of_upward_lw_flux"
+                   long_name="Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) jacobian of upward longwave flux">
          <type kind="kind_phys" units="W m-2 K-1">real</type>
       </standard_name>
-      <standard_name name="rrtmgp_lw_flux_profile_downward_allsky">
+      <standard_name name="rrtmgp_lw_downward_allsky_flux_profile"
+                   long_name="Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave downward all-sky flux profile">
          <type kind="kind_phys" units="W m-2">real</type>
       </standard_name>
-      <standard_name name="rrtmgp_lw_flux_profile_upward_allsky">
+      <standard_name name="rrtmgp_lw_upward_allsky_flux_profile"
+                   long_name="Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave upward all-sky flux profile">
          <type kind="kind_phys" units="W m-2">real</type>
       </standard_name>
       <standard_name name="area_type_from_coupled_process">

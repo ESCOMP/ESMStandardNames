@@ -885,7 +885,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `sigma_pressure_threshold_at_upper_extent_of_background_diffusion`: Sigma pressure threshold at upper extent of background diffusion
     * `real(kind=kind_phys)`: units = 1
-* `directory_for_rte_rrtmgp_source_code`: Directory for rte rrtmgp source code
+* `directory_for_rte_rrtmgp_source_code`: Directory for Radiative Transfer for Energetics/parallelized Rapid Radiative Transfer Model source code
     * `character(kind=len=128)`: units = none
 * `do_myj_pbl_scheme`: Do Mellor-Yamada-Janjic planetary boundary layer scheme
     * `logical(kind=)`: units = flag
@@ -1139,7 +1139,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `is_restart`: Is restart
     * `logical(kind=)`: units = flag
-* `do_rrtmgp_radiation_scheme`: Do rrtmgp radiation scheme
+* `do_rrtmgp_radiation_scheme`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) radiation scheme
     * `logical(kind=)`: units = flag
 * `identifier_for_ruc_land_surface_scheme`: Identifier for ruc land surface scheme
     * `integer(kind=)`: units = 1
@@ -1247,13 +1247,13 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_call_longwave_radiation`: Do call longwave radiation
     * `logical(kind=)`: units = flag
-* `do_rrtmg_cloud_optics`: Do rrtmg cloud optics
+* `do_rrtmg_cloud_optics`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) cloud optics
     * `logical(kind=)`: units = flag
-* `do_rrtmgp_cloud_optics_look_up_table`: Do rrtmgp cloud optics look up table
+* `do_rrtmgp_cloud_optics_lookup_table`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) cloud optics lookup table
     * `logical(kind=)`: units = flag
-* `do_rrtmgp_cloud_optics_with_pade_approximation`: Do rrtmgp cloud optics with pade approximation
+* `do_rrtmgp_cloud_optics_with_pade_approximation`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) with Padé approximation
     * `logical(kind=)`: units = flag
-* `do_rrtmgp_longwave_jacobian`: Do rrtmgp longwave jacobian
+* `do_rrtmgp_longwave_jacobian`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave jacobian
     * `logical(kind=)`: units = flag
 * `do_call_shortwave_radiation`: Do call shortwave radiation
     * `logical(kind=)`: units = flag
@@ -1445,13 +1445,13 @@ Variables related to the compute environment
     * `character(kind=len=16)`: units = none
 * `min_large_ice_fraction`: Minimum large ice fraction
     * `real(kind=kind_phys)`: units = fraction
-* `min_pressure_in_rrtmgp`: Minimum pressure in RRTMGP
+* `min_pressure_in_rrtmgp`: Minimum pressure in Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP)
     * `real(kind=kind_phys)`: units = Pa
 * `min_grid_scale`: Min grid scale
     * `real(kind=kind_phys)`: units = m2 rad-2
 * `min_soil_moisture_content_for_land_surface_model`: Minimum soil moisture content for land surface model
     * `real(kind=kind_phys)`: units = m
-* `min_temperature_in_rrtmgp`: Minimum temperature in RRTMGP
+* `min_temperature_in_rrtmgp`: Minimum temperature in Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP)
     * `real(kind=kind_phys)`: units = K
 * `control_for_total_water_mixing_in_mynn_pbl_scheme`: Control for total water mixing in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme
     * `integer(kind=)`: units = 1
@@ -1577,15 +1577,15 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = fraction
 * `rain_evaporation_coefficient_over_land_for_deep_convection`: Rain evaporation coefficient over land for deep convection
     * `real(kind=kind_phys)`: units = fraction
-* `filename_of_rrtmgp_longwave_cloud_optics_coefficients`: Filename of rrtmgp longwave cloud optics coefficients
+* `filename_of_rrtmgp_longwave_cloud_optics_coefficients`: File name of Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave cloud optics coefficients
     * `character(kind=len=128)`: units = none
-* `filename_of_rrtmgp_shortwave_cloud_optics_coefficients`: Filename of rrtmgp shortwave cloud optics coefficients
+* `filename_of_rrtmgp_shortwave_cloud_optics_coefficients`: File name of Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) shortwave cloud optics coefficients
     * `character(kind=len=128)`: units = none
-* `filename_of_rrtmgp_longwave_k_distribution`: Filename of rrtmgp longwave k distribution
+* `filename_of_rrtmgp_longwave_k_distribution`: File name of Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave k-distribution
     * `character(kind=len=128)`: units = none
-* `filename_of_rrtmgp_shortwave_k_distribution`: Filename of rrtmgp shortwave k distribution
+* `filename_of_rrtmgp_shortwave_k_distribution`: File name of Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) shortwave k-distribution
     * `character(kind=len=128)`: units = none
-* `do_rrtmgp_shortwave_and_rrtmg_longwave_radiation`: Do rrtmgp shortwave and rrtmg longwave radiation
+* `do_rrtmgp_shortwave_and_rrtmg_longwave_radiation`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) shortwave and Rapid Radiative Transfer Model for global climate model (GCM) applications (RRTMG) longwave radiation schemes
     * `logical(kind=)`: units = flag
 * `min_sea_ice_area_fraction`: Min sea ice area fraction
     * `real(kind=kind_phys)`: units = fraction
@@ -2259,11 +2259,11 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m
 * `physics_field_for_coupling`: Physics field for coupling
     * `real(kind=kind_phys)`: units = m2 s-2
-* `rrtmgp_jacobian_of_lw_flux_upward`: Rrtmgp jacobian of lw flux upward
+* `rrtmgp_jacobian_of_upward_lw_flux`: Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) jacobian of upward longwave flux
     * `real(kind=kind_phys)`: units = W m-2 K-1
-* `rrtmgp_lw_flux_profile_downward_allsky`: Rrtmgp lw flux profile downward allsky
+* `rrtmgp_lw_downward_allsky_flux_profile`: Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave downward all-sky flux profile
     * `real(kind=kind_phys)`: units = W m-2
-* `rrtmgp_lw_flux_profile_upward_allsky`: Rrtmgp lw flux profile upward allsky
+* `rrtmgp_lw_upward_allsky_flux_profile`: Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave upward all-sky flux profile
     * `real(kind=kind_phys)`: units = W m-2
 * `area_type_from_coupled_process`: Area type from coupled process
     * `real(kind=kind_phys)`: units = 1
