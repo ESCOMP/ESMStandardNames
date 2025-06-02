@@ -798,11 +798,11 @@
     </standard_name>
     <standard_name name="number_fraction_of_coarse_aerosol_particles_in_air"
                    long_name="Number fraction of coarse mode dust aerosol particles">
-      <type kind="kind_phys" units="1">real</type>
+      <type kind="kind_phys" units="particles particles-1">real</type>
     </standard_name>
       <standard_name name="number_fraction_of_accumulation_aerosol_particles_in_air"
                    long_name="Number fraction of accumulation mode dust aerosol particles">
-      <type kind="kind_phys" units="1">real</type>
+      <type kind="kind_phys" units="particles particles-1">real</type>
     </standard_name>
   </section>
   <section name="emissions"
