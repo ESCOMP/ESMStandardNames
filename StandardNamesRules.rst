@@ -650,6 +650,8 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | pdf                 | probability density function                            |
 +---------------------+---------------------------------------------------------+
+| sas                 | simplified Arakawa-Schubert scheme                      |
++---------------------+---------------------------------------------------------+
 | skeb                | stochastic kinetic energy backscatter                   |
 +---------------------+---------------------------------------------------------+
 | shoc                | simplified higher-order closure stochastic scheme       |

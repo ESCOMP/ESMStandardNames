@@ -2040,10 +2040,12 @@
       <standard_name name="identifier_for_scale_aware_mass_flux_shallow_convection">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="identifier_for_simplified_arakawa_schubert_deep_convection">
+      <standard_name name="identifier_for_sas_deep_convection"
+                   long_name="Identifier for Simplified Arakawa-Schubert deep convection scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
-      <standard_name name="identifier_for_simplified_arakawa_schubert_shallow_convection">
+      <standard_name name="identifier_for_sas_shallow_convection"
+                   long_name="Identifier for Simplified Arakawa-Schubert shallow convection scheme">
          <type kind="" units="1">integer</type>
       </standard_name>
       <standard_name name="do_scale_aware_mass_flux_deep_convection">
@@ -2059,7 +2061,8 @@
       <standard_name name="do_sgs_cellular_automata">
          <type kind="" units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_simplified_arakawa_schubert_shallow_convection">
+      <standard_name name="do_sas_shallow_convection"
+                   long_name="Do Simplified Arakawa-Schubert deep convection scheme">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_shoc"
@@ -2667,7 +2670,8 @@
       <standard_name name="number_of_ice_roughness_categories">
          <type kind="" units="count">integer</type>
       </standard_name>
-      <standard_name name="number_of_spectral_wave_truncation_for_simplified_arakawa_schubert_convection">
+      <standard_name name="number_of_spectral_wave_truncation_for_sas_convection"
+                   long_name="Number of spectral wave truncation for Simplified Arakawa-Schubert deep convection scheme">
          <type kind="" units="count">integer</type>
       </standard_name>
       <standard_name name="number_of_statistical_measures_of_subgrid_orography">
