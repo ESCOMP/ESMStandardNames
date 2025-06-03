@@ -937,7 +937,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = 1
 * `do_flux_form_in_chikira_sugiyama_deep_convection_scheme`: Do flux form in chikira sugiyama deep convection scheme
     * `logical(kind=)`: units = flag
-* `do_nrl_2015_ozone_scheme`: Do nrl 2015 ozone scheme
+* `do_nrl_2015_ozone_scheme`: Do Naval Research Laboratory 2015 ozone scheme
     * `logical(kind=)`: units = flag
 * `do_prescribed_aerosols`: Do prescribed aerosols
     * `logical(kind=)`: units = flag
@@ -1009,9 +1009,9 @@ Variables related to the compute environment
     * `integer(kind=)`: units = 1
 * `identifier_for_grell_freitas_shallow_convection`: Identifier for grell freitas shallow convection
     * `integer(kind=)`: units = 1
-* `do_gfdl_microphysics_radiation_interaction`: Do gfdl microphysics radiation interaction
+* `do_gfdl_microphysics_radiation_interaction`: Do Geophysical Fluid Dynamics Laboratory microphysics radiation interaction
     * `logical(kind=)`: units = flag
-* `identifier_for_gfdl_microphysics_scheme`: Identifier for gfdl microphysics scheme
+* `identifier_for_gfdl_microphysics_scheme`: Identifier for Geophysical Fluid Dynamics Laboratory microphysics scheme
     * `integer(kind=)`: units = 1
 * `do_global_cellular_automata`: Do global cellular automata
     * `logical(kind=)`: units = flag
@@ -1025,11 +1025,11 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `control_for_land_surface_scheme_surface_snow_albedo`: Control for land surface scheme surface snow albedo
     * `integer(kind=)`: units = 1
-* `do_gsl_drag_suite_large_scale_orographic_and_blocking_drag`: Do gsl drag suite large scale orographic and blocking drag
+* `do_gsl_drag_suite_large_scale_orographic_and_blocking_drag`: Do Global Systems Lab drag suite large-scale orographic and blocking drag
     * `logical(kind=)`: units = flag
-* `do_gsl_drag_suite_small_scale_orographic_drag`: Do gsl drag suite small scale orographic drag
+* `do_gsl_drag_suite_small_scale_orographic_drag`: Do Global Systems Lab drag suite small-scale orographic drag
     * `logical(kind=)`: units = flag
-* `do_gsl_drag_suite_turbulent_orographic_form_drag`: Do gsl drag suite turbulent orographic form drag
+* `do_gsl_drag_suite_turbulent_orographic_form_drag`: Do Global Systems Lab drag suite turbulent orographic form drag
     * `logical(kind=)`: units = flag
 * `do_hybrid_edmf_pbl_scheme`: Do hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `logical(kind=)`: units = flag
@@ -1075,15 +1075,15 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `identifier_for_noah_land_surface_scheme`: Identifier for noah land surface scheme
     * `integer(kind=)`: units = 1
-* `do_noah_lsm_ua_extension`: Do noah lsm ua extension
+* `do_noah_lsm_ua_extension`: Do Noah land surface model University of Arizona extension
     * `logical(kind=)`: units = flag
 * `identifier_for_noah_wrfv4_land_surface_scheme`: Identifier for noah wrfv4 land surface scheme
     * `integer(kind=)`: units = 1
-* `identifier_for_noahmp_land_surface_scheme`: Identifier for noahmp land surface scheme
+* `identifier_for_noahmp`: Identifier for Noah land surface model with multiparameterization options
     * `integer(kind=)`: units = 1
-* `do_nsstm_analysis_in_gcycle`: Do nsstm analysis in gcycle
+* `do_nsstm_analysis_in_gcycle`: Do GFS near-surface sea temperature scheme analysis in gcycle
     * `logical(kind=)`: units = flag
-* `control_for_nsstm`: Control for nsstm
+* `control_for_nsstm`: Control for GFS near-surface sea temperature scheme
     * `integer(kind=)`: units = 1
 * `identifier_for_new_tiedtke_deep_convection`: Identifier for new tiedtke deep convection
     * `integer(kind=)`: units = 1
@@ -1107,7 +1107,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_output_of_tendency_of_air_temperature_due_to_shortwave_heating_on_radiation_timestep_assuming_clear_sky`: Do output of tendency of air temperature due to shortwave heating on radiation timestep assuming clear sky
     * `logical(kind=)`: units = flag
-* `do_nrl_2006_ozone_scheme`: Do nrl 2006 ozone scheme
+* `do_nrl_2006_ozone_scheme`: Do Naval Research Laboratory 2006 ozone scheme
     * `logical(kind=)`: units = flag
 * `control_for_pdf_shape_for_microphysics`: Control for probability density function shape for microphysics
     * `integer(kind=)`: units = 1
@@ -1149,9 +1149,9 @@ Variables related to the compute environment
     * `integer(kind=)`: units = 1
 * `identifier_for_scale_aware_mass_flux_shallow_convection`: Identifier for scale aware mass flux shallow convection
     * `integer(kind=)`: units = 1
-* `identifier_for_simplified_arakawa_schubert_deep_convection`: Identifier for simplified arakawa schubert deep convection
+* `identifier_for_sas_deep_convection`: Identifier for Simplified Arakawa-Schubert deep convection scheme
     * `integer(kind=)`: units = 1
-* `identifier_for_simplified_arakawa_schubert_shallow_convection`: Identifier for simplified arakawa schubert shallow convection
+* `identifier_for_sas_shallow_convection`: Identifier for Simplified Arakawa-Schubert shallow convection scheme
     * `integer(kind=)`: units = 1
 * `do_scale_aware_mass_flux_deep_convection`: Do scale aware mass flux deep convection
     * `logical(kind=)`: units = flag
@@ -1161,7 +1161,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_sgs_cellular_automata`: Do sgs cellular automata
     * `logical(kind=)`: units = flag
-* `do_simplified_arakawa_schubert_shallow_convection`: Do simplified arakawa schubert shallow convection
+* `do_sas_shallow_convection`: Do Simplified Arakawa-Schubert deep convection scheme
     * `logical(kind=)`: units = flag
 * `do_shoc`: Do Simplified Higher-Order Closure stochastic physics scheme
     * `logical(kind=)`: units = flag
@@ -1201,17 +1201,17 @@ Variables related to the compute environment
     * `integer(kind=)`: units = 1
 * `identifier_for_thompson_microphysics_scheme`: Identifier for thompson microphysics scheme
     * `integer(kind=)`: units = 1
-* `do_ugwp_version_0`: Do ugwp version 0
+* `do_ugwp_version_0`: Do Unified Gravity Wave Physics version 0
     * `logical(kind=)`: units = flag
-* `do_ugwp_version_0_nonorographic_gwd`: Do ugwp version 0 nonorographic gwd
+* `do_ugwp_version_0_nonorographic_gwd`: Do Unified Gravity Wave Physics version 0 non-orographic gravity wave drag
     * `logical(kind=)`: units = flag
-* `do_ugwp_version_0_orographic_gwd`: Do ugwp version 0 orographic gwd
+* `do_ugwp_version_0_orographic_gwd`: Do Unified Gravity Wave Physics version 0 orographic gravity wave drag
     * `logical(kind=)`: units = flag
-* `do_ugwp_version_1`: Do ugwp version 1
+* `do_ugwp_version_1`: Do Unified Gravity Wave Physics version 1
     * `logical(kind=)`: units = flag
-* `do_ugwp_version_1_nonorographic_gwd`: Do ugwp version 1 nonorographic gwd
+* `do_ugwp_version_1_nonorographic_gwd`: Do Unified Gravity Wave Physics version 1 non-orographic gravity wave drag
     * `logical(kind=)`: units = flag
-* `do_ugwp_version_1_orographic_gwd`: Do ugwp version 1 orographic gwd
+* `do_ugwp_version_1_orographic_gwd`: Do Unified Gravity Wave Physics version 1 orographic gravity wave drag
     * `logical(kind=)`: units = flag
 * `do_shoc_cloud_area_fraction_for_radiation`: Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation
     * `logical(kind=)`: units = flag
@@ -1391,7 +1391,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = fraction
 * `max_grid_scale`: Maximum grid scale
     * `real(kind=kind_phys)`: units = m2 rad-2
-* `max_soil_moisture_content_for_land_surface_model`: Maximum soil moisture content for land surface model
+* `max_soil_moisture_content_for_lsm`: Maximum soil moisture content for land surface model
     * `real(kind=kind_phys)`: units = m
 * `do_allow_supersaturation_after_sedimentation`: Do allow supersaturation after sedimentation
     * `logical(kind=)`: units = flag
@@ -1449,7 +1449,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = Pa
 * `min_grid_scale`: Min grid scale
     * `real(kind=kind_phys)`: units = m2 rad-2
-* `min_soil_moisture_content_for_land_surface_model`: Minimum soil moisture content for land surface model
+* `min_soil_moisture_content_for_lsm`: Minimum soil moisture content for land surface model
     * `real(kind=kind_phys)`: units = m
 * `min_temperature_in_rrtmgp`: Minimum temperature in Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP)
     * `real(kind=kind_phys)`: units = K
@@ -1539,7 +1539,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = count
 * `number_of_ice_roughness_categories`: Number of ice roughness categories
     * `integer(kind=)`: units = count
-* `number_of_spectral_wave_truncation_for_simplified_arakawa_schubert_convection`: Number of spectral wave truncation for simplified arakawa schubert convection
+* `number_of_spectral_wave_truncation_for_sas_convection`: Number of spectral wave truncation for Simplified Arakawa-Schubert deep convection scheme
     * `integer(kind=)`: units = count
 * `number_of_statistical_measures_of_subgrid_orography`: Number of statistical measures of subgrid orography
     * `integer(kind=)`: units = count
@@ -1623,7 +1623,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = index
 * `multiplicative_tuning_parameter_for_reduced_surface_heat_fluxes_due_to_canopy_heat_storage`: Multiplicative tuning parameter for reduced surface heat fluxes due to canopy heat storage
     * `real(kind=kind_phys)`: units = 1
-* `thickness_of_soil_layers_for_land_surface_model`: Thickness of soil layers for land surface model
+* `thickness_of_soil_layers_for_lsm`: Thickness of soil layers for land surface model
     * `real(kind=kind_phys)`: units = m
 * `cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection`: Cellular automata vertical velocity perturbation threshold for deep convection
     * `real(kind=kind_phys)`: units = m s-1
@@ -1663,9 +1663,9 @@ Variables related to the compute environment
     * `integer(kind=)`: units = count
 * `sigma_pressure_hybrid_vertical_coordinate`: Sigma pressure hybrid vertical coordinate
     * `real(kind=kind_phys)`: units = 1
-* `lower_bound_for_depth_of_sea_temperature_for_nsstm`: Lower bound for depth of sea temperature for nsstm
+* `lower_bound_for_depth_of_sea_temperature_for_nsstm`: Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme
     * `integer(kind=)`: units = mm
-* `upper_bound_for_depth_of_sea_temperature_for_nsstm`: Upper bound for depth of sea temperature for nsstm
+* `upper_bound_for_depth_of_sea_temperature_for_nsstm`: Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme
     * `integer(kind=)`: units = mm
 * `index_of_water_vegetation_category`: Index of water vegetation category
     * `integer(kind=)`: units = index
@@ -1779,9 +1779,9 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg2 kg-2
 * `random_number`: Random number
     * `real(kind=kind_phys)`: units = 1
-* `random_number_seed_for_mcica_longwave`: Random number seed for mcica longwave
+* `random_number_seed_for_mcica_longwave`: Random number seed for Monte-Carlo Independent Column Approximation longwave scheme
     * `integer(kind=)`: units = 1
-* `random_number_seed_for_mcica_shortwave`: Random number seed for mcica shortwave
+* `random_number_seed_for_mcica_shortwave`: Random number seed for Monte-Carlo Independent Column Approximation shortwave scheme
     * `integer(kind=)`: units = 1
 * `cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative min vertical index at cloud base between sw radiation calls
     * `real(kind=kind_phys)`: units = 1
@@ -1958,7 +1958,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = 1
 * `nonnegative_lwe_thickness_of_precipitation_amount_on_dynamics_timestep`: Non-negative liquid water equivalent thickness of precipitation amount on dynamics timestep
     * `real(kind=kind_phys)`: units = m
-* `normalized_soil_wetness_for_land_surface_model`: Normalized soil wetness for land surface model
+* `normalized_soil_wetness_for_lsm`: Normalized soil wetness for land surface model
     * `real(kind=kind_phys)`: units = fraction
 * `number_of_snow_layers`: Number of snow layers
     * `real(kind=kind_phys)`: units = 1
@@ -2020,7 +2020,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K
 * `soil_temperature`: Soil temperature
     * `real(kind=kind_phys)`: units = K
-* `soil_temperature_for_land_surface_model`: Soil temperature for land surface model
+* `soil_temperature_for_lsm`: Soil temperature for land surface model
     * `real(kind=kind_phys)`: units = K
 * `volumetric_soil_moisture_between_soil_bottom_and_water_table`: Volumetric soil moisture between soil bottom and water table
     * `real(kind=kind_phys)`: units = m3 m-3
@@ -2064,9 +2064,9 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = fraction
 * `diffuse_shortwave_albedo_of_land`: land surface albedo for diffuse shortwave radiation
     * `real(kind=kind_phys)`: units = fraction
-* `surface_drag_coefficient_for_heat_and_moisture_for_noahmp`: Surface drag coefficient for heat and moisture for noahmp
+* `surface_drag_coefficient_for_heat_and_moisture_for_noahmp`: Surface drag coefficient for heat and moisture for Noah land surface model with multiparameterization options
     * `real(kind=kind_phys)`: units = 1
-* `surface_drag_coefficient_for_momentum_for_noahmp`: Surface drag coefficient for momentum for noahmp
+* `surface_drag_coefficient_for_momentum_for_noahmp`: Surface drag coefficient for momentum for Noah land surface model with multiparameterization options
     * `real(kind=kind_phys)`: units = 1
 * `surface_exchange_coefficient_for_heat`: Surface exchange coefficient for heat
     * `real(kind=kind_phys)`: units = W m-2 K-1
@@ -2134,15 +2134,15 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = fraction
 * `canopy_temperature`: Canopy temperature
     * `real(kind=kind_phys)`: units = K
-* `volume_fraction_of_frozen_soil_moisture_for_land_surface_model`: Volume fraction of frozen soil moisture for land surface model
+* `volume_fraction_of_frozen_soil_moisture_for_lsm`: Volume fraction of frozen soil moisture for land surface model
     * `real(kind=kind_phys)`: units = fraction
 * `volume_fraction_of_condensed_water_in_soil`: Volume fraction of condensed water in soil
     * `real(kind=kind_phys)`: units = fraction
-* `volume_fraction_of_soil_moisture_for_land_surface_model`: Volume fraction of soil moisture for land surface model
+* `volume_fraction_of_soil_moisture_for_lsm`: Volume fraction of soil moisture for land surface model
     * `real(kind=kind_phys)`: units = fraction
 * `volume_fraction_of_unfrozen_water_in_soil`: Volume fraction of unfrozen water in soil
     * `real(kind=kind_phys)`: units = fraction
-* `volume_fraction_of_unfrozen_soil_moisture_for_land_surface_model`: Volume fraction of unfrozen soil moisture for land surface model
+* `volume_fraction_of_unfrozen_soil_moisture_for_lsm`: Volume fraction of unfrozen soil moisture for land surface model
     * `real(kind=kind_phys)`: units = fraction
 * `lwe_thickness_of_surface_snow_amount`: Liquid water equivalent thickness of surface snow amount
     * `real(kind=kind_phys)`: units = mm
@@ -2379,11 +2379,11 @@ Variables related to the compute environment
 * `y_wind_at_surface_adjacent_layer`: Y wind at surface adjacent layer
     * `real(kind=kind_phys)`: units = m s-1
 ## GFS_typedefs_GFS_cldprop_type
-* `convective_cloud_area_fraction_between_sw_radiation_calls_from_cnvc90`: Convective cloud area fraction between sw radiation calls from cnvc90
+* `convective_cloud_area_fraction_between_sw_radiation_calls_from_cnvc90`: Convective cloud area fraction between shortwave radiation calls from GFS Convective Cloud Diagnostics
     * `real(kind=kind_phys)`: units = fraction
-* `pressure_at_convective_cloud_base_between_sw_radiation_calls_from_cnvc90`: Pressure at convective cloud base between sw radiation calls from cnvc90
+* `pressure_at_convective_cloud_base_between_sw_radiation_calls_from_cnvc90`: Pressure at convective cloud base between shortwave radiation calls from GFS Convective Cloud Diagnostics
     * `real(kind=kind_phys)`: units = Pa
-* `pressure_at_convective_cloud_top_between_sw_radiation_calls_from_cnvc90`: Pressure at convective cloud top between sw radiation calls from cnvc90
+* `pressure_at_convective_cloud_top_between_sw_radiation_calls_from_cnvc90`: Pressure at convective cloud top between shortwave radiation calls from GFS Convective Cloud Diagnostics
     * `real(kind=kind_phys)`: units = Pa
 ## GFS_typedefs_GFS_radtend_type
 * `cosine_of_solar_zenith_angle_for_daytime_points_on_radiation_timestep`: Cosine of solar zenith angle for daytime points on radiation timestep
