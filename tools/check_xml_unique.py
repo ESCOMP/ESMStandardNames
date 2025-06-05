@@ -34,6 +34,10 @@ def parse_command_line(args, description):
                         type=str, help="XML file with standard name library")
     parser.add_argument("--overwrite", action='store_true',
                         help="flag to remove duplicates and overwrite the file")
+    parser.add_argument("--field", type=str, default="name",
+                        help="Field to check for uniqueness; default is 'name'")
+    parser.add_argument("--debug", action='store_true',
+                        help="flag for additional debug print statements")
 
     pargs = parser.parse_args(args)
     return pargs
@@ -66,8 +70,11 @@ def main_func():
     #get list of all standard names
     all_std_names = []
     for name in root.findall('./section/standard_name'):
-        all_std_names.append(name.attrib['name'])
-
+        try:
+            all_std_names.append(name.attrib[args.field])
+        except:
+            if (args.debug):
+                print(f"WARNING: no field {args.field} for standard name {name.attrib['name']}")
     #get list of all unique and duplicate standard names, in source order
     seen = set()
     uniq_std_names = []
@@ -79,13 +86,12 @@ def main_func():
         else:
             dup_std_names.append(x)
 
-    if args.overwrite:
-        #delete all duplicate elements after the first
-        if len(dup_std_names)>0:
-            print('The following duplicate standard names were found:')
-            for dup in dup_std_names:
-                rm_elements = root.findall('./section/standard_name[@name="%s"]'%dup)[1:]
-                print(f"{dup}, ({len(rm_elements)} duplicate(s))")
+    if len(dup_std_names)>0:
+        print(f'The following duplicate {args.field} entries were found:')
+        for dup in dup_std_names:
+            rm_elements = root.findall(f'./section/standard_name[@{args.field}="{dup}"]')[1:]
+            print(f"{dup}, ({len(rm_elements)} duplicate(s))")
+        if args.overwrite:
             print(f'Removing duplicates and overwriting {stdname_file}')
             for dup in dup_std_names:
                 first_use = True #Logical that indicates the first use of the duplicated name
@@ -101,17 +107,11 @@ def main_func():
             #Overwrite the xml file with the new, duplicate-free element tree:
             tree.write(stdname_file, "utf-8")
         else:
-            print('No duplicate standard names were found.')
-    else:
-        #write out duplicate standard names
-        if len(dup_std_names)>0:
-            print('The following duplicate standard names were found:')
-            for dup in dup_std_names:
-                rm_elements = root.findall('./section/standard_name[@name="%s"]'%dup)[1:]
-                print(f"{dup}, ({len(rm_elements)} duplicate(s))")
+            # If not overwriting, exit with status 1 to indicate failure
             sys.exit(1)
-        else:
-            print('No duplicate standard names were found.')
+    else:
+        print(f'No duplicate {args.field}s were found.')
+
 
 ###############################################################################
 if __name__ == "__main__":

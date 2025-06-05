@@ -1202,7 +1202,7 @@
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="mass_fraction_of_sea_salt001_in_air"
-                   description="Sea salt bin5 mass fraction">
+                   description="Sea salt bin=1 mass fraction">
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="mass_fraction_of_sea_salt002_in_air"
@@ -3829,7 +3829,7 @@ Unified Gravity Wave Physics
          <type kind="kind_phys" units="W m-2">real</type>
       </standard_name>
       <standard_name name="net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling"
-                     description="downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling">
+                     description="net_downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling">
          <type kind="kind_phys" units="W m-2">real</type>
       </standard_name>
       <standard_name name="net_downwelling_longwave_flux_at_surface_for_coupling">
