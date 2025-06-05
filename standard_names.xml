@@ -2213,7 +2213,7 @@ Unified Gravity Wave Physics
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_rrtmgp_cloud_optics_with_pade_approximation"
-                   description="Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) with Padé approximation">
+                   description="Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) with Pade approximation">
          <type kind="" units="flag">logical</type>
       </standard_name>
       <standard_name name="do_rrtmgp_longwave_jacobian"

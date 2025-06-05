@@ -653,7 +653,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_fraction_of_dust005_in_air`: Dust bin5 mass fraction
     * `real(kind=kind_phys)`: units = kg kg-1
-* `mass_fraction_of_sea_salt001_in_air`: Sea salt bin5 mass fraction
+* `mass_fraction_of_sea_salt001_in_air`: Sea salt bin=1 mass fraction
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_fraction_of_sea_salt002_in_air`: Sea salt bin2 mass fraction
     * `real(kind=kind_phys)`: units = kg kg-1
@@ -1247,7 +1247,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_rrtmgp_cloud_optics_lookup_table`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) cloud optics lookup table
     * `logical(kind=)`: units = flag
-* `do_rrtmgp_cloud_optics_with_pade_approximation`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) with Padé approximation
+* `do_rrtmgp_cloud_optics_with_pade_approximation`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) with Pade approximation
     * `logical(kind=)`: units = flag
 * `do_rrtmgp_longwave_jacobian`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) longwave jacobian
     * `logical(kind=)`: units = flag
@@ -2221,7 +2221,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = W m-2
 * `net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling`: net downwelling direct near-infrared shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
-* `net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling`: downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling
+* `net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling`: net_downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling
     * `real(kind=kind_phys)`: units = W m-2
 * `net_downwelling_longwave_flux_at_surface_for_coupling`: Net downwelling longwave flux at surface for coupling
     * `real(kind=kind_phys)`: units = W m-2
