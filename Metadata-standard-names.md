@@ -31,7 +31,7 @@ Base names can roughly be broken down into three categories:
 The following names are too general to be chosen as
 standard names, but they can serve as base names for
 more specific standard names.
-* `amount`: amount
+* `amount`: Amount
     * `real`: units = kg m-2
 * `area`: Area
     * `real`: units = m2
@@ -81,7 +81,7 @@ more specific standard names.
     * `real`: units = W
 * `pressure`: Force per unit area
     * `real`: units = Pa
-* `probability`: A number between 0 and 1 indicating the likelihood of an event occurring
+* `probability`: A real number between 0 and 1 indicating the likelihood of an event occurring
     * `real`: units = 1
 * `radiative_flux`: The amount of radiative energy traveling through an area per unit time
     * `real`: units = W m-2
@@ -103,7 +103,7 @@ more specific standard names.
     * `real`: units = m2 s-1
 * `volume`: Volume
     * `real`: units = m3
-* `volume_flux`: The number of molecules or atoms of a substance traveling through an area per unit time
+* `volume_flux`: The movement of a volume of a substance across a unit area per unit time
     * `real`: units = m s-1
 * `volume_fraction`: The fraction of a volume where some condition applies
     * `real`: units = 1
@@ -126,18 +126,18 @@ They can all be assumed to have units of '1'
 * `cfc22`: Chlorodifluoromethane
 * `dimethyl_sulfide`: Dimethyl sulfide; DMS
 * `hcho`: Formaldehyde
-* `hydrophilic_black_carbon`: hydrophilic_black_carbon
-* `hydrophobic_black_carbon`: hydrophobic_black_carbon
-* `hydrophilic_organic_carbon`: hydrophilic_organic_carbon
-* `hydrophobic_organic_carbon`: hydrophobic_organic_carbon
+* `hydrophilic_black_carbon`: Hydrophilic black carbon
+* `hydrophobic_black_carbon`: Hydrophobic black carbon
+* `hydrophilic_organic_carbon`: Hydrophilic organic carbon
+* `hydrophobic_organic_carbon`: Hydrophobic organic carbon
 * `methane`: ch4
-* `n2o`: Nitrous Oxide, N_2O
+* `n2o`: Nitrous Oxide; N_2O
 * `nitrate`: Chemical species containing the nitrate ion
 * `nitrite`: Chemical species containing the nitrite ion
 * `no2`: Nitrogen dioxide
-* `no`: Nitric oxide NO (Nitrogen oxide, Nitrogen monoxide)
-* `oxygen`: Molecular oxygen, O_2
-* `ozone`: Ozone, O_3
+* `no`: Nitric oxide; NO (Nitrogen oxide, Nitrogen monoxide)
+* `oxygen`: Molecular oxygen; O_2
+* `ozone`: Ozone; O_3
 * `phosphate`: Chemical species containing the phosphate ion
 * `silicate`: Chemical species containing the silicate ion
 * `sulfate`: Chemical species containing the sulfate ion
@@ -173,7 +173,7 @@ full list of standard names for further details.
     * `real`: units = W m-2
 * `diffuse_vis_albedo`: Albedo of diffuse incident visible radiation
     * `real`: units = 1
-* `direct_nir_albedo`: Albedo of diffuse incident near-infrared radiation
+* `direct_nir_albedo`: Albedo of direct incident near-infrared radiation
     * `real`: units = 1
 * `direct_nir_shortwave_flux`: Flux of direct near-infrared shortwave radiation
     * `real`: units = W m-2
@@ -185,7 +185,7 @@ full list of standard names for further details.
     * `real`: units = s-1
 * `dry_air_density`: Density of air excluding water vapor component
     * `real`: units = kg m-3
-* `dry_air_enthalpy_at_constant_pressure`: Specific enthalpy of dry air, h = Cp*T, Cp = Specific heat of dry air at constant pressure, T = temperature
+* `dry_air_enthalpy_at_constant_pressure`: Specific enthalpy of dry air, h = Cp*T; Cp = Specific heat of dry air at constant pressure, T = temperature
     * `real`: units = J kg-1
 * `exner_function`: Exner function, (p/p0)^(Rd/cp), where p0 is some reference pressure (1000 hPa if not specified)
     * `real(kind=kind_phys)`: units = 1
@@ -212,7 +212,7 @@ full list of standard names for further details.
     * `real`: units = W m-2
 * `momentum_flux`: Flux of momentum across a unit surface
     * `real`: units = Pa
-* `nonhygroscopic_ice_nucleating_aerosols`: nonhygroscopic_ice_nucleating_aerosols
+* `nonhygroscopic_ice_nucleating_aerosols`: Ice-nucleating aerosols with the property of not accumulating liquid water
 * `pressure`: Pressure
     * `real`: units = Pa
 * `rain`: Precipitation of liquid water from clouds
@@ -224,7 +224,7 @@ full list of standard names for further details.
     * `real`: units = Pa
 * `relative_humidity`: Ratio of the vapor pressure to the saturation vapor pressure (for liquid water unless otherwise specified)
     * `real`: units = fraction
-* `roughness_length`: Also called surface roughness length, the height above a surface where the wind speed would be zero according to an idealized logarithmic wind profile
+* `roughness_length`: Also called surface roughness length; the height above a surface where the wind speed would be zero according to an idealized logarithmic wind profile
     * `real`: units = m
 * `sensible_heat_flux`: Flux of sensible heat across a unit surface
     * `real`: units = W m-2
@@ -233,11 +233,11 @@ full list of standard names for further details.
 * `snow`: Precipitation of ice crystals from clouds
 * `snow_area_fraction`: Fraction of an area (usually within a grid cell) covered by snow
     * `real`: units = fraction
-* `soil_moisture`: Liquid water contained within a soil layer
+* `soil_moisture`: Water contained within a soil layer
 * `soil_temperature`: Temperature of a soil layer
     * `real`: units = K
 * `solar_declination_angle`: The angle between the equator and Earth's orbital plane with the Sun
-* `solar_zenith_angle`: Angle between the direction to the sun and the local zenith (vertical direction)
+* `solar_zenith_angle`: The angle between the direction to the sun and the local zenith (vertical direction)
 * `surface_skin_temperature`: The temperature of the topmost layer of the surface
     * `real`: units = K
 * `temperature`: Temperature
@@ -246,7 +246,7 @@ full list of standard names for further details.
     * `real`: units = K m s-1
 * `time`: Time
     * `real`: units = s
-* `total_energy`: Energy from all sources
+* `total_energy`: Total energy
 * `total_water`: All water phases (solid, liquid, gas)
 * `tracer`: A hypothetical zero-mass particle that is advected in fluid flow
 * `tracers`: Tracers
@@ -316,15 +316,15 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `integer(kind=kind_phys)`: units = s
 * `specific_heat_of_dry_air_at_constant_pressure`: Specific heat of dry air at constant pressure
     * `real(kind=kind_phys)`: units = J kg-1 K-1
-* `specific_heat_of_liquid_water_at_20c`: specific heat of liquid water at 20c
+* `specific_heat_of_liquid_water_at_20c`: Specific heat of liquid water at 20 degrees Celcius
     * `real(kind=kind_phys)`: units = J kg-1 K-1
-* `latent_heat_of_vaporization_of_water_at_0c`: latent heat of vaporization of water at 0c
+* `latent_heat_of_vaporization_of_water_at_0c`: Latent heat of vaporization of water at 0 degrees Celcius
     * `real(kind=kind_phys)`: units = J kg-1
-* `dry_air_density_at_stp`: density of dry air at standard temperature and pressure
+* `dry_air_density_at_stp`: Density of dry air at standard temperature and pressure
     * `real(kind=kind_phys)`: units = kg m-3
-* `fresh_liquid_water_density_at_0c`: density of liquid water at 0c
+* `fresh_liquid_water_density_at_0c`: Density of liquid water at 0 degrees Celcius
     * `real(kind=kind_phys)`: units = kg m-3
-* `ratio_of_water_vapor_to_dry_air_gas_constants_minus_one`: (Rwv / Rdair) - 1.0
+* `ratio_of_water_vapor_to_dry_air_gas_constants_minus_one`: Ratio of gas constants of water vapor and dry air; (Rwv / Rdair) - 1.0
     * `real(kind=kind_phys)`: units = 1
 * `standard_gravitational_acceleration`: scalar constant representing gravitational acceleration
     * `real(kind=kind_phys)`: units = m s-2
@@ -367,9 +367,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = m s-1
 * `northward_wind`: Wind vector component, positive when directed northward
     * `real(kind=kind_phys)`: units = m s-1
-* `eastward_wind_at_10m`: Wind vector component at 10m, positive when directed eastward
+* `eastward_wind_at_10m`: Wind vector component at 10 meters above surface, positive when directed eastward
     * `real(kind=kind_phys)`: units = m s-1
-* `northward_wind_at_10m`: Wind vector component at 10m, positive when directed northward
+* `northward_wind_at_10m`: Wind vector component at 10 meters above surface, positive when directed northward
     * `real(kind=kind_phys)`: units = m s-1
 * `eastward_wind_at_surface`: Wind vector component closest to surface, positive when directed eastward
     * `real(kind=kind_phys)`: units = m s-1
@@ -379,9 +379,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = m s-1
 * `wind_from_direction_at_surface`: Direction, from north, of wind speed closest to surface
     * `real(kind=kind_phys)`: units = degrees
-* `dry_static_energy`: Dry static energy Content of Atmosphere Layer
+* `dry_static_energy`: Dry static energy content of atmosphere layer
     * `real(kind=kind_phys)`: units = J kg-1
-* `do_lagrangian_vertical_coordinate`: flag indicating if vertical coordinate is lagrangian
+* `do_lagrangian_vertical_coordinate`: Flag indicating if vertical coordinate is lagrangian
     * `logical(kind=)`: units = flag
 * `lagrangian_tendency_of_air_pressure`: Vertical pressure velocity
     * `real(kind=kind_phys)`: units = Pa s-1
@@ -403,15 +403,15 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = 1
 * `ln_air_pressure_of_dry_air`: Ln air pressure of dry air
     * `real(kind=kind_phys)`: units = 1
-* `reciprocal_of_exner_function_wrt_air_pressure_at_surface`: inverse exner function w.r.t. surface pressure, (ps/p)^(R/cp)
+* `reciprocal_of_exner_function_wrt_air_pressure_at_surface`: inverse exner function with respect to surface pressure; (ps/p)^(R/cp)
     * `real(kind=kind_phys)`: units = 1
-* `geopotential_height`: geopotential height w.r.t. sea level
+* `geopotential_height`: geopotential height with respect to sea level
     * `real(kind=kind_phys)`: units = m
-* `geopotential_height_at_surface`: Geopotential height at local surface w.r.t. sea level
+* `geopotential_height_at_surface`: Geopotential height at local surface with respect to sea level
     * `real(kind=kind_phys)`: units = m
-* `geopotential_height_wrt_surface`: geopotential height w.r.t. local surface
+* `geopotential_height_wrt_surface`: geopotential height with respect to local surface
     * `real(kind=kind_phys)`: units = m
-* `geopotential_height_wrt_surface_at_interfaces`: geopotential height w.r.t. local surface at interfaces
+* `geopotential_height_wrt_surface_at_interfaces`: geopotential height with respect to local surface at interfaces
     * `real(kind=kind_phys)`: units = m
 * `potentially_advected_quantities`: Potentially advected quantities
     * `real(kind=kind_phys)`: units = various
@@ -475,7 +475,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = m2 s-1
 * `upward_absolute_vorticity_of_air`: The upward (kth) component of the curl of the vector wind field
     * `real(kind=kind_phys)`: units = s-1
-* `horizontal_divergence_of_air`: The (horizontal) divergence of the 2-D vector wind field
+* `horizontal_divergence_of_air`: The horizontal divergence of the 2-D vector wind field
     * `real(kind=kind_phys)`: units = s-1
 * `upward_heat_flux_in_air_at_surface`: Upward heat flux in air at surface
     * `real(kind=kind_phys)`: units = W m-2
@@ -485,9 +485,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = W m-2
 * `us_standard_air_pressure_at_sea_level`: US Standard Atmospheric pressure at sea level
     * `real(kind=kind_phys)`: units = Pa
-* `surface_reference_pressure`: Reference pressure used in definition of potential temperature, Exner function, etc.
+* `surface_reference_pressure`: Reference pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)
     * `real(kind=kind_phys)`: units = Pa
-* `reference_pressure_in_atmosphere_layer`: reference pressure in atmosphere layer
+* `reference_pressure_in_atmosphere_layer`: Reference pressure in atmosphere layer
     * `real(kind=kind_phys)`: units = Pa
 * `reference_air_pressure_normalized_by_air_pressure_at_surface`: reference pressure normalized by surface pressure
     * `real(kind=kind_phys)`: units = 1
@@ -499,17 +499,13 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = K
 * `potential_temperature_of_air_on_previous_timestep`: air potential temperature on previous timestep
     * `real(kind=kind_phys)`: units = K
-* `virtual_temperature`: virtual temperature
-    * `real(kind=kind_phys)`: units = K
-* `virtual_potential_temperature`: virtual potential temperature
-    * `real(kind=kind_phys)`: units = K
 * `composition_dependent_gas_constant_of_dry_air`: Composition dependent gas constant of dry air
     * `real(kind=kind_phys)`: units = J kg-1 K-1
-* `composition_dependent_specific_heat_of_dry_air_at_constant_pressure`: composition dependent specific heat of dry air at constant pressure
+* `composition_dependent_specific_heat_of_dry_air_at_constant_pressure`: composition-dependent specific heat of dry air at constant pressure
     * `real(kind=kind_phys)`: units = J kg-1 K-1
-* `composition_dependent_ratio_of_dry_air_gas_constant_to_specific_heat_of_dry_air_at_constant_pressure`: composition dependent ratio of dry air gas constant to specific heat of dry air at constant pressure
+* `composition_dependent_ratio_of_dry_air_gas_constant_to_specific_heat_of_dry_air_at_constant_pressure`: composition-dependent ratio of dry air gas constant to specific heat of dry air at constant pressure
     * `real(kind=kind_phys)`: units = 1
-* `ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one`: (Rwv / Rdair) - 1.0
+* `ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one`: Ratio of gas constants of water vapor to composition-dependent dry air minus one; (Rwv / Rdair) - 1.0
     * `real(kind=kind_phys)`: units = 1
 * `mass_content_of_cloud_ice_in_atmosphere_layer`: Mass content of cloud ice in atmosphere layer
     * `real(kind=kind_phys)`: units = kg m-2
@@ -532,9 +528,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
 * `gravitational_acceleration`: Gravitational acceleration
     * `real(kind=kind_phys)`: units = m s-2
 ## land_surface
-* `land_ice_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is land ice
+* `land_ice_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is ice over land
     * `real(kind=kind_phys)`: units = frac
-* `mass_content_of_water_in_top_soil_layer`: content per unit area of water in top layer of soil
+* `mass_content_of_water_in_top_soil_layer`: mass per unit area of water in top layer of soil
     * `real(kind=kind_phys)`: units = kg m-2
 * `density_of_snow_at_surface`: Density of snow at surface
     * `real(kind=kind_phys)`: units = kg m-3
@@ -570,9 +566,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg kg-1
 * `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of liquid water to the mass of moist air and condensed water at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air`: Ratio of the mass of liquid water to the mass of moist air
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air`: Ratio of the mass of cloud liquid water to the mass of moist air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_dry_air`: Ratio of the mass of liquid water to the mass of dry air
+* `cloud_liquid_water_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud liquid water to the mass of dry air
     * `real(kind=kind_phys)`: units = kg kg-1
 * `cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of liquid water to the mass of dry air at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
@@ -594,21 +590,21 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg kg-1
 * `rain_mixing_ratio_wrt_dry_air_at_top_interfaces`: ratio of the mass of rain to the mass of dry air at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
-* `total_water_mixing_ratio_wrt_moist_air_and_condensed_water`: ratio of the mass of water to the mass of moist air and condensed water
+* `total_water_mixing_ratio_wrt_moist_air_and_condensed_water`: ratio of the mass of all water phases to the mass of moist air and condensed water
     * `real(kind=kind_phys)`: units = kg kg-1
-* `total_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: ratio of the mass of water to the mass of moist air and condensed water at all interfaces excluding surface
+* `total_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: ratio of the mass of all water phases to the mass of moist air and condensed water at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
-* `total_water_mixing_ratio_wrt_dry_air`: ratio of the mass of water to the mass of dry air
+* `total_water_mixing_ratio_wrt_dry_air`: ratio of the mass of all water phases to the mass of dry air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `total_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: ratio of the mass of water to the mass of dry air at all interfaces excluding surface
+* `total_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: ratio of the mass of all water phases to the mass of dry air at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_assuming_saturation`: saturated water vapor mass mixing ratio with respect to moist air and condensed water
     * `real(kind=kind_phys)`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces_assuming_saturation`: saturated water vapor mass mixing ratio with respect to moist air and condensed water at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
-* `derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature`: log derivative of the water vapor partial pressure at saturation with respect to air temperature
+* `derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature`: derivative of the natural logarithm of water vapor partial pressure at saturation with respect to air temperature
     * `real(kind=kind_phys)`: units = K-1
-* `derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature_at_top_interfaces`: log derivative of the water vapor partial pressure at saturation with respect to air temperature at all interfaces excluding surface
+* `derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature_at_top_interfaces`: derivative of the natural logarithm of water vapor partial pressure at saturation with respect to air temperature at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = K-1
 * `mole_fraction_of_ozone_in_air`: Mole fraction of ozone in air
     * `real(kind=kind_phys)`: units = mol mol-1
@@ -636,7 +632,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = mol mol-1
 * `volume_mixing_ratio_of_no2`: Nitrogen dioxide volume mixing ratio
     * `real(kind=kind_phys)`: units = mol mol-1
-* `volume_mixing_ratio_of_no`: Nitrogen oxide volume mixing ratio
+* `volume_mixing_ratio_of_no`: Nitric oxide volume mixing ratio
     * `real(kind=kind_phys)`: units = mol mol-1
 * `volume_mixing_ratio_of_o3`: Ozone volume mixing ratio
     * `real(kind=kind_phys)`: units = mol mol-1
@@ -691,7 +687,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = m-1
 ## emissions
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
-* `emissions_of_co_due_to_anthropogenic`: Carbon monoxide emissions from anthropogenic sources, total
+* `emissions_of_co_due_to_anthropogenic_sources`: Carbon monoxide emissions from anthropogenic sources, total
     * `real(kind=kind_phys)`: units = kg m-2 s-1
 * `emissions_of_no_due_to_anthropogenic_sources`: Nitric oxide emissions from anthropogenic sources, total
     * `real(kind=kind_phys)`: units = kg m-2 s-1
@@ -733,11 +729,11 @@ Emissions variables, contributed for the Community Emissions Data System (CEDS)
     * `real(kind=kind_phys)`: units = kg m-2 s-1
 * `emissions_of_hcho_due_to_anthropogenic_solvents`: Formaldehyde emissions from anthropogenic solvents
     * `real(kind=kind_phys)`: units = kg m-2 s-1
-* `emissions_of_co_due_to_anthropogenic_transportation`: Carbon monoxide emissions from anthropogenic surface Transportation (Road, Rail, Other)
+* `emissions_of_co_due_to_anthropogenic_transportation`: Carbon monoxide emissions from anthropogenic surface transportation (road, rail, other)
     * `real(kind=kind_phys)`: units = kg m-2 s-1
-* `emissions_of_no_due_to_anthropogenic_transportation`: Nitric oxide emissions from anthropogenic surface Transportation (Road, Rail, Other)
+* `emissions_of_no_due_to_anthropogenic_transportation`: Nitric oxide emissions from anthropogenic surface transportation (road, rail, other)
     * `real(kind=kind_phys)`: units = kg m-2 s-1
-* `emissions_of_hcho_due_to_anthropogenic_transportation`: Formaldehyde emissions from anthropogenic surface Transportation (Road, Rail, Other)
+* `emissions_of_hcho_due_to_anthropogenic_transportation`: Formaldehyde emissions from anthropogenic surface transportation (road, rail, other)
     * `real(kind=kind_phys)`: units = kg m-2 s-1
 * `emissions_of_co_due_to_anthropogenic_waste`: Carbon monoxide emissions from anthropogenic waste disposal and handling
     * `real(kind=kind_phys)`: units = kg m-2 s-1
@@ -772,9 +768,9 @@ Optional CCPP framework-provided variables
     * `integer`: units = index
 ## system variables
 Variables related to the compute environment
-* `flag_for_mpi_root`: Flag for MPI root
+* `flag_for_mpi_root`: Flag for MPI root process
     * `logical(kind=)`: units = flag
-* `log_output_unit`: Log output unit
+* `log_output_unit`: Fortran logical unit for output log file
     * `integer(kind=)`: units = 1
 ## GFS_typedefs_GFS_control_type
 * `sigma_pressure_hybrid_coordinate_a_coefficient`: Sigma pressure hybrid coordinate a coefficient
@@ -1141,7 +1137,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_rrtmgp_radiation_scheme`: Flag for Rapid Radiative Transfer Model for global climate model (GCM) applications for parallelization (RRTMGP) radiation scheme
     * `logical(kind=)`: units = flag
-* `identifier_for_ruc_land_surface_scheme`: Identifier for ruc land surface scheme
+* `identifier_for_ruc_land_surface_scheme`: Identifier for Rapid Update Cycle land surface scheme
     * `integer(kind=)`: units = 1
 * `control_for_land_surface_scheme_runoff_and_groundwater`: Control for land surface scheme runoff and groundwater
     * `integer(kind=)`: units = 1
@@ -1161,7 +1157,7 @@ Variables related to the compute environment
     * `logical(kind=)`: units = flag
 * `do_sgs_cellular_automata`: Do sgs cellular automata
     * `logical(kind=)`: units = flag
-* `do_sas_shallow_convection`: Do Simplified Arakawa-Schubert deep convection scheme
+* `do_sas_shallow_convection`: Do Simplified Arakawa-Schubert shallow convection scheme
     * `logical(kind=)`: units = flag
 * `do_shoc`: Do Simplified Higher-Order Closure stochastic physics scheme
     * `logical(kind=)`: units = flag
@@ -1713,7 +1709,7 @@ Variables related to the compute environment
 * `vertical_interface_dimension_interstitial`: Vertical interface dimension interstitial
     * `integer(kind=)`: units = count
 ## GFS_typedefs_GFS_tbd_type
-* `absolute_momentum_flux_due_to_nonorographic_gwd`: Absolute momentum flux due to nonorographic gravity wave drag
+* `absolute_momentum_flux_due_to_nonorographic_gwd`: Absolute momentum flux due to non-orographic gravity wave drag
     * `real(kind=kind_phys)`: units = various
 * `cumulative_lwe_thickness_of_convective_precipitation_amount_between_sw_radiation_calls`: Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls
     * `real(kind=kind_phys)`: units = m
@@ -1767,7 +1763,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = m
 * `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep
     * `real(kind=kind_phys)`: units = kg kg-1
-* `tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_nonphysics`: Tendency of specific humidity (water vapor mass mixing ratio with respect to moist air) due to nonphysics
+* `tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_nonphysics`: Tendency of specific humidity (water vapor mass mixing ratio with respect to moist air) due to non-physics processes
     * `real(kind=kind_phys)`: units = kg kg-1 s-1
 * `momentum_exchange_coefficient_for_myj_schemes`: Momentum exchange coefficient for Mellor-Yamada-Janjic physics schemes
     * `real(kind=kind_phys)`: units = m s-1
@@ -2319,7 +2315,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = K s-1
 * `cellular_automata_vertical_scaling_factor`: Cellular automata vertical scaling factor
     * `real(kind=kind_phys)`: units = fraction
-* `shum_scaling_factors_from_coupled_process`: Stochastic HUMidity stochastic physics option scaling factors from coupled process
+* `shum_scaling_factors_from_coupled_process`: Stochastic Humidity stochastic physics option scaling factors from coupled process
     * `real(kind=kind_phys)`: units = 1
 * `skeb_x_wind_scaling_factors_from_coupled_process`: Stochastic Kinetic Energy Backscatter x-wind scaling factors from coupled process
     * `real(kind=kind_phys)`: units = 1
@@ -2342,7 +2338,7 @@ Variables related to the compute environment
     * `real(kind=kind_phys)`: units = kg-1
 * `exner_function_wrt_surface_pressure`: Exner function with respect to surface pressure, (p/ps)^(Rd/cp)
     * `real(kind=kind_phys)`: units = 1
-* `exner_function_at_surface_adjacent_layer`: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface adjacent layer
+* `exner_function_at_surface_adjacent_layer`: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer
     * `real(kind=kind_phys)`: units = 1
 * `exner_function_at_interfaces`: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at vertical layer interfaces
     * `real(kind=kind_phys)`: units = 1

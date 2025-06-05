@@ -64,7 +64,7 @@ ESM Standard Name Rules
    In the latter example, ``ln`` is operating on the quantity ``water_vapor_partial_pressure_assuming_saturation``,
    while ``derivative_of`` is a combined transformation of ``water_vapor_partial_pressure_assuming_saturation``
    and ``air_temperature``. When multiple transformations are present, a more detailed description
-   should be provided in the ``long_name`` field to prevent any possible ambiguity.
+   should be provided in the ``description`` field to prevent any possible ambiguity.
 
 #. Variables are current and instantaneous unless specified. Variables that are not
    current (e.g., previous timestep) or non-instantaneous (e.g., accumulated values)
@@ -94,7 +94,7 @@ ESM Standard Name Rules
    ``[variable]_at_top_interfaces`` is defined on `n` points, and
    ``[variable]_at_bottom_interfaces`` is defined on `n` points.
 
-#. By default, *mixing_ratio* refers to mass mixing ratios. The long name should
+#. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
    Mass mixing ratios should contain information regarding
    with respect to what quantity they are defined, and options are *wrt_dry_air*,
@@ -146,7 +146,7 @@ ESM Standard Name Rules
 #. Spell out acronyms unless they are obvious to a vast majority of
    scientists/developers who may come across them. A list of currently-used
    aliases is below. Whenever such an alias exist, use the alias in the
-   standard name and the full term in the long name.
+   standard name and the full term in the description.
 
 #. For control-oriented variables, if the variable is a Fortran logical,
    use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
@@ -165,8 +165,8 @@ Technical specifications
 ========================
 
 #. The standard name dictionary consists of a number of individual XML elements:
-   one "standard_name" element for each entry. A standard name entry consist of a "name" attribute
-   that represents the variable name, and (optionally) a "long_name" attribute that gives
+   one ``standard_name`` element for each entry. A standard name entry consist of a ``name`` attribute
+   that represents the variable name, and (optionally) a ``description`` attribute that gives
    a detailed description of what that name represents. The standard_name XML entry also contains a nested
    "type" entry, indicating the data type that a standard_name should represent, and as attributes the
    physical units of that variable quantity (see the `section on Units <#units>`_) and the FORTRAN "kind"
@@ -174,11 +174,11 @@ Technical specifications
    for the variable name ``exner_function`` may look similar to this:
 
     <standard_name name="exner_function"
-                   long_name="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
+                   description="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
       <type kind="kind_phys" units="1">real</type>
     </standard_name>
 
-   This XML element indicates that the variable ``exner_function`` represents the quantity described by the ``long_name``
+   This XML element indicates that the variable ``exner_function`` represents the quantity described by the ``description``
    attribute. It is a real variable of "kind_phys" kind, and units of "1", meaning it is non-dimensional and
    does not correspond to a more descriptive non-dimensional type such as "fraction"; see the `section on Units <#units>`_
    for more details

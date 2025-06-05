@@ -60,58 +60,58 @@ def convert_text_to_link(text_str):
     return link_str
 
 ########################################################################
-def standard_name_to_long_name(prop_dict, context=None):
+def standard_name_to_description(prop_dict, context=None):
 ########################################################################
-    """Translate a standard_name to its default long_name
+    """Translate a standard_name to its default description
     Note: This code is copied from the CCPP Framework.
-    >>> standard_name_to_long_name({'standard_name':'cloud_optical_depth_layers_from_0p55mu_to_0p99mu'})
+    >>> standard_name_to_description({'standard_name':'cloud_optical_depth_layers_from_0p55mu_to_0p99mu'})
     'Cloud optical depth layers from 0.55mu to 0.99mu'
-    >>> standard_name_to_long_name({'local_name':'foo'}) #doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> standard_name_to_description({'local_name':'foo'}) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert foo to long name
-    >>> standard_name_to_long_name({}) #doctest: +IGNORE_EXCEPTION_DETAIL
+    CCPPError: No standard name to convert foo to description
+    >>> standard_name_to_description({}) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert to long name
-    >>> standard_name_to_long_name({'local_name':'foo'}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
+    CCPPError: No standard name to convert to description
+    >>> standard_name_to_description({'local_name':'foo'}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert foo to long name at foo.F90:3
-    >>> standard_name_to_long_name({}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
+    CCPPError: No standard name to convert foo to description at foo.F90:3
+    >>> standard_name_to_description({}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert to long name at foo.F90:3
+    CCPPError: No standard name to convert to description at foo.F90:3
     """
     # We assume that standar_name has been checked for validity
     # Make the first char uppercase and replace each underscore with a space
     if 'standard_name' in prop_dict:
         standard_name = prop_dict['standard_name']
         if standard_name:
-            long_name = standard_name[0].upper() + re.sub("_", " ",
+            description = standard_name[0].upper() + re.sub("_", " ",
                                                           standard_name[1:])
         else:
-            long_name = ''
+            description = ''
         # end if
         # Next, substitute a decimal point for the p in [:digit]p[:digit]
-        match = _REAL_SUBST_RE.match(long_name)
+        match = _REAL_SUBST_RE.match(description)
         while match is not None:
-            long_name = match.group(1) + '.' + match.group(2)
-            match = _REAL_SUBST_RE.match(long_name)
+            description = match.group(1) + '.' + match.group(2)
+            match = _REAL_SUBST_RE.match(description)
         # end while
     else:
-        long_name = ''
+        description = ''
         if 'local_name' in prop_dict:
             lname = ' {}'.format(prop_dict['local_name'])
         else:
             lname = ''
         # end if
         ctxt = context_string(context)
-        emsg = 'No standard name to convert{} to long name{}'
+        emsg = 'No standard name to convert{} to description{}'
         raise CCPPError(emsg.format(lname, ctxt))
     # end if
-    return long_name
+    return description
 
 ###############################################################################
-def parse_command_line(args, description):
+def parse_command_line(args, program_description):
 ###############################################################################
-    parser = argparse.ArgumentParser(description=description,
+    parser = argparse.ArgumentParser(description=program_description,
                                      formatter_class=argparse.RawTextHelpFormatter)
 
     parser.add_argument("standard_name_file",
@@ -165,10 +165,10 @@ def parse_section(snl, sec, level='##'):
                 parse_section(snl, std_name, level + '#')
                 continue
             stdn_name = std_name.get('name')
-            stdn_longname = std_name.get('long_name')
+            stdn_longname = std_name.get('description')
             if stdn_longname is None:
                 sdict = {'standard_name':stdn_name}
-                stdn_longname = standard_name_to_long_name(sdict)
+                stdn_longname = standard_name_to_description(sdict)
             # end if
             snl.write("* `{}`: {}\n".format(stdn_name, stdn_longname))
             # Should only be a type in the standard_name text
