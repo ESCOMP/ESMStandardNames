@@ -167,8 +167,8 @@ Technical specifications
 #. The standard name dictionary consists of a number of individual XML elements:
    one ``standard_name`` element for each entry. A standard name entry consist of a ``name`` attribute
    that represents the variable name, and (optionally) a ``description`` attribute that gives
-   a detailed description of what that name represents. Note that the ``description`` field is
-   provided for information and disambiguation only, and does not need to be included for
+   a detailed description of what that name represents. Note that the ``description`` field is only
+   provided for information and disambiguation only (though it should be unique), and does not need to be included for
    individual implementations of the standard names. It is not the same as ``long_name`` entries
    used in CCPP and other standards, but it can be used to inform the contents of that field. The
    ``standard_name`` XML entry also contains a nested
