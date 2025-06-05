@@ -167,8 +167,12 @@ Technical specifications
 #. The standard name dictionary consists of a number of individual XML elements:
    one ``standard_name`` element for each entry. A standard name entry consist of a ``name`` attribute
    that represents the variable name, and (optionally) a ``description`` attribute that gives
-   a detailed description of what that name represents. The standard_name XML entry also contains a nested
-   "type" entry, indicating the data type that a standard_name should represent, and as attributes the
+   a detailed description of what that name represents. Note that the ``description`` field is
+   provided for information and disambiguation only, and does not need to be included for
+   individual implementations of the standard names. It is not the same as ``long_name`` entries
+   used in CCPP and other standards, but it can be used to inform the contents of that field. The
+   ``standard_name`` XML entry also contains a nested
+   ``type`` entry, indicating the data type that a ``standard_name`` should represent, and as attributes the
    physical units of that variable quantity (see the `section on Units <#units>`_) and the FORTRAN "kind"
    of the variable quantity. For example, the element
    for the variable name ``exner_function`` may look similar to this:
@@ -181,7 +185,7 @@ Technical specifications
    This XML element indicates that the variable ``exner_function`` represents the quantity described by the ``description``
    attribute. It is a real variable of "kind_phys" kind, and units of "1", meaning it is non-dimensional and
    does not correspond to a more descriptive non-dimensional type such as "fraction"; see the `section on Units <#units>`_
-   for more details
+   for more details.
 
    These standard_name elements can optionally be separated by "section" elements. These are parsed out into human-readable sections in the generated markdown file (``Metadata-standard-names.md``).
 
