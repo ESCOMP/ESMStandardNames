@@ -28,10 +28,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-            sudo apt-get update
-            sudo apt-get -y install libxml2-utils
-            python -m pip install --upgrade pip
-            python -m pip install PyYaml
+          sudo apt-get update
+          sudo apt-get -y install libxml2-utils
+          python -m pip install --upgrade pip
+          python -m pip install PyYaml
 
       - name: Render xml to markdown
         run: |
@@ -53,5 +53,4 @@ jobs:
         run: |
           git push
         env:
-          # This uses the default GITHUB_TOKEN with write permissions
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
