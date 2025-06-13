@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  commit-file:
+  update-md-and-yaml:
+    name: Render xml to markdown and yaml and commit
     runs-on: ubuntu-latest
 
     permissions:
