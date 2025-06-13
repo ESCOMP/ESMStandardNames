@@ -5,6 +5,7 @@ Convert a metadata standard-name XML library file to another format.
 """
 
 # Python library imports
+from collections import OrderedDict
 import xml.etree.ElementTree as ET
 import os.path
 import argparse
@@ -34,9 +35,17 @@ _REAL_SUBST_RE = re.compile(r"(.*\d)p(\d.*)")
 
 _DROPPED_LINK_CHARS_RE = re.compile(r"[^a-z_-]")
 
+#######################################
+# Custom representer for OrderedDict
+#######################################
+
+def ordered_dict_representer(dumper, data):
+    return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.items())
+yaml.add_representer(OrderedDict, ordered_dict_representer)
+
 ########################################################################
 def convert_text_to_link(text_str):
-
+########################################################################
     """
     When Markdown converts a header string into
     an internal document link it applies certain
@@ -62,12 +71,15 @@ def convert_text_to_link(text_str):
 
 ########################################################################
 def context_string(context):
+########################################################################
     """Return a formatted string for context information."""
     if context is None:
         return ''
     return f' at {context.filename}:{context.linenum}'
 
+########################################################################
 def standard_name_to_long_name(prop_dict, context=None):
+########################################################################
     """Translate a standard_name to its default long_name
     >>> standard_name_to_long_name({'standard_name':'cloud_optical_depth_layers_from_0p55mu_to_0p99mu'})
     'Cloud optical depth layers from 0.55mu to 0.99mu'
@@ -200,36 +212,28 @@ def parse_section(snl, sec, level='##'):
     # end for
 # end for
 
-from collections import OrderedDict
-# Custom representer for OrderedDict
-def ordered_dict_representer(dumper, data):
-    return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.items())
-yaml.add_representer(OrderedDict, ordered_dict_representer)
-
-"""
-# Create an OrderedDict
-data = OrderedDict([
-    ("name", "John"),
-    ("age", 30),
-    ("hobbies", ["reading", "hiking"])
-])
-
-# Dump OrderedDict to YAML
-yaml_output = yaml.dump(data, default_flow_style=False)
-print(yaml_output)
-"""
-
 ###############################################################################
 def convert_xml_to_yaml(root, library_name, yaml_file):
 ###############################################################################
-    #yaml_data = {'library_name': library_name, 'sections': []}
     yaml_data = OrderedDict()
     yaml_data['library_name'] = library_name
     yaml_data['sections'] = []
     for section in root:
         sec_data = OrderedDict()
         sec_data['name'] = section.get('name')
-        sec_data['comment'] = section.get('comment')
+        # Format comment and add to dicionary
+        sec_comment = section.get('comment')
+        if sec_comment:
+            # Remove code block markdown
+            sec_comment = sec_comment.replace('```', '')
+            # Split multiline into array
+            sec_comment = sec_comment.split('\\n')
+            # Remove multiple whitespaces
+            sec_comment = [' '.join(x.split()) for x in sec_comment if ' '.join(x.split())]
+            # Join together into one long string
+            sec_comment = ' '.join(sec_comment)
+        sec_data['comment'] = sec_comment
+        # Parse standard names for this section
         sec_data['standard_names'] = []
         for std_name in section:
             if std_name.tag == 'standard_name':
@@ -259,9 +263,7 @@ def convert_xml_to_yaml(root, library_name, yaml_file):
 def main_func():
 ###############################################################################
     """Validate and parse the standard names database file and generate
-    a document containing the data.
-    Currently, only the Markdown format is supported for output.
-    """
+    a document containing the data."""
     # Parse command line arguments
     args = parse_command_line(sys.argv[1:], __doc__)
     stdname_file = os.path.abspath(args.standard_name_file)
