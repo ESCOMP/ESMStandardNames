@@ -70,14 +70,6 @@ def convert_text_to_link(text_str):
     return link_str
 
 ########################################################################
-def context_string(context):
-########################################################################
-    """Return a formatted string for context information."""
-    if context is None:
-        return ''
-    return f' at {context.filename}:{context.linenum}'
-
-########################################################################
 def standard_name_to_long_name(prop_dict, context=None):
 ########################################################################
     """Translate a standard_name to its default long_name
