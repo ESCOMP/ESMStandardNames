@@ -137,8 +137,8 @@ def parse_command_line(args, description):
     parser.add_argument("--output-filename", metavar='<output filename>',
                         type=str, default='Metadata-standard-names',
                         help="Name of output file (without extension)")
-    parser.add_argument("--output-format", metavar='[md|yaml]', type=str, default='md',
-                        help="Format of output file")
+    parser.add_argument("--output-format", metavar='[md|yaml]', type=str, default=None,
+                        required=True, help="Format of output file")
     pargs = parser.parse_args(args)
     return pargs
 
