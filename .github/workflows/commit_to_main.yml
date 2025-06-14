@@ -40,7 +40,6 @@ jobs:
           echo "The following changes will be committed (git diff Metadata-standard-names.md):"
           git diff Metadata-standard-names.md
           git add Metadata-standard-names.md
-          git commit -m "Update Metadata-standard-names.md from standard_names.xml" || echo "No changes to commit"
 
       - name: Rendering xml to yaml
         run: |
@@ -48,10 +47,10 @@ jobs:
           echo "The following changes will be committed (git diff Metadata-standard-names.yaml):"
           git diff Metadata-standard-names.yaml
           git add Metadata-standard-names.yaml
-          git commit -m "Update Metadata-standard-names.yaml from standard_names.xml" || echo "No changes to commit"
 
-      - name: Push changes
+      - name: Commit and push changes
         run: |
+          git commit -m "Update Metadata-standard-names.{md,yaml} from standard_names.xml" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
