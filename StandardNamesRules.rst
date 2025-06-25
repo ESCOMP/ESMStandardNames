@@ -662,6 +662,9 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | pdf                 | probability density function                            |
 +---------------------+---------------------------------------------------------+
+| rrtmgp              | Rapid Radiative Transfer Model for General circulation  |
+|                     | model applications - Parallel                           |
++---------------------+---------------------------------------------------------+
 | sas                 | simplified Arakawa-Schubert scheme                      |
 +---------------------+---------------------------------------------------------+
 | skeb                | stochastic kinetic energy backscatter                   |
