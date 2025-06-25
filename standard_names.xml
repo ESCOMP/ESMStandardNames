@@ -583,7 +583,7 @@
       <type kind="kind_phys" units="J kg-1 K-1">real</type>
     </standard_name>
     <standard_name name="latent_heat_of_vaporization_of_water_at_0c"
-                   description="Latent heat of vaporization of water at 0 degrees Celcius">
+                   description="Latent heat of vaporization of water at 0 degrees Celsius">
       <type kind="kind_phys" units="J kg-1">real</type>
     </standard_name>
     <standard_name name="dry_air_density_at_stp"
@@ -591,7 +591,7 @@
       <type kind="kind_phys" units="kg m-3">real</type>
     </standard_name>
     <standard_name name="fresh_liquid_water_density_at_0c"
-                   description="Density of liquid water at 0 degrees Celcius">
+                   description="Density of liquid water at 0 degrees Celsius">
       <type kind="kind_phys" units="kg m-3">real</type>
     </standard_name>
     <standard_name
@@ -1022,11 +1022,11 @@
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water"
-                   description="Ratio of the mass of liquid water to the mass of moist air and condensed water">
+                   description="Ratio of the mass of cloud liquid water to the mass of moist air and condensed water">
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces"
-                   description="Ratio of the mass of liquid water to the mass of moist air and condensed water at all interfaces excluding surface">
+                   description="Ratio of the mass of cloud liquid water to the mass of moist air and condensed water at all interfaces excluding surface">
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_liquid_water_mixing_ratio_wrt_moist_air"
@@ -1046,15 +1046,15 @@
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces"
-                   description="Ratio of the mass of ice to the mass of moist air and condensed water at all interfaces excluding surface">
+                   description="Ratio of the mass of cloud ice to the mass of moist air and condensed water at all interfaces excluding surface">
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_ice_mixing_ratio_wrt_dry_air"
-                   description="Ratio of the mass of ice to the mass of dry air">
+                   description="Ratio of the mass of cloud ice to the mass of dry air">
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces"
-                   description="Ratio of the mass of ice to the mass of dry air at all interfaces excluding surface">
+                   description="Ratio of the mass of cloud ice to the mass of dry air at all interfaces excluding surface">
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="rain_mixing_ratio_wrt_moist_air_and_condensed_water"
@@ -2326,7 +2326,7 @@ GFS near-surface sea temperature scheme
          <type kind="" units="index">integer</type>
       </standard_name>
       <standard_name name="index_of_cloud_liquid_water_mixing_ratio_wrt_moist_air_in_tracer_concentration_array"
-                   description="Index of liquid water mass mixing ratio with respect to moist air in the tracer concentration array">
+                   description="Index of cloud liquid water mass mixing ratio with respect to moist air in the tracer concentration array">
          <type kind="" units="index">integer</type>
       </standard_name>
       <standard_name name="index_of_mass_number_concentration_of_cloud_droplets_in_tracer_concentration_array">

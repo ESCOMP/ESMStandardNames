@@ -318,11 +318,11 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `real(kind=kind_phys)`: units = J kg-1 K-1
 * `specific_heat_of_liquid_water_at_20c`: Specific heat of liquid water at 20 degrees Celsius
     * `real(kind=kind_phys)`: units = J kg-1 K-1
-* `latent_heat_of_vaporization_of_water_at_0c`: Latent heat of vaporization of water at 0 degrees Celcius
+* `latent_heat_of_vaporization_of_water_at_0c`: Latent heat of vaporization of water at 0 degrees Celsius
     * `real(kind=kind_phys)`: units = J kg-1
 * `dry_air_density_at_stp`: Density of dry air at standard temperature and pressure
     * `real(kind=kind_phys)`: units = kg m-3
-* `fresh_liquid_water_density_at_0c`: Density of liquid water at 0 degrees Celcius
+* `fresh_liquid_water_density_at_0c`: Density of liquid water at 0 degrees Celsius
     * `real(kind=kind_phys)`: units = kg m-3
 * `ratio_of_water_vapor_to_dry_air_gas_constants_minus_one`: Ratio of gas constants of water vapor and dry air minus one; (Rwv / Rdair) - 1.0
     * `real(kind=kind_phys)`: units = 1
@@ -562,9 +562,9 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of water vapor to the mass of dry air at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of liquid water to the mass of moist air and condensed water
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of cloud liquid water to the mass of moist air and condensed water
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of liquid water to the mass of moist air and condensed water at all interfaces excluding surface
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of cloud liquid water to the mass of moist air and condensed water at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
 * `cloud_liquid_water_mixing_ratio_wrt_moist_air`: Ratio of the mass of cloud liquid water to the mass of moist air
     * `real(kind=kind_phys)`: units = kg kg-1
@@ -574,11 +574,11 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg kg-1
 * `cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of cloud ice to the mass of moist air and condensed water
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of ice to the mass of moist air and condensed water at all interfaces excluding surface
+* `cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of cloud ice to the mass of moist air and condensed water at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_ice_mixing_ratio_wrt_dry_air`: Ratio of the mass of ice to the mass of dry air
+* `cloud_ice_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud ice to the mass of dry air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of ice to the mass of dry air at all interfaces excluding surface
+* `cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud ice to the mass of dry air at all interfaces excluding surface
     * `real(kind=kind_phys)`: units = kg kg-1
 * `rain_mixing_ratio_wrt_moist_air_and_condensed_water`: ratio of the mass of rain to the mass of moist air and condensed water
     * `real(kind=kind_phys)`: units = kg kg-1
@@ -1319,7 +1319,7 @@ Variables related to the compute environment
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_in_tracer_concentration_array`: Index of mass number concentration of nonhygroscopic ice nucleating aerosols in tracer concentration array
     * `integer(kind=)`: units = index
-* `index_of_cloud_liquid_water_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of liquid water mass mixing ratio with respect to moist air in the tracer concentration array
+* `index_of_cloud_liquid_water_mixing_ratio_wrt_moist_air_in_tracer_concentration_array`: Index of cloud liquid water mass mixing ratio with respect to moist air in the tracer concentration array
     * `integer(kind=)`: units = index
 * `index_of_mass_number_concentration_of_cloud_droplets_in_tracer_concentration_array`: Index of mass number concentration of cloud droplets in tracer concentration array
     * `integer(kind=)`: units = index
