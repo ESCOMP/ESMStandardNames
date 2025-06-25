@@ -596,7 +596,7 @@
     </standard_name>
     <standard_name
         name="ratio_of_water_vapor_to_dry_air_gas_constants_minus_one"
-        description="Ratio of gas constants of water vapor and dry air; (Rwv / Rdair) - 1.0">
+        description="Ratio of gas constants of water vapor and dry air minus one; (Rwv / Rdair) - 1.0">
       <type kind="kind_phys" units="1">real</type>
     </standard_name>
     <standard_name
