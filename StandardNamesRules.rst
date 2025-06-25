@@ -656,6 +656,8 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | nir                 | near-infrared part of the EM spectrum (radiation)       |
 +---------------------+---------------------------------------------------------+
+| nrl                 | Naval Research Lab                                      |
++---------------------+---------------------------------------------------------+
 | nsstm               | GFS near-surface sea temperature scheme                 |
 +---------------------+---------------------------------------------------------+
 | pbl                 | planetary boundary layer                                |
