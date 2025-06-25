@@ -579,7 +579,7 @@
       <type kind="kind_phys" units="J kg-1 K-1">real</type>
     </standard_name>
     <standard_name name="specific_heat_of_liquid_water_at_20c"
-              description="Specific heat of liquid water at 20 degrees Celcius">
+              description="Specific heat of liquid water at 20 degrees Celsius">
       <type kind="kind_phys" units="J kg-1 K-1">real</type>
     </standard_name>
     <standard_name name="latent_heat_of_vaporization_of_water_at_0c"
@@ -1038,11 +1038,11 @@
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces"
-                   description="Ratio of the mass of liquid water to the mass of dry air at all interfaces excluding surface">
+                   description="Ratio of the mass of cloud liquid water to the mass of dry air at all interfaces excluding surface">
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water"
-                   description="Ratio of the mass of ice to the mass of moist air and condensed water">
+                   description="Ratio of the mass of cloud ice to the mass of moist air and condensed water">
       <type kind="kind_phys" units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces"

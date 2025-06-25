@@ -72,9 +72,9 @@ def main_func():
     for name in root.findall('./section/standard_name'):
         try:
             all_std_names.append(name.attrib[args.field])
-        except:
+        except KeyError:
             if (args.debug):
-                print(f"WARNING: no field {args.field} for standard name {name.attrib['name']}")
+                print(f"WARNING: no field '{args.field}' for standard name '{name.attrib['name']}' ")
     #get list of all unique and duplicate standard names, in source order
     seen = set()
     uniq_std_names = []
