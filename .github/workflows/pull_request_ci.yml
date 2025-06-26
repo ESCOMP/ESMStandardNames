@@ -1,9 +1,11 @@
 name: Pull request checks
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
+      - release/*
 
 jobs:
   check-unique-standard-names:
