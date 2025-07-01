@@ -1,23 +1,29 @@
 name: Pull request checks
 
 on:
-  pull_request:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+      - release/*
 
 jobs:
   check-unique-standard-names:
+    name: Check for duplicates in standard names
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.x"
 
-      - name: Install xmllint
+      - name: Install dependencies
         run: |
-            sudo apt-get update
-            sudo apt-get -y install libxml2-utils
+          sudo apt-get update
+          sudo apt-get -y install libxml2-utils
 
       - name: Check for duplicate standard names, descriptions
         run: |
@@ -32,42 +38,49 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.x"
 
-      # Install dependencies
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get -y install libxml2-utils
 
-
       - name: Checks standard names against character rules
         run: |
           python3 tools/check_name_rules.py -s standard_names.xml
 
-  check-rerendered-markdown:
+  test-rendering:
+    name: Test rendering xml file to markdown and yaml
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.x"
 
-      - name: Install xmllint
+      - name: Install dependencies
         run: |
-            sudo apt-get update
-            sudo apt-get -y install libxml2-utils
+          sudo apt-get update
+          sudo apt-get -y install libxml2-utils
+          python -m pip install --upgrade pip
+          python -m pip install PyYaml
 
-      - name: Check markdown has been rerendered
+      - name: Test rendering xml file to markdown
         run: |
-            # Checks if the saved markdown matches freshly rendered markdown.
-            # If this fails you have likely forgotten to rerun the write script
-            # after adding a new name, or updating its description.
-            checksum=$(sha256sum Metadata-standard-names.md)
-            tools/write_standard_name_table.py standard_names.xml
-            test "$checksum" = "$(sha256sum Metadata-standard-names.md)"
+          tools/write_standard_name_table.py --output-format md standard_names.xml
+          echo "The following changes will be committed when this pull request is merged (git diff Metadata-standard-names.md; "
+          echo "assuming that 'Metadata-standard-names.md' wasn't updated and matches the version in the authoritative branch):"
+          git diff Metadata-standard-names.md
 
-
+      - name: Test rendering xml file to yaml
+        run: |
+          tools/write_standard_name_table.py --output-format yaml standard_names.xml
+          echo "The following changes will be committed when this pull request is merged (git diff Metadata-standard-names.yaml; "
+          echo "assuming that 'Metadata-standard-names.yaml' wasn't updated and matches the version in the authoritative branch):"
+          git diff Metadata-standard-names.yaml
