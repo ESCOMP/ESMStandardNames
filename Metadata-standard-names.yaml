@@ -1,0 +1,5689 @@
+library_name: Earth System Modeling Standard Name Library - add some chunk here to test auto update
+sections:
+- name: dimensions
+  comment: 'Dimension standard names may come in sets of six related standard names
+    for each dimension: [dim_name]_dimension -- The full dimension size [dim_name]_loop_extent
+    -- Size of dim for current call [dim_name]_begin - Start index for dimension [dim_name]_end
+    - End index for dimension [dim_name]_index - Single index for dimension [dim_name]_selection
+    - Array of selected indices for dimension Note that the cap generator may substitute
+    among standard names in this category in order to properly call suite parts and
+    individual schemes. In the substitutions below, the name on the left is the standard_name
+    in the dimensions field of the caller while the name(s) on the right is (are)
+    the standard name(s) of the callee (in the form used in the subroutine call).
+    [dim_name]_dimension ==> 1:[dim_name]_loop_extent [dim_name]_loop_extent ==> 1:[dim_name]_loop_extent
+    [dim_name]_begin:[dim_name]_end ==> 1:[dim_name]_loop_extent [dim_name]_begin:[dim_name]_end
+    ==> 1:[dim_name]_dimension Also note that horizontal_dimension should be used
+    in xxx_[timestep_]init and xxx_[timestep_]final routines but not in xxx_run routines.
+    Currently, the only dimension which supports all six dimension types is horizontal_dimension.
+    This and other supported dimension standard names are listed below.'
+  standard_names:
+  - name: horizontal_dimension
+    long_name: Size horizontal dimension
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_layer_dimension
+    long_name: number of vertical layers
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_layer_dimension_extended_up_by_1
+    long_name: number of vertical layers extended up by 1
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_interface_dimension
+    long_name: number of vertical interfaces
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_layer_index
+    long_name: index of a particular vertical layer
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_interface_index
+    long_name: index of a particular vertical interface
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_index_at_surface_adjacent_layer
+    long_name: Vertical index at surface adjacent layer
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_index_at_top_adjacent_layer
+    long_name: Vertical index at top adjacent layer
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_index_at_surface_interface
+    long_name: Vertical index at surface interface
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_index_at_top_interface
+    long_name: Vertical index at top interface
+    type: integer
+    kind: null
+    units: index
+  - name: number_of_openmp_threads
+    long_name: Total number of thread blocks OpenMP (shared-memory) parallel threads.
+    type: integer
+    kind: null
+    units: count
+- name: constants
+  comment: null
+  standard_names:
+  - name: avogadro_number
+    long_name: Avogadro number
+    type: real
+    kind: kind_phys
+    units: molecules mol-1
+  - name: base_state_surface_pressure_for_hybrid_vertical_coordinate
+    long_name: Base state surface pressure for hybrid vertical coordinate
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: boltzmann_constant
+    long_name: Boltzmann constant
+    type: real
+    kind: kind_phys
+    units: J K-1
+  - name: gas_constant_of_dry_air
+    long_name: Gas constant of dry air
+    type: real
+    kind: kind_phys
+    units: J kg-1 K-1
+  - name: seconds_in_calendar_day
+    long_name: Seconds in calendar day
+    type: integer
+    kind: kind_phys
+    units: s
+  - name: specific_heat_of_dry_air_at_constant_pressure
+    long_name: Specific heat of dry air at constant pressure
+    type: real
+    kind: kind_phys
+    units: J kg-1 K-1
+  - name: specific_heat_of_liquid_water_at_20c
+    long_name: specific heat of liquid water at 20c
+    type: real
+    kind: kind_phys
+    units: J kg-1 K-1
+  - name: latent_heat_of_vaporization_of_water_at_0c
+    long_name: latent heat of vaporization of water at 0c
+    type: real
+    kind: kind_phys
+    units: J kg-1
+  - name: dry_air_density_at_stp
+    long_name: density of dry air at STP
+    type: real
+    kind: kind_phys
+    units: kg m-3
+  - name: fresh_liquid_water_density_at_0c
+    long_name: density of liquid water at 0c
+    type: real
+    kind: kind_phys
+    units: kg m-3
+  - name: ratio_of_water_vapor_to_dry_air_gas_constants_minus_one
+    long_name: (Rwv / Rdair) - 1.0
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: standard_gravitational_acceleration
+    long_name: scalar constant representing gravitational acceleration
+    type: real
+    kind: kind_phys
+    units: m s-2
+- name: coordinates
+  comment: null
+  standard_names:
+  - name: latitude
+    long_name: Latitude
+    type: real
+    kind: kind_phys
+    units: degree_north
+  - name: longitude
+    long_name: Longitude
+    type: real
+    kind: kind_phys
+    units: degree_east
+  - name: cell_area
+    long_name: Cell area
+    type: real
+    kind: kind_phys
+    units: m2
+  - name: cell_weight
+    long_name: Cell weight
+    type: real
+    kind: kind_phys
+    units: 1
+- name: state_variables
+  comment: Note that appending '_on_previous_timestep' to standard_names in this section
+    yields another valid standard_name
+  standard_names:
+  - name: physics_state_due_to_dynamics
+    long_name: Physics state due to dynamics
+    type: physics_state
+    kind: kind_phys
+    units: none
+  - name: timestep_for_physics
+    long_name: Timestep for physics
+    type: integer
+    kind: kind_phys
+    units: s
+  - name: total_tendency_of_physics
+    long_name: Total tendency of physics
+    type: physics_tend
+    kind: kind_phys
+    units: none
+  - name: air_pressure_at_top_of_atmosphere_model
+    long_name: Air pressure at top of atmosphere model
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: air_pressure_at_sea_level
+    long_name: Air pressure at sea level
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: air_pressure_at_surface
+    long_name: Air pressure at local surface
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: surface_pressure_of_dry_air
+    long_name: Surface pressure of dry air
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: surface_geopotential
+    long_name: Surface geopotential
+    type: real
+    kind: kind_phys
+    units: m2 s-2
+  - name: air_temperature
+    long_name: Air temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: air_temperature_on_previous_timestep
+    long_name: Air temperature on previous timestep
+    type: real
+    kind: kind_phys
+    units: K
+  - name: x_wind
+    long_name: Horizontal wind in a direction perpendicular to y_wind
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: y_wind
+    long_name: Horizontal wind in a direction perpendicular to x_wind
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: eastward_wind
+    long_name: Wind vector component, positive when directed eastward
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: northward_wind
+    long_name: Wind vector component, positive when directed northward
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: eastward_wind_at_10m
+    long_name: Wind vector component at 10m, positive when directed eastward
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: northward_wind_at_10m
+    long_name: Wind vector component at 10m, positive when directed northward
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: eastward_wind_at_surface
+    long_name: Wind vector component closest to surface, positive when directed eastward
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: northward_wind_at_surface
+    long_name: Wind vector component closest to surface, positive when directed northward
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: wind_speed_at_surface
+    long_name: Scalar wind speed closest to surface
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: wind_from_direction_at_surface
+    long_name: Direction, from north, of wind speed closest to surface
+    type: real
+    kind: kind_phys
+    units: degrees
+  - name: dry_static_energy
+    long_name: Dry static energy Content of Atmosphere Layer
+    type: real
+    kind: kind_phys
+    units: J kg-1
+  - name: do_lagrangian_vertical_coordinate
+    long_name: flag indicating if vertical coordinate is lagrangian
+    type: logical
+    kind: ''
+    units: flag
+  - name: lagrangian_tendency_of_air_pressure
+    long_name: Vertical pressure velocity
+    type: real
+    kind: kind_phys
+    units: Pa s-1
+  - name: dry_air_density
+    long_name: Density of dry air
+    type: real
+    kind: kind_phys
+    units: kg m-3
+  - name: air_pressure
+    long_name: Midpoint air pressure
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: air_pressure_of_dry_air
+    long_name: Dry midpoint pressure
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: air_pressure_thickness
+    long_name: Air pressure thickness
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: air_pressure_thickness_of_dry_air
+    long_name: Air pressure thickness of dry air
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: reciprocal_of_air_pressure_thickness
+    long_name: Reciprocal of air pressure thickness
+    type: real
+    kind: kind_phys
+    units: Pa-1
+  - name: reciprocal_of_air_pressure_thickness_of_dry_air
+    long_name: Reciprocal of air pressure thickness of dry air
+    type: real
+    kind: kind_phys
+    units: Pa-1
+  - name: ln_air_pressure
+    long_name: Ln air pressure
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: ln_air_pressure_of_dry_air
+    long_name: Ln air pressure of dry air
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: reciprocal_of_dimensionless_exner_function_wrt_surface_air_pressure
+    long_name: inverse exner function w.r.t. surface pressure, (ps/p)^(R/cp)
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: geopotential_height
+    long_name: geopotential height w.r.t. sea level
+    type: real
+    kind: kind_phys
+    units: m
+  - name: geopotential_height_at_surface
+    long_name: Geopotential height at local surface w.r.t. sea level
+    type: real
+    kind: kind_phys
+    units: m
+  - name: geopotential_height_wrt_surface
+    long_name: geopotential height w.r.t. local surface
+    type: real
+    kind: kind_phys
+    units: m
+  - name: geopotential_height_wrt_surface_at_interfaces
+    long_name: geopotential height w.r.t. local surface at interfaces
+    type: real
+    kind: kind_phys
+    units: m
+  - name: potentially_advected_quantities
+    long_name: Potentially advected quantities
+    type: real
+    kind: kind_phys
+    units: various
+  - name: air_pressure_at_interfaces
+    long_name: Air pressure at interfaces
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: air_pressure_of_dry_air_at_interfaces
+    long_name: Air pressure of dry air at interfaces
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: ln_air_pressure_at_interfaces
+    long_name: Ln air pressure at interfaces
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: ln_air_pressure_of_dry_air_at_interfaces
+    long_name: Ln air pressure of dry air at interfaces
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: air_pressure_extended_up_by_1
+    long_name: Air pressure extended up by 1
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: largest_model_top_pressure_that_allows_molecular_diffusion
+    long_name: Largest model top pressure that allows molecular diffusion
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: do_molecular_diffusion
+    long_name: Do molecular diffusion
+    type: logical
+    kind: kind_phys
+    units: flag
+  - name: is_initialized_physics_grid
+    long_name: Flag to indicate if physics grid is initialized
+    type: logical
+    kind: kind_phys
+    units: flag
+  - name: control_for_negative_constituent_warning
+    long_name: Logging setting for negative constituent mass fixer
+    type: character
+    kind: len=*
+    units: 1
+  - name: geopotential_height_at_interfaces
+    long_name: Geopotential height at interfaces
+    type: real
+    kind: kind_phys
+    units: m
+  - name: vertically_integrated_total_energy_of_initial_state
+    long_name: Vertically integrated total energy of initial state
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: vertically_integrated_total_energy_of_current_state
+    long_name: Vertically integrated total energy of current state
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: vertically_integrated_total_water_of_initial_state
+    long_name: Vertically integrated total water of initial state
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: vertically_integrated_total_water_of_current_state
+    long_name: Vertically integrated total water of current state
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: tendency_of_dry_air_enthalpy_at_constant_pressure
+    long_name: Tendency of dry air enthalpy at constant pressure
+    type: real
+    kind: kind_phys
+    units: J kg-1 s-1
+  - name: tendency_of_air_temperature
+    long_name: Change in temperature from a parameterization
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_air_temperature_due_to_model_physics
+    long_name: Total change in air temperature from a physics suite
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_air_potential_temperature
+    long_name: Change in potential temperature from a parameterization
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_air_potential_temperature_due_to_model_physics
+    long_name: Tendency of air potential temperature due to model physics
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_x_wind
+    long_name: Change in x wind from a parameterization
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: tendency_of_x_wind_due_to_model_physics
+    long_name: Tendency of x wind due to model physics
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: tendency_of_y_wind
+    long_name: Change in y wind from a parameterization
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: tendency_of_y_wind_due_to_model_physics
+    long_name: Tendency of y wind due to model physics
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: tendency_of_eastward_wind
+    long_name: Change in eastward wind from a parameterization
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: tendency_of_eastward_wind_due_to_model_physics
+    long_name: Total change in eastward wind from a physics suite
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: tendency_of_northward_wind
+    long_name: Change in northward wind from a parameterization
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: tendency_of_northward_wind_due_to_model_physics
+    long_name: Total change in northward wind from a physics suite
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: air_horizontal_streamfunction
+    long_name: Scalar function describing the stream lines of the wind
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: air_horizontal_velocity_potential
+    long_name: Scalar potential of the wind
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: air_upward_absolute_vorticity
+    long_name: The upward (kth) component of the curl of the vector wind field
+    type: real
+    kind: kind_phys
+    units: s-1
+  - name: air_horizontal_divergence
+    long_name: The (horizontal) divergence of the 2-D vector wind field
+    type: real
+    kind: kind_phys
+    units: s-1
+  - name: surface_upward_heat_flux_in_air
+    long_name: Surface upward heat flux in air
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: cumulative_boundary_flux_of_total_energy
+    long_name: Cumulative boundary flux of total energy
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: cumulative_boundary_flux_of_total_water
+    long_name: Cumulative boundary flux of total water
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: us_standard_air_pressure_at_sea_level
+    long_name: US Standard Atmospheric pressure at sea level
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: surface_reference_pressure
+    long_name: Reference pressure used in definition of potential temperature, Exner
+      function, etc.
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: reference_pressure_in_atmosphere_layer
+    long_name: reference pressure in atmosphere layer
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: reference_air_pressure_normalized_by_surface_air_pressure
+    long_name: reference pressure normalized by surface pressure
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure
+    long_name: Reference pressure in atmosphere layer normalized by surface reference
+      pressure
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: dimensionless_exner_function
+    long_name: exner function
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: air_potential_temperature
+    long_name: air potential temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: air_potential_temperature_on_previous_timestep
+    long_name: air potential temperature on previous timestep
+    type: real
+    kind: kind_phys
+    units: K
+  - name: virtual_temperature
+    long_name: virtual temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: virtual_potential_temperature
+    long_name: virtual potential temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: composition_dependent_gas_constant_of_dry_air
+    long_name: Composition dependent gas constant of dry air
+    type: real
+    kind: kind_phys
+    units: J kg-1 K-1
+  - name: composition_dependent_specific_heat_of_dry_air_at_constant_pressure
+    long_name: composition dependent specific heat of dry air at constant pressure
+    type: real
+    kind: kind_phys
+    units: J kg-1 K-1
+  - name: composition_dependent_ratio_of_dry_air_gas_constant_to_specific_heat_of_dry_air_at_constant_pressure
+    long_name: composition dependent ratio of dry air gas constant to specific heat
+      of dry air at constant pressure
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one
+    long_name: (Rwv / Rdair) - 1.0
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: mass_content_of_cloud_ice_in_atmosphere_layer
+    long_name: Mass content of cloud ice in atmosphere layer
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: mass_content_of_cloud_liquid_water_in_atmosphere_layer
+    long_name: Mass content of cloud liquid water in atmosphere layer
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: mass_content_of_rain_in_atmosphere_layer
+    long_name: Mass content of rain in atmosphere layer
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: mass_content_of_snow_in_atmosphere_layer
+    long_name: Mass content of snow in atmosphere layer
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: mass_content_of_graupel_in_atmosphere_layer
+    long_name: Mass content of graupel in atmosphere layer
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: mass_content_of_hail_in_atmosphere_layer
+    long_name: Mass content of hail in atmosphere layer
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: nonconvective_cloud_area_fraction_in_atmosphere_layer
+    long_name: cloud area fraction in atmosphere layer excluding clouds produced by
+      the convective schemes
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: relative_humidity
+    long_name: Relative humidity
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: relative_humidity_at_2m
+    long_name: Relative humidity at 2m
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: gravitational_acceleration
+    long_name: Gravitational acceleration
+    type: real
+    kind: kind_phys
+    units: m s-2
+- name: land_surface
+  comment: null
+  standard_names:
+  - name: land_ice_area_fraction_of_cell_area
+    long_name: fraction of horizontal area of grid cell that is land ice
+    type: real
+    kind: kind_phys
+    units: frac
+  - name: mass_content_of_water_in_top_soil_layer
+    long_name: content per unit area of water in top layer of soil
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: surface_snow_density
+    long_name: Surface snow density
+    type: real
+    kind: kind_phys
+    units: kg m-3
+  - name: urban_area_fraction_of_cell_area
+    long_name: fraction of horizontal area of grid cell that is urban
+    type: real
+    kind: kind_phys
+    units: frac
+  - name: volume_fraction_of_liquid_water_in_soil_at_critical_point
+    long_name: volume fraction of water in liquid phase in soil at critical point
+    type: real
+    kind: kind_phys
+    units: m3 m-3
+  - name: volume_fraction_of_liquid_water_in_soil_at_saturation
+    long_name: volume fraction of water in liquid phase in soil at saturation
+    type: real
+    kind: kind_phys
+    units: m3 m-3
+  - name: volume_fraction_of_liquid_water_in_soil_at_wilting_point
+    long_name: volume fraction of water in liquid phase in soil at wilting point
+    type: real
+    kind: kind_phys
+    units: m3 m-3
+- name: diagnostics
+  comment: null
+  standard_names:
+  - name: total_precipitation_rate_at_surface
+    long_name: Total precipitation rate at surface
+    type: real
+    kind: kind_phys
+    units: m s-1
+- name: atmospheric_composition
+  comment: null
+  standard_names:
+  - name: number_of_chemical_species
+    long_name: Number of chemical species
+    type: integer
+    kind: kind_phys
+    units: count
+  - name: number_of_tracers
+    long_name: Number of tracers
+    type: integer
+    kind: kind_phys
+    units: count
+  - name: water_vapor_mixing_ratio_wrt_moist_air
+    long_name: Ratio of the mass of water vapor to the mass of moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water
+    long_name: Ratio of the mass of water vapor to the mass of moist air and hydrometeors
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+    long_name: Ratio of the mass of water vapor to the mass of moist air and hydrometeors
+      at all interfaces excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mole_fraction_of_water_vapor
+    long_name: Mole fraction of water vapor
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: water_vapor_mixing_ratio_wrt_dry_air
+    long_name: Ratio of the mass of water vapor to the mass of dry air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_dry_air_at_top_interfaces
+    long_name: Ratio of the mass of water vapor to the mass of dry air at all interfaces
+      excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water
+    long_name: Ratio of the mass of liquid water to the mass of moist air and condensed
+      water
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+    long_name: Ratio of the mass of liquid water to the mass of moist air and condensed
+      water at all interfaces excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air
+    long_name: Ratio of the mass of liquid water to the mass of moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_liquid_water_mixing_ratio_wrt_dry_air
+    long_name: Ratio of the mass of liquid water to the mass of dry air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces
+    long_name: Ratio of the mass of liquid water to the mass of dry air at all interfaces
+      excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water
+    long_name: Ratio of the mass of ice to the mass of moist air and condensed water
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+    long_name: Ratio of the mass of ice to the mass of moist air and condensed water
+      at all interfaces excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_ice_mixing_ratio_wrt_dry_air
+    long_name: Ratio of the mass of ice to the mass of dry air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces
+    long_name: Ratio of the mass of ice to the mass of dry air at all interfaces excluding
+      surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: rain_mixing_ratio_wrt_moist_air_and_condensed_water
+    long_name: ratio of the mass of rain to the mass of moist air and condensed water
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: rain_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+    long_name: ratio of the mass of rain to the mass of moist air and condensed water
+      at all interfaces excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: rain_mixing_ratio_wrt_moist_air
+    long_name: ratio of the mass of rain to the mass of moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: rain_mixing_ratio_wrt_dry_air
+    long_name: ratio of the mass of rain to the mass of dry air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: rain_mixing_ratio_wrt_dry_air_at_top_interfaces
+    long_name: ratio of the mass of rain to the mass of dry air at all interfaces
+      excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: total_water_mixing_ratio_wrt_moist_air_and_condensed_water
+    long_name: ratio of the mass of water to the mass of moist air and condensed water
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: total_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+    long_name: ratio of the mass of water to the mass of moist air and condensed water
+      at all interfaces excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: total_water_mixing_ratio_wrt_dry_air
+    long_name: ratio of the mass of water to the mass of dry air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: total_water_mixing_ratio_wrt_dry_air_at_top_interfaces
+    long_name: ratio of the mass of water to the mass of dry air at all interfaces
+      excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_assuming_saturation
+    long_name: saturated water vapor mixing ratio with respect to moist air and condensed
+      water
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces_assuming_saturation
+    long_name: saturated water vapor mixing ratio with respect to moist air and condensed
+      water at all interfaces excluding surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature
+    long_name: log derivative of the water vapor partial pressure at saturation with
+      respect to air temperature
+    type: real
+    kind: kind_phys
+    units: K-1
+  - name: derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature_at_top_interfaces
+    long_name: log derivative of the water vapor partial pressure at saturation with
+      respect to air temperature at all interfaces excluding surface
+    type: real
+    kind: kind_phys
+    units: K-1
+  - name: mole_fraction_of_ozone_in_air
+    long_name: Mole fraction of ozone in air
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: mole_fraction_of_carbon_dioxide_in_air
+    long_name: Mole fraction of carbon dioxide in air
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_ch4
+    long_name: Methane volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_co
+    long_name: Carbon monoxide volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_co2
+    long_name: Carbon dioxide volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_ccl4
+    long_name: Tetrachloromethane volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_cfc11
+    long_name: Trichlorofluoromethane volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_cfc12
+    long_name: Dichlorodifluoromethane volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_cfc113
+    long_name: 1,1,2-Trichloro-1,2,2-trifluoroethane volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_cfc22
+    long_name: Chlorodifluoromethane volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_o2
+    long_name: Dioxygen volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_n2o
+    long_name: Nitrous oxide volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_no2
+    long_name: Nitrogen dioxide volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_no
+    long_name: Nitrogen oxide volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_o3
+    long_name: Ozone volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_hcho
+    long_name: Formaldehyde volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_c5h8
+    long_name: Isoprene volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+  - name: volume_mixing_ratio_of_so2
+    long_name: Sulfur dioxide volume mixing ratio
+    type: real
+    kind: kind_phys
+    units: mol mol-1
+- name: 'atmospheric_composition: GOCART aerosols'
+  comment: null
+  standard_names:
+  - name: mass_fraction_of_dust001_in_air
+    long_name: Dust bin1 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_dust002_in_air
+    long_name: Dust bin2 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_dust003_in_air
+    long_name: Dust bin3 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_dust004_in_air
+    long_name: Dust bin4 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_dust005_in_air
+    long_name: Dust bin5 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sea_salt001_in_air
+    long_name: Sea salt bin5 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sea_salt002_in_air
+    long_name: Sea salt bin2 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sea_salt003_in_air
+    long_name: Sea salt bin3 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sea_salt004_in_air
+    long_name: Sea salt bin4 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sea_salt005_in_air
+    long_name: Sea salt bin5 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_hydrophobic_black_carbon_in_air
+    long_name: Hydrophobic black carbon mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_hydrophilic_black_carbon_in_air
+    long_name: Hydrophilic black carbon mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_hydrophobic_organic_carbon_in_air
+    long_name: Hydrophobic organic carbon mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_hydrophilic_organic_carbon_in_air
+    long_name: Hydrophilic organic carbon mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sulfate_in_air
+    long_name: Sulfate mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sea_nitrate001_in_air
+    long_name: Nitrate bin1 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sea_nitrate002_in_air
+    long_name: Nitrate bin2 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_sea_nitrate003_in_air
+    long_name: Nitrate bin3 mass fraction
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: volume_extinction_in_air_due_to_aerosol_particles_lambda1
+    long_name: Aerosol extinction at wavelength1
+    type: real
+    kind: kind_phys
+    units: m-1
+  - name: volume_extinction_in_air_due_to_aerosol_particles_lambda2
+    long_name: Aerosol extinction at wavelength2
+    type: real
+    kind: kind_phys
+    units: m-1
+  - name: volume_extinction_in_air_due_to_aerosol_particles_lambda3
+    long_name: Aerosol extinction at wavelength3
+    type: real
+    kind: kind_phys
+    units: m-1
+- name: 'atmospheric_composition: GLOMAP/UKCA aerosols'
+  comment: null
+  standard_names:
+  - name: mass_fraction_of_dust_coarse_aerosol_particles_in_air
+    long_name: Mass fraction of coarse mode dust aerosol particles
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_fraction_of_dust_accumulation_aerosol_particles_in_air
+    long_name: Mass fraction of accumulation mode dust aerosol particles
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: number_fraction_of_coarse_aerosol_particles_in_air
+    long_name: Number fraction of coarse mode dust aerosol particles
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: number_fraction_of_accumulation_aerosol_particles_in_air
+    long_name: Number fraction of accumulation mode dust aerosol particles
+    type: real
+    kind: kind_phys
+    units: 1
+- name: emissions
+  comment: Emissions variables, contributed for the Community Emissions Data System
+    (CEDS)
+  standard_names:
+  - name: emissions_of_co_due_to_anthropogenic
+    long_name: Carbon monoxide emissions from anthropogenic sources, total
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic
+    long_name: Nitric oxide emissions from anthropogenic sources, total
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic
+    long_name: Formaldehyde emissions from anthropogenic sources, total
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_co_due_to_anthropogenic_agriculture
+    long_name: Carbon monoxide emissions from anthropogenic non-combustion agricultural
+      sector
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic_agriculture
+    long_name: Nitric oxide emissions from anthropogenic non-combustion agricultural
+      sector
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic_agriculture
+    long_name: Formaldehyde emissions from anthropogenic non-combustion agricultural
+      sector
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_co_due_to_anthropogenic_energy
+    long_name: Carbon monoxide emissions from anthropogenic non-combustion energy
+      transformation and extraction
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic_energy
+    long_name: Nitric oxide emissions from anthropogenic non-combustion energy transformation
+      and extraction
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic_energy
+    long_name: Formaldehyde emissions from anthropogenic non-combustion energy transformation
+      and extraction
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_co_due_to_anthropogenic_industry
+    long_name: Carbon monoxide emissions from anthropogenic industrial combustion
+      and processes
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic_industry
+    long_name: Nitric oxide emissions from anthropogenic industrial combustion and
+      processes
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic_industry
+    long_name: Formaldehyde emissions from anthropogenic industrial combustion and
+      processes
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_co_due_to_anthropogenic_rco
+    long_name: Carbon monoxide emissions from anthropogenic residential, commercial,
+      and others
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic_rco
+    long_name: Nitric oxide emissions from anthropogenic residential, commercial,
+      and others
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic_rco
+    long_name: Formaldehyde emissions from anthropogenic residential, commercial,
+      and others
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_co_due_to_anthropogenic_shipping
+    long_name: Carbon monoxide emissions from anthropogenic international shipping
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic_shipping
+    long_name: Nitric oxide emissions from anthropogenic international shipping
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic_shipping
+    long_name: Formaldehyde emissions from anthropogenic international shipping
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_co_due_to_anthropogenic_solvents
+    long_name: Carbon monoxide emissions from anthropogenic solvents
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic_solvents
+    long_name: Nitric oxide emissions from anthropogenic solvents
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic_solvents
+    long_name: Formaldehyde emissions from anthropogenic solvents
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_co_due_to_anthropogenic_transportation
+    long_name: Carbon monoxide emissions from anthropogenic surface Transportation
+      (Road, Rail, Other)
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic_transportation
+    long_name: Nitric oxide emissions from anthropogenic surface Transportation (Road,
+      Rail, Other)
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic_transportation
+    long_name: Formaldehyde emissions from anthropogenic surface Transportation (Road,
+      Rail, Other)
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_co_due_to_anthropogenic_waste
+    long_name: Carbon monoxide emissions from anthropogenic waste disposal and handling
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_no_due_to_anthropogenic_waste
+    long_name: Nitric oxide emissions from anthropogenic waste disposal and handling
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: emissions_of_hcho_due_to_anthropogenic_waste
+    long_name: Formaldehyde emissions from anthropogenic waste disposal and handling
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+- name: Application-specific variables
+  comment: Variable names only for use with a specific application
+  standard_names: []
+- name: system variables
+  comment: Variables related to the compute environment
+  standard_names:
+  - name: flag_for_mpi_root
+    long_name: Flag for MPI root
+    type: logical
+    kind: ''
+    units: flag
+  - name: log_output_unit
+    long_name: Log output unit
+    type: integer
+    kind: ''
+    units: 1
+- name: GFS_typedefs_GFS_control_type
+  comment: null
+  standard_names:
+  - name: sigma_pressure_hybrid_coordinate_a_coefficient
+    long_name: Sigma pressure hybrid coordinate a coefficient
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: radiatively_active_gases_as_string
+    long_name: Radiatively active gases as string
+    type: character
+    kind: len=128
+    units: none
+  - name: aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection
+    long_name: Aerosol aware multiplicative rain conversion parameter for deep convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection
+    long_name: Aerosol aware multiplicative rain conversion parameter for shallow
+      convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: number_of_microphysics_variables_in_xy_dimensioned_restart_array
+    long_name: Number of microphysics variables in xy dimensioned restart array
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_microphysics_variables_in_xyz_dimensioned_restart_array
+    long_name: Number of microphysics variables in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_random_numbers
+    long_name: Number of random numbers
+    type: integer
+    kind: ''
+    units: count
+  - name: multiplicative_tuning_parameter_for_atmosphere_diffusivity
+    long_name: Multiplicative tuning parameter for atmosphere diffusivity
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: atmosphere_heat_diffusivity_due_to_background
+    long_name: Atmosphere heat diffusivity due to background
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: max_atmosphere_heat_diffusivity_due_to_background
+    long_name: Max atmosphere heat diffusivity due to background
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: atmosphere_momentum_diffusivity_due_to_background
+    long_name: Atmosphere momentum diffusivity due to background
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: sigma_pressure_hybrid_coordinate_b_coefficient
+    long_name: Sigma pressure hybrid coordinate b coefficient
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: cellular_automata_finer_grid
+    long_name: Cellular automata finer grid
+    type: integer
+    kind: ''
+    units: count
+  - name: cellular_automata_lifetime
+    long_name: Cellular automata lifetime
+    type: integer
+    kind: ''
+    units: count
+  - name: cellular_automata_seed_frequency
+    long_name: Cellular automata seed frequency
+    type: integer
+    kind: ''
+    units: count
+  - name: cellular_automata_seed_probability
+    long_name: Cellular automata seed probability
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: identifier_for_2018_scale_aware_tke_moist_edmf_pbl
+    long_name: Identifier for 2018 scale aware tke moist edmf pbl
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_scale_aware_tke_moist_edmf_pbl_scheme
+    long_name: Control for scale aware tke moist edmf pbl scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_2019_scale_aware_tke_moist_edmf_pbl
+    long_name: Identifier for 2019 scale aware tke moist edmf pbl
+    type: integer
+    kind: ''
+    units: 1
+  - name: cloud_condensate_autoconversion_threshold_coefficient
+    long_name: Cloud condensate autoconversion threshold coefficient
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: cloud_condensate_autoconversion_threshold_coefficient_for_deep_convection
+    long_name: Cloud condensate autoconversion threshold coefficient for deep convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: control_for_cloud_area_fraction_option
+    long_name: Control for cloud area fraction option
+    type: integer
+    kind: ''
+    units: 1
+  - name: reciprocal_of_cloud_phase_transition_temperature_range
+    long_name: Reciprocal of cloud phase transition temperature range
+    type: real
+    kind: kind_phys
+    units: K-1
+  - name: cloud_phase_transition_threshold_temperature
+    long_name: Cloud phase transition threshold temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: control_for_cloud_species_mixing_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for cloud species mixing in mellor yamada nakanishi niino pbl
+      scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_cloud_pdf_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for cloud pdf in mellor yamada nakanishi niino pbl scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: precipitation_evaporation_coefficient
+    long_name: Precipitation evaporation coefficient
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: coefficient_for_variable_bulk_richardson_number_over_land
+    long_name: Coefficient for variable bulk richardson number over land
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: coefficient_for_variable_bulk_richardson_number_over_water
+    long_name: Coefficient for variable bulk richardson number over water
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: autoconversion_to_snow_coefficient
+    long_name: Autoconversion to snow coefficient
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: autoconversion_to_snow_coefficient_for_deep_convection
+    long_name: Autoconversion to snow coefficient for deep convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: autoconversion_to_rain_coefficient
+    long_name: Autoconversion to rain coefficient
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: autoconversion_to_rain_coefficient_for_deep_convection
+    long_name: Autoconversion to rain coefficient for deep convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: chemical_tracer_scavenging_fractions
+    long_name: Chemical tracer scavenging fractions
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: cloud_condensate_detrainment_coefficient
+    long_name: Cloud condensate detrainment coefficient
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: control_for_convective_cloud_diagnostics
+    long_name: Control for convective cloud diagnostics
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: cosine_of_solar_declination_angle
+    long_name: Cosine of solar declination angle
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: control_for_sgs_cloud_radiation_coupling_in_mellor_yamamda_nakanishi_niino_pbl_scheme
+    long_name: Control for sgs cloud radiation coupling in mellor yamamda nakanishi
+      niino pbl scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: tunable_parameter_for_critical_cloud_top_entrainment_instability_criteria
+    long_name: Tunable parameter for critical cloud top entrainment instability criteria
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: critical_relative_humidity_at_top_of_atmosphere_boundary_layer
+    long_name: Critical relative humidity at top of atmosphere boundary layer
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: critical_relative_humidity_at_surface
+    long_name: Critical relative humidity at surface
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: critical_relative_humidity_at_toa
+    long_name: Critical relative humidity at toa
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: date_and_time_at_model_initialization_in_iso_order
+    long_name: Date and time at model initialization in iso order
+    type: integer
+    kind: ''
+    units: 1
+  - name: date_and_time_at_model_initialization_in_united_states_order
+    long_name: Date and time at model initialization in united states order
+    type: integer
+    kind: ''
+    units: 1
+  - name: decorrelation_length_used_by_overlap_method
+    long_name: Decorrelation length used by overlap method
+    type: real
+    kind: kind_phys
+    units: km
+  - name: density_of_fresh_water
+    long_name: Density of fresh water
+    type: real
+    kind: kind_phys
+    units: kg m-3
+  - name: depth_of_soil_layers
+    long_name: Depth of soil layers
+    type: real
+    kind: kind_phys
+    units: m
+  - name: tunable_parameter_1_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
+    long_name: Tunable parameter 1 for detrainment and precipitation partitioning
+      in chikira sugiyama deep convection
+    type: real
+    kind: kind_phys
+    units: m
+  - name: tunable_parameter_2_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
+    long_name: Tunable parameter 2 for detrainment and precipitation partitioning
+      in chikira sugiyama deep convection
+    type: real
+    kind: kind_phys
+    units: m
+  - name: detrainment_conversion_parameter_for_deep_convection
+    long_name: Detrainment conversion parameter for deep convection
+    type: real
+    kind: kind_phys
+    units: m-1
+  - name: detrainment_conversion_parameter_for_shallow_convection
+    long_name: Detrainment conversion parameter for shallow convection
+    type: real
+    kind: kind_phys
+    units: m-1
+  - name: do_unified_gravity_wave_physics_diagnostics
+    long_name: Do unified gravity wave physics diagnostics
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_chemical_tracer_diagnostics
+    long_name: Do chemical tracer diagnostics
+    type: logical
+    kind: ''
+    units: flag
+  - name: sigma_pressure_threshold_at_upper_extent_of_background_diffusion
+    long_name: Sigma pressure threshold at upper extent of background diffusion
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: directory_for_rte_rrtmgp_source_code
+    long_name: Directory for rte rrtmgp source code
+    type: character
+    kind: len=128
+    units: none
+  - name: do_mellor_yamada_janjic_pbl_scheme
+    long_name: Do mellor yamada janjic pbl scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_mellor_yamada_janjic_surface_layer_scheme
+    long_name: Do mellor yamada janjic surface layer scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Do mellor yamada nakanishi niino pbl scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_mellor_yamada_nakanishi_niino_surface_layer_scheme
+    long_name: Do mellor yamada nakanishi niino surface layer scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_unified_gravity_wave_physics_gravity_wave_drag_scheme
+    long_name: Do unified gravity wave physics gravity wave drag scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme
+    long_name: Downdraft area fraction in scale aware tke moist edmf pbl scheme
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: downdraft_fraction_reaching_surface_over_land_for_deep_convection
+    long_name: Downdraft fraction reaching surface over land for deep convection
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: downdraft_fraction_reaching_surface_over_water_for_deep_convection
+    long_name: Downdraft fraction reaching surface over water for deep convection
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: control_for_edmf_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for edmf in mellor yamada nakanishi niino pbl scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_edmf_momentum_transport_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for edmf momentum transport in mellor yamada nakanishi niino
+      pbl scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_edmf_partitioning_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for edmf partitioning in mellor yamada nakanishi niino pbl
+      scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_edmf_tke_transport_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for edmf tke transport in mellor yamada nakanishi niino pbl
+      scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: surface_layer_scheme_enthalpy_flux_factor
+    long_name: Surface layer scheme enthalpy flux factor
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: tunable_parameter_for_entrainment_efficiency_in_chikira_sugiyama_deep_convection
+    long_name: Tunable parameter for entrainment efficiency in chikira sugiyama deep
+      convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: entrainment_rate_coefficient_for_deep_convection
+    long_name: Entrainment rate coefficient for deep convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: entrainment_rate_coefficient_for_shallow_convection
+    long_name: Entrainment rate coefficient for shallow convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: equation_of_time
+    long_name: Equation of time
+    type: real
+    kind: kind_phys
+    units: radian
+  - name: relative_humidity_threshold_for_condensation
+    long_name: Relative humidity threshold for condensation
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: do_arakawa_wu_downdrafts_for_deep_convection
+    long_name: Do arakawa wu downdrafts for deep convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_debug_output
+    long_name: Do debug output
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_diagnostics
+    long_name: Do diagnostics
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_xyz_dimensioned_diagnostics
+    long_name: Do xyz dimensioned diagnostics
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_flip
+    long_name: Do flip
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_flux_adjusting_surface_data_assimilation_system
+    long_name: Control for flux adjusting surface data assimilation system
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_flux_form_in_chikira_sugiyama_deep_convection_scheme
+    long_name: Do flux form in chikira sugiyama deep convection scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_nrl_2015_ozone_scheme
+    long_name: Do nrl 2015 ozone scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_prescribed_aerosols
+    long_name: Do prescribed aerosols
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_aerosol_physics
+    long_name: Do aerosol physics
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_arakawa_wu_adjustment
+    long_name: Do arakawa wu adjustment
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_canopy_heat_storage_in_land_surface_scheme
+    long_name: Do canopy heat storage in land surface scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_land_surface_scheme_canopy_stomatal_resistance
+    long_name: Control for land surface scheme canopy stomatal resistance
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_cellular_automata
+    long_name: Do cellular automata
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_chemistry_coupling
+    long_name: Do chemistry coupling
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_chikira_sugiyama_deep_convection_scheme
+    long_name: Do chikira sugiyama deep convection scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_in_cloud_condensate
+    long_name: Do in cloud condensate
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_cloud_effective_radii
+    long_name: Do cloud effective radii
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_cloud_overlap_method_for_radiation
+    long_name: Control for cloud overlap method for radiation
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_constant_decorrelation_length_method
+    long_name: Identifier for constant decorrelation length method
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_convective_gravity_wave_drag
+    long_name: Do convective gravity wave drag
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_convective_transport_of_tracers
+    long_name: Do convective transport of tracers
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_converting_hydrometeors_from_moist_to_dry_air
+    long_name: Do converting hydrometeors from moist to dry air
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_crick_elimination
+    long_name: Do crick elimination
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_decorrelation_length_cloud_overlap_method
+    long_name: Identifier for decorrelation length cloud overlap method
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_decorrelation_length_method
+    long_name: Control for decorrelation length method
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_shortwave_radiation_aerosols
+    long_name: Control for shortwave radiation aerosols
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_land_surface_scheme_dynamic_vegetation
+    long_name: Control for land surface scheme dynamic vegetation
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_exponential_cloud_overlap_method
+    long_name: Identifier for exponential cloud overlap method
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_exponential_random_cloud_overlap_method
+    long_name: Identifier for exponential random cloud overlap method
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_fer_hires_microphysics_scheme
+    long_name: Identifier for fer hires microphysics scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: is_first_timestep
+    long_name: Is first timestep
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_surface_flux_coupling
+    long_name: Do surface flux coupling
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_fractional_landmask
+    long_name: Do fractional landmask
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_land_surface_scheme_frozen_soil_permeability
+    long_name: Control for land surface scheme frozen soil permeability
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_cellular_automata_gaussian_spatial_filter
+    long_name: Do cellular automata gaussian spatial filter
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_gcycle_surface_option
+    long_name: Do gcycle surface option
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_generic_tendency_due_to_deep_convection
+    long_name: Do generic tendency due to deep convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_generic_tendency_due_to_gravity_wave_drag
+    long_name: Do generic tendency due to gravity wave drag
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_generic_tendency_due_to_planetary_boundary_layer
+    long_name: Do generic tendency due to planetary boundary layer
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_generic_tendency_due_to_shallow_convection
+    long_name: Do generic tendency due to shallow convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_grell_freitas_deep_convection
+    long_name: Identifier for grell freitas deep convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_grell_freitas_shallow_convection
+    long_name: Identifier for grell freitas shallow convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_gfdl_microphysics_radiation_interaction
+    long_name: Do gfdl microphysics radiation interaction
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_gfdl_microphysics_scheme
+    long_name: Identifier for gfdl microphysics scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_global_cellular_automata
+    long_name: Do global cellular automata
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_global_cellular_automata_closure
+    long_name: Do global cellular automata closure
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_global_cellular_automata_deep_convective_entrainment
+    long_name: Do global cellular automata deep convective entrainment
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_global_cellular_automata_trigger
+    long_name: Do global cellular automata trigger
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_gravity_wave_drag
+    long_name: Do gravity wave drag
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_land_surface_scheme_surface_snow_albedo
+    long_name: Control for land surface scheme surface snow albedo
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_gsl_drag_suite_large_scale_orographic_and_blocking_drag
+    long_name: Do gsl drag suite large scale orographic and blocking drag
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_gsl_drag_suite_small_scale_orographic_drag
+    long_name: Do gsl drag suite small scale orographic drag
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_gsl_drag_suite_turbulent_orographic_form_drag
+    long_name: Do gsl drag suite turbulent orographic form drag
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_hybrid_edmf_pbl_scheme
+    long_name: Do hybrid edmf pbl scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_hogan_decorrelation_length_method
+    long_name: Identifier for hogan decorrelation length method
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_hurricane_specific_code_in_scale_aware_mass_flux_deep_convection
+    long_name: Do hurricane specific code in scale aware mass flux deep convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_hurricane_specific_code_in_scale_aware_mass_flux_shallow_convection
+    long_name: Do hurricane specific code in scale aware mass flux shallow convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_hydrostatic_solver
+    long_name: Do hydrostatic solver
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_ice_cloud_condensation_nuclei_forcing
+    long_name: Control for ice cloud condensation nuclei forcing
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_separate_advection_of_condensate_species
+    long_name: Do separate advection of condensate species
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_initial_time_date
+    long_name: Control for initial time date
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_lake_surface_scheme
+    long_name: Control for lake surface scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_land_surface_scheme
+    long_name: Control for land surface scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_cloud_area_fraction_option_for_radiation
+    long_name: Do cloud area fraction option for radiation
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_land_surface_scheme_lower_boundary_soil_temperature
+    long_name: Control for land surface scheme lower boundary soil temperature
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_lw_clouds_subgrid_approximation
+    long_name: Control for lw clouds subgrid approximation
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_deep_convection_scheme
+    long_name: Control for deep convection scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_shallow_convection_scheme
+    long_name: Control for shallow convection scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_maximum_cloud_overlap_method
+    long_name: Control for maximum cloud overlap method
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_maximum_random_cloud_overlap_method
+    long_name: Identifier for maximum random cloud overlap method
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_microphysics_scheme
+    long_name: Control for microphysics scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_moorthi_stratus
+    long_name: Do moorthi stratus
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_morrison_gettelman_microphysics_scheme
+    long_name: Identifier for morrison gettelman microphysics scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_mountain_blocking_for_sppt
+    long_name: Do mountain blocking for sppt
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_noah_land_surface_scheme
+    long_name: Identifier for noah land surface scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_noah_lsm_ua_extension
+    long_name: Do noah lsm ua extension
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_noah_wrfv4_land_surface_scheme
+    long_name: Identifier for noah wrfv4 land surface scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_noahmp_land_surface_scheme
+    long_name: Identifier for noahmp land surface scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_nsstm_analysis_in_gcycle
+    long_name: Do nsstm analysis in gcycle
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_nsstm
+    long_name: Control for nsstm
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_new_tiedtke_deep_convection
+    long_name: Identifier for new tiedtke deep convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_new_tiedtke_shallow_convection
+    long_name: Identifier for new tiedtke shallow convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_surface_layer_scheme_ocean_currents
+    long_name: Do surface layer scheme ocean currents
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_old_pbl_scheme
+    long_name: Do old pbl scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_optical_property_for_ice_clouds_for_longwave_radiation
+    long_name: Control for optical property for ice clouds for longwave radiation
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_optical_property_for_ice_clouds_for_shortwave_radiation
+    long_name: Control for optical property for ice clouds for shortwave radiation
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_optical_property_for_liquid_clouds_for_longwave_radiation
+    long_name: Control for optical property for liquid clouds for longwave radiation
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_optical_property_for_liquid_clouds_for_shortwave_radiation
+    long_name: Control for optical property for liquid clouds for shortwave radiation
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_oreopoulos_decorrelation_length_method
+    long_name: Identifier for oreopoulos decorrelation length method
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_output_of_tendency_of_air_temperature_due_to_longwave_heating_on_radiation_timestep_assuming_clear_sky
+    long_name: Do output of tendency of air temperature due to longwave heating on
+      radiation timestep assuming clear sky
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_output_of_tendency_of_air_temperature_due_to_shortwave_heating_on_radiation_timestep_assuming_clear_sky
+    long_name: Do output of tendency of air temperature due to shortwave heating on
+      radiation timestep assuming clear sky
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_nrl_2006_ozone_scheme
+    long_name: Do nrl 2006 ozone scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_pdf_shape_for_microphysics
+    long_name: Control for pdf shape for microphysics
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_surface_layer_scheme_surface_drag_coefficient_for_momentum_in_air_perturbations
+    long_name: Do surface layer scheme surface drag coefficient for momentum in air
+      perturbations
+    type: logical
+    kind: ''
+    units: flag
+  - name: disable_precipitation_radiative_effect
+    long_name: Disable precipitation radiative effect
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_land_surface_scheme_precipitation_type_partition
+    long_name: Control for land surface scheme precipitation type partition
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_dominant_precipitation_type_partition
+    long_name: Do dominant precipitation type partition
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_radar_reflectivity
+    long_name: Do radar reflectivity
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_land_surface_scheme_radiative_transfer
+    long_name: Control for land surface scheme radiative transfer
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_random_cloud_overlap_method
+    long_name: Identifier for random cloud overlap method
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_random_clouds_in_relaxed_arakawa_schubert_deep_convection
+    long_name: Do random clouds in relaxed arakawa schubert deep convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_relaxed_arakawa_schubert_deep_convection
+    long_name: Do relaxed arakawa schubert deep convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_read_leaf_area_index_from_input
+    long_name: Do read leaf area index from input
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_read_surface_albedo_for_diffused_shortwave_from_input
+    long_name: Do read surface albedo for diffused shortwave from input
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_limited_surface_roughness_length_over_ocean
+    long_name: Do limited surface roughness length over ocean
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_reference_pressure_theta
+    long_name: Do reference pressure theta
+    type: logical
+    kind: ''
+    units: flag
+  - name: is_restart
+    long_name: Is restart
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_rrtmgp_radiation_scheme
+    long_name: Do rrtmgp radiation scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_ruc_land_surface_scheme
+    long_name: Identifier for ruc land surface scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_land_surface_scheme_runoff_and_groundwater
+    long_name: Control for land surface scheme runoff and groundwater
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_scale_aware_mass_flux_deep_convection
+    long_name: Identifier for scale aware mass flux deep convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_scale_aware_mass_flux_shallow_convection
+    long_name: Identifier for scale aware mass flux shallow convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_simplified_arakawa_schubert_deep_convection
+    long_name: Identifier for simplified arakawa schubert deep convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_simplified_arakawa_schubert_shallow_convection
+    long_name: Identifier for simplified arakawa schubert shallow convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_scale_aware_mass_flux_deep_convection
+    long_name: Do scale aware mass flux deep convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_scale_aware_shin_hong_pbl_scheme
+    long_name: Do scale aware shin hong pbl scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_scale_aware_tke_moist_edmf_pbl
+    long_name: Do scale aware tke moist edmf pbl
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_sgs_cellular_automata
+    long_name: Do sgs cellular automata
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_simplified_arakawa_schubert_shallow_convection
+    long_name: Do simplified arakawa schubert shallow convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_shoc
+    long_name: Do shoc
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_shoc_after_convection
+    long_name: Do shoc after convection
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_land_surface_scheme_soil_and_snow_temperature_time_integration
+    long_name: Control for land surface scheme soil and snow temperature time integration
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_land_surface_scheme_soil_moisture_factor_stomatal_resistance
+    long_name: Control for land surface scheme soil moisture factor stomatal resistance
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_solar_constant
+    long_name: Control for solar constant
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_stochastic_cloud_fraction_perturbations
+    long_name: Do stochastic cloud fraction perturbations
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_stochastic_microphysics_perturbations
+    long_name: Do stochastic microphysics perturbations
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_stochastic_physics_perturbations
+    long_name: Do stochastic physics perturbations
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_stochastic_radiative_heating_perturbations
+    long_name: Do stochastic radiative heating perturbations
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_stochastic_shum_option
+    long_name: Do stochastic shum option
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_stochastic_skeb_option
+    long_name: Do stochastic skeb option
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_stratospheric_water_vapor_physics
+    long_name: Do stratospheric water vapor physics
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_land_surface_scheme_supercooled_liquid_water
+    long_name: Control for land surface scheme supercooled liquid water
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_surface_emissivity
+    long_name: Control for surface emissivity
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_land_surface_scheme_surface_layer_drag_coefficient
+    long_name: Control for land surface scheme surface layer drag coefficient
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_surface_roughness_option_over_water
+    long_name: Control for surface roughness option over water
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_sw_clouds_subgrid_approximation
+    long_name: Control for sw clouds subgrid approximation
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_land_surface_scheme_thermal_conductivity_option
+    long_name: Control for land surface scheme thermal conductivity option
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_thompson_microphysics_scheme
+    long_name: Identifier for thompson microphysics scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_ugwp_version_0
+    long_name: Do ugwp version 0
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_ugwp_version_0_nonorographic_gwd
+    long_name: Do ugwp version 0 nonorographic gwd
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_ugwp_version_0_orographic_gwd
+    long_name: Do ugwp version 0 orographic gwd
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_ugwp_version_1
+    long_name: Do ugwp version 1
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_ugwp_version_1_nonorographic_gwd
+    long_name: Do ugwp version 1 nonorographic gwd
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_ugwp_version_1_orographic_gwd
+    long_name: Do ugwp version 1 orographic gwd
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_shoc_cloud_area_fraction_for_radiation
+    long_name: Do shoc cloud area fraction for radiation
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_surface_layer_scheme_skin_temperature_update
+    long_name: Control for surface layer scheme skin temperature update
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_surface_albedo
+    long_name: Control for surface albedo
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_prescribed_co2
+    long_name: Control for prescribed co2
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_vertical_index_direction
+    long_name: Control for vertical index direction
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_ocean_wave_coupling
+    long_name: Do ocean wave coupling
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_one_way_ocean_wave_coupling_to_atmosphere
+    long_name: Do one way ocean wave coupling to atmosphere
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_wsm6_microphysics_scheme
+    long_name: Identifier for wsm6 microphysics scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_ysu_pbl_scheme
+    long_name: Do ysu pbl scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: identifier_for_zhao_carr_microphysics_scheme
+    long_name: Identifier for zhao carr microphysics scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: identifier_for_zhao_carr_pdf_microphysics_scheme
+    long_name: Identifier for zhao carr pdf microphysics scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: do_hurricane_specific_code_in_hybrid_edmf_pbl_scheme
+    long_name: Do hurricane specific code in hybrid edmf pbl scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_integrated_dynamics_through_earths_atmosphere
+    long_name: Do integrated dynamics through earths atmosphere
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_print
+    long_name: Do print
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_save_shallow_convective_cloud_area_fraction
+    long_name: Do save shallow convective cloud area fraction
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_tke_dissipation_heating
+    long_name: Do tke dissipation heating
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_call_longwave_radiation
+    long_name: Do call longwave radiation
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_rrtmg_cloud_optics
+    long_name: Do rrtmg cloud optics
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_rrtmgp_cloud_optics_look_up_table
+    long_name: Do rrtmgp cloud optics look up table
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_rrtmgp_cloud_optics_with_pade_approximation
+    long_name: Do rrtmgp cloud optics with pade approximation
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_rrtmgp_longwave_jacobian
+    long_name: Do rrtmgp longwave jacobian
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_call_shortwave_radiation
+    long_name: Do call shortwave radiation
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_longwave_scattering_in_cloud_optics
+    long_name: Do longwave scattering in cloud optics
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_tracer_xyz_dimensioned_diagnostics
+    long_name: Do tracer xyz dimensioned diagnostics
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_variable_bulk_richardson_number
+    long_name: Control for variable bulk richardson number
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: date_and_time_of_forecast_in_united_states_order
+    long_name: Date and time of forecast in united states order
+    type: integer
+    kind: ''
+    units: 1
+  - name: forecast_utc_hour
+    long_name: Forecast utc hour
+    type: real
+    kind: kind_phys
+    units: h
+  - name: forecast_time
+    long_name: Forecast time
+    type: real
+    kind: kind_phys
+    units: h
+  - name: forecast_time_on_previous_timestep
+    long_name: Forecast time on previous timestep
+    type: real
+    kind: kind_phys
+    units: h
+  - name: period_of_longwave_radiation_calls
+    long_name: Period of longwave radiation calls
+    type: real
+    kind: kind_phys
+    units: s
+  - name: period_of_shortwave_radiation_calls
+    long_name: Period of shortwave radiation calls
+    type: real
+    kind: kind_phys
+    units: s
+  - name: all_ice_cloud_threshold_temperature
+    long_name: All ice cloud threshold temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: control_for_gravitational_settling_of_cloud_droplets
+    long_name: Control for gravitational settling of cloud droplets
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_drag_suite_gravity_wave_drag
+    long_name: Control for drag suite gravity wave drag
+    type: integer
+    kind: ''
+    units: 1
+  - name: horizontal_loop_extent
+    long_name: Horizontal loop extent
+    type: integer
+    kind: ''
+    units: count
+  - name: period_of_diagnostics_reset
+    long_name: Period of diagnostics reset
+    type: real
+    kind: kind_phys
+    units: h
+  - name: tunable_parameter_for_ice_supersaturation
+    long_name: Tunable parameter for ice supersaturation
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: index_of_ice_vegetation_category
+    long_name: Index of ice vegetation category
+    type: integer
+    kind: ''
+    units: index
+  - name: vertical_dimension_of_sea_ice
+    long_name: Vertical dimension of sea ice
+    type: integer
+    kind: ''
+    units: count
+  - name: index_of_air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array
+    long_name: Index of air temperature on previous timestep in xyz dimensioned restart
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_air_temperature_two_timesteps_back_in_xyz_dimensioned_restart_array
+    long_name: Index of air temperature two timesteps back in xyz dimensioned restart
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_nonconvective_cloud_area_fraction_in_atmosphere_layer_in_tracer_concentration_array
+    long_name: Index of nonconvective cloud area fraction in atmosphere layer in tracer
+      concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_nonconvective_cloud_area_fraction_in_atmosphere_layer_in_xyz_dimensioned_restart_array
+    long_name: Index of nonconvective cloud area fraction in atmosphere layer in xyz
+      dimensioned restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_cloud_liquid_water_effective_radius_in_xyz_dimensioned_restart_array
+    long_name: Index of cloud liquid water effective radius in xyz dimensioned restart
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_convective_cloud_area_fraction_in_xyz_dimensioned_restart_array
+    long_name: Index of convective cloud area fraction in xyz dimensioned restart
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_convective_cloud_condensate_mixing_ratio_wrt_moist_air_in_xyz_dimensioned_restart_array
+    long_name: Index of convective cloud condensate mixing ratio wrt moist air in
+      xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_horizontal_gridpoint_for_debug_output
+    long_name: Index of horizontal gridpoint for debug output
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_first_chemical_tracer_in_tracer_concentration_array
+    long_name: Index of first chemical tracer in tracer concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_graupel_mixing_ratio_wrt_moist_air_in_tracer_concentration_array
+    long_name: Index of graupel mixing ratio wrt moist air in tracer concentration
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_graupel_effective_radius_in_xyz_dimensioned_restart_array
+    long_name: Index of graupel effective radius in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_mass_number_concentration_of_graupel_in_tracer_concentration_array
+    long_name: Index of mass number concentration of graupel in tracer concentration
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_cloud_ice_mixing_ratio_wrt_moist_air_in_tracer_concentration_array
+    long_name: Index of cloud ice mixing ratio wrt moist air in tracer concentration
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_mass_number_concentration_of_cloud_ice_in_tracer_concentration_array
+    long_name: Index of mass number concentration of cloud ice in tracer concentration
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_cloud_ice_effective_radius_in_xyz_dimensioned_restart_array
+    long_name: Index of cloud ice effective radius in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_in_tracer_concentration_array
+    long_name: Index of mass number concentration of nonhygroscopic ice nucleating
+      aerosols in tracer concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_cloud_liquid_water_mixing_ratio_wrt_moist_air_in_tracer_concentration_array
+    long_name: Index of cloud liquid water mixing ratio wrt moist air in tracer concentration
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_mass_number_concentration_of_cloud_droplets_in_tracer_concentration_array
+    long_name: Index of mass number concentration of cloud droplets in tracer concentration
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_mass_weighted_rime_factor_in_tracer_concentration_array
+    long_name: Index of mass weighted rime factor in tracer concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_ozone_mixing_ratio_wrt_moist_air_in_tracer_concentration_array
+    long_name: Index of ozone mixing ratio wrt moist air in tracer concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_rain_effective_radius_in_xyz_dimensioned_restart_array
+    long_name: Index of rain effective radius in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_mass_number_concentration_of_rain_in_tracer_concentration_array
+    long_name: Index of mass number concentration of rain in tracer concentration
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_rain_mixing_ratio_wrt_moist_air_in_tracer_concentration_array
+    long_name: Index of rain mixing ratio wrt moist air in tracer concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_snow_effective_radius_in_xyz_dimensioned_restart_array
+    long_name: Index of snow effective radius in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_mass_number_concentration_of_snow_in_tracer_concentration_array
+    long_name: Index of mass number concentration of snow in tracer concentration
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_snow_mixing_ratio_wrt_moist_air_in_tracer_concentration_array
+    long_name: Index of snow mixing ratio wrt moist air in tracer concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_specific_humidity_on_previous_timestep_in_xyz_dimensioned_restart_array
+    long_name: Index of specific humidity on previous timestep in xyz dimensioned
+      restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_specific_humidity_two_timesteps_back_in_xyz_dimensioned_restart_array
+    long_name: Index of specific humidity two timesteps back in xyz dimensioned restart
+      array
+    type: integer
+    kind: ''
+    units: index
+  - name: control_for_stochastic_land_surface_perturbation
+    long_name: Control for stochastic land surface perturbation
+    type: integer
+    kind: ''
+    units: 1
+  - name: index_of_surface_air_pressure_on_previous_timestep_in_xyz_dimensioned_restart_array
+    long_name: Index of surface air pressure on previous timestep in xyz dimensioned
+      restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_surface_air_pressure_two_timesteps_back_in_xyz_dimensioned_tracer_array
+    long_name: Index of surface air pressure two timesteps back in xyz dimensioned
+      tracer array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convectionin_in_xy_dimensioned_restart_array
+    long_name: Index of enhancement to wind speed at surface adjacent layer due to
+      convectionin in xy dimensioned restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_turbulent_kinetic_energy_in_tracer_concentration_array
+    long_name: Index of turbulent kinetic energy in tracer concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_mass_number_concentration_of_hygroscopic_aerosols_in_tracer_concentration_array
+    long_name: Index of mass number concentration of hygroscopic aerosols in tracer
+      concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_specific_humidity_in_tracer_concentration_array
+    long_name: Index of specific humidity in tracer concentration array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_atmosphere_heat_diffusivity_in_xyz_dimensioned_restart_array
+    long_name: Index of atmosphere heat diffusivity in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_upward_virtual_potential_temperature_flux_in_xyz_dimensioned_restart_array
+    long_name: Index of upward virtual potential temperature flux in xyz dimensioned
+      restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_subgrid_cloud_area_fraction_in_atmosphere_layer_in_xyz_dimensioned_restart_array
+    long_name: Index of subgrid cloud area fraction in atmosphere layer in xyz dimensioned
+      restart array
+    type: integer
+    kind: ''
+    units: index
+  - name: index_of_timestep
+    long_name: Index of timestep
+    type: integer
+    kind: ''
+    units: index
+  - name: reciprocal_of_grid_scale_range
+    long_name: Reciprocal of grid scale range
+    type: real
+    kind: kind_phys
+    units: rad2 m-2
+  - name: iounit_of_log
+    long_name: Iounit of log
+    type: integer
+    kind: ''
+    units: 1
+  - name: iounit_of_namelist
+    long_name: Iounit of namelist
+    type: integer
+    kind: ''
+    units: 1
+  - name: forecast_julian_day
+    long_name: Forecast julian day
+    type: real
+    kind: kind_phys
+    units: days
+  - name: min_lake_ice_area_fraction
+    long_name: Min lake ice area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: multiplicative_tuning_parameter_for_reduced_latent_heat_flux_due_to_canopy_heat_storage
+    long_name: Multiplicative tuning parameter for reduced latent heat flux due to
+      canopy heat storage
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: max_tendency_of_air_potential_temperature_due_to_large_scale_precipitation
+    long_name: Max tendency of air potential temperature due to large scale precipitation
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: lower_bound_of_vertical_dimension_of_surface_snow
+    long_name: Lower bound of vertical dimension of surface snow
+    type: integer
+    kind: ''
+    units: count
+  - name: land_surface_perturbation_magnitudes
+    long_name: Land surface perturbation magnitudes
+    type: real
+    kind: kind_phys
+    units: variable
+  - name: max_critical_relative_humidity
+    long_name: Max critical relative humidity
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: max_grid_scale
+    long_name: Max grid scale
+    type: real
+    kind: kind_phys
+    units: m2 rad-2
+  - name: maximum_soil_moisture_content_for_land_surface_model
+    long_name: Maximum soil moisture content for land surface model
+    type: real
+    kind: kind_phys
+    units: m
+  - name: do_allow_supersaturation_after_sedimentation
+    long_name: Do allow supersaturation after sedimentation
+    type: logical
+    kind: ''
+    units: flag
+  - name: autoconversion_to_snow_size_threshold
+    long_name: Autoconversion to snow size threshold
+    type: real
+    kind: kind_phys
+    units: um
+  - name: bergeron_findeisen_process_efficiency_factor
+    long_name: Bergeron findeisen process efficiency factor
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: relative_variance_of_subgrid_cloud_condensate_distribution
+    long_name: Relative variance of subgrid cloud condensate distribution
+    type: real
+    kind: kind_phys
+    units: kg2 kg-2
+  - name: prescribed_number_concentration_of_cloud_droplets
+    long_name: Prescribed number concentration of cloud droplets
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: do_prescribed_number_concentration_of_cloud_droplets
+    long_name: Do prescribed number concentration of cloud droplets
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_cloud_ice_processes
+    long_name: Do cloud ice processes
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_gmao_autoconversion_to_snow
+    long_name: Do gmao autoconversion to snow
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_graupel_instead_of_hail
+    long_name: Do graupel instead of hail
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_hail_instead_of_graupel
+    long_name: Do hail instead of graupel
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_heterogeneous_nucleation
+    long_name: Do heterogeneous nucleation
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_liu_autoconversion_to_rain
+    long_name: Do liu autoconversion to rain
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_seifert_and_beheng_2001_autoconversion
+    long_name: Do seifert and beheng 2001 autoconversion
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_uniform_subcolumns
+    long_name: Do uniform subcolumns
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_prescribed_number_concentration_of_graupel
+    long_name: Do prescribed number concentration of graupel
+    type: logical
+    kind: ''
+    units: flag
+  - name: do_prescribed_number_concentration_of_cloud_ice
+    long_name: Do prescribed number concentration of cloud ice
+    type: logical
+    kind: ''
+    units: flag
+  - name: prescribed_number_concentration_of_graupel
+    long_name: Prescribed number concentration of graupel
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: prescribed_number_concentration_of_cloud_ice
+    long_name: Prescribed number concentration of cloud ice
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: minimum_cloud_condensate_mixing_ratio_wrt_moist_air_threshold
+    long_name: Minimum cloud condensate mixing ratio wrt moist air threshold
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: minimum_cloud_liquid_water_mixing_ratio_wrt_moist_air_threshold
+    long_name: Minimum cloud liquid water mixing ratio wrt moist air threshold
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: minimum_cloud_ice_mixing_ratio_wrt_moist_air_threshold
+    long_name: Minimum cloud ice mixing ratio wrt moist air threshold
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: relative_humidity_threshold_for_ice_nucleation
+    long_name: Relative humidity threshold for ice nucleation
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: timescale_for_autoconversion_to_snow
+    long_name: Timescale for autoconversion to snow
+    type: real
+    kind: kind_phys
+    units: s
+  - name: alpha_tuning_coefficient_for_morrison_gettelman_microphysics_scheme
+    long_name: Alpha tuning coefficient for morrison gettelman microphysics scheme
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: control_for_precipitation_area_fraction_method
+    long_name: Control for precipitation area fraction method
+    type: character
+    kind: len=16
+    units: none
+  - name: minimum_large_ice_fraction
+    long_name: Minimum large ice fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: minimum_pressure_in_rrtmgp
+    long_name: Minimum pressure in rrtmgp
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: min_grid_scale
+    long_name: Min grid scale
+    type: real
+    kind: kind_phys
+    units: m2 rad-2
+  - name: minimum_soil_moisture_content_for_land_surface_model
+    long_name: Minimum soil moisture content for land surface model
+    type: real
+    kind: kind_phys
+    units: m
+  - name: minimum_temperature_in_rrtmgp
+    long_name: Minimum temperature in rrtmgp
+    type: real
+    kind: kind_phys
+    units: K
+  - name: control_for_total_water_mixing_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for total water mixing in mellor yamada nakanishi niino pbl
+      scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_mixing_length_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for mixing length in mellor yamada nakanishi niino pbl scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: momentum_transport_reduction_factor_due_to_pressure_gradient_force_for_deep_convection
+    long_name: Momentum transport reduction factor due to pressure gradient force
+      for deep convection
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: momentum_transport_reduction_factor_due_to_pressure_gradient_force_for_shallow_convection
+    long_name: Momentum transport reduction factor due to pressure gradient force
+      for shallow convection
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: mpi_communicator
+    long_name: Mpi communicator
+    type: integer
+    kind: ''
+    units: index
+  - name: mpi_rank
+    long_name: Mpi rank
+    type: integer
+    kind: ''
+    units: index
+  - name: mpi_root
+    long_name: Mpi root
+    type: integer
+    kind: ''
+    units: index
+  - name: number_of_mpi_tasks
+    long_name: Number of mpi tasks
+    type: integer
+    kind: ''
+    units: count
+  - name: tunable_parameter_for_critical_cloud_workfunction_in_relaxed_arakawa_schubert_deep_convection
+    long_name: Tunable parameter for critical cloud workfunction in relaxed arakawa
+      schubert deep convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: tunable_parameters_for_convective_gravity_wave_drag
+    long_name: Tunable parameters for convective gravity wave drag
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: multiplicative_tunable_parameters_for_mountain_blocking_and_orographic_gravity_wave_drag
+    long_name: Multiplicative tunable parameters for mountain blocking and orographic
+      gravity wave drag
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: control_for_additional_diagnostics_in_mellor_yamada_nakanishi_niino_pbl_scheme
+    long_name: Control for additional diagnostics in mellor yamada nakanishi niino
+      pbl scheme
+    type: integer
+    kind: ''
+    units: 1
+  - name: filename_of_namelist
+    long_name: Filename of namelist
+    type: character
+    kind: len=64
+    units: none
+  - name: filename_of_internal_namelist
+    long_name: Filename of internal namelist
+    type: character
+    kind: len=256
+    units: none
+  - name: number_of_xy_dimensioned_auxiliary_arrays
+    long_name: Number of xy dimensioned auxiliary arrays
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_pdf_based_variables_in_xyz_dimensioned_restart_array
+    long_name: Number of pdf based variables in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_xyz_dimensioned_auxiliary_arrays
+    long_name: Number of xyz dimensioned auxiliary arrays
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_radiatively_active_gases
+    long_name: Number of radiatively active gases
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_aerosol_tracers
+    long_name: Number of aerosol tracers
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_gaussian_quadrature_angles_for_radiation
+    long_name: Number of gaussian quadrature angles for radiation
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_chemical_tracers
+    long_name: Number of chemical tracers
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_condensate_species
+    long_name: Number of condensate species
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_cloud_types_in_chikira_sugiyama_deep_convection
+    long_name: Number of cloud types in chikira sugiyama deep convection
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array
+    long_name: Number of convective cloud variables in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_days_in_current_year
+    long_name: Number of days in current year
+    type: integer
+    kind: ''
+    units: days
+  - name: number_of_equatorial_longitude_points
+    long_name: Number of equatorial longitude points
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_variables_in_xy_dimensioned_restart_array
+    long_name: Number of variables in xy dimensioned restart array
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_variables_in_xyz_dimensioned_restart_array
+    long_name: Number of variables in xyz dimensioned restart array
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_frozen_precipitation_species
+    long_name: Number of frozen precipitation species
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_hydrometeors
+    long_name: Number of hydrometeors
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_independent_cellular_automata
+    long_name: Number of independent cellular automata
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_iterations_to_spin_up_cellular_automata
+    long_name: Number of iterations to spin up cellular automata
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_perturbed_land_surface_variables
+    long_name: Number of perturbed land surface variables
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_latitude_points
+    long_name: Number of latitude points
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_lines_in_internal_namelist
+    long_name: Number of lines in internal namelist
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_longwave_bands
+    long_name: Number of longwave bands
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_longwave_spectral_points
+    long_name: Number of longwave spectral points
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_x_points_for_current_cubed_sphere_tile
+    long_name: Number of x points for current cubed sphere tile
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_x_points_for_current_mpi_rank
+    long_name: Number of x points for current mpi rank
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_y_points_for_current_cubed_sphere_tile
+    long_name: Number of y points for current cubed sphere tile
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_y_points_for_current_mpi_rank
+    long_name: Number of y points for current mpi rank
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_diagnostics_variables_for_radiation
+    long_name: Number of diagnostics variables for radiation
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_ice_roughness_categories
+    long_name: Number of ice roughness categories
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_spectral_wave_truncation_for_simplified_arakawa_schubert_convection
+    long_name: Number of spectral wave truncation for simplified arakawa schubert
+      convection
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_statistical_measures_of_subgrid_orography
+    long_name: Number of statistical measures of subgrid orography
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_shortwave_bands
+    long_name: Number of shortwave bands
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_shortwave_spectral_points
+    long_name: Number of shortwave spectral points
+    type: integer
+    kind: ''
+    units: count
+  - name: index_of_cubed_sphere_tile
+    long_name: Index of cubed sphere tile
+    type: integer
+    kind: ''
+    units: index
+  - name: number_of_timesteps_between_diagnostics_resetting
+    long_name: Number of timesteps between diagnostics resetting
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_timesteps_between_longwave_radiation_calls
+    long_name: Number of timesteps between longwave radiation calls
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_timesteps_between_shortwave_radiation_calls
+    long_name: Number of timesteps between shortwave radiation calls
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_timesteps_between_surface_cycling_calls
+    long_name: Number of timesteps between surface cycling calls
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_timesteps_for_concurrent_radiation_and_remainder_physics_calls_after_model_initialization
+    long_name: Number of timesteps for concurrent radiation and remainder physics
+      calls after model initialization
+    type: integer
+    kind: ''
+    units: count
+  - name: number_of_tracers_plus_one
+    long_name: Number of tracers plus one
+    type: integer
+    kind: ''
+    units: count
+  - name: vertical_dimension_for_radiation
+    long_name: Vertical dimension for radiation
+    type: integer
+    kind: ''
+    units: count
+  - name: vertical_interface_dimension_for_radiation
+    long_name: Vertical interface dimension for radiation
+    type: integer
+    kind: ''
+    units: count
+  - name: multiplicative_tuning_parameter_for_potential_evaporation
+    long_name: Multiplicative tuning parameter for potential evaporation
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: air_pressure_at_bottom_extent_of_rayleigh_damping
+    long_name: Air pressure at bottom extent of rayleigh damping
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: rain_conversion_parameter_for_deep_convection
+    long_name: Rain conversion parameter for deep convection
+    type: real
+    kind: kind_phys
+    units: m-1
+  - name: rain_conversion_parameter_for_shallow_convection
+    long_name: Rain conversion parameter for shallow convection
+    type: real
+    kind: kind_phys
+    units: m-1
+  - name: rain_evaporation_coefficient_over_ocean_for_deep_convection
+    long_name: Rain evaporation coefficient over ocean for deep convection
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: rain_evaporation_coefficient_over_land_for_deep_convection
+    long_name: Rain evaporation coefficient over land for deep convection
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: filename_of_rrtmgp_longwave_cloud_optics_coefficients
+    long_name: Filename of rrtmgp longwave cloud optics coefficients
+    type: character
+    kind: len=128
+    units: none
+  - name: filename_of_rrtmgp_shortwave_cloud_optics_coefficients
+    long_name: Filename of rrtmgp shortwave cloud optics coefficients
+    type: character
+    kind: len=128
+    units: none
+  - name: filename_of_rrtmgp_longwave_k_distribution
+    long_name: Filename of rrtmgp longwave k distribution
+    type: character
+    kind: len=128
+    units: none
+  - name: filename_of_rrtmgp_shortwave_k_distribution
+    long_name: Filename of rrtmgp shortwave k distribution
+    type: character
+    kind: len=128
+    units: none
+  - name: do_rrtmgp_shortwave_and_rrtmg_longwave_radiation
+    long_name: Do rrtmgp shortwave and rrtmg longwave radiation
+    type: logical
+    kind: ''
+    units: flag
+  - name: min_sea_ice_area_fraction
+    long_name: Min sea ice area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: forecast_time_in_seconds
+    long_name: Forecast time in seconds
+    type: real
+    kind: kind_phys
+    units: s
+  - name: random_number_seed_for_cellular_automata
+    long_name: Random number seed for cellular automata
+    type: integer
+    kind: ''
+    units: 1
+  - name: random_number_seed_for_deep_convection
+    long_name: Random number seed for deep convection
+    type: integer
+    kind: ''
+    units: 1
+  - name: control_for_tke_dissipation_method
+    long_name: Control for tke dissipation method
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: uncentering_coefficient_for_implicit_tke_integration
+    long_name: Uncentering coefficient for implicit tke integration
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: pressure_threshold_for_increased_tke_dissipation
+    long_name: Pressure threshold for increased tke dissipation
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: multiplicative_tunable_parameter_for_tke_dissipation
+    long_name: Multiplicative tunable parameter for tke dissipation
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: multiplicative_tunable_parameter_for_tke_dissipation_at_surface_adjacent_layer
+    long_name: Multiplicative tunable parameter for tke dissipation at surface adjacent
+      layer
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: sine_of_solar_declination_angle
+    long_name: Sine of solar declination angle
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: vertical_dimension_of_surface_snow
+    long_name: Vertical dimension of surface snow
+    type: integer
+    kind: ''
+    units: count
+  - name: control_for_soil_type_dataset
+    long_name: Control for soil type dataset
+    type: integer
+    kind: ''
+    units: 1
+  - name: vertical_dimension_of_soil
+    long_name: Vertical dimension of soil
+    type: integer
+    kind: ''
+    units: count
+  - name: vertical_dimension_of_soil_internal_to_land_surface_scheme
+    long_name: Vertical dimension of soil internal to land surface scheme
+    type: integer
+    kind: ''
+    units: count
+  - name: solar_constant
+    long_name: Solar constant
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: starting_x_index_for_current_mpi_rank
+    long_name: Starting x index for current mpi rank
+    type: integer
+    kind: ''
+    units: index
+  - name: starting_y_index_for_current_mpi_rank
+    long_name: Starting y index for current mpi rank
+    type: integer
+    kind: ''
+    units: index
+  - name: multiplicative_tuning_parameter_for_reduced_surface_heat_fluxes_due_to_canopy_heat_storage
+    long_name: Multiplicative tuning parameter for reduced surface heat fluxes due
+      to canopy heat storage
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: thickness_of_soil_layers_for_land_surface_model
+    long_name: Thickness of soil layers for land surface model
+    type: real
+    kind: kind_phys
+    units: m
+  - name: cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection
+    long_name: Cellular automata vertical velocity perturbation threshold for deep
+      convection
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: period_of_maximum_diagnostics_reset
+    long_name: Period of maximum diagnostics reset
+    type: real
+    kind: kind_phys
+    units: s
+  - name: timescale_for_rayleigh_damping
+    long_name: Timescale for rayleigh damping
+    type: real
+    kind: kind_phys
+    units: d
+  - name: time_elapsed_since_diagnostics_reset
+    long_name: Time elapsed since diagnostics reset
+    type: real
+    kind: kind_phys
+    units: h
+  - name: timestep_for_dynamics
+    long_name: Timestep for dynamics
+    type: real
+    kind: kind_phys
+    units: s
+  - name: do_tke_advection
+    long_name: Do tke advection
+    type: logical
+    kind: ''
+    units: flag
+  - name: control_for_tke_budget_output
+    long_name: Control for tke budget output
+    type: integer
+    kind: ''
+    units: 1
+  - name: multiplicative_tuning_parameter_for_tke_dissipative_heating
+    long_name: Multiplicative tuning parameter for tke dissipative heating
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: total_amplitude_of_sppt_perturbation
+    long_name: Total amplitude of sppt perturbation
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gravity_wave_drag_scheme
+    long_name: Do turbulent orographic form drag in unified gravity wave physics gravity
+      wave drag scheme
+    type: logical
+    kind: ''
+    units: flag
+  - name: updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme
+    long_name: Updraft area fraction in scale aware tke moist edmf pbl scheme
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: tunable_parameter_1_for_maximum_cloud_base_updraft_velocity_in_chikira_sugiyama_deep_convection
+    long_name: Tunable parameter 1 for maximum cloud base updraft velocity in chikira
+      sugiyama deep convection
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: tunable_parameter_2_for_maximum_cloud_base_updraft_velocity_in_chikira_sugiyama_deep_convection
+    long_name: Tunable parameter 2 for maximum cloud base updraft velocity in chikira
+      sugiyama deep convection
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: upper_bound_of_vertical_dimension_of_surface_snow
+    long_name: Upper bound of vertical dimension of surface snow
+    type: integer
+    kind: ''
+    units: count
+  - name: index_of_urban_vegetation_category
+    long_name: Index of urban vegetation category
+    type: integer
+    kind: ''
+    units: index
+  - name: land_surface_perturbation_variables
+    long_name: Land surface perturbation variables
+    type: character
+    kind: len=3
+    units: none
+  - name: control_for_vegetation_dataset
+    long_name: Control for vegetation dataset
+    type: integer
+    kind: ''
+    units: 1
+  - name: vertical_layer_dimension_minus_one
+    long_name: Vertical layer dimension minus one
+    type: integer
+    kind: ''
+    units: count
+  - name: sigma_pressure_hybrid_vertical_coordinate
+    long_name: Sigma pressure hybrid vertical coordinate
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: lower_bound_for_depth_of_sea_temperature_for_nsstm
+    long_name: Lower bound for depth of sea temperature for nsstm
+    type: integer
+    kind: ''
+    units: mm
+  - name: upper_bound_for_depth_of_sea_temperature_for_nsstm
+    long_name: Upper bound for depth of sea temperature for nsstm
+    type: integer
+    kind: ''
+    units: mm
+  - name: index_of_water_vegetation_category
+    long_name: Index of water vegetation category
+    type: integer
+    kind: ''
+    units: index
+  - name: filename_of_micm_configuration
+    long_name: Filename of micm configuration
+    type: character
+    kind: len=*
+    units: none
+- name: GFS_typedefs_GFS_interstitial_type
+  comment: null
+  standard_names:
+  - name: cloud_ice_mixing_ratio_wrt_moist_air_interstitial
+    long_name: Cloud ice mixing ratio wrt moist air interstitial
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_interstitial
+    long_name: Cloud liquid water mixing ratio wrt moist air interstitial
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: radiatively_active_gases
+    long_name: Radiatively active gases
+    type: character
+    kind: len=128
+    units: none
+  - name: process_split_cumulative_tendency_of_air_temperature
+    long_name: Process split cumulative tendency of air temperature
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: process_split_cumulative_tendency_of_mass_number_concentration_of_cloud_liquid_water_particles_in_air
+    long_name: Process split cumulative tendency of mass number concentration of cloud
+      liquid water particles in air
+    type: real
+    kind: kind_phys
+    units: kg-1 s-1
+  - name: process_split_cumulative_tendency_of_graupel_mixing_ratio_wrt_moist_air
+    long_name: Process split cumulative tendency of graupel mixing ratio wrt moist
+      air
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: process_split_cumulative_tendency_of_cloud_ice_mixing_ratio_wrt_moist_air
+    long_name: Process split cumulative tendency of cloud ice mixing ratio wrt moist
+      air
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: process_split_cumulative_tendency_of_mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols
+    long_name: Process split cumulative tendency of mass number concentration of nonhygroscopic
+      ice nucleating aerosols
+    type: real
+    kind: kind_phys
+    units: kg-1 s-1
+  - name: process_split_cumulative_tendency_of_mass_number_concentration_of_cloud_ice_water_crystals_in_air
+    long_name: Process split cumulative tendency of mass number concentration of cloud
+      ice water crystals in air
+    type: real
+    kind: kind_phys
+    units: kg-1 s-1
+  - name: process_split_cumulative_tendency_of_cloud_liquid_water_mixing_ratio_wrt_moist_air
+    long_name: Process split cumulative tendency of cloud liquid water mixing ratio
+      wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: process_split_cumulative_tendency_of_ozone_mixing_ratio_wrt_moist_air
+    long_name: Process split cumulative tendency of ozone mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: process_split_cumulative_tendency_of_rain_mixing_ratio_wrt_moist_air
+    long_name: Process split cumulative tendency of rain mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: process_split_cumulative_tendency_of_snow_mixing_ratio_wrt_moist_air
+    long_name: Process split cumulative tendency of snow mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: process_split_cumulative_tendency_of_tracers
+    long_name: Process split cumulative tendency of tracers
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: process_split_cumulative_tendency_of_turbulent_kinetic_energy
+    long_name: Process split cumulative tendency of turbulent kinetic energy
+    type: real
+    kind: kind_phys
+    units: J s-1
+  - name: process_split_cumulative_tendency_of_mass_number_concentration_of_hygroscopic_aerosols
+    long_name: Process split cumulative tendency of mass number concentration of hygroscopic
+      aerosols
+    type: real
+    kind: kind_phys
+    units: kg-1 s-1
+  - name: process_split_cumulative_tendency_of_specific_humidity
+    long_name: Process split cumulative tendency of specific humidity
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: process_split_cumulative_tendency_of_x_wind
+    long_name: Process split cumulative tendency of x wind
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: process_split_cumulative_tendency_of_y_wind
+    long_name: Process split cumulative tendency of y wind
+    type: real
+    kind: kind_phys
+    units: m s-2
+  - name: vertical_interface_dimension_interstitial
+    long_name: Vertical interface dimension interstitial
+    type: integer
+    kind: ''
+    units: count
+- name: GFS_typedefs_GFS_tbd_type
+  comment: null
+  standard_names:
+  - name: absolute_momentum_flux_due_to_nonorographic_gravity_wave_drag
+    long_name: Absolute momentum flux due to nonorographic gravity wave drag
+    type: real
+    kind: kind_phys
+    units: various
+  - name: cumulative_lwe_thickness_of_convective_precipitation_amount_between_sw_radiation_calls
+    long_name: Cumulative lwe thickness of convective precipitation amount between
+      sw radiation calls
+    type: real
+    kind: kind_phys
+    units: m
+  - name: mass_number_concentration_of_aerosol_from_gocart_climatology
+    long_name: Mass number concentration of aerosol from gocart climatology
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array
+    long_name: Air temperature on previous timestep in xyz dimensioned restart array
+    type: real
+    kind: kind_phys
+    units: K
+  - name: air_temperature_two_timesteps_back
+    long_name: Air temperature two timesteps back
+    type: real
+    kind: kind_phys
+    units: K
+  - name: atmosphere_boundary_layer_thickness
+    long_name: Atmosphere boundary layer thickness
+    type: real
+    kind: kind_phys
+    units: m
+  - name: atmosphere_heat_diffusivity_from_shoc
+    long_name: Atmosphere heat diffusivity from shoc
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type
+    long_name: Atmosphere updraft convective mass flux at cloud base by cloud type
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: cloud_fraction_for_mg
+    long_name: Cloud fraction for mg
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: counter_for_grell_freitas_convection
+    long_name: Counter for grell freitas convection
+    type: integer
+    kind: ''
+    units: count
+  - name: convective_cloud_area_fraction
+    long_name: Convective cloud area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: convective_cloud_condensate_mixing_ratio_wrt_moist_air
+    long_name: Convective cloud condensate mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: effective_radius_of_stratiform_cloud_graupel_particle
+    long_name: Effective radius of stratiform cloud graupel particle
+    type: real
+    kind: kind_phys
+    units: um
+  - name: effective_radius_of_stratiform_cloud_ice_particle
+    long_name: Effective radius of stratiform cloud ice particle
+    type: real
+    kind: kind_phys
+    units: um
+  - name: effective_radius_of_stratiform_cloud_liquid_water_particle
+    long_name: Effective radius of stratiform cloud liquid water particle
+    type: real
+    kind: kind_phys
+    units: um
+  - name: effective_radius_of_stratiform_cloud_rain_particle
+    long_name: Effective radius of stratiform cloud rain particle
+    type: real
+    kind: kind_phys
+    units: um
+  - name: effective_radius_of_stratiform_cloud_snow_particle
+    long_name: Effective radius of stratiform cloud snow particle
+    type: real
+    kind: kind_phys
+    units: um
+  - name: stratospheric_water_vapor_forcing
+    long_name: Stratospheric water vapor forcing
+    type: real
+    kind: kind_phys
+    units: various
+  - name: heat_exchange_coefficient_for_myj_schemes
+    long_name: Heat exchange coefficient for myj schemes
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: ice_nucleation_number_from_climatology
+    long_name: Ice nucleation number from climatology
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: upward_virtual_potential_temperature_flux
+    long_name: Upward virtual potential temperature flux
+    type: real
+    kind: kind_phys
+    units: K m s-1
+  - name: surface_upward_specific_humidity_flux_for_mellor_yamada_janjic_surface_layer_scheme
+    long_name: Surface upward specific humidity flux for mellor yamada janjic surface
+      layer scheme
+    type: real
+    kind: kind_phys
+    units: m s-1 kg kg-1
+  - name: cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls
+    long_name: Cumulative max vertical index at cloud base between sw radiation calls
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: map_of_block_column_number_to_global_i_index
+    long_name: Map of block column number to global i index
+    type: integer
+    kind: ''
+    units: index
+  - name: map_of_block_column_number_to_global_j_index
+    long_name: Map of block column number to global j index
+    type: integer
+    kind: ''
+    units: index
+  - name: turbulent_mixing_length
+    long_name: Turbulent mixing length
+    type: real
+    kind: kind_phys
+    units: m
+  - name: specific_humidity_on_previous_timestep
+    long_name: Specific humidity on previous timestep
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: tendency_of_specific_humidity_due_to_nonphysics
+    long_name: Tendency of specific humidity due to nonphysics
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: momentum_exchange_coefficient_for_myj_schemes
+    long_name: Momentum exchange coefficient for myj schemes
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: ozone_forcing
+    long_name: Ozone forcing
+    type: real
+    kind: kind_phys
+    units: various
+  - name: air_potential_temperature_at_top_of_viscous_sublayer
+    long_name: Air potential temperature at top of viscous sublayer
+    type: real
+    kind: kind_phys
+    units: K
+  - name: variance_of_specific_humidity
+    long_name: Variance of specific humidity
+    type: real
+    kind: kind_phys
+    units: kg2 kg-2
+  - name: random_number
+    long_name: Random number
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: random_number_seed_for_mcica_longwave
+    long_name: Random number seed for mcica longwave
+    type: integer
+    kind: ''
+    units: 1
+  - name: random_number_seed_for_mcica_shortwave
+    long_name: Random number seed for mcica shortwave
+    type: integer
+    kind: ''
+    units: 1
+  - name: cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls
+    long_name: Cumulative min vertical index at cloud base between sw radiation calls
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: specific_humidity_at_top_of_viscous_sublayer
+    long_name: Specific humidity at top of viscous sublayer
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: stability_function_for_heat
+    long_name: Stability function for heat
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: subgrid_scale_cloud_area_fraction_in_atmosphere_layer
+    long_name: Subgrid scale cloud area fraction in atmosphere layer
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air
+    long_name: Subgrid scale cloud ice mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air
+    long_name: Subgrid scale cloud liquid water mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: subgrid_scale_cloud_fraction_from_shoc
+    long_name: Subgrid scale cloud fraction from shoc
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_air_pressure_on_previous_timestep
+    long_name: Surface air pressure on previous timestep
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: surface_air_pressure_two_timesteps_back
+    long_name: Surface air pressure two timesteps back
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: control_for_surface_layer_evaporation
+    long_name: Control for surface layer evaporation
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: surface_specific_humidity_for_myj_schemes
+    long_name: Surface specific humidity for myj schemes
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection
+    long_name: Enhancement to wind speed at surface adjacent layer due to convection
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: covariance_of_air_temperature_and_specific_humidity
+    long_name: Covariance of air temperature and specific humidity
+    type: real
+    kind: kind_phys
+    units: K kg kg-1
+  - name: variance_of_air_temperature
+    long_name: Variance of air temperature
+    type: real
+    kind: kind_phys
+    units: K2
+  - name: tendency_of_air_temperature_due_to_nonphysics
+    long_name: Tendency of air temperature due to nonphysics
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_air_temperature_to_withhold_from_sppt
+    long_name: Tendency of air temperature to withhold from sppt
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_activated_cloud_condensation_nuclei_from_climatology
+    long_name: Tendency of activated cloud condensation nuclei from climatology
+    type: real
+    kind: kind_phys
+    units: kg-1 s-1
+  - name: lwe_thickness_of_rain_amount_on_dynamics_timestep_for_coupling
+    long_name: Lwe thickness of rain amount on dynamics timestep for coupling
+    type: real
+    kind: kind_phys
+    units: m
+  - name: lwe_thickness_of_snowfall_amount_on_dynamics_timestep_for_coupling
+    long_name: Lwe thickness of snowfall amount on dynamics timestep for coupling
+    type: real
+    kind: kind_phys
+    units: m
+  - name: nonadvected_turbulent_kinetic_energy_multiplied_by_2
+    long_name: Nonadvected turbulent kinetic energy multiplied by 2
+    type: real
+    kind: kind_phys
+    units: m2 s-2
+  - name: x_wind_at_top_of_viscous_sublayer
+    long_name: X wind at top of viscous sublayer
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: y_wind_at_top_of_viscous_sublayer
+    long_name: Y wind at top of viscous sublayer
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: specific_humidity_on_previous_timestep_in_xyz_dimensioned_restart_array
+    long_name: Specific humidity on previous timestep in xyz dimensioned restart array
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: specific_humidity_two_timesteps_back
+    long_name: Specific humidity two timesteps back
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: weight_for_momentum_at_top_of_viscous_sublayer
+    long_name: Weight for momentum at top of viscous sublayer
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: weight_for_potential_temperature_at_top_of_viscous_sublayer
+    long_name: Weight for potential temperature at top of viscous sublayer
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: weight_for_specific_humidity_at_top_of_viscous_sublayer
+    long_name: Weight for specific humidity at top of viscous sublayer
+    type: real
+    kind: kind_phys
+    units: 1
+- name: GFS_typedefs_GFS_sfcprop_type
+  comment: null
+  standard_names:
+  - name: wet_canopy_area_fraction
+    long_name: Wet canopy area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: baseline_surface_longwave_emissivity
+    long_name: Baseline surface longwave emissivity
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: baseline_surface_roughness_length
+    long_name: Baseline surface roughness length
+    type: real
+    kind: kind_phys
+    units: m
+  - name: air_temperature_in_canopy
+    long_name: Air temperature in canopy
+    type: real
+    kind: kind_phys
+    units: K
+  - name: air_vapor_pressure_in_canopy
+    long_name: Air vapor pressure in canopy
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: canopy_intercepted_ice_mass
+    long_name: Canopy intercepted ice mass
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: canopy_intercepted_liquid_water
+    long_name: Canopy intercepted liquid water
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: canopy_water_amount
+    long_name: Canopy water amount
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice
+    long_name: Cloud condensed water mixing ratio wrt moist air at surface over ice
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land
+    long_name: Cloud condensed water mixing ratio wrt moist air at surface over land
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: coefficient_c_0
+    long_name: Coefficient c 0
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: coefficient_c_d
+    long_name: Coefficient c d
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: coefficient_w_0
+    long_name: Coefficient w 0
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: coefficient_w_d
+    long_name: Coefficient w d
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: convective_precipitation_rate_on_previous_timestep
+    long_name: Convective precipitation rate on previous timestep
+    type: real
+    kind: kind_phys
+    units: mm s-1
+  - name: deep_soil_temperature
+    long_name: Deep soil temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: frozen_precipitation_density
+    long_name: Frozen precipitation density
+    type: real
+    kind: kind_phys
+    units: kg m-3
+  - name: heat_content_in_diurnal_thermocline
+    long_name: Heat content in diurnal thermocline
+    type: real
+    kind: kind_phys
+    units: K m
+  - name: diurnal_thermocline_layer_thickness
+    long_name: Diurnal thermocline layer thickness
+    type: real
+    kind: kind_phys
+    units: m
+  - name: x_current_in_diurnal_thermocline
+    long_name: X current in diurnal thermocline
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: y_current_in_diurnal_thermocline
+    long_name: Y current in diurnal thermocline
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: volumetric_equilibrium_soil_moisture
+    long_name: Volumetric equilibrium soil moisture
+    type: real
+    kind: kind_phys
+    units: m3 m-3
+  - name: explicit_precipitation_rate_on_previous_timestep
+    long_name: Explicit precipitation rate on previous timestep
+    type: real
+    kind: kind_phys
+    units: mm s-1
+  - name: fast_soil_pool_mass_content_of_carbon
+    long_name: Fast soil pool mass content of carbon
+    type: real
+    kind: kind_phys
+    units: g m-2
+  - name: fine_root_mass_content
+    long_name: Fine root mass content
+    type: real
+    kind: kind_phys
+    units: g m-2
+  - name: control_for_frozen_soil_physics
+    long_name: Control for frozen soil physics
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: precipitation_type
+    long_name: Precipitation type
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: strong_cosz_area_fraction
+    long_name: Strong cosz area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: weak_cosz_area_fraction
+    long_name: Weak cosz area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: free_convection_layer_thickness_in_sea_water
+    long_name: Free convection layer thickness in sea water
+    type: real
+    kind: kind_phys
+    units: m
+  - name: consecutive_calls_for_grell_freitas_convection
+    long_name: Consecutive calls for grell freitas convection
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: graupel_precipitation_rate_on_previous_timestep
+    long_name: Graupel precipitation rate on previous timestep
+    type: real
+    kind: kind_phys
+    units: mm s-1
+  - name: ground_temperature
+    long_name: Ground temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: ice_precipitation_rate_on_previous_timestep
+    long_name: Ice precipitation rate on previous timestep
+    type: real
+    kind: kind_phys
+    units: mm s-1
+  - name: control_for_diurnal_thermocline_calculation
+    long_name: Control for diurnal thermocline calculation
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: temperature_in_ice_layer
+    long_name: Temperature in ice layer
+    type: real
+    kind: kind_phys
+    units: K
+  - name: surface_upward_specific_humidity_flux
+    long_name: Surface upward specific humidity flux
+    type: real
+    kind: kind_phys
+    units: kg kg-1 m s-1
+  - name: surface_upward_temperature_flux
+    long_name: Surface upward temperature flux
+    type: real
+    kind: kind_phys
+    units: K m s-1
+  - name: lake_area_fraction
+    long_name: Lake area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: lake_depth
+    long_name: Lake depth
+    type: real
+    kind: kind_phys
+    units: m
+  - name: water_storage_in_lake
+    long_name: Water storage in lake
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: land_area_fraction
+    long_name: Land area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: depth_from_snow_surface_at_bottom_interface
+    long_name: Depth from snow surface at bottom interface
+    type: real
+    kind: kind_phys
+    units: m
+  - name: leaf_area_index
+    long_name: Leaf area index
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: leaf_mass_content
+    long_name: Leaf mass content
+    type: real
+    kind: kind_phys
+    units: g m-2
+  - name: lwe_thickness_of_convective_precipitation_amount_on_previous_timestep
+    long_name: Lwe thickness of convective precipitation amount on previous timestep
+    type: real
+    kind: kind_phys
+    units: m
+  - name: lwe_thickness_of_explicit_precipitation_amount_on_previous_timestep
+    long_name: Lwe thickness of explicit precipitation amount on previous timestep
+    type: real
+    kind: kind_phys
+    units: m
+  - name: lwe_thickness_of_graupel_amount_on_previous_timestep
+    long_name: Lwe thickness of graupel amount on previous timestep
+    type: real
+    kind: kind_phys
+    units: m
+  - name: lwe_thickness_of_ice_precipitation_amount_on_previous_timestep
+    long_name: Lwe thickness of ice precipitation amount on previous timestep
+    type: real
+    kind: kind_phys
+    units: m
+  - name: snow_mass_on_previous_timestep
+    long_name: Snow mass on previous timestep
+    type: real
+    kind: kind_phys
+    units: m
+  - name: max_vegetation_area_fraction
+    long_name: Max vegetation area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: nir_albedo_strong_cosz
+    long_name: Nir albedo strong cosz
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: nir_albedo_weak_cosz
+    long_name: Nir albedo weak cosz
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: vis_albedo_strong_cosz
+    long_name: Vis albedo strong cosz
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: vis_albedo_weak_cosz
+    long_name: Vis albedo weak cosz
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: min_vegetation_area_fraction
+    long_name: Min vegetation area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: monin_obukhov_similarity_function_for_heat
+    long_name: Monin obukhov similarity function for heat
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: monin_obukhov_similarity_function_for_momentum
+    long_name: Monin obukhov similarity function for momentum
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: dimensionless_age_of_surface_snow
+    long_name: Dimensionless age of surface snow
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: nonnegative_lwe_thickness_of_precipitation_amount_on_dynamics_timestep
+    long_name: Nonnegative lwe thickness of precipitation amount on dynamics timestep
+    type: real
+    kind: kind_phys
+    units: m
+  - name: normalized_soil_wetness_for_land_surface_model
+    long_name: Normalized soil wetness for land surface model
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: number_of_snow_layers
+    long_name: Number of snow layers
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: ocean_mixed_layer_thickness
+    long_name: Ocean mixed layer thickness
+    type: real
+    kind: kind_phys
+    units: m
+  - name: height_above_mean_sea_level
+    long_name: Height above mean sea level
+    type: real
+    kind: kind_phys
+    units: m
+  - name: height_above_mean_sea_level_at_surface
+    long_name: Height above mean sea level at local surface
+    type: real
+    kind: kind_phys
+    units: m
+  - name: unfiltered_height_above_mean_sea_level
+    long_name: Unfiltered height above mean sea level
+    type: real
+    kind: kind_phys
+    units: m
+  - name: air_potential_temperature_at_2m
+    long_name: Air potential temperature at 2m
+    type: real
+    kind: kind_phys
+    units: K
+  - name: ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m
+    long_name: Ratio of wind at surface adjacent layer to wind at 10m
+    type: real
+    kind: kind_phys
+    units: ratio
+  - name: reciprocal_of_obukhov_length
+    long_name: Reciprocal of obukhov length
+    type: real
+    kind: kind_phys
+    units: m-1
+  - name: sea_area_fraction
+    long_name: Sea area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: sea_ice_area_fraction_of_sea_area_fraction
+    long_name: Sea ice area fraction of sea area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: sea_ice_temperature
+    long_name: Sea ice temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: sea_ice_thickness
+    long_name: Sea ice thickness
+    type: real
+    kind: kind_phys
+    units: m
+  - name: area_type
+    long_name: Area type
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: reference_sea_surface_temperature
+    long_name: Reference sea surface temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: sea_surface_temperature
+    long_name: Sea surface temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: sea_water_salinity_in_diurnal_thermocline
+    long_name: Sea water salinity in diurnal thermocline
+    type: real
+    kind: kind_phys
+    units: ppt m
+  - name: surface_sensible_heat_due_to_rainfall
+    long_name: Surface sensible heat due to rainfall
+    type: real
+    kind: kind_phys
+    units: W
+  - name: derivative_of_heat_content_in_diurnal_thermocline_wrt_surface_skin_temperature
+    long_name: Derivative of heat content in diurnal thermocline wrt surface skin
+      temperature
+    type: real
+    kind: kind_phys
+    units: m
+  - name: derivative_of_diurnal_thermocline_layer_thickness_wrt_surface_skin_temperature
+    long_name: Derivative of diurnal thermocline layer thickness wrt surface skin
+      temperature
+    type: real
+    kind: kind_phys
+    units: m K-1
+  - name: slow_soil_pool_mass_content_of_carbon
+    long_name: Slow soil pool mass content of carbon
+    type: real
+    kind: kind_phys
+    units: g m-2
+  - name: surface_albedo_assuming_deep_snow_on_previous_timestep
+    long_name: Surface albedo assuming deep snow on previous timestep
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: lwe_thickness_of_ice_in_surface_snow
+    long_name: Lwe thickness of ice in surface snow
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: lwe_thickness_of_liquid_water_in_surface_snow
+    long_name: Lwe thickness of liquid water in surface snow
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: lwe_thickness_of_snowfall_amount_on_previous_timestep
+    long_name: Lwe thickness of snowfall amount on previous timestep
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: lwe_snowfall_rate
+    long_name: Lwe snowfall rate
+    type: real
+    kind: kind_phys
+    units: mm s-1
+  - name: snowfall_rate_on_previous_timestep
+    long_name: Snowfall rate on previous timestep
+    type: real
+    kind: kind_phys
+    units: mm s-1
+  - name: temperature_in_surface_snow
+    long_name: Temperature in surface snow
+    type: real
+    kind: kind_phys
+    units: K
+  - name: temperature_in_surface_snow_at_surface_adjacent_layer_over_ice
+    long_name: Temperature in surface snow at surface adjacent layer over ice
+    type: real
+    kind: kind_phys
+    units: K
+  - name: temperature_in_surface_snow_at_surface_adjacent_layer_over_land
+    long_name: Temperature in surface snow at surface adjacent layer over land
+    type: real
+    kind: kind_phys
+    units: K
+  - name: soil_temperature
+    long_name: Soil temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: soil_temperature_for_land_surface_model
+    long_name: Soil temperature for land surface model
+    type: real
+    kind: kind_phys
+    units: K
+  - name: volumetric_soil_moisture_between_soil_bottom_and_water_table
+    long_name: Volumetric soil moisture between soil bottom and water table
+    type: real
+    kind: kind_phys
+    units: m3 m-3
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_2m
+    long_name: mixing ratio of the mass of water vapor to the mass of moist air, at
+      two meters above surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m
+    long_name: mixing ratio of the mass of water vapor to the mass of moist air and
+      hydrometeors, at two meters above surface
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: specified_surface_upward_specific_humidity_flux
+    long_name: Specified surface upward specific humidity flux
+    type: real
+    kind: kind_phys
+    units: kg kg-1 m s-1
+  - name: specified_surface_upward_temperature_flux
+    long_name: Specified surface upward temperature flux
+    type: real
+    kind: kind_phys
+    units: K m s-1
+  - name: standard_deviation_of_subgrid_orography
+    long_name: Standard deviation of subgrid orography
+    type: real
+    kind: kind_phys
+    units: m
+  - name: statistical_measures_of_subgrid_orography_collection_array
+    long_name: Statistical measures of subgrid orography collection array
+    type: real
+    kind: kind_phys
+    units: various
+  - name: stem_area_index
+    long_name: Stem area index
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: stem_mass_content
+    long_name: Stem mass content
+    type: real
+    kind: kind_phys
+    units: g m-2
+  - name: molecular_sublayer_temperature_correction_in_sea_water
+    long_name: Molecular sublayer temperature correction in sea water
+    type: real
+    kind: kind_phys
+    units: K
+  - name: molecular_sublayer_thickness_in_sea_water
+    long_name: Molecular sublayer thickness in sea water
+    type: real
+    kind: kind_phys
+    units: m
+  - name: surface_albedo_diffuse_nir_over_ice
+    long_name: Surface albedo diffuse nir over ice
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_albedo_diffuse_nir_over_land
+    long_name: Surface albedo diffuse nir over land
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_albedo_diffuse_visible_over_ice
+    long_name: Surface albedo diffuse visible over ice
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_albedo_diffuse_visible_over_land
+    long_name: Surface albedo diffuse visible over land
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_albedo_direct_nir_over_ice
+    long_name: Surface albedo direct nir over ice
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_albedo_direct_nir_over_land
+    long_name: Surface albedo direct nir over land
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_albedo_direct_visible_over_ice
+    long_name: Surface albedo direct visible over ice
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_albedo_direct_visible_over_land
+    long_name: Surface albedo direct visible over land
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_diffused_shortwave_albedo_over_ice
+    long_name: Surface diffused shortwave albedo over ice
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_diffused_shortwave_albedo_over_land
+    long_name: Surface diffused shortwave albedo over land
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_drag_coefficient_for_heat_and_moisture_for_noahmp
+    long_name: Surface drag coefficient for heat and moisture for noahmp
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: surface_drag_coefficient_for_momentum_for_noahmp
+    long_name: Surface drag coefficient for momentum for noahmp
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: surface_exchange_coefficient_for_heat
+    long_name: Surface exchange coefficient for heat
+    type: real
+    kind: kind_phys
+    units: W m-2 K-1
+  - name: surface_exchange_coefficient_for_heat_at_2m
+    long_name: Surface exchange coefficient for heat at 2m
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: surface_exchange_coefficient_for_moisture
+    long_name: Surface exchange coefficient for moisture
+    type: real
+    kind: kind_phys
+    units: kg m-2 s-1
+  - name: surface_exchange_coefficient_for_moisture_at_2m
+    long_name: Surface exchange coefficient for moisture at 2m
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: surface_friction_velocity
+    long_name: Surface friction velocity
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: surface_friction_velocity_for_momentum
+    long_name: Surface friction velocity for momentum
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: surface_upward_latent_heat_flux
+    long_name: Surface upward latent heat flux
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_longwave_emissivity_over_ice
+    long_name: Surface longwave emissivity over ice
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_longwave_emissivity_over_land
+    long_name: Surface longwave emissivity over land
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_roughness_length
+    long_name: Surface roughness length
+    type: real
+    kind: kind_phys
+    units: cm
+  - name: surface_roughness_length_from_wave_model
+    long_name: Surface roughness length from wave model
+    type: real
+    kind: kind_phys
+    units: cm
+  - name: surface_roughness_length_over_ice
+    long_name: Surface roughness length over ice
+    type: real
+    kind: kind_phys
+    units: cm
+  - name: surface_roughness_length_over_land
+    long_name: Surface roughness length over land
+    type: real
+    kind: kind_phys
+    units: cm
+  - name: surface_roughness_length_over_water
+    long_name: Surface roughness length over water
+    type: real
+    kind: kind_phys
+    units: cm
+  - name: skin_temperature_at_surface
+    long_name: Skin temperature at surface
+    type: real
+    kind: kind_phys
+    units: K
+  - name: skin_temperature_at_surface_over_ice
+    long_name: Skin temperature at surface over (or where) ice
+    type: real
+    kind: kind_phys
+    units: K
+  - name: skin_temperature_at_surface_over_land
+    long_name: Skin temperature at surface over (or where) land
+    type: real
+    kind: kind_phys
+    units: K
+  - name: skin_temperature_at_surface_over_ocean
+    long_name: Skin temperature at surface over (or where) ocean
+    type: real
+    kind: kind_phys
+    units: K
+  - name: skin_temperature_at_surface_over_snow
+    long_name: Skin temperature at surface over (or where) snow
+    type: real
+    kind: kind_phys
+    units: K
+  - name: surface_snow_area_fraction_over_ice
+    long_name: Surface snow area fraction over ice
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_snow_area_fraction_over_land
+    long_name: Surface snow area fraction over land
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_snow_free_albedo_over_land
+    long_name: Surface snow free albedo over land
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: lwe_surface_snow
+    long_name: Lwe surface snow
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: surface_specific_humidity
+    long_name: Surface specific humidity
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: ratio_of_height_to_monin_obukhov_length
+    long_name: Ratio of height to monin obukhov length
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: air_temperature_at_2m
+    long_name: Air temperature at 2m
+    type: real
+    kind: kind_phys
+    units: K
+  - name: surface_temperature_scale
+    long_name: Surface temperature scale
+    type: real
+    kind: kind_phys
+    units: K
+  - name: time_since_last_snowfall
+    long_name: Time since last snowfall
+    type: real
+    kind: kind_phys
+    units: s
+  - name: surface_snow_amount_over_ice
+    long_name: Surface snow amount over ice
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: surface_snow_amount_over_land
+    long_name: Surface snow amount over land
+    type: real
+    kind: kind_phys
+    units: kg m-2
+  - name: upper_bound_of_max_albedo_assuming_deep_snow
+    long_name: Upper bound of max albedo assuming deep snow
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: vegetation_area_fraction
+    long_name: Vegetation area fraction
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: canopy_temperature
+    long_name: Canopy temperature
+    type: real
+    kind: kind_phys
+    units: K
+  - name: volume_fraction_of_frozen_soil_moisture_for_land_surface_model
+    long_name: Volume fraction of frozen soil moisture for land surface model
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: volume_fraction_of_condensed_water_in_soil
+    long_name: Volume fraction of condensed water in soil
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: volume_fraction_of_soil_moisture_for_land_surface_model
+    long_name: Volume fraction of soil moisture for land surface model
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: volume_fraction_of_unfrozen_water_in_soil
+    long_name: Volume fraction of unfrozen water in soil
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: volume_fraction_of_unfrozen_soil_moisture_for_land_surface_model
+    long_name: Volume fraction of unfrozen soil moisture for land surface model
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: lwe_thickness_of_surface_snow_amount
+    long_name: Lwe thickness of surface snow amount
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: water_storage_in_aquifer
+    long_name: Water storage in aquifer
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: water_storage_in_aquifer_and_saturated_soil
+    long_name: Water storage in aquifer and saturated soil
+    type: real
+    kind: kind_phys
+    units: mm
+  - name: water_table_depth
+    long_name: Water table depth
+    type: real
+    kind: kind_phys
+    units: m
+  - name: water_table_recharge_assuming_deep
+    long_name: Water table recharge assuming deep
+    type: real
+    kind: kind_phys
+    units: m
+  - name: water_table_recharge_assuming_shallow
+    long_name: Water table recharge assuming shallow
+    type: real
+    kind: kind_phys
+    units: m
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice
+    long_name: Water vapor mixing ratio wrt moist air at surface over ice
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land
+    long_name: Water vapor mixing ratio wrt moist air at surface over land
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: wood_mass_content
+    long_name: Wood mass content
+    type: real
+    kind: kind_phys
+    units: g m-2
+- name: GFS_typedefs_GFS_coupling_type
+  comment: null
+  standard_names:
+  - name: cellular_automata_global_pattern_from_coupled_process
+    long_name: Cellular automata global pattern from coupled process
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: convective_cloud_condensate_after_rainout
+    long_name: Convective cloud condensate after rainout
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: cumulative_surface_downwelling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface downwelling diffuse nir shortwave flux for coupling
+      multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface downwelling diffuse uv and vis shortwave flux for
+      coupling multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_downwelling_direct_nir_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface downwelling direct nir shortwave flux for coupling
+      multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_downwelling_direct_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface downwelling direct uv and vis shortwave flux for
+      coupling multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_downwelling_longwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface downwelling longwave flux for coupling multiplied
+      by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_downwelling_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface downwelling shortwave flux for coupling multiplied
+      by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_net_downwelling_diffuse_nir_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface net downwelling diffuse nir shortwave flux for coupling
+      multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_net_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface net downwelling diffuse uv and vis shortwave flux
+      for coupling multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_net_downwelling_direct_nir_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface net downwelling direct nir shortwave flux for coupling
+      multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_net_downwelling_direct_uv_and_vis_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface net downwelling direct uv and vis shortwave flux
+      for coupling multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_net_downwelling_longwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface net downwelling longwave flux for coupling multiplied
+      by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_net_downwelling_shortwave_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface net downwelling shortwave flux for coupling multiplied
+      by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_upward_latent_heat_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface upward latent heat flux for coupling multiplied
+      by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_upward_sensible_heat_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface upward sensible heat flux for coupling multiplied
+      by timestep
+    type: real
+    kind: kind_phys
+    units: J m-2
+  - name: cumulative_surface_x_momentum_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface x momentum flux for coupling multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: Pa s
+  - name: cumulative_surface_y_momentum_flux_for_coupling_multiplied_by_timestep
+    long_name: Cumulative surface y momentum flux for coupling multiplied by timestep
+    type: real
+    kind: kind_phys
+    units: Pa s
+  - name: cellular_automata_area_fraction_for_deep_convection_from_coupled_process
+    long_name: Cellular automata area fraction for deep convection from coupled process
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: atmosphere_heat_diffusivity_for_chemistry_coupling
+    long_name: Atmosphere heat diffusivity for chemistry coupling
+    type: real
+    kind: kind_phys
+    units: m2 s-1
+  - name: specific_humidity_at_2m_for_coupling
+    long_name: Specific humidity at 2m for coupling
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: surface_air_pressure_for_coupling
+    long_name: Surface air pressure for coupling
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: surface_downwelling_diffuse_nir_shortwave_flux_for_coupling
+    long_name: Surface downwelling diffuse nir shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling
+    long_name: Surface downwelling diffuse uv and vis shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_direct_nir_shortwave_flux_for_coupling
+    long_name: Surface downwelling direct nir shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_direct_uv_and_vis_shortwave_flux_for_coupling
+    long_name: Surface downwelling direct uv and vis shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_longwave_flux_for_coupling
+    long_name: Surface downwelling longwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_shortwave_flux_for_coupling
+    long_name: Surface downwelling shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_net_downwelling_diffuse_nir_shortwave_flux_for_coupling
+    long_name: Surface net downwelling diffuse nir shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_net_downwelling_diffuse_uv_and_vis_shortwave_flux_for_coupling
+    long_name: Surface net downwelling diffuse uv and vis shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_net_downwelling_direct_nir_shortwave_flux_for_coupling
+    long_name: Surface net downwelling direct nir shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_net_downwelling_direct_uv_and_vis_shortwave_flux_for_coupling
+    long_name: Surface net downwelling direct uv and vis shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_net_downwelling_longwave_flux_for_coupling
+    long_name: Surface net downwelling longwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_net_downwelling_shortwave_flux_for_coupling
+    long_name: Surface net downwelling shortwave flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_skin_temperature_for_coupling
+    long_name: Surface skin temperature for coupling
+    type: real
+    kind: kind_phys
+    units: K
+  - name: surface_upward_latent_heat_flux_for_coupling
+    long_name: Surface upward latent heat flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upward_sensible_heat_flux_for_chemistry_coupling
+    long_name: Surface upward sensible heat flux for chemistry coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upward_sensible_heat_flux_for_coupling
+    long_name: Surface upward sensible heat flux for coupling
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_x_momentum_flux_for_coupling
+    long_name: Surface x momentum flux for coupling
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: surface_y_momentum_flux_for_coupling
+    long_name: Surface y momentum flux for coupling
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: temperature_at_2m_for_coupling
+    long_name: Temperature at 2m for coupling
+    type: real
+    kind: kind_phys
+    units: K
+  - name: tendency_of_specific_humidity_due_to_moist_convection_for_coupling
+    long_name: Tendency of specific humidity due to moist convection for coupling
+    type: real
+    kind: kind_phys
+    units: kg kg-1 s-1
+  - name: x_wind_at_10m_for_coupling
+    long_name: X wind at 10m for coupling
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: y_wind_at_10m_for_coupling
+    long_name: Y wind at 10m for coupling
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: cumulative_lwe_thickness_of_convective_precipitation_amount_for_coupling
+    long_name: Cumulative lwe thickness of convective precipitation amount for coupling
+    type: real
+    kind: kind_phys
+    units: m
+  - name: cumulative_lwe_thickness_of_precipitation_amount_for_coupling
+    long_name: Cumulative lwe thickness of precipitation amount for coupling
+    type: real
+    kind: kind_phys
+    units: m
+  - name: cumulative_lwe_thickness_of_snow_amount_for_coupling
+    long_name: Cumulative lwe thickness of snow amount for coupling
+    type: real
+    kind: kind_phys
+    units: m
+  - name: physics_field_for_coupling
+    long_name: Physics field for coupling
+    type: real
+    kind: kind_phys
+    units: m2 s-2
+  - name: rrtmgp_jacobian_of_lw_flux_upward
+    long_name: Rrtmgp jacobian of lw flux upward
+    type: real
+    kind: kind_phys
+    units: W m-2 K-1
+  - name: rrtmgp_lw_flux_profile_downward_allsky
+    long_name: Rrtmgp lw flux profile downward allsky
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: rrtmgp_lw_flux_profile_upward_allsky
+    long_name: Rrtmgp lw flux profile upward allsky
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: area_type_from_coupled_process
+    long_name: Area type from coupled process
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: surface_downwelling_diffuse_nir_shortwave_flux_on_radiation_timestep
+    long_name: Surface downwelling diffuse nir shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_diffuse_uv_and_vis_shortwave_flux_on_radiation_timestep
+    long_name: Surface downwelling diffuse uv and vis shortwave flux on radiation
+      timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_direct_nir_shortwave_flux_on_radiation_timestep
+    long_name: Surface downwelling direct nir shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_direct_uv_and_vis_shortwave_flux_on_radiation_timestep
+    long_name: Surface downwelling direct uv and vis shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_longwave_flux_on_radiation_timestep
+    long_name: Surface downwelling longwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_downwelling_shortwave_flux_on_radiation_timestep
+    long_name: Surface downwelling shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_net_downwelling_shortwave_flux_on_radiation_timestep
+    long_name: Surface net downwelling shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_nir_albedo_diffuse_rad_for_coupling
+    long_name: Surface nir albedo diffuse rad for coupling
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_nir_albedo_direct_rad_for_coupling
+    long_name: Surface nir albedo direct rad for coupling
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: lwe_surface_snow_from_coupled_process
+    long_name: Lwe surface snow from coupled process
+    type: real
+    kind: kind_phys
+    units: m
+  - name: surface_upward_latent_heat_flux_from_coupled_process
+    long_name: Surface upward latent heat flux from coupled process
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upward_sensible_heat_flux_from_coupled_process
+    long_name: Surface upward sensible heat flux from coupled process
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upwelling_diffuse_nir_shortwave_flux_on_radiation_timestep
+    long_name: Surface upwelling diffuse nir shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upwelling_diffuse_uv_and_vis_shortwave_flux_on_radiation_timestep
+    long_name: Surface upwelling diffuse uv and vis shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upwelling_direct_nir_shortwave_flux_on_radiation_timestep
+    long_name: Surface upwelling direct nir shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upwelling_direct_uv_and_vis_shortwave_flux_on_radiation_timestep
+    long_name: Surface upwelling direct uv and vis shortwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upwelling_longwave_flux_from_coupled_process
+    long_name: Surface upwelling longwave flux from coupled process
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_upwelling_longwave_flux_on_radiation_timestep
+    long_name: Surface upwelling longwave flux on radiation timestep
+    type: real
+    kind: kind_phys
+    units: W m-2
+  - name: surface_vis_albedo_diffuse_rad_for_coupling
+    long_name: Surface vis albedo diffuse rad for coupling
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_vis_albedo_direct_rad_for_coupling
+    long_name: Surface vis albedo direct rad for coupling
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_x_momentum_flux_from_coupled_process
+    long_name: Surface x momentum flux from coupled process
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: surface_y_momentum_flux_from_coupled_process
+    long_name: Surface y momentum flux from coupled process
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: tendency_of_nonhygroscopic_ice_nucleating_aerosols_at_surface_adjacent_layer
+    long_name: Tendency of nonhygroscopic ice nucleating aerosols at surface adjacent
+      layer
+    type: real
+    kind: kind_phys
+    units: kg-1 s-1
+  - name: tendency_of_hygroscopic_aerosols_at_surface_adjacent_layer
+    long_name: Tendency of hygroscopic aerosols at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: kg-1 s-1
+  - name: updated_tendency_of_air_temperature_due_to_longwave_heating_on_physics_timestep
+    long_name: Updated tendency of air temperature due to longwave heating on physics
+      timestep
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: cellular_automata_vertical_weight
+    long_name: Cellular automata vertical weight
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: shum_weights_from_coupled_process
+    long_name: Shum weights from coupled process
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: skeb_x_wind_weights_from_coupled_process
+    long_name: Skeb x wind weights from coupled process
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: skeb_y_wind_weights_from_coupled_process
+    long_name: Skeb y wind weights from coupled process
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: sppt_weights_from_coupled_process
+    long_name: Sppt weights from coupled process
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: surface_stochastic_weights_from_coupled_process
+    long_name: Surface stochastic weights from coupled process
+    type: real
+    kind: kind_phys
+    units: 1
+- name: GFS_typedefs_GFS_statein_type
+  comment: null
+  standard_names:
+  - name: air_pressure_at_lowest_model_interface
+    long_name: Air pressure at lowest model interface
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: air_pressure_at_surface_adjacent_layer
+    long_name: Air pressure at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: air_temperature_at_surface_adjacent_layer
+    long_name: Air temperature at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: K
+  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer
+    long_name: Cloud liquid water mixing ratio wrt moist air at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_number_concentration_of_cloud_liquid_water_particles_in_air
+    long_name: Mass number concentration of cloud liquid water particles in air
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: surface_dimensionless_exner_function
+    long_name: Surface dimensionless exner function
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: dimensionless_exner_function_at_surface_adjacent_layer
+    long_name: Dimensionless exner function at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: dimensionless_exner_function_at_interfaces
+    long_name: Dimensionless exner function at interfaces
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: dissipation_estimate_of_air_temperature_at_model_layers
+    long_name: Dissipation estimate of air temperature at model layers
+    type: real
+    kind: kind_phys
+    units: K
+  - name: geopotential
+    long_name: Geopotential
+    type: real
+    kind: kind_phys
+    units: m2 s-2
+  - name: geopotential_at_interfaces
+    long_name: Geopotential at interfaces
+    type: real
+    kind: kind_phys
+    units: m2 s-2
+  - name: graupel_mixing_ratio_wrt_moist_air
+    long_name: Graupel mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_number_concentration_of_graupel_in_air
+    long_name: Mass number concentration of graupel in air
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols
+    long_name: Mass number concentration of nonhygroscopic ice nucleating aerosols
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: mass_number_concentration_of_cloud_ice_water_crystals_in_air
+    long_name: Mass number concentration of cloud ice water crystals in air
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: ozone_mixing_ratio_wrt_moist_air
+    long_name: Ozone mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_number_concentration_of_rain_water_in_air
+    long_name: Mass number concentration of rain water in air
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: mass_number_concentration_of_snow_in_air
+    long_name: Mass number concentration of snow in air
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: snow_mixing_ratio_wrt_moist_air
+    long_name: Snow mixing ratio wrt moist air
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: tracer_concentration
+    long_name: Tracer concentration
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: turbulent_kinetic_energy
+    long_name: Turbulent kinetic energy
+    type: real
+    kind: kind_phys
+    units: J
+  - name: mass_number_concentration_of_hygroscopic_aerosols
+    long_name: Mass number concentration of hygroscopic aerosols
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: specific_humidity_at_surface_adjacent_layer
+    long_name: Specific humidity at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: x_wind_at_surface_adjacent_layer
+    long_name: X wind at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: y_wind_at_surface_adjacent_layer
+    long_name: Y wind at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: m s-1
+- name: GFS_typedefs_GFS_cldprop_type
+  comment: null
+  standard_names:
+  - name: convective_cloud_area_fraction_between_sw_radiation_calls_from_cnvc90
+    long_name: Convective cloud area fraction between sw radiation calls from cnvc90
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: pressure_at_convective_cloud_base_between_sw_radiation_calls_from_cnvc90
+    long_name: Pressure at convective cloud base between sw radiation calls from cnvc90
+    type: real
+    kind: kind_phys
+    units: Pa
+  - name: pressure_at_convective_cloud_top_between_sw_radiation_calls_from_cnvc90
+    long_name: Pressure at convective cloud top between sw radiation calls from cnvc90
+    type: real
+    kind: kind_phys
+    units: Pa
+- name: GFS_typedefs_GFS_radtend_type
+  comment: null
+  standard_names:
+  - name: cosine_of_solar_zenith_angle_for_daytime_points_on_radiation_timestep
+    long_name: Cosine of solar zenith angle for daytime points on radiation timestep
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: cosine_of_solar_zenith_angle_on_radiation_timestep
+    long_name: Cosine of solar zenith angle on radiation timestep
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: surface_lw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep
+    long_name: Surface lw fluxes assuming total and clear sky on radiation timestep
+    type: sfcflw_type
+    kind: ''
+    units: W m-2
+  - name: surface_albedo_for_diffused_shortwave_on_radiation_timestep
+    long_name: Surface albedo for diffused shortwave on radiation timestep
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: surface_longwave_emissivity
+    long_name: Surface longwave emissivity
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: air_temperature_at_surface_adjacent_layer_on_radiation_timestep
+    long_name: Air temperature at surface adjacent layer on radiation timestep
+    type: real
+    kind: kind_phys
+    units: K
+  - name: surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep
+    long_name: Surface sw fluxes assuming total and clear sky on radiation timestep
+    type: sfcfsw_type
+    kind: ''
+    units: W m-2
+  - name: tendency_of_air_temperature_due_to_longwave_heating_assuming_clear_sky_on_radiation_timestep
+    long_name: Tendency of air temperature due to longwave heating assuming clear
+      sky on radiation timestep
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_air_temperature_due_to_integrated_dynamics_through_earths_atmosphere
+    long_name: Tendency of air temperature due to integrated dynamics through earths
+      atmosphere
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_air_temperature_due_to_longwave_heating_on_radiation_timestep
+    long_name: Tendency of air temperature due to longwave heating on radiation timestep
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_air_temperature_due_to_shortwave_heating_assuming_clear_sky_on_radiation_timestep
+    long_name: Tendency of air temperature due to shortwave heating assuming clear
+      sky on radiation timestep
+    type: real
+    kind: kind_phys
+    units: K s-1
+  - name: tendency_of_air_temperature_due_to_shortwave_heating_on_radiation_timestep
+    long_name: Tendency of air temperature due to shortwave heating on radiation timestep
+    type: real
+    kind: kind_phys
+    units: K s-1
+- name: GFS_typedefs_GFS_grid_type
+  comment: null
+  standard_names:
+  - name: longitude_interpolation_weight_for_aerosol_forcing
+    long_name: Longitude interpolation weight for aerosol forcing
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: latitude_interpolation_weight_for_aerosol_forcing
+    long_name: Latitude interpolation weight for aerosol forcing
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: characteristic_grid_lengthscale
+    long_name: Characteristic grid lengthscale
+    type: real
+    kind: kind_phys
+    units: m
+  - name: longitude_interpolation_weight_for_cloud_nuclei_forcing
+    long_name: Longitude interpolation weight for cloud nuclei forcing
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: latitude_interpolation_weight_for_cloud_nuclei_forcing
+    long_name: Latitude interpolation weight for cloud nuclei forcing
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: cosine_of_latitude
+    long_name: Cosine of latitude
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: latitude_interpolation_weight_complement_for_absolute_momentum_flux_due_to_nonorographic_gravity_wave_drag
+    long_name: Latitude interpolation weight complement for absolute momentum flux
+      due to nonorographic gravity wave drag
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: latitude_interpolation_weight_for_absolute_momentum_flux_due_to_nonorographic_gravity_wave_drag
+    long_name: Latitude interpolation weight for absolute momentum flux due to nonorographic
+      gravity wave drag
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: lower_longitude_index_of_aerosol_forcing_for_interpolation
+    long_name: Lower longitude index of aerosol forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: lower_latitude_index_of_aerosol_forcing_for_interpolation
+    long_name: Lower latitude index of aerosol forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation
+    long_name: Lower longitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation
+    long_name: Lower latitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gravity_wave_drag_for_interpolation
+    long_name: Lower latitude index of absolute momentum flux due to nonorographic
+      gravity wave drag for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: lower_latitude_index_of_ozone_forcing_for_interpolation
+    long_name: Lower latitude index of ozone forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
+    long_name: Lower latitude index of stratospheric water vapor forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: latitude_interpolation_weight_for_ozone_forcing
+    long_name: Latitude interpolation weight for ozone forcing
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: sine_of_latitude
+    long_name: Sine of latitude
+    type: real
+    kind: kind_phys
+    units: 1
+  - name: upper_longitude_index_of_aerosol_forcing_for_interpolation
+    long_name: Upper longitude index of aerosol forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: upper_latitude_index_of_aerosol_forcing_for_interpolation
+    long_name: Upper latitude index of aerosol forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation
+    long_name: Upper longitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation
+    long_name: Upper latitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gravity_wave_drag_for_interpolation
+    long_name: Upper latitude index of absolute momentum flux due to nonorographic
+      gravity wave drag for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: upper_latitude_index_of_ozone_forcing_for_interpolation
+    long_name: Upper latitude index of ozone forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
+    long_name: Upper latitude index of stratospheric water vapor forcing for interpolation
+    type: integer
+    kind: ''
+    units: index
+  - name: latitude_interpolation_weight_for_stratospheric_water_vapor_forcing
+    long_name: Latitude interpolation weight for stratospheric water vapor forcing
+    type: real
+    kind: kind_phys
+    units: 1
+- name: GFS_typedefs_GFS_stateout_type
+  comment: null
+  standard_names:
+  - name: air_temperature_of_new_state_at_surface_adjacent_layer
+    long_name: Air temperature of new state at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: K
+  - name: air_temperature_of_new_state
+    long_name: Air temperature of new state
+    type: real
+    kind: kind_phys
+    units: K
+  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state
+    long_name: Cloud liquid water mixing ratio wrt moist air of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state
+    long_name: Mass number concentration of cloud liquid water particles in air of
+      new state
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state
+    long_name: Nonconvective cloud area fraction in atmosphere layer of new state
+    type: real
+    kind: kind_phys
+    units: fraction
+  - name: graupel_mixing_ratio_wrt_moist_air_of_new_state
+    long_name: Graupel mixing ratio wrt moist air of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_number_concentration_of_graupel_of_new_state
+    long_name: Mass number concentration of graupel of new state
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state
+    long_name: Mass number concentration of nonhygroscopic ice nucleating aerosols
+      of new state
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: mass_number_concentration_of_cloud_ice_water_crystals_in_air_of_new_state
+    long_name: Mass number concentration of cloud ice water crystals in air of new
+      state
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: cloud_ice_mixing_ratio_wrt_moist_air_of_new_state
+    long_name: Cloud ice mixing ratio wrt moist air of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_weighted_rime_factor_of_new_state
+    long_name: Mass weighted rime factor of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: ozone_concentration_of_new_state
+    long_name: Ozone concentration of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_number_concentration_of_rain_of_new_state
+    long_name: Mass number concentration of rain of new state
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: rain_mixing_ratio_wrt_moist_air_of_new_state
+    long_name: Rain mixing ratio wrt moist air of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_number_concentration_of_snow_of_new_state
+    long_name: Mass number concentration of snow of new state
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: snow_mixing_ratio_wrt_moist_air_of_new_state
+    long_name: Snow mixing ratio wrt moist air of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: tracer_concentration_of_new_state
+    long_name: Tracer concentration of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: mass_number_concentration_of_hygroscopic_aerosols_of_new_state
+    long_name: Mass number concentration of hygroscopic aerosols of new state
+    type: real
+    kind: kind_phys
+    units: kg-1
+  - name: specific_humidity_of_new_state_at_surface_adjacent_layer
+    long_name: Specific humidity of new state at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: specific_humidity_of_new_state
+    long_name: Specific humidity of new state
+    type: real
+    kind: kind_phys
+    units: kg kg-1
+  - name: x_wind_of_new_state_at_surface_adjacent_layer
+    long_name: X wind of new state at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: x_wind_of_new_state
+    long_name: X wind of new state
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: y_wind_of_new_state_at_surface_adjacent_layer
+    long_name: Y wind of new state at surface adjacent layer
+    type: real
+    kind: kind_phys
+    units: m s-1
+  - name: y_wind_of_new_state
+    long_name: Y wind of new state
+    type: real
+    kind: kind_phys
+    units: m s-1
