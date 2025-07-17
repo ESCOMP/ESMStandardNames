@@ -1,4 +1,4 @@
-name: Pull request checks
+name: Pull request precommit tasks
 
 on:
   workflow_dispatch:
@@ -6,57 +6,16 @@ on:
     branches:
       - main
       - release/*
+    types: [labeled]
 
 jobs:
-  check-unique-standard-names:
-    name: Check for duplicates in standard names
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install libxml2-utils
-
-      - name: Check for duplicate standard names
-        run: |
-          tools/check_xml_unique.py standard_names.xml
-
-  check-name-rules:
-    name: Check standard names against rules
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install libxml2-utils
-
-      - name: Checks standard names against character rules
-        run: |
-          python3 tools/check_name_rules.py -s standard_names.xml
-
-  test-rendering:
-    name: Test rendering xml file to markdown and yaml
-    needs: [check-unique-standard-names, check-name-rules]
+  render-and-commit:
+    name: Rendering xml file to markdown and yaml, and commit to branch
+    if: ${{ github.event.label.name == 'render-and-commit' }}
     uses: ./.github/workflows/render.yml
     with:
-      commit_to_branch: false
+      commit_to_branch: true
     #runs-on: ubuntu-latest
     #steps:
     #  - name: Checkout repository

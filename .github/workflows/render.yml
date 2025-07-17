@@ -1,0 +1,59 @@
+name: Render XML to output formats and optionally commit to branch
+
+on:
+  workflow_call:
+    inputs:
+      commit_to_branch:
+        required: true
+        type: string
+
+#env:
+#  #COMMIT_TO_BRANCH: ${{ inputs.commit_to_branch }}
+
+jobs:
+
+  render_to_markdown_and_yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install libxml2-utils
+          python -m pip install --upgrade pip
+          python -m pip install PyYaml
+
+      - name: Render xml file to markdown
+        run: |
+          tools/write_standard_name_table.py --output-format md standard_names.xml
+          echo "The following changes will be committed when this pull request is merged (git diff Metadata-standard-names.md; "
+          echo "assuming that 'Metadata-standard-names.md' wasn't updated and matches the version in the authoritative branch):"
+          git diff Metadata-standard-names.md
+
+      - name: Rendering xml file to yaml
+        run: |
+          tools/write_standard_name_table.py --output-format yaml standard_names.xml
+          echo "The following changes will be committed when this pull request is merged (git diff Metadata-standard-names.yaml; "
+          echo "assuming that 'Metadata-standard-names.yaml' wasn't updated and matches the version in the authoritative branch):"
+          git diff Metadata-standard-names.yaml
+
+      - name: Configure git
+        if: ${{ inputs.commit_to_branch }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes
+        if: ${{ inputs.commit_to_branch }}
+        run: |
+          git commit -m "Update Metadata-standard-names.{md,yaml} from standard_names.xml" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
