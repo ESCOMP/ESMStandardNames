@@ -2,8 +2,6 @@ name: Render xml standard name dictionary to markdown and yaml and commit to rep
 
 on:
   workflow_dispatch:
-    branches:
-      - main
 
 jobs:
   update-md-and-yaml:
