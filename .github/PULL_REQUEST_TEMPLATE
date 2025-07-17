@@ -15,6 +15,12 @@ Developers listed in the CODEOWNERS file will automatically be assigned to revie
 If your contribution should be reviewed by anyone else, assign those reviewers manually from the
 menu at right, or by tagging them with @USERNAME in the Description text.
 
+Changes to standard names and/or descriptions should be made in the standard_names.xml file. The
+files Metadata-standard-names.md and Metadata-standard-names.yaml will need to be updated before
+a pull request is merged; this can be done manually by the PR author using the script
+tools/write_standard_name_table.py or will be done by the Code Manager prior to merging via Github
+Actions.
+
 Be sure to check in on the PR regularly to respond to comments/questions/reviews!
 --> 
 
