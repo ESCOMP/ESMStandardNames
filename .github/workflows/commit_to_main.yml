@@ -1,7 +1,7 @@
 name: Render xml standard name dictionary to markdown and yaml and commit to repository
 
 on:
-  push:
+  workflow_dispatch:
     branches:
       - main
 

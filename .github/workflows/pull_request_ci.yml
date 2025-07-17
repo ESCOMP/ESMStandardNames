@@ -72,14 +72,14 @@ jobs:
 
       - name: Test rendering xml file to markdown
         run: |
+          # Checks if the saved markdown matches freshly rendered markdown.
+          # If this fails, prompt user to update
+          checksum=$(sha256sum Metadata-standard-names.md)
           tools/write_standard_name_table.py --output-format md standard_names.xml
-          echo "The following changes will be committed when this pull request is merged (git diff Metadata-standard-names.md; "
-          echo "assuming that 'Metadata-standard-names.md' wasn't updated and matches the version in the authoritative branch):"
-          git diff Metadata-standard-names.md
+          test "$checksum" = "$(sha256sum Metadata-standard-names.md)" || exit "Markdown file Metadata-standard-names.md must be updated; see documentation for details"
 
       - name: Test rendering xml file to yaml
         run: |
+          checksum=$(sha256sum Metadata-standard-names.yaml)
           tools/write_standard_name_table.py --output-format yaml standard_names.xml
-          echo "The following changes will be committed when this pull request is merged (git diff Metadata-standard-names.yaml; "
-          echo "assuming that 'Metadata-standard-names.yaml' wasn't updated and matches the version in the authoritative branch):"
-          git diff Metadata-standard-names.yaml
+          test "$checksum" = "$(sha256sum Metadata-standard-names.yaml)" || exit "YAML file Metadata-standard-names.yaml must be updated; see documentation for details"
