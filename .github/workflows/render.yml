@@ -5,11 +5,11 @@ on:
     inputs:
       commit_to_branch:
         required: true
+        type: boolean
+      branch_name:
+        required: false
         type: string
-
-#env:
-#  #COMMIT_TO_BRANCH: ${{ inputs.commit_to_branch }}
-
+      
 jobs:
 
   render_to_markdown_and_yaml:
@@ -44,16 +44,19 @@ jobs:
           echo "assuming that 'Metadata-standard-names.yaml' wasn't updated and matches the version in the authoritative branch):"
           git diff Metadata-standard-names.yaml
 
-      - name: Configure git
+      - name: Configure git, commit and push changes
         if: ${{ inputs.commit_to_branch }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit and push changes
-        if: ${{ inputs.commit_to_branch }}
-        run: |
+          if [[ ! -v ${{ inputs.branch_name }} ]]; then
+            echo "inputs.branch_name not set"
+            exit 1
+          fi
+          git checkout -b ${{ inputs.branch_name }}
           git commit -m "Update Metadata-standard-names.{md,yaml} from standard_names.xml" || echo "No changes to commit"
-          git push
+          git remote -v show
+          git status
+          git push # origin ${BRANCH_NAME}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
