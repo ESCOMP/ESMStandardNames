@@ -47,19 +47,16 @@ jobs:
       - name: Configure git, commit and push changes
         if: ${{ inputs.commit_to_branch }}
         run: |
+          set -u
+          echo "Submitting rendered standard name dictionaries to branch ${BRANCH_NAME}"
+          set +u
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          echo "BRANCH_NAME is '${{ inputs.branch_name }}'"
-          if [[ ! -v ${BRANCH_NAME} ]]; then
-          ### if [[ -z "$DEPLOY_ENV" ]]; then
-          ###   echo "BRANCH_NAME is not defined"
-          ###   exit 1
-          ### fi
-          ### git checkout -b ${{ inputs.branch_name }}
-          ### git commit -m "Update Metadata-standard-names.{md,yaml} from standard_names.xml" || echo "No changes to commit"
-          ### git remote -v show
-          ### git status
-          ### git push # origin ${BRANCH_NAME}
+          git checkout -b ${BRANCH_NAME}
+          git commit -m "Update Metadata-standard-names.{md,yaml} from standard_names.xml" || echo "No changes to commit"
+          git remote -v show
+          git status
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_NAME: ${{ inputs.branch_name }}
