@@ -7,7 +7,7 @@ on:
         required: true
         type: boolean
       branch_name:
-        required: false
+        required: true
         type: string
       
 jobs:
@@ -49,14 +49,17 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [[ ! -v ${{ inputs.branch_name }} ]]; then
-            echo "inputs.branch_name not set"
-            exit 1
-          fi
-          git checkout -b ${{ inputs.branch_name }}
-          git commit -m "Update Metadata-standard-names.{md,yaml} from standard_names.xml" || echo "No changes to commit"
-          git remote -v show
-          git status
-          git push # origin ${BRANCH_NAME}
+          echo "BRANCH_NAME is '${{ inputs.branch_name }}'"
+          if [[ ! -v ${BRANCH_NAME} ]]; then
+          ### if [[ -z "$DEPLOY_ENV" ]]; then
+          ###   echo "BRANCH_NAME is not defined"
+          ###   exit 1
+          ### fi
+          ### git checkout -b ${{ inputs.branch_name }}
+          ### git commit -m "Update Metadata-standard-names.{md,yaml} from standard_names.xml" || echo "No changes to commit"
+          ### git remote -v show
+          ### git status
+          ### git push # origin ${BRANCH_NAME}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ inputs.branch_name }}
