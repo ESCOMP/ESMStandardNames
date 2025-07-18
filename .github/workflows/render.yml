@@ -9,7 +9,10 @@ on:
       branch_name:
         required: true
         type: string
-      
+      remote_url:
+        required: true
+        type: string
+
 jobs:
 
   render_to_markdown_and_yaml:
@@ -48,15 +51,18 @@ jobs:
         if: ${{ inputs.commit_to_branch }}
         run: |
           set -u
-          echo "Submitting rendered standard name dictionaries to branch ${BRANCH_NAME}"
+          echo "Submitting rendered standard name dictionaries to branch ${BRANCH_NAME} in ${REMOTE_URL}"
           set +u
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin ${REMOTE_URL}
           git checkout -b ${BRANCH_NAME}
+          git add .
           git commit -m "Update Metadata-standard-names.{md,yaml} from standard_names.xml" || echo "No changes to commit"
           git remote -v show
           git status
-          git push
+          git push origin ${BRANCH_NAME}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_NAME: ${{ inputs.branch_name }}
+          REMOTE_URL: ${{ inputs.remote_url }}

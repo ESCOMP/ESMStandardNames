@@ -19,3 +19,5 @@ jobs:
       commit_to_branch: true
       # github.head_ref is the branch from which a pull request is made
       branch_name: ${{ github.head_ref }}
+      # github.event.pull_request.head.repo.clone_url is the URL from where the pull request is made
+      remote_url: ${{ github.event.pull_request.head.repo.clone_url }}

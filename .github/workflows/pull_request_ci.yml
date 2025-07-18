@@ -58,3 +58,4 @@ jobs:
     with:
       commit_to_branch: false
       branch_name: "invalid_branch_name"
+      remote_url: "invalid_remote_url"
