@@ -74,9 +74,8 @@ jobs:
         run: |
           # Checks if the saved markdown matches freshly rendered markdown.
           # If this fails, prompt user to update
-          checksum=$(sha256sum Metadata-standard-names.md)
           tools/write_standard_name_table.py --output-format md standard_names.xml
-          test "$checksum" = "$(sha256sum Metadata-standard-names.md)" || exit "Markdown file Metadata-standard-names.md must be updated; see documentation for details"
+          git diff --exit-code || exit "Markdown file Metadata-standard-names.md must be updated; see documentation for details"
 
       - name: Test rendering xml file to yaml
         run: |
