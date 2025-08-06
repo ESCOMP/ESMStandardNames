@@ -169,9 +169,9 @@ Technical specifications
    that represents the variable name, and (optionally) a ``description`` attribute that gives
    a detailed description of what that name represents. Note that the ``description`` field is only
    provided for information and disambiguation only (though it should be unique), and does not need to be included for
-   individual implementations of the standard names. It is not the same as ``long_name`` entries
-   used in CCPP and other standards, but it can be used to inform the contents of that field. The
-   ``standard_name`` XML entry also contains a nested
+   individual implementations of the standard names. This is not necessarily the same as the ``long_name`` entry as described
+   in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/latest/CompliantPhysicsParams.html#ccpp-arg-table>`_,
+   but it can be used to inform the contents of that field. The ``standard_name`` XML entry also contains a nested
    ``type`` entry, indicating the data type that a ``standard_name`` should represent, and as attributes the
    physical units of that variable quantity (see the `section on Units <#units>`_) and the FORTRAN "kind"
    of the variable quantity. For example, the element
