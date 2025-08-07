@@ -7,9 +7,6 @@
              comment="The following names are too general to be chosen as\n
                       standard names, but they can serve as base names for\n
                       more specific standard names.\n">
-      <standard_name name="amount">
-        <type units="kg m-2">real</type>
-      </standard_name>
       <standard_name name="area">
         <type units="m2">real</type>
       </standard_name>
@@ -57,6 +54,10 @@
       </standard_name>
       <standard_name name="mass">
         <type units="kg">real</type>
+      </standard_name>
+      <standard_name name="mass_content"
+                     description="Integrated mass over a given area and vertical extent">
+        <type units="kg m-2">real</type>
       </standard_name>
       <standard_name name="mass_flux"
                      description="Mass traveling through an area per unit time">
@@ -254,7 +255,8 @@
                      description="The pressure of air">
         <type units="Pa">real</type>
       </standard_name>
-      <standard_name name="air_pressure_thickness">
+      <standard_name name="air_pressure_thickness"
+                     description="The difference in air pressure between two vertical layers">
         <type units="Pa">real</type>
       </standard_name>
       <standard_name name="air_temperature"
@@ -2963,7 +2965,7 @@ GFS near-surface sea temperature scheme
                    description="Absolute momentum flux due to non-orographic gravity wave drag">
          <type kind="kind_phys" units="various">real</type>
       </standard_name>
-      <standard_name name="cumulative_lwe_thickness_of_convective_precipitation_amount_between_sw_radiation_calls"
+      <standard_name name="cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls"
                    description="Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
@@ -3136,11 +3138,11 @@ GFS near-surface sea temperature scheme
                    description="Change of activated cloud condensation nuclei from climatology per unit time">
          <type kind="kind_phys" units="kg-1 s-1">real</type>
       </standard_name>
-      <standard_name name="lwe_thickness_of_rain_amount_on_dynamics_timestep_for_coupling"
+      <standard_name name="lwe_thickness_of_rain_on_dynamics_timestep_for_coupling"
                    description="Liquid water equivalent thickness of rain amount on dynamics timestep for coupling">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="lwe_thickness_of_snowfall_amount_on_dynamics_timestep_for_coupling"
+      <standard_name name="lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling"
                    description="Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
@@ -3196,7 +3198,7 @@ GFS near-surface sea temperature scheme
       <standard_name name="canopy_intercepted_liquid_water">
          <type kind="kind_phys" units="mm">real</type>
       </standard_name>
-      <standard_name name="canopy_water_amount">
+      <standard_name name="canopy_water_mass_content">
          <type kind="kind_phys" units="kg m-2">real</type>
       </standard_name>
       <standard_name name="cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice"
@@ -3313,19 +3315,19 @@ GFS near-surface sea temperature scheme
       <standard_name name="leaf_mass_content">
          <type kind="kind_phys" units="g m-2">real</type>
       </standard_name>
-      <standard_name name="lwe_thickness_of_convective_precipitation_amount_on_previous_timestep"
+      <standard_name name="lwe_thickness_of_convective_precipitation_on_previous_timestep"
                    description="Liquid water equivalent thickness of convective precipitation amount on previous timestep">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="lwe_thickness_of_explicit_precipitation_amount_on_previous_timestep"
+      <standard_name name="lwe_thickness_of_explicit_precipitation_on_previous_timestep"
                    description="Liquid water equivalent thickness of explicit precipitation amount on previous timestep">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="lwe_thickness_of_graupel_amount_on_previous_timestep"
+      <standard_name name="lwe_thickness_of_graupel_on_previous_timestep"
                    description="Liquid water equivalent thickness of graupel amount on previous timestep">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="lwe_thickness_of_ice_precipitation_amount_on_previous_timestep"
+      <standard_name name="lwe_thickness_of_ice_precipitation_on_previous_timestep"
                    description="Liquid water equivalent thickness of ice precipitation amount on previous timestep">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
@@ -3364,7 +3366,7 @@ GFS near-surface sea temperature scheme
       <standard_name name="dimensionless_age_of_surface_snow">
          <type kind="kind_phys" units="1">real</type>
       </standard_name>
-      <standard_name name="nonnegative_lwe_thickness_of_precipitation_amount_on_dynamics_timestep"
+      <standard_name name="nonnegative_lwe_thickness_of_precipitation_on_dynamics_timestep"
                    description="Non-negative liquid water equivalent thickness of precipitation amount on dynamics timestep">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
@@ -3444,7 +3446,7 @@ GFS near-surface sea temperature scheme
                    description="Liquid water equivalent thickness of liquid water in surface snow">
          <type kind="kind_phys" units="mm">real</type>
       </standard_name>
-      <standard_name name="lwe_thickness_of_snowfall_amount_on_previous_timestep"
+      <standard_name name="lwe_thickness_of_snowfall_on_previous_timestep"
                    description="Liquid water equivalent thickness of snowfall amount on previous timestep">
          <type kind="kind_phys" units="mm">real</type>
       </standard_name>
@@ -3652,10 +3654,10 @@ GFS near-surface sea temperature scheme
       <standard_name name="time_since_last_snowfall">
          <type kind="kind_phys" units="s">real</type>
       </standard_name>
-      <standard_name name="surface_snow_amount_over_ice">
+      <standard_name name="surface_snow_mass_content_over_ice">
          <type kind="kind_phys" units="kg m-2">real</type>
       </standard_name>
-      <standard_name name="surface_snow_amount_over_land">
+      <standard_name name="surface_snow_mass_content_over_land">
          <type kind="kind_phys" units="kg m-2">real</type>
       </standard_name>
       <standard_name name="upper_bound_of_max_albedo_assuming_deep_snow"
@@ -3686,7 +3688,7 @@ GFS near-surface sea temperature scheme
                    description="Volume fraction of unfrozen soil moisture for land surface model">
          <type kind="kind_phys" units="fraction">real</type>
       </standard_name>
-      <standard_name name="lwe_thickness_of_surface_snow_amount"
+      <standard_name name="lwe_thickness_of_surface_snow"
                    description="Liquid water equivalent thickness of surface snow amount">
          <type kind="kind_phys" units="mm">real</type>
       </standard_name>
@@ -3868,15 +3870,15 @@ GFS near-surface sea temperature scheme
       <standard_name name="y_wind_at_10m_for_coupling">
          <type kind="kind_phys" units="m s-1">real</type>
       </standard_name>
-      <standard_name name="cumulative_lwe_thickness_of_convective_precipitation_amount_for_coupling"
+      <standard_name name="cumulative_lwe_thickness_of_convective_precipitation_for_coupling"
                    description="Cumulative liquid water equivalent thickness of convective precipitation amount for coupling">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="cumulative_lwe_thickness_of_precipitation_amount_for_coupling"
+      <standard_name name="cumulative_lwe_thickness_of_precipitation_for_coupling"
                    description="Cumulative liquid water equivalent thickness of precipitation amount for coupling">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
-      <standard_name name="cumulative_lwe_thickness_of_snow_amount_for_coupling"
+      <standard_name name="cumulative_lwe_thickness_of_snow_for_coupling"
                    description="Cumulative liquid water equivalent thickness of snow amount for coupling">
          <type kind="kind_phys" units="m">real</type>
       </standard_name>
