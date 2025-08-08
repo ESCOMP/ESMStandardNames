@@ -322,8 +322,8 @@
       <standard_name name="divergence">
         <type units="s-1">real</type>
       </standard_name>
-      <standard_name name="dry_air_density"
-                     description="Density of air excluding water vapor component">
+      <standard_name name="dry_air"
+                     description="Air excluding all water components">
         <type units="kg m-3">real</type>
       </standard_name>
       <standard_name name="dry_air_enthalpy_at_constant_pressure"
@@ -561,7 +561,8 @@
       <type units="count">integer</type>
     </standard_name>
   </section>
-  <section name="constants">
+  <section name="constants"
+           comment="Constant parameters that should be identical across a full modeling system">
     <standard_name name="avogadro_number">
       <type kind="kind_phys" units="molecules mol-1">real</type>
     </standard_name>
@@ -571,24 +572,7 @@
     <standard_name name="boltzmann_constant">
       <type kind="kind_phys" units="J K-1">real</type>
     </standard_name>
-    <standard_name name="gas_constant_of_dry_air">
-      <type kind="kind_phys" units="J kg-1 K-1">real</type>
-    </standard_name>
-    <standard_name name="seconds_in_calendar_day">
-      <type kind="kind_phys" units="s">integer</type>
-    </standard_name>
-    <standard_name name="specific_heat_of_dry_air_at_constant_pressure">
-      <type kind="kind_phys" units="J kg-1 K-1">real</type>
-    </standard_name>
-    <standard_name name="specific_heat_of_liquid_water_at_20c"
-              description="Specific heat of liquid water at 20 degrees Celsius">
-      <type kind="kind_phys" units="J kg-1 K-1">real</type>
-    </standard_name>
-    <standard_name name="latent_heat_of_vaporization_of_water_at_0c"
-                   description="Latent heat of vaporization of water at 0 degrees Celsius">
-      <type kind="kind_phys" units="J kg-1">real</type>
-    </standard_name>
-    <standard_name name="dry_air_density_at_stp"
+    <standard_name name="density_of_dry_air_at_stp"
               description="Density of dry air at standard temperature and pressure">
       <type kind="kind_phys" units="kg m-3">real</type>
     </standard_name>
@@ -596,10 +580,24 @@
                    description="Density of liquid water at 0 degrees Celsius">
       <type kind="kind_phys" units="kg m-3">real</type>
     </standard_name>
+    <standard_name name="gas_constant_of_dry_air">
+      <type kind="kind_phys" units="J kg-1 K-1">real</type>
+    </standard_name>
+    <standard_name name="latent_heat_of_vaporization_of_water_at_0c"
+                   description="Latent heat of vaporization of water at 0 degrees Celsius">
+      <type kind="kind_phys" units="J kg-1">real</type>
+    </standard_name>
     <standard_name
         name="ratio_of_water_vapor_to_dry_air_gas_constants_minus_one"
         description="Ratio of gas constants of water vapor and dry air minus one; (Rwv / Rdair) - 1.0">
       <type kind="kind_phys" units="1">real</type>
+    </standard_name>
+    <standard_name name="seconds_in_calendar_day">
+      <type kind="kind_phys" units="s">integer</type>
+    </standard_name>
+    <standard_name name="specific_heat_of_liquid_water_at_20c"
+              description="Specific heat of liquid water at 20 degrees Celsius">
+      <type kind="kind_phys" units="J kg-1 K-1">real</type>
     </standard_name>
     <standard_name
         name="standard_gravitational_acceleration"
@@ -623,6 +621,9 @@
   </section>
   <section name="state_variables"
            comment="Note that appending '_on_previous_timestep' to standard_names in this section yields another valid standard_name">
+    <standard_name name="specific_heat_of_dry_air_at_constant_pressure">
+      <type kind="kind_phys" units="J kg-1 K-1">real</type>
+    </standard_name>
     <standard_name name="physics_state_due_to_dynamics">
       <type kind="kind_phys" units="none">physics_state</type>
     </standard_name>
@@ -698,7 +699,7 @@
                    description="Dry static energy content of atmosphere layer">
       <type kind="kind_phys" units="J kg-1">real</type>
     </standard_name>
-    <standard_name name="do_lagrangian_vertical_coordinate"
+    <standard_name name="flag_for_lagrangian_vertical_coordinate"
                    description="Flag indicating if vertical coordinate is lagrangian">
       <type kind="" units="flag">logical</type>
     </standard_name>
@@ -706,7 +707,7 @@
                    description="Vertical pressure velocity">
       <type kind="kind_phys" units="Pa s-1">real</type>
     </standard_name>
-    <standard_name name="dry_air_density"
+    <standard_name name="density_of_dry_air"
                    description="Density of dry air">
       <type kind="kind_phys" units="kg m-3">real</type>
     </standard_name>
@@ -1424,7 +1425,7 @@
       <standard_name name="ccpp_thread_number"
                      description="Number of current OpenMP thread. This variable may only be used during CCPP run phase">
         <type units="index">integer</type>
-      </standard_name> 
+      </standard_name>
     </section>
   </section>
   <section name="system variables"
@@ -3477,7 +3478,7 @@ GFS near-surface sea temperature scheme
          <type kind="kind_phys" units="m3 m-3">real</type>
       </standard_name>
       <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_2m"
-                     description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface"> 
+                     description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface">
          <type kind="kind_phys" units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m"
@@ -3485,7 +3486,7 @@ GFS near-surface sea temperature scheme
          <type kind="kind_phys" units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface"
-                   description="Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface"> 
+                   description="Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface">
          <type kind="kind_phys" units="kg kg-1 m s-1">real</type>
       </standard_name>
       <standard_name name="specified_upward_temperature_flux_at_surface">
