@@ -79,6 +79,7 @@ jobs:
             echo "❌ Detected that Metadata-standard-names.md is not consistent with standard_names.xml"
             echo "✅ To fix: Run the following command locally and commit the result:"
             echo "    tools/write_standard_name_table.py --output-format md standard_names.xml"
+            echo "📘 Note that this script requires the pyyaml Python package."
             echo "📘 See documentation for more details."
             echo
             exit 1
@@ -91,6 +92,7 @@ jobs:
             echo "❌ Detected that Metadata-standard-names.yaml is not consistent with standard_names.xml"
             echo "✅ To fix: Run the following command locally and commit the result:"
             echo "    tools/write_standard_name_table.py --output-format md standard_names.xml"
+            echo "📘 Note that this script requires the pyyaml Python package."
             echo "📘 See documentation for more details."
             echo
             exit 1
