@@ -174,18 +174,17 @@ Technical specifications
    individual implementations of the standard names. This is not necessarily the same as the ``long_name`` entry as described
    in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/latest/CompliantPhysicsParams.html#ccpp-arg-table>`_,
    but it can be used to inform the contents of that field. The ``standard_name`` XML entry also contains a nested
-   ``type`` entry, indicating the data type that a ``standard_name`` should represent, and as attributes the
-   physical units of that variable quantity (see the `section on Units <#units>`_) and the FORTRAN "kind"
-   of the variable quantity. For example, the element
+   ``type`` entry, indicating the data type that a ``standard_name`` should represent, and as an attribute the
+   physical units of that variable quantity (see the `section on Units <#units>`_). For example, the element
    for the variable name ``exner_function`` may look similar to this:
 
     <standard_name name="exner_function"
                    description="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
-      <type kind="kind_phys" units="1">real</type>
+      <type units="1">real</type>
     </standard_name>
 
    This XML element indicates that the variable ``exner_function`` represents the quantity described by the ``description``
-   attribute. It is a real variable of "kind_phys" kind, and units of "1", meaning it is non-dimensional and
+   attribute. It is a real variable with units of "1", meaning it is non-dimensional and
    does not correspond to a more descriptive non-dimensional type such as "fraction"; see the `section on Units <#units>`_
    for more details.
 
