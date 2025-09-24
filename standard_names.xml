@@ -576,7 +576,7 @@
               description="Density of dry air at standard temperature and pressure">
       <type units="kg m-3">real</type>
     </standard_name>
-    <standard_name name="fresh_liquid_water_density_at_0c"
+    <standard_name name="density_of_fresh_liquid_water_at_0c"
                    description="Density of liquid water at 0 degrees Celsius">
       <type units="kg m-3">real</type>
     </standard_name>
@@ -699,7 +699,7 @@
                    description="Dry static energy content of atmosphere layer">
       <type units="J kg-1">real</type>
     </standard_name>
-    <standard_name name="flag_for_lagrangian_vertical_coordinate"
+    <standard_name name="do_lagrangian_vertical_coordinate"
                    description="Flag indicating if vertical coordinate is lagrangian">
       <type units="flag">logical</type>
     </standard_name>

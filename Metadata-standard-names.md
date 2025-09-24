@@ -57,7 +57,7 @@ more specific standard names.
     * `real`: units = W
 * `mass`: Mass
     * `real`: units = kg
-* `mass_content`: Integrated mass over a given area and vertical extent
+* `mass_content`: Vertically-integrated mass over a given area and vertical extent
     * `real`: units = kg m-2
 * `mass_flux`: Mass traveling through an area per unit time
     * `real`: units = kg m-2 s-1
@@ -313,7 +313,7 @@ Constant parameters that should be identical across a full modeling system
     * `real`: units = J K-1
 * `density_of_dry_air_at_stp`: Density of dry air at standard temperature and pressure
     * `real`: units = kg m-3
-* `fresh_liquid_water_density_at_0c`: Density of liquid water at 0 degrees Celsius
+* `density_of_fresh_liquid_water_at_0c`: Density of liquid water at 0 degrees Celsius
     * `real`: units = kg m-3
 * `gas_constant_of_dry_air`: Gas constant of dry air
     * `real`: units = J kg-1 K-1
@@ -382,7 +382,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = degrees
 * `dry_static_energy`: Dry static energy content of atmosphere layer
     * `real`: units = J kg-1
-* `flag_for_lagrangian_vertical_coordinate`: Flag indicating if vertical coordinate is lagrangian
+* `do_lagrangian_vertical_coordinate`: Flag indicating if vertical coordinate is lagrangian
     * `logical`: units = flag
 * `lagrangian_tendency_of_air_pressure`: Vertical pressure velocity
     * `real`: units = Pa s-1
