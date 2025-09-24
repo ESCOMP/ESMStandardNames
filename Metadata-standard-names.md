@@ -1,4 +1,4 @@
-# Earth System Modeling Standard Name Library - add some chunk here to test auto update
+# Earth System Modeling Standard Name Library
 #### Table of Contents
 * [base_names](#base_names)
 * [dimensions](#dimensions)

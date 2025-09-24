@@ -1,4 +1,4 @@
-library_name: Earth System Modeling Standard Name Library - add some chunk here to test auto update
+library_name: Earth System Modeling Standard Name Library
 sections:
 - name: dimensions
   comment: 'Dimension standard names may come in sets of six related standard names

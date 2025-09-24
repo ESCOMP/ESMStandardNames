@@ -4,6 +4,6 @@ The Earth System Modeling Standard Names Repository contains community-accepted 
 
 Rules governing the designation and format of standard names can be found in [StandardNamesRules.rst](https://github.com/ESCOMP/ESMStandardNames/blob/main/StandardNamesRules.rst). 
 
-A [Markdown file describing the standard names is included](https://github.com/ESCOMP/ESMStandardNames/blob/main/Metadata-standard-names.md), as well as a [Yaml version of the XML file](https://github.com/ESCOMP/ESMStandardNames/blob/main/Metadata-standard-names.yaml).
+A [Markdown file describing the standard names is included](https://github.com/ESCOMP/ESMStandardNames/blob/main/Metadata-standard-names.md), as well as a [YAML version of the XML file](https://github.com/ESCOMP/ESMStandardNames/blob/main/Metadata-standard-names.yaml).
 
-Edits to standard names must be made in the xml file `standard_names.xml` only. When pull requests are merged into the authoritative branch, a tool is run in GitHub actions that automatically updates the human-readable standard name Markdown file and the Yaml version.
+Edits to standard names must be made in the xml file `standard_names.xml` only. When a pull request is opened into the main branch, the YAML and Markdown files should be updated using the `tools/write_standard_name_table.py` script. This can be done manually by the pull request author, or by activating the GitHub action available on an open pull request.
