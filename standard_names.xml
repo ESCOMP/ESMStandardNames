@@ -56,7 +56,7 @@
         <type units="kg">real</type>
       </standard_name>
       <standard_name name="mass_content"
-                     description="Integrated mass over a given area and vertical extent">
+                     description="Vertically-integrated mass over a given area and vertical extent">
         <type units="kg m-2">real</type>
       </standard_name>
       <standard_name name="mass_flux"
