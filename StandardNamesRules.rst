@@ -39,7 +39,7 @@ ESM Standard Name Rules
    but have since evolved for better consistency and generality across a broader set of fields
    than was originally envisioned by the CF conventions. "``medium``" should be specified when
    the variable in question is a substance or other quantity contained within some other medium
-   (e.g. for ``mole_fraction_of_ozone_in_air``, the base name is "ozone", while the medium is "air"). 
+   (e.g. for ``mole_fraction_of_ozone_in_air``, the base name is "ozone", while the medium is "air").
    "Transformation" refers to descriptors such as "``tendency_of``", "``log10``", or other operations or processes describing some transformation or adjustment of a variable; a detailed list of possible transformations can be found `later in this document <#transformations>`_.
    Other parts of the construction provide information about a variable's horizontal surface
    (e.g. ``at_cloud_base``), component (i.e. direction of variable, e.g. ``downward``), process (e.g.
@@ -139,9 +139,9 @@ ESM Standard Name Rules
    narrowly-defined context or a variable without the scope-narrowing qualifiers
    already exists and cannot be reused.
 
-   **Discouraged:** surface_upward_specific_humidity_flux_for_mellor_yamada_janjic_surface_layer_scheme
+   **Discouraged:** upward_virtual_potential_temperature_flux_for_mellor_yamada_janjic_surface_layer_scheme
 
-   **Preferred:** surface_upward_specific_humidity_flux
+   **Preferred:** upward_virtual_potential_temperature_flux
 
 #. Spell out acronyms unless they are obvious to a vast majority of
    scientists/developers who may come across them. A list of currently-used
@@ -152,12 +152,14 @@ ESM Standard Name Rules
    use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
    should be Fortran logicals.
 
-#. Reserved names: The prefix ``ccpp_`` represents CCPP framework-provided variables.
+#  **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
+   ambiguity.
+
+   - `specific_humidity` Disallowed due to ambiguity and different definitions between different fields. See above section describing `mixing_ratio` for more information.
+   - `amount` In most contexts this word is superfluous, and in all contexts it is non-descriptive. Consider a more specific term such as `mass_content`
+
+#. **Reserved names:** The prefix ``ccpp_`` is reserved for CCPP framework-provided variables.
    All other standard names should avoid the use of ``ccpp`` in their name.
-
-#. No punctuation should appear in standard names except for underscores (_).
-
-#. Standard names are case insensitive, i.e. example = EXAMPLE.
 
 .. _tech_specs:
 
@@ -172,18 +174,17 @@ Technical specifications
    individual implementations of the standard names. This is not necessarily the same as the ``long_name`` entry as described
    in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/latest/CompliantPhysicsParams.html#ccpp-arg-table>`_,
    but it can be used to inform the contents of that field. The ``standard_name`` XML entry also contains a nested
-   ``type`` entry, indicating the data type that a ``standard_name`` should represent, and as attributes the
-   physical units of that variable quantity (see the `section on Units <#units>`_) and the FORTRAN "kind"
-   of the variable quantity. For example, the element
+   ``type`` entry, indicating the data type that a ``standard_name`` should represent, and as an attribute the
+   physical units of that variable quantity (see the `section on Units <#units>`_). For example, the element
    for the variable name ``exner_function`` may look similar to this:
 
     <standard_name name="exner_function"
                    description="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
-      <type kind="kind_phys" units="1">real</type>
+      <type units="1">real</type>
     </standard_name>
 
    This XML element indicates that the variable ``exner_function`` represents the quantity described by the ``description``
-   attribute. It is a real variable of "kind_phys" kind, and units of "1", meaning it is non-dimensional and
+   attribute. It is a real variable with units of "1", meaning it is non-dimensional and
    does not correspond to a more descriptive non-dimensional type such as "fraction"; see the `section on Units <#units>`_
    for more details.
 
@@ -695,14 +696,15 @@ Acronyms, Abbreviations, and Aliases
 Units
 =====
 
-#. For variables with an existing match in the `Climate and Forecast (CF) metadata
-   conventions <https://cfconventions.org/standard-names.html>`_, the units should
-   be identical to the canonical units listed there
+Entries in the Standard Names dictionary contain a "units" property that serves to indicate the
+typical/recommended units for a given variable. It is not mandatory to use the indicated units exactly,
+but any use of a given standard name variable should have units of the same dimensionality.
 
-#. For variables without an existing match in the CF conventions, the units should
-   follow the `International System of Units (SI/metric system) <https://www.nist.gov/pml/weights-and-measures/metric-si/si-units>`_
+When adding a new standard name, units should follow the `International System of Units (SI/metric system) <http://nist.gov/pml/owm/metric-si/si-units>`_.
+If the new standard name has an existing match in the `Climate and Forecast (CF) metadata
+conventions <https://cfconventions.org/standard-names.html>`_, the units should be identical to the canonical units listed there
 
-#. For dimensionless variables, the following units can be used:
+For dimensionless variables, the following units can be used:
 
 +------------------------+-----------------------------------------------------------------------------------------------+
 | **Unit**               |  **Use case**                                                                                 |
