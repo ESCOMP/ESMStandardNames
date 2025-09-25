@@ -125,16 +125,17 @@ ESM Standard Name Rules
    aliases is below. Whenever such an alias exist, use the alias in the
    standard name and the full term in the long name.
 
-#. Chemical species in standard names should be denoted by chemical formulae (e.g. co2, ch4, c5h8)
-   or commonly accepted designations (e.g. cfc12); generally shorter names are preferred. A few
-   very common species with well-established and unambiguous standard names (e.g. water, ozone)
-   are also included. In all cases, the long name should include specific details about the
-   substance's chemical makeup, as well as the phase/state of matter if relevant.
+#. Chemical species in standard names should be denoted by chemical formulae (e.g. ``co2``,
+   ``ch4``, ``c5h8``) or commonly accepted designations (e.g. ``cfc12``); generally when there are
+   multiple options the shorter name is preferred. A few species with well-established and
+   unambiguous common names (e.g. water, ozone) are also included. In all cases, the long name
+   should include specific details about the substance's chemical makeup, as well as the
+   phase/state of matter if relevant; e.g. ``water_vapor``, ``liquid_h2so4``
 
-#. If the ionization of the chemical species is relevant, it should be included in the standard
-   name as a prefix to the substance; e.g. number_density_of_ionized_he for ionized helium. If
+#. If the ionization of the chemical species is relevant, "ionized" should be included in the standard
+   name as a prefix to the substance; e.g. ``number_density_of_ionized_he`` for ionized helium. If
    relevant, the net ionization charge should be included as a suffix (in words, because +/- are
-   not valid standard name characters); e.g. number_density_of_ionized_he_plus_1
+   not valid standard name characters); e.g. ``number_density_of_ionized_he_plus_1``
 
 #. For control-oriented variables, if the variable is a Fortran logical,
    use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
