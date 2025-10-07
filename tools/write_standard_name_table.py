@@ -14,7 +14,7 @@ import re
 import yaml
 
 ################################################
-#Add CCPP framework (lib) modules to python path
+# Add lib modules to python path
 ################################################
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))

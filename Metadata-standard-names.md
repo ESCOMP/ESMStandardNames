@@ -302,7 +302,7 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `integer`: units = index
 * `vertical_index_at_top_interface`: Vertical index at top interface
     * `integer`: units = index
-* `number_of_openmp_threads`: Total number of OpenMP (shared-memory) parallel threads.
+* `number_of_openmp_threads`: Total number of thread blocks OpenMP (shared-memory) parallel threads.
     * `integer`: units = count
 ## constants
 Constant parameters that should be identical across a full modeling system

@@ -557,7 +557,7 @@
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="number_of_openmp_threads"
-                   description="Total number of OpenMP (shared-memory) parallel threads.">
+                   description="Total number of thread blocks OpenMP (shared-memory) parallel threads.">
       <type units="count">integer</type>
     </standard_name>
   </section>
