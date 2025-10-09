@@ -332,7 +332,6 @@ Prefixes
 | **vertical_index_at**
 | **vertical_dimension_of**
 | **cumulative**
-| **cumulative_change_of**
 | **iounit_of**
 | **filename_of**
 | **frequency_of**
