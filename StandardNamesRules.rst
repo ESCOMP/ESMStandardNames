@@ -135,7 +135,7 @@ ESM Standard Name Rules
 #. Chemical species in standard names should be denoted by chemical formulae (e.g. ``co2``,
    ``ch4``, ``c5h8``) or commonly accepted designations (e.g. ``cfc12``); generally when there are
    multiple options the shorter name is preferred. A few species with well-established and
-   unambiguous common names (e.g. water, ozone) are also included. In all cases, the long name
+   unambiguous common names (e.g. water, ozone) are also included. In all cases, the standard name
    should include specific details about the substance's chemical makeup, as well as the
    phase/state of matter if relevant; e.g. ``water_vapor``, ``liquid_h2so4``
 
