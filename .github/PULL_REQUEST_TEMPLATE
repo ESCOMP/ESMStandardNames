@@ -1,5 +1,22 @@
 <!-- Please read all instructions, then fill out the following template.-->
 
+<!-- If this PR includes changes to standard names, you must update the Markdown and YAML files
+to be consistent with your changes to standard_names.xml.
+
+This can be done by running the following commands:
+
+    tools/write_standard_name_table.py --output-format md standard_names.xml
+
+This script requires the pyyaml Python package; to install with pip use command:
+    python -m pip install PyYaml
+ For conda users, environment file tools/environment.yml is provided.
+
+Note that the above procedure assumes your changes were made to standard_names.xml If you instead
+made your changes to one of the human-readable files (Metadata-standard-names.md or
+Metadata-standard-names.yaml), YOU MUST UPDATE THE FILE standard_names.xml MANUALLY, otherwise your
+changes may be lost.
+-->
+
 <!-- Include a short, descriptive title in the field above. If this PR is for a branch other than
 `main`, include the destination branch name in brackets at the beginning, e.g.:
 
@@ -14,6 +31,12 @@ to the title above.
 Developers listed in the CODEOWNERS file will automatically be assigned to review your Pull Request.
 If your contribution should be reviewed by anyone else, assign those reviewers manually from the
 menu at right, or by tagging them with @USERNAME in the Description text.
+
+Changes to standard names and/or descriptions should be made in the standard_names.xml file. The
+files Metadata-standard-names.md and Metadata-standard-names.yaml will need to be updated before
+a pull request is merged; this can be done manually by the PR author using the script
+tools/write_standard_name_table.py or will be done by the Code Manager prior to merging via Github
+Actions.
 
 Be sure to check in on the PR regularly to respond to comments/questions/reviews!
 --> 

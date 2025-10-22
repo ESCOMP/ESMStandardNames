@@ -72,14 +72,31 @@ jobs:
 
       - name: Test rendering xml file to markdown
         run: |
+          # Checks if the saved markdown matches freshly rendered markdown.
+          # If this fails, prompt user to update
           tools/write_standard_name_table.py --output-format md standard_names.xml
-          echo "The following changes will be committed when this pull request is merged (git diff Metadata-standard-names.md; "
-          echo "assuming that 'Metadata-standard-names.md' wasn't updated and matches the version in the authoritative branch):"
-          git diff Metadata-standard-names.md
+          if ! git diff --exit-code --quiet; then
+            echo "❌ Detected that Metadata-standard-names.md is not consistent with standard_names.xml"
+            echo "✅ To fix: Run the following command locally and commit the result:"
+            echo "    tools/write_standard_name_table.py --output-format md standard_names.xml"
+            echo "📘 This script requires the pyyaml Python package; to install with pip use command:"
+            echo "    python -m pip install PyYaml"
+            echo "📘 For conda users, environment file tools/environment.yml is provided."
+            echo
+            exit 1
+          fi
 
       - name: Test rendering xml file to yaml
         run: |
           tools/write_standard_name_table.py --output-format yaml standard_names.xml
-          echo "The following changes will be committed when this pull request is merged (git diff Metadata-standard-names.yaml; "
-          echo "assuming that 'Metadata-standard-names.yaml' wasn't updated and matches the version in the authoritative branch):"
-          git diff Metadata-standard-names.yaml
+          if ! git diff --exit-code --quiet; then
+            echo "❌ Detected that Metadata-standard-names.yaml is not consistent with standard_names.xml"
+            echo "✅ To fix: Run the following command locally and commit the result:"
+            echo "    tools/write_standard_name_table.py --output-format yaml standard_names.xml"
+            echo "📘 This script requires the pyyaml Python package; to install with pip use command:"
+            echo "    python -m pip install PyYaml"
+            echo "📘 For conda users, environment file tools/environment.yml is provided."
+            echo
+            exit 1
+          fi
+
