@@ -9,6 +9,7 @@
 * [diagnostics](#diagnostics)
 * [atmospheric_composition](#atmospheric_composition)
 * [atmospheric_composition: GOCART aerosols](#atmospheric_composition-gocart-aerosols)
+* [atmospheric_composition: GLOMAP/UKCA aerosols](#atmospheric_composition-glomapukca-aerosols)
 * [emissions](#emissions)
 * [Application-specific variables](#application-specific-variables)
 * [system variables](#system-variables)
@@ -301,7 +302,7 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `integer`: units = index
 * `vertical_index_at_top_interface`: Vertical index at top interface
     * `integer`: units = index
-* `number_of_openmp_threads`: Total number of OpenMP (shared-memory) parallel threads.
+* `number_of_openmp_threads`: Total number of thread blocks OpenMP (shared-memory) parallel threads.
     * `integer`: units = count
 ## constants
 Constant parameters that should be identical across a full modeling system
@@ -686,6 +687,15 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = m-1
 * `volume_extinction_in_air_due_to_aerosol_particles_lambda3`: Aerosol extinction at wavelength3
     * `real`: units = m-1
+## atmospheric_composition: GLOMAP/UKCA aerosols
+* `mass_fraction_of_dust_coarse_aerosol_particles_in_air`: Mass fraction of dust coarse aerosol particles in air
+    * `real(kind=kind_phys)`: units = kg kg-1
+* `mass_fraction_of_dust_accumulation_aerosol_particles_in_air`: Mass fraction of dust accumulation aerosol particles in air
+    * `real(kind=kind_phys)`: units = kg kg-1
+* `number_fraction_of_coarse_aerosol_particles_in_air`: Number fraction of coarse aerosol particles in air
+    * `real(kind=kind_phys)`: units = 1
+* `number_fraction_of_accumulation_aerosol_particles_in_air`: Number fraction of accumulation aerosol particles in air
+    * `real(kind=kind_phys)`: units = 1
 ## emissions
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_co_due_to_anthropogenic_sources`: Carbon monoxide emissions from anthropogenic sources, total
