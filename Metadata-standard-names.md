@@ -407,6 +407,46 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = mol mol-1
 * `volume_mixing_ratio_of_so2`: Sulfur dioxide volume mixing ratio
     * `real(kind=kind_phys)`: units = mol mol-1
+* `number_density_of_n`: Number density of neutral atomic nitrogen (N) in air
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_n_from_climatology`: Climatological number density of atomic nitrogen (N), e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_n2`: Number density of molecular nitrogen (N2) in air
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_n2_from_climatology`: Climatological number density molecular nitrogen (N2), e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_o`: Number density of neutral atomic oxygen (O) in air
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_o_from_climatology`: Climatological number density of atomic oxygen (O), e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_o2`: Number density of molecular oxygen (O2) in air
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_o2_from_climatology`: Climatological number density molecular oxygen (O2), e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_no`: Number density of nitric oxide (NO) in air
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_no_from_climatology`: Climatological number density of nitric oxide (NO), e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_ar`: Number density of argon (Ar) in air
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_ar_from_climatology`: Climatological number density of argon (Ar), e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_he`: Number density of helium (He) in air
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_he_from_climatology`: Climatological number density of helium (He), e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_h`: Number density of neutral atomic hydrogen (H) in air
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_h_from_climatology`: Climatological number density of atomic hydrogen (H), e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_anomalous_oxygen`: Number density of energetic, non-thermal atomic oxygen as defined in MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_anomalous_oxygen_from_climatology`: Climatological number density of anomalous energetic oxygen, e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_neutral_air`: Total number density of neutral air, including all neutral constituents
+    * `real(kind=kind_phys)`: units = m-3
+* `number_density_of_neutral_air_from_climatology`: Climatological total number density of neutral air, e.g., from MSIS
+    * `real(kind=kind_phys)`: units = m-3
 ## atmospheric_composition: GOCART aerosols
 * `mass_fraction_of_dust001_in_air`: Dust bin1 mass fraction
     * `real(kind=kind_phys)`: units = kg kg-1
