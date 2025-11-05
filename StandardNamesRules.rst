@@ -141,8 +141,8 @@ ESM Standard Name Rules
 
 #. If the ionization of the chemical species is relevant, "ionized" should be included in the standard
    name as a prefix to the substance; e.g. ``number_density_of_ionized_he`` for ionized helium. If
-   relevant, the net ionization charge should be included as a suffix (in words, because +/- are
-   not valid standard name characters); e.g. ``number_density_of_ionized_he_plus_1``
+   relevant, the net ionization charge should be included as a prefix (in words, because +/- are
+   not valid standard name characters); e.g. ``number_density_of_plus_1_ionized_he``
 
 #. For control-oriented variables, if the variable is a Fortran logical,
    use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
