@@ -1174,15 +1174,17 @@ sections:
     kind: kind_phys
     units: kg kg-1
   - name: number_fraction_of_coarse_aerosol_particles_in_air
-    long_name: Number fraction of coarse mode dust aerosol particles
+    long_name: Ratio of number concentration of coarse mode dust aerosol particles
+      to the molecular concentration of air
     type: real
     kind: kind_phys
-    units: 1
+    units: particles molecules-1
   - name: number_fraction_of_accumulation_aerosol_particles_in_air
-    long_name: Number fraction of accumulation mode dust aerosol particles
+    long_name: Ratio of number concentration of accumulation mode dust aerosol particles
+      to the molecular concentration of air
     type: real
     kind: kind_phys
-    units: 1
+    units: particles molecules-1
 - name: emissions
   comment: Emissions variables, contributed for the Community Emissions Data System
     (CEDS)
