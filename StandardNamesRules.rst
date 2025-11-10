@@ -143,6 +143,13 @@ ESM Standard Name Rules
 
    **Preferred:** upward_virtual_potential_temperature_flux
 
+#. If there are two identical quantities from different schemes/processes that
+   need to be kept apart, suitable qualifiers are added to the names of the processes.
+   If one process is already established and more common than the other, then it is
+   sufficient to only prefix the new process with a suitable qualifier. Example:
+   ``due_to_convective_GWD`` and ``due_to_convenctive_whole_atmosphere_GWD``
+   as discussed in https://github.com/ESCOMP/ESMStandardNames/issues/79.
+
 #. Spell out acronyms unless they are obvious to a vast majority of
    scientists/developers who may come across them. A list of currently-used
    aliases is below. Whenever such an alias exist, use the alias in the
@@ -308,6 +315,7 @@ Suffixes
 | due_to_dry_convection
 | due_to_gwd
 | due_to_convective_gwd
+| due_to_convective_whole_atmosphere_gwd
 | due_to_orographic_gwd
 | due_to_gyre
 | due_to_isostatic_adjustment

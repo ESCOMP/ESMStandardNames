@@ -692,10 +692,10 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real(kind=kind_phys)`: units = kg kg-1
 * `mass_fraction_of_dust_accumulation_aerosol_particles_in_air`: Mass fraction of dust accumulation aerosol particles in air
     * `real(kind=kind_phys)`: units = kg kg-1
-* `number_fraction_of_coarse_aerosol_particles_in_air`: Number fraction of coarse aerosol particles in air
-    * `real(kind=kind_phys)`: units = 1
-* `number_fraction_of_accumulation_aerosol_particles_in_air`: Number fraction of accumulation aerosol particles in air
-    * `real(kind=kind_phys)`: units = 1
+* `number_fraction_of_coarse_aerosol_particles_in_air`: Ratio of number concentration of coarse mode dust aerosol particles to the molecular concentration of air
+    * `real(kind=kind_phys)`: units = particles molecules-1
+* `number_fraction_of_accumulation_aerosol_particles_in_air`: Ratio of number concentration of accumulation mode dust aerosol particles to the molecular concentration of air
+    * `real(kind=kind_phys)`: units = particles molecules-1
 ## emissions
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_co_due_to_anthropogenic_sources`: Carbon monoxide emissions from anthropogenic sources, total
