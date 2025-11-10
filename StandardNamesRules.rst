@@ -50,16 +50,14 @@ ESM Standard Name Rules
    The following table provides a few concrete examples of standard names and how they are constructed
    with respect to the guideline template.
 
-.. image:: https://raw.githubusercontent.com/wiki/ESCOMP/CCPPStandardNames/images/standard_name_construction_examples.png
-   :alt: image of table providing standard name construction examples
+   `image of table providing standard name construction examples <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png>`_)
 
    Note that "transformations" are a special case, where multiple transformations may be applied,
    and multiple quantities may be compared, operated on, etc. For transformations involving
    multiple quantities (e.g. ``ratio_of_X_to_Y``; see the `section on Transformations <#transformations>`_
    for more information), the above formula may be extended around multiple base names.
 
-.. image:: https://raw.githubusercontent.com/wiki/ESCOMP/CCPPStandardNames/images/standard_name_transformation_examples.png
-   :alt: image of table providing standard name construction examples with multiple transformations
+   `image of table providing standard name construction examples with multiple transformations <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png>`_)
 
    In the latter example, ``ln`` is operating on the quantity ``water_vapor_partial_pressure_assuming_saturation``,
    while ``derivative_of`` is a combined transformation of ``water_vapor_partial_pressure_assuming_saturation``
