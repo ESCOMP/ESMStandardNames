@@ -950,6 +950,108 @@ sections:
     type: real
     kind: kind_phys
     units: mol mol-1
+  - name: number_density_of_n
+    long_name: Number density of neutral atomic nitrogen (N) in air
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_n_from_climatology
+    long_name: Climatological number density of atomic nitrogen (N), e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_n2
+    long_name: Number density of molecular nitrogen (N2) in air
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_n2_from_climatology
+    long_name: Climatological number density molecular nitrogen (N2), e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_o
+    long_name: Number density of neutral atomic oxygen (O) in air
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_o_from_climatology
+    long_name: Climatological number density of atomic oxygen (O), e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_o2
+    long_name: Number density of molecular oxygen (O2) in air
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_o2_from_climatology
+    long_name: Climatological number density molecular oxygen (O2), e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_no
+    long_name: Number density of nitric oxide (NO) in air
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_no_from_climatology
+    long_name: Climatological number density of nitric oxide (NO), e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_ar
+    long_name: Number density of argon (Ar) in air
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_ar_from_climatology
+    long_name: Climatological number density of argon (Ar), e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_he
+    long_name: Number density of helium (He) in air
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_he_from_climatology
+    long_name: Climatological number density of helium (He), e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_h
+    long_name: Number density of neutral atomic hydrogen (H) in air
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_h_from_climatology
+    long_name: Climatological number density of atomic hydrogen (H), e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_anomalous_oxygen
+    long_name: Number density of energetic, non-thermal atomic oxygen as defined in
+      MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_anomalous_oxygen_from_climatology
+    long_name: Climatological number density of anomalous energetic oxygen, e.g.,
+      from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_neutral_air
+    long_name: Total number density of neutral air, including all neutral constituents
+    type: real
+    kind: kind_phys
+    units: m-3
+  - name: number_density_of_neutral_air_from_climatology
+    long_name: Climatological total number density of neutral air, e.g., from MSIS
+    type: real
+    kind: kind_phys
+    units: m-3
 - name: 'atmospheric_composition: GOCART aerosols'
   comment: null
   standard_names:
