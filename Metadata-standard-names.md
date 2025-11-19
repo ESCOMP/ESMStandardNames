@@ -644,6 +644,46 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = mol mol-1
 * `volume_mixing_ratio_of_so2`: Sulfur dioxide volume mixing ratio
     * `real`: units = mol mol-1
+* `number_density_of_n`: Number density of neutral atomic nitrogen (N) in air
+    * `real`: units = m-3
+* `number_density_of_n_from_climatology`: Climatological number density of atomic nitrogen (N), e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_n2`: Number density of molecular nitrogen (N2) in air
+    * `real`: units = m-3
+* `number_density_of_n2_from_climatology`: Climatological number density molecular nitrogen (N2), e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_o`: Number density of neutral atomic oxygen (O) in air
+    * `real`: units = m-3
+* `number_density_of_o_from_climatology`: Climatological number density of atomic oxygen (O), e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_o2`: Number density of molecular oxygen (O2) in air
+    * `real`: units = m-3
+* `number_density_of_o2_from_climatology`: Climatological number density molecular oxygen (O2), e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_no`: Number density of nitric oxide (NO) in air
+    * `real`: units = m-3
+* `number_density_of_no_from_climatology`: Climatological number density of nitric oxide (NO), e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_ar`: Number density of argon (Ar) in air
+    * `real`: units = m-3
+* `number_density_of_ar_from_climatology`: Climatological number density of argon (Ar), e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_he`: Number density of helium (He) in air
+    * `real`: units = m-3
+* `number_density_of_he_from_climatology`: Climatological number density of helium (He), e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_h`: Number density of neutral atomic hydrogen (H) in air
+    * `real`: units = m-3
+* `number_density_of_h_from_climatology`: Climatological number density of atomic hydrogen (H), e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_anomalous_oxygen`: Number density of energetic, non-thermal atomic oxygen as defined in MSIS
+    * `real`: units = m-3
+* `number_density_of_anomalous_oxygen_from_climatology`: Climatological number density of anomalous energetic oxygen, e.g., from MSIS
+    * `real`: units = m-3
+* `number_density_of_neutral_air`: Total number density of neutral air, including all neutral constituents
+    * `real`: units = m-3
+* `number_density_of_neutral_air_from_climatology`: Climatological total number density of neutral air, e.g., from MSIS
+    * `real`: units = m-3
 ## atmospheric_composition: GOCART aerosols
 * `mass_fraction_of_dust001_in_air`: Dust bin1 mass fraction
     * `real`: units = kg kg-1
@@ -688,14 +728,14 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
 * `volume_extinction_in_air_due_to_aerosol_particles_lambda3`: Aerosol extinction at wavelength3
     * `real`: units = m-1
 ## atmospheric_composition: GLOMAP/UKCA aerosols
-* `mass_fraction_of_dust_coarse_aerosol_particles_in_air`: Mass fraction of dust coarse aerosol particles in air
-    * `real(kind=kind_phys)`: units = kg kg-1
-* `mass_fraction_of_dust_accumulation_aerosol_particles_in_air`: Mass fraction of dust accumulation aerosol particles in air
-    * `real(kind=kind_phys)`: units = kg kg-1
+* `mass_fraction_of_dust_coarse_aerosol_particles_in_air`: Mass fraction of coarse mode dust aerosol particles
+    * `real`: units = kg kg-1
+* `mass_fraction_of_dust_accumulation_aerosol_particles_in_air`: Mass fraction of accumulation mode dust aerosol particles
+    * `real`: units = kg kg-1
 * `number_fraction_of_coarse_aerosol_particles_in_air`: Ratio of number concentration of coarse mode dust aerosol particles to the molecular concentration of air
-    * `real(kind=kind_phys)`: units = particles molecules-1
+    * `real`: units = particles molecules-1
 * `number_fraction_of_accumulation_aerosol_particles_in_air`: Ratio of number concentration of accumulation mode dust aerosol particles to the molecular concentration of air
-    * `real(kind=kind_phys)`: units = particles molecules-1
+    * `real`: units = particles molecules-1
 ## emissions
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_co_due_to_anthropogenic_sources`: Carbon monoxide emissions from anthropogenic sources, total

@@ -955,6 +955,111 @@ sections:
     type: real
     kind: null
     units: mol mol-1
+  - name: number_density_of_n
+    description: Number density of neutral atomic nitrogen (N) in air
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_n_from_climatology
+    description: Climatological number density of atomic nitrogen (N), e.g., from
+      MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_n2
+    description: Number density of molecular nitrogen (N2) in air
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_n2_from_climatology
+    description: Climatological number density molecular nitrogen (N2), e.g., from
+      MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_o
+    description: Number density of neutral atomic oxygen (O) in air
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_o_from_climatology
+    description: Climatological number density of atomic oxygen (O), e.g., from MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_o2
+    description: Number density of molecular oxygen (O2) in air
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_o2_from_climatology
+    description: Climatological number density molecular oxygen (O2), e.g., from MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_no
+    description: Number density of nitric oxide (NO) in air
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_no_from_climatology
+    description: Climatological number density of nitric oxide (NO), e.g., from MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_ar
+    description: Number density of argon (Ar) in air
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_ar_from_climatology
+    description: Climatological number density of argon (Ar), e.g., from MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_he
+    description: Number density of helium (He) in air
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_he_from_climatology
+    description: Climatological number density of helium (He), e.g., from MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_h
+    description: Number density of neutral atomic hydrogen (H) in air
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_h_from_climatology
+    description: Climatological number density of atomic hydrogen (H), e.g., from
+      MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_anomalous_oxygen
+    description: Number density of energetic, non-thermal atomic oxygen as defined
+      in MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_anomalous_oxygen_from_climatology
+    description: Climatological number density of anomalous energetic oxygen, e.g.,
+      from MSIS
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_neutral_air
+    description: Total number density of neutral air, including all neutral constituents
+    type: real
+    kind: null
+    units: m-3
+  - name: number_density_of_neutral_air_from_climatology
+    description: Climatological total number density of neutral air, e.g., from MSIS
+    type: real
+    kind: null
+    units: m-3
 - name: 'atmospheric_composition: GOCART aerosols'
   comment: null
   standard_names:
@@ -1067,26 +1172,26 @@ sections:
   comment: null
   standard_names:
   - name: mass_fraction_of_dust_coarse_aerosol_particles_in_air
-    description: Mass fraction of dust coarse aerosol particles in air
+    description: Mass fraction of coarse mode dust aerosol particles
     type: real
-    kind: kind_phys
+    kind: null
     units: kg kg-1
   - name: mass_fraction_of_dust_accumulation_aerosol_particles_in_air
-    description: Mass fraction of dust accumulation aerosol particles in air
+    description: Mass fraction of accumulation mode dust aerosol particles
     type: real
-    kind: kind_phys
+    kind: null
     units: kg kg-1
   - name: number_fraction_of_coarse_aerosol_particles_in_air
     description: Ratio of number concentration of coarse mode dust aerosol particles
       to the molecular concentration of air
     type: real
-    kind: kind_phys
+    kind: null
     units: particles molecules-1
   - name: number_fraction_of_accumulation_aerosol_particles_in_air
     description: Ratio of number concentration of accumulation mode dust aerosol particles
       to the molecular concentration of air
     type: real
-    kind: kind_phys
+    kind: null
     units: particles molecules-1
 - name: emissions
   comment: Emissions variables, contributed for the Community Emissions Data System
