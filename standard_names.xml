@@ -303,6 +303,17 @@
                      description="Albedo of diffuse incident visible radiation">
         <type units="1">real</type>
       </standard_name>
+      <standard_name name="dimensionless_exner_function"
+                     description="Dimensionless formulation of the Exner function with respect to 1000 hPa"
+                     comment="The formulation of the exner function in an NWP context is (p/p0)^(Rd/cp), where p0 is some reference pressure.\n
+                              For the purposes of the standard names, this reference pressure is assumed as 1000 hPa unless specified otherwise;\n
+                              i.e. dimensionless_exner_function_wrt_air_pressure_at_surface would use the pressure at the surface as P0.\n
+                              Note that this is numerically equivalent to T/theta (temperature divided by potential temperature), where again\n
+                              theta is calculated with respect to 1000 hPa if not specified.
+                              Note that this definition is distinct from the dimensional exner_function standard name; see that entry for further \n
+                              comments. ">
+        <type units="1">real</type>
+      </standard_name>
       <standard_name name="direct_nir_albedo"
                      description="Albedo of direct incident near-infrared radiation">
         <type units="1">real</type>
@@ -331,7 +342,11 @@
         <type units="J kg-1">real</type>
       </standard_name>
       <standard_name name="exner_function"
-                     description="Exner function, (p/p0)^(Rd/cp), where p0 is some reference pressure (1000 hPa if not specified)">
+                     description="Exner function, cp * (p/p0)^(Rd/cp), where p0 is some reference pressure (1000 hPa if not specified), Rd is the dry air specific gas constant, and cp is the dry air specific heat capacity."
+                     comment="The formulation for the exner function comes in two forms: a dimensional form cp * (p/p0)^(Rd/cp) = cp * (T/theta), \n
+                              and a dimensionless form (p/p0)^(Rd/cp) = (T/theta). In the standard names, we use the unqualified exner_function \n
+                              to refer to the dimensional form, and dimensionless_exner_function to refer to the dimensionless form. See the \n
+                              base name entry for dimensionless_exner_function for further comments." >
         <type units="1">real</type>
       </standard_name>
       <standard_name name="friction_velocity"
@@ -737,8 +752,8 @@
     <standard_name name="ln_air_pressure_of_dry_air">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="reciprocal_of_exner_function_wrt_air_pressure_at_surface"
-                   description="inverse exner function with respect to surface pressure; (ps/p)^(R/cp)">
+    <standard_name name="reciprocal_of_dimensionless_exner_function_wrt_air_pressure_at_surface"
+                   description="inverse dimensionless exner function with respect to surface pressure; (ps/p)^(R/cp)">
       <type units="1">real</type>
     </standard_name>
     <standard_name name="geopotential_height"
@@ -898,10 +913,6 @@
     </standard_name>
     <standard_name name="reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure"
                    description="Reference pressure in atmosphere layer normalized by surface reference pressure">
-      <type units="1">real</type>
-    </standard_name>
-    <standard_name name="exner_function"
-                   description="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
       <type units="1">real</type>
     </standard_name>
     <standard_name name="potential_temperature_of_air"
@@ -4127,16 +4138,16 @@ GFS near-surface sea temperature scheme
       <standard_name name="mass_number_concentration_of_cloud_liquid_water_particles_in_air">
          <type units="kg-1">real</type>
       </standard_name>
-      <standard_name name="exner_function_wrt_surface_pressure"
-                   description="Exner function with respect to surface pressure, (p/ps)^(Rd/cp)">
+      <standard_name name="dimensionless_exner_function_wrt_surface_pressure"
+                   description="Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)">
          <type units="1">real</type>
       </standard_name>
-      <standard_name name="exner_function_at_surface_adjacent_layer"
-                   description="exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer">
+      <standard_name name="dimensionless_exner_function_at_surface_adjacent_layer"
+                   description="Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer">
          <type units="1">real</type>
       </standard_name>
-      <standard_name name="exner_function_at_interfaces"
-                   description="exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at vertical layer interfaces">
+      <standard_name name="dimensionless_exner_function_at_interfaces"
+                   description="Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at vertical layer interfaces">
          <type units="1">real</type>
       </standard_name>
       <standard_name name="dissipation_estimate_of_air_temperature_at_model_layers">

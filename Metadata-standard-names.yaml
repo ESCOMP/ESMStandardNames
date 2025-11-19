@@ -332,8 +332,9 @@ sections:
     type: real
     kind: null
     units: 1
-  - name: reciprocal_of_exner_function_wrt_air_pressure_at_surface
-    description: inverse exner function with respect to surface pressure; (ps/p)^(R/cp)
+  - name: reciprocal_of_dimensionless_exner_function_wrt_air_pressure_at_surface
+    description: inverse dimensionless exner function with respect to surface pressure;
+      (ps/p)^(R/cp)
     type: real
     kind: null
     units: 1
@@ -557,11 +558,6 @@ sections:
   - name: reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure
     description: Reference pressure in atmosphere layer normalized by surface reference
       pressure
-    type: real
-    kind: null
-    units: 1
-  - name: exner_function
-    description: exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa
     type: real
     kind: null
     units: 1
@@ -5476,20 +5472,20 @@ sections:
     type: real
     kind: null
     units: kg-1
-  - name: exner_function_wrt_surface_pressure
-    description: Exner function with respect to surface pressure, (p/ps)^(Rd/cp)
+  - name: dimensionless_exner_function_wrt_surface_pressure
+    description: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
     type: real
     kind: null
     units: 1
-  - name: exner_function_at_surface_adjacent_layer
-    description: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the
-      pressure at the surface-adjacent layer
+  - name: dimensionless_exner_function_at_surface_adjacent_layer
+    description: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa
+      and p is the pressure at the surface-adjacent layer
     type: real
     kind: null
     units: 1
-  - name: exner_function_at_interfaces
-    description: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the
-      pressure at vertical layer interfaces
+  - name: dimensionless_exner_function_at_interfaces
+    description: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa
+      and p is the pressure at vertical layer interfaces
     type: real
     kind: null
     units: 1

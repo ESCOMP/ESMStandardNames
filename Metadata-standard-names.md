@@ -174,6 +174,8 @@ full list of standard names for further details.
     * `real`: units = W m-2
 * `diffuse_vis_albedo`: Albedo of diffuse incident visible radiation
     * `real`: units = 1
+* `dimensionless_exner_function`: Dimensionless formulation of the Exner function with respect to 1000 hPa
+    * `real`: units = 1
 * `direct_nir_albedo`: Albedo of direct incident near-infrared radiation
     * `real`: units = 1
 * `direct_nir_shortwave_flux`: Flux of direct near-infrared shortwave radiation
@@ -188,7 +190,7 @@ full list of standard names for further details.
     * `real`: units = kg m-3
 * `dry_air_enthalpy_at_constant_pressure`: Specific enthalpy of dry air, h = Cp*T; Cp = Specific heat of dry air at constant pressure, T = temperature
     * `real`: units = J kg-1
-* `exner_function`: Exner function, (p/p0)^(Rd/cp), where p0 is some reference pressure (1000 hPa if not specified)
+* `exner_function`: Exner function, cp * (p/p0)^(Rd/cp), where p0 is some reference pressure (1000 hPa if not specified), Rd is the dry air specific gas constant, and cp is the dry air specific heat capacity.
     * `real`: units = 1
 * `friction_velocity`: A measure of shear stress within a fluid layer with units of distance per time
     * `real`: units = m s-1
@@ -405,7 +407,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = 1
 * `ln_air_pressure_of_dry_air`: Ln air pressure of dry air
     * `real`: units = 1
-* `reciprocal_of_exner_function_wrt_air_pressure_at_surface`: inverse exner function with respect to surface pressure; (ps/p)^(R/cp)
+* `reciprocal_of_dimensionless_exner_function_wrt_air_pressure_at_surface`: inverse dimensionless exner function with respect to surface pressure; (ps/p)^(R/cp)
     * `real`: units = 1
 * `geopotential_height`: geopotential height with respect to sea level
     * `real`: units = m
@@ -494,8 +496,6 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
 * `reference_air_pressure_normalized_by_air_pressure_at_surface`: reference pressure normalized by surface pressure
     * `real`: units = 1
 * `reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure`: Reference pressure in atmosphere layer normalized by surface reference pressure
-    * `real`: units = 1
-* `exner_function`: exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa
     * `real`: units = 1
 * `potential_temperature_of_air`: air potential temperature
     * `real`: units = K
@@ -2387,11 +2387,11 @@ Variables related to the compute environment
     * `real`: units = kg kg-1
 * `mass_number_concentration_of_cloud_liquid_water_particles_in_air`: Mass number concentration of cloud liquid water particles in air
     * `real`: units = kg-1
-* `exner_function_wrt_surface_pressure`: Exner function with respect to surface pressure, (p/ps)^(Rd/cp)
+* `dimensionless_exner_function_wrt_surface_pressure`: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
     * `real`: units = 1
-* `exner_function_at_surface_adjacent_layer`: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer
+* `dimensionless_exner_function_at_surface_adjacent_layer`: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer
     * `real`: units = 1
-* `exner_function_at_interfaces`: exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at vertical layer interfaces
+* `dimensionless_exner_function_at_interfaces`: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at vertical layer interfaces
     * `real`: units = 1
 * `dissipation_estimate_of_air_temperature_at_model_layers`: Dissipation estimate of air temperature at model layers
     * `real`: units = K
