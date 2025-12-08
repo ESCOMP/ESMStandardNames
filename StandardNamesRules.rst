@@ -4,7 +4,7 @@
    <br />
 
 *******************
-Earth System Modeling Standard Names
+Earth System Modeling (ESM) Standard Names
 *******************
 
 This document contains information about the rules used to create Standard Names
@@ -27,26 +27,42 @@ ESM Standard Name Rules
    an appropriate name does not exist in that standard, or the adoption
    of said names leads to inconsistencies in the naming convention.
 
-#. When no suitable standard name exists in the CF conventions, follow their
-   guidelines for standard name construction at this URL:
-   http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html. Standard
-   names may be qualified by the addition of phrases in certain standard forms and
-   order. The "Qualifications" section of the CF guidelines should be used to
-   provide information about a variable's horizontal surface (e.g. at_cloud_base),
-   component (i.e. direction of variable, e.g. downward), medium (e.g.
-   in_stratosphere), process (e.g. due_to_deep convection), or condition (e.g.,
-   assuming_clear_sky). The order defined by the CF rules should be observed. These
-   qualifications do not change the units of the quantity.
+#. When no suitable standard name exists in the CF conventions, the following guidelines should be followed for constructing a new name.
+   The phrases in brackets are optional. The words in *italic* appear explicitly as stated,
+   while the words in ``this font`` indicate other words or phrases to be substituted.
+   The new standard name is constructed by joining the base standard name to the qualifiers using underscores.
 
-   All of the following phrases in brackets are optional. The words in *italic*
-   appear explicitly as stated, while the words in ``this font`` indicate other
-   words or phrases to be substituted. The new standard name is constructed by
-   joining the base standard name to the qualifiers using underscores.
+   [``transformation``] [``component``] [``non-instant time``] base_name [*in* ``medium``] [*at* ``level``] [*due_to* ``process``] [``non-current time``] [*assuming* ``condition``]
 
-   [``component``] standard_name [*at* ``level``] [*in* ``medium``]
-   [*due_to* ``process``] [*assuming* ``condition``]
+   This construction was originally based on rules set forth in the
+   `CF guidelines <http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html>`_),
+   but have since evolved for better consistency and generality across a broader set of fields
+   than was originally envisioned by the CF conventions. "``medium``" should be specified when
+   the variable in question is a substance or other quantity contained within some other medium
+   (e.g. for ``mole_fraction_of_ozone_in_air``, the base name is "ozone", while the medium is "air").
+   "Transformation" refers to descriptors such as "``tendency_of``", "``log10``", or other operations or processes describing some transformation or adjustment of a variable; a detailed list of possible transformations can be found `later in this document <#transformations>`_.
+   Other parts of the construction provide information about a variable's horizontal surface
+   (e.g. ``at_cloud_base``), component (i.e. direction of variable, e.g. ``downward``), process (e.g.
+   ``due_to_deep_convection``), or condition (e.g., ``assuming_clear_sky``). These qualifications do not
+   change the units of the quantity. This is not an exhaustive list of qualifiers that may be needed for a given standard name;
+   see subsequent rules below for more information.
 
-   See the list of currently-used qualifiers below for help.
+   The following table provides a few concrete examples of standard names and how they are constructed
+   with respect to the guideline template.
+
+   `image of table providing standard name construction examples <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png>`_)
+
+   Note that "transformations" are a special case, where multiple transformations may be applied,
+   and multiple quantities may be compared, operated on, etc. For transformations involving
+   multiple quantities (e.g. ``ratio_of_X_to_Y``; see the `section on Transformations <#transformations>`_
+   for more information), the above formula may be extended around multiple base names.
+
+   `image of table providing standard name construction examples with multiple transformations <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png>`_)
+
+   In the latter example, ``ln`` is operating on the quantity ``water_vapor_partial_pressure_assuming_saturation``,
+   while ``derivative_of`` is a combined transformation of ``water_vapor_partial_pressure_assuming_saturation``
+   and ``air_temperature``. When multiple transformations are present, a more detailed description
+   should be provided in the ``description`` field to prevent any possible ambiguity.
 
 #. Variables are current and instantaneous unless specified. Variables that are not
    current (e.g., previous timestep) or non-instantaneous (e.g., accumulated values)
@@ -76,20 +92,21 @@ ESM Standard Name Rules
    ``[variable]_at_top_interfaces`` is defined on `n` points, and
    ``[variable]_at_bottom_interfaces`` is defined on `n` points.
 
-#. By default, *mixing_ratio* refers to mass mixing ratios. The long name should
+#. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
    Mass mixing ratios should contain information regarding
    with respect to what quantity they are defined, and options are *wrt_dry_air*,
    *wrt_moist_air*, or *wrt_moist_air_and_condensed_water*, where *moist_air*
    refers to dry air plus vapor and *moist_air_and_condensed_water* refers
-   to dry air plus vapor and hydrometeors. Use of *specific_humidity* should
-   be avoided as there is no consensus on whether it refers to
-   *mixing_ratio_of_water_vapor_wrt_moist_air* or
-   *mixing_ratio_of_water_vapor_wrt_moist_air_and_condensed_water*.
+   to dry air plus vapor and hydrometeors.
+
+   Use of the term *specific_humidity* should be avoided, as there is no consensus on
+   whether it refers to *water_vapor_mixing_ratio_wrt_moist_air* or
+   *water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water*.
    *total_water* can be used to designate water in every form, i.e. water
    vapor plus condensed water.
 
-#. Volume mixing ratios should be qualified as *volume_mixing_ratio*.
+   Volume mixing ratios should be qualified as *volume_mixing_ratio*.
 
 #. By default, *mole_fraction_of_X_in_Y* refers to the total amount of *Y*. So, for example,
    *mole_fraction_of_ozone_in_air* refers to the total amount of (moist) air. (In the case of air,
@@ -111,14 +128,18 @@ ESM Standard Name Rules
 
 #. By default, the term *cloud* refers to all cloud phases and cloud types. Otherwise
    an additional prefix or suffix should be added to the standard name specifying what kind(s)
-   of clouds the variable repesents (e.g. *ice_cloud* if only including glaciated clouds, or
+   of clouds the variable represents (e.g. *ice_cloud* if only including glaciated clouds, or
    *cloud_at_500hPa* if only including clouds that exist at 500 hPa).
 
 #. If possible, qualifiers should be limited in order to allow for a wide
-   applicability of the variable. In other words, don't qualify with _for ``_xyz``
+   applicability of the variable. In other words, don't qualify with ``_for_specific_context``
    unless a variable could not conceivably be used outside of the more
    narrowly-defined context or a variable without the scope-narrowing qualifiers
    already exists and cannot be reused.
+
+   **Discouraged:** upward_virtual_potential_temperature_flux_for_mellor_yamada_janjic_surface_layer_scheme
+
+   **Preferred:** upward_virtual_potential_temperature_flux
 
 #. If there are two identical quantities from different schemes/processes that
    need to be kept apart, suitable qualifiers are added to the names of the processes.
@@ -130,7 +151,7 @@ ESM Standard Name Rules
 #. Spell out acronyms unless they are obvious to a vast majority of
    scientists/developers who may come across them. A list of currently-used
    aliases is below. Whenever such an alias exist, use the alias in the
-   standard name and the full term in the long name.
+   standard name and the full term in the description.
 
 #. Chemical species in standard names should be denoted by chemical formulae (e.g. ``co2``,
    ``ch4``, ``c5h8``) or commonly accepted designations (e.g. ``cfc12``); generally when there are
@@ -148,22 +169,51 @@ ESM Standard Name Rules
    use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
    should be Fortran logicals.
 
-#. Standard names that start with ``ccpp_`` represent CCPP framework-provided variables.
-   All other standard names should avoid the use of ``ccpp`` in their name in order
-   to avoid any confusion.
+#  **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
+   ambiguity.
 
-#. No punctuation should appear in standard names except for underscores (_).
+   - `specific_humidity` Disallowed due to ambiguity and different definitions between different fields. See above section describing `mixing_ratio` for more information.
+   - `amount` In most contexts this word is superfluous, and in all contexts it is non-descriptive. Consider a more specific term such as `mass_content`
 
-#. Standard names are case insensitive, i.e. example = EXAMPLE.
+#. **Reserved names:** The prefix ``ccpp_`` is reserved for CCPP framework-provided variables.
+   All other standard names should avoid the use of ``ccpp`` in their name.
+
+.. _tech_specs:
+
+Technical specifications
+========================
+
+#. The standard name dictionary consists of a number of individual XML elements:
+   one ``standard_name`` element for each entry. A standard name entry consist of a ``name`` attribute
+   that represents the variable name, and (optionally) a ``description`` attribute that gives
+   a detailed description of what that name represents. Note that the ``description`` field is only
+   provided for information and disambiguation only (though it should be unique), and does not need to be included for
+   individual implementations of the standard names. This is not necessarily the same as the ``long_name`` entry as described
+   in the `CCPP Technical Documentation <https://ccpp-techdoc.readthedocs.io/en/latest/CompliantPhysicsParams.html#ccpp-arg-table>`_,
+   but it can be used to inform the contents of that field. The ``standard_name`` XML entry also contains a nested
+   ``type`` entry, indicating the data type that a ``standard_name`` should represent, and as an attribute the
+   physical units of that variable quantity (see the `section on Units <#units>`_). For example, the element
+   for the variable name ``exner_function`` may look similar to this:
+
+    <standard_name name="exner_function"
+                   description="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
+      <type units="1">real</type>
+    </standard_name>
+
+   This XML element indicates that the variable ``exner_function`` represents the quantity described by the ``description``
+   attribute. It is a real variable with units of "1", meaning it is non-dimensional and
+   does not correspond to a more descriptive non-dimensional type such as "fraction"; see the `section on Units <#units>`_
+   for more details.
+
+   These standard_name elements can optionally be separated by "section" elements. These are parsed out into human-readable sections in the generated markdown file (``Metadata-standard-names.md``).
+
+#. Only alphanumeric, punctuation, and whitespace characters from the ASCII character set may be used in the standard_names dictionary.
+   The "name" attributes of ``standard_name`` entries (i.e. the standard names themselves) are further restricted to the character set of capital/lowercase letters, numerals, and ``_`` (underscore).
 
 .. _qualifiers:
 
 Qualifiers
 ========================
-
-black = existing CF qualifier
-
-**bold** = **proposed new qualifier**
 
 ``this font`` = words or phrases to be substituted
 
@@ -194,18 +244,18 @@ Suffixes
 | at_top_of_atmosphere_boundary_layer
 | at_top_of_atmosphere_model
 | at_top_of_dry_convection
-| **at_interfaces**
-| **at_toa**
-| **at_tropopause**
-| **at_surface**
-| **at_surface_adjacent_layer**
-| **at_2m**
-| **at_10m**
-| **at_bottom_interface**
-| **at_pressure_levels**
-| **at_top_of_viscous_sublayer**
-| **at_various_atmosphere_layers**
-| **extended_up_by_1**
+| at_interfaces
+| at_toa
+| at_tropopause
+| at_surface
+| at_surface_adjacent_layer
+| at_2m
+| at_10m
+| at_bottom_interface
+| at_pressure_levels
+| at_top_of_viscous_sublayer
+| at_various_atmosphere_layers
+| extended_up_by_1
 
 
 Component
@@ -253,13 +303,13 @@ Suffixes
 | in_troposphere
 | in_atmosphere
 | in_surface_snow
-| **in_diurnal_thermocline**
-| **in_canopy**
-| **in_lake**
-| **in_aquifer**
-| **in_aquifer_and_saturated_soil**
-| **in_convective_tower**
-| **between_soil_bottom_and_water_table**
+| in_diurnal_thermocline
+| in_canopy
+| in_lake
+| in_aquifer
+| in_aquifer_and_saturated_soil
+| in_convective_tower
+| between_soil_bottom_and_water_table
 
 Process
 -------
@@ -273,10 +323,10 @@ Suffixes
 | due_to_diabatic_processes
 | due_to_diffusion
 | due_to_dry_convection
-| due_to_GWD (long name: due to gravity wave drag)
-| **due_to_convective_GWD** (long name: due to convective gravity wave drag)
-| **due_to_convective_whole_atmosphere_GWD** (long name: due to convective whole atmosphere gravity wave drag)
-| **due_to_orographic_GWD** (long name: due to orographic gravity wave drag)
+| due_to_gwd
+| due_to_convective_gwd
+| due_to_convective_whole_atmosphere_gwd
+| due_to_orographic_gwd
 | due_to_gyre
 | due_to_isostatic_adjustment
 | due_to_large_scale_precipitation
@@ -284,15 +334,15 @@ Suffixes
 | due_to_moist_convection
 | due_to_overturning
 | due_to_shallow_convection
-| **due_to_PBL_processes** (long name: due to planetary boundary layer processes)
+| due_to_pbl_processes
 | due_to_shortwave_heating
 | due_to_thermodynamics
 | due_to_background
-| **due_to_subgrid_scale_vertical_mixing**
-| **due_to_convective_microphysics**
-| **due_to_model_physics**
-| **due_to_shoc**
-| **due_to_dynamics**
+| due_to_subgrid_scale_vertical_mixing
+| due_to_convective_microphysics
+| due_to_model_physics
+| due_to_shoc
+| due_to_dynamics
 
 Condition
 ---------
@@ -303,15 +353,15 @@ Suffixes
 | assuming_clear_sky
 | assuming_deep_snow
 | assuming_no_snow
-| **over_land**
-| **over_ocean**
-| **over_ice**
-| **for_momentum**
-| **for_heat**
-| **for_moisture**
-| **for_heat_and_moisture**
-| **assuming_shallow**
-| **assuming_deep**
+| over_land
+| over_ocean
+| over_ice
+| for_momentum
+| for_heat
+| for_moisture
+| for_heat_and_moisture
+| assuming_shallow
+| assuming_deep
 
 Time
 ----
@@ -319,13 +369,14 @@ Time
 Suffixes
 ^^^^^^^^
 
-| **of_new_state**
-| **on_physics_timestep**
-| **on_dynamics_timestep**
+| of_new_state
+| on_physics_timestep
+| on_dynamics_timestep
 
-| **on_radiation_timestep**
-| **on_previous_timestep**
-| ``N`` **_timesteps_back**
+| on_radiation_timestep
+| on_previous_timestep
+| ``N`` _timesteps_back
+| since_ ``T``
 
 Computational
 -------------
@@ -333,51 +384,51 @@ Computational
 Prefixes
 ^^^^^^^^
 
-| **lower_bound_of**
-| **upper_bound_of**
-| **unfiltered**
-| **nonnegative**
-| **flag_for**
-| **control_for**
-| **number_of**
-| **index_of**
-| **vertical_index_at**
-| **vertical_dimension_of**
-| **cumulative**
-| **iounit_of**
-| **filename_of**
-| **frequency_of**
-| **period_of**
-| **XYZ_dimensioned**
-| **tendency_of** ``X``
-| **generic_tendency**
-| **one_way_coupling_of** ``_X`` **_to** ``_Y``
-| **tunable_parameter[s]_for** ``_X``
-| **map_of**
+| lower_bound_of
+| upper_bound_of
+| unfiltered
+| nonnegative
+| flag_for
+| control_for
+| number_of
+| index_of
+| vertical_index_at
+| vertical_dimension_of
+| cumulative
+| iounit_of
+| filename_of
+| frequency_of
+| period_of
+| XYZ_dimensioned
+| tendency_of ``X``
+| generic_tendency
+| one_way_coupling_of ``_X`` _to ``_Y``
+| tunable_parameter[s]_for ``_X``
+| map_of
 
 
 Infixes
 ^^^^^^^
 
-| **directory_for** ``_X`` **_source_code**
-| **flag_for_reading** ``_X`` **_from_input**
+| directory_for ``_X`` _source_code
+| flag_for_reading ``_X`` _from_input
 
 Suffixes
 ^^^^^^^^
 
-| **for_coupling**
-| **for_chemistry_coupling**
-| **from_coupled_process**
-| **from_wave_model**
-| **collection_array**
-| **multiplied_by_timestep**
-| **for_current_mpi_rank**
-| **for_current_cubed_sphere_tile**
-| **plus_one**
-| **minus_one**
-| **for_radiation**
-| **for_deep_convection**
-| **for_microphysics**
+| for_coupling
+| for_chemistry_coupling
+| from_coupled_process
+| from_wave_model
+| collection_array
+| multiplied_by_timestep
+| for_current_mpi_rank
+| for_current_cubed_sphere_tile
+| plus_one
+| minus_one
+| for_radiation
+| for_deep_convection
+| for_microphysics
 
 Transformations
 ---------------
@@ -387,6 +438,7 @@ Prefixes
 | change_over_time_in ``_X``
 | convergence_of ``_X`` or horizontal_convergence_of ``_X``
 | correlation_of ``_X`` _and ``_Y`` [_over ``_Z``]
+| cosine_of ``_X``
 | covariance_of ``_X`` _and ``_Y`` [_over ``_Z``]
 | component_derivative_of ``_X``
 | derivative_of ``_X`` _wrt ``_Y``
@@ -396,21 +448,38 @@ Prefixes
 | integral_of ``_Y`` _wrt ``_X``
 | ln ``_X``
 | log10 ``_X``
+| lwe_thickness_of ``_X``
 | magnitude_of ``_X``
 | probability_distribution_of ``_X`` [_over ``_Z``]
 | probability_density_function_of ``_X`` [_over ``_Z``]
 | product_of ``_X`` _and ``_Y``
 | ratio_of ``_X`` _to ``_Y``
+| reciprocal_of ``_X``
+| sine_of ``_X``
 | square_of ``_X``
+| standard_deviation_of ``_X``
 | tendency_of ``_X``
-| **standard_deviation_of** ``_X``
-| **reciprocal_of** ``_X``
-| **cosine_of** ``_X``
-| **sine_of** ``_X``
-| **variance_of** ``_X``
+| variance_of ``_X``
+| volume_mixing_ratio_of ``_X``
+
+Suffixes
+^^^^^^^^
+| ``X_`` mixing_ratio_wrt ``_Y``
 
 Other common standard name components
 =====================================
+
+Reserved phrase
+---------------
+
+These words/phrases should not be used outside of the described context
+
++------------------------+-------------------------------------------------------------------------------------+
+| **Phrase**             |  **Usage**                                                                          |
++========================+=====================================================================================+
+| ccpp                   | Variable names provided by the CCPP framework                                       |
++------------------------+-------------------------------------------------------------------------------------+
+
 
 Special phrases
 ---------------
@@ -428,13 +497,13 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 |frozen_water            | ice                                                                                 |
 +------------------------+-------------------------------------------------------------------------------------+
-| longwave               | longwave radiation                                                                  |
+| longwave               | Longwave radiation. Defined as thermal emission of radiation from the planet.       |
 +------------------------+-------------------------------------------------------------------------------------+
 | moisture               | water in all phases contained in soil                                               |
 +------------------------+-------------------------------------------------------------------------------------+
 | ocean                  | used instead of in_sea_water for quantities which are large-scale rather than local |
 +------------------------+-------------------------------------------------------------------------------------+
-| shortwave              | shortwave radiation                                                                 |
+| shortwave              | Shortwave radiation. Defined as electromagnetic emissions from the sun              |
 +------------------------+-------------------------------------------------------------------------------------+
 | specific               | per unit mass unless otherwise stated                                               |
 +------------------------+-------------------------------------------------------------------------------------+
@@ -442,13 +511,13 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 | water                  | water in all phases if not otherwise qualified                                      |
 +------------------------+-------------------------------------------------------------------------------------+
-| **dimensionless**      | **lacking units**                                                                   |
+| dimensionless          | lacking units                                                                       |
 +------------------------+-------------------------------------------------------------------------------------+
-| **kinematic**          | **refers to surface fluxes in "native" units (K m s-1 and kg kg-1 m s-1)**          |
+| kinematic              | refers to surface fluxes in "native" units (K m s-1 and kg kg-1 m s-1)              |
 +------------------------+-------------------------------------------------------------------------------------+
-| **direct**             | **used in radiation (as opposed to diffuse)**                                       |
+| direct                 | used in radiation (as opposed to diffuse)                                           |
 +------------------------+-------------------------------------------------------------------------------------+
-| **diffuse**            | **used in radiation (as opposed to direct)**                                        |
+| diffuse                | used in radiation (as opposed to direct)                                            |
 +------------------------+-------------------------------------------------------------------------------------+
 
 Chemical Species
@@ -517,9 +586,9 @@ standard names.
 +-------------------------------------------+-----------------+
 | heat_transport                            | W               |
 +-------------------------------------------+-----------------+
-| horizontal_streamfunction                 | m2 s-1          |
+| streamfunction                            | m2 s-1          |
 +-------------------------------------------+-----------------+
-| horizontal_velocity_potential             | m2 s-1          |
+| velocity_potential                        | m2 s-1          |
 +-------------------------------------------+-----------------+
 | mass                                      | kg              |
 +-------------------------------------------+-----------------+
@@ -582,7 +651,17 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | **Short**           |  **Meaning**                                            |
 +=====================+=========================================================+
-| ir                  | infared                                                 |
+| cnvc90              | GFS Convective Cloud Diagnostics                        |
++---------------------+---------------------------------------------------------+
+| edmf                | eddy-diffusivity/mass-flux                              |
++---------------------+---------------------------------------------------------+
+| gwd                 | gravity wave drag                                       |
++---------------------+---------------------------------------------------------+
+| gfdl                | Geophysical Fluid Dynamics Laboratory                   |
++---------------------+---------------------------------------------------------+
+| gfs                 | Global Forecast System                                  |
++---------------------+---------------------------------------------------------+
+| ir                  | infrared                                                |
 +---------------------+---------------------------------------------------------+
 | lwe                 | liquid water equivalent                                 |
 +---------------------+---------------------------------------------------------+
@@ -590,13 +669,40 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | min                 | minimum                                                 |
 +---------------------+---------------------------------------------------------+
+| myj                 | Mellor-Yamada-Janjic scheme                             |
++---------------------+---------------------------------------------------------+
+| mynn                | Mellor-Yamada-Nakanishi-Niino scheme                    |
++---------------------+---------------------------------------------------------+
 | nir                 | near-infrared part of the EM spectrum (radiation)       |
++---------------------+---------------------------------------------------------+
+| nrl                 | Naval Research Lab                                      |
++---------------------+---------------------------------------------------------+
+| nsstm               | GFS near-surface sea temperature scheme                 |
++---------------------+---------------------------------------------------------+
+| pbl                 | planetary boundary layer                                |
++---------------------+---------------------------------------------------------+
+| pdf                 | probability density function                            |
++---------------------+---------------------------------------------------------+
+| rrtmgp              | Rapid Radiative Transfer Model for General circulation  |
+|                     | model applications - Parallel                           |
++---------------------+---------------------------------------------------------+
+| sas                 | simplified Arakawa-Schubert scheme                      |
++---------------------+---------------------------------------------------------+
+| skeb                | stochastic kinetic energy backscatter                   |
++---------------------+---------------------------------------------------------+
+| shoc                | simplified higher-order closure stochastic scheme       |
++---------------------+---------------------------------------------------------+
+| shum                | stochastically perturbed boundary-layer humidity scheme |
++---------------------+---------------------------------------------------------+
+| sppt                | stochastically perturbed physics tendencies             |
 +---------------------+---------------------------------------------------------+
 | stp                 | standard temperature (0 degC) and pressure (101325 Pa)  |
 +---------------------+---------------------------------------------------------+
 | tke                 | turbulent kinetic energy                                |
 +---------------------+---------------------------------------------------------+
 | toa                 | top of atmosphere                                       |
++---------------------+---------------------------------------------------------+
+| ugwp                | Unified Gravity Wave Physics                            |
 +---------------------+---------------------------------------------------------+
 | uv                  | ultraviolet part of the EM spectrum (radiation)         |
 +---------------------+---------------------------------------------------------+
@@ -608,14 +714,15 @@ Acronyms, Abbreviations, and Aliases
 Units
 =====
 
-#. For variables with an existing match in the `Climate and Forecast (CF) metadata
-   conventions <https://cfconventions.org/standard-names.html>`_, the units should
-   be identical to the canonical units listed there
+Entries in the Standard Names dictionary contain a "units" property that serves to indicate the
+typical/recommended units for a given variable. It is not mandatory to use the indicated units exactly,
+but any use of a given standard name variable should have units of the same dimensionality.
 
-#. For variables without an existing match in the CF conventions, the units should
-   follow the `International System of Units (SI/metric system) <https://www.nist.gov/pml/weights-and-measures/metric-si/si-units>`_
+When adding a new standard name, units should follow the `International System of Units (SI/metric system) <http://nist.gov/pml/owm/metric-si/si-units>`_.
+If the new standard name has an existing match in the `Climate and Forecast (CF) metadata
+conventions <https://cfconventions.org/standard-names.html>`_, the units should be identical to the canonical units listed there
 
-#. For dimensionless variables, the following units can be used:
+For dimensionless variables, the following units can be used:
 
 +------------------------+-----------------------------------------------------------------------------------------------+
 | **Unit**               |  **Use case**                                                                                 |

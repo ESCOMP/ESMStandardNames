@@ -31,8 +31,7 @@
   <!-- attributes -->
 
   <xs:attribute name="comment"        type="xs:string"/>
-  <xs:attribute name="long_name"      type="xs:string"/>
-  <xs:attribute name="kind"           type="xs:string"/>
+  <xs:attribute name="description"      type="xs:string"/>
   <xs:attribute name="name"           type="standard_name_type"/>
   <xs:attribute name="units"          type="xs:string"/>
   <xs:attribute name="version"        type="version_type"/>
@@ -42,7 +41,6 @@
   <xs:complexType name="md_type">
     <xs:simpleContent>
       <xs:extension base="type_type">
-        <xs:attribute ref="kind"  use="optional"/>
         <xs:attribute ref="units" use="required"/>
       </xs:extension>
     </xs:simpleContent>
@@ -53,7 +51,7 @@
       <xs:element name="type"     type="md_type"/>
     </xs:sequence>
     <xs:attribute ref="name"      use="required"/>
-    <xs:attribute ref="long_name" use="optional"/>
+    <xs:attribute ref="description" use="optional"/>
   </xs:complexType>
 
   <xs:complexType name="section_type">

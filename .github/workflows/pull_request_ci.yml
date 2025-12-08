@@ -25,9 +25,10 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install libxml2-utils
 
-      - name: Check for duplicate standard names
+      - name: Check for duplicate standard names, descriptions
         run: |
-          tools/check_xml_unique.py standard_names.xml
+            tools/check_xml_unique.py standard_names.xml
+            tools/check_xml_unique.py standard_names.xml --field="description"
 
   check-name-rules:
     name: Check standard names against rules
