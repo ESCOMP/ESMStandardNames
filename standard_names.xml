@@ -1000,6 +1000,24 @@
       <type units="m3 m-3">real</type>
     </standard_name>
   </section>
+  <section name="marine">
+    <standard_name name="potential_temperature_of_sea_water"
+                   description="sea water potential temperature">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="sea_water_depth"
+                     description="The depth below the surface of the sea">
+        <type units="m">real</type>
+    </standard_name>
+    <standard_name name="sea_water_salinity"
+                   description="The salinity of sea water">
+       <type units="ppt m">real</type>
+    </standard_name>
+    <standard_name name="sea_water_temperature"
+                     description="The temperature of sea water">
+        <type units="K">real</type>
+    </standard_name>
+  </section>
   <section name="diagnostics">
     <standard_name name="total_precipitation_rate_at_surface">
       <type units="m s-1">real</type>
