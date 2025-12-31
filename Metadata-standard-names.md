@@ -6,6 +6,7 @@
 * [coordinates](#coordinates)
 * [state_variables](#state_variables)
 * [land_surface](#land_surface)
+* [marine](#marine)
 * [diagnostics](#diagnostics)
 * [atmospheric_composition](#atmospheric_composition)
 * [atmospheric_composition: GOCART aerosols](#atmospheric_composition-gocart-aerosols)
@@ -544,6 +545,15 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = m3 m-3
 * `volume_fraction_of_liquid_water_in_soil_at_wilting_point`: volume fraction of water in liquid phase in soil at wilting point
     * `real`: units = m3 m-3
+## marine
+* `potential_temperature_of_sea_water`: sea water potential temperature
+    * `real`: units = K
+* `sea_water_depth`: The depth below the surface of the sea
+    * `real`: units = m
+* `sea_water_salinity`: The salinity of sea water
+    * `real`: units = ppt m
+* `sea_water_temperature`: The temperature of sea water
+    * `real`: units = K
 ## diagnostics
 * `total_precipitation_rate_at_surface`: Total precipitation rate at surface
     * `real`: units = m s-1
