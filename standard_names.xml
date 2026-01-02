@@ -1009,9 +1009,13 @@
                      description="The depth below the surface of the sea">
         <type units="m">real</type>
     </standard_name>
-    <standard_name name="sea_water_salinity"
-                   description="The salinity of sea water">
-       <type units="ppt m">real</type>
+    <standard_name name="sea_water_practical_salinity"
+                   description="The practical salinity of sea water">
+       <type units="PSU">real</type>
+    </standard_name>
+    <standard_name name="sea_water_absolute_salinity"
+                   description="The absolute salinity of sea water">
+       <type units="g kg-1">real</type>
     </standard_name>
     <standard_name name="sea_water_temperature"
                      description="The temperature of sea water">
