@@ -550,7 +550,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = K
 * `sea_water_depth`: The depth below the surface of the sea
     * `real`: units = m
-* `sea_water_practical_salinity`: The practical salinity of sea water
+* `sea_water_salinity`: The practical salinity of sea water
     * `real`: units = PSU
 * `sea_water_absolute_salinity`: The absolute salinity of sea water
     * `real`: units = g kg-1
