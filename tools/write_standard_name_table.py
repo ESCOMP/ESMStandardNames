@@ -213,13 +213,13 @@ def convert_xml_to_yaml(root, library_name, yaml_file):
     yaml_data['section'] = []
 
     for section in root.findall('section'):
-        yaml_data['section'].append(parse_section(section))
+        yaml_data['section'].append(parse_section_for_yaml(section))
 
     yaml.dump(yaml_data, yaml_file, default_flow_style=False)
 
 
 ###############################################################################
-def parse_section(section):
+def parse_section_for_yaml(section):
 ###############################################################################
     sec_data = OrderedDict()
     sec_data['name'] = section.get('name')
@@ -269,7 +269,7 @@ def parse_section(section):
     # ---- Recurse into subsections ----
     subsections = []
     for subsection in section.findall('section'):
-        subsections.append(parse_section(subsection))
+        subsections.append(parse_section_for_yaml(subsection))
 
     if subsections:
         sec_data['section'] = subsections
