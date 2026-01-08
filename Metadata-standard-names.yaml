@@ -1663,14 +1663,16 @@ section:
     kind: null
     units: kg kg-1
   - name: number_fraction_of_coarse_aerosol_particles_in_air
-    description: Ratio of number concentration of coarse mode dust aerosol particles
-      to the molecular concentration of air
+    description: Ratio of number concentration of coarse-mode dust aerosol particles
+      to the molecular concentration of air; i.e., the ratio of the number of coarse-mode
+      dust aerosol particles to the number of air molecules in a unit volume
     type: real
     kind: null
     units: particles molecules-1
   - name: number_fraction_of_accumulation_aerosol_particles_in_air
-    description: Ratio of number concentration of accumulation mode dust aerosol particles
-      to the molecular concentration of air
+    description: Ratio of number concentration of accumulation-mode dust aerosol particles
+      to the molecular concentration of air; i.e., the ratio of the number of accumulation-mode
+      dust aerosol particles to the number of air molecules in a unit volume
     type: real
     kind: null
     units: particles molecules-1
