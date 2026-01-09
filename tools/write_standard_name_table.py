@@ -245,20 +245,19 @@ def parse_section_for_yaml(section):
             stdn_description = standard_name_to_description(sdict)
 
         std_type = std_name.find('type')
-        if std_type is None:
-            continue
 
         std_name_data = OrderedDict()
         std_name_data['name'] = stdn_name
         std_name_data['description'] = stdn_description
-        std_name_data['type'] = std_type.text
-        std_name_data['kind'] = std_type.get('kind')
+        if std_type is not None:
+            std_name_data['type'] = std_type.text
+            std_name_data['kind'] = std_type.get('kind')
 
-        units = std_type.get('units')
-        try:
-            std_name_data['units'] = int(units) if units is not None else None
-        except (ValueError, TypeError):
-            std_name_data['units'] = units
+            units = std_type.get('units')
+            try:
+                std_name_data['units'] = int(units) if units is not None else None
+            except (ValueError, TypeError):
+                std_name_data['units'] = units
 
         sec_data['standard_names'].append(std_name_data)
 

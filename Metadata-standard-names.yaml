@@ -228,6 +228,59 @@ section:
   - name: chemical_species
     comment: These are the base names for specific chemical species\nThey can all
       be assumed to have units of '1'
+    standard_names:
+    - name: c5h8
+      description: Isoprene
+    - name: co2
+      description: Carbon dioxide
+    - name: co
+      description: Carbon monoxide
+    - name: ccl4
+      description: Tetrachloromethane
+    - name: cfc11
+      description: Trichlorofluoromethane
+    - name: cfc12
+      description: Dichlorodifluoromethane
+    - name: cfc113
+      description: 1,1,2-Trichloro-1,2,2-trifluoroethane
+    - name: cfc22
+      description: Chlorodifluoromethane
+    - name: dimethyl_sulfide
+      description: Dimethyl sulfide; DMS
+    - name: hcho
+      description: Formaldehyde
+    - name: hydrophilic_black_carbon
+      description: Hydrophilic black carbon
+    - name: hydrophobic_black_carbon
+      description: Hydrophobic black carbon
+    - name: hydrophilic_organic_carbon
+      description: Hydrophilic organic carbon
+    - name: hydrophobic_organic_carbon
+      description: Hydrophobic organic carbon
+    - name: methane
+      description: ch4
+    - name: n2o
+      description: Nitrous Oxide; N_2O
+    - name: nitrate
+      description: Chemical species containing the nitrate ion
+    - name: nitrite
+      description: Chemical species containing the nitrite ion
+    - name: no2
+      description: Nitrogen dioxide
+    - name: 'no'
+      description: Nitric oxide; NO (Nitrogen oxide, Nitrogen monoxide)
+    - name: oxygen
+      description: Molecular oxygen; O_2
+    - name: ozone
+      description: Ozone; O_3
+    - name: phosphate
+      description: Chemical species containing the phosphate ion
+    - name: silicate
+      description: Chemical species containing the silicate ion
+    - name: sulfate
+      description: Chemical species containing the sulfate ion
+    - name: sulfur_dioxide
+      description: so2
   - name: base_standard_names
     comment: These names are used as bases for other names, but may\n also be considered
       standard names on their own. See the\n full list of standard names for further
@@ -269,6 +322,12 @@ section:
       type: real
       kind: null
       units: fraction
+    - name: cloud_condensate
+      description: Amount of condensed water in cloud
+    - name: cloud_ice_water
+      description: Cloud particles consisting of solid water (ice)
+    - name: cloud_liquid_water
+      description: Cloud particles consisting of liquid water
     - name: diffuse_nir_albedo
       description: Albedo of diffuse incident near-infrared radiation
       type: real
@@ -369,16 +428,27 @@ section:
       type: real
       kind: null
       units: m
+    - name: graupel
+      description: Precipitation consisting of heavily rimed ice crystals
     - name: gravitational_acceleration
       description: Gravitational acceleration
       type: real
       kind: null
       units: m s-2
+    - name: hail
+      description: Precipitation formed by accretion of supercooled water droplets
+        into a solid piece of ice
+    - name: hygroscopic_aerosols
+      description: Aerosols with the property of accumulating liquid water
+    - name: ice
+      description: Ice
     - name: latent_heat_flux
       description: Latent heat flux across a unit surface
       type: real
       kind: null
       units: W m-2
+    - name: liquid_water
+      description: Liquid water
     - name: longwave_flux
       description: Flux of longwave radiation across a unit surface
       type: real
@@ -389,11 +459,16 @@ section:
       type: real
       kind: null
       units: Pa
+    - name: nonhygroscopic_ice_nucleating_aerosols
+      description: Ice-nucleating aerosols with the property of not accumulating liquid
+        water
     - name: pressure
       description: Pressure
       type: real
       kind: null
       units: Pa
+    - name: rain
+      description: Precipitation of liquid water from clouds
     - name: random_number
       description: Random number
       type: real
@@ -432,16 +507,26 @@ section:
       type: real
       kind: null
       units: W m-2
+    - name: snow
+      description: Precipitation of ice crystals from clouds
     - name: snow_area_fraction
       description: Fraction of an area (usually within a grid cell) covered by snow
       type: real
       kind: null
       units: fraction
+    - name: soil_moisture
+      description: Water contained within a soil layer
     - name: soil_temperature
       description: Temperature of a soil layer
       type: real
       kind: null
       units: K
+    - name: solar_declination_angle
+      description: The angle between the equator and Earth's orbital plane with the
+        Sun
+    - name: solar_zenith_angle
+      description: The angle between the direction to the sun and the local zenith
+        (vertical direction)
     - name: surface_skin_temperature
       description: The temperature of the topmost layer of the surface
       type: real
@@ -462,6 +547,14 @@ section:
       type: real
       kind: null
       units: s
+    - name: total_energy
+      description: Total energy
+    - name: total_water
+      description: All water phases (solid, liquid, gas)
+    - name: tracer
+      description: A hypothetical zero-mass particle that is advected in fluid flow
+    - name: tracers
+      description: Tracers
     - name: tke
       description: Specific turbulent kinetic energy
       type: real
@@ -479,6 +572,10 @@ section:
       type: real
       kind: null
       units: K
+    - name: water_vapor
+      description: Water in the gaseous phase
+    - name: wind
+      description: Movement of air with a net displacement
     - name: wind_stress
       description: Shear stress exerted by wind parallel to the surface
       type: real
