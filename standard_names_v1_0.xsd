@@ -53,8 +53,9 @@
                   minOccurs="0"
                   maxOccurs="1"/>
     </xs:sequence>
-    <xs:attribute ref="name"      use="required"/>
+    <xs:attribute ref="name"        use="required"/>
     <xs:attribute ref="description" use="optional"/>
+    <xs:attribute ref="comment"     use="optional"/>
   </xs:complexType>
 
 <xs:complexType name="section_type">
@@ -73,7 +74,7 @@
     </xs:sequence>
   </xs:choice>
 
-  <xs:attribute ref="name"    use="required"/>
+  <xs:attribute name="name"   type="xs:string"/>
   <xs:attribute ref="comment" use="optional"/>
 </xs:complexType>
 
