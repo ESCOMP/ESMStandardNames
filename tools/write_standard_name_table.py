@@ -210,47 +210,70 @@ def convert_xml_to_yaml(root, library_name, yaml_file):
 ###############################################################################
     yaml_data = OrderedDict()
     yaml_data['library_name'] = library_name
-    yaml_data['sections'] = []
-    for section in root:
-        sec_data = OrderedDict()
-        sec_data['name'] = section.get('name')
-        # Format comment and add to dicionary
-        sec_comment = section.get('comment')
-        if sec_comment:
-            # Remove code block markdown
-            sec_comment = sec_comment.replace('```', '')
-            # Split multiline into array
-            sec_comment = sec_comment.split('\\n')
-            # Remove multiple whitespaces
-            sec_comment = [' '.join(x.split()) for x in sec_comment if ' '.join(x.split())]
-            # Join together into one long string
-            sec_comment = ' '.join(sec_comment)
-        sec_data['comment'] = sec_comment
-        # Parse standard names for this section
-        sec_data['standard_names'] = []
-        for std_name in section:
-            if std_name.tag == 'standard_name':
-                stdn_name = std_name.get('name')
-                stdn_description = std_name.get('description', None)
-                if stdn_description is None:
-                    sdict = {'standard_name': stdn_name}
-                    stdn_description = standard_name_to_description(sdict)
-                std_type = std_name.find('type')
-                stdn_type = std_type.text
-                if std_type is not None:
-                    std_name_data = OrderedDict()
-                    std_name_data['name'] = stdn_name
-                    std_name_data['description'] = stdn_description
-                    std_name_data['type'] = std_type.text
-                    std_name_data['kind'] = std_type.get('kind', None)
-                    try:
-                        std_name_data['units'] = int(std_type.get('units', None))
-                    except ValueError:
-                        std_name_data['units'] = std_type.get('units', None)
-                    sec_data['standard_names'].append(std_name_data)
-        yaml_data['sections'].append(sec_data)
+    yaml_data['section'] = []
+
+    for section in root.findall('section'):
+        yaml_data['section'].append(parse_section_for_yaml(section))
 
     yaml.dump(yaml_data, yaml_file, default_flow_style=False)
+
+
+###############################################################################
+def parse_section_for_yaml(section):
+###############################################################################
+    sec_data = OrderedDict()
+    sec_data['name'] = section.get('name')
+
+    # ---- Format section comment ----
+    sec_comment = section.get('comment')
+    if sec_comment:
+        sec_comment = sec_comment.replace('```', '')
+        sec_comment = sec_comment.split('\n')
+        sec_comment = [' '.join(x.split()) for x in sec_comment if x.strip()]
+        sec_comment = ' '.join(sec_comment)
+    sec_data['comment'] = sec_comment
+
+    # ---- Parse standard names (only direct children) ----
+    sec_data['standard_names'] = []
+
+    for std_name in section.findall('standard_name'):
+        stdn_name = std_name.get('name')
+        stdn_description = std_name.get('description')
+
+        if stdn_description is None:
+            sdict = {'standard_name': stdn_name}
+            stdn_description = standard_name_to_description(sdict)
+
+        std_type = std_name.find('type')
+
+        std_name_data = OrderedDict()
+        std_name_data['name'] = stdn_name
+        std_name_data['description'] = stdn_description
+        if std_type is not None:
+            std_name_data['type'] = std_type.text
+            std_name_data['kind'] = std_type.get('kind')
+
+            units = std_type.get('units')
+            try:
+                std_name_data['units'] = int(units) if units is not None else None
+            except (ValueError, TypeError):
+                std_name_data['units'] = units
+
+        sec_data['standard_names'].append(std_name_data)
+
+    # If no standard names in section, delete key/value pair
+    if not sec_data['standard_names']:
+        del sec_data['standard_names']
+
+    # ---- Recurse into subsections ----
+    subsections = []
+    for subsection in section.findall('section'):
+        subsections.append(parse_section_for_yaml(subsection))
+
+    if subsections:
+        sec_data['section'] = subsections
+
+    return sec_data
 
 ###############################################################################
 def main_func():

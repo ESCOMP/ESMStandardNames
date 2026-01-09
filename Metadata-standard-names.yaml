@@ -1,26 +1,608 @@
 library_name: Earth System Modeling Standard Name Library
-sections:
+section:
 - name: base_names
-  comment: 'Base names are the ''elemental'' quantities from which the more complex
-    standard names are constructed. Base names can roughly be broken down into three
-    categories:'
-  standard_names: []
+  comment: Base names are the 'elemental' quantities from which\n the more complex
+    standard names are constructed.\n Base names can roughly be broken down into three
+    categories:\n
+  section:
+  - name: generic_names
+    comment: The following names are too general to be chosen as\n standard names,
+      but they can serve as base names for\n more specific standard names.\n
+    standard_names:
+    - name: area
+      description: Area
+      type: real
+      kind: null
+      units: m2
+    - name: area_fraction
+      description: The fraction of an area where some condition applies
+      type: real
+      kind: null
+      units: 1
+    - name: binary_mask
+      description: A field consisting of either 0 or 1 at every point
+      type: integer
+      kind: null
+      units: 1
+    - name: coefficient
+      description: A real number used in a mathematical equation, typically derived
+        empirically and/or adjusted based on some other physical phenomenon to change
+        the behavior of an equation, scheme, or other modeling unit
+      type: real
+      kind: null
+      units: 1
+    - name: density
+      description: Mass per unit volume
+      type: real
+      kind: null
+      units: kg m-3
+    - name: energy
+      description: Energy
+      type: real
+      kind: null
+      units: J
+    - name: energy_content
+      description: Total energy within some surface
+      type: real
+      kind: null
+      units: J m-2
+    - name: energy_density
+      description: Total energy within some volume
+      type: real
+      kind: null
+      units: J m-3
+    - name: frequency
+      description: Number of instances per unit time
+      type: real
+      kind: null
+      units: s-1
+    - name: heat
+      description: Heat
+      type: real
+      kind: null
+      units: J
+    - name: heat_flux
+      description: The amount of heat traveling through an area per unit time
+      type: real
+      kind: null
+      units: W m-2
+    - name: heat_transport
+      description: Movement of heat due to advection
+      type: real
+      kind: null
+      units: W
+    - name: mass
+      description: Mass
+      type: real
+      kind: null
+      units: kg
+    - name: mass_content
+      description: Vertically-integrated mass over a given area and vertical extent
+      type: real
+      kind: null
+      units: kg m-2
+    - name: mass_flux
+      description: Mass traveling through an area per unit time
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: mass_fraction
+      description: The fraction of a given mass where some condition applies
+      type: real
+      kind: null
+      units: 1
+    - name: mass_transport
+      description: Movement of some specified mass by advection
+      type: real
+      kind: null
+      units: kg s-1
+    - name: mixing_ratio
+      description: A ratio of the amount of one substance to another; when unqualified
+        refers to the ratio of the mass of one substance to the total mass in a given
+        volume
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mole_fraction
+      description: The ratio of the number of molecules or atoms of a substance to
+        the total number of molecules/atoms in a given volume
+      type: real
+      kind: null
+      units: 1
+    - name: mole_flux
+      description: The number of molecules or atoms of a substance traveling through
+        an area per unit time
+      type: real
+      kind: null
+      units: mol m-2 s-1
+    - name: momentum_flux
+      description: The transfer of momentum through an area per unit time
+      type: real
+      kind: null
+      units: Pa
+    - name: partial_pressure
+      description: The pressure of a component gas independent of other components
+      type: real
+      kind: null
+      units: Pa
+    - name: period
+      description: The amount of time between regular events
+      type: real
+      kind: null
+      units: s
+    - name: power
+      description: Energy per unit time
+      type: real
+      kind: null
+      units: W
+    - name: pressure
+      description: Force per unit area
+      type: real
+      kind: null
+      units: Pa
+    - name: probability
+      description: A real number between 0 and 1 indicating the likelihood of an event
+        occurring
+      type: real
+      kind: null
+      units: 1
+    - name: radiative_flux
+      description: The amount of radiative energy traveling through an area per unit
+        time
+      type: real
+      kind: null
+      units: W m-2
+    - name: radius
+      description: Distance from the center to the perimeter of a circle or sphere
+      type: real
+      kind: null
+      units: m
+    - name: speed
+      description: Directionless distance per unit time
+      type: real
+      kind: null
+      units: m s-1
+    - name: stress
+      description: A deformation force across a unit area
+      type: real
+      kind: null
+      units: Pa
+    - name: streamfunction
+      description: Streamfunction
+      type: real
+      kind: null
+      units: m2 s-1
+    - name: temperature
+      description: Temperature
+      type: real
+      kind: null
+      units: K
+    - name: thickness
+      description: The vertical distance between two constant-pressure surfaces
+      type: real
+      kind: null
+      units: m
+    - name: velocity
+      description: Distance per unit time
+      type: real
+      kind: null
+      units: m s-1
+    - name: velocity_potential
+      description: A scalar function with its gradient equal to the velocity vector
+        of an irrotational flow
+      type: real
+      kind: null
+      units: m2 s-1
+    - name: volume
+      description: Volume
+      type: real
+      kind: null
+      units: m3
+    - name: volume_flux
+      description: The movement of a volume of a substance across a unit area per
+        unit time
+      type: real
+      kind: null
+      units: m s-1
+    - name: volume_fraction
+      description: The fraction of a volume where some condition applies
+      type: real
+      kind: null
+      units: 1
+    - name: volume_mixing_ratio
+      description: A ratio of the number of molecules or atoms of a substance to another
+        in a unit volume
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_transport
+      description: Movement of some volume of a specified substance by advection
+      type: real
+      kind: null
+      units: m3 s-1
+    - name: vorticity
+      description: The curl of a velocity vector
+      type: real
+      kind: null
+      units: s-1
+  - name: chemical_species
+    comment: These are the base names for specific chemical species\nThey can all
+      be assumed to have units of '1'
+    standard_names:
+    - name: c5h8
+      description: Isoprene
+    - name: co2
+      description: Carbon dioxide
+    - name: co
+      description: Carbon monoxide
+    - name: ccl4
+      description: Tetrachloromethane
+    - name: cfc11
+      description: Trichlorofluoromethane
+    - name: cfc12
+      description: Dichlorodifluoromethane
+    - name: cfc113
+      description: 1,1,2-Trichloro-1,2,2-trifluoroethane
+    - name: cfc22
+      description: Chlorodifluoromethane
+    - name: dimethyl_sulfide
+      description: Dimethyl sulfide; DMS
+    - name: hcho
+      description: Formaldehyde
+    - name: hydrophilic_black_carbon
+      description: Hydrophilic black carbon
+    - name: hydrophobic_black_carbon
+      description: Hydrophobic black carbon
+    - name: hydrophilic_organic_carbon
+      description: Hydrophilic organic carbon
+    - name: hydrophobic_organic_carbon
+      description: Hydrophobic organic carbon
+    - name: methane
+      description: ch4
+    - name: n2o
+      description: Nitrous Oxide; N_2O
+    - name: nitrate
+      description: Chemical species containing the nitrate ion
+    - name: nitrite
+      description: Chemical species containing the nitrite ion
+    - name: no2
+      description: Nitrogen dioxide
+    - name: 'no'
+      description: Nitric oxide; NO (Nitrogen oxide, Nitrogen monoxide)
+    - name: oxygen
+      description: Molecular oxygen; O_2
+    - name: ozone
+      description: Ozone; O_3
+    - name: phosphate
+      description: Chemical species containing the phosphate ion
+    - name: silicate
+      description: Chemical species containing the silicate ion
+    - name: sulfate
+      description: Chemical species containing the sulfate ion
+    - name: sulfur_dioxide
+      description: so2
+  - name: base_standard_names
+    comment: These names are used as bases for other names, but may\n also be considered
+      standard names on their own. See the\n full list of standard names for further
+      details.\n
+    standard_names:
+    - name: absolute_vorticity
+      description: Vorticity of fluid relative to an inertial frame; the sum of relative
+        and planetary vorticities
+      type: real
+      kind: null
+      units: s-1
+    - name: air_pressure
+      description: The pressure of air
+      type: real
+      kind: null
+      units: Pa
+    - name: air_pressure_thickness
+      description: The difference in air pressure between two vertical layers
+      type: real
+      kind: null
+      units: Pa
+    - name: air_temperature
+      description: The temperature of air
+      type: real
+      kind: null
+      units: K
+    - name: albedo
+      description: The fraction of incident radiation reflected by a surface
+      type: real
+      kind: null
+      units: 1
+    - name: atmosphere_heat_diffusivity
+      description: Atmosphere heat diffusivity
+      type: real
+      kind: null
+      units: m2 s-1
+    - name: cloud_area_fraction
+      description: Fraction of an area (usually within a grid cell) containing cloud
+      type: real
+      kind: null
+      units: fraction
+    - name: cloud_condensate
+      description: Amount of condensed water in cloud
+    - name: cloud_ice_water
+      description: Cloud particles consisting of solid water (ice)
+    - name: cloud_liquid_water
+      description: Cloud particles consisting of liquid water
+    - name: diffuse_nir_albedo
+      description: Albedo of diffuse incident near-infrared radiation
+      type: real
+      kind: null
+      units: 1
+    - name: diffuse_nir_shortwave_flux
+      description: Flux of diffuse near-infrared and shortwave radiation
+      type: real
+      kind: null
+      units: W m-2
+    - name: diffuse_shortwave_albedo
+      description: Albedo of diffuse incident shortwave radiation
+      type: real
+      kind: null
+      units: 1
+    - name: diffuse_uv_and_vis_shortwave_flux
+      description: Flux of diffuse ultraviolet and visible shortwave radiation
+      type: real
+      kind: null
+      units: W m-2
+    - name: diffuse_vis_albedo
+      description: Albedo of diffuse incident visible radiation
+      type: real
+      kind: null
+      units: 1
+    - name: dimensionless_exner_function
+      description: Dimensionless formulation of the Exner function with respect to
+        1000 hPa
+      type: real
+      kind: null
+      units: 1
+    - name: direct_nir_albedo
+      description: Albedo of direct incident near-infrared radiation
+      type: real
+      kind: null
+      units: 1
+    - name: direct_nir_shortwave_flux
+      description: Flux of direct near-infrared shortwave radiation
+      type: real
+      kind: null
+      units: W m-2
+    - name: direct_uv_and_vis_shortwave_flux
+      description: Flux of direct ultraviolet and visible shortwave radiation
+      type: real
+      kind: null
+      units: W m-2
+    - name: direct_vis_albedo
+      description: Albedo of direct incident visible light
+      type: real
+      kind: null
+      units: 1
+    - name: divergence
+      description: Divergence
+      type: real
+      kind: null
+      units: s-1
+    - name: dry_air
+      description: Air excluding all water components
+      type: real
+      kind: null
+      units: kg m-3
+    - name: dry_air_enthalpy_at_constant_pressure
+      description: Specific enthalpy of dry air, h = Cp*T; Cp = Specific heat of dry
+        air at constant pressure, T = temperature
+      type: real
+      kind: null
+      units: J kg-1
+    - name: exner_function
+      description: Exner function, cp * (p/p0)^(Rd/cp), where p0 is some reference
+        pressure (1000 hPa if not specified), Rd is the dry air specific gas constant,
+        and cp is the dry air specific heat capacity.
+      type: real
+      kind: null
+      units: 1
+    - name: friction_velocity
+      description: A measure of shear stress within a fluid layer with units of distance
+        per time
+      type: real
+      kind: null
+      units: m s-1
+    - name: filename
+      description: Filename
+      type: character
+      kind: null
+      units: none
+    - name: forecast_time
+      description: Forecast time
+      type: real
+      kind: null
+      units: h
+    - name: geopotential
+      description: Gravitational potential energy of a unit mass relative to sea level
+      type: real
+      kind: null
+      units: m2 s-2
+    - name: geopotential_height
+      description: Geopotential divided by the gravitational constant
+      type: real
+      kind: null
+      units: m
+    - name: graupel
+      description: Precipitation consisting of heavily rimed ice crystals
+    - name: gravitational_acceleration
+      description: Gravitational acceleration
+      type: real
+      kind: null
+      units: m s-2
+    - name: hail
+      description: Precipitation formed by accretion of supercooled water droplets
+        into a solid piece of ice
+    - name: hygroscopic_aerosols
+      description: Aerosols with the property of accumulating liquid water
+    - name: ice
+      description: Ice
+    - name: latent_heat_flux
+      description: Latent heat flux across a unit surface
+      type: real
+      kind: null
+      units: W m-2
+    - name: liquid_water
+      description: Liquid water
+    - name: longwave_flux
+      description: Flux of longwave radiation across a unit surface
+      type: real
+      kind: null
+      units: W m-2
+    - name: momentum_flux
+      description: Flux of momentum across a unit surface
+      type: real
+      kind: null
+      units: Pa
+    - name: nonhygroscopic_ice_nucleating_aerosols
+      description: Ice-nucleating aerosols with the property of not accumulating liquid
+        water
+    - name: pressure
+      description: Pressure
+      type: real
+      kind: null
+      units: Pa
+    - name: rain
+      description: Precipitation of liquid water from clouds
+    - name: random_number
+      description: Random number
+      type: real
+      kind: null
+      units: 1
+    - name: random_number_seed
+      description: Random number seed
+      type: integer
+      kind: null
+      units: 1
+    - name: reference_pressure
+      description: Some pressure value for comparison to or calculation of other values
+      type: real
+      kind: null
+      units: Pa
+    - name: relative_humidity
+      description: Ratio of the vapor pressure to the saturation vapor pressure (for
+        liquid water unless otherwise specified)
+      type: real
+      kind: null
+      units: fraction
+    - name: roughness_length
+      description: Also called surface roughness length; the height above a surface
+        where the wind speed would be zero according to an idealized logarithmic wind
+        profile
+      type: real
+      kind: null
+      units: m
+    - name: sensible_heat_flux
+      description: Flux of sensible heat across a unit surface
+      type: real
+      kind: null
+      units: W m-2
+    - name: shortwave_flux
+      description: Flux of shortwave radiation across a unit surface
+      type: real
+      kind: null
+      units: W m-2
+    - name: snow
+      description: Precipitation of ice crystals from clouds
+    - name: snow_area_fraction
+      description: Fraction of an area (usually within a grid cell) covered by snow
+      type: real
+      kind: null
+      units: fraction
+    - name: soil_moisture
+      description: Water contained within a soil layer
+    - name: soil_temperature
+      description: Temperature of a soil layer
+      type: real
+      kind: null
+      units: K
+    - name: solar_declination_angle
+      description: The angle between the equator and Earth's orbital plane with the
+        Sun
+    - name: solar_zenith_angle
+      description: The angle between the direction to the sun and the local zenith
+        (vertical direction)
+    - name: surface_skin_temperature
+      description: The temperature of the topmost layer of the surface
+      type: real
+      kind: null
+      units: K
+    - name: temperature
+      description: Temperature
+      type: real
+      kind: null
+      units: K
+    - name: temperature_flux
+      description: Flux of temperature across a unit surface
+      type: real
+      kind: null
+      units: K m s-1
+    - name: time
+      description: Time
+      type: real
+      kind: null
+      units: s
+    - name: total_energy
+      description: Total energy
+    - name: total_water
+      description: All water phases (solid, liquid, gas)
+    - name: tracer
+      description: A hypothetical zero-mass particle that is advected in fluid flow
+    - name: tracers
+      description: Tracers
+    - name: tke
+      description: Specific turbulent kinetic energy
+      type: real
+      kind: null
+      units: m2 s-2
+    - name: virtual_potential_temperature
+      description: The theoretical potential temperature of dry air that would have
+        the same density as moist air
+      type: real
+      kind: null
+      units: K
+    - name: virtual_temperature
+      description: The theoretical temperature of dry air that would have the same
+        density as moist air
+      type: real
+      kind: null
+      units: K
+    - name: water_vapor
+      description: Water in the gaseous phase
+    - name: wind
+      description: Movement of air with a net displacement
+    - name: wind_stress
+      description: Shear stress exerted by wind parallel to the surface
+      type: real
+      kind: null
+      units: Pa
+    - name: wind_speed
+      description: Speed of moving air
+      type: real
+      kind: null
+      units: m s-1
 - name: dimensions
-  comment: 'Dimension standard names may come in sets of six related standard names
-    for each dimension: [dim_name]_dimension -- The full dimension size [dim_name]_loop_extent
-    -- Size of dim for current call [dim_name]_begin - Start index for dimension [dim_name]_end
-    - End index for dimension [dim_name]_index - Single index for dimension [dim_name]_selection
-    - Array of selected indices for dimension Note that the cap generator may substitute
-    among standard names in this category in order to properly call suite parts and
-    individual schemes. In the substitutions below, the name on the left is the standard_name
-    in the dimensions field of the caller while the name(s) on the right is (are)
-    the standard name(s) of the callee (in the form used in the subroutine call).
-    [dim_name]_dimension ==> 1:[dim_name]_loop_extent [dim_name]_loop_extent ==> 1:[dim_name]_loop_extent
-    [dim_name]_begin:[dim_name]_end ==> 1:[dim_name]_loop_extent [dim_name]_begin:[dim_name]_end
-    ==> 1:[dim_name]_dimension Also note that horizontal_dimension should be used
-    in xxx_[timestep_]init and xxx_[timestep_]final routines but not in xxx_run routines.
-    Currently, the only dimension which supports all six dimension types is horizontal_dimension.
-    This and other supported dimension standard names are listed below.'
+  comment: Dimension standard names may come in sets of six related standard names
+    for each dimension:\n \n [dim_name]_dimension -- The full dimension size\n [dim_name]_loop_extent
+    -- Size of dim for current call\n [dim_name]_begin - Start index for dimension\n
+    [dim_name]_end - End index for dimension\n [dim_name]_index - Single index for
+    dimension\n [dim_name]_selection - Array of selected indices for dimension\n \n
+    Note that the cap generator may substitute among standard names in this category
+    in order to properly call suite parts and individual schemes. In the substitutions
+    below, the name on the left is the standard_name in the dimensions field of the
+    caller while the name(s) on the right is (are) the standard name(s) of the callee
+    (in the form used in the subroutine call).\n \n [dim_name]_dimension ==> 1:[dim_name]_loop_extent\n
+    [dim_name]_loop_extent ==> 1:[dim_name]_loop_extent\n [dim_name]_begin:[dim_name]_end
+    ==> 1:[dim_name]_loop_extent\n [dim_name]_begin:[dim_name]_end ==> 1:[dim_name]_dimension\n
+    \n Also note that horizontal_dimension should be used in xxx_[timestep_]init and
+    xxx_[timestep_]final routines but not in xxx_run routines.\n Currently, the only
+    dimension which supports all six dimension types is horizontal_dimension. This
+    and other supported dimension standard names are listed below.\n
   standard_names:
   - name: horizontal_dimension
     description: Size horizontal dimension
@@ -1347,7 +1929,64 @@ sections:
     units: kg m-2 s-1
 - name: Application-specific variables
   comment: null
-  standard_names: []
+  section:
+  - name: required framework-provided variables
+    comment: Required CCPP framework-provided variables
+    standard_names:
+    - name: ccpp_error_message
+      description: Error message for error handling in CCPP
+      type: character
+      kind: null
+      units: none
+    - name: ccpp_error_code
+      description: Error code for error handling in CCPP
+      type: integer
+      kind: null
+      units: 1
+  - name: optional framework-provided variables
+    comment: Optional CCPP framework-provided variables
+    standard_names:
+    - name: ccpp_scheme_name
+      description: CCPP physics scheme name
+      type: character
+      kind: null
+      units: none
+    - name: ccpp_constituent_properties
+      description: CCPP Constituent Properties
+      type: ccpp_constituent_prop_ptr_t
+      kind: null
+      units: none
+    - name: ccpp_constituents
+      description: Array of constituents managed by CCPP Framework
+      type: real
+      kind: null
+      units: none
+    - name: ccpp_constituent_min_values
+      description: CCPP constituent minimum values
+      type: real
+      kind: null
+      units: none
+    - name: number_of_ccpp_constituents
+      description: Number of constituents managed by CCPP Framework
+      type: integer
+      kind: null
+      units: count
+    - name: ccpp_block_count
+      description: CCPP block count
+      type: integer
+      kind: null
+      units: count
+    - name: ccpp_block_sizes
+      description: CCPP block sizes
+      type: integer
+      kind: null
+      units: count
+    - name: ccpp_thread_number
+      description: Number of current OpenMP thread. This variable may only be used
+        during CCPP run phase
+      type: integer
+      kind: null
+      units: index
 - name: system variables
   comment: Variables related to the compute environment
   standard_names:
