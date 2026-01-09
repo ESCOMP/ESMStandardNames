@@ -54,14 +54,25 @@
     <xs:attribute ref="description" use="optional"/>
   </xs:complexType>
 
-  <xs:complexType name="section_type">
+<xs:complexType name="section_type">
+  <xs:choice>
     <xs:sequence>
-      <xs:element name="standard_name" type="stdname_type"
-                  minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="standard_name"
+                  type="stdname_type"
+                  minOccurs="1"
+                  maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute ref="name"    use="required"/>
-    <xs:attribute ref="comment" use="optional"/>
-  </xs:complexType>
+    <xs:sequence>
+      <xs:element name="section"
+                  type="section_type"
+                  minOccurs="1"
+                  maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:choice>
+
+  <xs:attribute ref="name"    use="required"/>
+  <xs:attribute ref="comment" use="optional"/>
+</xs:complexType>
 
   <!-- definition of elements -->
 
