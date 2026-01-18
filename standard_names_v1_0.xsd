@@ -13,12 +13,12 @@
 
   <xs:simpleType name="type_type">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[iI][nN][tT][eE][gG][eE][rR]"/>
-      <xs:pattern value="[rR][eE][aA][lL]"/>
-      <xs:pattern value="[lL][oO][gG][iI][cC][aA][lL]"/>
-      <xs:pattern value="[cC][hH][aA][rR][aA][cC][tT][eE][rR]"/>
-      <xs:pattern value="[dD][oO][uU][bB][lL][eE][ ]*[pP][rR][eE][cC][iI][sS][iI][oO][nN]"/>
-      <xs:pattern value="[cC][oO][mM][pP][lL][eE][xX]"/>
+      <xs:pattern value="integer"/>
+      <xs:pattern value="real"/>
+      <xs:pattern value="logical"/>
+      <xs:pattern value="character"/>
+      <xs:pattern value="complex"/>
+      <xs:pattern value="ddt"/>
     </xs:restriction>
   </xs:simpleType>
 
