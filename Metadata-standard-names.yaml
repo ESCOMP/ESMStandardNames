@@ -752,7 +752,7 @@ section:
     units: J kg-1 K-1
   - name: physics_state_due_to_dynamics
     description: Physics state due to dynamics
-    type: physics_state
+    type: ddt
     kind: null
     units: none
   - name: timestep_for_physics
@@ -762,7 +762,7 @@ section:
     units: s
   - name: total_tendency_of_physics
     description: Total tendency of physics
-    type: physics_tend
+    type: ddt
     kind: null
     units: none
   - name: air_pressure_at_top_of_atmosphere_model
@@ -1953,7 +1953,7 @@ section:
       units: none
     - name: ccpp_constituent_properties
       description: CCPP Constituent Properties
-      type: ccpp_constituent_prop_ptr_t
+      type: ddt
       kind: null
       units: none
     - name: ccpp_constituents
@@ -4975,7 +4975,8 @@ section:
     kind: null
     units: K
   - name: upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface
-    description: Upward flux of water vapor mixing ratio wrt moist air at surface
+    description: Upward specific humidity (water vapor mass mixing ratio with respect
+      to moist air) flux at surface
     type: real
     kind: null
     units: kg kg-1 m s-1
@@ -5059,17 +5060,20 @@ section:
     kind: null
     units: fraction
   - name: nir_albedo_weak_cosz
-    description: Nir albedo weak cosz
+    description: albedo for near-infrared radiation with weak dependence on cosine
+      of the zenith angle
     type: real
     kind: null
     units: fraction
   - name: vis_albedo_strong_cosz
-    description: Vis albedo strong cosz
+    description: albedo for visible radiation with strong dependence on cosine of
+      the zenith angle
     type: real
     kind: null
     units: fraction
   - name: vis_albedo_weak_cosz
-    description: Vis albedo weak cosz
+    description: albedo for visible radiation with weak dependence on cosine of the
+      zenith angle
     type: real
     kind: null
     units: fraction
@@ -5855,8 +5859,8 @@ section:
     kind: null
     units: K
   - name: tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_moist_convection_for_coupling
-    description: Tendency of water vapor mixing ratio wrt moist air due to moist convection
-      for coupling
+    description: Tendency of specific humidity (water vapor mass mixing ratio with
+      respect to moist air) due to moist convection used for coupling
     type: real
     kind: null
     units: kg kg-1 s-1
@@ -6247,7 +6251,7 @@ section:
     units: 1
   - name: surface_lw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep
     description: Surface lw fluxes assuming total and clear sky on radiation timestep
-    type: sfcflw_type
+    type: ddt
     kind: null
     units: W m-2
   - name: diffuse_shortwave_albedo_on_radiation_timestep
@@ -6268,7 +6272,7 @@ section:
     units: K
   - name: surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep
     description: Surface sw fluxes assuming total and clear sky on radiation timestep
-    type: sfcfsw_type
+    type: ddt
     kind: null
     units: W m-2
   - name: tendency_of_air_temperature_due_to_longwave_heating_assuming_clear_sky_on_radiation_timestep
