@@ -211,7 +211,7 @@ Technical specifications
 #. Only alphanumeric, punctuation, and whitespace characters from the ASCII character set may be used in the standard_names dictionary.
    The "name" attributes of ``standard_name`` entries (i.e. the standard names themselves) are further restricted to the character set of capital/lowercase letters, numerals, and ``_`` (underscore).
 
-#. The `<type>` element should include a value that is one of the following valid fortran types:
+#. The `<type>` element should include a value that is one of the following valid Fortran types:
 
    - `integer`
    - `real`
