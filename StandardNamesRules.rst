@@ -32,10 +32,10 @@ ESM Standard Name Rules
    while the words in ``this font`` indicate other words or phrases to be substituted.
    The new standard name is constructed by joining the base standard name to the qualifiers using underscores.
 
-   [``transformation``] [``component``] [``non-instant time``] base_name [*in* ``medium``] [*at* ``level``] [*due_to* ``process``] [``non-current time``] [*assuming* ``condition``]
+   [``transformation``] [``component``] [``non-instant time``] base_name [*in*/*of* ``medium``] [*at* ``level``] [*due_to* ``process``] [``non-current time``] [*assuming* ``condition``]
 
    This construction was originally based on rules set forth in the
-   `CF guidelines <http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html>`_),
+   `CF guidelines <http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html>`_,
    but have since evolved for better consistency and generality across a broader set of fields
    than was originally envisioned by the CF conventions. "``medium``" should be specified when
    the variable in question is a substance or other quantity contained within some other medium
@@ -50,14 +50,14 @@ ESM Standard Name Rules
    The following table provides a few concrete examples of standard names and how they are constructed
    with respect to the guideline template.
 
-   `image of table providing standard name construction examples <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png>`_)
+   `image of table providing standard name construction examples <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png>`_
 
    Note that "transformations" are a special case, where multiple transformations may be applied,
    and multiple quantities may be compared, operated on, etc. For transformations involving
    multiple quantities (e.g. ``ratio_of_X_to_Y``; see the `section on Transformations <#transformations>`_
    for more information), the above formula may be extended around multiple base names.
 
-   `image of table providing standard name construction examples with multiple transformations <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png>`_)
+   `image of table providing standard name construction examples with multiple transformations <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png>`_
 
    In the latter example, ``ln`` is operating on the quantity ``water_vapor_partial_pressure_assuming_saturation``,
    while ``derivative_of`` is a combined transformation of ``water_vapor_partial_pressure_assuming_saturation``
@@ -178,6 +178,7 @@ ESM Standard Name Rules
 #. **Reserved names:** The prefix ``ccpp_`` is reserved for CCPP framework-provided variables.
    All other standard names should avoid the use of ``ccpp`` in their name.
 
+
 .. _tech_specs:
 
 Technical specifications
@@ -209,6 +210,17 @@ Technical specifications
 
 #. Only alphanumeric, punctuation, and whitespace characters from the ASCII character set may be used in the standard_names dictionary.
    The "name" attributes of ``standard_name`` entries (i.e. the standard names themselves) are further restricted to the character set of capital/lowercase letters, numerals, and ``_`` (underscore).
+
+#. The `<type>` element should include a value that is one of the following valid fortran types:
+
+   - `integer`
+   - `real`
+   - `logical`
+   - `character`
+   - `complex`
+   - `ddt` (derived data type)
+
+#. The standard name dictionary XML file should validate according to the schema file `standard_names.xsd` All of the above specifications should be coded into this schema file as is appropriate.
 
 .. _qualifiers:
 
