@@ -87,10 +87,10 @@ ESM Standard Name Rules
      cells vertically, including the bottom-most interface *but excluding the
      top-most interface*.
 
-   This implies that if ``[variable]`` is defined on `n` points vertically,
-   ``[variable]_at_interfaces`` is defined on `n+1` points,
-   ``[variable]_at_top_interfaces`` is defined on `n` points, and
-   ``[variable]_at_bottom_interfaces`` is defined on `n` points.
+   This implies that if ``[variable]`` is defined on ``n`` points vertically,
+   ``[variable]_at_interfaces`` is defined on ``n+1`` points,
+   ``[variable]_at_top_interfaces`` is defined on ``n`` points, and
+   ``[variable]_at_bottom_interfaces`` is defined on ``n`` points.
 
 #. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
@@ -172,8 +172,8 @@ ESM Standard Name Rules
 #  **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
    ambiguity.
 
-   - `specific_humidity` Disallowed due to ambiguity and different definitions between different fields. See above section describing `mixing_ratio` for more information.
-   - `amount` In most contexts this word is superfluous, and in all contexts it is non-descriptive. Consider a more specific term such as `mass_content`
+   - ``specific_humidity`` Disallowed due to ambiguity and different definitions between different fields. See above section describing ``mixing_ratio`` for more information.
+   - ``amount`` In most contexts this word is superfluous, and in all contexts it is non-descriptive. Consider a more specific term such as ``mass_content``
 
 #. **Reserved names:** The prefix ``ccpp_`` is reserved for CCPP framework-provided variables.
    All other standard names should avoid the use of ``ccpp`` in their name.
@@ -213,14 +213,14 @@ Technical specifications
 
 #. The `<type>` element should include a value that is one of the following valid Fortran types:
 
-   - `integer`
-   - `real`
-   - `logical`
-   - `character`
-   - `complex`
-   - `ddt` (derived data type)
+   - ``integer``
+   - ``real``
+   - ``logical``
+   - ``character``
+   - ``complex``
+   - ``ddt`` (derived data type)
 
-#. The standard name dictionary XML file should validate according to the schema file `standard_names.xsd` All of the above specifications should be coded into this schema file as is appropriate.
+#. The standard name dictionary XML file should validate according to the schema file ``standard_names.xsd`` All of the above specifications should be coded into this schema file as is appropriate.
 
 .. _qualifiers:
 
