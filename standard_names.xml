@@ -4224,7 +4224,7 @@
          <type units="1">real</type>
       </standard_name>
       <standard_name name="surface_lw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep">
-         <type units="W m-2">test</type>
+         <type units="W m-2">ddt</type>
       </standard_name>
       <standard_name name="diffuse_shortwave_albedo_on_radiation_timestep"
                      description="surface albedo for diffuse shortwave radiation on the timestep for radiation physics">
