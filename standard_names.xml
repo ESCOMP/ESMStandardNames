@@ -1001,7 +1001,7 @@
     </standard_name>
   </section>
   <section name="marine">
-    <standard_name name="potential_temperature_of_sea_water"
+    <standard_name name="sea_water_potential_temperature"
                    description="sea water potential temperature">
       <type units="K">real</type>
     </standard_name>
