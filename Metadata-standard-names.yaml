@@ -1264,6 +1264,34 @@ section:
     type: real
     kind: null
     units: m3 m-3
+- name: marine
+  comment: null
+  standard_names:
+  - name: sea_water_potential_temperature
+    description: sea water potential temperature
+    type: real
+    kind: null
+    units: K
+  - name: sea_water_depth
+    description: The depth below the surface of the sea
+    type: real
+    kind: null
+    units: m
+  - name: sea_water_practical_salinity
+    description: The practical salinity of sea water
+    type: real
+    kind: null
+    units: PSU
+  - name: sea_water_absolute_salinity
+    description: The absolute salinity of sea water
+    type: real
+    kind: null
+    units: g kg-1
+  - name: sea_water_temperature
+    description: The temperature of sea water
+    type: real
+    kind: null
+    units: K
 - name: diagnostics
   comment: null
   standard_names:
