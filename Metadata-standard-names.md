@@ -546,11 +546,11 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
 * `volume_fraction_of_liquid_water_in_soil_at_wilting_point`: volume fraction of water in liquid phase in soil at wilting point
     * `real`: units = m3 m-3
 ## marine
-* `potential_temperature_of_sea_water`: sea water potential temperature
+* `sea_water_potential_temperature`: sea water potential temperature
     * `real`: units = K
 * `sea_water_depth`: The depth below the surface of the sea
     * `real`: units = m
-* `sea_water_salinity`: The practical salinity of sea water
+* `sea_water_practical_salinity`: The practical salinity of sea water
     * `real`: units = PSU
 * `sea_water_absolute_salinity`: The absolute salinity of sea water
     * `real`: units = g kg-1
