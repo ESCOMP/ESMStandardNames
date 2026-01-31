@@ -32,10 +32,10 @@ ESM Standard Name Rules
    while the words in ``this font`` indicate other words or phrases to be substituted.
    The new standard name is constructed by joining the base standard name to the qualifiers using underscores.
 
-   [``transformation``] [``component``] [``non-instant time``] base_name [*in* ``medium``] [*at* ``level``] [*due_to* ``process``] [``non-current time``] [*assuming* ``condition``]
+   [``transformation``] [``component``] [``non-instant time``] base_name [*in*/*of* ``medium``] [*at* ``level``] [*due_to* ``process``] [``non-current time``] [*assuming* ``condition``]
 
    This construction was originally based on rules set forth in the
-   `CF guidelines <http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html>`_),
+   `CF guidelines <http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html>`_,
    but have since evolved for better consistency and generality across a broader set of fields
    than was originally envisioned by the CF conventions. "``medium``" should be specified when
    the variable in question is a substance or other quantity contained within some other medium
@@ -50,14 +50,14 @@ ESM Standard Name Rules
    The following table provides a few concrete examples of standard names and how they are constructed
    with respect to the guideline template.
 
-   `image of table providing standard name construction examples <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png>`_)
+   `image of table providing standard name construction examples <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png>`_
 
    Note that "transformations" are a special case, where multiple transformations may be applied,
    and multiple quantities may be compared, operated on, etc. For transformations involving
    multiple quantities (e.g. ``ratio_of_X_to_Y``; see the `section on Transformations <#transformations>`_
    for more information), the above formula may be extended around multiple base names.
 
-   `image of table providing standard name construction examples with multiple transformations <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png>`_)
+   `image of table providing standard name construction examples with multiple transformations <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png>`_
 
    In the latter example, ``ln`` is operating on the quantity ``water_vapor_partial_pressure_assuming_saturation``,
    while ``derivative_of`` is a combined transformation of ``water_vapor_partial_pressure_assuming_saturation``
@@ -87,10 +87,10 @@ ESM Standard Name Rules
      cells vertically, including the bottom-most interface *but excluding the
      top-most interface*.
 
-   This implies that if ``[variable]`` is defined on `n` points vertically,
-   ``[variable]_at_interfaces`` is defined on `n+1` points,
-   ``[variable]_at_top_interfaces`` is defined on `n` points, and
-   ``[variable]_at_bottom_interfaces`` is defined on `n` points.
+   This implies that if ``[variable]`` is defined on ``n`` points vertically,
+   ``[variable]_at_interfaces`` is defined on ``n+1`` points,
+   ``[variable]_at_top_interfaces`` is defined on ``n`` points, and
+   ``[variable]_at_bottom_interfaces`` is defined on ``n`` points.
 
 #. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
@@ -169,14 +169,15 @@ ESM Standard Name Rules
    use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
    should be Fortran logicals.
 
-#  **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
+#. **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
    ambiguity.
 
-   - `specific_humidity` Disallowed due to ambiguity and different definitions between different fields. See above section describing `mixing_ratio` for more information.
-   - `amount` In most contexts this word is superfluous, and in all contexts it is non-descriptive. Consider a more specific term such as `mass_content`
+   - ``specific_humidity`` Disallowed due to ambiguity and different definitions between different fields. See above section describing ``mixing_ratio`` for more information.
+   - ``amount`` In most contexts this word is superfluous, and in all contexts it is non-descriptive. Consider a more specific term such as ``mass_content``
 
 #. **Reserved names:** The prefix ``ccpp_`` is reserved for CCPP framework-provided variables.
    All other standard names should avoid the use of ``ccpp`` in their name.
+
 
 .. _tech_specs:
 
@@ -209,6 +210,17 @@ Technical specifications
 
 #. Only alphanumeric, punctuation, and whitespace characters from the ASCII character set may be used in the standard_names dictionary.
    The "name" attributes of ``standard_name`` entries (i.e. the standard names themselves) are further restricted to the character set of capital/lowercase letters, numerals, and ``_`` (underscore).
+
+#. The `<type>` element should include a value that is one of the following valid Fortran types:
+
+   - ``integer``
+   - ``real``
+   - ``logical``
+   - ``character``
+   - ``complex``
+   - ``ddt`` (derived data type)
+
+#. The standard name dictionary XML file should validate according to the schema file ``standard_names.xsd`` All of the above specifications should be coded into this schema file as is appropriate.
 
 .. _qualifiers:
 
@@ -495,7 +507,7 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 | condensed_water        | liquid and ice                                                                      |
 +------------------------+-------------------------------------------------------------------------------------+
-|frozen_water            | ice                                                                                 |
+| frozen_water           | ice                                                                                 |
 +------------------------+-------------------------------------------------------------------------------------+
 | longwave               | Longwave radiation. Defined as thermal emission of radiation from the planet.       |
 +------------------------+-------------------------------------------------------------------------------------+
@@ -519,129 +531,6 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 | diffuse                | used in radiation (as opposed to direct)                                            |
 +------------------------+-------------------------------------------------------------------------------------+
-
-Chemical Species
-----------------
-
-+------------------------+
-| **Species**            |
-+========================+
-|carbon_dioxide          |
-+------------------------+
-|dimethyl_sulfide        |
-+------------------------+
-|nitrate                 |
-+------------------------+
-|nitrate_and_nitrite     |
-+------------------------+
-|nitrite                 |
-+------------------------+
-|oxygen                  |
-+------------------------+
-|ozone                   |
-+------------------------+
-|phosphate               |
-+------------------------+
-|silicate                |
-+------------------------+
-|sulfate                 |
-+------------------------+
-|sulfur_dioxide          |
-+------------------------+
-
-Generic Names
--------------
-
-The following names are used with consistent meanings and units as elements in
-other standard names, although they are themselves too general to be chosen as
-standard names. They are recorded here for reference only. These are not
-standard names.
-
-+-------------------------------------------+-----------------+
-| **Generic Name**                          |  **Units**      |
-+===========================================+=================+
-| amount                                    | kg m-2          |
-+-------------------------------------------+-----------------+
-| area                                      | m2              |
-+-------------------------------------------+-----------------+
-| area_fraction                             | 1               |
-+-------------------------------------------+-----------------+
-| binary_mask                               | 1               |
-+-------------------------------------------+-----------------+
-| data_mask                                 | 1               |
-+-------------------------------------------+-----------------+
-| density                                   | kg m-3          |
-+-------------------------------------------+-----------------+
-| energy                                    | J               |
-+-------------------------------------------+-----------------+
-| energy_content                            | J m-2           |
-+-------------------------------------------+-----------------+
-| energy_density                            | J m-3           |
-+-------------------------------------------+-----------------+
-| frequency                                 | s-1             |
-+-------------------------------------------+-----------------+
-| frequency_of_occurrence                   | s-1             |
-+-------------------------------------------+-----------------+
-| heat_flux                                 | W m-2           |
-+-------------------------------------------+-----------------+
-| heat_transport                            | W               |
-+-------------------------------------------+-----------------+
-| streamfunction                            | m2 s-1          |
-+-------------------------------------------+-----------------+
-| velocity_potential                        | m2 s-1          |
-+-------------------------------------------+-----------------+
-| mass                                      | kg              |
-+-------------------------------------------+-----------------+
-| mass_flux                                 | kg m-2 s-1      |
-+-------------------------------------------+-----------------+
-| mass_fraction                             | 1               |
-+-------------------------------------------+-----------------+
-| mixing_ratio                              | kg kg-1         |
-+-------------------------------------------+-----------------+
-| mass_transport k                          | g s-1           |
-+-------------------------------------------+-----------------+
-| mole_fraction                             | 1               |
-+-------------------------------------------+-----------------+
-| mole_flux mol                             | m-2 s-1         |
-+-------------------------------------------+-----------------+
-| momentum_flux                             | Pa              |
-+-------------------------------------------+-----------------+
-| partial_pressure                          | Pa              |
-+-------------------------------------------+-----------------+
-| period                                    | s               |
-+-------------------------------------------+-----------------+
-| power                                     | W               |
-+-------------------------------------------+-----------------+
-| pressure                                  | Pa              |
-+-------------------------------------------+-----------------+
-| probability                               | 1               |
-+-------------------------------------------+-----------------+
-| radiative_flux                            | W m-2           |
-+-------------------------------------------+-----------------+
-| specific_eddy_kinetic_energy              | m2 s-2          |
-+-------------------------------------------+-----------------+
-| speed                                     | m s-1           |
-+-------------------------------------------+-----------------+
-| stress                                    | Pa              |
-+-------------------------------------------+-----------------+
-| temperature                               | K               |
-+-------------------------------------------+-----------------+
-| thickness                                 | m               |
-+-------------------------------------------+-----------------+
-| velocity                                  | m s-1           |
-+-------------------------------------------+-----------------+
-| volume                                    | m3              |
-+-------------------------------------------+-----------------+
-| volume_flux                               | m s-1           |
-+-------------------------------------------+-----------------+
-| volume_fraction                           | 1               |
-+-------------------------------------------+-----------------+
-| volume_mixing_ratio                       | mol mol-1       |
-+-------------------------------------------+-----------------+
-| volume_transport                          | m3 s-1          |
-+-------------------------------------------+-----------------+
-| vorticity                                 | s-1             |
-+-------------------------------------------+-----------------+
 
 .. _Aliases:
 

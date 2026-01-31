@@ -13,12 +13,12 @@
 
   <xs:simpleType name="type_type">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[iI][nN][tT][eE][gG][eE][rR]"/>
-      <xs:pattern value="[rR][eE][aA][lL]"/>
-      <xs:pattern value="[lL][oO][gG][iI][cC][aA][lL]"/>
-      <xs:pattern value="[cC][hH][aA][rR][aA][cC][tT][eE][rR]"/>
-      <xs:pattern value="[dD][oO][uU][bB][lL][eE][ ]*[pP][rR][eE][cC][iI][sS][iI][oO][nN]"/>
-      <xs:pattern value="[cC][oO][mM][pP][lL][eE][xX]"/>
+      <xs:pattern value="integer"/>
+      <xs:pattern value="real"/>
+      <xs:pattern value="logical"/>
+      <xs:pattern value="character"/>
+      <xs:pattern value="complex"/>
+      <xs:pattern value="ddt"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -31,7 +31,7 @@
   <!-- attributes -->
 
   <xs:attribute name="comment"        type="xs:string"/>
-  <xs:attribute name="description"      type="xs:string"/>
+  <xs:attribute name="description"    type="xs:string"/>
   <xs:attribute name="name"           type="standard_name_type"/>
   <xs:attribute name="units"          type="xs:string"/>
   <xs:attribute name="version"        type="version_type"/>
@@ -48,20 +48,35 @@
 
   <xs:complexType name="stdname_type">
     <xs:sequence>
-      <xs:element name="type"     type="md_type"/>
+      <xs:element name="type"
+                  type="md_type"
+                  minOccurs="0"
+                  maxOccurs="1"/>
     </xs:sequence>
-    <xs:attribute ref="name"      use="required"/>
+    <xs:attribute ref="name"        use="required"/>
     <xs:attribute ref="description" use="optional"/>
+    <xs:attribute ref="comment"     use="optional"/>
   </xs:complexType>
 
-  <xs:complexType name="section_type">
+<xs:complexType name="section_type">
+  <xs:choice>
     <xs:sequence>
-      <xs:element name="standard_name" type="stdname_type"
-                  minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="standard_name"
+                  type="stdname_type"
+                  minOccurs="1"
+                  maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute ref="name"    use="required"/>
-    <xs:attribute ref="comment" use="optional"/>
-  </xs:complexType>
+    <xs:sequence>
+      <xs:element name="section"
+                  type="section_type"
+                  minOccurs="1"
+                  maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:choice>
+
+  <xs:attribute name="name"   type="xs:string"/>
+  <xs:attribute ref="comment" use="optional"/>
+</xs:complexType>
 
   <!-- definition of elements -->
 

@@ -8,6 +8,22 @@ on:
       - release/*
 
 jobs:
+  validate-xml:
+    name: Use xmlllint to validate the xml file against the schema file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install libxml2-utils
+
+      - name: Run xmllint
+        run: |
+            xmllint --schema standard_names_v1_0.xsd standard_names.xml --noout
+
   check-unique-standard-names:
     name: Check for duplicates in standard names
     runs-on: ubuntu-latest
