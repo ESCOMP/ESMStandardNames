@@ -345,11 +345,11 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
 * `specific_heat_of_dry_air_at_constant_pressure`: Specific heat of dry air at constant pressure
     * `real`: units = J kg-1 K-1
 * `physics_state_due_to_dynamics`: Physics state due to dynamics
-    * `physics_state`: units = none
+    * `ddt`: units = none
 * `timestep_for_physics`: Timestep for physics
     * `integer`: units = s
 * `total_tendency_of_physics`: Total tendency of physics
-    * `physics_tend`: units = none
+    * `ddt`: units = none
 * `air_pressure_at_top_of_atmosphere_model`: Air pressure at top of atmosphere model
     * `real`: units = Pa
 * `air_pressure_at_sea_level`: Air pressure at sea level
@@ -816,7 +816,7 @@ Optional CCPP framework-provided variables
 * `ccpp_scheme_name`: CCPP physics scheme name
     * `character`: units = none
 * `ccpp_constituent_properties`: CCPP Constituent Properties
-    * `ccpp_constituent_prop_ptr_t`: units = none
+    * `ddt`: units = none
 * `ccpp_constituents`: Array of constituents managed by CCPP Framework
     * `real`: units = none
 * `ccpp_constituent_min_values`: CCPP constituent minimum values
@@ -1969,7 +1969,7 @@ Variables related to the compute environment
     * `real`: units = 1
 * `temperature_in_ice_layer`: Temperature in ice layer
     * `real`: units = K
-* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Upward flux of water vapor mixing ratio wrt moist air at surface
+* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
     * `real`: units = kg kg-1 m s-1
 * `upward_temperature_flux_at_surface`: Upward temperature flux at surface
     * `real`: units = K m s-1
@@ -2001,11 +2001,11 @@ Variables related to the compute environment
     * `real`: units = fraction
 * `nir_albedo_strong_cosz`: albedo for near-infrared radiation with strong dependence on cosine of the zenith angle
     * `real`: units = fraction
-* `nir_albedo_weak_cosz`: Nir albedo weak cosz
+* `nir_albedo_weak_cosz`: albedo for near-infrared radiation with weak dependence on cosine of the zenith angle
     * `real`: units = fraction
-* `vis_albedo_strong_cosz`: Vis albedo strong cosz
+* `vis_albedo_strong_cosz`: albedo for visible radiation with strong dependence on cosine of the zenith angle
     * `real`: units = fraction
-* `vis_albedo_weak_cosz`: Vis albedo weak cosz
+* `vis_albedo_weak_cosz`: albedo for visible radiation with weak dependence on cosine of the zenith angle
     * `real`: units = fraction
 * `min_vegetation_area_fraction`: Min vegetation area fraction
     * `real`: units = fraction
@@ -2304,7 +2304,7 @@ Variables related to the compute environment
     * `real`: units = Pa
 * `temperature_at_2m_for_coupling`: Temperature at 2m for coupling
     * `real`: units = K
-* `tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_moist_convection_for_coupling`: Tendency of water vapor mixing ratio wrt moist air due to moist convection for coupling
+* `tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_moist_convection_for_coupling`: Tendency of specific humidity (water vapor mass mixing ratio with respect to moist air) due to moist convection used for coupling
     * `real`: units = kg kg-1 s-1
 * `x_wind_at_10m_for_coupling`: X wind at 10m for coupling
     * `real`: units = m s-1
@@ -2450,7 +2450,7 @@ Variables related to the compute environment
 * `cosine_of_solar_zenith_angle_on_radiation_timestep`: Cosine of solar zenith angle on radiation timestep
     * `real`: units = 1
 * `surface_lw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep`: Surface lw fluxes assuming total and clear sky on radiation timestep
-    * `sfcflw_type`: units = W m-2
+    * `ddt`: units = W m-2
 * `diffuse_shortwave_albedo_on_radiation_timestep`: surface albedo for diffuse shortwave radiation on the timestep for radiation physics
     * `real`: units = fraction
 * `surface_longwave_emissivity`: Surface longwave emissivity
@@ -2458,7 +2458,7 @@ Variables related to the compute environment
 * `air_temperature_at_surface_adjacent_layer_on_radiation_timestep`: Air temperature at surface adjacent layer on radiation timestep
     * `real`: units = K
 * `surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep`: Surface sw fluxes assuming total and clear sky on radiation timestep
-    * `sfcfsw_type`: units = W m-2
+    * `ddt`: units = W m-2
 * `tendency_of_air_temperature_due_to_longwave_heating_assuming_clear_sky_on_radiation_timestep`: Tendency of air temperature due to longwave heating assuming clear sky on radiation timestep
     * `real`: units = K s-1
 * `tendency_of_air_temperature_due_to_integrated_dynamics_through_earths_atmosphere`: Tendency of air temperature due to integrated dynamics through earths atmosphere
