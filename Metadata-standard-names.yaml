@@ -2015,6 +2015,16 @@ section:
       type: integer
       kind: null
       units: index
+    - name: number_of_ccpp_instances
+      description: Number of parallel CCPP instances
+      type: integer
+      kind: null
+      units: index
+    - name: ccpp_instance_number
+      description: Number of current CCPP instance.
+      type: integer
+      kind: null
+      units: index
 - name: system variables
   comment: Variables related to the compute environment
   standard_names:
