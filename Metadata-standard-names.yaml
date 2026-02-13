@@ -2019,7 +2019,7 @@ section:
       description: Number of parallel CCPP instances
       type: integer
       kind: null
-      units: index
+      units: count
     - name: ccpp_instance_number
       description: Number of current CCPP instance.
       type: integer

@@ -830,7 +830,7 @@ Optional CCPP framework-provided variables
 * `ccpp_thread_number`: Number of current OpenMP thread. This variable may only be used during CCPP run phase
     * `integer`: units = index
 * `number_of_ccpp_instances`: Number of parallel CCPP instances
-    * `integer`: units = index
+    * `integer`: units = count
 * `ccpp_instance_number`: Number of current CCPP instance.
     * `integer`: units = index
 ## system variables

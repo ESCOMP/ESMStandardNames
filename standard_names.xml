@@ -1559,7 +1559,7 @@
       </standard_name>
       <standard_name name="number_of_ccpp_instances"
                      description="Number of parallel CCPP instances">
-        <type units="index">integer</type>
+        <type units="count">integer</type>
       </standard_name>
       <standard_name name="ccpp_instance_number"
                      description="Number of current CCPP instance.">
