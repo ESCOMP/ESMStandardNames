@@ -2016,7 +2016,7 @@ section:
       kind: null
       units: index
     - name: number_of_ccpp_instances
-      description: Number of parallel CCPP instances
+      description: Number of parallel CCPP instances on this MPI task
       type: integer
       kind: null
       units: count
