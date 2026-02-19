@@ -1558,7 +1558,7 @@
         <type units="index">integer</type>
       </standard_name>
       <standard_name name="number_of_ccpp_instances"
-                     description="Number of parallel CCPP instances">
+                     description="Number of parallel CCPP instances on this MPI task">
         <type units="count">integer</type>
       </standard_name>
       <standard_name name="ccpp_instance_number"
