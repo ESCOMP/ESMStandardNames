@@ -1557,6 +1557,14 @@
                      description="Number of current OpenMP thread. This variable may only be used during CCPP run phase">
         <type units="index">integer</type>
       </standard_name>
+      <standard_name name="number_of_ccpp_instances"
+                     description="Number of parallel CCPP instances on this MPI task">
+        <type units="count">integer</type>
+      </standard_name>
+      <standard_name name="ccpp_instance_number"
+                     description="Number of current CCPP instance.">
+        <type units="index">integer</type>
+      </standard_name>
     </section>
   </section>
   <section name="system variables"

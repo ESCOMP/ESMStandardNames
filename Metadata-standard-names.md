@@ -829,6 +829,10 @@ Optional CCPP framework-provided variables
     * `integer`: units = count
 * `ccpp_thread_number`: Number of current OpenMP thread. This variable may only be used during CCPP run phase
     * `integer`: units = index
+* `number_of_ccpp_instances`: Number of parallel CCPP instances on this MPI task
+    * `integer`: units = count
+* `ccpp_instance_number`: Number of current CCPP instance.
+    * `integer`: units = index
 ## system variables
 Variables related to the compute environment
 * `flag_for_mpi_root`: Flag for MPI root process
