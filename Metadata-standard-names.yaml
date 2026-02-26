@@ -654,11 +654,61 @@ section:
     type: integer
     kind: null
     units: index
-  - name: number_of_openmp_threads
-    description: Total number of thread blocks OpenMP (shared-memory) parallel threads.
+  - name: vertical_dimension_of_sea_ice
+    description: Vertical dimension of sea ice
     type: integer
     kind: null
     units: count
+  - name: lower_bound_of_vertical_dimension_of_surface_snow
+    description: lower bound of of snow-related arrays for land surface model
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_dimension_for_radiation
+    description: Vertical dimension for radiation
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_interface_dimension_for_radiation
+    description: Vertical interface dimension for radiation
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_dimension_of_surface_snow
+    description: Vertical dimension of surface snow
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_dimension_of_soil
+    description: Vertical dimension of soil
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_dimension_of_soil_internal_to_land_surface_scheme
+    description: Vertical dimension of soil internal to land surface scheme
+    type: integer
+    kind: null
+    units: count
+  - name: upper_bound_of_vertical_dimension_of_surface_snow
+    description: upper bound of of snow-related arrays for land surface model
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_layer_dimension_minus_one
+    description: Vertical layer dimension minus one
+    type: integer
+    kind: null
+    units: count
+  - name: vertical_interface_dimension_interstitial
+    description: Vertical interface dimension interstitial
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_snow_layers
+    description: Number of snow layers
+    type: real
+    kind: null
+    units: 1
 - name: constants
   comment: Constant parameters that should be identical across a full modeling system
   standard_names:
@@ -738,6 +788,26 @@ section:
     units: m2
   - name: cell_scaling_factor
     description: Cell scaling factor
+    type: real
+    kind: null
+    units: 1
+  - name: do_lagrangian_vertical_coordinate
+    description: Flag indicating if vertical coordinate is lagrangian
+    type: logical
+    kind: null
+    units: flag
+  - name: sigma_pressure_hybrid_coordinate_a_coefficient
+    description: Sigma pressure hybrid coordinate a coefficient
+    type: real
+    kind: null
+    units: Pa
+  - name: sigma_pressure_hybrid_coordinate_b_coefficient
+    description: Sigma pressure hybrid coordinate b coefficient
+    type: real
+    kind: null
+    units: 1
+  - name: sigma_pressure_hybrid_vertical_coordinate
+    description: Sigma pressure hybrid vertical coordinate
     type: real
     kind: null
     units: 1
@@ -859,11 +929,6 @@ section:
     type: real
     kind: null
     units: J kg-1
-  - name: do_lagrangian_vertical_coordinate
-    description: Flag indicating if vertical coordinate is lagrangian
-    type: logical
-    kind: null
-    units: flag
   - name: lagrangian_tendency_of_air_pressure
     description: Vertical pressure velocity
     type: real
@@ -2038,14 +2103,79 @@ section:
     type: integer
     kind: null
     units: 1
+  - name: number_of_openmp_threads
+    description: Total number of thread blocks OpenMP (shared-memory) parallel threads.
+    type: integer
+    kind: null
+    units: count
+  - name: mpi_communicator
+    description: Mpi communicator
+    type: integer
+    kind: null
+    units: index
+  - name: mpi_rank
+    description: Mpi rank
+    type: integer
+    kind: null
+    units: index
+  - name: mpi_root
+    description: Mpi root
+    type: integer
+    kind: null
+    units: index
+  - name: number_of_mpi_tasks
+    description: Number of mpi tasks
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_x_points_for_current_mpi_rank
+    description: Number of x points for current mpi rank
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_y_points_for_current_mpi_rank
+    description: Number of y points for current mpi rank
+    type: integer
+    kind: null
+    units: count
+  - name: starting_x_index_for_current_mpi_rank
+    description: Starting x index for current mpi rank
+    type: integer
+    kind: null
+    units: index
+  - name: starting_y_index_for_current_mpi_rank
+    description: Starting y index for current mpi rank
+    type: integer
+    kind: null
+    units: index
+  - name: iounit_of_log
+    description: Iounit of log
+    type: integer
+    kind: null
+    units: 1
+  - name: iounit_of_namelist
+    description: Iounit of namelist
+    type: integer
+    kind: null
+    units: 1
+  - name: number_of_lines_in_internal_namelist
+    description: Number of lines in internal namelist
+    type: integer
+    kind: null
+    units: count
+  - name: filename_of_namelist
+    description: Filename of namelist
+    type: character
+    kind: null
+    units: none
+  - name: filename_of_internal_namelist
+    description: Filename of internal namelist
+    type: character
+    kind: null
+    units: none
 - name: GFS_typedefs_GFS_control_type
   comment: null
   standard_names:
-  - name: sigma_pressure_hybrid_coordinate_a_coefficient
-    description: Sigma pressure hybrid coordinate a coefficient
-    type: real
-    kind: null
-    units: Pa
   - name: radiatively_active_gases_as_string
     description: Radiatively active gases as string
     type: character
@@ -2097,11 +2227,6 @@ section:
     type: real
     kind: null
     units: m2 s-1
-  - name: sigma_pressure_hybrid_coordinate_b_coefficient
-    description: Sigma pressure hybrid coordinate b coefficient
-    type: real
-    kind: null
-    units: 1
   - name: cellular_automata_finer_grid
     description: Cellular automata finer grid
     type: integer
@@ -3184,7 +3309,8 @@ section:
     kind: null
     units: 1
   - name: control_for_vertical_index_direction
-    description: Control for vertical index direction
+    description: control flag for direction of vertical index; 0 indicates index from
+      toa to surface, 1 indicates index from surface to toa
     type: integer
     kind: null
     units: 1
@@ -3359,11 +3485,6 @@ section:
     type: integer
     kind: null
     units: index
-  - name: vertical_dimension_of_sea_ice
-    description: Vertical dimension of sea ice
-    type: integer
-    kind: null
-    units: count
   - name: index_of_air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array
     description: Index of air temperature on previous timestep in xyz dimensioned
       restart array
@@ -3592,16 +3713,6 @@ section:
     type: real
     kind: null
     units: rad2 m-2
-  - name: iounit_of_log
-    description: Iounit of log
-    type: integer
-    kind: null
-    units: 1
-  - name: iounit_of_namelist
-    description: Iounit of namelist
-    type: integer
-    kind: null
-    units: 1
   - name: forecast_julian_day
     description: Forecast julian day
     type: real
@@ -3624,11 +3735,6 @@ section:
     type: real
     kind: null
     units: K s-1
-  - name: lower_bound_of_vertical_dimension_of_surface_snow
-    description: Lower bound of vertical dimension of surface snow
-    type: integer
-    kind: null
-    units: count
   - name: land_surface_perturbation_magnitudes
     description: Land surface perturbation magnitudes
     type: real
@@ -3828,26 +3934,6 @@ section:
     type: real
     kind: null
     units: fraction
-  - name: mpi_communicator
-    description: Mpi communicator
-    type: integer
-    kind: null
-    units: index
-  - name: mpi_rank
-    description: Mpi rank
-    type: integer
-    kind: null
-    units: index
-  - name: mpi_root
-    description: Mpi root
-    type: integer
-    kind: null
-    units: index
-  - name: number_of_mpi_tasks
-    description: Number of mpi tasks
-    type: integer
-    kind: null
-    units: count
   - name: tunable_parameter_for_critical_cloud_workfunction_in_relaxed_arakawa_schubert_deep_convection
     description: Tunable parameter for critical cloud workfunction in relaxed arakawa
       schubert deep convection
@@ -3871,16 +3957,6 @@ section:
     type: integer
     kind: null
     units: 1
-  - name: filename_of_namelist
-    description: Filename of namelist
-    type: character
-    kind: null
-    units: none
-  - name: filename_of_internal_namelist
-    description: Filename of internal namelist
-    type: character
-    kind: null
-    units: none
   - name: number_of_xy_dimensioned_auxiliary_arrays
     description: Number of xy dimensioned auxiliary arrays
     type: integer
@@ -3982,11 +4058,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: number_of_lines_in_internal_namelist
-    description: Number of lines in internal namelist
-    type: integer
-    kind: null
-    units: count
   - name: number_of_longwave_bands
     description: Number of longwave bands
     type: integer
@@ -4002,18 +4073,8 @@ section:
     type: integer
     kind: null
     units: count
-  - name: number_of_x_points_for_current_mpi_rank
-    description: Number of x points for current mpi rank
-    type: integer
-    kind: null
-    units: count
   - name: number_of_y_points_for_current_cubed_sphere_tile
     description: Number of y points for current cubed sphere tile
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_y_points_for_current_mpi_rank
-    description: Number of y points for current mpi rank
     type: integer
     kind: null
     units: count
@@ -4081,16 +4142,6 @@ section:
     units: count
   - name: number_of_tracers_plus_one
     description: Number of tracers plus one
-    type: integer
-    kind: null
-    units: count
-  - name: vertical_dimension_for_radiation
-    description: Vertical dimension for radiation
-    type: integer
-    kind: null
-    units: count
-  - name: vertical_interface_dimension_for_radiation
-    description: Vertical interface dimension for radiation
     type: integer
     kind: null
     units: count
@@ -4206,41 +4257,16 @@ section:
     type: real
     kind: null
     units: 1
-  - name: vertical_dimension_of_surface_snow
-    description: Vertical dimension of surface snow
-    type: integer
-    kind: null
-    units: count
   - name: control_for_soil_type_dataset
     description: Control for soil type dataset
     type: integer
     kind: null
     units: 1
-  - name: vertical_dimension_of_soil
-    description: Vertical dimension of soil
-    type: integer
-    kind: null
-    units: count
-  - name: vertical_dimension_of_soil_internal_to_land_surface_scheme
-    description: Vertical dimension of soil internal to land surface scheme
-    type: integer
-    kind: null
-    units: count
   - name: solar_constant
     description: Solar constant
     type: real
     kind: null
     units: W m-2
-  - name: starting_x_index_for_current_mpi_rank
-    description: Starting x index for current mpi rank
-    type: integer
-    kind: null
-    units: index
-  - name: starting_y_index_for_current_mpi_rank
-    description: Starting y index for current mpi rank
-    type: integer
-    kind: null
-    units: index
   - name: multiplicative_tuning_parameter_for_reduced_surface_heat_fluxes_due_to_canopy_heat_storage
     description: Multiplicative tuning parameter for reduced surface heat fluxes due
       to canopy heat storage
@@ -4322,11 +4348,6 @@ section:
     type: real
     kind: null
     units: m s-1
-  - name: upper_bound_of_vertical_dimension_of_surface_snow
-    description: Upper bound of vertical dimension of surface snow
-    type: integer
-    kind: null
-    units: count
   - name: index_of_urban_vegetation_category
     description: Index of urban vegetation category
     type: integer
@@ -4340,16 +4361,6 @@ section:
   - name: control_for_vegetation_dataset
     description: Control for vegetation dataset
     type: integer
-    kind: null
-    units: 1
-  - name: vertical_layer_dimension_minus_one
-    description: Vertical layer dimension minus one
-    type: integer
-    kind: null
-    units: count
-  - name: sigma_pressure_hybrid_vertical_coordinate
-    description: Sigma pressure hybrid vertical coordinate
-    type: real
     kind: null
     units: 1
   - name: lower_bound_for_depth_of_sea_temperature_for_nsstm
@@ -4486,11 +4497,6 @@ section:
     type: real
     kind: null
     units: m s-2
-  - name: vertical_interface_dimension_interstitial
-    description: Vertical interface dimension interstitial
-    type: integer
-    kind: null
-    units: count
 - name: GFS_typedefs_GFS_tbd_type
   comment: null
   standard_names:
@@ -5146,11 +5152,6 @@ section:
     type: real
     kind: null
     units: fraction
-  - name: number_of_snow_layers
-    description: Number of snow layers
-    type: real
-    kind: null
-    units: 1
   - name: ocean_mixed_layer_thickness
     description: Ocean mixed layer thickness
     type: real

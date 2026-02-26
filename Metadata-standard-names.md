@@ -305,8 +305,28 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `integer`: units = index
 * `vertical_index_at_top_interface`: Vertical index at top interface
     * `integer`: units = index
-* `number_of_openmp_threads`: Total number of thread blocks OpenMP (shared-memory) parallel threads.
+* `vertical_dimension_of_sea_ice`: Vertical dimension of sea ice
     * `integer`: units = count
+* `lower_bound_of_vertical_dimension_of_surface_snow`: lower bound of of snow-related arrays for land surface model
+    * `integer`: units = count
+* `vertical_dimension_for_radiation`: Vertical dimension for radiation
+    * `integer`: units = count
+* `vertical_interface_dimension_for_radiation`: Vertical interface dimension for radiation
+    * `integer`: units = count
+* `vertical_dimension_of_surface_snow`: Vertical dimension of surface snow
+    * `integer`: units = count
+* `vertical_dimension_of_soil`: Vertical dimension of soil
+    * `integer`: units = count
+* `vertical_dimension_of_soil_internal_to_land_surface_scheme`: Vertical dimension of soil internal to land surface scheme
+    * `integer`: units = count
+* `upper_bound_of_vertical_dimension_of_surface_snow`: upper bound of of snow-related arrays for land surface model
+    * `integer`: units = count
+* `vertical_layer_dimension_minus_one`: Vertical layer dimension minus one
+    * `integer`: units = count
+* `vertical_interface_dimension_interstitial`: Vertical interface dimension interstitial
+    * `integer`: units = count
+* `number_of_snow_layers`: Number of snow layers
+    * `real`: units = 1
 ## constants
 Constant parameters that should be identical across a full modeling system
 * `avogadro_number`: Avogadro number
@@ -339,6 +359,14 @@ Constant parameters that should be identical across a full modeling system
 * `cell_area`: Cell area
     * `real`: units = m2
 * `cell_scaling_factor`: Cell scaling factor
+    * `real`: units = 1
+* `do_lagrangian_vertical_coordinate`: Flag indicating if vertical coordinate is lagrangian
+    * `logical`: units = flag
+* `sigma_pressure_hybrid_coordinate_a_coefficient`: Sigma pressure hybrid coordinate a coefficient
+    * `real`: units = Pa
+* `sigma_pressure_hybrid_coordinate_b_coefficient`: Sigma pressure hybrid coordinate b coefficient
+    * `real`: units = 1
+* `sigma_pressure_hybrid_vertical_coordinate`: Sigma pressure hybrid vertical coordinate
     * `real`: units = 1
 ## state_variables
 Note that appending '_on_previous_timestep' to standard_names in this section yields another valid standard_name
@@ -386,8 +414,6 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = degrees
 * `dry_static_energy`: Dry static energy content of atmosphere layer
     * `real`: units = J kg-1
-* `do_lagrangian_vertical_coordinate`: Flag indicating if vertical coordinate is lagrangian
-    * `logical`: units = flag
 * `lagrangian_tendency_of_air_pressure`: Vertical pressure velocity
     * `real`: units = Pa s-1
 * `density_of_dry_air`: Density of dry air
@@ -839,9 +865,35 @@ Variables related to the compute environment
     * `logical`: units = flag
 * `log_output_unit`: Fortran logical unit for output log file
     * `integer`: units = 1
+* `number_of_openmp_threads`: Total number of thread blocks OpenMP (shared-memory) parallel threads.
+    * `integer`: units = count
+* `mpi_communicator`: Mpi communicator
+    * `integer`: units = index
+* `mpi_rank`: Mpi rank
+    * `integer`: units = index
+* `mpi_root`: Mpi root
+    * `integer`: units = index
+* `number_of_mpi_tasks`: Number of mpi tasks
+    * `integer`: units = count
+* `number_of_x_points_for_current_mpi_rank`: Number of x points for current mpi rank
+    * `integer`: units = count
+* `number_of_y_points_for_current_mpi_rank`: Number of y points for current mpi rank
+    * `integer`: units = count
+* `starting_x_index_for_current_mpi_rank`: Starting x index for current mpi rank
+    * `integer`: units = index
+* `starting_y_index_for_current_mpi_rank`: Starting y index for current mpi rank
+    * `integer`: units = index
+* `iounit_of_log`: Iounit of log
+    * `integer`: units = 1
+* `iounit_of_namelist`: Iounit of namelist
+    * `integer`: units = 1
+* `number_of_lines_in_internal_namelist`: Number of lines in internal namelist
+    * `integer`: units = count
+* `filename_of_namelist`: Filename of namelist
+    * `character`: units = none
+* `filename_of_internal_namelist`: Filename of internal namelist
+    * `character`: units = none
 ## GFS_typedefs_GFS_control_type
-* `sigma_pressure_hybrid_coordinate_a_coefficient`: Sigma pressure hybrid coordinate a coefficient
-    * `real`: units = Pa
 * `radiatively_active_gases_as_string`: Radiatively active gases as string
     * `character`: units = none
 * `aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection`: Aerosol aware multiplicative rain conversion parameter for deep convection
@@ -862,8 +914,6 @@ Variables related to the compute environment
     * `real`: units = m2 s-1
 * `atmosphere_momentum_diffusivity_due_to_background`: Atmosphere momentum diffusivity due to background
     * `real`: units = m2 s-1
-* `sigma_pressure_hybrid_coordinate_b_coefficient`: Sigma pressure hybrid coordinate b coefficient
-    * `real`: units = 1
 * `cellular_automata_finer_grid`: Cellular automata finer grid
     * `integer`: units = count
 * `cellular_automata_lifetime`: Cellular automata lifetime
@@ -1284,7 +1334,7 @@ Variables related to the compute environment
     * `integer`: units = 1
 * `control_for_prescribed_co2`: Control for prescribed co2
     * `integer`: units = 1
-* `control_for_vertical_index_direction`: Control for vertical index direction
+* `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa
     * `integer`: units = 1
 * `do_ocean_wave_coupling`: Do ocean wave coupling
     * `logical`: units = flag
@@ -1352,8 +1402,6 @@ Variables related to the compute environment
     * `real`: units = 1
 * `index_of_ice_vegetation_category`: Index of ice vegetation category
     * `integer`: units = index
-* `vertical_dimension_of_sea_ice`: Vertical dimension of sea ice
-    * `integer`: units = count
 * `index_of_air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of air temperature on previous timestep in xyz dimensioned restart array
     * `integer`: units = index
 * `index_of_air_temperature_two_timesteps_back_in_xyz_dimensioned_restart_array`: Index of air temperature two timesteps back in xyz dimensioned restart array
@@ -1434,10 +1482,6 @@ Variables related to the compute environment
     * `integer`: units = index
 * `reciprocal_of_grid_scale_range`: Reciprocal of grid scale range
     * `real`: units = rad2 m-2
-* `iounit_of_log`: Iounit of log
-    * `integer`: units = 1
-* `iounit_of_namelist`: Iounit of namelist
-    * `integer`: units = 1
 * `forecast_julian_day`: Forecast julian day
     * `real`: units = days
 * `min_lake_ice_area_fraction`: Min lake ice area fraction
@@ -1446,8 +1490,6 @@ Variables related to the compute environment
     * `real`: units = 1
 * `max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation`: Maximum tendency of air potential temperature due to large-scale precipitation
     * `real`: units = K s-1
-* `lower_bound_of_vertical_dimension_of_surface_snow`: Lower bound of vertical dimension of surface snow
-    * `integer`: units = count
 * `land_surface_perturbation_magnitudes`: Land surface perturbation magnitudes
     * `real`: units = variable
 * `max_critical_relative_humidity`: Maximum critical relative humidity
@@ -1524,14 +1566,6 @@ Variables related to the compute environment
     * `real`: units = fraction
 * `momentum_transport_reduction_factor_due_to_pressure_gradient_force_for_shallow_convection`: Momentum transport reduction factor due to pressure gradient force for shallow convection
     * `real`: units = fraction
-* `mpi_communicator`: Mpi communicator
-    * `integer`: units = index
-* `mpi_rank`: Mpi rank
-    * `integer`: units = index
-* `mpi_root`: Mpi root
-    * `integer`: units = index
-* `number_of_mpi_tasks`: Number of mpi tasks
-    * `integer`: units = count
 * `tunable_parameter_for_critical_cloud_workfunction_in_relaxed_arakawa_schubert_deep_convection`: Tunable parameter for critical cloud workfunction in relaxed arakawa schubert deep convection
     * `real`: units = 1
 * `tunable_parameters_for_convective_gwd`: Tunable parameters for convective gravity wave drag
@@ -1540,10 +1574,6 @@ Variables related to the compute environment
     * `real`: units = 1
 * `control_for_additional_diagnostics_in_mynn_pbl_scheme`: Control for additional diagnostics in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme
     * `integer`: units = 1
-* `filename_of_namelist`: Filename of namelist
-    * `character`: units = none
-* `filename_of_internal_namelist`: Filename of internal namelist
-    * `character`: units = none
 * `number_of_xy_dimensioned_auxiliary_arrays`: Number of xy dimensioned auxiliary arrays
     * `integer`: units = count
 * `number_of_pdf_based_variables_in_xyz_dimensioned_restart_array`: Number of probability density function-based variables in XYZ-dimensioned restart array
@@ -1584,19 +1614,13 @@ Variables related to the compute environment
     * `integer`: units = count
 * `number_of_latitude_points`: Number of latitude points
     * `integer`: units = count
-* `number_of_lines_in_internal_namelist`: Number of lines in internal namelist
-    * `integer`: units = count
 * `number_of_longwave_bands`: Number of longwave bands
     * `integer`: units = count
 * `number_of_longwave_spectral_points`: Number of longwave spectral points
     * `integer`: units = count
 * `number_of_x_points_for_current_cubed_sphere_tile`: Number of x points for current cubed sphere tile
     * `integer`: units = count
-* `number_of_x_points_for_current_mpi_rank`: Number of x points for current mpi rank
-    * `integer`: units = count
 * `number_of_y_points_for_current_cubed_sphere_tile`: Number of y points for current cubed sphere tile
-    * `integer`: units = count
-* `number_of_y_points_for_current_mpi_rank`: Number of y points for current mpi rank
     * `integer`: units = count
 * `number_of_diagnostics_variables_for_radiation`: Number of diagnostics variables for radiation
     * `integer`: units = count
@@ -1623,10 +1647,6 @@ Variables related to the compute environment
 * `number_of_timesteps_for_concurrent_radiation_and_remainder_physics_calls_after_model_initialization`: Number of timesteps for concurrent radiation and remainder physics calls after model initialization
     * `integer`: units = count
 * `number_of_tracers_plus_one`: Number of tracers plus one
-    * `integer`: units = count
-* `vertical_dimension_for_radiation`: Vertical dimension for radiation
-    * `integer`: units = count
-* `vertical_interface_dimension_for_radiation`: Vertical interface dimension for radiation
     * `integer`: units = count
 * `multiplicative_tuning_parameter_for_potential_evaporation`: Multiplicative tuning parameter for potential evaporation
     * `real`: units = 1
@@ -1670,20 +1690,10 @@ Variables related to the compute environment
     * `real`: units = 1
 * `sine_of_solar_declination_angle`: Sine of solar declination angle
     * `real`: units = 1
-* `vertical_dimension_of_surface_snow`: Vertical dimension of surface snow
-    * `integer`: units = count
 * `control_for_soil_type_dataset`: Control for soil type dataset
     * `integer`: units = 1
-* `vertical_dimension_of_soil`: Vertical dimension of soil
-    * `integer`: units = count
-* `vertical_dimension_of_soil_internal_to_land_surface_scheme`: Vertical dimension of soil internal to land surface scheme
-    * `integer`: units = count
 * `solar_constant`: Solar constant
     * `real`: units = W m-2
-* `starting_x_index_for_current_mpi_rank`: Starting x index for current mpi rank
-    * `integer`: units = index
-* `starting_y_index_for_current_mpi_rank`: Starting y index for current mpi rank
-    * `integer`: units = index
 * `multiplicative_tuning_parameter_for_reduced_surface_heat_fluxes_due_to_canopy_heat_storage`: Multiplicative tuning parameter for reduced surface heat fluxes due to canopy heat storage
     * `real`: units = 1
 * `thickness_of_soil_layers_for_lsm`: Thickness of soil layers for land surface model
@@ -1714,18 +1724,12 @@ Variables related to the compute environment
     * `real`: units = m s-1
 * `tunable_parameter_2_for_max_cloud_base_updraft_velocity_in_chikira_sugiyama_deep_convection`: Tunable parameter 2 for max cloud base updraft velocity in chikira sugiyama deep convection
     * `real`: units = m s-1
-* `upper_bound_of_vertical_dimension_of_surface_snow`: Upper bound of vertical dimension of surface snow
-    * `integer`: units = count
 * `index_of_urban_vegetation_category`: Index of urban vegetation category
     * `integer`: units = index
 * `land_surface_perturbation_variables`: Land surface perturbation variables
     * `character`: units = none
 * `control_for_vegetation_dataset`: Control for vegetation dataset
     * `integer`: units = 1
-* `vertical_layer_dimension_minus_one`: Vertical layer dimension minus one
-    * `integer`: units = count
-* `sigma_pressure_hybrid_vertical_coordinate`: Sigma pressure hybrid vertical coordinate
-    * `real`: units = 1
 * `lower_bound_for_depth_of_sea_temperature_for_nsstm`: Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme
     * `integer`: units = mm
 * `upper_bound_for_depth_of_sea_temperature_for_nsstm`: Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme
@@ -1773,8 +1777,6 @@ Variables related to the compute environment
     * `real`: units = m s-2
 * `process_split_cumulative_tendency_of_y_wind`: Process split cumulative tendency of y wind
     * `real`: units = m s-2
-* `vertical_interface_dimension_interstitial`: Vertical interface dimension interstitial
-    * `integer`: units = count
 ## GFS_typedefs_GFS_tbd_type
 * `absolute_momentum_flux_due_to_nonorographic_gwd`: Absolute momentum flux due to non-orographic gravity wave drag
     * `real`: units = various
@@ -2023,8 +2025,6 @@ Variables related to the compute environment
     * `real`: units = m
 * `normalized_soil_wetness_for_lsm`: Normalized soil wetness for land surface model
     * `real`: units = fraction
-* `number_of_snow_layers`: Number of snow layers
-    * `real`: units = 1
 * `ocean_mixed_layer_thickness`: Ocean mixed layer thickness
     * `real`: units = m
 * `height_above_mean_sea_level`: Height above mean sea level

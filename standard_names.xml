@@ -571,9 +571,40 @@
     <standard_name name="vertical_index_at_top_interface">
       <type units="index">integer</type>
     </standard_name>
-    <standard_name name="number_of_openmp_threads"
-                   description="Total number of thread blocks OpenMP (shared-memory) parallel threads.">
+    <standard_name name="vertical_dimension_of_sea_ice">
       <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="lower_bound_of_vertical_dimension_of_surface_snow"
+                   description="lower bound of of snow-related arrays for land surface model">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_dimension_for_radiation">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_interface_dimension_for_radiation">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_dimension_of_surface_snow">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_dimension_of_soil">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_dimension_of_soil_internal_to_land_surface_scheme">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="upper_bound_of_vertical_dimension_of_surface_snow"
+                   description="upper bound of of snow-related arrays for land surface model">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_layer_dimension_minus_one">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_interface_dimension_interstitial">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_snow_layers">
+      <type units="1">real</type>
     </standard_name>
   </section>
   <section name="constants"
@@ -632,6 +663,19 @@
     </standard_name>
     <standard_name name="cell_scaling_factor">
       <type units="1">real</type>
+    </standard_name>
+    <standard_name name="do_lagrangian_vertical_coordinate"
+                   description="Flag indicating if vertical coordinate is lagrangian">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="sigma_pressure_hybrid_coordinate_a_coefficient">
+       <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="sigma_pressure_hybrid_coordinate_b_coefficient">
+       <type units="1">real</type>
+    </standard_name>
+    <standard_name name="sigma_pressure_hybrid_vertical_coordinate">
+       <type units="1">real</type>
     </standard_name>
   </section>
   <section name="state_variables"
@@ -713,10 +757,6 @@
     <standard_name name="dry_static_energy"
                    description="Dry static energy content of atmosphere layer">
       <type units="J kg-1">real</type>
-    </standard_name>
-    <standard_name name="do_lagrangian_vertical_coordinate"
-                   description="Flag indicating if vertical coordinate is lagrangian">
-      <type units="flag">logical</type>
     </standard_name>
     <standard_name name="lagrangian_tendency_of_air_pressure"
                    description="Vertical pressure velocity">
@@ -1577,11 +1617,51 @@
                    description="Fortran logical unit for output log file">
       <type units="1">integer</type>
     </standard_name>
+    <standard_name name="number_of_openmp_threads"
+                   description="Total number of thread blocks OpenMP (shared-memory) parallel threads.">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="mpi_communicator">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="mpi_rank">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="mpi_root">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="number_of_mpi_tasks">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_x_points_for_current_mpi_rank">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_y_points_for_current_mpi_rank">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="starting_x_index_for_current_mpi_rank">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="starting_y_index_for_current_mpi_rank">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="iounit_of_log">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="iounit_of_namelist">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="number_of_lines_in_internal_namelist">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="filename_of_namelist">
+      <type units="none">character</type>
+    </standard_name>
+    <standard_name name="filename_of_internal_namelist">
+      <type units="none">character</type>
+    </standard_name>
   </section>
   <section name="GFS_typedefs_GFS_control_type">
-      <standard_name name="sigma_pressure_hybrid_coordinate_a_coefficient">
-         <type units="Pa">real</type>
-      </standard_name>
       <standard_name name="radiatively_active_gases_as_string">
          <type units="none">character</type>
       </standard_name>
@@ -1612,9 +1692,6 @@
       </standard_name>
       <standard_name name="atmosphere_momentum_diffusivity_due_to_background">
          <type units="m2 s-1">real</type>
-      </standard_name>
-      <standard_name name="sigma_pressure_hybrid_coordinate_b_coefficient">
-         <type units="1">real</type>
       </standard_name>
       <standard_name name="cellular_automata_finer_grid">
          <type units="count">integer</type>
@@ -2302,7 +2379,8 @@
       <standard_name name="control_for_prescribed_co2">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="control_for_vertical_index_direction">
+      <standard_name name="control_for_vertical_index_direction"
+                     description="control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa">
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="do_ocean_wave_coupling">
@@ -2411,9 +2489,6 @@
       </standard_name>
       <standard_name name="index_of_ice_vegetation_category">
          <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="vertical_dimension_of_sea_ice">
-         <type units="count">integer</type>
       </standard_name>
       <standard_name name="index_of_air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array">
          <type units="index">integer</type>
@@ -2546,12 +2621,6 @@
       <standard_name name="reciprocal_of_grid_scale_range">
          <type units="rad2 m-2">real</type>
       </standard_name>
-      <standard_name name="iounit_of_log">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="iounit_of_namelist">
-         <type units="1">integer</type>
-      </standard_name>
       <standard_name name="forecast_julian_day">
          <type units="days">real</type>
       </standard_name>
@@ -2564,9 +2633,6 @@
       <standard_name name="max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation"
                    description="Maximum tendency of air potential temperature due to large-scale precipitation">
          <type units="K s-1">real</type>
-      </standard_name>
-      <standard_name name="lower_bound_of_vertical_dimension_of_surface_snow">
-         <type units="count">integer</type>
       </standard_name>
       <standard_name name="land_surface_perturbation_magnitudes">
          <type units="variable">real</type>
@@ -2694,18 +2760,6 @@
       <standard_name name="momentum_transport_reduction_factor_due_to_pressure_gradient_force_for_shallow_convection">
          <type units="fraction">real</type>
       </standard_name>
-      <standard_name name="mpi_communicator">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="mpi_rank">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="mpi_root">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="number_of_mpi_tasks">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="tunable_parameter_for_critical_cloud_workfunction_in_relaxed_arakawa_schubert_deep_convection">
          <type units="1">real</type>
       </standard_name>
@@ -2720,12 +2774,6 @@
       <standard_name name="control_for_additional_diagnostics_in_mynn_pbl_scheme"
                    description="Control for additional diagnostics in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="filename_of_namelist">
-         <type units="none">character</type>
-      </standard_name>
-      <standard_name name="filename_of_internal_namelist">
-         <type units="none">character</type>
       </standard_name>
       <standard_name name="number_of_xy_dimensioned_auxiliary_arrays">
          <type units="count">integer</type>
@@ -2788,9 +2836,6 @@
       <standard_name name="number_of_latitude_points">
          <type units="count">integer</type>
       </standard_name>
-      <standard_name name="number_of_lines_in_internal_namelist">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="number_of_longwave_bands">
          <type units="count">integer</type>
       </standard_name>
@@ -2800,13 +2845,7 @@
       <standard_name name="number_of_x_points_for_current_cubed_sphere_tile">
          <type units="count">integer</type>
       </standard_name>
-      <standard_name name="number_of_x_points_for_current_mpi_rank">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="number_of_y_points_for_current_cubed_sphere_tile">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_y_points_for_current_mpi_rank">
          <type units="count">integer</type>
       </standard_name>
       <standard_name name="number_of_diagnostics_variables_for_radiation">
@@ -2847,12 +2886,6 @@
          <type units="count">integer</type>
       </standard_name>
       <standard_name name="number_of_tracers_plus_one">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="vertical_dimension_for_radiation">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="vertical_interface_dimension_for_radiation">
          <type units="count">integer</type>
       </standard_name>
       <standard_name name="multiplicative_tuning_parameter_for_potential_evaporation">
@@ -2923,26 +2956,11 @@
       <standard_name name="sine_of_solar_declination_angle">
          <type units="1">real</type>
       </standard_name>
-      <standard_name name="vertical_dimension_of_surface_snow">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="control_for_soil_type_dataset">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="vertical_dimension_of_soil">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="vertical_dimension_of_soil_internal_to_land_surface_scheme">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="solar_constant">
          <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="starting_x_index_for_current_mpi_rank">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="starting_y_index_for_current_mpi_rank">
-         <type units="index">integer</type>
       </standard_name>
       <standard_name name="multiplicative_tuning_parameter_for_reduced_surface_heat_fluxes_due_to_canopy_heat_storage">
          <type units="1">real</type>
@@ -2994,9 +3012,6 @@
       <standard_name name="tunable_parameter_2_for_max_cloud_base_updraft_velocity_in_chikira_sugiyama_deep_convection">
          <type units="m s-1">real</type>
       </standard_name>
-      <standard_name name="upper_bound_of_vertical_dimension_of_surface_snow">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="index_of_urban_vegetation_category">
          <type units="index">integer</type>
       </standard_name>
@@ -3005,12 +3020,6 @@
       </standard_name>
       <standard_name name="control_for_vegetation_dataset">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="vertical_layer_dimension_minus_one">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="sigma_pressure_hybrid_vertical_coordinate">
-         <type units="1">real</type>
       </standard_name>
       <standard_name name="lower_bound_for_depth_of_sea_temperature_for_nsstm"
                    description="Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme">
@@ -3094,9 +3103,6 @@
       </standard_name>
       <standard_name name="process_split_cumulative_tendency_of_y_wind">
          <type units="m s-2">real</type>
-      </standard_name>
-      <standard_name name="vertical_interface_dimension_interstitial">
-         <type units="count">integer</type>
       </standard_name>
    </section>
    <section name="GFS_typedefs_GFS_tbd_type">
@@ -3512,9 +3518,6 @@
       <standard_name name="normalized_soil_wetness_for_lsm"
                    description="Normalized soil wetness for land surface model">
          <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="number_of_snow_layers">
-         <type units="1">real</type>
       </standard_name>
       <standard_name name="ocean_mixed_layer_thickness">
          <type units="m">real</type>
