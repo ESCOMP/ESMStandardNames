@@ -873,6 +873,11 @@ section:
     type: real
     kind: null
     units: m s-2
+  - name: density_of_fresh_water
+    description: Density of fresh water
+    type: real
+    kind: null
+    units: kg m-3
 - name: coordinates
   comment: Parameters defining or relating to the coordinate system of the model
   standard_names:
@@ -896,11 +901,6 @@ section:
     type: real
     kind: null
     units: 1
-  - name: do_lagrangian_vertical_coordinate
-    description: Flag indicating if vertical coordinate is lagrangian
-    type: logical
-    kind: null
-    units: flag
   - name: sigma_pressure_hybrid_coordinate_a_coefficient
     description: Sigma pressure hybrid coordinate a coefficient
     type: real
@@ -1221,11 +1221,6 @@ section:
     type: real
     kind: null
     units: Pa
-  - name: do_molecular_diffusion
-    description: Do molecular diffusion
-    type: logical
-    kind: null
-    units: flag
   - name: is_initialized_physics_grid
     description: Flag to indicate if physics grid is initialized
     type: logical
@@ -1830,7 +1825,7 @@ section:
       type: real
       kind: null
       units: m-3
-  - name: precipitation and hydrometeors
+  - name: precipitation, cloud, and hydrometeor variables
     comment: null
     standard_names:
     - name: total_precipitation_rate_at_surface
@@ -1964,6 +1959,89 @@ section:
       type: real
       kind: null
       units: 1
+    - name: cloud_condensate_autoconversion_threshold_coefficient
+      description: Cloud condensate autoconversion threshold coefficient
+      type: real
+      kind: null
+      units: 1
+    - name: cloud_condensate_autoconversion_threshold_coefficient_for_deep_convection
+      description: Cloud condensate autoconversion threshold coefficient for deep
+        convection
+      type: real
+      kind: null
+      units: 1
+    - name: reciprocal_of_cloud_phase_transition_temperature_range
+      description: Reciprocal of cloud phase transition temperature range
+      type: real
+      kind: null
+      units: K-1
+    - name: cloud_phase_transition_threshold_temperature
+      description: Cloud phase transition threshold temperature
+      type: real
+      kind: null
+      units: K
+    - name: precipitation_evaporation_coefficient
+      description: Precipitation evaporation coefficient
+      type: real
+      kind: null
+      units: 1
+    - name: autoconversion_to_snow_coefficient
+      description: Autoconversion to snow coefficient
+      type: real
+      kind: null
+      units: 1
+    - name: autoconversion_to_snow_coefficient_for_deep_convection
+      description: Autoconversion to snow coefficient for deep convection
+      type: real
+      kind: null
+      units: 1
+    - name: autoconversion_to_rain_coefficient
+      description: Autoconversion to rain coefficient
+      type: real
+      kind: null
+      units: 1
+    - name: autoconversion_to_rain_coefficient_for_deep_convection
+      description: Autoconversion to rain coefficient for deep convection
+      type: real
+      kind: null
+      units: 1
+    - name: chemical_tracer_scavenging_fractions
+      description: Chemical tracer scavenging fractions
+      type: real
+      kind: null
+      units: fraction
+    - name: cloud_condensate_detrainment_coefficient
+      description: Cloud condensate detrainment coefficient
+      type: real
+      kind: null
+      units: 1
+    - name: control_for_convective_cloud_diagnostics
+      description: Control for convective cloud diagnostics
+      type: real
+      kind: null
+      units: 1
+    - name: tunable_parameter_1_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
+      description: Tunable parameter 1 for detrainment and precipitation partitioning
+        in chikira sugiyama deep convection
+      type: real
+      kind: null
+      units: m
+    - name: tunable_parameter_2_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
+      description: Tunable parameter 2 for detrainment and precipitation partitioning
+        in chikira sugiyama deep convection
+      type: real
+      kind: null
+      units: m
+    - name: detrainment_conversion_parameter_for_deep_convection
+      description: Detrainment conversion parameter for deep convection
+      type: real
+      kind: null
+      units: m-1
+    - name: detrainment_conversion_parameter_for_shallow_convection
+      description: Detrainment conversion parameter for shallow convection
+      type: real
+      kind: null
+      units: m-1
   - name: GOCART aerosols
     comment: null
     standard_names:
@@ -2418,29 +2496,9 @@ section:
     type: integer
     kind: null
     units: index
-- name: stochastic physics
-  comment: null
+- name: control variables
+  comment: Variables that indicate or control some action.
   standard_names:
-  - name: cellular_automata_finer_grid
-    description: Cellular automata finer grid
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_lifetime
-    description: Cellular automata lifetime
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_seed_frequency
-    description: Cellular automata seed frequency
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_seed_probability
-    description: Cellular automata seed probability
-    type: real
-    kind: null
-    units: fraction
   - name: do_cellular_automata
     description: Do cellular automata
     type: logical
@@ -2476,103 +2534,21 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: number_of_independent_cellular_automata
-    description: Number of independent cellular automata
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_iterations_to_spin_up_cellular_automata
-    description: Number of iterations to spin up cellular automata
-    type: integer
-    kind: null
-    units: count
-  - name: random_number_seed_for_cellular_automata
-    description: Random number seed for cellular automata
-    type: integer
-    kind: null
-    units: 1
-  - name: random_number_seed_for_deep_convection
-    description: Random number seed for deep convection
-    type: integer
-    kind: null
-    units: 1
-  - name: cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection
-    description: Cellular automata vertical velocity perturbation threshold for deep
-      convection
-    type: real
-    kind: null
-    units: m s-1
-  - name: cellular_automata_global_pattern_from_coupled_process
-    description: Cellular automata global pattern from coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: cellular_automata_area_fraction_for_deep_convection_from_coupled_process
-    description: Cellular automata area fraction for deep convection from coupled
-      process
-    type: real
-    kind: null
-    units: fraction
-  - name: cellular_automata_vertical_scaling_factor
-    description: Cellular automata vertical scaling factor
-    type: real
-    kind: null
-    units: fraction
-  - name: number_of_random_numbers
-    description: Number of random numbers
-    type: integer
-    kind: null
-    units: count
   - name: do_stochastic_skeb_option
     description: Do Stochastic Kinetic Energy Backscatter option
     type: logical
     kind: null
     units: flag
-  - name: skeb_x_wind_scaling_factors_from_coupled_process
-    description: Stochastic Kinetic Energy Backscatter x-wind scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: skeb_y_wind_scaling_factors_from_coupled_process
-    description: Stochastic Kinetic Energy Backscatter y-wind scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
   - name: do_stochastic_shum_option
     description: Do Stochastic HUMidity stochastic physics option
     type: logical
     kind: null
     units: flag
-  - name: shum_scaling_factors_from_coupled_process
-    description: Stochastic Humidity stochastic physics option scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
   - name: do_mountain_blocking_for_sppt
     description: Do mountain blocking for stochastically perturbed physics tendencies
     type: logical
     kind: null
     units: flag
-  - name: total_amplitude_of_sppt_perturbation
-    description: Total amplitude of stochastically perturbed physics tendencies perturbation
-    type: real
-    kind: null
-    units: 1
-  - name: tendency_of_air_temperature_to_withhold_from_sppt
-    description: Change of air temperature to withhold from stochastically perturbed
-      physics tendencies per unit time
-    type: real
-    kind: null
-    units: K s-1
-  - name: sppt_scaling_factors_from_coupled_process
-    description: Stochastically perturbed physics tendencies scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
   - name: do_shoc
     description: Do Simplified Higher-Order Closure stochastic physics scheme
     type: logical
@@ -2610,245 +2586,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_stochastic_land_surface_perturbation
-    description: Control for stochastic land surface perturbation
-    type: integer
-    kind: null
-    units: 1
-  - name: atmosphere_heat_diffusivity_from_shoc
-    description: Atmospheric heat diffusivity from Simplified Higher-Order Closure
-      stochastic physics scheme
-    type: real
-    kind: null
-    units: m2 s-1
-  - name: subgrid_scale_cloud_fraction_from_shoc
-    description: Subgrid-scale cloud fraction from Simplified Higher-Order Closure
-      stochastic physics scheme
-    type: real
-    kind: null
-    units: fraction
-  - name: surface_stochastic_scaling_factors_from_coupled_process
-    description: Surface stochastic scaling factors from coupled process
-    type: real
-    kind: null
-    units: 1
-- name: radiation
-  comment: null
-  standard_names:
-  - name: radiatively_active_gases_as_string
-    description: Radiatively active gases as string
-    type: character
-    kind: null
-    units: none
-- name: GFS_typedefs_GFS_control_type
-  comment: null
-  standard_names:
-  - name: number_of_microphysics_variables_in_xy_dimensioned_restart_array
-    description: Number of microphysics variables in xy dimensioned restart array
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_microphysics_variables_in_xyz_dimensioned_restart_array
-    description: Number of microphysics variables in xyz dimensioned restart array
-    type: integer
-    kind: null
-    units: count
-  - name: identifier_for_2018_scale_aware_tke_moist_edmf_pbl
-    description: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
-      planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_scale_aware_tke_moist_edmf_pbl_scheme
-    description: Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
-      planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_2019_scale_aware_tke_moist_edmf_pbl
-    description: Identifier for 2019 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
-      planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: cloud_condensate_autoconversion_threshold_coefficient
-    description: Cloud condensate autoconversion threshold coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: cloud_condensate_autoconversion_threshold_coefficient_for_deep_convection
-    description: Cloud condensate autoconversion threshold coefficient for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: control_for_cloud_area_fraction_option
-    description: Control for cloud area fraction option
-    type: integer
-    kind: null
-    units: 1
-  - name: reciprocal_of_cloud_phase_transition_temperature_range
-    description: Reciprocal of cloud phase transition temperature range
-    type: real
-    kind: null
-    units: K-1
-  - name: cloud_phase_transition_threshold_temperature
-    description: Cloud phase transition threshold temperature
-    type: real
-    kind: null
-    units: K
-  - name: control_for_cloud_species_mixing_in_mynn_pbl_scheme
-    description: Control for cloud species mixing in Mellor-Yamada-Nakanishi-Niino
-      planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_cloud_pdf_in_mynn_pbl_scheme
-    description: Control for cloud probability density function in Mellor-Yamada-Nakanishi-Niino
-      planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: precipitation_evaporation_coefficient
-    description: Precipitation evaporation coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: coefficient_for_variable_bulk_richardson_number_over_land
-    description: Coefficient for variable bulk richardson number over land
-    type: real
-    kind: null
-    units: 1
-  - name: coefficient_for_variable_bulk_richardson_number_over_water
-    description: Coefficient for variable bulk richardson number over water
-    type: real
-    kind: null
-    units: 1
-  - name: autoconversion_to_snow_coefficient
-    description: Autoconversion to snow coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: autoconversion_to_snow_coefficient_for_deep_convection
-    description: Autoconversion to snow coefficient for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: autoconversion_to_rain_coefficient
-    description: Autoconversion to rain coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: autoconversion_to_rain_coefficient_for_deep_convection
-    description: Autoconversion to rain coefficient for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: chemical_tracer_scavenging_fractions
-    description: Chemical tracer scavenging fractions
-    type: real
-    kind: null
-    units: fraction
-  - name: cloud_condensate_detrainment_coefficient
-    description: Cloud condensate detrainment coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: control_for_convective_cloud_diagnostics
-    description: Control for convective cloud diagnostics
-    type: real
-    kind: null
-    units: 1
-  - name: cosine_of_solar_declination_angle
-    description: Cosine of solar declination angle
-    type: real
-    kind: null
-    units: 1
-  - name: control_for_sgs_cloud_radiation_coupling_in_mynn_pbl_scheme
-    description: Control for subgrid-scale cloud radiation coupling in Mellor-Yamada-Nakanishi-Niino
-      planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: tunable_parameter_for_critical_cloud_top_entrainment_instability_criteria
-    description: Tunable parameter for critical cloud top entrainment instability
-      criteria
-    type: real
-    kind: null
-    units: 1
-  - name: critical_relative_humidity_at_top_of_atmosphere_boundary_layer
-    description: Critical relative humidity at top of atmosphere boundary layer
-    type: real
-    kind: null
-    units: fraction
-  - name: critical_relative_humidity_at_surface
-    description: Critical relative humidity at surface
-    type: real
-    kind: null
-    units: fraction
-  - name: critical_relative_humidity_at_toa
-    description: Critical relative humidity at the top of the atmosphere
-    type: real
-    kind: null
-    units: fraction
-  - name: decorrelation_length_used_by_overlap_method
-    description: Decorrelation length used by overlap method
-    type: real
-    kind: null
-    units: km
-  - name: density_of_fresh_water
-    description: Density of fresh water
-    type: real
-    kind: null
-    units: kg m-3
-  - name: depth_of_soil_layers
-    description: Depth of soil layers
-    type: real
-    kind: null
-    units: m
-  - name: tunable_parameter_1_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
-    description: Tunable parameter 1 for detrainment and precipitation partitioning
-      in chikira sugiyama deep convection
-    type: real
-    kind: null
-    units: m
-  - name: tunable_parameter_2_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
-    description: Tunable parameter 2 for detrainment and precipitation partitioning
-      in chikira sugiyama deep convection
-    type: real
-    kind: null
-    units: m
-  - name: detrainment_conversion_parameter_for_deep_convection
-    description: Detrainment conversion parameter for deep convection
-    type: real
-    kind: null
-    units: m-1
-  - name: detrainment_conversion_parameter_for_shallow_convection
-    description: Detrainment conversion parameter for shallow convection
-    type: real
-    kind: null
-    units: m-1
-  - name: do_unified_gravity_wave_physics_diagnostics
-    description: Do unified gravity wave physics diagnostics
-    type: logical
-    kind: null
-    units: flag
-  - name: do_chemical_tracer_diagnostics
-    description: Do chemical tracer diagnostics
-    type: logical
-    kind: null
-    units: flag
-  - name: sigma_pressure_threshold_at_upper_extent_of_background_diffusion
-    description: Sigma pressure threshold at upper extent of background diffusion
-    type: real
-    kind: null
-    units: 1
-  - name: directory_for_rte_rrtmgp_source_code
-    description: Directory for Radiative Transfer for Energetics/Rapid Radiative Transfer
-      Model for General circulation model applications - Parallel (RRTMGP) source
-      code
-    type: character
-    kind: null
-    units: none
   - name: do_myj_pbl_scheme
     description: Do Mellor-Yamada-Janjic planetary boundary layer scheme
     type: logical
@@ -2869,77 +2606,16 @@ section:
     type: logical
     kind: null
     units: flag
+  - name: do_unified_gravity_wave_physics_diagnostics
+    description: Do unified gravity wave physics diagnostics
+    type: logical
+    kind: null
+    units: flag
   - name: do_unified_gravity_wave_physics_gwd_scheme
     description: Do Unifed Gravity Wave Physics gravity wave drag scheme
     type: logical
     kind: null
     units: flag
-  - name: downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme
-    description: Downdraft area fraction in scale-aware turbulent kinetic energy moist
-      eddy-diffusivity/mass-flux planetary boundary layer scheme
-    type: real
-    kind: null
-    units: fraction
-  - name: downdraft_fraction_reaching_surface_over_land_for_deep_convection
-    description: Downdraft fraction reaching surface over land for deep convection
-    type: real
-    kind: null
-    units: fraction
-  - name: downdraft_fraction_reaching_surface_over_water_for_deep_convection
-    description: Downdraft fraction reaching surface over water for deep convection
-    type: real
-    kind: null
-    units: fraction
-  - name: control_for_edmf_in_mynn_pbl_scheme
-    description: Control for eddy-diffusivity mass flux in Mellor-Yamada-Nakanishi-Niino
-      planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_edmf_momentum_transport_in_mynn_pbl_scheme
-    description: Control for eddy-diffusivity mass flux momentum transport in Mellor-Yamada-Nakanishi-Niino
-      surface layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_edmf_partitioning_in_mynn_pbl_scheme
-    description: Control for eddy-diffusivity mass flux partitioning in Mellor-Yamada-Nakanishi-Niino
-      planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_edmf_tke_transport_in_mynn_pbl_scheme
-    description: Control for eddy-diffusivity mass flux turbulent kinetic energy transport
-      in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: surface_layer_scheme_enthalpy_flux_factor
-    description: Surface layer scheme enthalpy flux factor
-    type: real
-    kind: null
-    units: 1
-  - name: tunable_parameter_for_entrainment_efficiency_in_chikira_sugiyama_deep_convection
-    description: Tunable parameter for entrainment efficiency in chikira sugiyama
-      deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: entrainment_rate_coefficient_for_deep_convection
-    description: Entrainment rate coefficient for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: entrainment_rate_coefficient_for_shallow_convection
-    description: Entrainment rate coefficient for shallow convection
-    type: real
-    kind: null
-    units: 1
-  - name: relative_humidity_threshold_for_condensation
-    description: Relative humidity threshold for condensation
-    type: real
-    kind: null
-    units: fraction
   - name: do_arakawa_wu_downdrafts_for_deep_convection
     description: Do arakawa wu downdrafts for deep convection
     type: logical
@@ -2961,15 +2637,10 @@ section:
     kind: null
     units: flag
   - name: do_flip
-    description: Do flip
+    description: Flag indicating whether to flip vertical coordinate
     type: logical
     kind: null
     units: flag
-  - name: control_for_flux_adjusting_surface_data_assimilation_system
-    description: Control for flux adjusting surface data assimilation system
-    type: integer
-    kind: null
-    units: 1
   - name: do_flux_form_in_chikira_sugiyama_deep_convection_scheme
     description: Do flux form in chikira sugiyama deep convection scheme
     type: logical
@@ -3000,11 +2671,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_land_surface_scheme_canopy_stomatal_resistance
-    description: Control for land surface scheme canopy stomatal resistance
-    type: integer
-    kind: null
-    units: 1
   - name: do_chemistry_coupling
     description: Do chemistry coupling
     type: logical
@@ -3025,16 +2691,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_cloud_overlap_method_for_radiation
-    description: Control for cloud overlap method for radiation
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_constant_decorrelation_length_method
-    description: Identifier for constant decorrelation length method
-    type: integer
-    kind: null
-    units: 1
   - name: do_convective_gwd
     description: Do convective gravity wave drag
     type: logical
@@ -3055,41 +2711,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_decorrelation_length_cloud_overlap_method
-    description: Identifier for decorrelation length cloud overlap method
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_decorrelation_length_method
-    description: Control for decorrelation length method
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_shortwave_radiation_aerosols
-    description: Control for shortwave radiation aerosols
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_land_surface_scheme_dynamic_vegetation
-    description: Control for land surface scheme dynamic vegetation
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_exponential_cloud_overlap_method
-    description: Identifier for exponential cloud overlap method
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_exponential_random_cloud_overlap_method
-    description: Identifier for exponential random cloud overlap method
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_fer_hires_microphysics_scheme
-    description: Identifier for fer hires microphysics scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_surface_flux_coupling
     description: Do surface flux coupling
     type: logical
@@ -3100,11 +2721,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_land_surface_scheme_frozen_soil_permeability
-    description: Control for land surface scheme frozen soil permeability
-    type: integer
-    kind: null
-    units: 1
   - name: do_gcycle_surface_option
     description: Do gcycle surface option
     type: logical
@@ -3130,37 +2746,16 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_grell_freitas_deep_convection
-    description: Identifier for grell freitas deep convection
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_grell_freitas_shallow_convection
-    description: Identifier for grell freitas shallow convection
-    type: integer
-    kind: null
-    units: 1
   - name: do_gfdl_microphysics_radiation_interaction
     description: Do Geophysical Fluid Dynamics Laboratory microphysics radiation interaction
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_gfdl_microphysics_scheme
-    description: Identifier for Geophysical Fluid Dynamics Laboratory microphysics
-      scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_gwd
     description: Do gravity wave drag
     type: logical
     kind: null
     units: flag
-  - name: control_for_land_surface_scheme_surface_snow_albedo
-    description: Control for land surface scheme surface snow albedo
-    type: integer
-    kind: null
-    units: 1
   - name: do_gsl_drag_suite_large_scale_orographic_and_blocking_drag
     description: Do Global Systems Lab drag suite large-scale orographic and blocking
       drag
@@ -3182,11 +2777,27 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_hogan_decorrelation_length_method
-    description: Identifier for hogan decorrelation length method
-    type: integer
+  - name: do_gsl_drag_suite_large_scale_orographic_and_blocking_drag
+    description: Do Global Systems Lab drag suite large-scale orographic and blocking
+      drag
+    type: logical
     kind: null
-    units: 1
+    units: flag
+  - name: do_gsl_drag_suite_small_scale_orographic_drag
+    description: Do Global Systems Lab drag suite small-scale orographic drag
+    type: logical
+    kind: null
+    units: flag
+  - name: do_gsl_drag_suite_turbulent_orographic_form_drag
+    description: Do Global Systems Lab drag suite turbulent orographic form drag
+    type: logical
+    kind: null
+    units: flag
+  - name: do_hybrid_edmf_pbl_scheme
+    description: Do hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme
+    type: logical
+    kind: null
+    units: flag
   - name: do_hurricane_specific_code_in_scale_aware_mass_flux_deep_convection
     description: Do hurricane specific code in scale aware mass flux deep convection
     type: logical
@@ -3202,117 +2813,31 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_ice_cloud_condensation_nuclei_forcing
-    description: Control for ice cloud condensation nuclei forcing
-    type: integer
-    kind: null
-    units: 1
   - name: do_separate_advection_of_condensate_species
     description: Do separate advection of condensate species
     type: logical
     kind: null
     units: flag
-  - name: control_for_lake_surface_scheme
-    description: Control for lake surface scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_land_surface_scheme
-    description: Control for land surface scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_cloud_area_fraction_option_for_radiation
     description: Do cloud area fraction option for radiation
     type: logical
     kind: null
     units: flag
-  - name: control_for_land_surface_scheme_lower_boundary_soil_temperature
-    description: Control for land surface scheme lower boundary soil temperature
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_lw_clouds_subgrid_approximation
-    description: Control for lw clouds subgrid approximation
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_deep_convection_scheme
-    description: Control for deep convection scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_shallow_convection_scheme
-    description: Control for shallow convection scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_max_cloud_overlap_method
-    description: Control for maximum cloud overlap method
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_max_random_cloud_overlap_method
-    description: Identifier for maximum random cloud overlap method
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_microphysics_scheme
-    description: Control for microphysics scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_moorthi_stratus
     description: Do moorthi stratus
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_morrison_gettelman_microphysics_scheme
-    description: Identifier for morrison gettelman microphysics scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_noah_land_surface_scheme
-    description: Identifier for noah land surface scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_noah_lsm_ua_extension
     description: Do Noah land surface model University of Arizona extension
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_noah_wrfv4_land_surface_scheme
-    description: Identifier for noah wrfv4 land surface scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_noahmp
-    description: Identifier for Noah land surface model with multiparameterization
-      options
-    type: integer
-    kind: null
-    units: 1
   - name: do_nsstm_analysis_in_gcycle
     description: Do GFS near-surface sea temperature scheme analysis in gcycle
     type: logical
     kind: null
     units: flag
-  - name: control_for_nsstm
-    description: Control for GFS near-surface sea temperature scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_new_tiedtke_deep_convection
-    description: Identifier for new tiedtke deep convection
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_new_tiedtke_shallow_convection
-    description: Identifier for new tiedtke shallow convection
-    type: integer
-    kind: null
-    units: 1
   - name: do_surface_layer_scheme_ocean_currents
     description: Do surface layer scheme ocean currents
     type: logical
@@ -3323,31 +2848,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_optical_property_for_ice_clouds_for_longwave_radiation
-    description: Control for optical property for ice clouds for longwave radiation
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_optical_property_for_ice_clouds_for_shortwave_radiation
-    description: Control for optical property for ice clouds for shortwave radiation
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_optical_property_for_liquid_clouds_for_longwave_radiation
-    description: Control for optical property for liquid clouds for longwave radiation
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_optical_property_for_liquid_clouds_for_shortwave_radiation
-    description: Control for optical property for liquid clouds for shortwave radiation
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_oreopoulos_decorrelation_length_method
-    description: Identifier for oreopoulos decorrelation length method
-    type: integer
-    kind: null
-    units: 1
   - name: do_output_of_tendency_of_air_temperature_due_to_longwave_heating_on_radiation_timestep_assuming_clear_sky
     description: Do output of tendency of air temperature due to longwave heating
       on radiation timestep assuming clear sky
@@ -3365,27 +2865,12 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_pdf_shape_for_microphysics
-    description: Control for probability density function shape for microphysics
-    type: integer
-    kind: null
-    units: 1
   - name: do_surface_layer_scheme_surface_drag_coefficient_for_momentum_in_air_perturbations
     description: Do surface layer scheme surface drag coefficient for momentum in
       air perturbations
     type: logical
     kind: null
     units: flag
-  - name: disable_precipitation_radiative_effect
-    description: Disable precipitation radiative effect
-    type: logical
-    kind: null
-    units: flag
-  - name: control_for_land_surface_scheme_precipitation_type_partition
-    description: Control for land surface scheme precipitation type partition
-    type: integer
-    kind: null
-    units: 1
   - name: do_dominant_precipitation_type_partition
     description: Do dominant precipitation type partition
     type: logical
@@ -3396,16 +2881,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_land_surface_scheme_radiative_transfer
-    description: Control for land surface scheme radiative transfer
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_random_cloud_overlap_method
-    description: Identifier for random cloud overlap method
-    type: integer
-    kind: null
-    units: 1
   - name: do_random_clouds_in_relaxed_arakawa_schubert_deep_convection
     description: Do random clouds in relaxed arakawa schubert deep convection
     type: logical
@@ -3436,47 +2911,12 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: is_restart
-    description: Is restart
-    type: logical
-    kind: null
-    units: flag
   - name: do_rrtmgp_radiation_scheme
     description: Flag for Rapid Radiative Transfer Model for General circulation model
       applications - Parallel (RRTMGP) radiation scheme
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_ruc_land_surface_scheme
-    description: Identifier for Rapid Update Cycle land surface scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_land_surface_scheme_runoff_and_groundwater
-    description: Control for land surface scheme runoff and groundwater
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_scale_aware_mass_flux_deep_convection
-    description: Identifier for scale aware mass flux deep convection
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_scale_aware_mass_flux_shallow_convection
-    description: Identifier for scale aware mass flux shallow convection
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_sas_deep_convection
-    description: Identifier for Simplified Arakawa-Schubert deep convection scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_sas_shallow_convection
-    description: Identifier for Simplified Arakawa-Schubert shallow convection scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_scale_aware_mass_flux_deep_convection
     description: Do scale aware mass flux deep convection
     type: logical
@@ -3498,61 +2938,11 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_land_surface_scheme_soil_and_snow_temperature_time_integration
-    description: Control for land surface scheme soil and snow temperature time integration
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_land_surface_scheme_soil_moisture_factor_stomatal_resistance
-    description: Control for land surface scheme soil moisture factor stomatal resistance
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_solar_constant
-    description: Control for solar constant
-    type: integer
-    kind: null
-    units: 1
   - name: do_stratospheric_water_vapor_physics
     description: Do stratospheric water vapor physics
     type: logical
     kind: null
     units: flag
-  - name: control_for_land_surface_scheme_supercooled_liquid_water
-    description: Control for land surface scheme supercooled liquid water
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_surface_emissivity
-    description: Control for surface emissivity
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_land_surface_scheme_surface_layer_drag_coefficient
-    description: Control for land surface scheme surface layer drag coefficient
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_surface_roughness_option_over_water
-    description: Control for surface roughness option over water
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_sw_clouds_subgrid_approximation
-    description: Control for sw clouds subgrid approximation
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_land_surface_scheme_thermal_conductivity_option
-    description: Control for land surface scheme thermal conductivity option
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_thompson_microphysics_scheme
-    description: Identifier for thompson microphysics scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_ugwp_version_0
     description: Do Unified Gravity Wave Physics version 0
     type: logical
@@ -3587,21 +2977,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_surface_layer_scheme_skin_temperature_update
-    description: Control for surface layer scheme skin temperature update
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_surface_albedo
-    description: Control for surface albedo
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_prescribed_co2
-    description: Control for prescribed co2
-    type: integer
-    kind: null
-    units: 1
   - name: do_ocean_wave_coupling
     description: Do ocean wave coupling
     type: logical
@@ -3612,27 +2987,11 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_wsm6_microphysics_scheme
-    description: Identifier for wsm6 microphysics scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_ysu_pbl_scheme
     description: Do Yonsei University (YSU) planetary boundary layer scheme
     type: logical
     kind: null
     units: flag
-  - name: identifier_for_zhao_carr_microphysics_scheme
-    description: Identifier for zhao carr microphysics scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: identifier_for_zhao_carr_pdf_microphysics_scheme
-    description: Identifier for Zhao-Carr probability density function microphysics
-      scheme
-    type: integer
-    kind: null
-    units: 1
   - name: do_hurricane_specific_code_in_hybrid_edmf_pbl_scheme
     description: Do hurricane-specific code in hybrid eddy-diffusivity/mass-flux planetary
       boundary layer scheme
@@ -3703,6 +3062,753 @@ section:
     type: logical
     kind: null
     units: flag
+  - name: do_allow_supersaturation_after_sedimentation
+    description: Do allow supersaturation after sedimentation
+    type: logical
+    kind: null
+    units: flag
+  - name: do_prescribed_number_concentration_of_cloud_droplets
+    description: Do prescribed number concentration of cloud droplets
+    type: logical
+    kind: null
+    units: flag
+  - name: do_cloud_ice_processes
+    description: Do cloud ice processes
+    type: logical
+    kind: null
+    units: flag
+  - name: do_gmao_autoconversion_to_snow
+    description: Do gmao autoconversion to snow
+    type: logical
+    kind: null
+    units: flag
+  - name: do_graupel_instead_of_hail
+    description: Do graupel instead of hail
+    type: logical
+    kind: null
+    units: flag
+  - name: do_hail_instead_of_graupel
+    description: Do hail instead of graupel
+    type: logical
+    kind: null
+    units: flag
+  - name: do_heterogeneous_nucleation
+    description: Do heterogeneous nucleation
+    type: logical
+    kind: null
+    units: flag
+  - name: do_liu_autoconversion_to_rain
+    description: Do liu autoconversion to rain
+    type: logical
+    kind: null
+    units: flag
+  - name: do_seifert_and_beheng_2001_autoconversion
+    description: Do seifert and beheng 2001 autoconversion
+    type: logical
+    kind: null
+    units: flag
+  - name: do_uniform_subcolumns
+    description: Do uniform subcolumns
+    type: logical
+    kind: null
+    units: flag
+  - name: do_prescribed_number_concentration_of_graupel
+    description: Do prescribed number concentration of graupel
+    type: logical
+    kind: null
+    units: flag
+  - name: do_prescribed_number_concentration_of_cloud_ice
+    description: Do prescribed number concentration of cloud ice
+    type: logical
+    kind: null
+    units: flag
+  - name: do_rrtmgp_shortwave_and_rrtmg_longwave_radiation
+    description: Flag for Rapid Radiative Transfer Model for General circulation model
+      applications - Parallel (RRTMGP) shortwave and Rapid Radiative Transfer Model
+      for global climate model (GCM) applications (RRTMG) longwave radiation schemes
+    type: logical
+    kind: null
+    units: flag
+  - name: do_tke_advection
+    description: Do tke advection
+    type: logical
+    kind: null
+    units: flag
+  - name: do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme
+    description: Do turbulent orographic form drag in Unified Gravity Wave Physics
+      gravity wave drag scheme
+    type: logical
+    kind: null
+    units: flag
+  - name: do_lagrangian_vertical_coordinate
+    description: Flag indicating if vertical coordinate is lagrangian
+    type: logical
+    kind: null
+    units: flag
+  - name: do_molecular_diffusion
+    description: Do molecular diffusion
+    type: logical
+    kind: null
+    units: flag
+  - name: do_chemical_tracer_diagnostics
+    description: Do chemical tracer diagnostics
+    type: logical
+    kind: null
+    units: flag
+- name: stochastic physics variables
+  comment: null
+  standard_names:
+  - name: cellular_automata_finer_grid
+    description: Cellular automata finer grid
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_lifetime
+    description: Cellular automata lifetime
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_seed_frequency
+    description: Cellular automata seed frequency
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_seed_probability
+    description: Cellular automata seed probability
+    type: real
+    kind: null
+    units: fraction
+  - name: number_of_independent_cellular_automata
+    description: Number of independent cellular automata
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_iterations_to_spin_up_cellular_automata
+    description: Number of iterations to spin up cellular automata
+    type: integer
+    kind: null
+    units: count
+  - name: random_number_seed_for_cellular_automata
+    description: Random number seed for cellular automata
+    type: integer
+    kind: null
+    units: 1
+  - name: random_number_seed_for_deep_convection
+    description: Random number seed for deep convection
+    type: integer
+    kind: null
+    units: 1
+  - name: cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection
+    description: Cellular automata vertical velocity perturbation threshold for deep
+      convection
+    type: real
+    kind: null
+    units: m s-1
+  - name: cellular_automata_global_pattern_from_coupled_process
+    description: Cellular automata global pattern from coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: cellular_automata_area_fraction_for_deep_convection_from_coupled_process
+    description: Cellular automata area fraction for deep convection from coupled
+      process
+    type: real
+    kind: null
+    units: fraction
+  - name: cellular_automata_vertical_scaling_factor
+    description: Cellular automata vertical scaling factor
+    type: real
+    kind: null
+    units: fraction
+  - name: number_of_random_numbers
+    description: Number of random numbers
+    type: integer
+    kind: null
+    units: count
+  - name: skeb_x_wind_scaling_factors_from_coupled_process
+    description: Stochastic Kinetic Energy Backscatter x-wind scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: skeb_y_wind_scaling_factors_from_coupled_process
+    description: Stochastic Kinetic Energy Backscatter y-wind scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: shum_scaling_factors_from_coupled_process
+    description: Stochastic Humidity stochastic physics option scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: total_amplitude_of_sppt_perturbation
+    description: Total amplitude of stochastically perturbed physics tendencies perturbation
+    type: real
+    kind: null
+    units: 1
+  - name: tendency_of_air_temperature_to_withhold_from_sppt
+    description: Change of air temperature to withhold from stochastically perturbed
+      physics tendencies per unit time
+    type: real
+    kind: null
+    units: K s-1
+  - name: sppt_scaling_factors_from_coupled_process
+    description: Stochastically perturbed physics tendencies scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: control_for_stochastic_land_surface_perturbation
+    description: Control for stochastic land surface perturbation
+    type: integer
+    kind: null
+    units: 1
+  - name: atmosphere_heat_diffusivity_from_shoc
+    description: Atmospheric heat diffusivity from Simplified Higher-Order Closure
+      stochastic physics scheme
+    type: real
+    kind: null
+    units: m2 s-1
+  - name: subgrid_scale_cloud_fraction_from_shoc
+    description: Subgrid-scale cloud fraction from Simplified Higher-Order Closure
+      stochastic physics scheme
+    type: real
+    kind: null
+    units: fraction
+  - name: surface_stochastic_scaling_factors_from_coupled_process
+    description: Surface stochastic scaling factors from coupled process
+    type: real
+    kind: null
+    units: 1
+- name: radiation
+  comment: null
+  standard_names:
+  - name: radiatively_active_gases_as_string
+    description: Radiatively active gases as string
+    type: character
+    kind: null
+    units: none
+  - name: identifier_for_2018_scale_aware_tke_moist_edmf_pbl
+    description: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
+      planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_scale_aware_tke_moist_edmf_pbl_scheme
+    description: Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
+      planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_2019_scale_aware_tke_moist_edmf_pbl
+    description: Identifier for 2019 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
+      planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: cosine_of_solar_declination_angle
+    description: Cosine of solar declination angle
+    type: real
+    kind: null
+    units: 1
+  - name: control_for_sgs_cloud_radiation_coupling_in_mynn_pbl_scheme
+    description: Control for subgrid-scale cloud radiation coupling in Mellor-Yamada-Nakanishi-Niino
+      planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+- name: atmospheric surface and boundary layer
+  comment: null
+  standard_names:
+  - name: control_for_cloud_species_mixing_in_mynn_pbl_scheme
+    description: Control for cloud species mixing in Mellor-Yamada-Nakanishi-Niino
+      planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_cloud_pdf_in_mynn_pbl_scheme
+    description: Control for cloud probability density function in Mellor-Yamada-Nakanishi-Niino
+      planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: critical_relative_humidity_at_top_of_atmosphere_boundary_layer
+    description: Critical relative humidity at top of atmosphere boundary layer
+    type: real
+    kind: null
+    units: fraction
+  - name: control_for_edmf_in_mynn_pbl_scheme
+    description: Control for eddy-diffusivity mass flux in Mellor-Yamada-Nakanishi-Niino
+      planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_edmf_momentum_transport_in_mynn_pbl_scheme
+    description: Control for eddy-diffusivity mass flux momentum transport in Mellor-Yamada-Nakanishi-Niino
+      surface layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_edmf_partitioning_in_mynn_pbl_scheme
+    description: Control for eddy-diffusivity mass flux partitioning in Mellor-Yamada-Nakanishi-Niino
+      planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_edmf_tke_transport_in_mynn_pbl_scheme
+    description: Control for eddy-diffusivity mass flux turbulent kinetic energy transport
+      in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: surface_layer_scheme_enthalpy_flux_factor
+    description: Surface layer scheme enthalpy flux factor
+    type: real
+    kind: null
+    units: 1
+- name: GFS_typedefs_GFS_control_type
+  comment: null
+  standard_names:
+  - name: number_of_microphysics_variables_in_xy_dimensioned_restart_array
+    description: Number of microphysics variables in xy dimensioned restart array
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_microphysics_variables_in_xyz_dimensioned_restart_array
+    description: Number of microphysics variables in xyz dimensioned restart array
+    type: integer
+    kind: null
+    units: count
+  - name: control_for_cloud_area_fraction_option
+    description: Control for cloud area fraction option
+    type: integer
+    kind: null
+    units: 1
+  - name: coefficient_for_variable_bulk_richardson_number_over_land
+    description: Coefficient for variable bulk richardson number over land
+    type: real
+    kind: null
+    units: 1
+  - name: coefficient_for_variable_bulk_richardson_number_over_water
+    description: Coefficient for variable bulk richardson number over water
+    type: real
+    kind: null
+    units: 1
+  - name: tunable_parameter_for_critical_cloud_top_entrainment_instability_criteria
+    description: Tunable parameter for critical cloud top entrainment instability
+      criteria
+    type: real
+    kind: null
+    units: 1
+  - name: critical_relative_humidity_at_surface
+    description: Critical relative humidity at surface
+    type: real
+    kind: null
+    units: fraction
+  - name: critical_relative_humidity_at_toa
+    description: Critical relative humidity at the top of the atmosphere
+    type: real
+    kind: null
+    units: fraction
+  - name: decorrelation_length_used_by_overlap_method
+    description: Decorrelation length used by overlap method
+    type: real
+    kind: null
+    units: km
+  - name: depth_of_soil_layers
+    description: Depth of soil layers
+    type: real
+    kind: null
+    units: m
+  - name: sigma_pressure_threshold_at_upper_extent_of_background_diffusion
+    description: Sigma pressure threshold at upper extent of background diffusion
+    type: real
+    kind: null
+    units: 1
+  - name: directory_for_rte_rrtmgp_source_code
+    description: Directory for Radiative Transfer for Energetics/Rapid Radiative Transfer
+      Model for General circulation model applications - Parallel (RRTMGP) source
+      code
+    type: character
+    kind: null
+    units: none
+  - name: downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme
+    description: Downdraft area fraction in scale-aware turbulent kinetic energy moist
+      eddy-diffusivity/mass-flux planetary boundary layer scheme
+    type: real
+    kind: null
+    units: fraction
+  - name: downdraft_fraction_reaching_surface_over_land_for_deep_convection
+    description: Downdraft fraction reaching surface over land for deep convection
+    type: real
+    kind: null
+    units: fraction
+  - name: downdraft_fraction_reaching_surface_over_water_for_deep_convection
+    description: Downdraft fraction reaching surface over water for deep convection
+    type: real
+    kind: null
+    units: fraction
+  - name: tunable_parameter_for_entrainment_efficiency_in_chikira_sugiyama_deep_convection
+    description: Tunable parameter for entrainment efficiency in chikira sugiyama
+      deep convection
+    type: real
+    kind: null
+    units: 1
+  - name: entrainment_rate_coefficient_for_deep_convection
+    description: Entrainment rate coefficient for deep convection
+    type: real
+    kind: null
+    units: 1
+  - name: entrainment_rate_coefficient_for_shallow_convection
+    description: Entrainment rate coefficient for shallow convection
+    type: real
+    kind: null
+    units: 1
+  - name: relative_humidity_threshold_for_condensation
+    description: Relative humidity threshold for condensation
+    type: real
+    kind: null
+    units: fraction
+  - name: control_for_flux_adjusting_surface_data_assimilation_system
+    description: Control for flux adjusting surface data assimilation system
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_canopy_stomatal_resistance
+    description: Control for land surface scheme canopy stomatal resistance
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_cloud_overlap_method_for_radiation
+    description: Control for cloud overlap method for radiation
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_constant_decorrelation_length_method
+    description: Identifier for constant decorrelation length method
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_decorrelation_length_cloud_overlap_method
+    description: Identifier for decorrelation length cloud overlap method
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_decorrelation_length_method
+    description: Control for decorrelation length method
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_shortwave_radiation_aerosols
+    description: Control for shortwave radiation aerosols
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_dynamic_vegetation
+    description: Control for land surface scheme dynamic vegetation
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_exponential_cloud_overlap_method
+    description: Identifier for exponential cloud overlap method
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_exponential_random_cloud_overlap_method
+    description: Identifier for exponential random cloud overlap method
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_fer_hires_microphysics_scheme
+    description: Identifier for fer hires microphysics scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_frozen_soil_permeability
+    description: Control for land surface scheme frozen soil permeability
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_grell_freitas_deep_convection
+    description: Identifier for grell freitas deep convection
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_grell_freitas_shallow_convection
+    description: Identifier for grell freitas shallow convection
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_gfdl_microphysics_scheme
+    description: Identifier for Geophysical Fluid Dynamics Laboratory microphysics
+      scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_surface_snow_albedo
+    description: Control for land surface scheme surface snow albedo
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_hogan_decorrelation_length_method
+    description: Identifier for hogan decorrelation length method
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_ice_cloud_condensation_nuclei_forcing
+    description: Control for ice cloud condensation nuclei forcing
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_lake_surface_scheme
+    description: Control for lake surface scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme
+    description: Control for land surface scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_lower_boundary_soil_temperature
+    description: Control for land surface scheme lower boundary soil temperature
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_lw_clouds_subgrid_approximation
+    description: Control for lw clouds subgrid approximation
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_deep_convection_scheme
+    description: Control for deep convection scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_shallow_convection_scheme
+    description: Control for shallow convection scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_max_cloud_overlap_method
+    description: Control for maximum cloud overlap method
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_max_random_cloud_overlap_method
+    description: Identifier for maximum random cloud overlap method
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_microphysics_scheme
+    description: Control for microphysics scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_morrison_gettelman_microphysics_scheme
+    description: Identifier for morrison gettelman microphysics scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_noah_land_surface_scheme
+    description: Identifier for noah land surface scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_noah_wrfv4_land_surface_scheme
+    description: Identifier for noah wrfv4 land surface scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_noahmp
+    description: Identifier for Noah land surface model with multiparameterization
+      options
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_nsstm
+    description: Control for GFS near-surface sea temperature scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_new_tiedtke_deep_convection
+    description: Identifier for new tiedtke deep convection
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_new_tiedtke_shallow_convection
+    description: Identifier for new tiedtke shallow convection
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_optical_property_for_ice_clouds_for_longwave_radiation
+    description: Control for optical property for ice clouds for longwave radiation
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_optical_property_for_ice_clouds_for_shortwave_radiation
+    description: Control for optical property for ice clouds for shortwave radiation
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_optical_property_for_liquid_clouds_for_longwave_radiation
+    description: Control for optical property for liquid clouds for longwave radiation
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_optical_property_for_liquid_clouds_for_shortwave_radiation
+    description: Control for optical property for liquid clouds for shortwave radiation
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_oreopoulos_decorrelation_length_method
+    description: Identifier for oreopoulos decorrelation length method
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_pdf_shape_for_microphysics
+    description: Control for probability density function shape for microphysics
+    type: integer
+    kind: null
+    units: 1
+  - name: disable_precipitation_radiative_effect
+    description: Disable precipitation radiative effect
+    type: logical
+    kind: null
+    units: flag
+  - name: control_for_land_surface_scheme_precipitation_type_partition
+    description: Control for land surface scheme precipitation type partition
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_radiative_transfer
+    description: Control for land surface scheme radiative transfer
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_random_cloud_overlap_method
+    description: Identifier for random cloud overlap method
+    type: integer
+    kind: null
+    units: 1
+  - name: is_restart
+    description: Is restart
+    type: logical
+    kind: null
+    units: flag
+  - name: identifier_for_ruc_land_surface_scheme
+    description: Identifier for Rapid Update Cycle land surface scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_runoff_and_groundwater
+    description: Control for land surface scheme runoff and groundwater
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_scale_aware_mass_flux_deep_convection
+    description: Identifier for scale aware mass flux deep convection
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_scale_aware_mass_flux_shallow_convection
+    description: Identifier for scale aware mass flux shallow convection
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_sas_deep_convection
+    description: Identifier for Simplified Arakawa-Schubert deep convection scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_sas_shallow_convection
+    description: Identifier for Simplified Arakawa-Schubert shallow convection scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_soil_and_snow_temperature_time_integration
+    description: Control for land surface scheme soil and snow temperature time integration
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_soil_moisture_factor_stomatal_resistance
+    description: Control for land surface scheme soil moisture factor stomatal resistance
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_solar_constant
+    description: Control for solar constant
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_supercooled_liquid_water
+    description: Control for land surface scheme supercooled liquid water
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_surface_emissivity
+    description: Control for surface emissivity
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_surface_layer_drag_coefficient
+    description: Control for land surface scheme surface layer drag coefficient
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_surface_roughness_option_over_water
+    description: Control for surface roughness option over water
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_sw_clouds_subgrid_approximation
+    description: Control for sw clouds subgrid approximation
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_land_surface_scheme_thermal_conductivity_option
+    description: Control for land surface scheme thermal conductivity option
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_thompson_microphysics_scheme
+    description: Identifier for thompson microphysics scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_surface_layer_scheme_skin_temperature_update
+    description: Control for surface layer scheme skin temperature update
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_surface_albedo
+    description: Control for surface albedo
+    type: integer
+    kind: null
+    units: 1
+  - name: control_for_prescribed_co2
+    description: Control for prescribed co2
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_wsm6_microphysics_scheme
+    description: Identifier for wsm6 microphysics scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_zhao_carr_microphysics_scheme
+    description: Identifier for zhao carr microphysics scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: identifier_for_zhao_carr_pdf_microphysics_scheme
+    description: Identifier for Zhao-Carr probability density function microphysics
+      scheme
+    type: integer
+    kind: null
+    units: 1
   - name: control_for_variable_bulk_richardson_number
     description: Control for variable bulk richardson number
     type: real
@@ -4008,11 +4114,6 @@ section:
     type: real
     kind: null
     units: m
-  - name: do_allow_supersaturation_after_sedimentation
-    description: Do allow supersaturation after sedimentation
-    type: logical
-    kind: null
-    units: flag
   - name: autoconversion_to_snow_size_threshold
     description: Autoconversion to snow size threshold
     type: real
@@ -4033,61 +4134,6 @@ section:
     type: real
     kind: null
     units: m-3
-  - name: do_prescribed_number_concentration_of_cloud_droplets
-    description: Do prescribed number concentration of cloud droplets
-    type: logical
-    kind: null
-    units: flag
-  - name: do_cloud_ice_processes
-    description: Do cloud ice processes
-    type: logical
-    kind: null
-    units: flag
-  - name: do_gmao_autoconversion_to_snow
-    description: Do gmao autoconversion to snow
-    type: logical
-    kind: null
-    units: flag
-  - name: do_graupel_instead_of_hail
-    description: Do graupel instead of hail
-    type: logical
-    kind: null
-    units: flag
-  - name: do_hail_instead_of_graupel
-    description: Do hail instead of graupel
-    type: logical
-    kind: null
-    units: flag
-  - name: do_heterogeneous_nucleation
-    description: Do heterogeneous nucleation
-    type: logical
-    kind: null
-    units: flag
-  - name: do_liu_autoconversion_to_rain
-    description: Do liu autoconversion to rain
-    type: logical
-    kind: null
-    units: flag
-  - name: do_seifert_and_beheng_2001_autoconversion
-    description: Do seifert and beheng 2001 autoconversion
-    type: logical
-    kind: null
-    units: flag
-  - name: do_uniform_subcolumns
-    description: Do uniform subcolumns
-    type: logical
-    kind: null
-    units: flag
-  - name: do_prescribed_number_concentration_of_graupel
-    description: Do prescribed number concentration of graupel
-    type: logical
-    kind: null
-    units: flag
-  - name: do_prescribed_number_concentration_of_cloud_ice
-    description: Do prescribed number concentration of cloud ice
-    type: logical
-    kind: null
-    units: flag
   - name: prescribed_number_concentration_of_graupel
     description: Prescribed number concentration of graupel
     type: real
@@ -4427,13 +4473,6 @@ section:
     type: character
     kind: null
     units: none
-  - name: do_rrtmgp_shortwave_and_rrtmg_longwave_radiation
-    description: Flag for Rapid Radiative Transfer Model for General circulation model
-      applications - Parallel (RRTMGP) shortwave and Rapid Radiative Transfer Model
-      for global climate model (GCM) applications (RRTMG) longwave radiation schemes
-    type: logical
-    kind: null
-    units: flag
   - name: min_sea_ice_area_fraction
     description: Min sea ice area fraction
     type: real
@@ -4511,11 +4550,6 @@ section:
     type: real
     kind: null
     units: s
-  - name: do_tke_advection
-    description: Do tke advection
-    type: logical
-    kind: null
-    units: flag
   - name: control_for_tke_budget_output
     description: Control for tke budget output
     type: integer
@@ -4526,12 +4560,6 @@ section:
     type: real
     kind: null
     units: 1
-  - name: do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme
-    description: Do turbulent orographic form drag in Unified Gravity Wave Physics
-      gravity wave drag scheme
-    type: logical
-    kind: null
-    units: flag
   - name: updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme
     description: Updraft area fraction in scale-aware turbulent kinetic energy moist
       eddy-diffusivity/mass-flux planetary boundary layer scheme

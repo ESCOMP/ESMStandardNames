@@ -714,6 +714,9 @@
         description="scalar constant representing gravitational acceleration">
       <type units="m s-2">real</type>
     </standard_name>
+    <standard_name name="density_of_fresh_water">
+      <type units="kg m-3">real</type>
+    </standard_name>
   </section>
   <section name="coordinates"
            comment="Parameters defining or relating to the coordinate system of the model">
@@ -729,18 +732,14 @@
     <standard_name name="cell_scaling_factor">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="do_lagrangian_vertical_coordinate"
-                   description="Flag indicating if vertical coordinate is lagrangian">
-      <type units="flag">logical</type>
-    </standard_name>
     <standard_name name="sigma_pressure_hybrid_coordinate_a_coefficient">
-       <type units="Pa">real</type>
+      <type units="Pa">real</type>
     </standard_name>
     <standard_name name="sigma_pressure_hybrid_coordinate_b_coefficient">
-       <type units="1">real</type>
+      <type units="1">real</type>
     </standard_name>
     <standard_name name="sigma_pressure_hybrid_vertical_coordinate">
-       <type units="1">real</type>
+      <type units="1">real</type>
     </standard_name>
     <standard_name name="cosine_of_latitude">
       <type units="1">real</type>
@@ -946,9 +945,6 @@
     <standard_name name="largest_model_top_pressure_that_allows_molecular_diffusion">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="do_molecular_diffusion">
-      <type units="flag">logical</type>
-    </standard_name>
     <standard_name name="is_initialized_physics_grid"
               description="Flag to indicate if physics grid is initialized">
       <type units="flag">logical</type>
@@ -1124,17 +1120,17 @@
       <type units="m s-2">real</type>
     </standard_name>
       <standard_name name="multiplicative_tuning_parameter_for_atmosphere_diffusivity">
-         <type units="1">real</type>
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="atmosphere_heat_diffusivity_due_to_background">
-         <type units="m2 s-1">real</type>
+        <type units="m2 s-1">real</type>
       </standard_name>
       <standard_name name="max_atmosphere_heat_diffusivity_due_to_background"
                    description="Maximum atmosphere heat diffusivity due to background">
-         <type units="m2 s-1">real</type>
+        <type units="m2 s-1">real</type>
       </standard_name>
       <standard_name name="atmosphere_momentum_diffusivity_due_to_background">
-         <type units="m2 s-1">real</type>
+        <type units="m2 s-1">real</type>
       </standard_name>
   </section>
   <section name="land_surface">
@@ -1173,15 +1169,15 @@
     </standard_name>
     <standard_name name="sea_water_depth"
                      description="The depth below the surface of the sea">
-        <type units="m">real</type>
+      <type units="m">real</type>
     </standard_name>
     <standard_name name="sea_water_practical_salinity"
                    description="The practical salinity of sea water">
-       <type units="PSU">real</type>
+      <type units="PSU">real</type>
     </standard_name>
     <standard_name name="sea_water_absolute_salinity"
                    description="The absolute salinity of sea water">
-       <type units="g kg-1">real</type>
+      <type units="g kg-1">real</type>
     </standard_name>
     <standard_name name="sea_water_temperature"
                      description="The temperature of sea water">
@@ -1386,7 +1382,7 @@
         <type units="m-3">real</type>
       </standard_name>
     </section>
-    <section name="precipitation and hydrometeors">
+    <section name="precipitation, cloud, and hydrometeor variables">
       <standard_name name="total_precipitation_rate_at_surface">
         <type units="m s-1">real</type>
       </standard_name>
@@ -1475,6 +1471,54 @@
       </standard_name>
       <standard_name name="aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection">
         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="cloud_condensate_autoconversion_threshold_coefficient">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="cloud_condensate_autoconversion_threshold_coefficient_for_deep_convection">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="reciprocal_of_cloud_phase_transition_temperature_range">
+         <type units="K-1">real</type>
+      </standard_name>
+      <standard_name name="cloud_phase_transition_threshold_temperature">
+         <type units="K">real</type>
+      </standard_name>
+      <standard_name name="precipitation_evaporation_coefficient">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="autoconversion_to_snow_coefficient">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="autoconversion_to_snow_coefficient_for_deep_convection">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="autoconversion_to_rain_coefficient">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="autoconversion_to_rain_coefficient_for_deep_convection">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="chemical_tracer_scavenging_fractions">
+         <type units="fraction">real</type>
+      </standard_name>
+      <standard_name name="cloud_condensate_detrainment_coefficient">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="control_for_convective_cloud_diagnostics">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="tunable_parameter_1_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection">
+         <type units="m">real</type>
+      </standard_name>
+      <standard_name name="tunable_parameter_2_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection">
+         <type units="m">real</type>
+      </standard_name>
+      <standard_name name="detrainment_conversion_parameter_for_deep_convection">
+         <type units="m-1">real</type>
+      </standard_name>
+      <standard_name name="detrainment_conversion_parameter_for_shallow_convection">
+         <type units="m-1">real</type>
       </standard_name>
     </section>
     <section name="GOCART aerosols">
@@ -1809,19 +1853,8 @@
       <type units="index">integer</type>
     </standard_name>
   </section>
-  <section name="stochastic physics">
-    <standard_name name="cellular_automata_finer_grid">
-      <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="cellular_automata_lifetime">
-      <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="cellular_automata_seed_frequency">
-      <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="cellular_automata_seed_probability">
-      <type units="fraction">real</type>
-    </standard_name>
+  <section name="control variables"
+           comment="Variables that indicate or control some action.">
     <standard_name name="do_cellular_automata">
       <type units="flag">logical</type>
     </standard_name>
@@ -1842,6 +1875,428 @@
     </standard_name>
     <standard_name name="do_sgs_cellular_automata">
       <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_skeb_option"
+                 description="Do Stochastic Kinetic Energy Backscatter option">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_shum_option"
+                 description="Do Stochastic HUMidity stochastic physics option">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_mountain_blocking_for_sppt"
+                 description="Do mountain blocking for stochastically perturbed physics tendencies">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_shoc"
+                 description="Do Simplified Higher-Order Closure stochastic physics scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_shoc_after_convection"
+                 description="Do Simplified Higher-Order Closure stochastic physics scheme after convection parameterization">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_cloud_fraction_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_microphysics_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_physics_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_radiative_heating_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_shoc_cloud_area_fraction_for_radiation"
+                 description="Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_myj_pbl_scheme"
+                 description="Do Mellor-Yamada-Janjic planetary boundary layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_myj_surface_layer_scheme"
+                 description="Do Mellor-Yamada-Janjic surface layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_mynn_pbl_scheme"
+                 description="Do Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_mynn_surface_layer_scheme"
+                 description="Do Mellor-Yamada-Nakanishi-Niino surface layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_unified_gravity_wave_physics_diagnostics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_unified_gravity_wave_physics_gwd_scheme"
+                 description="Do Unifed Gravity Wave Physics gravity wave drag scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_arakawa_wu_downdrafts_for_deep_convection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_debug_output">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_diagnostics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_xyz_dimensioned_diagnostics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_flip"
+                   description="Flag indicating whether to flip vertical coordinate">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_flux_form_in_chikira_sugiyama_deep_convection_scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_nrl_2015_ozone_scheme"
+                 description="Do Naval Research Laboratory 2015 ozone scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_prescribed_aerosols">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_aerosol_physics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_arakawa_wu_adjustment">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_canopy_heat_storage_in_land_surface_scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_chemistry_coupling">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_chikira_sugiyama_deep_convection_scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_in_cloud_condensate">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_cloud_effective_radii">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_convective_gwd"
+                 description="Do convective gravity wave drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_convective_transport_of_tracers">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_converting_hydrometeors_from_moist_to_dry_air">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_crick_elimination">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_surface_flux_coupling">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_fractional_landmask">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gcycle_surface_option">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_generic_tendency_due_to_deep_convection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_generic_tendency_due_to_gwd"
+                 description="Do generic tendency due to gravity wave drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_generic_tendency_due_to_pbl"
+                 description="Do generic tendency due to planetary boundary layer">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_generic_tendency_due_to_shallow_convection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gfdl_microphysics_radiation_interaction"
+                 description="Do Geophysical Fluid Dynamics Laboratory microphysics radiation interaction">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gwd"
+                 description="Do gravity wave drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gsl_drag_suite_large_scale_orographic_and_blocking_drag"
+                 description="Do Global Systems Lab drag suite large-scale orographic and blocking drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gsl_drag_suite_small_scale_orographic_drag"
+                 description="Do Global Systems Lab drag suite small-scale orographic drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gsl_drag_suite_turbulent_orographic_form_drag"
+                 description="Do Global Systems Lab drag suite turbulent orographic form drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_hybrid_edmf_pbl_scheme"
+                 description="Do hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gsl_drag_suite_large_scale_orographic_and_blocking_drag"
+                 description="Do Global Systems Lab drag suite large-scale orographic and blocking drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gsl_drag_suite_small_scale_orographic_drag"
+                 description="Do Global Systems Lab drag suite small-scale orographic drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gsl_drag_suite_turbulent_orographic_form_drag"
+                 description="Do Global Systems Lab drag suite turbulent orographic form drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_hybrid_edmf_pbl_scheme"
+                 description="Do hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_hurricane_specific_code_in_scale_aware_mass_flux_deep_convection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_hurricane_specific_code_in_scale_aware_mass_flux_shallow_convection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_hydrostatic_solver">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_separate_advection_of_condensate_species">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_cloud_area_fraction_option_for_radiation">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_moorthi_stratus">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_noah_lsm_ua_extension"
+                 description="Do Noah land surface model University of Arizona extension">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_nsstm_analysis_in_gcycle"
+                 description="Do GFS near-surface sea temperature scheme analysis in gcycle">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_surface_layer_scheme_ocean_currents">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_old_pbl_scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_output_of_tendency_of_air_temperature_due_to_longwave_heating_on_radiation_timestep_assuming_clear_sky">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_output_of_tendency_of_air_temperature_due_to_shortwave_heating_on_radiation_timestep_assuming_clear_sky">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_nrl_2006_ozone_scheme"
+                 description="Do Naval Research Laboratory 2006 ozone scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_surface_layer_scheme_surface_drag_coefficient_for_momentum_in_air_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_dominant_precipitation_type_partition">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_radar_reflectivity">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_random_clouds_in_relaxed_arakawa_schubert_deep_convection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_relaxed_arakawa_schubert_deep_convection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_read_leaf_area_index_from_input">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_read_surface_albedo_for_diffused_shortwave_from_input">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_limited_roughness_length_over_ocean"
+                 description="Do limited surface roughness length over ocean">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_reference_pressure_theta">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_rrtmgp_radiation_scheme"
+                 description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) radiation scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_scale_aware_mass_flux_deep_convection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_scale_aware_shin_hong_pbl_scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_scale_aware_tke_moist_edmf_pbl"
+                 description="Do scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_sas_shallow_convection"
+                 description="Do Simplified Arakawa-Schubert shallow convection scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stratospheric_water_vapor_physics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_ugwp_version_0"
+                 description="Do Unified Gravity Wave Physics version 0">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_ugwp_version_0_nonorographic_gwd"
+                 description="Do Unified Gravity Wave Physics version 0 non-orographic gravity wave drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_ugwp_version_0_orographic_gwd"
+                 description="Do Unified Gravity Wave Physics version 0 orographic gravity wave drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_ugwp_version_1"
+                 description="Do Unified Gravity Wave Physics version 1">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_ugwp_version_1_nonorographic_gwd"
+                 description="Do Unified Gravity Wave Physics version 1 non-orographic gravity wave drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_ugwp_version_1_orographic_gwd"
+                 description="Do Unified Gravity Wave Physics version 1 orographic gravity wave drag">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_ocean_wave_coupling">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_one_way_ocean_wave_coupling_to_atmosphere">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_ysu_pbl_scheme"
+                 description="Do Yonsei University (YSU) planetary boundary layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_hurricane_specific_code_in_hybrid_edmf_pbl_scheme"
+                 description="Do hurricane-specific code in hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_integrated_dynamics_through_earths_atmosphere">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_print">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_save_shallow_convective_cloud_area_fraction">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_tke_dissipation_heating">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_call_longwave_radiation">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_rrtmg_cloud_optics"
+                 description="Flag for Rapid Radiative Transfer Model for General circulation model applications (RRTMG) cloud optics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_rrtmgp_cloud_optics_lookup_table"
+                 description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) cloud optics lookup table">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_rrtmgp_cloud_optics_with_pade_approximation"
+                 description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) with Pade approximation">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_rrtmgp_longwave_jacobian"
+                 description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave jacobian">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_call_shortwave_radiation">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_longwave_scattering_in_cloud_optics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_tracer_xyz_dimensioned_diagnostics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_allow_supersaturation_after_sedimentation">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_prescribed_number_concentration_of_cloud_droplets">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_cloud_ice_processes">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_gmao_autoconversion_to_snow">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_graupel_instead_of_hail">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_hail_instead_of_graupel">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_heterogeneous_nucleation">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_liu_autoconversion_to_rain">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_seifert_and_beheng_2001_autoconversion">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_uniform_subcolumns">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_prescribed_number_concentration_of_graupel">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_prescribed_number_concentration_of_cloud_ice">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_rrtmgp_shortwave_and_rrtmg_longwave_radiation"
+                 description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) shortwave and Rapid Radiative Transfer Model for global climate model (GCM) applications (RRTMG) longwave radiation schemes">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_tke_advection">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme"
+                 description="Do turbulent orographic form drag in Unified Gravity Wave Physics gravity wave drag scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_lagrangian_vertical_coordinate"
+                   description="Flag indicating if vertical coordinate is lagrangian">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_molecular_diffusion">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_chemical_tracer_diagnostics">
+      <type units="flag">logical</type>
+    </standard_name>
+  </section>
+  <section name="stochastic physics variables">
+    <standard_name name="cellular_automata_finer_grid">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="cellular_automata_lifetime">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="cellular_automata_seed_frequency">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="cellular_automata_seed_probability">
+      <type units="fraction">real</type>
     </standard_name>
     <standard_name name="number_of_independent_cellular_automata">
       <type units="count">integer</type>
@@ -1870,10 +2325,6 @@
     <standard_name name="number_of_random_numbers">
       <type units="count">integer</type>
     </standard_name>
-    <standard_name name="do_stochastic_skeb_option"
-                 description="Do Stochastic Kinetic Energy Backscatter option">
-      <type units="flag">logical</type>
-    </standard_name>
     <standard_name name="skeb_x_wind_scaling_factors_from_coupled_process"
                  description="Stochastic Kinetic Energy Backscatter x-wind scaling factors from coupled process">
       <type units="1">real</type>
@@ -1882,17 +2333,9 @@
                  description="Stochastic Kinetic Energy Backscatter y-wind scaling factors from coupled process">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="do_stochastic_shum_option"
-                 description="Do Stochastic HUMidity stochastic physics option">
-      <type units="flag">logical</type>
-    </standard_name>
     <standard_name name="shum_scaling_factors_from_coupled_process"
                  description="Stochastic Humidity stochastic physics option scaling factors from coupled process">
       <type units="1">real</type>
-    </standard_name>
-    <standard_name name="do_mountain_blocking_for_sppt"
-                 description="Do mountain blocking for stochastically perturbed physics tendencies">
-      <type units="flag">logical</type>
     </standard_name>
     <standard_name name="total_amplitude_of_sppt_perturbation"
                  description="Total amplitude of stochastically perturbed physics tendencies perturbation">
@@ -1905,30 +2348,6 @@
     <standard_name name="sppt_scaling_factors_from_coupled_process"
                  description="Stochastically perturbed physics tendencies scaling factors from coupled process">
       <type units="1">real</type>
-    </standard_name>
-    <standard_name name="do_shoc"
-                 description="Do Simplified Higher-Order Closure stochastic physics scheme">
-      <type units="flag">logical</type>
-    </standard_name>
-    <standard_name name="do_shoc_after_convection"
-                 description="Do Simplified Higher-Order Closure stochastic physics scheme after convection parameterization">
-      <type units="flag">logical</type>
-    </standard_name>
-    <standard_name name="do_stochastic_cloud_fraction_perturbations">
-      <type units="flag">logical</type>
-    </standard_name>
-    <standard_name name="do_stochastic_microphysics_perturbations">
-      <type units="flag">logical</type>
-    </standard_name>
-    <standard_name name="do_stochastic_physics_perturbations">
-      <type units="flag">logical</type>
-    </standard_name>
-    <standard_name name="do_stochastic_radiative_heating_perturbations">
-      <type units="flag">logical</type>
-    </standard_name>
-    <standard_name name="do_shoc_cloud_area_fraction_for_radiation"
-                 description="Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation">
-      <type units="flag">logical</type>
     </standard_name>
     <standard_name name="control_for_stochastic_land_surface_perturbation">
       <type units="1">integer</type>
@@ -1946,44 +2365,30 @@
     </standard_name>
   </section>
   <section name="radiation">
-      <standard_name name="radiatively_active_gases_as_string">
-         <type units="none">character</type>
+    <standard_name name="radiatively_active_gases_as_string">
+      <type units="none">character</type>
+    </standard_name>
+    <standard_name name="identifier_for_2018_scale_aware_tke_moist_edmf_pbl"
+                 description="Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="control_for_scale_aware_tke_moist_edmf_pbl_scheme"
+                 description="Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">   
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="identifier_for_2019_scale_aware_tke_moist_edmf_pbl"
+                 description="Identifier for 2019 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="cosine_of_solar_declination_angle">
+      <type units="1">real</type>
+    </standard_name>
+      <standard_name name="control_for_sgs_cloud_radiation_coupling_in_mynn_pbl_scheme"
+                   description="Control for subgrid-scale cloud radiation coupling in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
+         <type units="1">integer</type>
       </standard_name>
   </section>
-  <section name="GFS_typedefs_GFS_control_type">
-      <standard_name name="number_of_microphysics_variables_in_xy_dimensioned_restart_array">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_microphysics_variables_in_xyz_dimensioned_restart_array">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="identifier_for_2018_scale_aware_tke_moist_edmf_pbl"
-                   description="Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="control_for_scale_aware_tke_moist_edmf_pbl_scheme"
-                   description="Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="identifier_for_2019_scale_aware_tke_moist_edmf_pbl"
-                   description="Identifier for 2019 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="cloud_condensate_autoconversion_threshold_coefficient">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="cloud_condensate_autoconversion_threshold_coefficient_for_deep_convection">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="control_for_cloud_area_fraction_option">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="reciprocal_of_cloud_phase_transition_temperature_range">
-         <type units="K-1">real</type>
-      </standard_name>
-      <standard_name name="cloud_phase_transition_threshold_temperature">
-         <type units="K">real</type>
-      </standard_name>
+  <section name="atmospheric surface and boundary layer">
       <standard_name name="control_for_cloud_species_mixing_in_mynn_pbl_scheme"
                    description="Control for cloud species mixing in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
          <type units="1">integer</type>
@@ -1992,118 +2397,7 @@
                    description="Control for cloud probability density function in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="precipitation_evaporation_coefficient">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="coefficient_for_variable_bulk_richardson_number_over_land">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="coefficient_for_variable_bulk_richardson_number_over_water">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="autoconversion_to_snow_coefficient">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="autoconversion_to_snow_coefficient_for_deep_convection">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="autoconversion_to_rain_coefficient">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="autoconversion_to_rain_coefficient_for_deep_convection">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="chemical_tracer_scavenging_fractions">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="cloud_condensate_detrainment_coefficient">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="control_for_convective_cloud_diagnostics">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="cosine_of_solar_declination_angle">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="control_for_sgs_cloud_radiation_coupling_in_mynn_pbl_scheme"
-                   description="Control for subgrid-scale cloud radiation coupling in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="tunable_parameter_for_critical_cloud_top_entrainment_instability_criteria">
-         <type units="1">real</type>
-      </standard_name>
       <standard_name name="critical_relative_humidity_at_top_of_atmosphere_boundary_layer">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="critical_relative_humidity_at_surface">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="critical_relative_humidity_at_toa"
-                   description="Critical relative humidity at the top of the atmosphere">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="decorrelation_length_used_by_overlap_method">
-         <type units="km">real</type>
-      </standard_name>
-      <standard_name name="density_of_fresh_water">
-         <type units="kg m-3">real</type>
-      </standard_name>
-      <standard_name name="depth_of_soil_layers">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="tunable_parameter_1_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="tunable_parameter_2_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="detrainment_conversion_parameter_for_deep_convection">
-         <type units="m-1">real</type>
-      </standard_name>
-      <standard_name name="detrainment_conversion_parameter_for_shallow_convection">
-         <type units="m-1">real</type>
-      </standard_name>
-      <standard_name name="do_unified_gravity_wave_physics_diagnostics">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_chemical_tracer_diagnostics">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="sigma_pressure_threshold_at_upper_extent_of_background_diffusion">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="directory_for_rte_rrtmgp_source_code"
-                   description="Directory for Radiative Transfer for Energetics/Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) source code">
-         <type units="none">character</type>
-      </standard_name>
-      <standard_name name="do_myj_pbl_scheme"
-                   description="Do Mellor-Yamada-Janjic planetary boundary layer scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_myj_surface_layer_scheme"
-                   description="Do Mellor-Yamada-Janjic surface layer scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_mynn_pbl_scheme"
-                   description="Do Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_mynn_surface_layer_scheme"
-                   description="Do Mellor-Yamada-Nakanishi-Niino surface layer scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_unified_gravity_wave_physics_gwd_scheme"
-                   description="Do Unifed Gravity Wave Physics gravity wave drag scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme"
-                   description="Downdraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="downdraft_fraction_reaching_surface_over_land_for_deep_convection">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="downdraft_fraction_reaching_surface_over_water_for_deep_convection">
          <type units="fraction">real</type>
       </standard_name>
       <standard_name name="control_for_edmf_in_mynn_pbl_scheme"
@@ -2111,7 +2405,7 @@
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="control_for_edmf_momentum_transport_in_mynn_pbl_scheme"
-                   description="Control for eddy-diffusivity mass flux momentum transport in Mellor-Yamada-Nakanishi-Niino surface layer scheme">
+                   description="Control for eddy-diffusivity mass flux momentum transport in Mellor-Yamada-Nakanishi-Niino surface layer scheme">     
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="control_for_edmf_partitioning_in_mynn_pbl_scheme"
@@ -2125,6 +2419,56 @@
       <standard_name name="surface_layer_scheme_enthalpy_flux_factor">
          <type units="1">real</type>
       </standard_name>
+  </section>
+  <section name="GFS_typedefs_GFS_control_type">
+      <standard_name name="number_of_microphysics_variables_in_xy_dimensioned_restart_array">
+         <type units="count">integer</type>
+      </standard_name>
+      <standard_name name="number_of_microphysics_variables_in_xyz_dimensioned_restart_array">
+         <type units="count">integer</type>
+      </standard_name>
+      <standard_name name="control_for_cloud_area_fraction_option">
+         <type units="1">integer</type>
+      </standard_name>
+      <standard_name name="coefficient_for_variable_bulk_richardson_number_over_land">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="coefficient_for_variable_bulk_richardson_number_over_water">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="tunable_parameter_for_critical_cloud_top_entrainment_instability_criteria">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="critical_relative_humidity_at_surface">
+         <type units="fraction">real</type>
+      </standard_name>
+      <standard_name name="critical_relative_humidity_at_toa"
+                   description="Critical relative humidity at the top of the atmosphere">
+         <type units="fraction">real</type>
+      </standard_name>
+      <standard_name name="decorrelation_length_used_by_overlap_method">
+         <type units="km">real</type>
+      </standard_name>
+      <standard_name name="depth_of_soil_layers">
+         <type units="m">real</type>
+      </standard_name>
+      <standard_name name="sigma_pressure_threshold_at_upper_extent_of_background_diffusion">
+         <type units="1">real</type>
+      </standard_name>
+      <standard_name name="directory_for_rte_rrtmgp_source_code"
+                   description="Directory for Radiative Transfer for Energetics/Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) source code">
+         <type units="none">character</type>
+      </standard_name>
+      <standard_name name="downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme"
+                   description="Downdraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
+         <type units="fraction">real</type>
+      </standard_name>
+      <standard_name name="downdraft_fraction_reaching_surface_over_land_for_deep_convection">
+         <type units="fraction">real</type>
+      </standard_name>
+      <standard_name name="downdraft_fraction_reaching_surface_over_water_for_deep_convection">
+         <type units="fraction">real</type>
+      </standard_name>
       <standard_name name="tunable_parameter_for_entrainment_efficiency_in_chikira_sugiyama_deep_convection">
          <type units="1">real</type>
       </standard_name>
@@ -2137,76 +2481,17 @@
       <standard_name name="relative_humidity_threshold_for_condensation">
          <type units="fraction">real</type>
       </standard_name>
-      <standard_name name="do_arakawa_wu_downdrafts_for_deep_convection">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_debug_output">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_diagnostics">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_xyz_dimensioned_diagnostics">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_flip">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_flux_adjusting_surface_data_assimilation_system">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_flux_form_in_chikira_sugiyama_deep_convection_scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_nrl_2015_ozone_scheme"
-                   description="Do Naval Research Laboratory 2015 ozone scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_prescribed_aerosols">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_aerosol_physics">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_arakawa_wu_adjustment">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_canopy_heat_storage_in_land_surface_scheme">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_land_surface_scheme_canopy_stomatal_resistance">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_chemistry_coupling">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_chikira_sugiyama_deep_convection_scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_in_cloud_condensate">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_cloud_effective_radii">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_cloud_overlap_method_for_radiation">
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="identifier_for_constant_decorrelation_length_method">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_convective_gwd"
-                   description="Do convective gravity wave drag">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_convective_transport_of_tracers">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_converting_hydrometeors_from_moist_to_dry_air">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_crick_elimination">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_decorrelation_length_cloud_overlap_method">
          <type units="1">integer</type>
@@ -2229,31 +2514,8 @@
       <standard_name name="identifier_for_fer_hires_microphysics_scheme">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_surface_flux_coupling">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_fractional_landmask">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_land_surface_scheme_frozen_soil_permeability">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_gcycle_surface_option">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_generic_tendency_due_to_deep_convection">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_generic_tendency_due_to_gwd"
-                   description="Do generic tendency due to gravity wave drag">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_generic_tendency_due_to_pbl"
-                   description="Do generic tendency due to planetary boundary layer">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_generic_tendency_due_to_shallow_convection">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_grell_freitas_deep_convection">
          <type units="1">integer</type>
@@ -2261,63 +2523,24 @@
       <standard_name name="identifier_for_grell_freitas_shallow_convection">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_gfdl_microphysics_radiation_interaction"
-                   description="Do Geophysical Fluid Dynamics Laboratory microphysics radiation interaction">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="identifier_for_gfdl_microphysics_scheme"
                    description="Identifier for Geophysical Fluid Dynamics Laboratory microphysics scheme">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_gwd"
-                   description="Do gravity wave drag">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_land_surface_scheme_surface_snow_albedo">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_gsl_drag_suite_large_scale_orographic_and_blocking_drag"
-                   description="Do Global Systems Lab drag suite large-scale orographic and blocking drag">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_gsl_drag_suite_small_scale_orographic_drag"
-                   description="Do Global Systems Lab drag suite small-scale orographic drag">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_gsl_drag_suite_turbulent_orographic_form_drag"
-                   description="Do Global Systems Lab drag suite turbulent orographic form drag">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_hybrid_edmf_pbl_scheme"
-                   description="Do hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_hogan_decorrelation_length_method">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_hurricane_specific_code_in_scale_aware_mass_flux_deep_convection">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_hurricane_specific_code_in_scale_aware_mass_flux_shallow_convection">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_hydrostatic_solver">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_ice_cloud_condensation_nuclei_forcing">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_separate_advection_of_condensate_species">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_lake_surface_scheme">
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="control_for_land_surface_scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_cloud_area_fraction_option_for_radiation">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_land_surface_scheme_lower_boundary_soil_temperature">
          <type units="1">integer</type>
@@ -2342,18 +2565,11 @@
       <standard_name name="control_for_microphysics_scheme">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_moorthi_stratus">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="identifier_for_morrison_gettelman_microphysics_scheme">
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="identifier_for_noah_land_surface_scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_noah_lsm_ua_extension"
-                   description="Do Noah land surface model University of Arizona extension">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_noah_wrfv4_land_surface_scheme">
          <type units="1">integer</type>
@@ -2361,10 +2577,6 @@
       <standard_name name="identifier_for_noahmp"
                    description="Identifier for Noah land surface model with multiparameterization options">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_nsstm_analysis_in_gcycle"
-                   description="Do GFS near-surface sea temperature scheme analysis in gcycle">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_nsstm"
                    description="Control for GFS near-surface sea temperature scheme">
@@ -2375,12 +2587,6 @@
       </standard_name>
       <standard_name name="identifier_for_new_tiedtke_shallow_convection">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_surface_layer_scheme_ocean_currents">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_old_pbl_scheme">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_optical_property_for_ice_clouds_for_longwave_radiation">
          <type units="1">integer</type>
@@ -2397,22 +2603,9 @@
       <standard_name name="identifier_for_oreopoulos_decorrelation_length_method">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_output_of_tendency_of_air_temperature_due_to_longwave_heating_on_radiation_timestep_assuming_clear_sky">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_output_of_tendency_of_air_temperature_due_to_shortwave_heating_on_radiation_timestep_assuming_clear_sky">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_nrl_2006_ozone_scheme"
-                   description="Do Naval Research Laboratory 2006 ozone scheme">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_pdf_shape_for_microphysics"
                    description="Control for probability density function shape for microphysics">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_surface_layer_scheme_surface_drag_coefficient_for_momentum_in_air_perturbations">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="disable_precipitation_radiative_effect">
          <type units="flag">logical</type>
@@ -2420,42 +2613,13 @@
       <standard_name name="control_for_land_surface_scheme_precipitation_type_partition">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_dominant_precipitation_type_partition">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_radar_reflectivity">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_land_surface_scheme_radiative_transfer">
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="identifier_for_random_cloud_overlap_method">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_random_clouds_in_relaxed_arakawa_schubert_deep_convection">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_relaxed_arakawa_schubert_deep_convection">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_read_leaf_area_index_from_input">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_read_surface_albedo_for_diffused_shortwave_from_input">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_limited_roughness_length_over_ocean"
-                   description="Do limited surface roughness length over ocean">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_reference_pressure_theta">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="is_restart">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_rrtmgp_radiation_scheme"
-                   description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) radiation scheme">
          <type units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_ruc_land_surface_scheme"
@@ -2479,20 +2643,6 @@
                    description="Identifier for Simplified Arakawa-Schubert shallow convection scheme">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_scale_aware_mass_flux_deep_convection">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_scale_aware_shin_hong_pbl_scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_scale_aware_tke_moist_edmf_pbl"
-                   description="Do scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_sas_shallow_convection"
-                   description="Do Simplified Arakawa-Schubert shallow convection scheme">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_land_surface_scheme_soil_and_snow_temperature_time_integration">
          <type units="1">integer</type>
       </standard_name>
@@ -2501,9 +2651,6 @@
       </standard_name>
       <standard_name name="control_for_solar_constant">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_stratospheric_water_vapor_physics">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_land_surface_scheme_supercooled_liquid_water">
          <type units="1">integer</type>
@@ -2526,30 +2673,6 @@
       <standard_name name="identifier_for_thompson_microphysics_scheme">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_ugwp_version_0"
-                   description="Do Unified Gravity Wave Physics version 0">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_ugwp_version_0_nonorographic_gwd"
-                   description="Do Unified Gravity Wave Physics version 0 non-orographic gravity wave drag">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_ugwp_version_0_orographic_gwd"
-                   description="Do Unified Gravity Wave Physics version 0 orographic gravity wave drag">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_ugwp_version_1"
-                   description="Do Unified Gravity Wave Physics version 1">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_ugwp_version_1_nonorographic_gwd"
-                   description="Do Unified Gravity Wave Physics version 1 non-orographic gravity wave drag">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_ugwp_version_1_orographic_gwd"
-                   description="Do Unified Gravity Wave Physics version 1 orographic gravity wave drag">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_surface_layer_scheme_skin_temperature_update">
          <type units="1">integer</type>
       </standard_name>
@@ -2559,18 +2682,8 @@
       <standard_name name="control_for_prescribed_co2">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="do_ocean_wave_coupling">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_one_way_ocean_wave_coupling_to_atmosphere">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="identifier_for_wsm6_microphysics_scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_ysu_pbl_scheme"
-                   description="Do Yonsei University (YSU) planetary boundary layer scheme">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_zhao_carr_microphysics_scheme">
          <type units="1">integer</type>
@@ -2578,50 +2691,6 @@
       <standard_name name="identifier_for_zhao_carr_pdf_microphysics_scheme"
                    description="Identifier for Zhao-Carr probability density function microphysics scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_hurricane_specific_code_in_hybrid_edmf_pbl_scheme"
-                   description="Do hurricane-specific code in hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_integrated_dynamics_through_earths_atmosphere">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_print">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_save_shallow_convective_cloud_area_fraction">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_tke_dissipation_heating">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_call_longwave_radiation">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_rrtmg_cloud_optics"
-                   description="Flag for Rapid Radiative Transfer Model for General circulation model applications (RRTMG) cloud optics">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_rrtmgp_cloud_optics_lookup_table"
-                   description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) cloud optics lookup table">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_rrtmgp_cloud_optics_with_pade_approximation"
-                   description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) with Pade approximation">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_rrtmgp_longwave_jacobian"
-                   description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave jacobian">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_call_shortwave_radiation">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_longwave_scattering_in_cloud_optics">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_tracer_xyz_dimensioned_diagnostics">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_variable_bulk_richardson_number">
          <type units="1">real</type>
@@ -2804,9 +2873,6 @@
                    description="Maximum soil moisture content for land surface model">
          <type units="m">real</type>
       </standard_name>
-      <standard_name name="do_allow_supersaturation_after_sedimentation">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="autoconversion_to_snow_size_threshold">
          <type units="um">real</type>
       </standard_name>
@@ -2818,39 +2884,6 @@
       </standard_name>
       <standard_name name="prescribed_number_concentration_of_cloud_droplets">
          <type units="m-3">real</type>
-      </standard_name>
-      <standard_name name="do_prescribed_number_concentration_of_cloud_droplets">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_cloud_ice_processes">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_gmao_autoconversion_to_snow">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_graupel_instead_of_hail">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_hail_instead_of_graupel">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_heterogeneous_nucleation">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_liu_autoconversion_to_rain">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_seifert_and_beheng_2001_autoconversion">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_uniform_subcolumns">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_prescribed_number_concentration_of_graupel">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_prescribed_number_concentration_of_cloud_ice">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="prescribed_number_concentration_of_graupel">
          <type units="m-3">real</type>
@@ -3062,10 +3095,6 @@
                    description="File name of Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) shortwave k-distribution">
          <type units="none">character</type>
       </standard_name>
-      <standard_name name="do_rrtmgp_shortwave_and_rrtmg_longwave_radiation"
-                   description="Flag for Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) shortwave and Rapid Radiative Transfer Model for global climate model (GCM) applications (RRTMG) longwave radiation schemes">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="min_sea_ice_area_fraction">
          <type units="fraction">real</type>
       </standard_name>
@@ -3113,18 +3142,11 @@
       <standard_name name="timestep_for_dynamics">
          <type units="s">real</type>
       </standard_name>
-      <standard_name name="do_tke_advection">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_tke_budget_output">
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="multiplicative_tuning_parameter_for_tke_dissipative_heating">
          <type units="1">real</type>
-      </standard_name>
-      <standard_name name="do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme"
-                   description="Do turbulent orographic form drag in Unified Gravity Wave Physics gravity wave drag scheme">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme"
                    description="Updraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
