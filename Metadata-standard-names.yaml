@@ -993,9 +993,8 @@ section:
     type: real
     kind: null
     units: s
-- name: state_variables
-  comment: Note that appending '_on_previous_timestep' to standard_names in this section
-    yields another valid standard_name
+- name: atmospheric properties
+  comment: null
   standard_names:
   - name: specific_heat_of_dry_air_at_constant_pressure
     description: Specific heat of dry air at constant pressure
@@ -1473,6 +1472,26 @@ section:
     type: real
     kind: null
     units: m s-2
+  - name: multiplicative_tuning_parameter_for_atmosphere_diffusivity
+    description: Multiplicative tuning parameter for atmosphere diffusivity
+    type: real
+    kind: null
+    units: 1
+  - name: atmosphere_heat_diffusivity_due_to_background
+    description: Atmosphere heat diffusivity due to background
+    type: real
+    kind: null
+    units: m2 s-1
+  - name: max_atmosphere_heat_diffusivity_due_to_background
+    description: Maximum atmosphere heat diffusivity due to background
+    type: real
+    kind: null
+    units: m2 s-1
+  - name: atmosphere_momentum_diffusivity_due_to_background
+    description: Atmosphere momentum diffusivity due to background
+    type: real
+    kind: null
+    units: m2 s-1
 - name: land_surface
   comment: null
   standard_names:
@@ -1539,669 +1558,703 @@ section:
     type: real
     kind: null
     units: K
-- name: diagnostics
-  comment: null
-  standard_names:
-  - name: total_precipitation_rate_at_surface
-    description: Total precipitation rate at surface
-    type: real
-    kind: null
-    units: m s-1
 - name: atmospheric_composition
   comment: null
-  standard_names:
-  - name: number_of_chemical_species
-    description: Number of chemical species
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_tracers
-    description: Number of tracers
-    type: integer
-    kind: null
-    units: count
-  - name: water_vapor_mixing_ratio_wrt_moist_air
-    description: Ratio of the mass of water vapor to the mass of moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water
-    description: Ratio of the mass of water vapor to the mass of moist air and hydrometeors
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
-    description: Ratio of the mass of water vapor to the mass of moist air and hydrometeors
-      at all interfaces excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mole_fraction_of_water_vapor
-    description: Mole fraction of water vapor
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: water_vapor_mixing_ratio_wrt_dry_air
-    description: Ratio of the mass of water vapor to the mass of dry air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_dry_air_at_top_interfaces
-    description: Ratio of the mass of water vapor to the mass of dry air at all interfaces
-      excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water
-    description: Ratio of the mass of cloud liquid water to the mass of moist air
-      and condensed water
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
-    description: Ratio of the mass of cloud liquid water to the mass of moist air
-      and condensed water at all interfaces excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air
-    description: Ratio of the mass of cloud liquid water to the mass of moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_liquid_water_mixing_ratio_wrt_dry_air
-    description: Ratio of the mass of cloud liquid water to the mass of dry air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces
-    description: Ratio of the mass of cloud liquid water to the mass of dry air at
-      all interfaces excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water
-    description: Ratio of the mass of cloud ice to the mass of moist air and condensed
-      water
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
-    description: Ratio of the mass of cloud ice to the mass of moist air and condensed
-      water at all interfaces excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_ice_mixing_ratio_wrt_dry_air
-    description: Ratio of the mass of cloud ice to the mass of dry air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces
-    description: Ratio of the mass of cloud ice to the mass of dry air at all interfaces
-      excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: rain_mixing_ratio_wrt_moist_air_and_condensed_water
-    description: ratio of the mass of rain to the mass of moist air and condensed
-      water
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: rain_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
-    description: ratio of the mass of rain to the mass of moist air and condensed
-      water at all interfaces excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: rain_mixing_ratio_wrt_moist_air
-    description: ratio of the mass of rain to the mass of moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: rain_mixing_ratio_wrt_dry_air
-    description: ratio of the mass of rain to the mass of dry air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: rain_mixing_ratio_wrt_dry_air_at_top_interfaces
-    description: ratio of the mass of rain to the mass of dry air at all interfaces
-      excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: total_water_mixing_ratio_wrt_moist_air_and_condensed_water
-    description: ratio of the mass of all water phases to the mass of moist air and
-      condensed water
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: total_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
-    description: ratio of the mass of all water phases to the mass of moist air and
-      condensed water at all interfaces excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: total_water_mixing_ratio_wrt_dry_air
-    description: ratio of the mass of all water phases to the mass of dry air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: total_water_mixing_ratio_wrt_dry_air_at_top_interfaces
-    description: ratio of the mass of all water phases to the mass of dry air at all
-      interfaces excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_assuming_saturation
-    description: saturated water vapor mass mixing ratio with respect to moist air
-      and condensed water
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces_assuming_saturation
-    description: saturated water vapor mass mixing ratio with respect to moist air
-      and condensed water at all interfaces excluding surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature
-    description: derivative of the natural logarithm of water vapor partial pressure
-      at saturation with respect to air temperature
-    type: real
-    kind: null
-    units: K-1
-  - name: derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature_at_top_interfaces
-    description: derivative of the natural logarithm of water vapor partial pressure
-      at saturation with respect to air temperature at all interfaces excluding surface
-    type: real
-    kind: null
-    units: K-1
-  - name: mole_fraction_of_ozone_in_air
-    description: Mole fraction of ozone in air
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: mole_fraction_of_co2_in_air
-    description: Mole fraction of co2 in air
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_ch4
-    description: Methane volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_co
-    description: Carbon monoxide volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_co2
-    description: Carbon dioxide volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_ccl4
-    description: Tetrachloromethane volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_cfc11
-    description: Trichlorofluoromethane volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_cfc12
-    description: Dichlorodifluoromethane volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_cfc113
-    description: 1,1,2-Trichloro-1,2,2-trifluoroethane volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_cfc22
-    description: Chlorodifluoromethane volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_o2
-    description: Dioxygen volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_n2o
-    description: Nitrous oxide volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_no2
-    description: Nitrogen dioxide volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_no
-    description: Nitric oxide volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_o3
-    description: Ozone volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_hcho
-    description: Formaldehyde volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_c5h8
-    description: Isoprene volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: volume_mixing_ratio_of_so2
-    description: Sulfur dioxide volume mixing ratio
-    type: real
-    kind: null
-    units: mol mol-1
-  - name: number_density_of_n
-    description: Number density of neutral atomic nitrogen (N) in air
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_n_from_climatology
-    description: Climatological number density of atomic nitrogen (N), e.g., from
-      MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_n2
-    description: Number density of molecular nitrogen (N2) in air
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_n2_from_climatology
-    description: Climatological number density molecular nitrogen (N2), e.g., from
-      MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_o
-    description: Number density of neutral atomic oxygen (O) in air
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_o_from_climatology
-    description: Climatological number density of atomic oxygen (O), e.g., from MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_o2
-    description: Number density of molecular oxygen (O2) in air
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_o2_from_climatology
-    description: Climatological number density molecular oxygen (O2), e.g., from MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_no
-    description: Number density of nitric oxide (NO) in air
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_no_from_climatology
-    description: Climatological number density of nitric oxide (NO), e.g., from MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_ar
-    description: Number density of argon (Ar) in air
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_ar_from_climatology
-    description: Climatological number density of argon (Ar), e.g., from MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_he
-    description: Number density of helium (He) in air
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_he_from_climatology
-    description: Climatological number density of helium (He), e.g., from MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_h
-    description: Number density of neutral atomic hydrogen (H) in air
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_h_from_climatology
-    description: Climatological number density of atomic hydrogen (H), e.g., from
-      MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_anomalous_oxygen
-    description: Number density of energetic, non-thermal atomic oxygen as defined
-      in MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_anomalous_oxygen_from_climatology
-    description: Climatological number density of anomalous energetic oxygen, e.g.,
-      from MSIS
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_neutral_air
-    description: Total number density of neutral air, including all neutral constituents
-    type: real
-    kind: null
-    units: m-3
-  - name: number_density_of_neutral_air_from_climatology
-    description: Climatological total number density of neutral air, e.g., from MSIS
-    type: real
-    kind: null
-    units: m-3
-- name: 'atmospheric_composition: GOCART aerosols'
-  comment: null
-  standard_names:
-  - name: mass_fraction_of_dust001_in_air
-    description: Dust bin1 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_dust002_in_air
-    description: Dust bin2 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_dust003_in_air
-    description: Dust bin3 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_dust004_in_air
-    description: Dust bin4 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_dust005_in_air
-    description: Dust bin5 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sea_salt001_in_air
-    description: Sea salt bin1 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sea_salt002_in_air
-    description: Sea salt bin2 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sea_salt003_in_air
-    description: Sea salt bin3 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sea_salt004_in_air
-    description: Sea salt bin4 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sea_salt005_in_air
-    description: Sea salt bin5 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_hydrophobic_black_carbon_in_air
-    description: Hydrophobic black carbon mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_hydrophilic_black_carbon_in_air
-    description: Hydrophilic black carbon mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_hydrophobic_organic_carbon_in_air
-    description: Hydrophobic organic carbon mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_hydrophilic_organic_carbon_in_air
-    description: Hydrophilic organic carbon mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sulfate_in_air
-    description: Sulfate mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sea_nitrate001_in_air
-    description: Nitrate bin1 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sea_nitrate002_in_air
-    description: Nitrate bin2 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_sea_nitrate003_in_air
-    description: Nitrate bin3 mass fraction
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: volume_extinction_in_air_due_to_aerosol_particles_lambda1
-    description: Aerosol extinction at wavelength1
-    type: real
-    kind: null
-    units: m-1
-  - name: volume_extinction_in_air_due_to_aerosol_particles_lambda2
-    description: Aerosol extinction at wavelength2
-    type: real
-    kind: null
-    units: m-1
-  - name: volume_extinction_in_air_due_to_aerosol_particles_lambda3
-    description: Aerosol extinction at wavelength3
-    type: real
-    kind: null
-    units: m-1
-- name: 'atmospheric_composition: GLOMAP/UKCA aerosols'
-  comment: null
-  standard_names:
-  - name: mass_fraction_of_dust_coarse_aerosol_particles_in_air
-    description: Mass fraction of coarse mode dust aerosol particles
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_fraction_of_dust_accumulation_aerosol_particles_in_air
-    description: Mass fraction of accumulation mode dust aerosol particles
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: number_fraction_of_coarse_aerosol_particles_in_air
-    description: Ratio of number concentration of coarse-mode dust aerosol particles
-      to the molecular concentration of air; i.e., the ratio of the number of coarse-mode
-      dust aerosol particles to the number of air molecules in a unit volume
-    type: real
-    kind: null
-    units: particles molecules-1
-  - name: number_fraction_of_accumulation_aerosol_particles_in_air
-    description: Ratio of number concentration of accumulation-mode dust aerosol particles
-      to the molecular concentration of air; i.e., the ratio of the number of accumulation-mode
-      dust aerosol particles to the number of air molecules in a unit volume
-    type: real
-    kind: null
-    units: particles molecules-1
-- name: emissions
-  comment: Emissions variables, contributed for the Community Emissions Data System
-    (CEDS)
-  standard_names:
-  - name: emissions_of_co_due_to_anthropogenic_sources
-    description: Carbon monoxide emissions from anthropogenic sources, total
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_sources
-    description: Nitric oxide emissions from anthropogenic sources, total
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_sources
-    description: Formaldehyde emissions from anthropogenic sources, total
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_co_due_to_anthropogenic_agriculture
-    description: Carbon monoxide emissions from anthropogenic non-combustion agricultural
-      sector
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_agriculture
-    description: Nitric oxide emissions from anthropogenic non-combustion agricultural
-      sector
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_agriculture
-    description: Formaldehyde emissions from anthropogenic non-combustion agricultural
-      sector
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_co_due_to_anthropogenic_energy
-    description: Carbon monoxide emissions from anthropogenic non-combustion energy
-      transformation and extraction
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_energy
-    description: Nitric oxide emissions from anthropogenic non-combustion energy transformation
-      and extraction
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_energy
-    description: Formaldehyde emissions from anthropogenic non-combustion energy transformation
-      and extraction
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_co_due_to_anthropogenic_industry
-    description: Carbon monoxide emissions from anthropogenic industrial combustion
-      and processes
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_industry
-    description: Nitric oxide emissions from anthropogenic industrial combustion and
-      processes
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_industry
-    description: Formaldehyde emissions from anthropogenic industrial combustion and
-      processes
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_co_due_to_anthropogenic_rco
-    description: Carbon monoxide emissions from anthropogenic residential, commercial,
-      and others
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_rco
-    description: Nitric oxide emissions from anthropogenic residential, commercial,
-      and others
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_rco
-    description: Formaldehyde emissions from anthropogenic residential, commercial,
-      and others
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_co_due_to_anthropogenic_shipping
-    description: Carbon monoxide emissions from anthropogenic international shipping
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_shipping
-    description: Nitric oxide emissions from anthropogenic international shipping
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_shipping
-    description: Formaldehyde emissions from anthropogenic international shipping
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_co_due_to_anthropogenic_solvents
-    description: Carbon monoxide emissions from anthropogenic solvents
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_solvents
-    description: Nitric oxide emissions from anthropogenic solvents
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_solvents
-    description: Formaldehyde emissions from anthropogenic solvents
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_co_due_to_anthropogenic_transportation
-    description: Carbon monoxide emissions from anthropogenic surface transportation
-      (road, rail, other)
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_transportation
-    description: Nitric oxide emissions from anthropogenic surface transportation
-      (road, rail, other)
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_transportation
-    description: Formaldehyde emissions from anthropogenic surface transportation
-      (road, rail, other)
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_co_due_to_anthropogenic_waste
-    description: Carbon monoxide emissions from anthropogenic waste disposal and handling
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_no_due_to_anthropogenic_waste
-    description: Nitric oxide emissions from anthropogenic waste disposal and handling
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: emissions_of_hcho_due_to_anthropogenic_waste
-    description: Formaldehyde emissions from anthropogenic waste disposal and handling
-    type: real
-    kind: null
-    units: kg m-2 s-1
+  section:
+  - name: gasses
+    comment: null
+    standard_names:
+    - name: number_of_chemical_species
+      description: Number of chemical species
+      type: integer
+      kind: null
+      units: count
+    - name: number_of_tracers
+      description: Number of tracers
+      type: integer
+      kind: null
+      units: count
+    - name: water_vapor_mixing_ratio_wrt_moist_air
+      description: Ratio of the mass of water vapor to the mass of moist air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water
+      description: Ratio of the mass of water vapor to the mass of moist air and hydrometeors
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+      description: Ratio of the mass of water vapor to the mass of moist air and hydrometeors
+        at all interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mole_fraction_of_water_vapor
+      description: Mole fraction of water vapor
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: water_vapor_mixing_ratio_wrt_dry_air
+      description: Ratio of the mass of water vapor to the mass of dry air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: water_vapor_mixing_ratio_wrt_dry_air_at_top_interfaces
+      description: Ratio of the mass of water vapor to the mass of dry air at all
+        interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_assuming_saturation
+      description: saturated water vapor mass mixing ratio with respect to moist air
+        and condensed water
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces_assuming_saturation
+      description: saturated water vapor mass mixing ratio with respect to moist air
+        and condensed water at all interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature
+      description: derivative of the natural logarithm of water vapor partial pressure
+        at saturation with respect to air temperature
+      type: real
+      kind: null
+      units: K-1
+    - name: derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature_at_top_interfaces
+      description: derivative of the natural logarithm of water vapor partial pressure
+        at saturation with respect to air temperature at all interfaces excluding
+        surface
+      type: real
+      kind: null
+      units: K-1
+    - name: mole_fraction_of_ozone_in_air
+      description: Mole fraction of ozone in air
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: mole_fraction_of_co2_in_air
+      description: Mole fraction of co2 in air
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_ch4
+      description: Methane volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_co
+      description: Carbon monoxide volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_co2
+      description: Carbon dioxide volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_ccl4
+      description: Tetrachloromethane volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_cfc11
+      description: Trichlorofluoromethane volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_cfc12
+      description: Dichlorodifluoromethane volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_cfc113
+      description: 1,1,2-Trichloro-1,2,2-trifluoroethane volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_cfc22
+      description: Chlorodifluoromethane volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_o2
+      description: Dioxygen volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_n2o
+      description: Nitrous oxide volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_no2
+      description: Nitrogen dioxide volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_no
+      description: Nitric oxide volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_o3
+      description: Ozone volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_hcho
+      description: Formaldehyde volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_c5h8
+      description: Isoprene volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: volume_mixing_ratio_of_so2
+      description: Sulfur dioxide volume mixing ratio
+      type: real
+      kind: null
+      units: mol mol-1
+    - name: number_density_of_n
+      description: Number density of neutral atomic nitrogen (N) in air
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_n_from_climatology
+      description: Climatological number density of atomic nitrogen (N), e.g., from
+        MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_n2
+      description: Number density of molecular nitrogen (N2) in air
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_n2_from_climatology
+      description: Climatological number density molecular nitrogen (N2), e.g., from
+        MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_o
+      description: Number density of neutral atomic oxygen (O) in air
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_o_from_climatology
+      description: Climatological number density of atomic oxygen (O), e.g., from
+        MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_o2
+      description: Number density of molecular oxygen (O2) in air
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_o2_from_climatology
+      description: Climatological number density molecular oxygen (O2), e.g., from
+        MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_no
+      description: Number density of nitric oxide (NO) in air
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_no_from_climatology
+      description: Climatological number density of nitric oxide (NO), e.g., from
+        MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_ar
+      description: Number density of argon (Ar) in air
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_ar_from_climatology
+      description: Climatological number density of argon (Ar), e.g., from MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_he
+      description: Number density of helium (He) in air
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_he_from_climatology
+      description: Climatological number density of helium (He), e.g., from MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_h
+      description: Number density of neutral atomic hydrogen (H) in air
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_h_from_climatology
+      description: Climatological number density of atomic hydrogen (H), e.g., from
+        MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_anomalous_oxygen
+      description: Number density of energetic, non-thermal atomic oxygen as defined
+        in MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_anomalous_oxygen_from_climatology
+      description: Climatological number density of anomalous energetic oxygen, e.g.,
+        from MSIS
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_neutral_air
+      description: Total number density of neutral air, including all neutral constituents
+      type: real
+      kind: null
+      units: m-3
+    - name: number_density_of_neutral_air_from_climatology
+      description: Climatological total number density of neutral air, e.g., from
+        MSIS
+      type: real
+      kind: null
+      units: m-3
+  - name: precipitation and hydrometeors
+    comment: null
+    standard_names:
+    - name: total_precipitation_rate_at_surface
+      description: Total precipitation rate at surface
+      type: real
+      kind: null
+      units: m s-1
+    - name: cloud_ice_mixing_ratio_wrt_moist_air_interstitial
+      description: Cloud ice mass mixing ratio with respect to moist air in interstitial
+        scheme
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_interstitial
+      description: Cloud liquid water mass mixing ratio with respect to moist air
+        in interstitial scheme
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water
+      description: Ratio of the mass of cloud liquid water to the mass of moist air
+        and condensed water
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+      description: Ratio of the mass of cloud liquid water to the mass of moist air
+        and condensed water at all interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_liquid_water_mixing_ratio_wrt_moist_air
+      description: Ratio of the mass of cloud liquid water to the mass of moist air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_liquid_water_mixing_ratio_wrt_dry_air
+      description: Ratio of the mass of cloud liquid water to the mass of dry air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces
+      description: Ratio of the mass of cloud liquid water to the mass of dry air
+        at all interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water
+      description: Ratio of the mass of cloud ice to the mass of moist air and condensed
+        water
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+      description: Ratio of the mass of cloud ice to the mass of moist air and condensed
+        water at all interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_ice_mixing_ratio_wrt_dry_air
+      description: Ratio of the mass of cloud ice to the mass of dry air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces
+      description: Ratio of the mass of cloud ice to the mass of dry air at all interfaces
+        excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: rain_mixing_ratio_wrt_moist_air_and_condensed_water
+      description: ratio of the mass of rain to the mass of moist air and condensed
+        water
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: rain_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+      description: ratio of the mass of rain to the mass of moist air and condensed
+        water at all interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: rain_mixing_ratio_wrt_moist_air
+      description: ratio of the mass of rain to the mass of moist air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: rain_mixing_ratio_wrt_dry_air
+      description: ratio of the mass of rain to the mass of dry air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: rain_mixing_ratio_wrt_dry_air_at_top_interfaces
+      description: ratio of the mass of rain to the mass of dry air at all interfaces
+        excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: total_water_mixing_ratio_wrt_moist_air_and_condensed_water
+      description: ratio of the mass of all water phases to the mass of moist air
+        and condensed water
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: total_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces
+      description: ratio of the mass of all water phases to the mass of moist air
+        and condensed water at all interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: total_water_mixing_ratio_wrt_dry_air
+      description: ratio of the mass of all water phases to the mass of dry air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: total_water_mixing_ratio_wrt_dry_air_at_top_interfaces
+      description: ratio of the mass of all water phases to the mass of dry air at
+        all interfaces excluding surface
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection
+      description: Aerosol aware multiplicative rain conversion parameter for deep
+        convection
+      type: real
+      kind: null
+      units: 1
+    - name: aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection
+      description: Aerosol aware multiplicative rain conversion parameter for shallow
+        convection
+      type: real
+      kind: null
+      units: 1
+  - name: GOCART aerosols
+    comment: null
+    standard_names:
+    - name: mass_fraction_of_dust001_in_air
+      description: Dust bin1 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_dust002_in_air
+      description: Dust bin2 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_dust003_in_air
+      description: Dust bin3 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_dust004_in_air
+      description: Dust bin4 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_dust005_in_air
+      description: Dust bin5 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sea_salt001_in_air
+      description: Sea salt bin1 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sea_salt002_in_air
+      description: Sea salt bin2 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sea_salt003_in_air
+      description: Sea salt bin3 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sea_salt004_in_air
+      description: Sea salt bin4 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sea_salt005_in_air
+      description: Sea salt bin5 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_hydrophobic_black_carbon_in_air
+      description: Hydrophobic black carbon mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_hydrophilic_black_carbon_in_air
+      description: Hydrophilic black carbon mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_hydrophobic_organic_carbon_in_air
+      description: Hydrophobic organic carbon mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_hydrophilic_organic_carbon_in_air
+      description: Hydrophilic organic carbon mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sulfate_in_air
+      description: Sulfate mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sea_nitrate001_in_air
+      description: Nitrate bin1 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sea_nitrate002_in_air
+      description: Nitrate bin2 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_sea_nitrate003_in_air
+      description: Nitrate bin3 mass fraction
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: volume_extinction_in_air_due_to_aerosol_particles_lambda1
+      description: Aerosol extinction at wavelength1
+      type: real
+      kind: null
+      units: m-1
+    - name: volume_extinction_in_air_due_to_aerosol_particles_lambda2
+      description: Aerosol extinction at wavelength2
+      type: real
+      kind: null
+      units: m-1
+    - name: volume_extinction_in_air_due_to_aerosol_particles_lambda3
+      description: Aerosol extinction at wavelength3
+      type: real
+      kind: null
+      units: m-1
+  - name: GLOMAP/UKCA aerosols
+    comment: null
+    standard_names:
+    - name: mass_fraction_of_dust_coarse_aerosol_particles_in_air
+      description: Mass fraction of coarse mode dust aerosol particles
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_fraction_of_dust_accumulation_aerosol_particles_in_air
+      description: Mass fraction of accumulation mode dust aerosol particles
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: number_fraction_of_coarse_aerosol_particles_in_air
+      description: Ratio of number concentration of coarse-mode dust aerosol particles
+        to the molecular concentration of air; i.e., the ratio of the number of coarse-mode
+        dust aerosol particles to the number of air molecules in a unit volume
+      type: real
+      kind: null
+      units: particles molecules-1
+    - name: number_fraction_of_accumulation_aerosol_particles_in_air
+      description: Ratio of number concentration of accumulation-mode dust aerosol
+        particles to the molecular concentration of air; i.e., the ratio of the number
+        of accumulation-mode dust aerosol particles to the number of air molecules
+        in a unit volume
+      type: real
+      kind: null
+      units: particles molecules-1
+  - name: emissions
+    comment: Emissions variables, contributed for the Community Emissions Data System
+      (CEDS)
+    standard_names:
+    - name: emissions_of_co_due_to_anthropogenic_sources
+      description: Carbon monoxide emissions from anthropogenic sources, total
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_sources
+      description: Nitric oxide emissions from anthropogenic sources, total
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_sources
+      description: Formaldehyde emissions from anthropogenic sources, total
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_co_due_to_anthropogenic_agriculture
+      description: Carbon monoxide emissions from anthropogenic non-combustion agricultural
+        sector
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_agriculture
+      description: Nitric oxide emissions from anthropogenic non-combustion agricultural
+        sector
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_agriculture
+      description: Formaldehyde emissions from anthropogenic non-combustion agricultural
+        sector
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_co_due_to_anthropogenic_energy
+      description: Carbon monoxide emissions from anthropogenic non-combustion energy
+        transformation and extraction
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_energy
+      description: Nitric oxide emissions from anthropogenic non-combustion energy
+        transformation and extraction
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_energy
+      description: Formaldehyde emissions from anthropogenic non-combustion energy
+        transformation and extraction
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_co_due_to_anthropogenic_industry
+      description: Carbon monoxide emissions from anthropogenic industrial combustion
+        and processes
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_industry
+      description: Nitric oxide emissions from anthropogenic industrial combustion
+        and processes
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_industry
+      description: Formaldehyde emissions from anthropogenic industrial combustion
+        and processes
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_co_due_to_anthropogenic_rco
+      description: Carbon monoxide emissions from anthropogenic residential, commercial,
+        and others
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_rco
+      description: Nitric oxide emissions from anthropogenic residential, commercial,
+        and others
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_rco
+      description: Formaldehyde emissions from anthropogenic residential, commercial,
+        and others
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_co_due_to_anthropogenic_shipping
+      description: Carbon monoxide emissions from anthropogenic international shipping
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_shipping
+      description: Nitric oxide emissions from anthropogenic international shipping
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_shipping
+      description: Formaldehyde emissions from anthropogenic international shipping
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_co_due_to_anthropogenic_solvents
+      description: Carbon monoxide emissions from anthropogenic solvents
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_solvents
+      description: Nitric oxide emissions from anthropogenic solvents
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_solvents
+      description: Formaldehyde emissions from anthropogenic solvents
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_co_due_to_anthropogenic_transportation
+      description: Carbon monoxide emissions from anthropogenic surface transportation
+        (road, rail, other)
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_transportation
+      description: Nitric oxide emissions from anthropogenic surface transportation
+        (road, rail, other)
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_transportation
+      description: Formaldehyde emissions from anthropogenic surface transportation
+        (road, rail, other)
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_co_due_to_anthropogenic_waste
+      description: Carbon monoxide emissions from anthropogenic waste disposal and
+        handling
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_no_due_to_anthropogenic_waste
+      description: Nitric oxide emissions from anthropogenic waste disposal and handling
+      type: real
+      kind: null
+      units: kg m-2 s-1
+    - name: emissions_of_hcho_due_to_anthropogenic_waste
+      description: Formaldehyde emissions from anthropogenic waste disposal and handling
+      type: real
+      kind: null
+      units: kg m-2 s-1
 - name: Application-specific variables
   comment: null
   section:
@@ -2579,7 +2632,7 @@ section:
     type: real
     kind: null
     units: 1
-- name: GFS_typedefs_GFS_control_type
+- name: radiation
   comment: null
   standard_names:
   - name: radiatively_active_gases_as_string
@@ -2587,17 +2640,9 @@ section:
     type: character
     kind: null
     units: none
-  - name: aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection
-    description: Aerosol aware multiplicative rain conversion parameter for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection
-    description: Aerosol aware multiplicative rain conversion parameter for shallow
-      convection
-    type: real
-    kind: null
-    units: 1
+- name: GFS_typedefs_GFS_control_type
+  comment: null
+  standard_names:
   - name: number_of_microphysics_variables_in_xy_dimensioned_restart_array
     description: Number of microphysics variables in xy dimensioned restart array
     type: integer
@@ -2608,26 +2653,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: multiplicative_tuning_parameter_for_atmosphere_diffusivity
-    description: Multiplicative tuning parameter for atmosphere diffusivity
-    type: real
-    kind: null
-    units: 1
-  - name: atmosphere_heat_diffusivity_due_to_background
-    description: Atmosphere heat diffusivity due to background
-    type: real
-    kind: null
-    units: m2 s-1
-  - name: max_atmosphere_heat_diffusivity_due_to_background
-    description: Maximum atmosphere heat diffusivity due to background
-    type: real
-    kind: null
-    units: m2 s-1
-  - name: atmosphere_momentum_diffusivity_due_to_background
-    description: Atmosphere momentum diffusivity due to background
-    type: real
-    kind: null
-    units: m2 s-1
   - name: identifier_for_2018_scale_aware_tke_moist_edmf_pbl
     description: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
       planetary boundary layer scheme
@@ -4565,18 +4590,6 @@ section:
 - name: GFS_typedefs_GFS_interstitial_type
   comment: null
   standard_names:
-  - name: cloud_ice_mixing_ratio_wrt_moist_air_interstitial
-    description: Cloud ice mass mixing ratio with respect to moist air in interstitial
-      scheme
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_interstitial
-    description: Cloud liquid water mass mixing ratio with respect to moist air in
-      interstitial scheme
-    type: real
-    kind: null
-    units: kg kg-1
   - name: radiatively_active_gases
     description: Radiatively active gases
     type: character

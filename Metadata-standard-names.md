@@ -5,17 +5,14 @@
 * [constants](#constants)
 * [coordinates](#coordinates)
 * [timing](#timing)
-* [state_variables](#state_variables)
+* [atmospheric properties](#atmospheric-properties)
 * [land_surface](#land_surface)
 * [marine](#marine)
-* [diagnostics](#diagnostics)
 * [atmospheric_composition](#atmospheric_composition)
-* [atmospheric_composition: GOCART aerosols](#atmospheric_composition-gocart-aerosols)
-* [atmospheric_composition: GLOMAP/UKCA aerosols](#atmospheric_composition-glomapukca-aerosols)
-* [emissions](#emissions)
 * [Application-specific variables](#application-specific-variables)
 * [system variables](#system-variables)
 * [stochastic physics](#stochastic-physics)
+* [radiation](#radiation)
 * [GFS_typedefs_GFS_control_type](#gfs_typedefs_gfs_control_type)
 * [GFS_typedefs_GFS_interstitial_type](#gfs_typedefs_gfs_interstitial_type)
 * [GFS_typedefs_GFS_tbd_type](#gfs_typedefs_gfs_tbd_type)
@@ -441,8 +438,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `integer`: units = index
 * `forecast_time_in_seconds`: Forecast time in seconds
     * `real`: units = s
-## state_variables
-Note that appending '_on_previous_timestep' to standard_names in this section yields another valid standard_name
+## atmospheric properties
 * `specific_heat_of_dry_air_at_constant_pressure`: Specific heat of dry air at constant pressure
     * `real`: units = J kg-1 K-1
 * `physics_state_due_to_dynamics`: Physics state due to dynamics
@@ -629,6 +625,14 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = fraction
 * `gravitational_acceleration`: Gravitational acceleration
     * `real`: units = m s-2
+* `multiplicative_tuning_parameter_for_atmosphere_diffusivity`: Multiplicative tuning parameter for atmosphere diffusivity
+    * `real`: units = 1
+* `atmosphere_heat_diffusivity_due_to_background`: Atmosphere heat diffusivity due to background
+    * `real`: units = m2 s-1
+* `max_atmosphere_heat_diffusivity_due_to_background`: Maximum atmosphere heat diffusivity due to background
+    * `real`: units = m2 s-1
+* `atmosphere_momentum_diffusivity_due_to_background`: Atmosphere momentum diffusivity due to background
+    * `real`: units = m2 s-1
 ## land_surface
 * `land_ice_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is ice over land
     * `real`: units = frac
@@ -655,10 +659,8 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = g kg-1
 * `sea_water_temperature`: The temperature of sea water
     * `real`: units = K
-## diagnostics
-* `total_precipitation_rate_at_surface`: Total precipitation rate at surface
-    * `real`: units = m s-1
 ## atmospheric_composition
+### gasses
 * `number_of_chemical_species`: Number of chemical species
     * `integer`: units = count
 * `number_of_tracers`: Number of tracers
@@ -674,42 +676,6 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
 * `water_vapor_mixing_ratio_wrt_dry_air`: Ratio of the mass of water vapor to the mass of dry air
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of water vapor to the mass of dry air at all interfaces excluding surface
-    * `real`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of cloud liquid water to the mass of moist air and condensed water
-    * `real`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of cloud liquid water to the mass of moist air and condensed water at all interfaces excluding surface
-    * `real`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air`: Ratio of the mass of cloud liquid water to the mass of moist air
-    * `real`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud liquid water to the mass of dry air
-    * `real`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud liquid water to the mass of dry air at all interfaces excluding surface
-    * `real`: units = kg kg-1
-* `cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of cloud ice to the mass of moist air and condensed water
-    * `real`: units = kg kg-1
-* `cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of cloud ice to the mass of moist air and condensed water at all interfaces excluding surface
-    * `real`: units = kg kg-1
-* `cloud_ice_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud ice to the mass of dry air
-    * `real`: units = kg kg-1
-* `cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud ice to the mass of dry air at all interfaces excluding surface
-    * `real`: units = kg kg-1
-* `rain_mixing_ratio_wrt_moist_air_and_condensed_water`: ratio of the mass of rain to the mass of moist air and condensed water
-    * `real`: units = kg kg-1
-* `rain_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: ratio of the mass of rain to the mass of moist air and condensed water at all interfaces excluding surface
-    * `real`: units = kg kg-1
-* `rain_mixing_ratio_wrt_moist_air`: ratio of the mass of rain to the mass of moist air
-    * `real`: units = kg kg-1
-* `rain_mixing_ratio_wrt_dry_air`: ratio of the mass of rain to the mass of dry air
-    * `real`: units = kg kg-1
-* `rain_mixing_ratio_wrt_dry_air_at_top_interfaces`: ratio of the mass of rain to the mass of dry air at all interfaces excluding surface
-    * `real`: units = kg kg-1
-* `total_water_mixing_ratio_wrt_moist_air_and_condensed_water`: ratio of the mass of all water phases to the mass of moist air and condensed water
-    * `real`: units = kg kg-1
-* `total_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: ratio of the mass of all water phases to the mass of moist air and condensed water at all interfaces excluding surface
-    * `real`: units = kg kg-1
-* `total_water_mixing_ratio_wrt_dry_air`: ratio of the mass of all water phases to the mass of dry air
-    * `real`: units = kg kg-1
-* `total_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: ratio of the mass of all water phases to the mass of dry air at all interfaces excluding surface
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_assuming_saturation`: saturated water vapor mass mixing ratio with respect to moist air and condensed water
     * `real`: units = kg kg-1
@@ -795,7 +761,54 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = m-3
 * `number_density_of_neutral_air_from_climatology`: Climatological total number density of neutral air, e.g., from MSIS
     * `real`: units = m-3
-## atmospheric_composition: GOCART aerosols
+### precipitation and hydrometeors
+* `total_precipitation_rate_at_surface`: Total precipitation rate at surface
+    * `real`: units = m s-1
+* `cloud_ice_mixing_ratio_wrt_moist_air_interstitial`: Cloud ice mass mixing ratio with respect to moist air in interstitial scheme
+    * `real`: units = kg kg-1
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_interstitial`: Cloud liquid water mass mixing ratio with respect to moist air in interstitial scheme
+    * `real`: units = kg kg-1
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of cloud liquid water to the mass of moist air and condensed water
+    * `real`: units = kg kg-1
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of cloud liquid water to the mass of moist air and condensed water at all interfaces excluding surface
+    * `real`: units = kg kg-1
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air`: Ratio of the mass of cloud liquid water to the mass of moist air
+    * `real`: units = kg kg-1
+* `cloud_liquid_water_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud liquid water to the mass of dry air
+    * `real`: units = kg kg-1
+* `cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud liquid water to the mass of dry air at all interfaces excluding surface
+    * `real`: units = kg kg-1
+* `cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of cloud ice to the mass of moist air and condensed water
+    * `real`: units = kg kg-1
+* `cloud_ice_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: Ratio of the mass of cloud ice to the mass of moist air and condensed water at all interfaces excluding surface
+    * `real`: units = kg kg-1
+* `cloud_ice_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud ice to the mass of dry air
+    * `real`: units = kg kg-1
+* `cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud ice to the mass of dry air at all interfaces excluding surface
+    * `real`: units = kg kg-1
+* `rain_mixing_ratio_wrt_moist_air_and_condensed_water`: ratio of the mass of rain to the mass of moist air and condensed water
+    * `real`: units = kg kg-1
+* `rain_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: ratio of the mass of rain to the mass of moist air and condensed water at all interfaces excluding surface
+    * `real`: units = kg kg-1
+* `rain_mixing_ratio_wrt_moist_air`: ratio of the mass of rain to the mass of moist air
+    * `real`: units = kg kg-1
+* `rain_mixing_ratio_wrt_dry_air`: ratio of the mass of rain to the mass of dry air
+    * `real`: units = kg kg-1
+* `rain_mixing_ratio_wrt_dry_air_at_top_interfaces`: ratio of the mass of rain to the mass of dry air at all interfaces excluding surface
+    * `real`: units = kg kg-1
+* `total_water_mixing_ratio_wrt_moist_air_and_condensed_water`: ratio of the mass of all water phases to the mass of moist air and condensed water
+    * `real`: units = kg kg-1
+* `total_water_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces`: ratio of the mass of all water phases to the mass of moist air and condensed water at all interfaces excluding surface
+    * `real`: units = kg kg-1
+* `total_water_mixing_ratio_wrt_dry_air`: ratio of the mass of all water phases to the mass of dry air
+    * `real`: units = kg kg-1
+* `total_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: ratio of the mass of all water phases to the mass of dry air at all interfaces excluding surface
+    * `real`: units = kg kg-1
+* `aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection`: Aerosol aware multiplicative rain conversion parameter for deep convection
+    * `real`: units = 1
+* `aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection`: Aerosol aware multiplicative rain conversion parameter for shallow convection
+    * `real`: units = 1
+### GOCART aerosols
 * `mass_fraction_of_dust001_in_air`: Dust bin1 mass fraction
     * `real`: units = kg kg-1
 * `mass_fraction_of_dust002_in_air`: Dust bin2 mass fraction
@@ -838,7 +851,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = m-1
 * `volume_extinction_in_air_due_to_aerosol_particles_lambda3`: Aerosol extinction at wavelength3
     * `real`: units = m-1
-## atmospheric_composition: GLOMAP/UKCA aerosols
+### GLOMAP/UKCA aerosols
 * `mass_fraction_of_dust_coarse_aerosol_particles_in_air`: Mass fraction of coarse mode dust aerosol particles
     * `real`: units = kg kg-1
 * `mass_fraction_of_dust_accumulation_aerosol_particles_in_air`: Mass fraction of accumulation mode dust aerosol particles
@@ -847,7 +860,7 @@ Note that appending '_on_previous_timestep' to standard_names in this section yi
     * `real`: units = particles molecules-1
 * `number_fraction_of_accumulation_aerosol_particles_in_air`: Ratio of number concentration of accumulation-mode dust aerosol particles to the molecular concentration of air; i.e., the ratio of the number of accumulation-mode dust aerosol particles to the number of air molecules in a unit volume
     * `real`: units = particles molecules-1
-## emissions
+### emissions
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_co_due_to_anthropogenic_sources`: Carbon monoxide emissions from anthropogenic sources, total
     * `real`: units = kg m-2 s-1
@@ -1051,25 +1064,14 @@ Variables related to the compute environment
     * `real`: units = fraction
 * `surface_stochastic_scaling_factors_from_coupled_process`: Surface stochastic scaling factors from coupled process
     * `real`: units = 1
-## GFS_typedefs_GFS_control_type
+## radiation
 * `radiatively_active_gases_as_string`: Radiatively active gases as string
     * `character`: units = none
-* `aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection`: Aerosol aware multiplicative rain conversion parameter for deep convection
-    * `real`: units = 1
-* `aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection`: Aerosol aware multiplicative rain conversion parameter for shallow convection
-    * `real`: units = 1
+## GFS_typedefs_GFS_control_type
 * `number_of_microphysics_variables_in_xy_dimensioned_restart_array`: Number of microphysics variables in xy dimensioned restart array
     * `integer`: units = count
 * `number_of_microphysics_variables_in_xyz_dimensioned_restart_array`: Number of microphysics variables in xyz dimensioned restart array
     * `integer`: units = count
-* `multiplicative_tuning_parameter_for_atmosphere_diffusivity`: Multiplicative tuning parameter for atmosphere diffusivity
-    * `real`: units = 1
-* `atmosphere_heat_diffusivity_due_to_background`: Atmosphere heat diffusivity due to background
-    * `real`: units = m2 s-1
-* `max_atmosphere_heat_diffusivity_due_to_background`: Maximum atmosphere heat diffusivity due to background
-    * `real`: units = m2 s-1
-* `atmosphere_momentum_diffusivity_due_to_background`: Atmosphere momentum diffusivity due to background
-    * `real`: units = m2 s-1
 * `identifier_for_2018_scale_aware_tke_moist_edmf_pbl`: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `integer`: units = 1
 * `control_for_scale_aware_tke_moist_edmf_pbl_scheme`: Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
@@ -1807,10 +1809,6 @@ Variables related to the compute environment
 * `filename_of_micm_configuration`: Filename of micm configuration
     * `character`: units = none
 ## GFS_typedefs_GFS_interstitial_type
-* `cloud_ice_mixing_ratio_wrt_moist_air_interstitial`: Cloud ice mass mixing ratio with respect to moist air in interstitial scheme
-    * `real`: units = kg kg-1
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_interstitial`: Cloud liquid water mass mixing ratio with respect to moist air in interstitial scheme
-    * `real`: units = kg kg-1
 * `radiatively_active_gases`: Radiatively active gases
     * `character`: units = none
 * `process_split_cumulative_tendency_of_air_temperature`: Process split cumulative tendency of air temperature
