@@ -709,6 +709,111 @@ section:
     type: real
     kind: null
     units: 1
+  - name: control_for_vertical_index_direction
+    description: control flag for direction of vertical index; 0 indicates index from
+      toa to surface, 1 indicates index from surface to toa
+    type: integer
+    kind: null
+    units: 1
+  - name: cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls
+    description: Cumulative maximum vertical index at cloud base between shortwave
+      radiation calls
+    type: real
+    kind: null
+    units: 1
+  - name: horizontal_loop_extent
+    description: Horizontal loop extent
+    type: integer
+    kind: null
+    units: count
+  - name: cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls
+    description: Cumulative min vertical index at cloud base between sw radiation
+      calls
+    type: real
+    kind: null
+    units: 1
+  - name: lower_longitude_index_of_aerosol_forcing_for_interpolation
+    description: Lower longitude index of aerosol forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_aerosol_forcing_for_interpolation
+    description: Lower latitude index of aerosol forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation
+    description: Lower longitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation
+    description: Lower latitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation
+    description: Lower latitude index of absolute momentum flux due to non-orographic
+      gravity wave drag for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_ozone_forcing_for_interpolation
+    description: Lower latitude index of ozone forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
+    description: Lower latitude index of stratospheric water vapor forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_longitude_index_of_aerosol_forcing_for_interpolation
+    description: Upper longitude index of aerosol forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_aerosol_forcing_for_interpolation
+    description: Upper latitude index of aerosol forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation
+    description: Upper longitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation
+    description: Upper latitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation
+    description: Upper latitude index of absolute momentum flux due to non-orographic
+      gravity wave drag for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_ozone_forcing_for_interpolation
+    description: Upper latitude index of ozone forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
+    description: Upper latitude index of stratospheric water vapor forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: number_of_latitude_points
+    description: Number of latitude points
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_equatorial_longitude_points
+    description: Number of equatorial longitude points
+    type: integer
+    kind: null
+    units: count
 - name: constants
   comment: Constant parameters that should be identical across a full modeling system
   standard_names:
@@ -769,7 +874,7 @@ section:
     kind: null
     units: m s-2
 - name: coordinates
-  comment: null
+  comment: Parameters defining or relating to the coordinate system of the model
   standard_names:
   - name: latitude
     description: Latitude
@@ -811,6 +916,83 @@ section:
     type: real
     kind: null
     units: 1
+  - name: cosine_of_latitude
+    description: Cosine of latitude
+    type: real
+    kind: null
+    units: 1
+  - name: sine_of_latitude
+    description: Sine of latitude
+    type: real
+    kind: null
+    units: 1
+- name: timing
+  comment: Variables defining or relating to timing, dates, calendar, and related
+    concepts
+  standard_names:
+  - name: number_of_days_in_current_year
+    description: Number of days in current year
+    type: integer
+    kind: null
+    units: days
+  - name: date_and_time_at_model_initialization_in_iso_order
+    description: Integer array of date and time at model initialization in ISO order
+      (year, month, day, hour, minute, second)
+    type: integer
+    kind: null
+    units: 1
+  - name: date_and_time_at_model_initialization_in_united_states_order
+    description: Integer array of date and time at model initialization in united
+      states order (month, day, year, hour, minute, second)
+    type: integer
+    kind: null
+    units: 1
+  - name: date_and_time_of_forecast_in_united_states_order
+    description: Integer array of date and time at model initialization in united
+      states order (month, day, year, hour, minute, second)
+    type: integer
+    kind: null
+    units: 1
+  - name: forecast_utc_hour
+    description: Forecast utc hour
+    type: real
+    kind: null
+    units: h
+  - name: forecast_time
+    description: Forecast time
+    type: real
+    kind: null
+    units: h
+  - name: forecast_time_on_previous_timestep
+    description: Forecast time on previous timestep
+    type: real
+    kind: null
+    units: h
+  - name: equation_of_time
+    description: Apparent solar time minus mean solar time
+    type: real
+    kind: null
+    units: radian
+  - name: control_for_initial_time_date
+    description: Control for initial time date
+    type: integer
+    kind: null
+    units: 1
+  - name: is_first_timestep
+    description: Is first timestep
+    type: logical
+    kind: null
+    units: flag
+  - name: index_of_timestep
+    description: Index of timestep
+    type: integer
+    kind: null
+    units: index
+  - name: forecast_time_in_seconds
+    description: Forecast time in seconds
+    type: real
+    kind: null
+    units: s
 - name: state_variables
   comment: Note that appending '_on_previous_timestep' to standard_names in this section
     yields another valid standard_name
@@ -2173,6 +2355,230 @@ section:
     type: character
     kind: null
     units: none
+  - name: map_of_block_column_number_to_global_i_index
+    description: Map of block column number to global i index
+    type: integer
+    kind: null
+    units: index
+  - name: map_of_block_column_number_to_global_j_index
+    description: Map of block column number to global j index
+    type: integer
+    kind: null
+    units: index
+- name: stochastic physics
+  comment: null
+  standard_names:
+  - name: cellular_automata_finer_grid
+    description: Cellular automata finer grid
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_lifetime
+    description: Cellular automata lifetime
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_seed_frequency
+    description: Cellular automata seed frequency
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_seed_probability
+    description: Cellular automata seed probability
+    type: real
+    kind: null
+    units: fraction
+  - name: do_cellular_automata
+    description: Do cellular automata
+    type: logical
+    kind: null
+    units: flag
+  - name: do_cellular_automata_gaussian_spatial_filter
+    description: Do cellular automata gaussian spatial filter
+    type: logical
+    kind: null
+    units: flag
+  - name: do_global_cellular_automata
+    description: Do global cellular automata
+    type: logical
+    kind: null
+    units: flag
+  - name: do_global_cellular_automata_closure
+    description: Do global cellular automata closure
+    type: logical
+    kind: null
+    units: flag
+  - name: do_global_cellular_automata_deep_convective_entrainment
+    description: Do global cellular automata deep convective entrainment
+    type: logical
+    kind: null
+    units: flag
+  - name: do_global_cellular_automata_trigger
+    description: Do global cellular automata trigger
+    type: logical
+    kind: null
+    units: flag
+  - name: do_sgs_cellular_automata
+    description: Do sgs cellular automata
+    type: logical
+    kind: null
+    units: flag
+  - name: number_of_independent_cellular_automata
+    description: Number of independent cellular automata
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_iterations_to_spin_up_cellular_automata
+    description: Number of iterations to spin up cellular automata
+    type: integer
+    kind: null
+    units: count
+  - name: random_number_seed_for_cellular_automata
+    description: Random number seed for cellular automata
+    type: integer
+    kind: null
+    units: 1
+  - name: random_number_seed_for_deep_convection
+    description: Random number seed for deep convection
+    type: integer
+    kind: null
+    units: 1
+  - name: cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection
+    description: Cellular automata vertical velocity perturbation threshold for deep
+      convection
+    type: real
+    kind: null
+    units: m s-1
+  - name: cellular_automata_global_pattern_from_coupled_process
+    description: Cellular automata global pattern from coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: cellular_automata_area_fraction_for_deep_convection_from_coupled_process
+    description: Cellular automata area fraction for deep convection from coupled
+      process
+    type: real
+    kind: null
+    units: fraction
+  - name: cellular_automata_vertical_scaling_factor
+    description: Cellular automata vertical scaling factor
+    type: real
+    kind: null
+    units: fraction
+  - name: number_of_random_numbers
+    description: Number of random numbers
+    type: integer
+    kind: null
+    units: count
+  - name: do_stochastic_skeb_option
+    description: Do Stochastic Kinetic Energy Backscatter option
+    type: logical
+    kind: null
+    units: flag
+  - name: skeb_x_wind_scaling_factors_from_coupled_process
+    description: Stochastic Kinetic Energy Backscatter x-wind scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: skeb_y_wind_scaling_factors_from_coupled_process
+    description: Stochastic Kinetic Energy Backscatter y-wind scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: do_stochastic_shum_option
+    description: Do Stochastic HUMidity stochastic physics option
+    type: logical
+    kind: null
+    units: flag
+  - name: shum_scaling_factors_from_coupled_process
+    description: Stochastic Humidity stochastic physics option scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: do_mountain_blocking_for_sppt
+    description: Do mountain blocking for stochastically perturbed physics tendencies
+    type: logical
+    kind: null
+    units: flag
+  - name: total_amplitude_of_sppt_perturbation
+    description: Total amplitude of stochastically perturbed physics tendencies perturbation
+    type: real
+    kind: null
+    units: 1
+  - name: tendency_of_air_temperature_to_withhold_from_sppt
+    description: Change of air temperature to withhold from stochastically perturbed
+      physics tendencies per unit time
+    type: real
+    kind: null
+    units: K s-1
+  - name: sppt_scaling_factors_from_coupled_process
+    description: Stochastically perturbed physics tendencies scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: do_shoc
+    description: Do Simplified Higher-Order Closure stochastic physics scheme
+    type: logical
+    kind: null
+    units: flag
+  - name: do_shoc_after_convection
+    description: Do Simplified Higher-Order Closure stochastic physics scheme after
+      convection parameterization
+    type: logical
+    kind: null
+    units: flag
+  - name: do_stochastic_cloud_fraction_perturbations
+    description: Do stochastic cloud fraction perturbations
+    type: logical
+    kind: null
+    units: flag
+  - name: do_stochastic_microphysics_perturbations
+    description: Do stochastic microphysics perturbations
+    type: logical
+    kind: null
+    units: flag
+  - name: do_stochastic_physics_perturbations
+    description: Do stochastic physics perturbations
+    type: logical
+    kind: null
+    units: flag
+  - name: do_stochastic_radiative_heating_perturbations
+    description: Do stochastic radiative heating perturbations
+    type: logical
+    kind: null
+    units: flag
+  - name: do_shoc_cloud_area_fraction_for_radiation
+    description: Do Simplified Higher-Order Closure stochastic physics scheme cloud
+      area fraction for radiation
+    type: logical
+    kind: null
+    units: flag
+  - name: control_for_stochastic_land_surface_perturbation
+    description: Control for stochastic land surface perturbation
+    type: integer
+    kind: null
+    units: 1
+  - name: atmosphere_heat_diffusivity_from_shoc
+    description: Atmospheric heat diffusivity from Simplified Higher-Order Closure
+      stochastic physics scheme
+    type: real
+    kind: null
+    units: m2 s-1
+  - name: subgrid_scale_cloud_fraction_from_shoc
+    description: Subgrid-scale cloud fraction from Simplified Higher-Order Closure
+      stochastic physics scheme
+    type: real
+    kind: null
+    units: fraction
+  - name: surface_stochastic_scaling_factors_from_coupled_process
+    description: Surface stochastic scaling factors from coupled process
+    type: real
+    kind: null
+    units: 1
 - name: GFS_typedefs_GFS_control_type
   comment: null
   standard_names:
@@ -2202,11 +2608,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: number_of_random_numbers
-    description: Number of random numbers
-    type: integer
-    kind: null
-    units: count
   - name: multiplicative_tuning_parameter_for_atmosphere_diffusivity
     description: Multiplicative tuning parameter for atmosphere diffusivity
     type: real
@@ -2227,26 +2628,6 @@ section:
     type: real
     kind: null
     units: m2 s-1
-  - name: cellular_automata_finer_grid
-    description: Cellular automata finer grid
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_lifetime
-    description: Cellular automata lifetime
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_seed_frequency
-    description: Cellular automata seed frequency
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_seed_probability
-    description: Cellular automata seed probability
-    type: real
-    kind: null
-    units: fraction
   - name: identifier_for_2018_scale_aware_tke_moist_edmf_pbl
     description: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
       planetary boundary layer scheme
@@ -2384,16 +2765,6 @@ section:
     type: real
     kind: null
     units: fraction
-  - name: date_and_time_at_model_initialization_in_iso_order
-    description: Date and time at model initialization in iso order
-    type: integer
-    kind: null
-    units: 1
-  - name: date_and_time_at_model_initialization_in_united_states_order
-    description: Date and time at model initialization in united states order
-    type: integer
-    kind: null
-    units: 1
   - name: decorrelation_length_used_by_overlap_method
     description: Decorrelation length used by overlap method
     type: real
@@ -2539,11 +2910,6 @@ section:
     type: real
     kind: null
     units: 1
-  - name: equation_of_time
-    description: Equation of time
-    type: real
-    kind: null
-    units: radian
   - name: relative_humidity_threshold_for_condensation
     description: Relative humidity threshold for condensation
     type: real
@@ -2614,11 +2980,6 @@ section:
     type: integer
     kind: null
     units: 1
-  - name: do_cellular_automata
-    description: Do cellular automata
-    type: logical
-    kind: null
-    units: flag
   - name: do_chemistry_coupling
     description: Do chemistry coupling
     type: logical
@@ -2704,11 +3065,6 @@ section:
     type: integer
     kind: null
     units: 1
-  - name: is_first_timestep
-    description: Is first timestep
-    type: logical
-    kind: null
-    units: flag
   - name: do_surface_flux_coupling
     description: Do surface flux coupling
     type: logical
@@ -2724,11 +3080,6 @@ section:
     type: integer
     kind: null
     units: 1
-  - name: do_cellular_automata_gaussian_spatial_filter
-    description: Do cellular automata gaussian spatial filter
-    type: logical
-    kind: null
-    units: flag
   - name: do_gcycle_surface_option
     description: Do gcycle surface option
     type: logical
@@ -2775,26 +3126,6 @@ section:
     type: integer
     kind: null
     units: 1
-  - name: do_global_cellular_automata
-    description: Do global cellular automata
-    type: logical
-    kind: null
-    units: flag
-  - name: do_global_cellular_automata_closure
-    description: Do global cellular automata closure
-    type: logical
-    kind: null
-    units: flag
-  - name: do_global_cellular_automata_deep_convective_entrainment
-    description: Do global cellular automata deep convective entrainment
-    type: logical
-    kind: null
-    units: flag
-  - name: do_global_cellular_automata_trigger
-    description: Do global cellular automata trigger
-    type: logical
-    kind: null
-    units: flag
   - name: do_gwd
     description: Do gravity wave drag
     type: logical
@@ -2856,11 +3187,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: control_for_initial_time_date
-    description: Control for initial time date
-    type: integer
-    kind: null
-    units: 1
   - name: control_for_lake_surface_scheme
     description: Control for lake surface scheme
     type: integer
@@ -2921,11 +3247,6 @@ section:
     type: integer
     kind: null
     units: 1
-  - name: do_mountain_blocking_for_sppt
-    description: Do mountain blocking for stochastically perturbed physics tendencies
-    type: logical
-    kind: null
-    units: flag
   - name: identifier_for_noah_land_surface_scheme
     description: Identifier for noah land surface scheme
     type: integer
@@ -3147,24 +3468,8 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: do_sgs_cellular_automata
-    description: Do sgs cellular automata
-    type: logical
-    kind: null
-    units: flag
   - name: do_sas_shallow_convection
     description: Do Simplified Arakawa-Schubert shallow convection scheme
-    type: logical
-    kind: null
-    units: flag
-  - name: do_shoc
-    description: Do Simplified Higher-Order Closure stochastic physics scheme
-    type: logical
-    kind: null
-    units: flag
-  - name: do_shoc_after_convection
-    description: Do Simplified Higher-Order Closure stochastic physics scheme after
-      convection parameterization
     type: logical
     kind: null
     units: flag
@@ -3183,36 +3488,6 @@ section:
     type: integer
     kind: null
     units: 1
-  - name: do_stochastic_cloud_fraction_perturbations
-    description: Do stochastic cloud fraction perturbations
-    type: logical
-    kind: null
-    units: flag
-  - name: do_stochastic_microphysics_perturbations
-    description: Do stochastic microphysics perturbations
-    type: logical
-    kind: null
-    units: flag
-  - name: do_stochastic_physics_perturbations
-    description: Do stochastic physics perturbations
-    type: logical
-    kind: null
-    units: flag
-  - name: do_stochastic_radiative_heating_perturbations
-    description: Do stochastic radiative heating perturbations
-    type: logical
-    kind: null
-    units: flag
-  - name: do_stochastic_shum_option
-    description: Do Stochastic HUMidity stochastic physics option
-    type: logical
-    kind: null
-    units: flag
-  - name: do_stochastic_skeb_option
-    description: Do Stochastic Kinetic Energy Backscatter option
-    type: logical
-    kind: null
-    units: flag
   - name: do_stratospheric_water_vapor_physics
     description: Do stratospheric water vapor physics
     type: logical
@@ -3287,12 +3562,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: do_shoc_cloud_area_fraction_for_radiation
-    description: Do Simplified Higher-Order Closure stochastic physics scheme cloud
-      area fraction for radiation
-    type: logical
-    kind: null
-    units: flag
   - name: control_for_surface_layer_scheme_skin_temperature_update
     description: Control for surface layer scheme skin temperature update
     type: integer
@@ -3305,12 +3574,6 @@ section:
     units: 1
   - name: control_for_prescribed_co2
     description: Control for prescribed co2
-    type: integer
-    kind: null
-    units: 1
-  - name: control_for_vertical_index_direction
-    description: control flag for direction of vertical index; 0 indicates index from
-      toa to surface, 1 indicates index from surface to toa
     type: integer
     kind: null
     units: 1
@@ -3420,26 +3683,6 @@ section:
     type: real
     kind: null
     units: 1
-  - name: date_and_time_of_forecast_in_united_states_order
-    description: Date and time of forecast in united states order
-    type: integer
-    kind: null
-    units: 1
-  - name: forecast_utc_hour
-    description: Forecast utc hour
-    type: real
-    kind: null
-    units: h
-  - name: forecast_time
-    description: Forecast time
-    type: real
-    kind: null
-    units: h
-  - name: forecast_time_on_previous_timestep
-    description: Forecast time on previous timestep
-    type: real
-    kind: null
-    units: h
   - name: period_of_longwave_radiation_calls
     description: Period of longwave radiation calls
     type: real
@@ -3465,11 +3708,6 @@ section:
     type: integer
     kind: null
     units: 1
-  - name: horizontal_loop_extent
-    description: Horizontal loop extent
-    type: integer
-    kind: null
-    units: count
   - name: period_of_diagnostics_reset
     description: Period of diagnostics reset
     type: real
@@ -3646,11 +3884,6 @@ section:
     type: integer
     kind: null
     units: index
-  - name: control_for_stochastic_land_surface_perturbation
-    description: Control for stochastic land surface perturbation
-    type: integer
-    kind: null
-    units: 1
   - name: index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array
     description: Index of air pressure at surface on previous timestep in xyz dimensioned
       restart array
@@ -3700,11 +3933,6 @@ section:
   - name: index_of_subgrid_cloud_area_fraction_in_atmosphere_layer_in_xyz_dimensioned_restart_array
     description: Index of subgrid cloud area fraction in atmosphere layer in xyz dimensioned
       restart array
-    type: integer
-    kind: null
-    units: index
-  - name: index_of_timestep
-    description: Index of timestep
     type: integer
     kind: null
     units: index
@@ -4008,16 +4236,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: number_of_days_in_current_year
-    description: Number of days in current year
-    type: integer
-    kind: null
-    units: days
-  - name: number_of_equatorial_longitude_points
-    description: Number of equatorial longitude points
-    type: integer
-    kind: null
-    units: count
   - name: number_of_variables_in_xy_dimensioned_restart_array
     description: Number of variables in xy dimensioned restart array
     type: integer
@@ -4038,23 +4256,8 @@ section:
     type: integer
     kind: null
     units: count
-  - name: number_of_independent_cellular_automata
-    description: Number of independent cellular automata
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_iterations_to_spin_up_cellular_automata
-    description: Number of iterations to spin up cellular automata
-    type: integer
-    kind: null
-    units: count
   - name: number_of_perturbed_land_surface_variables
     description: Number of perturbed land surface variables
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_latitude_points
-    description: Number of latitude points
     type: integer
     kind: null
     units: count
@@ -4211,21 +4414,6 @@ section:
     type: real
     kind: null
     units: fraction
-  - name: forecast_time_in_seconds
-    description: Forecast time in seconds
-    type: real
-    kind: null
-    units: s
-  - name: random_number_seed_for_cellular_automata
-    description: Random number seed for cellular automata
-    type: integer
-    kind: null
-    units: 1
-  - name: random_number_seed_for_deep_convection
-    description: Random number seed for deep convection
-    type: integer
-    kind: null
-    units: 1
   - name: control_for_tke_dissipation_method
     description: Control for tke dissipation method
     type: real
@@ -4278,12 +4466,6 @@ section:
     type: real
     kind: null
     units: m
-  - name: cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection
-    description: Cellular automata vertical velocity perturbation threshold for deep
-      convection
-    type: real
-    kind: null
-    units: m s-1
   - name: period_of_max_diagnostics_reset
     description: Period of maximum diagnostics reset
     type: real
@@ -4316,11 +4498,6 @@ section:
     units: 1
   - name: multiplicative_tuning_parameter_for_tke_dissipative_heating
     description: Multiplicative tuning parameter for tke dissipative heating
-    type: real
-    kind: null
-    units: 1
-  - name: total_amplitude_of_sppt_perturbation
-    description: Total amplitude of stochastically perturbed physics tendencies perturbation
     type: real
     kind: null
     units: 1
@@ -4531,12 +4708,6 @@ section:
     type: real
     kind: null
     units: m
-  - name: atmosphere_heat_diffusivity_from_shoc
-    description: Atmospheric heat diffusivity from Simplified Higher-Order Closure
-      stochastic physics scheme
-    type: real
-    kind: null
-    units: m2 s-1
   - name: atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type
     description: Atmosphere updraft convective mass flux at cloud base by cloud type
     type: real
@@ -4614,22 +4785,6 @@ section:
     type: real
     kind: null
     units: m s-1 kg kg-1
-  - name: cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls
-    description: Cumulative maximum vertical index at cloud base between shortwave
-      radiation calls
-    type: real
-    kind: null
-    units: 1
-  - name: map_of_block_column_number_to_global_i_index
-    description: Map of block column number to global i index
-    type: integer
-    kind: null
-    units: index
-  - name: map_of_block_column_number_to_global_j_index
-    description: Map of block column number to global j index
-    type: integer
-    kind: null
-    units: index
   - name: turbulent_mixing_length
     description: Turbulent mixing length
     type: real
@@ -4668,11 +4823,6 @@ section:
     type: real
     kind: null
     units: kg2 kg-2
-  - name: random_number
-    description: Random number
-    type: real
-    kind: null
-    units: 1
   - name: random_number_seed_for_mcica_longwave
     description: Random number seed for Monte-Carlo Independent Column Approximation
       longwave scheme
@@ -4683,12 +4833,6 @@ section:
     description: Random number seed for Monte-Carlo Independent Column Approximation
       shortwave scheme
     type: integer
-    kind: null
-    units: 1
-  - name: cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls
-    description: Cumulative min vertical index at cloud base between sw radiation
-      calls
-    type: real
     kind: null
     units: 1
   - name: water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer
@@ -4718,12 +4862,6 @@ section:
     type: real
     kind: null
     units: kg kg-1
-  - name: subgrid_scale_cloud_fraction_from_shoc
-    description: Subgrid-scale cloud fraction from Simplified Higher-Order Closure
-      stochastic physics scheme
-    type: real
-    kind: null
-    units: fraction
   - name: air_pressure_at_surface_on_previous_timestep
     description: Air pressure at surface on previous timestep
     type: real
@@ -4763,12 +4901,6 @@ section:
     units: K2
   - name: tendency_of_air_temperature_due_to_nonphysics
     description: Tendency of air temperature due to nonphysics
-    type: real
-    kind: null
-    units: K s-1
-  - name: tendency_of_air_temperature_to_withhold_from_sppt
-    description: Change of air temperature to withhold from stochastically perturbed
-      physics tendencies per unit time
     type: real
     kind: null
     units: K s-1
@@ -5666,11 +5798,6 @@ section:
 - name: GFS_typedefs_GFS_coupling_type
   comment: null
   standard_names:
-  - name: cellular_automata_global_pattern_from_coupled_process
-    description: Cellular automata global pattern from coupled process
-    type: real
-    kind: null
-    units: 1
   - name: convective_cloud_condensate_after_rainout
     description: Convective cloud condensate after rainout
     type: real
@@ -5772,12 +5899,6 @@ section:
     type: real
     kind: null
     units: Pa s
-  - name: cellular_automata_area_fraction_for_deep_convection_from_coupled_process
-    description: Cellular automata area fraction for deep convection from coupled
-      process
-    type: real
-    kind: null
-    units: fraction
   - name: atmosphere_heat_diffusivity_for_chemistry_coupling
     description: Atmosphere heat diffusivity for chemistry coupling
     type: real
@@ -6093,40 +6214,6 @@ section:
     type: real
     kind: null
     units: K s-1
-  - name: cellular_automata_vertical_scaling_factor
-    description: Cellular automata vertical scaling factor
-    type: real
-    kind: null
-    units: fraction
-  - name: shum_scaling_factors_from_coupled_process
-    description: Stochastic Humidity stochastic physics option scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: skeb_x_wind_scaling_factors_from_coupled_process
-    description: Stochastic Kinetic Energy Backscatter x-wind scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: skeb_y_wind_scaling_factors_from_coupled_process
-    description: Stochastic Kinetic Energy Backscatter y-wind scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: sppt_scaling_factors_from_coupled_process
-    description: Stochastically perturbed physics tendencies scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: surface_stochastic_scaling_factors_from_coupled_process
-    description: Surface stochastic scaling factors from coupled process
-    type: real
-    kind: null
-    units: 1
 - name: GFS_typedefs_GFS_statein_type
   comment: null
   standard_names:
@@ -6372,11 +6459,6 @@ section:
     type: real
     kind: null
     units: 1
-  - name: cosine_of_latitude
-    description: Cosine of latitude
-    type: real
-    kind: null
-    units: 1
   - name: latitude_interpolation_scaling_factor_complement_for_absolute_momentum_flux_due_to_nonorographic_gwd
     description: Latitude interpolation scaling factor complement for absolute momentum
       flux due to non-orographic gravity wave drag
@@ -6389,88 +6471,11 @@ section:
     type: real
     kind: null
     units: 1
-  - name: lower_longitude_index_of_aerosol_forcing_for_interpolation
-    description: Lower longitude index of aerosol forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_aerosol_forcing_for_interpolation
-    description: Lower latitude index of aerosol forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation
-    description: Lower longitude index of cloud nuclei forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation
-    description: Lower latitude index of cloud nuclei forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation
-    description: Lower latitude index of absolute momentum flux due to non-orographic
-      gravity wave drag for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_ozone_forcing_for_interpolation
-    description: Lower latitude index of ozone forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
-    description: Lower latitude index of stratospheric water vapor forcing for interpolation
-    type: integer
-    kind: null
-    units: index
   - name: latitude_interpolation_scaling_factor_for_ozone_forcing
     description: Latitude interpolation scaling factor for ozone forcing
     type: real
     kind: null
     units: 1
-  - name: sine_of_latitude
-    description: Sine of latitude
-    type: real
-    kind: null
-    units: 1
-  - name: upper_longitude_index_of_aerosol_forcing_for_interpolation
-    description: Upper longitude index of aerosol forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_aerosol_forcing_for_interpolation
-    description: Upper latitude index of aerosol forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation
-    description: Upper longitude index of cloud nuclei forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation
-    description: Upper latitude index of cloud nuclei forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation
-    description: Upper latitude index of absolute momentum flux due to non-orographic
-      gravity wave drag for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_ozone_forcing_for_interpolation
-    description: Upper latitude index of ozone forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
-    description: Upper latitude index of stratospheric water vapor forcing for interpolation
-    type: integer
-    kind: null
-    units: index
   - name: latitude_interpolation_scaling_factor_for_stratospheric_water_vapor_forcing
     description: Latitude interpolation scaling factor for stratospheric water vapor
       forcing

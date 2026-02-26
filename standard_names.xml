@@ -606,6 +606,70 @@
     <standard_name name="number_of_snow_layers">
       <type units="1">real</type>
     </standard_name>
+    <standard_name name="control_for_vertical_index_direction"
+                   description="control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls"
+                 description="Cumulative maximum vertical index at cloud base between shortwave radiation calls">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="horizontal_loop_extent">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="lower_longitude_index_of_aerosol_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_aerosol_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation"
+                 description="Lower latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_ozone_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_longitude_index_of_aerosol_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_aerosol_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation"
+                 description="Upper latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_ozone_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="number_of_latitude_points">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_equatorial_longitude_points">
+      <type units="count">integer</type>
+    </standard_name>
   </section>
   <section name="constants"
            comment="Constant parameters that should be identical across a full modeling system">
@@ -651,7 +715,8 @@
       <type units="m s-2">real</type>
     </standard_name>
   </section>
-  <section name="coordinates">
+  <section name="coordinates"
+           comment="Parameters defining or relating to the coordinate system of the model">
     <standard_name name="latitude">
       <type units="degree_north">real</type>
     </standard_name>
@@ -676,6 +741,55 @@
     </standard_name>
     <standard_name name="sigma_pressure_hybrid_vertical_coordinate">
        <type units="1">real</type>
+    </standard_name>
+    <standard_name name="cosine_of_latitude">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="sine_of_latitude">
+      <type units="1">real</type>
+    </standard_name>
+  </section>
+  <section name="timing"
+           comment="Variables defining or relating to timing, dates, calendar, and related concepts">
+    <standard_name name="number_of_days_in_current_year">
+      <type units="days">integer</type>
+    </standard_name>
+    <standard_name name="date_and_time_at_model_initialization_in_iso_order"
+                 description="Integer array of date and time at model initialization in ISO order (year, month, day, hour, minute, second)">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="date_and_time_at_model_initialization_in_united_states_order"
+                 description="Integer array of date and time at model initialization in united states order (month, day, year, hour, minute, second)">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="date_and_time_of_forecast_in_united_states_order"
+                 description="Integer array of date and time at model initialization in united states order (month, day, year, hour, minute, second)">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="forecast_utc_hour">
+      <type units="h">real</type>
+    </standard_name>
+    <standard_name name="forecast_time">
+      <type units="h">real</type>
+    </standard_name>
+    <standard_name name="forecast_time_on_previous_timestep">
+      <type units="h">real</type>
+    </standard_name>
+    <standard_name name="equation_of_time"
+                   description="Apparent solar time minus mean solar time">
+      <type units="radian">real</type>
+    </standard_name>
+    <standard_name name="control_for_initial_time_date">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="is_first_timestep">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="index_of_timestep">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="forecast_time_in_seconds">
+      <type units="s">real</type>
     </standard_name>
   </section>
   <section name="state_variables"
@@ -1660,6 +1774,148 @@
     <standard_name name="filename_of_internal_namelist">
       <type units="none">character</type>
     </standard_name>
+    <standard_name name="map_of_block_column_number_to_global_i_index">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="map_of_block_column_number_to_global_j_index">
+      <type units="index">integer</type>
+    </standard_name>
+  </section>
+  <section name="stochastic physics">
+    <standard_name name="cellular_automata_finer_grid">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="cellular_automata_lifetime">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="cellular_automata_seed_frequency">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="cellular_automata_seed_probability">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="do_cellular_automata">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_cellular_automata_gaussian_spatial_filter">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_global_cellular_automata">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_global_cellular_automata_closure">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_global_cellular_automata_deep_convective_entrainment">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_global_cellular_automata_trigger">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_sgs_cellular_automata">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="number_of_independent_cellular_automata">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_iterations_to_spin_up_cellular_automata">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="random_number_seed_for_cellular_automata">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="random_number_seed_for_deep_convection">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection">
+      <type units="m s-1">real</type>
+    </standard_name>
+    <standard_name name="cellular_automata_global_pattern_from_coupled_process">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="cellular_automata_area_fraction_for_deep_convection_from_coupled_process">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="cellular_automata_vertical_scaling_factor">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="number_of_random_numbers">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="do_stochastic_skeb_option"
+                 description="Do Stochastic Kinetic Energy Backscatter option">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="skeb_x_wind_scaling_factors_from_coupled_process"
+                 description="Stochastic Kinetic Energy Backscatter x-wind scaling factors from coupled process">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="skeb_y_wind_scaling_factors_from_coupled_process"
+                 description="Stochastic Kinetic Energy Backscatter y-wind scaling factors from coupled process">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="do_stochastic_shum_option"
+                 description="Do Stochastic HUMidity stochastic physics option">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="shum_scaling_factors_from_coupled_process"
+                 description="Stochastic Humidity stochastic physics option scaling factors from coupled process">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="do_mountain_blocking_for_sppt"
+                 description="Do mountain blocking for stochastically perturbed physics tendencies">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="total_amplitude_of_sppt_perturbation"
+                 description="Total amplitude of stochastically perturbed physics tendencies perturbation">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="tendency_of_air_temperature_to_withhold_from_sppt"
+                 description="Change of air temperature to withhold from stochastically perturbed physics tendencies per unit time">
+      <type units="K s-1">real</type>
+    </standard_name>
+    <standard_name name="sppt_scaling_factors_from_coupled_process"
+                 description="Stochastically perturbed physics tendencies scaling factors from coupled process">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="do_shoc"
+                 description="Do Simplified Higher-Order Closure stochastic physics scheme">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_shoc_after_convection"
+                 description="Do Simplified Higher-Order Closure stochastic physics scheme after convection parameterization">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_cloud_fraction_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_microphysics_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_physics_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_stochastic_radiative_heating_perturbations">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_shoc_cloud_area_fraction_for_radiation"
+                 description="Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="control_for_stochastic_land_surface_perturbation">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="atmosphere_heat_diffusivity_from_shoc"
+                 description="Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme">
+      <type units="m2 s-1">real</type>
+    </standard_name>
+    <standard_name name="subgrid_scale_cloud_fraction_from_shoc"
+                 description="Subgrid-scale cloud fraction from Simplified Higher-Order Closure stochastic physics scheme">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="surface_stochastic_scaling_factors_from_coupled_process">
+      <type units="1">real</type>
+    </standard_name>
   </section>
   <section name="GFS_typedefs_GFS_control_type">
       <standard_name name="radiatively_active_gases_as_string">
@@ -1677,9 +1933,6 @@
       <standard_name name="number_of_microphysics_variables_in_xyz_dimensioned_restart_array">
          <type units="count">integer</type>
       </standard_name>
-      <standard_name name="number_of_random_numbers">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="multiplicative_tuning_parameter_for_atmosphere_diffusivity">
          <type units="1">real</type>
       </standard_name>
@@ -1692,18 +1945,6 @@
       </standard_name>
       <standard_name name="atmosphere_momentum_diffusivity_due_to_background">
          <type units="m2 s-1">real</type>
-      </standard_name>
-      <standard_name name="cellular_automata_finer_grid">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="cellular_automata_lifetime">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="cellular_automata_seed_frequency">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="cellular_automata_seed_probability">
-         <type units="fraction">real</type>
       </standard_name>
       <standard_name name="identifier_for_2018_scale_aware_tke_moist_edmf_pbl"
                    description="Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
@@ -1789,12 +2030,6 @@
       <standard_name name="critical_relative_humidity_at_toa"
                    description="Critical relative humidity at the top of the atmosphere">
          <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="date_and_time_at_model_initialization_in_iso_order">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="date_and_time_at_model_initialization_in_united_states_order">
-         <type units="1">integer</type>
       </standard_name>
       <standard_name name="decorrelation_length_used_by_overlap_method">
          <type units="km">real</type>
@@ -1888,9 +2123,6 @@
       <standard_name name="entrainment_rate_coefficient_for_shallow_convection">
          <type units="1">real</type>
       </standard_name>
-      <standard_name name="equation_of_time">
-         <type units="radian">real</type>
-      </standard_name>
       <standard_name name="relative_humidity_threshold_for_condensation">
          <type units="fraction">real</type>
       </standard_name>
@@ -1933,9 +2165,6 @@
       </standard_name>
       <standard_name name="control_for_land_surface_scheme_canopy_stomatal_resistance">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_cellular_automata">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="do_chemistry_coupling">
          <type units="flag">logical</type>
@@ -1989,9 +2218,6 @@
       <standard_name name="identifier_for_fer_hires_microphysics_scheme">
          <type units="1">integer</type>
       </standard_name>
-      <standard_name name="is_first_timestep">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="do_surface_flux_coupling">
          <type units="flag">logical</type>
       </standard_name>
@@ -2000,9 +2226,6 @@
       </standard_name>
       <standard_name name="control_for_land_surface_scheme_frozen_soil_permeability">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_cellular_automata_gaussian_spatial_filter">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="do_gcycle_surface_option">
          <type units="flag">logical</type>
@@ -2034,18 +2257,6 @@
       <standard_name name="identifier_for_gfdl_microphysics_scheme"
                    description="Identifier for Geophysical Fluid Dynamics Laboratory microphysics scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_global_cellular_automata">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_global_cellular_automata_closure">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_global_cellular_automata_deep_convective_entrainment">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_global_cellular_automata_trigger">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="do_gwd"
                    description="Do gravity wave drag">
@@ -2088,9 +2299,6 @@
       <standard_name name="do_separate_advection_of_condensate_species">
          <type units="flag">logical</type>
       </standard_name>
-      <standard_name name="control_for_initial_time_date">
-         <type units="1">integer</type>
-      </standard_name>
       <standard_name name="control_for_lake_surface_scheme">
          <type units="1">integer</type>
       </standard_name>
@@ -2128,10 +2336,6 @@
       </standard_name>
       <standard_name name="identifier_for_morrison_gettelman_microphysics_scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_mountain_blocking_for_sppt"
-                   description="Do mountain blocking for stochastically perturbed physics tendencies">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="identifier_for_noah_land_surface_scheme">
          <type units="1">integer</type>
@@ -2274,19 +2478,8 @@
                    description="Do scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
          <type units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_sgs_cellular_automata">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="do_sas_shallow_convection"
                    description="Do Simplified Arakawa-Schubert shallow convection scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_shoc"
-                   description="Do Simplified Higher-Order Closure stochastic physics scheme">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_shoc_after_convection"
-                   description="Do Simplified Higher-Order Closure stochastic physics scheme after convection parameterization">
          <type units="flag">logical</type>
       </standard_name>
       <standard_name name="control_for_land_surface_scheme_soil_and_snow_temperature_time_integration">
@@ -2297,26 +2490,6 @@
       </standard_name>
       <standard_name name="control_for_solar_constant">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="do_stochastic_cloud_fraction_perturbations">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_stochastic_microphysics_perturbations">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_stochastic_physics_perturbations">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_stochastic_radiative_heating_perturbations">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_stochastic_shum_option"
-                   description="Do Stochastic HUMidity stochastic physics option">
-         <type units="flag">logical</type>
-      </standard_name>
-      <standard_name name="do_stochastic_skeb_option"
-                   description="Do Stochastic Kinetic Energy Backscatter option">
-         <type units="flag">logical</type>
       </standard_name>
       <standard_name name="do_stratospheric_water_vapor_physics">
          <type units="flag">logical</type>
@@ -2366,10 +2539,6 @@
                    description="Do Unified Gravity Wave Physics version 1 orographic gravity wave drag">
          <type units="flag">logical</type>
       </standard_name>
-      <standard_name name="do_shoc_cloud_area_fraction_for_radiation"
-                   description="Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation">
-         <type units="flag">logical</type>
-      </standard_name>
       <standard_name name="control_for_surface_layer_scheme_skin_temperature_update">
          <type units="1">integer</type>
       </standard_name>
@@ -2377,10 +2546,6 @@
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="control_for_prescribed_co2">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="control_for_vertical_index_direction"
-                     description="control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa">
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="do_ocean_wave_coupling">
@@ -2450,18 +2615,6 @@
       <standard_name name="control_for_variable_bulk_richardson_number">
          <type units="1">real</type>
       </standard_name>
-      <standard_name name="date_and_time_of_forecast_in_united_states_order">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="forecast_utc_hour">
-         <type units="h">real</type>
-      </standard_name>
-      <standard_name name="forecast_time">
-         <type units="h">real</type>
-      </standard_name>
-      <standard_name name="forecast_time_on_previous_timestep">
-         <type units="h">real</type>
-      </standard_name>
       <standard_name name="period_of_longwave_radiation_calls">
          <type units="s">real</type>
       </standard_name>
@@ -2477,9 +2630,6 @@
       <standard_name name="control_for_drag_suite_gwd"
                    description="Control for drag option in gravity wave drag scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="horizontal_loop_extent">
-         <type units="count">integer</type>
       </standard_name>
       <standard_name name="period_of_diagnostics_reset">
          <type units="h">real</type>
@@ -2583,9 +2733,6 @@
                    description="Index of specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back in xyz dimensioned restart array">
          <type units="index">integer</type>
       </standard_name>
-      <standard_name name="control_for_stochastic_land_surface_perturbation">
-         <type units="1">integer</type>
-      </standard_name>
       <standard_name name="index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array">
          <type units="index">integer</type>
       </standard_name>
@@ -2613,9 +2760,6 @@
          <type units="index">integer</type>
       </standard_name>
       <standard_name name="index_of_subgrid_cloud_area_fraction_in_atmosphere_layer_in_xyz_dimensioned_restart_array">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="index_of_timestep">
          <type units="index">integer</type>
       </standard_name>
       <standard_name name="reciprocal_of_grid_scale_range">
@@ -2806,12 +2950,6 @@
       <standard_name name="number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array">
          <type units="count">integer</type>
       </standard_name>
-      <standard_name name="number_of_days_in_current_year">
-         <type units="days">integer</type>
-      </standard_name>
-      <standard_name name="number_of_equatorial_longitude_points">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="number_of_variables_in_xy_dimensioned_restart_array">
          <type units="count">integer</type>
       </standard_name>
@@ -2824,16 +2962,7 @@
       <standard_name name="number_of_hydrometeors">
          <type units="count">integer</type>
       </standard_name>
-      <standard_name name="number_of_independent_cellular_automata">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_iterations_to_spin_up_cellular_automata">
-         <type units="count">integer</type>
-      </standard_name>
       <standard_name name="number_of_perturbed_land_surface_variables">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_latitude_points">
          <type units="count">integer</type>
       </standard_name>
       <standard_name name="number_of_longwave_bands">
@@ -2929,15 +3058,6 @@
       <standard_name name="min_sea_ice_area_fraction">
          <type units="fraction">real</type>
       </standard_name>
-      <standard_name name="forecast_time_in_seconds">
-         <type units="s">real</type>
-      </standard_name>
-      <standard_name name="random_number_seed_for_cellular_automata">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="random_number_seed_for_deep_convection">
-         <type units="1">integer</type>
-      </standard_name>
       <standard_name name="control_for_tke_dissipation_method">
          <type units="1">real</type>
       </standard_name>
@@ -2969,9 +3089,6 @@
                    description="Thickness of soil layers for land surface model">
          <type units="m">real</type>
       </standard_name>
-      <standard_name name="cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection">
-         <type units="m s-1">real</type>
-      </standard_name>
       <standard_name name="period_of_max_diagnostics_reset"
                    description="Period of maximum diagnostics reset">
          <type units="s">real</type>
@@ -2992,10 +3109,6 @@
          <type units="1">integer</type>
       </standard_name>
       <standard_name name="multiplicative_tuning_parameter_for_tke_dissipative_heating">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="total_amplitude_of_sppt_perturbation"
-                   description="Total amplitude of stochastically perturbed physics tendencies perturbation">
          <type units="1">real</type>
       </standard_name>
       <standard_name name="do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme"
@@ -3126,10 +3239,6 @@
       <standard_name name="atmosphere_boundary_layer_thickness">
          <type units="m">real</type>
       </standard_name>
-      <standard_name name="atmosphere_heat_diffusivity_from_shoc"
-                   description="Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme">
-         <type units="m2 s-1">real</type>
-      </standard_name>
       <standard_name name="atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type">
          <type units="kg m-2 s-1">real</type>
       </standard_name>
@@ -3178,16 +3287,6 @@
                    description="Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme">
          <type units="m s-1 kg kg-1">real</type>
       </standard_name>
-      <standard_name name="cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls"
-                   description="Cumulative maximum vertical index at cloud base between shortwave radiation calls">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="map_of_block_column_number_to_global_i_index">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="map_of_block_column_number_to_global_j_index">
-         <type units="index">integer</type>
-      </standard_name>
       <standard_name name="turbulent_mixing_length">
          <type units="m">real</type>
       </standard_name>
@@ -3213,9 +3312,6 @@
                    description="Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)">
          <type units="kg2 kg-2">real</type>
       </standard_name>
-      <standard_name name="random_number">
-         <type units="1">real</type>
-      </standard_name>
       <standard_name name="random_number_seed_for_mcica_longwave"
                    description="Random number seed for Monte-Carlo Independent Column Approximation longwave scheme">
          <type units="1">integer</type>
@@ -3223,9 +3319,6 @@
       <standard_name name="random_number_seed_for_mcica_shortwave"
                    description="Random number seed for Monte-Carlo Independent Column Approximation shortwave scheme">
          <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls">
-         <type units="1">real</type>
       </standard_name>
       <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer"
                    description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer">
@@ -3244,10 +3337,6 @@
       <standard_name name="subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air"
                    description="Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air">
          <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="subgrid_scale_cloud_fraction_from_shoc"
-                   description="Subgrid-scale cloud fraction from Simplified Higher-Order Closure stochastic physics scheme">
-         <type units="fraction">real</type>
       </standard_name>
       <standard_name name="air_pressure_at_surface_on_previous_timestep">
          <type units="Pa">real</type>
@@ -3273,10 +3362,6 @@
          <type units="K2">real</type>
       </standard_name>
       <standard_name name="tendency_of_air_temperature_due_to_nonphysics">
-         <type units="K s-1">real</type>
-      </standard_name>
-      <standard_name name="tendency_of_air_temperature_to_withhold_from_sppt"
-                   description="Change of air temperature to withhold from stochastically perturbed physics tendencies per unit time">
          <type units="K s-1">real</type>
       </standard_name>
       <standard_name name="tendency_of_activated_cloud_condensation_nuclei_from_climatology"
@@ -3862,9 +3947,6 @@
       </standard_name>
    </section>
    <section name="GFS_typedefs_GFS_coupling_type">
-      <standard_name name="cellular_automata_global_pattern_from_coupled_process">
-         <type units="1">real</type>
-      </standard_name>
       <standard_name name="convective_cloud_condensate_after_rainout">
          <type units="kg kg-1">real</type>
       </standard_name>
@@ -3923,9 +4005,6 @@
       </standard_name>
       <standard_name name="cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep">
          <type units="Pa s">real</type>
-      </standard_name>
-      <standard_name name="cellular_automata_area_fraction_for_deep_convection_from_coupled_process">
-         <type units="fraction">real</type>
       </standard_name>
       <standard_name name="atmosphere_heat_diffusivity_for_chemistry_coupling">
          <type units="m2 s-1">real</type>
@@ -4130,28 +4209,6 @@
       <standard_name name="updated_tendency_of_air_temperature_due_to_longwave_heating_on_physics_timestep">
          <type units="K s-1">real</type>
       </standard_name>
-      <standard_name name="cellular_automata_vertical_scaling_factor">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="shum_scaling_factors_from_coupled_process"
-                   description="Stochastic Humidity stochastic physics option scaling factors from coupled process">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="skeb_x_wind_scaling_factors_from_coupled_process"
-                   description="Stochastic Kinetic Energy Backscatter x-wind scaling factors from coupled process">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="skeb_y_wind_scaling_factors_from_coupled_process"
-                   description="Stochastic Kinetic Energy Backscatter y-wind scaling factors from coupled process">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="sppt_scaling_factors_from_coupled_process"
-                   description="Stochastically perturbed physics tendencies scaling factors from coupled process">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="surface_stochastic_scaling_factors_from_coupled_process">
-         <type units="1">real</type>
-      </standard_name>
    </section>
    <section name="GFS_typedefs_GFS_statein_type">
       <standard_name name="air_pressure_at_lowest_model_interface">
@@ -4304,9 +4361,6 @@
       <standard_name name="latitude_interpolation_scaling_factor_for_cloud_nuclei_forcing">
          <type units="1">real</type>
       </standard_name>
-      <standard_name name="cosine_of_latitude">
-         <type units="1">real</type>
-      </standard_name>
       <standard_name name="latitude_interpolation_scaling_factor_complement_for_absolute_momentum_flux_due_to_nonorographic_gwd"
                    description="Latitude interpolation scaling factor complement for absolute momentum flux due to non-orographic gravity wave drag">
          <type units="1">real</type>
@@ -4315,55 +4369,8 @@
                    description="Latitude interpolation scaling factor for absolute momentum flux due to non-orographic gravity wave drag">
          <type units="1">real</type>
       </standard_name>
-      <standard_name name="lower_longitude_index_of_aerosol_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="lower_latitude_index_of_aerosol_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation"
-                   description="Lower latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="lower_latitude_index_of_ozone_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
       <standard_name name="latitude_interpolation_scaling_factor_for_ozone_forcing">
          <type units="1">real</type>
-      </standard_name>
-      <standard_name name="sine_of_latitude">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="upper_longitude_index_of_aerosol_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="upper_latitude_index_of_aerosol_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation"
-                   description="Upper latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="upper_latitude_index_of_ozone_forcing_for_interpolation">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation">
-         <type units="index">integer</type>
       </standard_name>
       <standard_name name="latitude_interpolation_scaling_factor_for_stratospheric_water_vapor_forcing">
          <type units="1">real</type>

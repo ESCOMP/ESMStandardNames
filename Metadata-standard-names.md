@@ -4,6 +4,7 @@
 * [dimensions](#dimensions)
 * [constants](#constants)
 * [coordinates](#coordinates)
+* [timing](#timing)
 * [state_variables](#state_variables)
 * [land_surface](#land_surface)
 * [marine](#marine)
@@ -14,6 +15,7 @@
 * [emissions](#emissions)
 * [Application-specific variables](#application-specific-variables)
 * [system variables](#system-variables)
+* [stochastic physics](#stochastic-physics)
 * [GFS_typedefs_GFS_control_type](#gfs_typedefs_gfs_control_type)
 * [GFS_typedefs_GFS_interstitial_type](#gfs_typedefs_gfs_interstitial_type)
 * [GFS_typedefs_GFS_tbd_type](#gfs_typedefs_gfs_tbd_type)
@@ -327,6 +329,46 @@ Currently, the only dimension which supports all six dimension types is horizont
     * `integer`: units = count
 * `number_of_snow_layers`: Number of snow layers
     * `real`: units = 1
+* `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa
+    * `integer`: units = 1
+* `cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative maximum vertical index at cloud base between shortwave radiation calls
+    * `real`: units = 1
+* `horizontal_loop_extent`: Horizontal loop extent
+    * `integer`: units = count
+* `cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative min vertical index at cloud base between sw radiation calls
+    * `real`: units = 1
+* `lower_longitude_index_of_aerosol_forcing_for_interpolation`: Lower longitude index of aerosol forcing for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_aerosol_forcing_for_interpolation`: Lower latitude index of aerosol forcing for interpolation
+    * `integer`: units = index
+* `lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation`: Lower longitude index of cloud nuclei forcing for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation`: Lower latitude index of cloud nuclei forcing for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation`: Lower latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_ozone_forcing_for_interpolation`: Lower latitude index of ozone forcing for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation`: Lower latitude index of stratospheric water vapor forcing for interpolation
+    * `integer`: units = index
+* `upper_longitude_index_of_aerosol_forcing_for_interpolation`: Upper longitude index of aerosol forcing for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_aerosol_forcing_for_interpolation`: Upper latitude index of aerosol forcing for interpolation
+    * `integer`: units = index
+* `upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation`: Upper longitude index of cloud nuclei forcing for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation`: Upper latitude index of cloud nuclei forcing for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation`: Upper latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_ozone_forcing_for_interpolation`: Upper latitude index of ozone forcing for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation`: Upper latitude index of stratospheric water vapor forcing for interpolation
+    * `integer`: units = index
+* `number_of_latitude_points`: Number of latitude points
+    * `integer`: units = count
+* `number_of_equatorial_longitude_points`: Number of equatorial longitude points
+    * `integer`: units = count
 ## constants
 Constant parameters that should be identical across a full modeling system
 * `avogadro_number`: Avogadro number
@@ -352,6 +394,7 @@ Constant parameters that should be identical across a full modeling system
 * `standard_gravitational_acceleration`: scalar constant representing gravitational acceleration
     * `real`: units = m s-2
 ## coordinates
+Parameters defining or relating to the coordinate system of the model
 * `latitude`: Latitude
     * `real`: units = degree_north
 * `longitude`: Longitude
@@ -368,6 +411,36 @@ Constant parameters that should be identical across a full modeling system
     * `real`: units = 1
 * `sigma_pressure_hybrid_vertical_coordinate`: Sigma pressure hybrid vertical coordinate
     * `real`: units = 1
+* `cosine_of_latitude`: Cosine of latitude
+    * `real`: units = 1
+* `sine_of_latitude`: Sine of latitude
+    * `real`: units = 1
+## timing
+Variables defining or relating to timing, dates, calendar, and related concepts
+* `number_of_days_in_current_year`: Number of days in current year
+    * `integer`: units = days
+* `date_and_time_at_model_initialization_in_iso_order`: Integer array of date and time at model initialization in ISO order (year, month, day, hour, minute, second)
+    * `integer`: units = 1
+* `date_and_time_at_model_initialization_in_united_states_order`: Integer array of date and time at model initialization in united states order (month, day, year, hour, minute, second)
+    * `integer`: units = 1
+* `date_and_time_of_forecast_in_united_states_order`: Integer array of date and time at model initialization in united states order (month, day, year, hour, minute, second)
+    * `integer`: units = 1
+* `forecast_utc_hour`: Forecast utc hour
+    * `real`: units = h
+* `forecast_time`: Forecast time
+    * `real`: units = h
+* `forecast_time_on_previous_timestep`: Forecast time on previous timestep
+    * `real`: units = h
+* `equation_of_time`: Apparent solar time minus mean solar time
+    * `real`: units = radian
+* `control_for_initial_time_date`: Control for initial time date
+    * `integer`: units = 1
+* `is_first_timestep`: Is first timestep
+    * `logical`: units = flag
+* `index_of_timestep`: Index of timestep
+    * `integer`: units = index
+* `forecast_time_in_seconds`: Forecast time in seconds
+    * `real`: units = s
 ## state_variables
 Note that appending '_on_previous_timestep' to standard_names in this section yields another valid standard_name
 * `specific_heat_of_dry_air_at_constant_pressure`: Specific heat of dry air at constant pressure
@@ -893,6 +966,91 @@ Variables related to the compute environment
     * `character`: units = none
 * `filename_of_internal_namelist`: Filename of internal namelist
     * `character`: units = none
+* `map_of_block_column_number_to_global_i_index`: Map of block column number to global i index
+    * `integer`: units = index
+* `map_of_block_column_number_to_global_j_index`: Map of block column number to global j index
+    * `integer`: units = index
+## stochastic physics
+* `cellular_automata_finer_grid`: Cellular automata finer grid
+    * `integer`: units = count
+* `cellular_automata_lifetime`: Cellular automata lifetime
+    * `integer`: units = count
+* `cellular_automata_seed_frequency`: Cellular automata seed frequency
+    * `integer`: units = count
+* `cellular_automata_seed_probability`: Cellular automata seed probability
+    * `real`: units = fraction
+* `do_cellular_automata`: Do cellular automata
+    * `logical`: units = flag
+* `do_cellular_automata_gaussian_spatial_filter`: Do cellular automata gaussian spatial filter
+    * `logical`: units = flag
+* `do_global_cellular_automata`: Do global cellular automata
+    * `logical`: units = flag
+* `do_global_cellular_automata_closure`: Do global cellular automata closure
+    * `logical`: units = flag
+* `do_global_cellular_automata_deep_convective_entrainment`: Do global cellular automata deep convective entrainment
+    * `logical`: units = flag
+* `do_global_cellular_automata_trigger`: Do global cellular automata trigger
+    * `logical`: units = flag
+* `do_sgs_cellular_automata`: Do sgs cellular automata
+    * `logical`: units = flag
+* `number_of_independent_cellular_automata`: Number of independent cellular automata
+    * `integer`: units = count
+* `number_of_iterations_to_spin_up_cellular_automata`: Number of iterations to spin up cellular automata
+    * `integer`: units = count
+* `random_number_seed_for_cellular_automata`: Random number seed for cellular automata
+    * `integer`: units = 1
+* `random_number_seed_for_deep_convection`: Random number seed for deep convection
+    * `integer`: units = 1
+* `cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection`: Cellular automata vertical velocity perturbation threshold for deep convection
+    * `real`: units = m s-1
+* `cellular_automata_global_pattern_from_coupled_process`: Cellular automata global pattern from coupled process
+    * `real`: units = 1
+* `cellular_automata_area_fraction_for_deep_convection_from_coupled_process`: Cellular automata area fraction for deep convection from coupled process
+    * `real`: units = fraction
+* `cellular_automata_vertical_scaling_factor`: Cellular automata vertical scaling factor
+    * `real`: units = fraction
+* `number_of_random_numbers`: Number of random numbers
+    * `integer`: units = count
+* `do_stochastic_skeb_option`: Do Stochastic Kinetic Energy Backscatter option
+    * `logical`: units = flag
+* `skeb_x_wind_scaling_factors_from_coupled_process`: Stochastic Kinetic Energy Backscatter x-wind scaling factors from coupled process
+    * `real`: units = 1
+* `skeb_y_wind_scaling_factors_from_coupled_process`: Stochastic Kinetic Energy Backscatter y-wind scaling factors from coupled process
+    * `real`: units = 1
+* `do_stochastic_shum_option`: Do Stochastic HUMidity stochastic physics option
+    * `logical`: units = flag
+* `shum_scaling_factors_from_coupled_process`: Stochastic Humidity stochastic physics option scaling factors from coupled process
+    * `real`: units = 1
+* `do_mountain_blocking_for_sppt`: Do mountain blocking for stochastically perturbed physics tendencies
+    * `logical`: units = flag
+* `total_amplitude_of_sppt_perturbation`: Total amplitude of stochastically perturbed physics tendencies perturbation
+    * `real`: units = 1
+* `tendency_of_air_temperature_to_withhold_from_sppt`: Change of air temperature to withhold from stochastically perturbed physics tendencies per unit time
+    * `real`: units = K s-1
+* `sppt_scaling_factors_from_coupled_process`: Stochastically perturbed physics tendencies scaling factors from coupled process
+    * `real`: units = 1
+* `do_shoc`: Do Simplified Higher-Order Closure stochastic physics scheme
+    * `logical`: units = flag
+* `do_shoc_after_convection`: Do Simplified Higher-Order Closure stochastic physics scheme after convection parameterization
+    * `logical`: units = flag
+* `do_stochastic_cloud_fraction_perturbations`: Do stochastic cloud fraction perturbations
+    * `logical`: units = flag
+* `do_stochastic_microphysics_perturbations`: Do stochastic microphysics perturbations
+    * `logical`: units = flag
+* `do_stochastic_physics_perturbations`: Do stochastic physics perturbations
+    * `logical`: units = flag
+* `do_stochastic_radiative_heating_perturbations`: Do stochastic radiative heating perturbations
+    * `logical`: units = flag
+* `do_shoc_cloud_area_fraction_for_radiation`: Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation
+    * `logical`: units = flag
+* `control_for_stochastic_land_surface_perturbation`: Control for stochastic land surface perturbation
+    * `integer`: units = 1
+* `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme
+    * `real`: units = m2 s-1
+* `subgrid_scale_cloud_fraction_from_shoc`: Subgrid-scale cloud fraction from Simplified Higher-Order Closure stochastic physics scheme
+    * `real`: units = fraction
+* `surface_stochastic_scaling_factors_from_coupled_process`: Surface stochastic scaling factors from coupled process
+    * `real`: units = 1
 ## GFS_typedefs_GFS_control_type
 * `radiatively_active_gases_as_string`: Radiatively active gases as string
     * `character`: units = none
@@ -904,8 +1062,6 @@ Variables related to the compute environment
     * `integer`: units = count
 * `number_of_microphysics_variables_in_xyz_dimensioned_restart_array`: Number of microphysics variables in xyz dimensioned restart array
     * `integer`: units = count
-* `number_of_random_numbers`: Number of random numbers
-    * `integer`: units = count
 * `multiplicative_tuning_parameter_for_atmosphere_diffusivity`: Multiplicative tuning parameter for atmosphere diffusivity
     * `real`: units = 1
 * `atmosphere_heat_diffusivity_due_to_background`: Atmosphere heat diffusivity due to background
@@ -914,14 +1070,6 @@ Variables related to the compute environment
     * `real`: units = m2 s-1
 * `atmosphere_momentum_diffusivity_due_to_background`: Atmosphere momentum diffusivity due to background
     * `real`: units = m2 s-1
-* `cellular_automata_finer_grid`: Cellular automata finer grid
-    * `integer`: units = count
-* `cellular_automata_lifetime`: Cellular automata lifetime
-    * `integer`: units = count
-* `cellular_automata_seed_frequency`: Cellular automata seed frequency
-    * `integer`: units = count
-* `cellular_automata_seed_probability`: Cellular automata seed probability
-    * `real`: units = fraction
 * `identifier_for_2018_scale_aware_tke_moist_edmf_pbl`: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `integer`: units = 1
 * `control_for_scale_aware_tke_moist_edmf_pbl_scheme`: Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
@@ -974,10 +1122,6 @@ Variables related to the compute environment
     * `real`: units = fraction
 * `critical_relative_humidity_at_toa`: Critical relative humidity at the top of the atmosphere
     * `real`: units = fraction
-* `date_and_time_at_model_initialization_in_iso_order`: Date and time at model initialization in iso order
-    * `integer`: units = 1
-* `date_and_time_at_model_initialization_in_united_states_order`: Date and time at model initialization in united states order
-    * `integer`: units = 1
 * `decorrelation_length_used_by_overlap_method`: Decorrelation length used by overlap method
     * `real`: units = km
 * `density_of_fresh_water`: Density of fresh water
@@ -1032,8 +1176,6 @@ Variables related to the compute environment
     * `real`: units = 1
 * `entrainment_rate_coefficient_for_shallow_convection`: Entrainment rate coefficient for shallow convection
     * `real`: units = 1
-* `equation_of_time`: Equation of time
-    * `real`: units = radian
 * `relative_humidity_threshold_for_condensation`: Relative humidity threshold for condensation
     * `real`: units = fraction
 * `do_arakawa_wu_downdrafts_for_deep_convection`: Do arakawa wu downdrafts for deep convection
@@ -1062,8 +1204,6 @@ Variables related to the compute environment
     * `logical`: units = flag
 * `control_for_land_surface_scheme_canopy_stomatal_resistance`: Control for land surface scheme canopy stomatal resistance
     * `integer`: units = 1
-* `do_cellular_automata`: Do cellular automata
-    * `logical`: units = flag
 * `do_chemistry_coupling`: Do chemistry coupling
     * `logical`: units = flag
 * `do_chikira_sugiyama_deep_convection_scheme`: Do chikira sugiyama deep convection scheme
@@ -1098,16 +1238,12 @@ Variables related to the compute environment
     * `integer`: units = 1
 * `identifier_for_fer_hires_microphysics_scheme`: Identifier for fer hires microphysics scheme
     * `integer`: units = 1
-* `is_first_timestep`: Is first timestep
-    * `logical`: units = flag
 * `do_surface_flux_coupling`: Do surface flux coupling
     * `logical`: units = flag
 * `do_fractional_landmask`: Do fractional landmask
     * `logical`: units = flag
 * `control_for_land_surface_scheme_frozen_soil_permeability`: Control for land surface scheme frozen soil permeability
     * `integer`: units = 1
-* `do_cellular_automata_gaussian_spatial_filter`: Do cellular automata gaussian spatial filter
-    * `logical`: units = flag
 * `do_gcycle_surface_option`: Do gcycle surface option
     * `logical`: units = flag
 * `do_generic_tendency_due_to_deep_convection`: Do generic tendency due to deep convection
@@ -1126,14 +1262,6 @@ Variables related to the compute environment
     * `logical`: units = flag
 * `identifier_for_gfdl_microphysics_scheme`: Identifier for Geophysical Fluid Dynamics Laboratory microphysics scheme
     * `integer`: units = 1
-* `do_global_cellular_automata`: Do global cellular automata
-    * `logical`: units = flag
-* `do_global_cellular_automata_closure`: Do global cellular automata closure
-    * `logical`: units = flag
-* `do_global_cellular_automata_deep_convective_entrainment`: Do global cellular automata deep convective entrainment
-    * `logical`: units = flag
-* `do_global_cellular_automata_trigger`: Do global cellular automata trigger
-    * `logical`: units = flag
 * `do_gwd`: Do gravity wave drag
     * `logical`: units = flag
 * `control_for_land_surface_scheme_surface_snow_albedo`: Control for land surface scheme surface snow albedo
@@ -1158,8 +1286,6 @@ Variables related to the compute environment
     * `integer`: units = 1
 * `do_separate_advection_of_condensate_species`: Do separate advection of condensate species
     * `logical`: units = flag
-* `control_for_initial_time_date`: Control for initial time date
-    * `integer`: units = 1
 * `control_for_lake_surface_scheme`: Control for lake surface scheme
     * `integer`: units = 1
 * `control_for_land_surface_scheme`: Control for land surface scheme
@@ -1184,8 +1310,6 @@ Variables related to the compute environment
     * `logical`: units = flag
 * `identifier_for_morrison_gettelman_microphysics_scheme`: Identifier for morrison gettelman microphysics scheme
     * `integer`: units = 1
-* `do_mountain_blocking_for_sppt`: Do mountain blocking for stochastically perturbed physics tendencies
-    * `logical`: units = flag
 * `identifier_for_noah_land_surface_scheme`: Identifier for noah land surface scheme
     * `integer`: units = 1
 * `do_noah_lsm_ua_extension`: Do Noah land surface model University of Arizona extension
@@ -1272,13 +1396,7 @@ Variables related to the compute environment
     * `logical`: units = flag
 * `do_scale_aware_tke_moist_edmf_pbl`: Do scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `logical`: units = flag
-* `do_sgs_cellular_automata`: Do sgs cellular automata
-    * `logical`: units = flag
 * `do_sas_shallow_convection`: Do Simplified Arakawa-Schubert shallow convection scheme
-    * `logical`: units = flag
-* `do_shoc`: Do Simplified Higher-Order Closure stochastic physics scheme
-    * `logical`: units = flag
-* `do_shoc_after_convection`: Do Simplified Higher-Order Closure stochastic physics scheme after convection parameterization
     * `logical`: units = flag
 * `control_for_land_surface_scheme_soil_and_snow_temperature_time_integration`: Control for land surface scheme soil and snow temperature time integration
     * `integer`: units = 1
@@ -1286,18 +1404,6 @@ Variables related to the compute environment
     * `integer`: units = 1
 * `control_for_solar_constant`: Control for solar constant
     * `integer`: units = 1
-* `do_stochastic_cloud_fraction_perturbations`: Do stochastic cloud fraction perturbations
-    * `logical`: units = flag
-* `do_stochastic_microphysics_perturbations`: Do stochastic microphysics perturbations
-    * `logical`: units = flag
-* `do_stochastic_physics_perturbations`: Do stochastic physics perturbations
-    * `logical`: units = flag
-* `do_stochastic_radiative_heating_perturbations`: Do stochastic radiative heating perturbations
-    * `logical`: units = flag
-* `do_stochastic_shum_option`: Do Stochastic HUMidity stochastic physics option
-    * `logical`: units = flag
-* `do_stochastic_skeb_option`: Do Stochastic Kinetic Energy Backscatter option
-    * `logical`: units = flag
 * `do_stratospheric_water_vapor_physics`: Do stratospheric water vapor physics
     * `logical`: units = flag
 * `control_for_land_surface_scheme_supercooled_liquid_water`: Control for land surface scheme supercooled liquid water
@@ -1326,15 +1432,11 @@ Variables related to the compute environment
     * `logical`: units = flag
 * `do_ugwp_version_1_orographic_gwd`: Do Unified Gravity Wave Physics version 1 orographic gravity wave drag
     * `logical`: units = flag
-* `do_shoc_cloud_area_fraction_for_radiation`: Do Simplified Higher-Order Closure stochastic physics scheme cloud area fraction for radiation
-    * `logical`: units = flag
 * `control_for_surface_layer_scheme_skin_temperature_update`: Control for surface layer scheme skin temperature update
     * `integer`: units = 1
 * `control_for_surface_albedo`: Control for surface albedo
     * `integer`: units = 1
 * `control_for_prescribed_co2`: Control for prescribed co2
-    * `integer`: units = 1
-* `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa
     * `integer`: units = 1
 * `do_ocean_wave_coupling`: Do ocean wave coupling
     * `logical`: units = flag
@@ -1376,14 +1478,6 @@ Variables related to the compute environment
     * `logical`: units = flag
 * `control_for_variable_bulk_richardson_number`: Control for variable bulk richardson number
     * `real`: units = 1
-* `date_and_time_of_forecast_in_united_states_order`: Date and time of forecast in united states order
-    * `integer`: units = 1
-* `forecast_utc_hour`: Forecast utc hour
-    * `real`: units = h
-* `forecast_time`: Forecast time
-    * `real`: units = h
-* `forecast_time_on_previous_timestep`: Forecast time on previous timestep
-    * `real`: units = h
 * `period_of_longwave_radiation_calls`: Period of longwave radiation calls
     * `real`: units = s
 * `period_of_shortwave_radiation_calls`: Period of shortwave radiation calls
@@ -1394,8 +1488,6 @@ Variables related to the compute environment
     * `integer`: units = 1
 * `control_for_drag_suite_gwd`: Control for drag option in gravity wave drag scheme
     * `integer`: units = 1
-* `horizontal_loop_extent`: Horizontal loop extent
-    * `integer`: units = count
 * `period_of_diagnostics_reset`: Period of diagnostics reset
     * `real`: units = h
 * `tunable_parameter_for_ice_supersaturation`: Tunable parameter for ice supersaturation
@@ -1458,8 +1550,6 @@ Variables related to the compute environment
     * `integer`: units = index
 * `index_of_water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back_in_xyz_dimensioned_restart_array`: Index of specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back in xyz dimensioned restart array
     * `integer`: units = index
-* `control_for_stochastic_land_surface_perturbation`: Control for stochastic land surface perturbation
-    * `integer`: units = 1
 * `index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of air pressure at surface on previous timestep in xyz dimensioned restart array
     * `integer`: units = index
 * `index_of_air_pressure_at_surface_two_timesteps_back_in_xyz_dimensioned_tracer_array`: Index of air pressure at surface two timesteps back in xyz dimensioned tracer array
@@ -1477,8 +1567,6 @@ Variables related to the compute environment
 * `index_of_upward_virtual_potential_temperature_flux_in_xyz_dimensioned_restart_array`: Index of upward virtual potential temperature flux in xyz dimensioned restart array
     * `integer`: units = index
 * `index_of_subgrid_cloud_area_fraction_in_atmosphere_layer_in_xyz_dimensioned_restart_array`: Index of subgrid cloud area fraction in atmosphere layer in xyz dimensioned restart array
-    * `integer`: units = index
-* `index_of_timestep`: Index of timestep
     * `integer`: units = index
 * `reciprocal_of_grid_scale_range`: Reciprocal of grid scale range
     * `real`: units = rad2 m-2
@@ -1594,10 +1682,6 @@ Variables related to the compute environment
     * `integer`: units = count
 * `number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array`: Number of convective cloud variables in xyz dimensioned restart array
     * `integer`: units = count
-* `number_of_days_in_current_year`: Number of days in current year
-    * `integer`: units = days
-* `number_of_equatorial_longitude_points`: Number of equatorial longitude points
-    * `integer`: units = count
 * `number_of_variables_in_xy_dimensioned_restart_array`: Number of variables in xy dimensioned restart array
     * `integer`: units = count
 * `number_of_variables_in_xyz_dimensioned_restart_array`: Number of variables in xyz dimensioned restart array
@@ -1606,13 +1690,7 @@ Variables related to the compute environment
     * `integer`: units = count
 * `number_of_hydrometeors`: Number of hydrometeors
     * `integer`: units = count
-* `number_of_independent_cellular_automata`: Number of independent cellular automata
-    * `integer`: units = count
-* `number_of_iterations_to_spin_up_cellular_automata`: Number of iterations to spin up cellular automata
-    * `integer`: units = count
 * `number_of_perturbed_land_surface_variables`: Number of perturbed land surface variables
-    * `integer`: units = count
-* `number_of_latitude_points`: Number of latitude points
     * `integer`: units = count
 * `number_of_longwave_bands`: Number of longwave bands
     * `integer`: units = count
@@ -1672,12 +1750,6 @@ Variables related to the compute environment
     * `logical`: units = flag
 * `min_sea_ice_area_fraction`: Min sea ice area fraction
     * `real`: units = fraction
-* `forecast_time_in_seconds`: Forecast time in seconds
-    * `real`: units = s
-* `random_number_seed_for_cellular_automata`: Random number seed for cellular automata
-    * `integer`: units = 1
-* `random_number_seed_for_deep_convection`: Random number seed for deep convection
-    * `integer`: units = 1
 * `control_for_tke_dissipation_method`: Control for tke dissipation method
     * `real`: units = 1
 * `uncentering_coefficient_for_implicit_tke_integration`: Uncentering coefficient for implicit tke integration
@@ -1698,8 +1770,6 @@ Variables related to the compute environment
     * `real`: units = 1
 * `thickness_of_soil_layers_for_lsm`: Thickness of soil layers for land surface model
     * `real`: units = m
-* `cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection`: Cellular automata vertical velocity perturbation threshold for deep convection
-    * `real`: units = m s-1
 * `period_of_max_diagnostics_reset`: Period of maximum diagnostics reset
     * `real`: units = s
 * `timescale_for_rayleigh_damping`: Timescale for rayleigh damping
@@ -1713,8 +1783,6 @@ Variables related to the compute environment
 * `control_for_tke_budget_output`: Control for tke budget output
     * `integer`: units = 1
 * `multiplicative_tuning_parameter_for_tke_dissipative_heating`: Multiplicative tuning parameter for tke dissipative heating
-    * `real`: units = 1
-* `total_amplitude_of_sppt_perturbation`: Total amplitude of stochastically perturbed physics tendencies perturbation
     * `real`: units = 1
 * `do_turbulent_orographic_form_drag_in_unified_gravity_wave_physics_gwd_scheme`: Do turbulent orographic form drag in Unified Gravity Wave Physics gravity wave drag scheme
     * `logical`: units = flag
@@ -1790,8 +1858,6 @@ Variables related to the compute environment
     * `real`: units = K
 * `atmosphere_boundary_layer_thickness`: Atmosphere boundary layer thickness
     * `real`: units = m
-* `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme
-    * `real`: units = m2 s-1
 * `atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type`: Atmosphere updraft convective mass flux at cloud base by cloud type
     * `real`: units = kg m-2 s-1
 * `cloud_fraction_for_mg`: Cloud fraction for mg
@@ -1822,12 +1888,6 @@ Variables related to the compute environment
     * `real`: units = K m s-1
 * `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme`: Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme
     * `real`: units = m s-1 kg kg-1
-* `cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative maximum vertical index at cloud base between shortwave radiation calls
-    * `real`: units = 1
-* `map_of_block_column_number_to_global_i_index`: Map of block column number to global i index
-    * `integer`: units = index
-* `map_of_block_column_number_to_global_j_index`: Map of block column number to global j index
-    * `integer`: units = index
 * `turbulent_mixing_length`: Turbulent mixing length
     * `real`: units = m
 * `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep
@@ -1842,14 +1902,10 @@ Variables related to the compute environment
     * `real`: units = K
 * `variance_of_water_vapor_mixing_ratio_wrt_moist_air`: Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)
     * `real`: units = kg2 kg-2
-* `random_number`: Random number
-    * `real`: units = 1
 * `random_number_seed_for_mcica_longwave`: Random number seed for Monte-Carlo Independent Column Approximation longwave scheme
     * `integer`: units = 1
 * `random_number_seed_for_mcica_shortwave`: Random number seed for Monte-Carlo Independent Column Approximation shortwave scheme
     * `integer`: units = 1
-* `cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative min vertical index at cloud base between sw radiation calls
-    * `real`: units = 1
 * `water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
     * `real`: units = kg kg-1
 * `stability_function_for_heat`: Stability function for heat
@@ -1860,8 +1916,6 @@ Variables related to the compute environment
     * `real`: units = kg kg-1
 * `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
     * `real`: units = kg kg-1
-* `subgrid_scale_cloud_fraction_from_shoc`: Subgrid-scale cloud fraction from Simplified Higher-Order Closure stochastic physics scheme
-    * `real`: units = fraction
 * `air_pressure_at_surface_on_previous_timestep`: Air pressure at surface on previous timestep
     * `real`: units = Pa
 * `air_pressure_at_surface_two_timesteps_back`: Air pressure at surface two timesteps back
@@ -1877,8 +1931,6 @@ Variables related to the compute environment
 * `variance_of_air_temperature`: Variance of air temperature
     * `real`: units = K2
 * `tendency_of_air_temperature_due_to_nonphysics`: Tendency of air temperature due to nonphysics
-    * `real`: units = K s-1
-* `tendency_of_air_temperature_to_withhold_from_sppt`: Change of air temperature to withhold from stochastically perturbed physics tendencies per unit time
     * `real`: units = K s-1
 * `tendency_of_activated_cloud_condensation_nuclei_from_climatology`: Change of activated cloud condensation nuclei from climatology per unit time
     * `real`: units = kg-1 s-1
@@ -2226,8 +2278,6 @@ Variables related to the compute environment
 * `wood_mass_content`: Wood mass content
     * `real`: units = g m-2
 ## GFS_typedefs_GFS_coupling_type
-* `cellular_automata_global_pattern_from_coupled_process`: Cellular automata global pattern from coupled process
-    * `real`: units = 1
 * `convective_cloud_condensate_after_rainout`: Convective cloud condensate after rainout
     * `real`: units = kg kg-1
 * `cumulative_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling diffuse near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
@@ -2262,8 +2312,6 @@ Variables related to the compute environment
     * `real`: units = Pa s
 * `cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative y momentum flux at surface for coupling multiplied by timestep
     * `real`: units = Pa s
-* `cellular_automata_area_fraction_for_deep_convection_from_coupled_process`: Cellular automata area fraction for deep convection from coupled process
-    * `real`: units = fraction
 * `atmosphere_heat_diffusivity_for_chemistry_coupling`: Atmosphere heat diffusivity for chemistry coupling
     * `real`: units = m2 s-1
 * `water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at 2 meters above surface used for coupling
@@ -2380,18 +2428,6 @@ Variables related to the compute environment
     * `real`: units = kg-1 s-1
 * `updated_tendency_of_air_temperature_due_to_longwave_heating_on_physics_timestep`: Updated tendency of air temperature due to longwave heating on physics timestep
     * `real`: units = K s-1
-* `cellular_automata_vertical_scaling_factor`: Cellular automata vertical scaling factor
-    * `real`: units = fraction
-* `shum_scaling_factors_from_coupled_process`: Stochastic Humidity stochastic physics option scaling factors from coupled process
-    * `real`: units = 1
-* `skeb_x_wind_scaling_factors_from_coupled_process`: Stochastic Kinetic Energy Backscatter x-wind scaling factors from coupled process
-    * `real`: units = 1
-* `skeb_y_wind_scaling_factors_from_coupled_process`: Stochastic Kinetic Energy Backscatter y-wind scaling factors from coupled process
-    * `real`: units = 1
-* `sppt_scaling_factors_from_coupled_process`: Stochastically perturbed physics tendencies scaling factors from coupled process
-    * `real`: units = 1
-* `surface_stochastic_scaling_factors_from_coupled_process`: Surface stochastic scaling factors from coupled process
-    * `real`: units = 1
 ## GFS_typedefs_GFS_statein_type
 * `air_pressure_at_lowest_model_interface`: Air pressure at lowest model interface
     * `real`: units = Pa
@@ -2484,44 +2520,12 @@ Variables related to the compute environment
     * `real`: units = 1
 * `latitude_interpolation_scaling_factor_for_cloud_nuclei_forcing`: Latitude interpolation scaling factor for cloud nuclei forcing
     * `real`: units = 1
-* `cosine_of_latitude`: Cosine of latitude
-    * `real`: units = 1
 * `latitude_interpolation_scaling_factor_complement_for_absolute_momentum_flux_due_to_nonorographic_gwd`: Latitude interpolation scaling factor complement for absolute momentum flux due to non-orographic gravity wave drag
     * `real`: units = 1
 * `latitude_interpolation_scaling_factor_for_absolute_momentum_flux_due_to_nonorographic_gwd`: Latitude interpolation scaling factor for absolute momentum flux due to non-orographic gravity wave drag
     * `real`: units = 1
-* `lower_longitude_index_of_aerosol_forcing_for_interpolation`: Lower longitude index of aerosol forcing for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_aerosol_forcing_for_interpolation`: Lower latitude index of aerosol forcing for interpolation
-    * `integer`: units = index
-* `lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation`: Lower longitude index of cloud nuclei forcing for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation`: Lower latitude index of cloud nuclei forcing for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation`: Lower latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_ozone_forcing_for_interpolation`: Lower latitude index of ozone forcing for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation`: Lower latitude index of stratospheric water vapor forcing for interpolation
-    * `integer`: units = index
 * `latitude_interpolation_scaling_factor_for_ozone_forcing`: Latitude interpolation scaling factor for ozone forcing
     * `real`: units = 1
-* `sine_of_latitude`: Sine of latitude
-    * `real`: units = 1
-* `upper_longitude_index_of_aerosol_forcing_for_interpolation`: Upper longitude index of aerosol forcing for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_aerosol_forcing_for_interpolation`: Upper latitude index of aerosol forcing for interpolation
-    * `integer`: units = index
-* `upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation`: Upper longitude index of cloud nuclei forcing for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation`: Upper latitude index of cloud nuclei forcing for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation`: Upper latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_ozone_forcing_for_interpolation`: Upper latitude index of ozone forcing for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation`: Upper latitude index of stratospheric water vapor forcing for interpolation
-    * `integer`: units = index
 * `latitude_interpolation_scaling_factor_for_stratospheric_water_vapor_forcing`: Latitude interpolation scaling factor for stratospheric water vapor forcing
     * `real`: units = 1
 ## GFS_typedefs_GFS_stateout_type
