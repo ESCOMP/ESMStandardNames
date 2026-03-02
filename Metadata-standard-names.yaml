@@ -982,6 +982,11 @@ section:
     type: real
     kind: null
     units: s
+  - name: forecast_julian_day
+    description: Forecast julian day
+    type: real
+    kind: null
+    units: days
 - name: atmospheric properties
   comment: null
   standard_names:
@@ -1471,6 +1476,21 @@ section:
     type: real
     kind: null
     units: m2 s-1
+  - name: air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array
+    description: Air temperature on previous timestep in xyz dimensioned restart array
+    type: real
+    kind: null
+    units: K
+  - name: air_temperature_two_timesteps_back
+    description: Air temperature two timesteps back
+    type: real
+    kind: null
+    units: K
+  - name: atmosphere_boundary_layer_thickness
+    description: Atmosphere boundary layer thickness
+    type: real
+    kind: null
+    units: m
 - name: land_surface
   comment: null
   standard_names:
@@ -1948,38 +1968,51 @@ section:
       type: real
       kind: null
       units: K-1
-    - name: cloud_phase_transition_threshold_temperature
-      description: Cloud phase transition threshold temperature
-      type: real
-      kind: null
-      units: K
     - name: chemical_tracer_scavenging_fractions
       description: Chemical tracer scavenging fractions
       type: real
       kind: null
       units: fraction
-    - name: tunable_parameter_1_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
-      description: Tunable parameter 1 for detrainment and precipitation partitioning
-        in chikira sugiyama deep convection
+    - name: effective_radius_of_stratiform_cloud_graupel_particle
+      description: Effective radius of stratiform cloud graupel particle
       type: real
       kind: null
-      units: m
-    - name: tunable_parameter_2_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
-      description: Tunable parameter 2 for detrainment and precipitation partitioning
-        in chikira sugiyama deep convection
+      units: um
+    - name: effective_radius_of_stratiform_cloud_ice_particle
+      description: Effective radius of stratiform cloud ice particle
       type: real
       kind: null
-      units: m
-    - name: detrainment_conversion_parameter_for_deep_convection
-      description: Detrainment conversion parameter for deep convection
+      units: um
+    - name: effective_radius_of_stratiform_cloud_liquid_water_particle
+      description: Effective radius of stratiform cloud liquid water particle
       type: real
       kind: null
-      units: m-1
-    - name: detrainment_conversion_parameter_for_shallow_convection
-      description: Detrainment conversion parameter for shallow convection
+      units: um
+    - name: effective_radius_of_stratiform_cloud_rain_particle
+      description: Effective radius of stratiform cloud rain particle
       type: real
       kind: null
-      units: m-1
+      units: um
+    - name: effective_radius_of_stratiform_cloud_snow_particle
+      description: Effective radius of stratiform cloud snow particle
+      type: real
+      kind: null
+      units: um
+    - name: prescribed_number_concentration_of_cloud_droplets
+      description: Prescribed number concentration of cloud droplets
+      type: real
+      kind: null
+      units: m-3
+    - name: prescribed_number_concentration_of_graupel
+      description: Prescribed number concentration of graupel
+      type: real
+      kind: null
+      units: m-3
+    - name: prescribed_number_concentration_of_cloud_ice
+      description: Prescribed number concentration of cloud ice
+      type: real
+      kind: null
+      units: m-3
   - name: GOCART aerosols
     comment: null
     standard_names:
@@ -2443,6 +2476,30 @@ section:
   - name: filename_of_rrtmgp_shortwave_k_distribution
     description: File name of Rapid Radiative Transfer Model for General circulation
       model applications - Parallel (RRTMGP) shortwave k-distribution
+    type: character
+    kind: null
+    units: none
+  - name: directory_for_rte_rrtmgp_source_code
+    description: Directory for Radiative Transfer for Energetics/Rapid Radiative Transfer
+      Model for General circulation model applications - Parallel (RRTMGP) source
+      code
+    type: character
+    kind: null
+    units: none
+  - name: filename_of_rrtmgp_longwave_cloud_optics_coefficients
+    description: File name of Rapid Radiative Transfer Model for General circulation
+      model applications - Parallel (RRTMGP) longwave cloud optics coefficients
+    type: character
+    kind: null
+    units: none
+  - name: filename_of_rrtmgp_shortwave_cloud_optics_coefficients
+    description: File name of Rapid Radiative Transfer Model for General circulation
+      model applications - Parallel (RRTMGP) shortwave cloud optics coefficients
+    type: character
+    kind: null
+    units: none
+  - name: filename_of_micm_configuration
+    description: Filename of micm configuration
     type: character
     kind: null
     units: none
@@ -3069,27 +3126,6 @@ section:
     type: logical
     kind: null
     units: flag
-  - name: do_gsl_drag_suite_large_scale_orographic_and_blocking_drag
-    description: Do Global Systems Lab drag suite large-scale orographic and blocking
-      drag
-    type: logical
-    kind: null
-    units: flag
-  - name: do_gsl_drag_suite_small_scale_orographic_drag
-    description: Do Global Systems Lab drag suite small-scale orographic drag
-    type: logical
-    kind: null
-    units: flag
-  - name: do_gsl_drag_suite_turbulent_orographic_form_drag
-    description: Do Global Systems Lab drag suite turbulent orographic form drag
-    type: logical
-    kind: null
-    units: flag
-  - name: do_hybrid_edmf_pbl_scheme
-    description: Do hybrid eddy-diffusivity/mass-flux planetary boundary layer scheme
-    type: logical
-    kind: null
-    units: flag
   - name: do_hurricane_specific_code_in_scale_aware_mass_flux_deep_convection
     description: Do hurricane specific code in scale aware mass flux deep convection
     type: logical
@@ -3607,508 +3643,9 @@ section:
     type: logical
     kind: null
     units: flag
-- name: Coefficients
-  comment: Coefficients includes scaling factors, thresholds, and other similar variables
+- name: Indices
+  comment: Values indicating the index of some array or other data structure
   standard_names:
-  - name: cloud_condensate_autoconversion_threshold_coefficient
-    description: Cloud condensate autoconversion threshold coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: cloud_condensate_autoconversion_threshold_coefficient_for_deep_convection
-    description: Cloud condensate autoconversion threshold coefficient for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: precipitation_evaporation_coefficient
-    description: Precipitation evaporation coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: autoconversion_to_snow_coefficient
-    description: Autoconversion to snow coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: autoconversion_to_snow_coefficient_for_deep_convection
-    description: Autoconversion to snow coefficient for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: autoconversion_to_rain_coefficient
-    description: Autoconversion to rain coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: autoconversion_to_rain_coefficient_for_deep_convection
-    description: Autoconversion to rain coefficient for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: cloud_condensate_detrainment_coefficient
-    description: Cloud condensate detrainment coefficient
-    type: real
-    kind: null
-    units: 1
-  - name: coefficient_for_variable_bulk_richardson_number_over_land
-    description: Coefficient for variable bulk richardson number over land
-    type: real
-    kind: null
-    units: 1
-  - name: coefficient_for_variable_bulk_richardson_number_over_water
-    description: Coefficient for variable bulk richardson number over water
-    type: real
-    kind: null
-    units: 1
-  - name: tunable_parameter_for_critical_cloud_top_entrainment_instability_criteria
-    description: Tunable parameter for critical cloud top entrainment instability
-      criteria
-    type: real
-    kind: null
-    units: 1
-  - name: critical_relative_humidity_at_surface
-    description: Critical relative humidity at surface
-    type: real
-    kind: null
-    units: fraction
-  - name: critical_relative_humidity_at_toa
-    description: Critical relative humidity at the top of the atmosphere
-    type: real
-    kind: null
-    units: fraction
-  - name: tunable_parameter_for_entrainment_efficiency_in_chikira_sugiyama_deep_convection
-    description: Tunable parameter for entrainment efficiency in chikira sugiyama
-      deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: entrainment_rate_coefficient_for_deep_convection
-    description: Entrainment rate coefficient for deep convection
-    type: real
-    kind: null
-    units: 1
-  - name: entrainment_rate_coefficient_for_shallow_convection
-    description: Entrainment rate coefficient for shallow convection
-    type: real
-    kind: null
-    units: 1
-  - name: relative_humidity_threshold_for_condensation
-    description: Relative humidity threshold for condensation
-    type: real
-    kind: null
-    units: fraction
-  - name: min_cloud_condensate_mixing_ratio_wrt_moist_air_threshold
-    description: Minimum threshold cloud condensate mass mixing ratio with respect
-      to moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: min_cloud_liquid_water_mixing_ratio_wrt_moist_air_threshold
-    description: Minimum threshold cloud liquid water mass mixing ratio with respect
-      to moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: min_cloud_ice_mixing_ratio_wrt_moist_air_threshold
-    description: Minimum threshold cloud ice mass mixing ratio with respect to moist
-      air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: relative_humidity_threshold_for_ice_nucleation
-    description: Relative humidity threshold for ice nucleation
-    type: real
-    kind: null
-    units: fraction
-  - name: alpha_tuning_coefficient_for_morrison_gettelman_microphysics_scheme
-    description: Alpha tuning coefficient for morrison gettelman microphysics scheme
-    type: real
-    kind: null
-    units: 1
-  - name: min_large_ice_fraction
-    description: Minimum large ice fraction
-    type: real
-    kind: null
-    units: fraction
-  - name: min_pressure_in_rrtmgp
-    description: Minimum pressure in Rapid Radiative Transfer Model for General circulation
-      model applications - Parallel (RRTMGP)
-    type: real
-    kind: null
-    units: Pa
-  - name: min_grid_scale
-    description: Min grid scale
-    type: real
-    kind: null
-    units: m2 rad-2
-  - name: min_soil_moisture_content_for_lsm
-    description: Minimum soil moisture content for land surface model
-    type: real
-    kind: null
-    units: m
-  - name: min_temperature_in_rrtmgp
-    description: Minimum temperature in Rapid Radiative Transfer Model for General
-      circulation model applications - Parallel (RRTMGP)
-    type: real
-    kind: null
-    units: K
-  - name: multiplicative_tuning_parameter_for_potential_evaporation
-    description: Multiplicative tuning parameter for potential evaporation
-    type: real
-    kind: null
-    units: 1
-  - name: rain_conversion_parameter_for_deep_convection
-    description: Rain conversion parameter for deep convection
-    type: real
-    kind: null
-    units: m-1
-  - name: rain_conversion_parameter_for_shallow_convection
-    description: Rain conversion parameter for shallow convection
-    type: real
-    kind: null
-    units: m-1
-  - name: rain_evaporation_coefficient_over_ocean_for_deep_convection
-    description: Rain evaporation coefficient over ocean for deep convection
-    type: real
-    kind: null
-    units: fraction
-  - name: rain_evaporation_coefficient_over_land_for_deep_convection
-    description: Rain evaporation coefficient over land for deep convection
-    type: real
-    kind: null
-    units: fraction
-  - name: filename_of_rrtmgp_longwave_cloud_optics_coefficients
-    description: File name of Rapid Radiative Transfer Model for General circulation
-      model applications - Parallel (RRTMGP) longwave cloud optics coefficients
-    type: character
-    kind: null
-    units: none
-  - name: filename_of_rrtmgp_shortwave_cloud_optics_coefficients
-    description: File name of Rapid Radiative Transfer Model for General circulation
-      model applications - Parallel (RRTMGP) shortwave cloud optics coefficients
-    type: character
-    kind: null
-    units: none
-  - name: min_sea_ice_area_fraction
-    description: Min sea ice area fraction
-    type: real
-    kind: null
-    units: fraction
-  - name: uncentering_coefficient_for_implicit_tke_integration
-    description: Uncentering coefficient for implicit tke integration
-    type: real
-    kind: null
-    units: 1
-  - name: pressure_threshold_for_increased_tke_dissipation
-    description: Pressure threshold for increased tke dissipation
-    type: real
-    kind: null
-    units: Pa
-  - name: multiplicative_tunable_parameter_for_tke_dissipation
-    description: Multiplicative tunable parameter for tke dissipation
-    type: real
-    kind: null
-    units: 1
-  - name: multiplicative_tunable_parameter_for_tke_dissipation_at_surface_adjacent_layer
-    description: Multiplicative tunable parameter for tke dissipation at surface adjacent
-      layer
-    type: real
-    kind: null
-    units: 1
-  - name: heat_exchange_coefficient_for_myj_schemes
-    description: Heat exchange coefficient for Mellor-Yamada-Janjic physics schemes
-    type: real
-    kind: null
-    units: m s-1
-  - name: momentum_exchange_coefficient_for_myj_schemes
-    description: Momentum exchange coefficient for Mellor-Yamada-Janjic physics schemes
-    type: real
-    kind: null
-    units: m s-1
-  - name: coefficient_c_0
-    description: Coefficient c 0
-    type: real
-    kind: null
-    units: 1
-  - name: coefficient_c_d
-    description: Coefficient c d
-    type: real
-    kind: null
-    units: 1
-  - name: coefficient_w_0
-    description: Coefficient w 0
-    type: real
-    kind: null
-    units: 1
-  - name: coefficient_w_d
-    description: Coefficient w d
-    type: real
-    kind: null
-    units: 1
-  - name: surface_drag_coefficient_for_heat_and_moisture_for_noahmp
-    description: Surface drag coefficient for heat and moisture for Noah land surface
-      model with multiparameterization options
-    type: real
-    kind: null
-    units: 1
-  - name: surface_drag_coefficient_for_momentum_for_noahmp
-    description: Surface drag coefficient for momentum for Noah land surface model
-      with multiparameterization options
-    type: real
-    kind: null
-    units: 1
-  - name: surface_exchange_coefficient_for_heat
-    description: Surface exchange coefficient for heat
-    type: real
-    kind: null
-    units: W m-2 K-1
-  - name: surface_exchange_coefficient_for_heat_at_2m
-    description: Surface exchange coefficient for heat at 2m
-    type: real
-    kind: null
-    units: m s-1
-  - name: surface_exchange_coefficient_for_moisture
-    description: Surface exchange coefficient for moisture
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: surface_exchange_coefficient_for_moisture_at_2m
-    description: Surface exchange coefficient for moisture at 2m
-    type: real
-    kind: null
-    units: m s-1
-- name: stochastic physics variables
-  comment: null
-  standard_names:
-  - name: cellular_automata_finer_grid
-    description: Cellular automata finer grid
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_lifetime
-    description: Cellular automata lifetime
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_seed_frequency
-    description: Cellular automata seed frequency
-    type: integer
-    kind: null
-    units: count
-  - name: cellular_automata_seed_probability
-    description: Cellular automata seed probability
-    type: real
-    kind: null
-    units: fraction
-  - name: number_of_independent_cellular_automata
-    description: Number of independent cellular automata
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_iterations_to_spin_up_cellular_automata
-    description: Number of iterations to spin up cellular automata
-    type: integer
-    kind: null
-    units: count
-  - name: random_number_seed_for_cellular_automata
-    description: Random number seed for cellular automata
-    type: integer
-    kind: null
-    units: 1
-  - name: random_number_seed_for_deep_convection
-    description: Random number seed for deep convection
-    type: integer
-    kind: null
-    units: 1
-  - name: cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection
-    description: Cellular automata vertical velocity perturbation threshold for deep
-      convection
-    type: real
-    kind: null
-    units: m s-1
-  - name: cellular_automata_global_pattern_from_coupled_process
-    description: Cellular automata global pattern from coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: cellular_automata_area_fraction_for_deep_convection_from_coupled_process
-    description: Cellular automata area fraction for deep convection from coupled
-      process
-    type: real
-    kind: null
-    units: fraction
-  - name: cellular_automata_vertical_scaling_factor
-    description: Cellular automata vertical scaling factor
-    type: real
-    kind: null
-    units: fraction
-  - name: number_of_random_numbers
-    description: Number of random numbers
-    type: integer
-    kind: null
-    units: count
-  - name: skeb_x_wind_scaling_factors_from_coupled_process
-    description: Stochastic Kinetic Energy Backscatter x-wind scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: skeb_y_wind_scaling_factors_from_coupled_process
-    description: Stochastic Kinetic Energy Backscatter y-wind scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: shum_scaling_factors_from_coupled_process
-    description: Stochastic Humidity stochastic physics option scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: total_amplitude_of_sppt_perturbation
-    description: Total amplitude of stochastically perturbed physics tendencies perturbation
-    type: real
-    kind: null
-    units: 1
-  - name: tendency_of_air_temperature_to_withhold_from_sppt
-    description: Change of air temperature to withhold from stochastically perturbed
-      physics tendencies per unit time
-    type: real
-    kind: null
-    units: K s-1
-  - name: sppt_scaling_factors_from_coupled_process
-    description: Stochastically perturbed physics tendencies scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: atmosphere_heat_diffusivity_from_shoc
-    description: Atmospheric heat diffusivity from Simplified Higher-Order Closure
-      stochastic physics scheme
-    type: real
-    kind: null
-    units: m2 s-1
-  - name: subgrid_scale_cloud_fraction_from_shoc
-    description: Subgrid-scale cloud fraction from Simplified Higher-Order Closure
-      stochastic physics scheme
-    type: real
-    kind: null
-    units: fraction
-  - name: surface_stochastic_scaling_factors_from_coupled_process
-    description: Surface stochastic scaling factors from coupled process
-    type: real
-    kind: null
-    units: 1
-- name: radiation
-  comment: null
-  standard_names:
-  - name: radiatively_active_gases_as_string
-    description: Radiatively active gases as string
-    type: character
-    kind: null
-    units: none
-  - name: cosine_of_solar_declination_angle
-    description: Cosine of solar declination angle
-    type: real
-    kind: null
-    units: 1
-- name: atmospheric surface and boundary layer
-  comment: null
-  standard_names:
-  - name: critical_relative_humidity_at_top_of_atmosphere_boundary_layer
-    description: Critical relative humidity at top of atmosphere boundary layer
-    type: real
-    kind: null
-    units: fraction
-  - name: surface_layer_scheme_enthalpy_flux_factor
-    description: Surface layer scheme enthalpy flux factor
-    type: real
-    kind: null
-    units: 1
-- name: Land surface and vegetation
-  comment: null
-  standard_names:
-  - name: depth_of_soil_layers
-    description: Depth of soil layers
-    type: real
-    kind: null
-    units: m
-- name: GFS_typedefs_GFS_control_type
-  comment: null
-  standard_names:
-  - name: number_of_microphysics_variables_in_xy_dimensioned_restart_array
-    description: Number of microphysics variables in xy dimensioned restart array
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_microphysics_variables_in_xyz_dimensioned_restart_array
-    description: Number of microphysics variables in xyz dimensioned restart array
-    type: integer
-    kind: null
-    units: count
-  - name: decorrelation_length_used_by_overlap_method
-    description: Decorrelation length used by overlap method
-    type: real
-    kind: null
-    units: km
-  - name: sigma_pressure_threshold_at_upper_extent_of_background_diffusion
-    description: Sigma pressure threshold at upper extent of background diffusion
-    type: real
-    kind: null
-    units: 1
-  - name: directory_for_rte_rrtmgp_source_code
-    description: Directory for Radiative Transfer for Energetics/Rapid Radiative Transfer
-      Model for General circulation model applications - Parallel (RRTMGP) source
-      code
-    type: character
-    kind: null
-    units: none
-  - name: downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme
-    description: Downdraft area fraction in scale-aware turbulent kinetic energy moist
-      eddy-diffusivity/mass-flux planetary boundary layer scheme
-    type: real
-    kind: null
-    units: fraction
-  - name: downdraft_fraction_reaching_surface_over_land_for_deep_convection
-    description: Downdraft fraction reaching surface over land for deep convection
-    type: real
-    kind: null
-    units: fraction
-  - name: downdraft_fraction_reaching_surface_over_water_for_deep_convection
-    description: Downdraft fraction reaching surface over water for deep convection
-    type: real
-    kind: null
-    units: fraction
-  - name: period_of_longwave_radiation_calls
-    description: Period of longwave radiation calls
-    type: real
-    kind: null
-    units: s
-  - name: period_of_shortwave_radiation_calls
-    description: Period of shortwave radiation calls
-    type: real
-    kind: null
-    units: s
-  - name: all_ice_cloud_threshold_temperature
-    description: All ice cloud threshold temperature
-    type: real
-    kind: null
-    units: K
-  - name: period_of_diagnostics_reset
-    description: Period of diagnostics reset
-    type: real
-    kind: null
-    units: h
-  - name: tunable_parameter_for_ice_supersaturation
-    description: Tunable parameter for ice supersaturation
-    type: real
-    kind: null
-    units: 1
-  - name: index_of_ice_vegetation_category
-    description: Index of ice vegetation category
-    type: integer
-    kind: null
-    units: index
   - name: index_of_air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array
     description: Index of air temperature on previous timestep in xyz dimensioned
       restart array
@@ -4204,6 +3741,16 @@ section:
   - name: index_of_cloud_liquid_water_mixing_ratio_wrt_moist_air_in_tracer_concentration_array
     description: Index of cloud liquid water mass mixing ratio with respect to moist
       air in the tracer concentration array
+    type: integer
+    kind: null
+    units: index
+  - name: index_of_ice_vegetation_category
+    description: Index of ice vegetation category
+    type: integer
+    kind: null
+    units: index
+  - name: index_of_urban_vegetation_category
+    description: Index of urban vegetation category
     type: integer
     kind: null
     units: index
@@ -4322,88 +3869,216 @@ section:
     type: integer
     kind: null
     units: index
-  - name: reciprocal_of_grid_scale_range
-    description: Reciprocal of grid scale range
+- name: Coefficients
+  comment: Coefficients includes scaling factors, tunable parameters, and other similar
+    variables
+  standard_names:
+  - name: cloud_condensate_autoconversion_threshold_coefficient
+    description: Cloud condensate autoconversion threshold coefficient
     type: real
     kind: null
-    units: rad2 m-2
-  - name: forecast_julian_day
-    description: Forecast julian day
+    units: 1
+  - name: cloud_condensate_autoconversion_threshold_coefficient_for_deep_convection
+    description: Cloud condensate autoconversion threshold coefficient for deep convection
     type: real
     kind: null
-    units: days
-  - name: min_lake_ice_area_fraction
-    description: Min lake ice area fraction
+    units: 1
+  - name: precipitation_evaporation_coefficient
+    description: Precipitation evaporation coefficient
+    type: real
+    kind: null
+    units: 1
+  - name: autoconversion_to_snow_coefficient
+    description: Autoconversion to snow coefficient
+    type: real
+    kind: null
+    units: 1
+  - name: autoconversion_to_snow_coefficient_for_deep_convection
+    description: Autoconversion to snow coefficient for deep convection
+    type: real
+    kind: null
+    units: 1
+  - name: autoconversion_to_rain_coefficient
+    description: Autoconversion to rain coefficient
+    type: real
+    kind: null
+    units: 1
+  - name: autoconversion_to_rain_coefficient_for_deep_convection
+    description: Autoconversion to rain coefficient for deep convection
+    type: real
+    kind: null
+    units: 1
+  - name: cloud_condensate_detrainment_coefficient
+    description: Cloud condensate detrainment coefficient
+    type: real
+    kind: null
+    units: 1
+  - name: coefficient_for_variable_bulk_richardson_number_over_land
+    description: Coefficient for variable bulk richardson number over land
+    type: real
+    kind: null
+    units: 1
+  - name: coefficient_for_variable_bulk_richardson_number_over_water
+    description: Coefficient for variable bulk richardson number over water
+    type: real
+    kind: null
+    units: 1
+  - name: tunable_parameter_for_critical_cloud_top_entrainment_instability_criteria
+    description: Tunable parameter for critical cloud top entrainment instability
+      criteria
+    type: real
+    kind: null
+    units: 1
+  - name: critical_relative_humidity_at_surface
+    description: Critical relative humidity at surface
     type: real
     kind: null
     units: fraction
+  - name: critical_relative_humidity_at_toa
+    description: Critical relative humidity at the top of the atmosphere
+    type: real
+    kind: null
+    units: fraction
+  - name: tunable_parameter_for_entrainment_efficiency_in_chikira_sugiyama_deep_convection
+    description: Tunable parameter for entrainment efficiency in chikira sugiyama
+      deep convection
+    type: real
+    kind: null
+    units: 1
+  - name: entrainment_rate_coefficient_for_deep_convection
+    description: Entrainment rate coefficient for deep convection
+    type: real
+    kind: null
+    units: 1
+  - name: entrainment_rate_coefficient_for_shallow_convection
+    description: Entrainment rate coefficient for shallow convection
+    type: real
+    kind: null
+    units: 1
+  - name: multiplicative_tuning_parameter_for_potential_evaporation
+    description: Multiplicative tuning parameter for potential evaporation
+    type: real
+    kind: null
+    units: 1
+  - name: rain_conversion_parameter_for_deep_convection
+    description: Rain conversion parameter for deep convection
+    type: real
+    kind: null
+    units: m-1
+  - name: rain_conversion_parameter_for_shallow_convection
+    description: Rain conversion parameter for shallow convection
+    type: real
+    kind: null
+    units: m-1
+  - name: rain_evaporation_coefficient_over_ocean_for_deep_convection
+    description: Rain evaporation coefficient over ocean for deep convection
+    type: real
+    kind: null
+    units: fraction
+  - name: rain_evaporation_coefficient_over_land_for_deep_convection
+    description: Rain evaporation coefficient over land for deep convection
+    type: real
+    kind: null
+    units: fraction
+  - name: uncentering_coefficient_for_implicit_tke_integration
+    description: Uncentering coefficient for implicit tke integration
+    type: real
+    kind: null
+    units: 1
+  - name: pressure_threshold_for_increased_tke_dissipation
+    description: Pressure threshold for increased tke dissipation
+    type: real
+    kind: null
+    units: Pa
+  - name: multiplicative_tunable_parameter_for_tke_dissipation
+    description: Multiplicative tunable parameter for tke dissipation
+    type: real
+    kind: null
+    units: 1
+  - name: multiplicative_tunable_parameter_for_tke_dissipation_at_surface_adjacent_layer
+    description: Multiplicative tunable parameter for tke dissipation at surface adjacent
+      layer
+    type: real
+    kind: null
+    units: 1
+  - name: heat_exchange_coefficient_for_myj_schemes
+    description: Heat exchange coefficient for Mellor-Yamada-Janjic physics schemes
+    type: real
+    kind: null
+    units: m s-1
+  - name: momentum_exchange_coefficient_for_myj_schemes
+    description: Momentum exchange coefficient for Mellor-Yamada-Janjic physics schemes
+    type: real
+    kind: null
+    units: m s-1
+  - name: coefficient_c_0
+    description: Coefficient c 0
+    type: real
+    kind: null
+    units: 1
+  - name: coefficient_c_d
+    description: Coefficient c d
+    type: real
+    kind: null
+    units: 1
+  - name: coefficient_w_0
+    description: Coefficient w 0
+    type: real
+    kind: null
+    units: 1
+  - name: coefficient_w_d
+    description: Coefficient w d
+    type: real
+    kind: null
+    units: 1
+  - name: surface_drag_coefficient_for_heat_and_moisture_for_noahmp
+    description: Surface drag coefficient for heat and moisture for Noah land surface
+      model with multiparameterization options
+    type: real
+    kind: null
+    units: 1
+  - name: surface_drag_coefficient_for_momentum_for_noahmp
+    description: Surface drag coefficient for momentum for Noah land surface model
+      with multiparameterization options
+    type: real
+    kind: null
+    units: 1
+  - name: surface_exchange_coefficient_for_heat
+    description: Surface exchange coefficient for heat
+    type: real
+    kind: null
+    units: W m-2 K-1
+  - name: surface_exchange_coefficient_for_heat_at_2m
+    description: Surface exchange coefficient for heat at 2m
+    type: real
+    kind: null
+    units: m s-1
+  - name: surface_exchange_coefficient_for_moisture
+    description: Surface exchange coefficient for moisture
+    type: real
+    kind: null
+    units: kg m-2 s-1
+  - name: surface_exchange_coefficient_for_moisture_at_2m
+    description: Surface exchange coefficient for moisture at 2m
+    type: real
+    kind: null
+    units: m s-1
+  - name: tunable_parameter_for_ice_supersaturation
+    description: Tunable parameter for ice supersaturation
+    type: real
+    kind: null
+    units: 1
+  - name: reciprocal_of_grid_scale_range
+    description: inverse scaling factor for critical relative humidity
+    type: real
+    kind: null
+    units: rad2 m-2
   - name: multiplicative_tuning_parameter_for_reduced_latent_heat_flux_due_to_canopy_heat_storage
     description: Multiplicative tuning parameter for reduced latent heat flux due
       to canopy heat storage
     type: real
     kind: null
     units: 1
-  - name: max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation
-    description: Maximum tendency of air potential temperature due to large-scale
-      precipitation
-    type: real
-    kind: null
-    units: K s-1
-  - name: land_surface_perturbation_magnitudes
-    description: Land surface perturbation magnitudes
-    type: real
-    kind: null
-    units: variable
-  - name: max_critical_relative_humidity
-    description: Maximum critical relative humidity
-    type: real
-    kind: null
-    units: fraction
-  - name: max_grid_scale
-    description: Maximum grid scale
-    type: real
-    kind: null
-    units: m2 rad-2
-  - name: max_soil_moisture_content_for_lsm
-    description: Maximum soil moisture content for land surface model
-    type: real
-    kind: null
-    units: m
-  - name: autoconversion_to_snow_size_threshold
-    description: Autoconversion to snow size threshold
-    type: real
-    kind: null
-    units: um
-  - name: bergeron_findeisen_process_efficiency_factor
-    description: Bergeron findeisen process efficiency factor
-    type: real
-    kind: null
-    units: fraction
-  - name: relative_variance_of_subgrid_cloud_condensate_distribution
-    description: Relative variance of subgrid cloud condensate distribution
-    type: real
-    kind: null
-    units: kg2 kg-2
-  - name: prescribed_number_concentration_of_cloud_droplets
-    description: Prescribed number concentration of cloud droplets
-    type: real
-    kind: null
-    units: m-3
-  - name: prescribed_number_concentration_of_graupel
-    description: Prescribed number concentration of graupel
-    type: real
-    kind: null
-    units: m-3
-  - name: prescribed_number_concentration_of_cloud_ice
-    description: Prescribed number concentration of cloud ice
-    type: real
-    kind: null
-    units: m-3
-  - name: timescale_for_autoconversion_to_snow
-    description: Timescale for autoconversion to snow
-    type: real
-    kind: null
-    units: s
   - name: momentum_transport_reduction_factor_due_to_pressure_gradient_force_for_deep_convection
     description: Momentum transport reduction factor due to pressure gradient force
       for deep convection
@@ -4433,6 +4108,401 @@ section:
     type: real
     kind: null
     units: 1
+  - name: tunable_parameter_1_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
+    description: Tunable parameter 1 for detrainment and precipitation partitioning
+      in chikira sugiyama deep convection
+    type: real
+    kind: null
+    units: m
+  - name: tunable_parameter_2_for_detrainment_and_precipitation_partitioning_in_chikira_sugiyama_deep_convection
+    description: Tunable parameter 2 for detrainment and precipitation partitioning
+      in chikira sugiyama deep convection
+    type: real
+    kind: null
+    units: m
+  - name: detrainment_conversion_parameter_for_deep_convection
+    description: Detrainment conversion parameter for deep convection
+    type: real
+    kind: null
+    units: m-1
+  - name: detrainment_conversion_parameter_for_shallow_convection
+    description: Detrainment conversion parameter for shallow convection
+    type: real
+    kind: null
+    units: m-1
+  - name: bergeron_findeisen_process_efficiency_factor
+    description: Bergeron findeisen process efficiency factor
+    type: real
+    kind: null
+    units: fraction
+- name: Thresholds
+  comment: Thresholds represent some value at which the behavior of some process changes,
+    including maximums and minimums
+  standard_names:
+  - name: relative_humidity_threshold_for_condensation
+    description: Relative humidity threshold for condensation
+    type: real
+    kind: null
+    units: fraction
+  - name: min_cloud_condensate_mixing_ratio_wrt_moist_air_threshold
+    description: Minimum threshold cloud condensate mass mixing ratio with respect
+      to moist air
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: min_cloud_liquid_water_mixing_ratio_wrt_moist_air_threshold
+    description: Minimum threshold cloud liquid water mass mixing ratio with respect
+      to moist air
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: min_cloud_ice_mixing_ratio_wrt_moist_air_threshold
+    description: Minimum threshold cloud ice mass mixing ratio with respect to moist
+      air
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: relative_humidity_threshold_for_ice_nucleation
+    description: Relative humidity threshold for ice nucleation
+    type: real
+    kind: null
+    units: fraction
+  - name: alpha_tuning_coefficient_for_morrison_gettelman_microphysics_scheme
+    description: Alpha tuning coefficient for morrison gettelman microphysics scheme
+    type: real
+    kind: null
+    units: 1
+  - name: min_large_ice_fraction
+    description: Minimum large ice fraction
+    type: real
+    kind: null
+    units: fraction
+  - name: min_pressure_in_rrtmgp
+    description: Minimum pressure in Rapid Radiative Transfer Model for General circulation
+      model applications - Parallel (RRTMGP)
+    type: real
+    kind: null
+    units: Pa
+  - name: min_grid_scale
+    description: Min grid scale
+    type: real
+    kind: null
+    units: m2 rad-2
+  - name: min_soil_moisture_content_for_lsm
+    description: Minimum soil moisture content for land surface model
+    type: real
+    kind: null
+    units: m
+  - name: min_temperature_in_rrtmgp
+    description: Minimum temperature in Rapid Radiative Transfer Model for General
+      circulation model applications - Parallel (RRTMGP)
+    type: real
+    kind: null
+    units: K
+  - name: min_sea_ice_area_fraction
+    description: Min sea ice area fraction
+    type: real
+    kind: null
+    units: fraction
+  - name: cellular_automata_vertical_velocity_perturbation_threshold_for_deep_convection
+    description: Cellular automata vertical velocity perturbation threshold for deep
+      convection
+    type: real
+    kind: null
+    units: m s-1
+  - name: all_ice_cloud_threshold_temperature
+    description: All ice cloud threshold temperature
+    type: real
+    kind: null
+    units: K
+  - name: lower_bound_for_depth_of_sea_temperature_for_nsstm
+    description: Lower bound for depth of sea temperature for GFS near-surface sea
+      temperature scheme
+    type: integer
+    kind: null
+    units: mm
+  - name: upper_bound_for_depth_of_sea_temperature_for_nsstm
+    description: Upper bound for depth of sea temperature for GFS near-surface sea
+      temperature scheme
+    type: integer
+    kind: null
+    units: mm
+  - name: min_lake_ice_area_fraction
+    description: Min lake ice area fraction
+    type: real
+    kind: null
+    units: fraction
+  - name: max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation
+    description: Maximum tendency of air potential temperature due to large-scale
+      precipitation
+    type: real
+    kind: null
+    units: K s-1
+  - name: max_critical_relative_humidity
+    description: Maximum critical relative humidity
+    type: real
+    kind: null
+    units: fraction
+  - name: max_grid_scale
+    description: Maximum grid scale
+    type: real
+    kind: null
+    units: m2 rad-2
+  - name: autoconversion_to_snow_size_threshold
+    description: Threshold size above which autoconversion from cloud ice to snow
+      occurs
+    type: real
+    kind: null
+    units: um
+  - name: sigma_pressure_threshold_at_upper_extent_of_background_diffusion
+    description: Sigma pressure threshold at upper extent of background diffusion
+    type: real
+    kind: null
+    units: 1
+  - name: cloud_phase_transition_threshold_temperature
+    description: Cloud phase transition threshold temperature
+    type: real
+    kind: null
+    units: K
+- name: stochastic physics variables
+  comment: null
+  standard_names:
+  - name: cellular_automata_finer_grid
+    description: Cellular automata finer grid
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_lifetime
+    description: Cellular automata lifetime
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_seed_frequency
+    description: Cellular automata seed frequency
+    type: integer
+    kind: null
+    units: count
+  - name: cellular_automata_seed_probability
+    description: Cellular automata seed probability
+    type: real
+    kind: null
+    units: fraction
+  - name: number_of_independent_cellular_automata
+    description: Number of independent cellular automata
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_iterations_to_spin_up_cellular_automata
+    description: Number of iterations to spin up cellular automata
+    type: integer
+    kind: null
+    units: count
+  - name: random_number_seed_for_cellular_automata
+    description: Random number seed for cellular automata
+    type: integer
+    kind: null
+    units: 1
+  - name: random_number_seed_for_deep_convection
+    description: Random number seed for deep convection
+    type: integer
+    kind: null
+    units: 1
+  - name: cellular_automata_global_pattern_from_coupled_process
+    description: Cellular automata global pattern from coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: cellular_automata_area_fraction_for_deep_convection_from_coupled_process
+    description: Cellular automata area fraction for deep convection from coupled
+      process
+    type: real
+    kind: null
+    units: fraction
+  - name: cellular_automata_vertical_scaling_factor
+    description: Cellular automata vertical scaling factor
+    type: real
+    kind: null
+    units: fraction
+  - name: number_of_random_numbers
+    description: Number of random numbers
+    type: integer
+    kind: null
+    units: count
+  - name: skeb_x_wind_scaling_factors_from_coupled_process
+    description: Stochastic Kinetic Energy Backscatter x-wind scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: skeb_y_wind_scaling_factors_from_coupled_process
+    description: Stochastic Kinetic Energy Backscatter y-wind scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: shum_scaling_factors_from_coupled_process
+    description: Stochastic Humidity stochastic physics option scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: total_amplitude_of_sppt_perturbation
+    description: Total amplitude of stochastically perturbed physics tendencies perturbation
+    type: real
+    kind: null
+    units: 1
+  - name: tendency_of_air_temperature_to_withhold_from_sppt
+    description: Change of air temperature to withhold from stochastically perturbed
+      physics tendencies per unit time
+    type: real
+    kind: null
+    units: K s-1
+  - name: sppt_scaling_factors_from_coupled_process
+    description: Stochastically perturbed physics tendencies scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: atmosphere_heat_diffusivity_from_shoc
+    description: Atmospheric heat diffusivity from Simplified Higher-Order Closure
+      stochastic physics scheme
+    type: real
+    kind: null
+    units: m2 s-1
+  - name: subgrid_scale_cloud_fraction_from_shoc
+    description: Subgrid-scale cloud fraction from Simplified Higher-Order Closure
+      stochastic physics scheme
+    type: real
+    kind: null
+    units: fraction
+  - name: surface_stochastic_scaling_factors_from_coupled_process
+    description: Surface stochastic scaling factors from coupled process
+    type: real
+    kind: null
+    units: 1
+  - name: land_surface_perturbation_magnitudes
+    description: Array of magnitudes for perturbations for land surface properties
+    type: real
+    kind: null
+    units: variable
+- name: radiation
+  comment: null
+  standard_names:
+  - name: radiatively_active_gases_as_string
+    description: Radiatively active gases as string
+    type: character
+    kind: null
+    units: none
+  - name: cosine_of_solar_declination_angle
+    description: Cosine of solar declination angle
+    type: real
+    kind: null
+    units: 1
+  - name: radiatively_active_gases
+    description: Radiatively active gases
+    type: character
+    kind: null
+    units: none
+  - name: period_of_longwave_radiation_calls
+    description: Period of longwave radiation calls
+    type: real
+    kind: null
+    units: s
+  - name: period_of_shortwave_radiation_calls
+    description: Period of shortwave radiation calls
+    type: real
+    kind: null
+    units: s
+  - name: decorrelation_length_used_by_overlap_method
+    description: Decorrelation length used by overlap method
+    type: real
+    kind: null
+    units: km
+  - name: sine_of_solar_declination_angle
+    description: Sine of solar declination angle
+    type: real
+    kind: null
+    units: 1
+  - name: solar_constant
+    description: Solar constant
+    type: real
+    kind: null
+    units: W m-2
+- name: atmospheric surface and boundary layer
+  comment: null
+  standard_names:
+  - name: critical_relative_humidity_at_top_of_atmosphere_boundary_layer
+    description: Critical relative humidity at top of atmosphere boundary layer
+    type: real
+    kind: null
+    units: fraction
+  - name: surface_layer_scheme_enthalpy_flux_factor
+    description: Surface layer scheme enthalpy flux factor
+    type: real
+    kind: null
+    units: 1
+- name: Land surface and vegetation
+  comment: null
+  standard_names:
+  - name: depth_of_soil_layers
+    description: Depth of soil layers
+    type: real
+    kind: null
+    units: m
+  - name: land_surface_perturbation_variables
+    description: Land surface perturbation variables
+    type: character
+    kind: null
+    units: none
+  - name: max_soil_moisture_content_for_lsm
+    description: Maximum soil moisture content for land surface model
+    type: real
+    kind: null
+    units: m
+- name: GFS_typedefs_GFS_control_type
+  comment: null
+  standard_names:
+  - name: number_of_microphysics_variables_in_xy_dimensioned_restart_array
+    description: Number of microphysics variables in xy dimensioned restart array
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_microphysics_variables_in_xyz_dimensioned_restart_array
+    description: Number of microphysics variables in xyz dimensioned restart array
+    type: integer
+    kind: null
+    units: count
+  - name: downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme
+    description: Downdraft area fraction in scale-aware turbulent kinetic energy moist
+      eddy-diffusivity/mass-flux planetary boundary layer scheme
+    type: real
+    kind: null
+    units: fraction
+  - name: downdraft_fraction_reaching_surface_over_land_for_deep_convection
+    description: Downdraft fraction reaching surface over land for deep convection
+    type: real
+    kind: null
+    units: fraction
+  - name: downdraft_fraction_reaching_surface_over_water_for_deep_convection
+    description: Downdraft fraction reaching surface over water for deep convection
+    type: real
+    kind: null
+    units: fraction
+  - name: period_of_diagnostics_reset
+    description: Period of diagnostics reset
+    type: real
+    kind: null
+    units: h
+  - name: relative_variance_of_subgrid_cloud_condensate_distribution
+    description: Relative variance of subgrid cloud condensate distribution
+    type: real
+    kind: null
+    units: kg2 kg-2
+  - name: timescale_for_autoconversion_to_snow
+    description: Timescale for autoconversion to snow
+    type: real
+    kind: null
+    units: s
   - name: number_of_xy_dimensioned_auxiliary_arrays
     description: Number of xy dimensioned auxiliary arrays
     type: integer
@@ -4601,16 +4671,6 @@ section:
     type: real
     kind: null
     units: Pa
-  - name: sine_of_solar_declination_angle
-    description: Sine of solar declination angle
-    type: real
-    kind: null
-    units: 1
-  - name: solar_constant
-    description: Solar constant
-    type: real
-    kind: null
-    units: W m-2
   - name: multiplicative_tuning_parameter_for_reduced_surface_heat_fluxes_due_to_canopy_heat_storage
     description: Multiplicative tuning parameter for reduced surface heat fluxes due
       to canopy heat storage
@@ -4665,46 +4725,14 @@ section:
     type: real
     kind: null
     units: m s-1
-  - name: index_of_urban_vegetation_category
-    description: Index of urban vegetation category
-    type: integer
-    kind: null
-    units: index
-  - name: land_surface_perturbation_variables
-    description: Land surface perturbation variables
-    type: character
-    kind: null
-    units: none
-  - name: lower_bound_for_depth_of_sea_temperature_for_nsstm
-    description: Lower bound for depth of sea temperature for GFS near-surface sea
-      temperature scheme
-    type: integer
-    kind: null
-    units: mm
-  - name: upper_bound_for_depth_of_sea_temperature_for_nsstm
-    description: Upper bound for depth of sea temperature for GFS near-surface sea
-      temperature scheme
-    type: integer
-    kind: null
-    units: mm
   - name: index_of_water_vegetation_category
     description: Index of water vegetation category
     type: integer
     kind: null
     units: index
-  - name: filename_of_micm_configuration
-    description: Filename of micm configuration
-    type: character
-    kind: null
-    units: none
 - name: GFS_typedefs_GFS_interstitial_type
   comment: null
   standard_names:
-  - name: radiatively_active_gases
-    description: Radiatively active gases
-    type: character
-    kind: null
-    units: none
   - name: process_split_cumulative_tendency_of_air_temperature
     description: Process split cumulative tendency of air temperature
     type: real
@@ -4816,21 +4844,6 @@ section:
     type: real
     kind: null
     units: kg-1
-  - name: air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array
-    description: Air temperature on previous timestep in xyz dimensioned restart array
-    type: real
-    kind: null
-    units: K
-  - name: air_temperature_two_timesteps_back
-    description: Air temperature two timesteps back
-    type: real
-    kind: null
-    units: K
-  - name: atmosphere_boundary_layer_thickness
-    description: Atmosphere boundary layer thickness
-    type: real
-    kind: null
-    units: m
   - name: atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type
     description: Atmosphere updraft convective mass flux at cloud base by cloud type
     type: real
@@ -4857,31 +4870,6 @@ section:
     type: real
     kind: null
     units: kg kg-1
-  - name: effective_radius_of_stratiform_cloud_graupel_particle
-    description: Effective radius of stratiform cloud graupel particle
-    type: real
-    kind: null
-    units: um
-  - name: effective_radius_of_stratiform_cloud_ice_particle
-    description: Effective radius of stratiform cloud ice particle
-    type: real
-    kind: null
-    units: um
-  - name: effective_radius_of_stratiform_cloud_liquid_water_particle
-    description: Effective radius of stratiform cloud liquid water particle
-    type: real
-    kind: null
-    units: um
-  - name: effective_radius_of_stratiform_cloud_rain_particle
-    description: Effective radius of stratiform cloud rain particle
-    type: real
-    kind: null
-    units: um
-  - name: effective_radius_of_stratiform_cloud_snow_particle
-    description: Effective radius of stratiform cloud snow particle
-    type: real
-    kind: null
-    units: um
   - name: stratospheric_water_vapor_forcing
     description: Stratospheric water vapor forcing
     type: real
