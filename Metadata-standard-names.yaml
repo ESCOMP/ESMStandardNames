@@ -872,7 +872,7 @@ section:
     type: real
     kind: null
     units: kg m-3
-- name: coordinates
+- name: Coordinates
   comment: Parameters defining or relating to the coordinate system of the model
   standard_names:
   - name: latitude
@@ -922,6 +922,16 @@ section:
     units: 1
   - name: characteristic_grid_lengthscale
     description: Characteristic grid lengthscale
+    type: real
+    kind: null
+    units: m
+  - name: height_above_mean_sea_level
+    description: Height above mean sea level
+    type: real
+    kind: null
+    units: m
+  - name: height_above_mean_sea_level_at_surface
+    description: Height above mean sea level at local surface
     type: real
     kind: null
     units: m
@@ -1500,85 +1510,29 @@ section:
     type: real
     kind: null
     units: m s-1
-- name: Land and water surface properties
-  comment: null
-  standard_names:
-  - name: land_ice_area_fraction_of_cell_area
-    description: fraction of horizontal area of grid cell that is ice over land
-    type: real
-    kind: null
-    units: frac
-  - name: mass_content_of_water_in_top_soil_layer
-    description: mass per unit area of water in top layer of soil
-    type: real
-    kind: null
-    units: kg m-2
-  - name: density_of_snow_at_surface
-    description: Density of snow at surface
-    type: real
-    kind: null
-    units: kg m-3
-  - name: urban_area_fraction_of_cell_area
-    description: fraction of horizontal area of grid cell that is urban
-    type: real
-    kind: null
-    units: frac
-  - name: volume_fraction_of_liquid_water_in_soil_at_critical_point
-    description: volume fraction of water in liquid phase in soil at critical point
-    type: real
-    kind: null
-    units: m3 m-3
-  - name: volume_fraction_of_liquid_water_in_soil_at_saturation
-    description: volume fraction of water in liquid phase in soil at saturation
-    type: real
-    kind: null
-    units: m3 m-3
-  - name: volume_fraction_of_liquid_water_in_soil_at_wilting_point
-    description: volume fraction of water in liquid phase in soil at wilting point
-    type: real
-    kind: null
-    units: m3 m-3
-  - name: wet_canopy_area_fraction
-    description: Wet canopy area fraction
-    type: real
-    kind: null
-    units: fraction
-  - name: baseline_surface_longwave_emissivity
-    description: Baseline surface longwave emissivity
-    type: real
-    kind: null
-    units: fraction
-  - name: baseline_roughness_length
-    description: Baseline surface roughness length
-    type: real
-    kind: null
-    units: m
-  - name: air_temperature_in_canopy
-    description: Air temperature in canopy
+  - name: potential_temperature_of_air_at_2m
+    description: Potential temperature of air at 2m
     type: real
     kind: null
     units: K
-  - name: air_vapor_pressure_in_canopy
-    description: Air vapor pressure in canopy
+  - name: covariance_of_air_temperature_and_water_vapor_mixing_ratio_wrt_moist_air
+    description: Covariance of air temperature and specific humidity (water vapor
+      mass mixing ratio with respect to moist air)
     type: real
     kind: null
-    units: Pa
-  - name: canopy_intercepted_ice_mass
-    description: Canopy intercepted ice mass
+    units: K kg kg-1
+  - name: variance_of_air_temperature
+    description: Variance of air temperature
     type: real
     kind: null
-    units: mm
-  - name: canopy_intercepted_liquid_water
-    description: Canopy intercepted liquid water
+    units: K2
+  - name: variance_of_water_vapor_mixing_ratio_wrt_moist_air
+    description: Variance of specific humidity (water vapor mass mixing ratio with
+      respect to moist air)
     type: real
     kind: null
-    units: mm
-  - name: canopy_water_mass_content
-    description: Canopy water mass content
-    type: real
-    kind: null
-    units: kg m-2
-- name: marine
+    units: kg2 kg-2
+- name: Marine
   comment: null
   standard_names:
   - name: sea_water_potential_temperature
@@ -1616,6 +1570,54 @@ section:
     type: real
     kind: null
     units: m2 s-1
+  - name: heat_content_in_diurnal_thermocline
+    description: Heat content in diurnal thermocline
+    type: real
+    kind: null
+    units: K m
+  - name: diurnal_thermocline_layer_thickness
+    description: Diurnal thermocline layer thickness
+    type: real
+    kind: null
+    units: m
+  - name: sea_water_salinity_in_diurnal_thermocline
+    description: Sea water salinity in diurnal thermocline
+    type: real
+    kind: null
+    units: ppt m
+  - name: derivative_of_heat_content_in_diurnal_thermocline_wrt_surface_skin_temperature
+    description: Derivative of heat content in diurnal thermocline wrt surface skin
+      temperature
+    type: real
+    kind: null
+    units: m
+  - name: derivative_of_diurnal_thermocline_layer_thickness_wrt_surface_skin_temperature
+    description: Derivative of diurnal thermocline layer thickness wrt surface skin
+      temperature
+    type: real
+    kind: null
+    units: m K-1
+  - name: free_convection_layer_thickness_in_sea_water
+    description: Free convection layer thickness in sea water
+    type: real
+    kind: null
+    units: m
+  - name: ocean_mixed_layer_thickness
+    description: Ocean mixed layer thickness
+    type: real
+    kind: null
+    units: m
+  - name: reference_sea_surface_temperature
+    description: Foundation/reference temperature for calculating diurnal ocean temperature
+      changes
+    type: real
+    kind: null
+    units: K
+  - name: sea_surface_temperature
+    description: Sea surface temperature
+    type: real
+    kind: null
+    units: K
 - name: Tracers
   comment: Tracers are numerically zero-mass particles advected in fluid flow, typically
     representing some trace gas, particle, or other physical substance
@@ -2200,56 +2202,110 @@ section:
       type: real
       kind: null
       units: kg2 kg-2
-  - name: GOCART aerosols
+    - name: timescale_for_autoconversion_to_snow
+      description: timescale for cloud ice autoconversion to snow
+      type: real
+      kind: null
+      units: s
+    - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state
+      description: Cloud liquid water mass mixing ratio with respect to moist air
+        of new state
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state
+      description: Mass number concentration of cloud liquid water particles in air
+        of new state
+      type: real
+      kind: null
+      units: kg-1
+    - name: nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state
+      description: Nonconvective cloud area fraction in atmosphere layer of new state
+      type: real
+      kind: null
+      units: fraction
+    - name: graupel_mixing_ratio_wrt_moist_air_of_new_state
+      description: Graupel mass mixing ratio with respect to moist air of new state
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_number_concentration_of_graupel_of_new_state
+      description: Mass number concentration of graupel of new state
+      type: real
+      kind: null
+      units: kg-1
+    - name: water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer
+      description: Specific humidity (water vapor mass mixing ratio with respect to
+        moist air) of new state at surface-adjacent layer
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: water_vapor_mixing_ratio_wrt_moist_air_of_new_state
+      description: Specific humidity (water vapor mass mixing ratio with respect to
+        moist air) of new state
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: number_of_condensate_species
+      description: Number of condensate species
+      type: integer
+      kind: null
+      units: count
+    - name: precipitation_type
+      description: Precipitation type
+      type: real
+      kind: null
+      units: 1
+  - name: Aerosols
     comment: null
     standard_names:
     - name: mass_fraction_of_dust001_in_air
-      description: Dust bin1 mass fraction
+      description: GOCART Dust bin1 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_dust002_in_air
-      description: Dust bin2 mass fraction
+      description: GOCART DUst bin2 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_dust003_in_air
-      description: Dust bin3 mass fraction
+      description: GOCART DUst bin3 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_dust004_in_air
-      description: Dust bin4 mass fraction
+      description: GOCART DUst bin4 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_dust005_in_air
-      description: Dust bin5 mass fraction
+      description: GOCART DUst bin5 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_sea_salt001_in_air
-      description: Sea salt bin1 mass fraction
+      description: GOCART Sea salt bin1 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_sea_salt002_in_air
-      description: Sea salt bin2 mass fraction
+      description: GOCART Sea salt bin2 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_sea_salt003_in_air
-      description: Sea salt bin3 mass fraction
+      description: GOCART Sea salt bin3 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_sea_salt004_in_air
-      description: Sea salt bin4 mass fraction
+      description: GOCART Sea salt bin4 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_sea_salt005_in_air
-      description: Sea salt bin5 mass fraction
+      description: GOCART Sea salt bin5 mass fraction
       type: real
       kind: null
       units: kg kg-1
@@ -2279,38 +2335,40 @@ section:
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_sea_nitrate001_in_air
-      description: Nitrate bin1 mass fraction
+      description: GOCART Nitrate bin1 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_sea_nitrate002_in_air
-      description: Nitrate bin2 mass fraction
+      description: GOCART Nitrate bin2 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: mass_fraction_of_sea_nitrate003_in_air
-      description: Nitrate bin3 mass fraction
+      description: GOCART Nitrate bin3 mass fraction
       type: real
       kind: null
       units: kg kg-1
     - name: volume_extinction_in_air_due_to_aerosol_particles_lambda1
-      description: Aerosol extinction at wavelength1
+      description: Extinction due to GOCART aerosols at wavelength1
       type: real
       kind: null
       units: m-1
     - name: volume_extinction_in_air_due_to_aerosol_particles_lambda2
-      description: Aerosol extinction at wavelength2
+      description: Extinction due to GOCART aerosols at wavelength2
       type: real
       kind: null
       units: m-1
     - name: volume_extinction_in_air_due_to_aerosol_particles_lambda3
-      description: Aerosol extinction at wavelength3
+      description: Extinction due to GOCART aerosols at wavelength3
       type: real
       kind: null
       units: m-1
-  - name: GLOMAP/UKCA aerosols
-    comment: null
-    standard_names:
+    - name: mass_number_concentration_of_aerosol_from_gocart_climatology
+      description: Mass number concentration of aerosol from gocart climatology
+      type: real
+      kind: null
+      units: kg-1
     - name: mass_fraction_of_dust_coarse_aerosol_particles_in_air
       description: Mass fraction of coarse mode dust aerosol particles
       type: real
@@ -2336,6 +2394,17 @@ section:
       type: real
       kind: null
       units: particles molecules-1
+    - name: mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state
+      description: Mass number concentration of nonhygroscopic ice nucleating aerosols
+        of new state
+      type: real
+      kind: null
+      units: kg-1
+    - name: mass_number_concentration_of_hygroscopic_aerosols_of_new_state
+      description: Mass number concentration of hygroscopic aerosols of new state
+      type: real
+      kind: null
+      units: kg-1
   - name: emissions
     comment: Emissions variables, contributed for the Community Emissions Data System
       (CEDS)
@@ -2732,6 +2801,62 @@ section:
     type: integer
     kind: null
     units: count
+  - name: number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array
+    description: Number of convective cloud variables in xyz dimensioned restart array
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_perturbed_land_surface_variables
+    description: Number of perturbed land surface variables
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_x_points_for_current_cubed_sphere_tile
+    description: Number of x points for current cubed sphere tile
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_y_points_for_current_cubed_sphere_tile
+    description: Number of y points for current cubed sphere tile
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_diagnostics_variables_for_radiation
+    description: Number of diagnostics variables for radiation
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_timesteps_between_diagnostics_resetting
+    description: Number of timesteps between diagnostics resetting
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_timesteps_between_longwave_radiation_calls
+    description: Number of timesteps between longwave radiation calls
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_timesteps_between_shortwave_radiation_calls
+    description: Number of timesteps between shortwave radiation calls
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_timesteps_between_surface_cycling_calls
+    description: Number of timesteps between surface cycling calls
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_timesteps_for_concurrent_radiation_and_remainder_physics_calls_after_model_initialization
+    description: Number of timesteps for concurrent radiation and remainder physics
+      calls after model initialization
+    type: integer
+    kind: null
+    units: count
+  - name: period_of_max_diagnostics_reset
+    description: Period of maximum diagnostics reset
+    type: real
+    kind: null
+    units: s
 - name: Control variables
   comment: Variables that indicate or control some action.
   standard_names:
@@ -4759,6 +4884,53 @@ section:
     type: real
     kind: null
     units: Pa
+  - name: number_of_gaussian_quadrature_angles_for_radiation
+    description: Number of gaussian quadrature angles for radiation
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_longwave_bands
+    description: Number of longwave bands
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_longwave_spectral_points
+    description: Number of longwave spectral points
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_ice_roughness_categories
+    description: Number of ice roughness categories
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_radiatively_active_gases
+    description: Number of radiatively active gases
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_shortwave_bands
+    description: Number of shortwave bands
+    type: integer
+    kind: null
+    units: count
+  - name: number_of_shortwave_spectral_points
+    description: Number of shortwave spectral points
+    type: integer
+    kind: null
+    units: count
+  - name: random_number_seed_for_mcica_longwave
+    description: Random number seed for Monte-Carlo Independent Column Approximation
+      longwave scheme
+    type: integer
+    kind: null
+    units: 1
+  - name: random_number_seed_for_mcica_shortwave
+    description: Random number seed for Monte-Carlo Independent Column Approximation
+      shortwave scheme
+    type: integer
+    kind: null
+    units: 1
 - name: atmospheric surface and boundary layer
   comment: null
   standard_names:
@@ -4793,6 +4965,96 @@ section:
     type: real
     kind: null
     units: fraction
+  - name: upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme
+    description: Upward flux of specific humidity (water vapor mass mixing ratio with
+      respect to moist air) at surface for MYJ surface layer scheme
+    type: real
+    kind: null
+    units: m s-1 kg kg-1
+  - name: turbulent_mixing_length
+    description: Turbulent mixing length
+    type: real
+    kind: null
+    units: m
+  - name: potential_temperature_of_air_at_top_of_viscous_sublayer
+    description: Potential temperature of air at top of viscous sublayer
+    type: real
+    kind: null
+    units: K
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) at the top of the viscous sublayer
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: stability_function_for_heat
+    description: Stability function for heat
+    type: real
+    kind: null
+    units: 1
+  - name: upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface
+    description: Upward specific humidity (water vapor mass mixing ratio with respect
+      to moist air) flux at surface
+    type: real
+    kind: null
+    units: kg kg-1 m s-1
+  - name: upward_temperature_flux_at_surface
+    description: Upward temperature flux at surface
+    type: real
+    kind: null
+    units: K m s-1
+  - name: monin_obukhov_similarity_function_for_heat
+    description: Monin obukhov similarity function for heat
+    type: real
+    kind: null
+    units: 1
+  - name: monin_obukhov_similarity_function_for_momentum
+    description: Monin obukhov similarity function for momentum
+    type: real
+    kind: null
+    units: 1
+  - name: ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m
+    description: Ratio of wind at surface adjacent layer to wind at 10m
+    type: real
+    kind: null
+    units: ratio
+  - name: reciprocal_of_obukhov_length
+    description: Reciprocal of obukhov length
+    type: real
+    kind: null
+    units: m-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) at surface
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: ratio_of_height_to_monin_obukhov_length
+    description: Ratio of height to monin obukhov length
+    type: real
+    kind: null
+    units: 1
+  - name: air_pressure_at_surface_on_previous_timestep
+    description: Air pressure at surface on previous timestep
+    type: real
+    kind: null
+    units: Pa
+  - name: air_pressure_at_surface_two_timesteps_back
+    description: Air pressure at surface two timesteps back
+    type: real
+    kind: null
+    units: Pa
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes
+    description: Surface specific humidity (water vapor mass mixing ratio with respect
+      to moist air) for Mellor-Yamada-Janjic physics schemes
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: upward_virtual_potential_temperature_flux
+    description: Upward virtual potential temperature flux
+    type: real
+    kind: null
+    units: K m s-1
 - name: Land surface, subsurface, and vegetation properties
   comment: null
   standard_names:
@@ -5042,7 +5304,452 @@ section:
     type: real
     kind: null
     units: m
-- name: GFS_typedefs_GFS_control_type
+  - name: cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls
+    description: Cumulative liquid water equivalent thickness of convective precipitation
+      amount between shortwave radiation calls
+    type: real
+    kind: null
+    units: m
+  - name: strong_cosz_area_fraction
+    description: Area fraction for albedo with strong dependence on cosine of zenith
+      angle
+    type: real
+    kind: null
+    units: fraction
+  - name: weak_cosz_area_fraction
+    description: Area fraction for albedo with weak dependence on cosine of zenith
+      angle
+    type: real
+    kind: null
+    units: fraction
+  - name: frozen_precipitation_density
+    description: Frozen precipitation density
+    type: real
+    kind: null
+    units: kg m-3
+  - name: temperature_in_ice_layer
+    description: Temperature in ice layer
+    type: real
+    kind: null
+    units: K
+  - name: explicit_precipitation_rate_on_previous_timestep
+    description: Explicit precipitation rate on previous timestep
+    type: real
+    kind: null
+    units: mm s-1
+  - name: graupel_precipitation_rate_on_previous_timestep
+    description: Graupel precipitation rate on previous timestep
+    type: real
+    kind: null
+    units: mm s-1
+  - name: ice_precipitation_rate_on_previous_timestep
+    description: Ice precipitation rate on previous timestep
+    type: real
+    kind: null
+    units: mm s-1
+  - name: lwe_thickness_of_convective_precipitation_on_previous_timestep
+    description: Liquid water equivalent thickness of convective precipitation amount
+      on previous timestep
+    type: real
+    kind: null
+    units: m
+  - name: lwe_thickness_of_explicit_precipitation_on_previous_timestep
+    description: Liquid water equivalent thickness of explicit precipitation amount
+      on previous timestep
+    type: real
+    kind: null
+    units: m
+  - name: lwe_thickness_of_graupel_on_previous_timestep
+    description: Liquid water equivalent thickness of graupel amount on previous timestep
+    type: real
+    kind: null
+    units: m
+  - name: lwe_thickness_of_ice_precipitation_on_previous_timestep
+    description: Liquid water equivalent thickness of ice precipitation amount on
+      previous timestep
+    type: real
+    kind: null
+    units: m
+  - name: snow_mass_on_previous_timestep
+    description: Snow mass on previous timestep
+    type: real
+    kind: null
+    units: m
+  - name: dimensionless_age_of_surface_snow
+    description: Dimensionless age of surface snow
+    type: real
+    kind: null
+    units: 1
+  - name: nonnegative_lwe_thickness_of_precipitation_on_dynamics_timestep
+    description: Non-negative liquid water equivalent thickness of precipitation amount
+      on dynamics timestep
+    type: real
+    kind: null
+    units: m
+  - name: sea_area_fraction
+    description: Sea area fraction
+    type: real
+    kind: null
+    units: fraction
+  - name: sea_ice_area_fraction_of_sea_area_fraction
+    description: Sea ice area fraction of sea area fraction
+    type: real
+    kind: null
+    units: fraction
+  - name: sea_ice_temperature
+    description: Sea ice temperature
+    type: real
+    kind: null
+    units: K
+  - name: sea_ice_thickness
+    description: Sea ice thickness
+    type: real
+    kind: null
+    units: m
+  - name: area_type
+    description: Area type
+    type: real
+    kind: null
+    units: 1
+  - name: surface_sensible_heat_due_to_rainfall
+    description: Surface sensible heat due to rainfall
+    type: real
+    kind: null
+    units: W
+  - name: lwe_thickness_of_ice_in_surface_snow
+    description: Liquid water equivalent thickness of ice in surface snow
+    type: real
+    kind: null
+    units: mm
+  - name: lwe_thickness_of_liquid_water_in_surface_snow
+    description: Liquid water equivalent thickness of liquid water in surface snow
+    type: real
+    kind: null
+    units: mm
+  - name: lwe_thickness_of_snowfall_on_previous_timestep
+    description: Liquid water equivalent thickness of snowfall amount on previous
+      timestep
+    type: real
+    kind: null
+    units: mm
+  - name: lwe_snowfall_rate
+    description: Liquid water equivalent snowfall rate
+    type: real
+    kind: null
+    units: mm s-1
+  - name: snowfall_rate_on_previous_timestep
+    description: Snowfall rate on previous timestep
+    type: real
+    kind: null
+    units: mm s-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_2m
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) at two meters above surface
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m
+    description: mixing ratio of the mass of water vapor to the mass of moist air
+      and hydrometeors, at two meters above surface
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface
+    description: Specified upward specific humidity (water vapor mass mixing ratio
+      with respect to moist air) flux at surface
+    type: real
+    kind: null
+    units: kg kg-1 m s-1
+  - name: specified_upward_temperature_flux_at_surface
+    description: Specified upward temperature flux at surface
+    type: real
+    kind: null
+    units: K m s-1
+  - name: standard_deviation_of_subgrid_orography
+    description: Standard deviation of subgrid orography
+    type: real
+    kind: null
+    units: m
+  - name: statistical_measures_of_subgrid_orography_collection_array
+    description: Statistical measures of subgrid orography collection array
+    type: real
+    kind: null
+    units: various
+  - name: stem_area_index
+    description: Stem area index
+    type: real
+    kind: null
+    units: 1
+  - name: stem_mass_content
+    description: Stem mass content
+    type: real
+    kind: null
+    units: g m-2
+  - name: molecular_sublayer_temperature_correction_in_sea_water
+    description: Molecular sublayer temperature correction in sea water
+    type: real
+    kind: null
+    units: K
+  - name: molecular_sublayer_thickness_in_sea_water
+    description: Molecular sublayer thickness in sea water
+    type: real
+    kind: null
+    units: m
+  - name: diffuse_nir_albedo_of_ice
+    description: ice surface albedo for diffuse near-infrared radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: diffuse_nir_albedo_of_land
+    description: land surface albedo for diffuse near-infrared radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: diffuse_vis_albedo_of_ice
+    description: ice surface albedo for diffuse visible radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: diffuse_vis_albedo_of_land
+    description: land surface albedo for diffuse visible radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: direct_nir_albedo_of_ice
+    description: ice surface albedo for direct near-infrared radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: direct_nir_albedo_of_land
+    description: land surface albedo for direct near-infrared radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: direct_vis_albedo_of_ice
+    description: ice surface albedo for direct visible radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: direct_vis_albedo_of_land
+    description: land surface albedo for direct visible radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: diffuse_shortwave_albedo_of_ice
+    description: ice surface albedo for diffuse shortwave radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: diffuse_shortwave_albedo_of_land
+    description: land surface albedo for diffuse shortwave radiation
+    type: real
+    kind: null
+    units: fraction
+  - name: surface_friction_velocity
+    description: Surface friction velocity
+    type: real
+    kind: null
+    units: m s-1
+  - name: surface_friction_velocity_for_momentum
+    description: Surface friction velocity for momentum
+    type: real
+    kind: null
+    units: m s-1
+  - name: upward_latent_heat_flux_at_surface
+    description: Upward latent heat flux at surface
+    type: real
+    kind: null
+    units: W m-2
+  - name: surface_longwave_emissivity_over_ice
+    description: Surface longwave emissivity over ice
+    type: real
+    kind: null
+    units: fraction
+  - name: surface_longwave_emissivity_over_land
+    description: Surface longwave emissivity over land
+    type: real
+    kind: null
+    units: fraction
+  - name: roughness_length
+    description: surface roughness length
+    type: real
+    kind: null
+    units: cm
+  - name: roughness_length_from_wave_model
+    description: surface roughness length from wave model
+    type: real
+    kind: null
+    units: cm
+  - name: roughness_length_over_ice
+    description: surface roughness length over ice
+    type: real
+    kind: null
+    units: cm
+  - name: roughness_length_over_land
+    description: surface roughness length over land
+    type: real
+    kind: null
+    units: cm
+  - name: roughness_length_over_water
+    description: surface roughness length over water
+    type: real
+    kind: null
+    units: cm
+  - name: skin_temperature_at_surface_over_ice
+    description: Skin temperature at surface over (or where) ice
+    type: real
+    kind: null
+    units: K
+  - name: skin_temperature_at_surface_over_land
+    description: Skin temperature at surface over (or where) land
+    type: real
+    kind: null
+    units: K
+  - name: skin_temperature_at_surface_over_ocean
+    description: Skin temperature at surface over (or where) ocean
+    type: real
+    kind: null
+    units: K
+  - name: skin_temperature_at_surface_over_snow
+    description: Skin temperature at surface over (or where) snow
+    type: real
+    kind: null
+    units: K
+  - name: snow_area_fraction_at_surface_over_ice
+    description: Snow area fraction at surface over ice
+    type: real
+    kind: null
+    units: fraction
+  - name: snow_area_fraction_at_surface_over_land
+    description: Snow area fraction at surface over land
+    type: real
+    kind: null
+    units: fraction
+  - name: albedo_of_land_assuming_no_snow_cover
+    description: surface snow-free albedo over land
+    type: real
+    kind: null
+    units: fraction
+  - name: lwe_surface_snow
+    description: Liquid water equivalent surface snow
+    type: real
+    kind: null
+    units: mm
+  - name: surface_temperature_scale
+    description: Surface temperature scale
+    type: real
+    kind: null
+    units: K
+  - name: time_since_last_snowfall
+    description: Time since last snowfall
+    type: real
+    kind: null
+    units: s
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) at surface over ice
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) at surface over land
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: wood_mass_content
+    description: Wood mass content
+    type: real
+    kind: null
+    units: g m-2
+  - name: land_ice_area_fraction_of_cell_area
+    description: fraction of horizontal area of grid cell that is ice over land
+    type: real
+    kind: null
+    units: frac
+  - name: mass_content_of_water_in_top_soil_layer
+    description: mass per unit area of water in top layer of soil
+    type: real
+    kind: null
+    units: kg m-2
+  - name: density_of_snow_at_surface
+    description: Density of snow at surface
+    type: real
+    kind: null
+    units: kg m-3
+  - name: urban_area_fraction_of_cell_area
+    description: fraction of horizontal area of grid cell that is urban
+    type: real
+    kind: null
+    units: frac
+  - name: volume_fraction_of_liquid_water_in_soil_at_critical_point
+    description: volume fraction of water in liquid phase in soil at critical point
+    type: real
+    kind: null
+    units: m3 m-3
+  - name: volume_fraction_of_liquid_water_in_soil_at_saturation
+    description: volume fraction of water in liquid phase in soil at saturation
+    type: real
+    kind: null
+    units: m3 m-3
+  - name: volume_fraction_of_liquid_water_in_soil_at_wilting_point
+    description: volume fraction of water in liquid phase in soil at wilting point
+    type: real
+    kind: null
+    units: m3 m-3
+  - name: wet_canopy_area_fraction
+    description: Wet canopy area fraction
+    type: real
+    kind: null
+    units: fraction
+  - name: baseline_surface_longwave_emissivity
+    description: Baseline surface longwave emissivity
+    type: real
+    kind: null
+    units: fraction
+  - name: baseline_roughness_length
+    description: Baseline surface roughness length
+    type: real
+    kind: null
+    units: m
+  - name: air_temperature_in_canopy
+    description: Air temperature in canopy
+    type: real
+    kind: null
+    units: K
+  - name: air_vapor_pressure_in_canopy
+    description: Air vapor pressure in canopy
+    type: real
+    kind: null
+    units: Pa
+  - name: canopy_intercepted_ice_mass
+    description: Canopy intercepted ice mass
+    type: real
+    kind: null
+    units: mm
+  - name: canopy_intercepted_liquid_water
+    description: Canopy intercepted liquid water
+    type: real
+    kind: null
+    units: mm
+  - name: canopy_water_mass_content
+    description: Canopy water mass content
+    type: real
+    kind: null
+    units: kg m-2
+  - name: lwe_thickness_of_rain_on_dynamics_timestep_for_coupling
+    description: Liquid water equivalent thickness of rain amount on dynamics timestep
+      for coupling
+    type: real
+    kind: null
+    units: m
+  - name: lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling
+    description: Liquid water equivalent thickness of snowfall amount on dynamics
+      timestep for coupling
+    type: real
+    kind: null
+    units: m
+- name: Convective physics parameters
   comment: null
   standard_names:
   - name: downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme
@@ -5061,68 +5768,8 @@ section:
     type: real
     kind: null
     units: fraction
-  - name: timescale_for_autoconversion_to_snow
-    description: Timescale for autoconversion to snow
-    type: real
-    kind: null
-    units: s
-  - name: number_of_radiatively_active_gases
-    description: Number of radiatively active gases
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_gaussian_quadrature_angles_for_radiation
-    description: Number of gaussian quadrature angles for radiation
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_condensate_species
-    description: Number of condensate species
-    type: integer
-    kind: null
-    units: count
   - name: number_of_cloud_types_in_chikira_sugiyama_deep_convection
     description: Number of cloud types in chikira sugiyama deep convection
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array
-    description: Number of convective cloud variables in xyz dimensioned restart array
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_perturbed_land_surface_variables
-    description: Number of perturbed land surface variables
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_longwave_bands
-    description: Number of longwave bands
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_longwave_spectral_points
-    description: Number of longwave spectral points
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_x_points_for_current_cubed_sphere_tile
-    description: Number of x points for current cubed sphere tile
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_y_points_for_current_cubed_sphere_tile
-    description: Number of y points for current cubed sphere tile
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_diagnostics_variables_for_radiation
-    description: Number of diagnostics variables for radiation
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_ice_roughness_categories
-    description: Number of ice roughness categories
     type: integer
     kind: null
     units: count
@@ -5132,57 +5779,49 @@ section:
     type: integer
     kind: null
     units: count
-  - name: number_of_statistical_measures_of_subgrid_orography
-    description: Number of statistical measures of subgrid orography
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_shortwave_bands
-    description: Number of shortwave bands
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_shortwave_spectral_points
-    description: Number of shortwave spectral points
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_timesteps_between_diagnostics_resetting
-    description: Number of timesteps between diagnostics resetting
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_timesteps_between_longwave_radiation_calls
-    description: Number of timesteps between longwave radiation calls
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_timesteps_between_shortwave_radiation_calls
-    description: Number of timesteps between shortwave radiation calls
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_timesteps_between_surface_cycling_calls
-    description: Number of timesteps between surface cycling calls
-    type: integer
-    kind: null
-    units: count
-  - name: number_of_timesteps_for_concurrent_radiation_and_remainder_physics_calls_after_model_initialization
-    description: Number of timesteps for concurrent radiation and remainder physics
-      calls after model initialization
-    type: integer
-    kind: null
-    units: count
-  - name: period_of_max_diagnostics_reset
-    description: Period of maximum diagnostics reset
+  - name: consecutive_calls_for_grell_freitas_convection
+    description: Consecutive calls for grell freitas convection
     type: real
     kind: null
-    units: s
+    units: 1
+  - name: cloud_fraction_for_mg
+    description: Cloud fraction for mg
+    type: real
+    kind: null
+    units: fraction
+  - name: counter_for_grell_freitas_convection
+    description: Counter for grell freitas convection
+    type: integer
+    kind: null
+    units: count
+  - name: atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type
+    description: Atmosphere updraft convective mass flux at cloud base by cloud type
+    type: real
+    kind: null
+    units: kg m-2 s-1
+- name: Gravity wave drag parameters
+  comment: null
+  standard_names:
+  - name: absolute_momentum_flux_due_to_nonorographic_gwd
+    description: Absolute momentum flux due to non-orographic gravity wave drag
+    type: real
+    kind: null
+    units: various
   - name: timescale_for_rayleigh_damping
     description: Timescale for rayleigh damping
     type: real
     kind: null
     units: d
+  - name: number_of_statistical_measures_of_subgrid_orography
+    description: Number of statistical measures of subgrid orography
+    type: integer
+    kind: null
+    units: count
+  - name: unfiltered_height_above_mean_sea_level
+    description: Unfiltered height above mean sea level
+    type: real
+    kind: null
+    units: m
 - name: Tendencies
   comment: null
   standard_names:
@@ -5441,40 +6080,9 @@ section:
     type: real
     kind: null
     units: m s-2
-- name: GFS_typedefs_GFS_tbd_type
+- name: Other
   comment: null
   standard_names:
-  - name: absolute_momentum_flux_due_to_nonorographic_gwd
-    description: Absolute momentum flux due to non-orographic gravity wave drag
-    type: real
-    kind: null
-    units: various
-  - name: cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls
-    description: Cumulative liquid water equivalent thickness of convective precipitation
-      amount between shortwave radiation calls
-    type: real
-    kind: null
-    units: m
-  - name: mass_number_concentration_of_aerosol_from_gocart_climatology
-    description: Mass number concentration of aerosol from gocart climatology
-    type: real
-    kind: null
-    units: kg-1
-  - name: atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type
-    description: Atmosphere updraft convective mass flux at cloud base by cloud type
-    type: real
-    kind: null
-    units: kg m-2 s-1
-  - name: cloud_fraction_for_mg
-    description: Cloud fraction for mg
-    type: real
-    kind: null
-    units: fraction
-  - name: counter_for_grell_freitas_convection
-    description: Counter for grell freitas convection
-    type: integer
-    kind: null
-    units: count
   - name: stratospheric_water_vapor_forcing
     description: Stratospheric water vapor forcing
     type: real
@@ -5485,22 +6093,6 @@ section:
     type: real
     kind: null
     units: kg-1
-  - name: upward_virtual_potential_temperature_flux
-    description: Upward virtual potential temperature flux
-    type: real
-    kind: null
-    units: K m s-1
-  - name: upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme
-    description: Upward flux of specific humidity (water vapor mass mixing ratio with
-      respect to moist air) at surface for MYJ surface layer scheme
-    type: real
-    kind: null
-    units: m s-1 kg kg-1
-  - name: turbulent_mixing_length
-    description: Turbulent mixing length
-    type: real
-    kind: null
-    units: m
   - name: water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep
     description: Specific humidity (water vapor mass mixing ratio with respect to
       moist air) on previous timestep
@@ -5512,40 +6104,6 @@ section:
     type: real
     kind: null
     units: various
-  - name: potential_temperature_of_air_at_top_of_viscous_sublayer
-    description: Potential temperature of air at top of viscous sublayer
-    type: real
-    kind: null
-    units: K
-  - name: variance_of_water_vapor_mixing_ratio_wrt_moist_air
-    description: Variance of specific humidity (water vapor mass mixing ratio with
-      respect to moist air)
-    type: real
-    kind: null
-    units: kg2 kg-2
-  - name: random_number_seed_for_mcica_longwave
-    description: Random number seed for Monte-Carlo Independent Column Approximation
-      longwave scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: random_number_seed_for_mcica_shortwave
-    description: Random number seed for Monte-Carlo Independent Column Approximation
-      shortwave scheme
-    type: integer
-    kind: null
-    units: 1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at the top of the viscous sublayer
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: stability_function_for_heat
-    description: Stability function for heat
-    type: real
-    kind: null
-    units: 1
   - name: subgrid_scale_cloud_area_fraction_in_atmosphere_layer
     description: Subgrid scale cloud area fraction in atmosphere layer
     type: real
@@ -5562,50 +6120,11 @@ section:
     type: real
     kind: null
     units: kg kg-1
-  - name: air_pressure_at_surface_on_previous_timestep
-    description: Air pressure at surface on previous timestep
-    type: real
-    kind: null
-    units: Pa
-  - name: air_pressure_at_surface_two_timesteps_back
-    description: Air pressure at surface two timesteps back
-    type: real
-    kind: null
-    units: Pa
-  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes
-    description: Surface specific humidity (water vapor mass mixing ratio with respect
-      to moist air) for Mellor-Yamada-Janjic physics schemes
-    type: real
-    kind: null
-    units: kg kg-1
   - name: enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection
     description: Enhancement to wind speed at surface adjacent layer due to convection
     type: real
     kind: null
     units: m s-1
-  - name: covariance_of_air_temperature_and_water_vapor_mixing_ratio_wrt_moist_air
-    description: Covariance of air temperature and specific humidity (water vapor
-      mass mixing ratio with respect to moist air)
-    type: real
-    kind: null
-    units: K kg kg-1
-  - name: variance_of_air_temperature
-    description: Variance of air temperature
-    type: real
-    kind: null
-    units: K2
-  - name: lwe_thickness_of_rain_on_dynamics_timestep_for_coupling
-    description: Liquid water equivalent thickness of rain amount on dynamics timestep
-      for coupling
-    type: real
-    kind: null
-    units: m
-  - name: lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling
-    description: Liquid water equivalent thickness of snowfall amount on dynamics
-      timestep for coupling
-    type: real
-    kind: null
-    units: m
   - name: water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array
     description: Specific humidity (water vapor mass mixing ratio with respect to
       moist air) on previous timestep in XYZ-dimensioned restart array
@@ -5634,483 +6153,6 @@ section:
     type: real
     kind: null
     units: 1
-- name: GFS_typedefs_GFS_sfcprop_type
-  comment: null
-  standard_names:
-  - name: frozen_precipitation_density
-    description: Frozen precipitation density
-    type: real
-    kind: null
-    units: kg m-3
-  - name: heat_content_in_diurnal_thermocline
-    description: Heat content in diurnal thermocline
-    type: real
-    kind: null
-    units: K m
-  - name: diurnal_thermocline_layer_thickness
-    description: Diurnal thermocline layer thickness
-    type: real
-    kind: null
-    units: m
-  - name: explicit_precipitation_rate_on_previous_timestep
-    description: Explicit precipitation rate on previous timestep
-    type: real
-    kind: null
-    units: mm s-1
-  - name: precipitation_type
-    description: Precipitation type
-    type: real
-    kind: null
-    units: 1
-  - name: strong_cosz_area_fraction
-    description: Strong cosz area fraction
-    type: real
-    kind: null
-    units: fraction
-  - name: weak_cosz_area_fraction
-    description: Weak cosz area fraction
-    type: real
-    kind: null
-    units: fraction
-  - name: free_convection_layer_thickness_in_sea_water
-    description: Free convection layer thickness in sea water
-    type: real
-    kind: null
-    units: m
-  - name: consecutive_calls_for_grell_freitas_convection
-    description: Consecutive calls for grell freitas convection
-    type: real
-    kind: null
-    units: 1
-  - name: graupel_precipitation_rate_on_previous_timestep
-    description: Graupel precipitation rate on previous timestep
-    type: real
-    kind: null
-    units: mm s-1
-  - name: ice_precipitation_rate_on_previous_timestep
-    description: Ice precipitation rate on previous timestep
-    type: real
-    kind: null
-    units: mm s-1
-  - name: temperature_in_ice_layer
-    description: Temperature in ice layer
-    type: real
-    kind: null
-    units: K
-  - name: upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface
-    description: Upward specific humidity (water vapor mass mixing ratio with respect
-      to moist air) flux at surface
-    type: real
-    kind: null
-    units: kg kg-1 m s-1
-  - name: upward_temperature_flux_at_surface
-    description: Upward temperature flux at surface
-    type: real
-    kind: null
-    units: K m s-1
-  - name: lwe_thickness_of_convective_precipitation_on_previous_timestep
-    description: Liquid water equivalent thickness of convective precipitation amount
-      on previous timestep
-    type: real
-    kind: null
-    units: m
-  - name: lwe_thickness_of_explicit_precipitation_on_previous_timestep
-    description: Liquid water equivalent thickness of explicit precipitation amount
-      on previous timestep
-    type: real
-    kind: null
-    units: m
-  - name: lwe_thickness_of_graupel_on_previous_timestep
-    description: Liquid water equivalent thickness of graupel amount on previous timestep
-    type: real
-    kind: null
-    units: m
-  - name: lwe_thickness_of_ice_precipitation_on_previous_timestep
-    description: Liquid water equivalent thickness of ice precipitation amount on
-      previous timestep
-    type: real
-    kind: null
-    units: m
-  - name: snow_mass_on_previous_timestep
-    description: Snow mass on previous timestep
-    type: real
-    kind: null
-    units: m
-  - name: monin_obukhov_similarity_function_for_heat
-    description: Monin obukhov similarity function for heat
-    type: real
-    kind: null
-    units: 1
-  - name: monin_obukhov_similarity_function_for_momentum
-    description: Monin obukhov similarity function for momentum
-    type: real
-    kind: null
-    units: 1
-  - name: dimensionless_age_of_surface_snow
-    description: Dimensionless age of surface snow
-    type: real
-    kind: null
-    units: 1
-  - name: nonnegative_lwe_thickness_of_precipitation_on_dynamics_timestep
-    description: Non-negative liquid water equivalent thickness of precipitation amount
-      on dynamics timestep
-    type: real
-    kind: null
-    units: m
-  - name: ocean_mixed_layer_thickness
-    description: Ocean mixed layer thickness
-    type: real
-    kind: null
-    units: m
-  - name: height_above_mean_sea_level
-    description: Height above mean sea level
-    type: real
-    kind: null
-    units: m
-  - name: height_above_mean_sea_level_at_surface
-    description: Height above mean sea level at local surface
-    type: real
-    kind: null
-    units: m
-  - name: unfiltered_height_above_mean_sea_level
-    description: Unfiltered height above mean sea level
-    type: real
-    kind: null
-    units: m
-  - name: potential_temperature_of_air_at_2m
-    description: Potential temperature of air at 2m
-    type: real
-    kind: null
-    units: K
-  - name: ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m
-    description: Ratio of wind at surface adjacent layer to wind at 10m
-    type: real
-    kind: null
-    units: ratio
-  - name: reciprocal_of_obukhov_length
-    description: Reciprocal of obukhov length
-    type: real
-    kind: null
-    units: m-1
-  - name: sea_area_fraction
-    description: Sea area fraction
-    type: real
-    kind: null
-    units: fraction
-  - name: sea_ice_area_fraction_of_sea_area_fraction
-    description: Sea ice area fraction of sea area fraction
-    type: real
-    kind: null
-    units: fraction
-  - name: sea_ice_temperature
-    description: Sea ice temperature
-    type: real
-    kind: null
-    units: K
-  - name: sea_ice_thickness
-    description: Sea ice thickness
-    type: real
-    kind: null
-    units: m
-  - name: area_type
-    description: Area type
-    type: real
-    kind: null
-    units: 1
-  - name: reference_sea_surface_temperature
-    description: Reference sea surface temperature
-    type: real
-    kind: null
-    units: K
-  - name: sea_surface_temperature
-    description: Sea surface temperature
-    type: real
-    kind: null
-    units: K
-  - name: sea_water_salinity_in_diurnal_thermocline
-    description: Sea water salinity in diurnal thermocline
-    type: real
-    kind: null
-    units: ppt m
-  - name: surface_sensible_heat_due_to_rainfall
-    description: Surface sensible heat due to rainfall
-    type: real
-    kind: null
-    units: W
-  - name: derivative_of_heat_content_in_diurnal_thermocline_wrt_surface_skin_temperature
-    description: Derivative of heat content in diurnal thermocline wrt surface skin
-      temperature
-    type: real
-    kind: null
-    units: m
-  - name: derivative_of_diurnal_thermocline_layer_thickness_wrt_surface_skin_temperature
-    description: Derivative of diurnal thermocline layer thickness wrt surface skin
-      temperature
-    type: real
-    kind: null
-    units: m K-1
-  - name: lwe_thickness_of_ice_in_surface_snow
-    description: Liquid water equivalent thickness of ice in surface snow
-    type: real
-    kind: null
-    units: mm
-  - name: lwe_thickness_of_liquid_water_in_surface_snow
-    description: Liquid water equivalent thickness of liquid water in surface snow
-    type: real
-    kind: null
-    units: mm
-  - name: lwe_thickness_of_snowfall_on_previous_timestep
-    description: Liquid water equivalent thickness of snowfall amount on previous
-      timestep
-    type: real
-    kind: null
-    units: mm
-  - name: lwe_snowfall_rate
-    description: Liquid water equivalent snowfall rate
-    type: real
-    kind: null
-    units: mm s-1
-  - name: snowfall_rate_on_previous_timestep
-    description: Snowfall rate on previous timestep
-    type: real
-    kind: null
-    units: mm s-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_at_2m
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at two meters above surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m
-    description: mixing ratio of the mass of water vapor to the mass of moist air
-      and hydrometeors, at two meters above surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface
-    description: Specified upward specific humidity (water vapor mass mixing ratio
-      with respect to moist air) flux at surface
-    type: real
-    kind: null
-    units: kg kg-1 m s-1
-  - name: specified_upward_temperature_flux_at_surface
-    description: Specified upward temperature flux at surface
-    type: real
-    kind: null
-    units: K m s-1
-  - name: standard_deviation_of_subgrid_orography
-    description: Standard deviation of subgrid orography
-    type: real
-    kind: null
-    units: m
-  - name: statistical_measures_of_subgrid_orography_collection_array
-    description: Statistical measures of subgrid orography collection array
-    type: real
-    kind: null
-    units: various
-  - name: stem_area_index
-    description: Stem area index
-    type: real
-    kind: null
-    units: 1
-  - name: stem_mass_content
-    description: Stem mass content
-    type: real
-    kind: null
-    units: g m-2
-  - name: molecular_sublayer_temperature_correction_in_sea_water
-    description: Molecular sublayer temperature correction in sea water
-    type: real
-    kind: null
-    units: K
-  - name: molecular_sublayer_thickness_in_sea_water
-    description: Molecular sublayer thickness in sea water
-    type: real
-    kind: null
-    units: m
-  - name: diffuse_nir_albedo_of_ice
-    description: ice surface albedo for diffuse near-infrared radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: diffuse_nir_albedo_of_land
-    description: land surface albedo for diffuse near-infrared radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: diffuse_vis_albedo_of_ice
-    description: ice surface albedo for diffuse visible radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: diffuse_vis_albedo_of_land
-    description: land surface albedo for diffuse visible radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: direct_nir_albedo_of_ice
-    description: ice surface albedo for direct near-infrared radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: direct_nir_albedo_of_land
-    description: land surface albedo for direct near-infrared radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: direct_vis_albedo_of_ice
-    description: ice surface albedo for direct visible radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: direct_vis_albedo_of_land
-    description: land surface albedo for direct visible radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: diffuse_shortwave_albedo_of_ice
-    description: ice surface albedo for diffuse shortwave radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: diffuse_shortwave_albedo_of_land
-    description: land surface albedo for diffuse shortwave radiation
-    type: real
-    kind: null
-    units: fraction
-  - name: surface_friction_velocity
-    description: Surface friction velocity
-    type: real
-    kind: null
-    units: m s-1
-  - name: surface_friction_velocity_for_momentum
-    description: Surface friction velocity for momentum
-    type: real
-    kind: null
-    units: m s-1
-  - name: upward_latent_heat_flux_at_surface
-    description: Upward latent heat flux at surface
-    type: real
-    kind: null
-    units: W m-2
-  - name: surface_longwave_emissivity_over_ice
-    description: Surface longwave emissivity over ice
-    type: real
-    kind: null
-    units: fraction
-  - name: surface_longwave_emissivity_over_land
-    description: Surface longwave emissivity over land
-    type: real
-    kind: null
-    units: fraction
-  - name: roughness_length
-    description: surface roughness length
-    type: real
-    kind: null
-    units: cm
-  - name: roughness_length_from_wave_model
-    description: surface roughness length from wave model
-    type: real
-    kind: null
-    units: cm
-  - name: roughness_length_over_ice
-    description: surface roughness length over ice
-    type: real
-    kind: null
-    units: cm
-  - name: roughness_length_over_land
-    description: surface roughness length over land
-    type: real
-    kind: null
-    units: cm
-  - name: roughness_length_over_water
-    description: surface roughness length over water
-    type: real
-    kind: null
-    units: cm
-  - name: skin_temperature_at_surface
-    description: Skin temperature at surface
-    type: real
-    kind: null
-    units: K
-  - name: skin_temperature_at_surface_over_ice
-    description: Skin temperature at surface over (or where) ice
-    type: real
-    kind: null
-    units: K
-  - name: skin_temperature_at_surface_over_land
-    description: Skin temperature at surface over (or where) land
-    type: real
-    kind: null
-    units: K
-  - name: skin_temperature_at_surface_over_ocean
-    description: Skin temperature at surface over (or where) ocean
-    type: real
-    kind: null
-    units: K
-  - name: skin_temperature_at_surface_over_snow
-    description: Skin temperature at surface over (or where) snow
-    type: real
-    kind: null
-    units: K
-  - name: snow_area_fraction_at_surface_over_ice
-    description: Snow area fraction at surface over ice
-    type: real
-    kind: null
-    units: fraction
-  - name: snow_area_fraction_at_surface_over_land
-    description: Snow area fraction at surface over land
-    type: real
-    kind: null
-    units: fraction
-  - name: albedo_of_land_assuming_no_snow_cover
-    description: surface snow-free albedo over land
-    type: real
-    kind: null
-    units: fraction
-  - name: lwe_surface_snow
-    description: Liquid water equivalent surface snow
-    type: real
-    kind: null
-    units: mm
-  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at surface
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: ratio_of_height_to_monin_obukhov_length
-    description: Ratio of height to monin obukhov length
-    type: real
-    kind: null
-    units: 1
-  - name: surface_temperature_scale
-    description: Surface temperature scale
-    type: real
-    kind: null
-    units: K
-  - name: time_since_last_snowfall
-    description: Time since last snowfall
-    type: real
-    kind: null
-    units: s
-  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at surface over ice
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at surface over land
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: wood_mass_content
-    description: Wood mass content
-    type: real
-    kind: null
-    units: g m-2
 - name: GFS_typedefs_GFS_coupling_type
   comment: null
   standard_names:
@@ -6589,56 +6631,3 @@ section:
     type: real
     kind: null
     units: m s-1
-- name: GFS_typedefs_GFS_stateout_type
-  comment: null
-  standard_names:
-  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state
-    description: Cloud liquid water mass mixing ratio with respect to moist air of
-      new state
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state
-    description: Mass number concentration of cloud liquid water particles in air
-      of new state
-    type: real
-    kind: null
-    units: kg-1
-  - name: nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state
-    description: Nonconvective cloud area fraction in atmosphere layer of new state
-    type: real
-    kind: null
-    units: fraction
-  - name: graupel_mixing_ratio_wrt_moist_air_of_new_state
-    description: Graupel mass mixing ratio with respect to moist air of new state
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_number_concentration_of_graupel_of_new_state
-    description: Mass number concentration of graupel of new state
-    type: real
-    kind: null
-    units: kg-1
-  - name: mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state
-    description: Mass number concentration of nonhygroscopic ice nucleating aerosols
-      of new state
-    type: real
-    kind: null
-    units: kg-1
-  - name: mass_number_concentration_of_hygroscopic_aerosols_of_new_state
-    description: Mass number concentration of hygroscopic aerosols of new state
-    type: real
-    kind: null
-    units: kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) of new state at surface-adjacent layer
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_of_new_state
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) of new state
-    type: real
-    kind: null
-    units: kg kg-1

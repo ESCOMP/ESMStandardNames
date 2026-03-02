@@ -3,11 +3,10 @@
 * [base_names](#base_names)
 * [dimensions](#dimensions)
 * [constants](#constants)
-* [coordinates](#coordinates)
+* [Coordinates](#coordinates)
 * [timing](#timing)
 * [Atmospheric properties](#atmospheric-properties)
-* [Land and water surface properties](#land-and-water-surface-properties)
-* [marine](#marine)
+* [Marine](#marine)
 * [Tracers](#tracers)
 * [Atmospheric composition](#atmospheric-composition)
 * [Application-specific variables](#application-specific-variables)
@@ -20,13 +19,12 @@
 * [Radiation](#radiation)
 * [atmospheric surface and boundary layer](#atmospheric-surface-and-boundary-layer)
 * [Land surface, subsurface, and vegetation properties](#land-surface-subsurface-and-vegetation-properties)
-* [GFS_typedefs_GFS_control_type](#gfs_typedefs_gfs_control_type)
+* [Convective physics parameters](#convective-physics-parameters)
+* [Gravity wave drag parameters](#gravity-wave-drag-parameters)
 * [Tendencies](#tendencies)
-* [GFS_typedefs_GFS_tbd_type](#gfs_typedefs_gfs_tbd_type)
-* [GFS_typedefs_GFS_sfcprop_type](#gfs_typedefs_gfs_sfcprop_type)
+* [Other](#other)
 * [GFS_typedefs_GFS_coupling_type](#gfs_typedefs_gfs_coupling_type)
 * [GFS_typedefs_GFS_statein_type](#gfs_typedefs_gfs_statein_type)
-* [GFS_typedefs_GFS_stateout_type](#gfs_typedefs_gfs_stateout_type)
 
 ## base_names
 Base names are the 'elemental' quantities from which
@@ -394,7 +392,7 @@ Constant parameters that should be identical across a full modeling system
     * `real`: units = m s-2
 * `density_of_fresh_water`: Density of fresh water
     * `real`: units = kg m-3
-## coordinates
+## Coordinates
 Parameters defining or relating to the coordinate system of the model
 * `latitude`: Latitude
     * `real`: units = degree_north
@@ -415,6 +413,10 @@ Parameters defining or relating to the coordinate system of the model
 * `sine_of_latitude`: Sine of latitude
     * `real`: units = 1
 * `characteristic_grid_lengthscale`: Characteristic grid lengthscale
+    * `real`: units = m
+* `height_above_mean_sea_level`: Height above mean sea level
+    * `real`: units = m
+* `height_above_mean_sea_level_at_surface`: Height above mean sea level at local surface
     * `real`: units = m
 ## timing
 Variables defining or relating to timing, dates, calendar, and related concepts
@@ -641,38 +643,15 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m s-1
 * `y_wind_of_new_state`: Y wind of new state
     * `real`: units = m s-1
-## Land and water surface properties
-* `land_ice_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is ice over land
-    * `real`: units = frac
-* `mass_content_of_water_in_top_soil_layer`: mass per unit area of water in top layer of soil
-    * `real`: units = kg m-2
-* `density_of_snow_at_surface`: Density of snow at surface
-    * `real`: units = kg m-3
-* `urban_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is urban
-    * `real`: units = frac
-* `volume_fraction_of_liquid_water_in_soil_at_critical_point`: volume fraction of water in liquid phase in soil at critical point
-    * `real`: units = m3 m-3
-* `volume_fraction_of_liquid_water_in_soil_at_saturation`: volume fraction of water in liquid phase in soil at saturation
-    * `real`: units = m3 m-3
-* `volume_fraction_of_liquid_water_in_soil_at_wilting_point`: volume fraction of water in liquid phase in soil at wilting point
-    * `real`: units = m3 m-3
-* `wet_canopy_area_fraction`: Wet canopy area fraction
-    * `real`: units = fraction
-* `baseline_surface_longwave_emissivity`: Baseline surface longwave emissivity
-    * `real`: units = fraction
-* `baseline_roughness_length`: Baseline surface roughness length
-    * `real`: units = m
-* `air_temperature_in_canopy`: Air temperature in canopy
+* `potential_temperature_of_air_at_2m`: Potential temperature of air at 2m
     * `real`: units = K
-* `air_vapor_pressure_in_canopy`: Air vapor pressure in canopy
-    * `real`: units = Pa
-* `canopy_intercepted_ice_mass`: Canopy intercepted ice mass
-    * `real`: units = mm
-* `canopy_intercepted_liquid_water`: Canopy intercepted liquid water
-    * `real`: units = mm
-* `canopy_water_mass_content`: Canopy water mass content
-    * `real`: units = kg m-2
-## marine
+* `covariance_of_air_temperature_and_water_vapor_mixing_ratio_wrt_moist_air`: Covariance of air temperature and specific humidity (water vapor mass mixing ratio with respect to moist air)
+    * `real`: units = K kg kg-1
+* `variance_of_air_temperature`: Variance of air temperature
+    * `real`: units = K2
+* `variance_of_water_vapor_mixing_ratio_wrt_moist_air`: Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)
+    * `real`: units = kg2 kg-2
+## Marine
 * `sea_water_potential_temperature`: sea water potential temperature
     * `real`: units = K
 * `sea_water_depth`: The depth of the ocean floor below the surface of the sea
@@ -687,6 +666,24 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m2 s-1
 * `y_current_in_diurnal_thermocline`: Y current in diurnal thermocline
     * `real`: units = m2 s-1
+* `heat_content_in_diurnal_thermocline`: Heat content in diurnal thermocline
+    * `real`: units = K m
+* `diurnal_thermocline_layer_thickness`: Diurnal thermocline layer thickness
+    * `real`: units = m
+* `sea_water_salinity_in_diurnal_thermocline`: Sea water salinity in diurnal thermocline
+    * `real`: units = ppt m
+* `derivative_of_heat_content_in_diurnal_thermocline_wrt_surface_skin_temperature`: Derivative of heat content in diurnal thermocline wrt surface skin temperature
+    * `real`: units = m
+* `derivative_of_diurnal_thermocline_layer_thickness_wrt_surface_skin_temperature`: Derivative of diurnal thermocline layer thickness wrt surface skin temperature
+    * `real`: units = m K-1
+* `free_convection_layer_thickness_in_sea_water`: Free convection layer thickness in sea water
+    * `real`: units = m
+* `ocean_mixed_layer_thickness`: Ocean mixed layer thickness
+    * `real`: units = m
+* `reference_sea_surface_temperature`: Foundation/reference temperature for calculating diurnal ocean temperature changes
+    * `real`: units = K
+* `sea_surface_temperature`: Sea surface temperature
+    * `real`: units = K
 ## Tracers
 Tracers are numerically zero-mass particles advected in fluid flow, typically representing some trace gas, particle, or other physical substance
 * `number_of_tracers`: Number of tracers
@@ -906,26 +903,46 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `real`: units = kg kg-1
 * `relative_variance_of_subgrid_cloud_condensate_distribution`: Relative variance of subgrid cloud condensate distribution
     * `real`: units = kg2 kg-2
-### GOCART aerosols
-* `mass_fraction_of_dust001_in_air`: Dust bin1 mass fraction
+* `timescale_for_autoconversion_to_snow`: timescale for cloud ice autoconversion to snow
+    * `real`: units = s
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state`: Cloud liquid water mass mixing ratio with respect to moist air of new state
     * `real`: units = kg kg-1
-* `mass_fraction_of_dust002_in_air`: Dust bin2 mass fraction
+* `mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state`: Mass number concentration of cloud liquid water particles in air of new state
+    * `real`: units = kg-1
+* `nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state`: Nonconvective cloud area fraction in atmosphere layer of new state
+    * `real`: units = fraction
+* `graupel_mixing_ratio_wrt_moist_air_of_new_state`: Graupel mass mixing ratio with respect to moist air of new state
     * `real`: units = kg kg-1
-* `mass_fraction_of_dust003_in_air`: Dust bin3 mass fraction
+* `mass_number_concentration_of_graupel_of_new_state`: Mass number concentration of graupel of new state
+    * `real`: units = kg-1
+* `water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state at surface-adjacent layer
     * `real`: units = kg kg-1
-* `mass_fraction_of_dust004_in_air`: Dust bin4 mass fraction
+* `water_vapor_mixing_ratio_wrt_moist_air_of_new_state`: Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state
     * `real`: units = kg kg-1
-* `mass_fraction_of_dust005_in_air`: Dust bin5 mass fraction
+* `number_of_condensate_species`: Number of condensate species
+    * `integer`: units = count
+* `precipitation_type`: Precipitation type
+    * `real`: units = 1
+### Aerosols
+* `mass_fraction_of_dust001_in_air`: GOCART Dust bin1 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_sea_salt001_in_air`: Sea salt bin1 mass fraction
+* `mass_fraction_of_dust002_in_air`: GOCART DUst bin2 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_sea_salt002_in_air`: Sea salt bin2 mass fraction
+* `mass_fraction_of_dust003_in_air`: GOCART DUst bin3 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_sea_salt003_in_air`: Sea salt bin3 mass fraction
+* `mass_fraction_of_dust004_in_air`: GOCART DUst bin4 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_sea_salt004_in_air`: Sea salt bin4 mass fraction
+* `mass_fraction_of_dust005_in_air`: GOCART DUst bin5 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_sea_salt005_in_air`: Sea salt bin5 mass fraction
+* `mass_fraction_of_sea_salt001_in_air`: GOCART Sea salt bin1 mass fraction
+    * `real`: units = kg kg-1
+* `mass_fraction_of_sea_salt002_in_air`: GOCART Sea salt bin2 mass fraction
+    * `real`: units = kg kg-1
+* `mass_fraction_of_sea_salt003_in_air`: GOCART Sea salt bin3 mass fraction
+    * `real`: units = kg kg-1
+* `mass_fraction_of_sea_salt004_in_air`: GOCART Sea salt bin4 mass fraction
+    * `real`: units = kg kg-1
+* `mass_fraction_of_sea_salt005_in_air`: GOCART Sea salt bin5 mass fraction
     * `real`: units = kg kg-1
 * `mass_fraction_of_hydrophobic_black_carbon_in_air`: Hydrophobic black carbon mass fraction
     * `real`: units = kg kg-1
@@ -937,19 +954,20 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `real`: units = kg kg-1
 * `mass_fraction_of_sulfate_in_air`: Sulfate mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_sea_nitrate001_in_air`: Nitrate bin1 mass fraction
+* `mass_fraction_of_sea_nitrate001_in_air`: GOCART Nitrate bin1 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_sea_nitrate002_in_air`: Nitrate bin2 mass fraction
+* `mass_fraction_of_sea_nitrate002_in_air`: GOCART Nitrate bin2 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_sea_nitrate003_in_air`: Nitrate bin3 mass fraction
+* `mass_fraction_of_sea_nitrate003_in_air`: GOCART Nitrate bin3 mass fraction
     * `real`: units = kg kg-1
-* `volume_extinction_in_air_due_to_aerosol_particles_lambda1`: Aerosol extinction at wavelength1
+* `volume_extinction_in_air_due_to_aerosol_particles_lambda1`: Extinction due to GOCART aerosols at wavelength1
     * `real`: units = m-1
-* `volume_extinction_in_air_due_to_aerosol_particles_lambda2`: Aerosol extinction at wavelength2
+* `volume_extinction_in_air_due_to_aerosol_particles_lambda2`: Extinction due to GOCART aerosols at wavelength2
     * `real`: units = m-1
-* `volume_extinction_in_air_due_to_aerosol_particles_lambda3`: Aerosol extinction at wavelength3
+* `volume_extinction_in_air_due_to_aerosol_particles_lambda3`: Extinction due to GOCART aerosols at wavelength3
     * `real`: units = m-1
-### GLOMAP/UKCA aerosols
+* `mass_number_concentration_of_aerosol_from_gocart_climatology`: Mass number concentration of aerosol from gocart climatology
+    * `real`: units = kg-1
 * `mass_fraction_of_dust_coarse_aerosol_particles_in_air`: Mass fraction of coarse mode dust aerosol particles
     * `real`: units = kg kg-1
 * `mass_fraction_of_dust_accumulation_aerosol_particles_in_air`: Mass fraction of accumulation mode dust aerosol particles
@@ -958,6 +976,10 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `real`: units = particles molecules-1
 * `number_fraction_of_accumulation_aerosol_particles_in_air`: Ratio of number concentration of accumulation-mode dust aerosol particles to the molecular concentration of air; i.e., the ratio of the number of accumulation-mode dust aerosol particles to the number of air molecules in a unit volume
     * `real`: units = particles molecules-1
+* `mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state`: Mass number concentration of nonhygroscopic ice nucleating aerosols of new state
+    * `real`: units = kg-1
+* `mass_number_concentration_of_hygroscopic_aerosols_of_new_state`: Mass number concentration of hygroscopic aerosols of new state
+    * `real`: units = kg-1
 ### emissions
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_co_due_to_anthropogenic_sources`: Carbon monoxide emissions from anthropogenic sources, total
@@ -1109,6 +1131,28 @@ Variables related to the compute environment, properties of variables, input/out
     * `integer`: units = count
 * `number_of_variables_in_xyz_dimensioned_restart_array`: Number of variables in xyz dimensioned restart array
     * `integer`: units = count
+* `number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array`: Number of convective cloud variables in xyz dimensioned restart array
+    * `integer`: units = count
+* `number_of_perturbed_land_surface_variables`: Number of perturbed land surface variables
+    * `integer`: units = count
+* `number_of_x_points_for_current_cubed_sphere_tile`: Number of x points for current cubed sphere tile
+    * `integer`: units = count
+* `number_of_y_points_for_current_cubed_sphere_tile`: Number of y points for current cubed sphere tile
+    * `integer`: units = count
+* `number_of_diagnostics_variables_for_radiation`: Number of diagnostics variables for radiation
+    * `integer`: units = count
+* `number_of_timesteps_between_diagnostics_resetting`: Number of timesteps between diagnostics resetting
+    * `integer`: units = count
+* `number_of_timesteps_between_longwave_radiation_calls`: Number of timesteps between longwave radiation calls
+    * `integer`: units = count
+* `number_of_timesteps_between_shortwave_radiation_calls`: Number of timesteps between shortwave radiation calls
+    * `integer`: units = count
+* `number_of_timesteps_between_surface_cycling_calls`: Number of timesteps between surface cycling calls
+    * `integer`: units = count
+* `number_of_timesteps_for_concurrent_radiation_and_remainder_physics_calls_after_model_initialization`: Number of timesteps for concurrent radiation and remainder physics calls after model initialization
+    * `integer`: units = count
+* `period_of_max_diagnostics_reset`: Period of maximum diagnostics reset
+    * `real`: units = s
 ## Control variables
 Variables that indicate or control some action.
 * `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa
@@ -1881,6 +1925,24 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = Pa
 * `pressure_at_convective_cloud_top_between_sw_radiation_calls_from_cnvc90`: Pressure at convective cloud top between shortwave radiation calls from GFS Convective Cloud Diagnostics
     * `real`: units = Pa
+* `number_of_gaussian_quadrature_angles_for_radiation`: Number of gaussian quadrature angles for radiation
+    * `integer`: units = count
+* `number_of_longwave_bands`: Number of longwave bands
+    * `integer`: units = count
+* `number_of_longwave_spectral_points`: Number of longwave spectral points
+    * `integer`: units = count
+* `number_of_ice_roughness_categories`: Number of ice roughness categories
+    * `integer`: units = count
+* `number_of_radiatively_active_gases`: Number of radiatively active gases
+    * `integer`: units = count
+* `number_of_shortwave_bands`: Number of shortwave bands
+    * `integer`: units = count
+* `number_of_shortwave_spectral_points`: Number of shortwave spectral points
+    * `integer`: units = count
+* `random_number_seed_for_mcica_longwave`: Random number seed for Monte-Carlo Independent Column Approximation longwave scheme
+    * `integer`: units = 1
+* `random_number_seed_for_mcica_shortwave`: Random number seed for Monte-Carlo Independent Column Approximation shortwave scheme
+    * `integer`: units = 1
 ## atmospheric surface and boundary layer
 * `critical_relative_humidity_at_top_of_atmosphere_boundary_layer`: Critical relative humidity at top of atmosphere boundary layer
     * `real`: units = fraction
@@ -1894,6 +1956,40 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = 1
 * `updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Updraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `real`: units = fraction
+* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme`: Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme
+    * `real`: units = m s-1 kg kg-1
+* `turbulent_mixing_length`: Turbulent mixing length
+    * `real`: units = m
+* `potential_temperature_of_air_at_top_of_viscous_sublayer`: Potential temperature of air at top of viscous sublayer
+    * `real`: units = K
+* `water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
+    * `real`: units = kg kg-1
+* `stability_function_for_heat`: Stability function for heat
+    * `real`: units = 1
+* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
+    * `real`: units = kg kg-1 m s-1
+* `upward_temperature_flux_at_surface`: Upward temperature flux at surface
+    * `real`: units = K m s-1
+* `monin_obukhov_similarity_function_for_heat`: Monin obukhov similarity function for heat
+    * `real`: units = 1
+* `monin_obukhov_similarity_function_for_momentum`: Monin obukhov similarity function for momentum
+    * `real`: units = 1
+* `ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m`: Ratio of wind at surface adjacent layer to wind at 10m
+    * `real`: units = ratio
+* `reciprocal_of_obukhov_length`: Reciprocal of obukhov length
+    * `real`: units = m-1
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface
+    * `real`: units = kg kg-1
+* `ratio_of_height_to_monin_obukhov_length`: Ratio of height to monin obukhov length
+    * `real`: units = 1
+* `air_pressure_at_surface_on_previous_timestep`: Air pressure at surface on previous timestep
+    * `real`: units = Pa
+* `air_pressure_at_surface_two_timesteps_back`: Air pressure at surface two timesteps back
+    * `real`: units = Pa
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes`: Surface specific humidity (water vapor mass mixing ratio with respect to moist air) for Mellor-Yamada-Janjic physics schemes
+    * `real`: units = kg kg-1
+* `upward_virtual_potential_temperature_flux`: Upward virtual potential temperature flux
+    * `real`: units = K m s-1
 ## Land surface, subsurface, and vegetation properties
 * `depth_of_soil_layers`: Depth of soil layers
     * `real`: units = m
@@ -1991,61 +2087,206 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = fraction
 * `depth_from_snow_surface_at_bottom_interface`: depth from the top of the snow surface at the bottom of the soil layer
     * `real`: units = m
-## GFS_typedefs_GFS_control_type
+* `cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls`: Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls
+    * `real`: units = m
+* `strong_cosz_area_fraction`: Area fraction for albedo with strong dependence on cosine of zenith angle
+    * `real`: units = fraction
+* `weak_cosz_area_fraction`: Area fraction for albedo with weak dependence on cosine of zenith angle
+    * `real`: units = fraction
+* `frozen_precipitation_density`: Frozen precipitation density
+    * `real`: units = kg m-3
+* `temperature_in_ice_layer`: Temperature in ice layer
+    * `real`: units = K
+* `explicit_precipitation_rate_on_previous_timestep`: Explicit precipitation rate on previous timestep
+    * `real`: units = mm s-1
+* `graupel_precipitation_rate_on_previous_timestep`: Graupel precipitation rate on previous timestep
+    * `real`: units = mm s-1
+* `ice_precipitation_rate_on_previous_timestep`: Ice precipitation rate on previous timestep
+    * `real`: units = mm s-1
+* `lwe_thickness_of_convective_precipitation_on_previous_timestep`: Liquid water equivalent thickness of convective precipitation amount on previous timestep
+    * `real`: units = m
+* `lwe_thickness_of_explicit_precipitation_on_previous_timestep`: Liquid water equivalent thickness of explicit precipitation amount on previous timestep
+    * `real`: units = m
+* `lwe_thickness_of_graupel_on_previous_timestep`: Liquid water equivalent thickness of graupel amount on previous timestep
+    * `real`: units = m
+* `lwe_thickness_of_ice_precipitation_on_previous_timestep`: Liquid water equivalent thickness of ice precipitation amount on previous timestep
+    * `real`: units = m
+* `snow_mass_on_previous_timestep`: Snow mass on previous timestep
+    * `real`: units = m
+* `dimensionless_age_of_surface_snow`: Dimensionless age of surface snow
+    * `real`: units = 1
+* `nonnegative_lwe_thickness_of_precipitation_on_dynamics_timestep`: Non-negative liquid water equivalent thickness of precipitation amount on dynamics timestep
+    * `real`: units = m
+* `sea_area_fraction`: Sea area fraction
+    * `real`: units = fraction
+* `sea_ice_area_fraction_of_sea_area_fraction`: Sea ice area fraction of sea area fraction
+    * `real`: units = fraction
+* `sea_ice_temperature`: Sea ice temperature
+    * `real`: units = K
+* `sea_ice_thickness`: Sea ice thickness
+    * `real`: units = m
+* `area_type`: Area type
+    * `real`: units = 1
+* `surface_sensible_heat_due_to_rainfall`: Surface sensible heat due to rainfall
+    * `real`: units = W
+* `lwe_thickness_of_ice_in_surface_snow`: Liquid water equivalent thickness of ice in surface snow
+    * `real`: units = mm
+* `lwe_thickness_of_liquid_water_in_surface_snow`: Liquid water equivalent thickness of liquid water in surface snow
+    * `real`: units = mm
+* `lwe_thickness_of_snowfall_on_previous_timestep`: Liquid water equivalent thickness of snowfall amount on previous timestep
+    * `real`: units = mm
+* `lwe_snowfall_rate`: Liquid water equivalent snowfall rate
+    * `real`: units = mm s-1
+* `snowfall_rate_on_previous_timestep`: Snowfall rate on previous timestep
+    * `real`: units = mm s-1
+* `water_vapor_mixing_ratio_wrt_moist_air_at_2m`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface
+    * `real`: units = kg kg-1
+* `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m`: mixing ratio of the mass of water vapor to the mass of moist air and hydrometeors, at two meters above surface
+    * `real`: units = kg kg-1
+* `specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
+    * `real`: units = kg kg-1 m s-1
+* `specified_upward_temperature_flux_at_surface`: Specified upward temperature flux at surface
+    * `real`: units = K m s-1
+* `standard_deviation_of_subgrid_orography`: Standard deviation of subgrid orography
+    * `real`: units = m
+* `statistical_measures_of_subgrid_orography_collection_array`: Statistical measures of subgrid orography collection array
+    * `real`: units = various
+* `stem_area_index`: Stem area index
+    * `real`: units = 1
+* `stem_mass_content`: Stem mass content
+    * `real`: units = g m-2
+* `molecular_sublayer_temperature_correction_in_sea_water`: Molecular sublayer temperature correction in sea water
+    * `real`: units = K
+* `molecular_sublayer_thickness_in_sea_water`: Molecular sublayer thickness in sea water
+    * `real`: units = m
+* `diffuse_nir_albedo_of_ice`: ice surface albedo for diffuse near-infrared radiation
+    * `real`: units = fraction
+* `diffuse_nir_albedo_of_land`: land surface albedo for diffuse near-infrared radiation
+    * `real`: units = fraction
+* `diffuse_vis_albedo_of_ice`: ice surface albedo for diffuse visible radiation
+    * `real`: units = fraction
+* `diffuse_vis_albedo_of_land`: land surface albedo for diffuse visible radiation
+    * `real`: units = fraction
+* `direct_nir_albedo_of_ice`: ice surface albedo for direct near-infrared radiation
+    * `real`: units = fraction
+* `direct_nir_albedo_of_land`: land surface albedo for direct near-infrared radiation
+    * `real`: units = fraction
+* `direct_vis_albedo_of_ice`: ice surface albedo for direct visible radiation
+    * `real`: units = fraction
+* `direct_vis_albedo_of_land`: land surface albedo for direct visible radiation
+    * `real`: units = fraction
+* `diffuse_shortwave_albedo_of_ice`: ice surface albedo for diffuse shortwave radiation
+    * `real`: units = fraction
+* `diffuse_shortwave_albedo_of_land`: land surface albedo for diffuse shortwave radiation
+    * `real`: units = fraction
+* `surface_friction_velocity`: Surface friction velocity
+    * `real`: units = m s-1
+* `surface_friction_velocity_for_momentum`: Surface friction velocity for momentum
+    * `real`: units = m s-1
+* `upward_latent_heat_flux_at_surface`: Upward latent heat flux at surface
+    * `real`: units = W m-2
+* `surface_longwave_emissivity_over_ice`: Surface longwave emissivity over ice
+    * `real`: units = fraction
+* `surface_longwave_emissivity_over_land`: Surface longwave emissivity over land
+    * `real`: units = fraction
+* `roughness_length`: surface roughness length
+    * `real`: units = cm
+* `roughness_length_from_wave_model`: surface roughness length from wave model
+    * `real`: units = cm
+* `roughness_length_over_ice`: surface roughness length over ice
+    * `real`: units = cm
+* `roughness_length_over_land`: surface roughness length over land
+    * `real`: units = cm
+* `roughness_length_over_water`: surface roughness length over water
+    * `real`: units = cm
+* `skin_temperature_at_surface_over_ice`: Skin temperature at surface over (or where) ice
+    * `real`: units = K
+* `skin_temperature_at_surface_over_land`: Skin temperature at surface over (or where) land
+    * `real`: units = K
+* `skin_temperature_at_surface_over_ocean`: Skin temperature at surface over (or where) ocean
+    * `real`: units = K
+* `skin_temperature_at_surface_over_snow`: Skin temperature at surface over (or where) snow
+    * `real`: units = K
+* `snow_area_fraction_at_surface_over_ice`: Snow area fraction at surface over ice
+    * `real`: units = fraction
+* `snow_area_fraction_at_surface_over_land`: Snow area fraction at surface over land
+    * `real`: units = fraction
+* `albedo_of_land_assuming_no_snow_cover`: surface snow-free albedo over land
+    * `real`: units = fraction
+* `lwe_surface_snow`: Liquid water equivalent surface snow
+    * `real`: units = mm
+* `surface_temperature_scale`: Surface temperature scale
+    * `real`: units = K
+* `time_since_last_snowfall`: Time since last snowfall
+    * `real`: units = s
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over ice
+    * `real`: units = kg kg-1
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over land
+    * `real`: units = kg kg-1
+* `wood_mass_content`: Wood mass content
+    * `real`: units = g m-2
+* `land_ice_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is ice over land
+    * `real`: units = frac
+* `mass_content_of_water_in_top_soil_layer`: mass per unit area of water in top layer of soil
+    * `real`: units = kg m-2
+* `density_of_snow_at_surface`: Density of snow at surface
+    * `real`: units = kg m-3
+* `urban_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is urban
+    * `real`: units = frac
+* `volume_fraction_of_liquid_water_in_soil_at_critical_point`: volume fraction of water in liquid phase in soil at critical point
+    * `real`: units = m3 m-3
+* `volume_fraction_of_liquid_water_in_soil_at_saturation`: volume fraction of water in liquid phase in soil at saturation
+    * `real`: units = m3 m-3
+* `volume_fraction_of_liquid_water_in_soil_at_wilting_point`: volume fraction of water in liquid phase in soil at wilting point
+    * `real`: units = m3 m-3
+* `wet_canopy_area_fraction`: Wet canopy area fraction
+    * `real`: units = fraction
+* `baseline_surface_longwave_emissivity`: Baseline surface longwave emissivity
+    * `real`: units = fraction
+* `baseline_roughness_length`: Baseline surface roughness length
+    * `real`: units = m
+* `air_temperature_in_canopy`: Air temperature in canopy
+    * `real`: units = K
+* `air_vapor_pressure_in_canopy`: Air vapor pressure in canopy
+    * `real`: units = Pa
+* `canopy_intercepted_ice_mass`: Canopy intercepted ice mass
+    * `real`: units = mm
+* `canopy_intercepted_liquid_water`: Canopy intercepted liquid water
+    * `real`: units = mm
+* `canopy_water_mass_content`: Canopy water mass content
+    * `real`: units = kg m-2
+* `lwe_thickness_of_rain_on_dynamics_timestep_for_coupling`: Liquid water equivalent thickness of rain amount on dynamics timestep for coupling
+    * `real`: units = m
+* `lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling`: Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling
+    * `real`: units = m
+## Convective physics parameters
 * `downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Downdraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `real`: units = fraction
 * `downdraft_fraction_reaching_surface_over_land_for_deep_convection`: Downdraft fraction reaching surface over land for deep convection
     * `real`: units = fraction
 * `downdraft_fraction_reaching_surface_over_water_for_deep_convection`: Downdraft fraction reaching surface over water for deep convection
     * `real`: units = fraction
-* `timescale_for_autoconversion_to_snow`: Timescale for autoconversion to snow
-    * `real`: units = s
-* `number_of_radiatively_active_gases`: Number of radiatively active gases
-    * `integer`: units = count
-* `number_of_gaussian_quadrature_angles_for_radiation`: Number of gaussian quadrature angles for radiation
-    * `integer`: units = count
-* `number_of_condensate_species`: Number of condensate species
-    * `integer`: units = count
 * `number_of_cloud_types_in_chikira_sugiyama_deep_convection`: Number of cloud types in chikira sugiyama deep convection
-    * `integer`: units = count
-* `number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array`: Number of convective cloud variables in xyz dimensioned restart array
-    * `integer`: units = count
-* `number_of_perturbed_land_surface_variables`: Number of perturbed land surface variables
-    * `integer`: units = count
-* `number_of_longwave_bands`: Number of longwave bands
-    * `integer`: units = count
-* `number_of_longwave_spectral_points`: Number of longwave spectral points
-    * `integer`: units = count
-* `number_of_x_points_for_current_cubed_sphere_tile`: Number of x points for current cubed sphere tile
-    * `integer`: units = count
-* `number_of_y_points_for_current_cubed_sphere_tile`: Number of y points for current cubed sphere tile
-    * `integer`: units = count
-* `number_of_diagnostics_variables_for_radiation`: Number of diagnostics variables for radiation
-    * `integer`: units = count
-* `number_of_ice_roughness_categories`: Number of ice roughness categories
     * `integer`: units = count
 * `number_of_spectral_wave_truncation_for_sas_convection`: Number of spectral wave truncation for Simplified Arakawa-Schubert deep convection scheme
     * `integer`: units = count
-* `number_of_statistical_measures_of_subgrid_orography`: Number of statistical measures of subgrid orography
+* `consecutive_calls_for_grell_freitas_convection`: Consecutive calls for grell freitas convection
+    * `real`: units = 1
+* `cloud_fraction_for_mg`: Cloud fraction for mg
+    * `real`: units = fraction
+* `counter_for_grell_freitas_convection`: Counter for grell freitas convection
     * `integer`: units = count
-* `number_of_shortwave_bands`: Number of shortwave bands
-    * `integer`: units = count
-* `number_of_shortwave_spectral_points`: Number of shortwave spectral points
-    * `integer`: units = count
-* `number_of_timesteps_between_diagnostics_resetting`: Number of timesteps between diagnostics resetting
-    * `integer`: units = count
-* `number_of_timesteps_between_longwave_radiation_calls`: Number of timesteps between longwave radiation calls
-    * `integer`: units = count
-* `number_of_timesteps_between_shortwave_radiation_calls`: Number of timesteps between shortwave radiation calls
-    * `integer`: units = count
-* `number_of_timesteps_between_surface_cycling_calls`: Number of timesteps between surface cycling calls
-    * `integer`: units = count
-* `number_of_timesteps_for_concurrent_radiation_and_remainder_physics_calls_after_model_initialization`: Number of timesteps for concurrent radiation and remainder physics calls after model initialization
-    * `integer`: units = count
-* `period_of_max_diagnostics_reset`: Period of maximum diagnostics reset
-    * `real`: units = s
+* `atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type`: Atmosphere updraft convective mass flux at cloud base by cloud type
+    * `real`: units = kg m-2 s-1
+## Gravity wave drag parameters
+* `absolute_momentum_flux_due_to_nonorographic_gwd`: Absolute momentum flux due to non-orographic gravity wave drag
+    * `real`: units = various
 * `timescale_for_rayleigh_damping`: Timescale for rayleigh damping
     * `real`: units = d
+* `number_of_statistical_measures_of_subgrid_orography`: Number of statistical measures of subgrid orography
+    * `integer`: units = count
+* `unfiltered_height_above_mean_sea_level`: Unfiltered height above mean sea level
+    * `real`: units = m
 ## Tendencies
 * `process_split_cumulative_tendency_of_air_temperature`: Process split cumulative tendency of air temperature
     * `real`: units = K s-1
@@ -2139,67 +2380,23 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m s-2
 * `tendency_of_northward_wind_due_to_model_physics`: Change in northward wind due to model physics per unit time
     * `real`: units = m s-2
-## GFS_typedefs_GFS_tbd_type
-* `absolute_momentum_flux_due_to_nonorographic_gwd`: Absolute momentum flux due to non-orographic gravity wave drag
-    * `real`: units = various
-* `cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls`: Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls
-    * `real`: units = m
-* `mass_number_concentration_of_aerosol_from_gocart_climatology`: Mass number concentration of aerosol from gocart climatology
-    * `real`: units = kg-1
-* `atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type`: Atmosphere updraft convective mass flux at cloud base by cloud type
-    * `real`: units = kg m-2 s-1
-* `cloud_fraction_for_mg`: Cloud fraction for mg
-    * `real`: units = fraction
-* `counter_for_grell_freitas_convection`: Counter for grell freitas convection
-    * `integer`: units = count
+## Other
 * `stratospheric_water_vapor_forcing`: Stratospheric water vapor forcing
     * `real`: units = various
 * `ice_nucleation_number_from_climatology`: Ice nucleation number from climatology
     * `real`: units = kg-1
-* `upward_virtual_potential_temperature_flux`: Upward virtual potential temperature flux
-    * `real`: units = K m s-1
-* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme`: Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme
-    * `real`: units = m s-1 kg kg-1
-* `turbulent_mixing_length`: Turbulent mixing length
-    * `real`: units = m
 * `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep
     * `real`: units = kg kg-1
 * `ozone_forcing`: Ozone forcing
     * `real`: units = various
-* `potential_temperature_of_air_at_top_of_viscous_sublayer`: Potential temperature of air at top of viscous sublayer
-    * `real`: units = K
-* `variance_of_water_vapor_mixing_ratio_wrt_moist_air`: Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)
-    * `real`: units = kg2 kg-2
-* `random_number_seed_for_mcica_longwave`: Random number seed for Monte-Carlo Independent Column Approximation longwave scheme
-    * `integer`: units = 1
-* `random_number_seed_for_mcica_shortwave`: Random number seed for Monte-Carlo Independent Column Approximation shortwave scheme
-    * `integer`: units = 1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
-    * `real`: units = kg kg-1
-* `stability_function_for_heat`: Stability function for heat
-    * `real`: units = 1
 * `subgrid_scale_cloud_area_fraction_in_atmosphere_layer`: Subgrid scale cloud area fraction in atmosphere layer
     * `real`: units = fraction
 * `subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud ice mass mixing ratio with respect to moist air
     * `real`: units = kg kg-1
 * `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
     * `real`: units = kg kg-1
-* `air_pressure_at_surface_on_previous_timestep`: Air pressure at surface on previous timestep
-    * `real`: units = Pa
-* `air_pressure_at_surface_two_timesteps_back`: Air pressure at surface two timesteps back
-    * `real`: units = Pa
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes`: Surface specific humidity (water vapor mass mixing ratio with respect to moist air) for Mellor-Yamada-Janjic physics schemes
-    * `real`: units = kg kg-1
 * `enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection`: Enhancement to wind speed at surface adjacent layer due to convection
     * `real`: units = m s-1
-* `covariance_of_air_temperature_and_water_vapor_mixing_ratio_wrt_moist_air`: Covariance of air temperature and specific humidity (water vapor mass mixing ratio with respect to moist air)
-    * `real`: units = K kg kg-1
-* `variance_of_air_temperature`: Variance of air temperature
-    * `real`: units = K2
-* `lwe_thickness_of_rain_on_dynamics_timestep_for_coupling`: Liquid water equivalent thickness of rain amount on dynamics timestep for coupling
-    * `real`: units = m
-* `lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling`: Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling
-    * `real`: units = m
 * `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back`: Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back
@@ -2210,191 +2407,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = 1
 * `scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Scaling factor for specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
     * `real`: units = 1
-## GFS_typedefs_GFS_sfcprop_type
-* `frozen_precipitation_density`: Frozen precipitation density
-    * `real`: units = kg m-3
-* `heat_content_in_diurnal_thermocline`: Heat content in diurnal thermocline
-    * `real`: units = K m
-* `diurnal_thermocline_layer_thickness`: Diurnal thermocline layer thickness
-    * `real`: units = m
-* `explicit_precipitation_rate_on_previous_timestep`: Explicit precipitation rate on previous timestep
-    * `real`: units = mm s-1
-* `precipitation_type`: Precipitation type
-    * `real`: units = 1
-* `strong_cosz_area_fraction`: Strong cosz area fraction
-    * `real`: units = fraction
-* `weak_cosz_area_fraction`: Weak cosz area fraction
-    * `real`: units = fraction
-* `free_convection_layer_thickness_in_sea_water`: Free convection layer thickness in sea water
-    * `real`: units = m
-* `consecutive_calls_for_grell_freitas_convection`: Consecutive calls for grell freitas convection
-    * `real`: units = 1
-* `graupel_precipitation_rate_on_previous_timestep`: Graupel precipitation rate on previous timestep
-    * `real`: units = mm s-1
-* `ice_precipitation_rate_on_previous_timestep`: Ice precipitation rate on previous timestep
-    * `real`: units = mm s-1
-* `temperature_in_ice_layer`: Temperature in ice layer
-    * `real`: units = K
-* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
-    * `real`: units = kg kg-1 m s-1
-* `upward_temperature_flux_at_surface`: Upward temperature flux at surface
-    * `real`: units = K m s-1
-* `lwe_thickness_of_convective_precipitation_on_previous_timestep`: Liquid water equivalent thickness of convective precipitation amount on previous timestep
-    * `real`: units = m
-* `lwe_thickness_of_explicit_precipitation_on_previous_timestep`: Liquid water equivalent thickness of explicit precipitation amount on previous timestep
-    * `real`: units = m
-* `lwe_thickness_of_graupel_on_previous_timestep`: Liquid water equivalent thickness of graupel amount on previous timestep
-    * `real`: units = m
-* `lwe_thickness_of_ice_precipitation_on_previous_timestep`: Liquid water equivalent thickness of ice precipitation amount on previous timestep
-    * `real`: units = m
-* `snow_mass_on_previous_timestep`: Snow mass on previous timestep
-    * `real`: units = m
-* `monin_obukhov_similarity_function_for_heat`: Monin obukhov similarity function for heat
-    * `real`: units = 1
-* `monin_obukhov_similarity_function_for_momentum`: Monin obukhov similarity function for momentum
-    * `real`: units = 1
-* `dimensionless_age_of_surface_snow`: Dimensionless age of surface snow
-    * `real`: units = 1
-* `nonnegative_lwe_thickness_of_precipitation_on_dynamics_timestep`: Non-negative liquid water equivalent thickness of precipitation amount on dynamics timestep
-    * `real`: units = m
-* `ocean_mixed_layer_thickness`: Ocean mixed layer thickness
-    * `real`: units = m
-* `height_above_mean_sea_level`: Height above mean sea level
-    * `real`: units = m
-* `height_above_mean_sea_level_at_surface`: Height above mean sea level at local surface
-    * `real`: units = m
-* `unfiltered_height_above_mean_sea_level`: Unfiltered height above mean sea level
-    * `real`: units = m
-* `potential_temperature_of_air_at_2m`: Potential temperature of air at 2m
-    * `real`: units = K
-* `ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m`: Ratio of wind at surface adjacent layer to wind at 10m
-    * `real`: units = ratio
-* `reciprocal_of_obukhov_length`: Reciprocal of obukhov length
-    * `real`: units = m-1
-* `sea_area_fraction`: Sea area fraction
-    * `real`: units = fraction
-* `sea_ice_area_fraction_of_sea_area_fraction`: Sea ice area fraction of sea area fraction
-    * `real`: units = fraction
-* `sea_ice_temperature`: Sea ice temperature
-    * `real`: units = K
-* `sea_ice_thickness`: Sea ice thickness
-    * `real`: units = m
-* `area_type`: Area type
-    * `real`: units = 1
-* `reference_sea_surface_temperature`: Reference sea surface temperature
-    * `real`: units = K
-* `sea_surface_temperature`: Sea surface temperature
-    * `real`: units = K
-* `sea_water_salinity_in_diurnal_thermocline`: Sea water salinity in diurnal thermocline
-    * `real`: units = ppt m
-* `surface_sensible_heat_due_to_rainfall`: Surface sensible heat due to rainfall
-    * `real`: units = W
-* `derivative_of_heat_content_in_diurnal_thermocline_wrt_surface_skin_temperature`: Derivative of heat content in diurnal thermocline wrt surface skin temperature
-    * `real`: units = m
-* `derivative_of_diurnal_thermocline_layer_thickness_wrt_surface_skin_temperature`: Derivative of diurnal thermocline layer thickness wrt surface skin temperature
-    * `real`: units = m K-1
-* `lwe_thickness_of_ice_in_surface_snow`: Liquid water equivalent thickness of ice in surface snow
-    * `real`: units = mm
-* `lwe_thickness_of_liquid_water_in_surface_snow`: Liquid water equivalent thickness of liquid water in surface snow
-    * `real`: units = mm
-* `lwe_thickness_of_snowfall_on_previous_timestep`: Liquid water equivalent thickness of snowfall amount on previous timestep
-    * `real`: units = mm
-* `lwe_snowfall_rate`: Liquid water equivalent snowfall rate
-    * `real`: units = mm s-1
-* `snowfall_rate_on_previous_timestep`: Snowfall rate on previous timestep
-    * `real`: units = mm s-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_2m`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface
-    * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m`: mixing ratio of the mass of water vapor to the mass of moist air and hydrometeors, at two meters above surface
-    * `real`: units = kg kg-1
-* `specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
-    * `real`: units = kg kg-1 m s-1
-* `specified_upward_temperature_flux_at_surface`: Specified upward temperature flux at surface
-    * `real`: units = K m s-1
-* `standard_deviation_of_subgrid_orography`: Standard deviation of subgrid orography
-    * `real`: units = m
-* `statistical_measures_of_subgrid_orography_collection_array`: Statistical measures of subgrid orography collection array
-    * `real`: units = various
-* `stem_area_index`: Stem area index
-    * `real`: units = 1
-* `stem_mass_content`: Stem mass content
-    * `real`: units = g m-2
-* `molecular_sublayer_temperature_correction_in_sea_water`: Molecular sublayer temperature correction in sea water
-    * `real`: units = K
-* `molecular_sublayer_thickness_in_sea_water`: Molecular sublayer thickness in sea water
-    * `real`: units = m
-* `diffuse_nir_albedo_of_ice`: ice surface albedo for diffuse near-infrared radiation
-    * `real`: units = fraction
-* `diffuse_nir_albedo_of_land`: land surface albedo for diffuse near-infrared radiation
-    * `real`: units = fraction
-* `diffuse_vis_albedo_of_ice`: ice surface albedo for diffuse visible radiation
-    * `real`: units = fraction
-* `diffuse_vis_albedo_of_land`: land surface albedo for diffuse visible radiation
-    * `real`: units = fraction
-* `direct_nir_albedo_of_ice`: ice surface albedo for direct near-infrared radiation
-    * `real`: units = fraction
-* `direct_nir_albedo_of_land`: land surface albedo for direct near-infrared radiation
-    * `real`: units = fraction
-* `direct_vis_albedo_of_ice`: ice surface albedo for direct visible radiation
-    * `real`: units = fraction
-* `direct_vis_albedo_of_land`: land surface albedo for direct visible radiation
-    * `real`: units = fraction
-* `diffuse_shortwave_albedo_of_ice`: ice surface albedo for diffuse shortwave radiation
-    * `real`: units = fraction
-* `diffuse_shortwave_albedo_of_land`: land surface albedo for diffuse shortwave radiation
-    * `real`: units = fraction
-* `surface_friction_velocity`: Surface friction velocity
-    * `real`: units = m s-1
-* `surface_friction_velocity_for_momentum`: Surface friction velocity for momentum
-    * `real`: units = m s-1
-* `upward_latent_heat_flux_at_surface`: Upward latent heat flux at surface
-    * `real`: units = W m-2
-* `surface_longwave_emissivity_over_ice`: Surface longwave emissivity over ice
-    * `real`: units = fraction
-* `surface_longwave_emissivity_over_land`: Surface longwave emissivity over land
-    * `real`: units = fraction
-* `roughness_length`: surface roughness length
-    * `real`: units = cm
-* `roughness_length_from_wave_model`: surface roughness length from wave model
-    * `real`: units = cm
-* `roughness_length_over_ice`: surface roughness length over ice
-    * `real`: units = cm
-* `roughness_length_over_land`: surface roughness length over land
-    * `real`: units = cm
-* `roughness_length_over_water`: surface roughness length over water
-    * `real`: units = cm
-* `skin_temperature_at_surface`: Skin temperature at surface
-    * `real`: units = K
-* `skin_temperature_at_surface_over_ice`: Skin temperature at surface over (or where) ice
-    * `real`: units = K
-* `skin_temperature_at_surface_over_land`: Skin temperature at surface over (or where) land
-    * `real`: units = K
-* `skin_temperature_at_surface_over_ocean`: Skin temperature at surface over (or where) ocean
-    * `real`: units = K
-* `skin_temperature_at_surface_over_snow`: Skin temperature at surface over (or where) snow
-    * `real`: units = K
-* `snow_area_fraction_at_surface_over_ice`: Snow area fraction at surface over ice
-    * `real`: units = fraction
-* `snow_area_fraction_at_surface_over_land`: Snow area fraction at surface over land
-    * `real`: units = fraction
-* `albedo_of_land_assuming_no_snow_cover`: surface snow-free albedo over land
-    * `real`: units = fraction
-* `lwe_surface_snow`: Liquid water equivalent surface snow
-    * `real`: units = mm
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface
-    * `real`: units = kg kg-1
-* `ratio_of_height_to_monin_obukhov_length`: Ratio of height to monin obukhov length
-    * `real`: units = 1
-* `surface_temperature_scale`: Surface temperature scale
-    * `real`: units = K
-* `time_since_last_snowfall`: Time since last snowfall
-    * `real`: units = s
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over ice
-    * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over land
-    * `real`: units = kg kg-1
-* `wood_mass_content`: Wood mass content
-    * `real`: units = g m-2
 ## GFS_typedefs_GFS_coupling_type
 * `convective_cloud_condensate_after_rainout`: Convective cloud condensate after rainout
     * `real`: units = kg kg-1
@@ -2569,22 +2581,3 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m s-1
 * `y_wind_at_surface_adjacent_layer`: Y wind at surface adjacent layer
     * `real`: units = m s-1
-## GFS_typedefs_GFS_stateout_type
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state`: Cloud liquid water mass mixing ratio with respect to moist air of new state
-    * `real`: units = kg kg-1
-* `mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state`: Mass number concentration of cloud liquid water particles in air of new state
-    * `real`: units = kg-1
-* `nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state`: Nonconvective cloud area fraction in atmosphere layer of new state
-    * `real`: units = fraction
-* `graupel_mixing_ratio_wrt_moist_air_of_new_state`: Graupel mass mixing ratio with respect to moist air of new state
-    * `real`: units = kg kg-1
-* `mass_number_concentration_of_graupel_of_new_state`: Mass number concentration of graupel of new state
-    * `real`: units = kg-1
-* `mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state`: Mass number concentration of nonhygroscopic ice nucleating aerosols of new state
-    * `real`: units = kg-1
-* `mass_number_concentration_of_hygroscopic_aerosols_of_new_state`: Mass number concentration of hygroscopic aerosols of new state
-    * `real`: units = kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state at surface-adjacent layer
-    * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_of_new_state`: Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state
-    * `real`: units = kg kg-1

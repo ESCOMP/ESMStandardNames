@@ -714,7 +714,7 @@
       <type units="kg m-3">real</type>
     </standard_name>
   </section>
-  <section name="coordinates"
+  <section name="Coordinates"
            comment="Parameters defining or relating to the coordinate system of the model">
     <standard_name name="latitude">
       <type units="degree_north">real</type>
@@ -744,6 +744,13 @@
       <type units="1">real</type>
     </standard_name>
     <standard_name name="characteristic_grid_lengthscale">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="height_above_mean_sea_level">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="height_above_mean_sea_level_at_surface"
+                   description="Height above mean sea level at local surface">
       <type units="m">real</type>
     </standard_name>
   </section>
@@ -1126,62 +1133,22 @@
     <standard_name name="y_wind_of_new_state">
       <type units="m s-1">real</type>
     </standard_name>
-  </section>
-  <section name="Land and water surface properties">
-    <standard_name name="land_ice_area_fraction_of_cell_area"
-                   description="fraction of horizontal area of grid cell that is ice over land">
-      <type units="frac">real</type>
-    </standard_name>
-    <standard_name name="mass_content_of_water_in_top_soil_layer"
-                   description="mass per unit area of water in top layer of soil">
-      <type units="kg m-2">real</type>
-    </standard_name>
-    <standard_name name="density_of_snow_at_surface">
-      <type units="kg m-3">real</type>
-    </standard_name>
-    <standard_name name="urban_area_fraction_of_cell_area"
-                   description="fraction of horizontal area of grid cell that is urban">
-      <type units="frac">real</type>
-    </standard_name>
-    <standard_name name="volume_fraction_of_liquid_water_in_soil_at_critical_point"
-                   description="volume fraction of water in liquid phase in soil at critical point">
-      <type units="m3 m-3">real</type>
-    </standard_name>
-    <standard_name name="volume_fraction_of_liquid_water_in_soil_at_saturation"
-                   description="volume fraction of water in liquid phase in soil at saturation">
-      <type units="m3 m-3">real</type>
-    </standard_name>
-    <standard_name name="volume_fraction_of_liquid_water_in_soil_at_wilting_point"
-                   description="volume fraction of water in liquid phase in soil at wilting point">
-      <type units="m3 m-3">real</type>
-    </standard_name>
-    <standard_name name="wet_canopy_area_fraction">
-      <type units="fraction">real</type>
-    </standard_name>
-    <standard_name name="baseline_surface_longwave_emissivity">
-      <type units="fraction">real</type>
-    </standard_name>
-    <standard_name name="baseline_roughness_length"
-                 description="Baseline surface roughness length">
-      <type units="m">real</type>
-    </standard_name>
-    <standard_name name="air_temperature_in_canopy">
+    <standard_name name="potential_temperature_of_air_at_2m">
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="air_vapor_pressure_in_canopy">
-      <type units="Pa">real</type>
+    <standard_name name="covariance_of_air_temperature_and_water_vapor_mixing_ratio_wrt_moist_air"
+                 description="Covariance of air temperature and specific humidity (water vapor mass mixing ratio with respect to moist air)">
+      <type units="K kg kg-1">real</type>
     </standard_name>
-    <standard_name name="canopy_intercepted_ice_mass">
-      <type units="mm">real</type>
+    <standard_name name="variance_of_air_temperature">
+      <type units="K2">real</type>
     </standard_name>
-    <standard_name name="canopy_intercepted_liquid_water">
-      <type units="mm">real</type>
-    </standard_name>
-    <standard_name name="canopy_water_mass_content">
-      <type units="kg m-2">real</type>
+    <standard_name name="variance_of_water_vapor_mixing_ratio_wrt_moist_air"
+                 description="Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)">
+      <type units="kg2 kg-2">real</type>
     </standard_name>
   </section>
-  <section name="marine">
+  <section name="Marine">
     <standard_name name="sea_water_potential_temperature"
                    description="sea water potential temperature">
       <type units="K">real</type>
@@ -1202,12 +1169,40 @@
                      description="The temperature of sea water">
         <type units="K">real</type>
     </standard_name>
-      <standard_name name="x_current_in_diurnal_thermocline">
-         <type units="m2 s-1">real</type>
-      </standard_name>
-      <standard_name name="y_current_in_diurnal_thermocline">
-         <type units="m2 s-1">real</type>
-      </standard_name>
+    <standard_name name="x_current_in_diurnal_thermocline">
+      <type units="m2 s-1">real</type>
+    </standard_name>
+    <standard_name name="y_current_in_diurnal_thermocline">
+      <type units="m2 s-1">real</type>
+    </standard_name>
+    <standard_name name="heat_content_in_diurnal_thermocline">
+      <type units="K m">real</type>
+    </standard_name>
+    <standard_name name="diurnal_thermocline_layer_thickness">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="sea_water_salinity_in_diurnal_thermocline">
+      <type units="ppt m">real</type>
+    </standard_name>
+    <standard_name name="derivative_of_heat_content_in_diurnal_thermocline_wrt_surface_skin_temperature">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="derivative_of_diurnal_thermocline_layer_thickness_wrt_surface_skin_temperature">
+      <type units="m K-1">real</type>
+    </standard_name>
+    <standard_name name="free_convection_layer_thickness_in_sea_water">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="ocean_mixed_layer_thickness">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="reference_sea_surface_temperature"
+                   description="Foundation/reference temperature for calculating diurnal ocean temperature changes">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="sea_surface_temperature">
+      <type units="K">real</type>
+    </standard_name>
   </section>
   <section name="Tracers"
            comment="Tracers are numerically zero-mass particles advected in fluid flow, typically representing some trace gas, particle, or other physical substance">
@@ -1609,46 +1604,81 @@
       <standard_name name="relative_variance_of_subgrid_cloud_condensate_distribution">
          <type units="kg2 kg-2">real</type>
       </standard_name>
+      <standard_name name="timescale_for_autoconversion_to_snow"
+                     description="timescale for cloud ice autoconversion to snow">
+         <type units="s">real</type>
+      </standard_name>
+      <standard_name name="cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state"
+                   description="Cloud liquid water mass mixing ratio with respect to moist air of new state">
+         <type units="kg kg-1">real</type>
+      </standard_name>
+      <standard_name name="mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state">
+         <type units="kg-1">real</type>
+      </standard_name>
+      <standard_name name="nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state">
+         <type units="fraction">real</type>
+      </standard_name>
+      <standard_name name="graupel_mixing_ratio_wrt_moist_air_of_new_state"
+                   description="Graupel mass mixing ratio with respect to moist air of new state">
+         <type units="kg kg-1">real</type>
+      </standard_name>
+      <standard_name name="mass_number_concentration_of_graupel_of_new_state">
+         <type units="kg-1">real</type>
+      </standard_name>
+      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer"
+                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state at surface-adjacent layer">
+         <type units="kg kg-1">real</type>
+      </standard_name>
+      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_of_new_state"
+                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state">
+         <type units="kg kg-1">real</type>
+      </standard_name>
+      <standard_name name="number_of_condensate_species">
+         <type units="count">integer</type>
+      </standard_name>
+      <standard_name name="precipitation_type">
+         <type units="1">real</type>
+      </standard_name>
     </section>
-    <section name="GOCART aerosols">
+    <section name="Aerosols">
       <standard_name name="mass_fraction_of_dust001_in_air"
-                     description="Dust bin1 mass fraction">
+                     description="GOCART Dust bin1 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_dust002_in_air"
-                     description="Dust bin2 mass fraction">
+                     description="GOCART DUst bin2 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_dust003_in_air"
-                     description="Dust bin3 mass fraction">
+                     description="GOCART DUst bin3 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_dust004_in_air"
-                     description="Dust bin4 mass fraction">
+                     description="GOCART DUst bin4 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_dust005_in_air"
-                     description="Dust bin5 mass fraction">
+                     description="GOCART DUst bin5 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_sea_salt001_in_air"
-                     description="Sea salt bin1 mass fraction">
+                     description="GOCART Sea salt bin1 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_sea_salt002_in_air"
-                     description="Sea salt bin2 mass fraction">
+                     description="GOCART Sea salt bin2 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_sea_salt003_in_air"
-                     description="Sea salt bin3 mass fraction">
+                     description="GOCART Sea salt bin3 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_sea_salt004_in_air"
-                     description="Sea salt bin4 mass fraction">
+                     description="GOCART Sea salt bin4 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_sea_salt005_in_air"
-                     description="Sea salt bin5 mass fraction">
+                     description="GOCART Sea salt bin5 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_hydrophobic_black_carbon_in_air"
@@ -1672,31 +1702,32 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_sea_nitrate001_in_air"
-                     description="Nitrate bin1 mass fraction">
+                     description="GOCART Nitrate bin1 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_sea_nitrate002_in_air"
-                     description="Nitrate bin2 mass fraction">
+                     description="GOCART Nitrate bin2 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_sea_nitrate003_in_air"
-                     description="Nitrate bin3 mass fraction">
+                     description="GOCART Nitrate bin3 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="volume_extinction_in_air_due_to_aerosol_particles_lambda1"
-                     description="Aerosol extinction at wavelength1">
+                     description="Extinction due to GOCART aerosols at wavelength1">
         <type units="m-1">real</type>
       </standard_name>
       <standard_name name="volume_extinction_in_air_due_to_aerosol_particles_lambda2"
-                     description="Aerosol extinction at wavelength2">
+                     description="Extinction due to GOCART aerosols at wavelength2">
         <type units="m-1">real</type>
       </standard_name>
       <standard_name name="volume_extinction_in_air_due_to_aerosol_particles_lambda3"
-                     description="Aerosol extinction at wavelength3">
+                     description="Extinction due to GOCART aerosols at wavelength3">
         <type units="m-1">real</type>
       </standard_name>
-    </section>
-    <section name="GLOMAP/UKCA aerosols">
+      <standard_name name="mass_number_concentration_of_aerosol_from_gocart_climatology">
+         <type units="kg-1">real</type>
+      </standard_name>
       <standard_name name="mass_fraction_of_dust_coarse_aerosol_particles_in_air"
                      description="Mass fraction of coarse mode dust aerosol particles">
         <type units="kg kg-1">real</type>
@@ -1712,6 +1743,12 @@
         <standard_name name="number_fraction_of_accumulation_aerosol_particles_in_air"
                      description="Ratio of number concentration of accumulation-mode dust aerosol particles to the molecular concentration of air; i.e., the ratio of the number of accumulation-mode dust aerosol particles to the number of air molecules in a unit volume">
         <type units="particles molecules-1">real</type>
+      </standard_name>
+      <standard_name name="mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state">
+        <type units="kg-1">real</type>
+      </standard_name>
+      <standard_name name="mass_number_concentration_of_hygroscopic_aerosols_of_new_state">
+        <type units="kg-1">real</type>
       </standard_name>
     </section>
     <section name="emissions"
@@ -1988,6 +2025,40 @@
     </standard_name>
     <standard_name name="number_of_variables_in_xyz_dimensioned_restart_array">
       <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_perturbed_land_surface_variables">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_x_points_for_current_cubed_sphere_tile">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_y_points_for_current_cubed_sphere_tile">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_diagnostics_variables_for_radiation">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_timesteps_between_diagnostics_resetting">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_timesteps_between_longwave_radiation_calls">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_timesteps_between_shortwave_radiation_calls">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_timesteps_between_surface_cycling_calls">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_timesteps_for_concurrent_radiation_and_remainder_physics_calls_after_model_initialization">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="period_of_max_diagnostics_reset"
+                 description="Period of maximum diagnostics reset">
+      <type units="s">real</type>
     </standard_name>
   </section>
   <section name="Control variables"
@@ -2853,12 +2924,12 @@
     <standard_name name="index_of_subgrid_cloud_area_fraction_in_atmosphere_layer_in_xyz_dimensioned_restart_array">
       <type units="index">integer</type>
     </standard_name>
-      <standard_name name="index_of_water_vegetation_category">
-         <type units="index">integer</type>
-      </standard_name>
-      <standard_name name="index_of_cubed_sphere_tile">
-         <type units="index">integer</type>
-      </standard_name>
+    <standard_name name="index_of_water_vegetation_category">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="index_of_cubed_sphere_tile">
+      <type units="index">integer</type>
+    </standard_name>
   </section>
   <section name="Coefficients"
            comment="Coefficients includes scaling factors, tunable parameters, and other similar variables">
@@ -3262,6 +3333,35 @@
                  description="Pressure at convective cloud top between shortwave radiation calls from GFS Convective Cloud Diagnostics">
       <type units="Pa">real</type>
     </standard_name>
+    <standard_name name="number_of_gaussian_quadrature_angles_for_radiation">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_longwave_bands">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_longwave_spectral_points">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_ice_roughness_categories">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_radiatively_active_gases">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_shortwave_bands">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_shortwave_spectral_points">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="random_number_seed_for_mcica_longwave"
+                 description="Random number seed for Monte-Carlo Independent Column Approximation longwave scheme">
+      <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="random_number_seed_for_mcica_shortwave"
+                 description="Random number seed for Monte-Carlo Independent Column Approximation shortwave scheme">
+      <type units="1">integer</type>
+    </standard_name>
   </section>
   <section name="atmospheric surface and boundary layer">
     <standard_name name="critical_relative_humidity_at_top_of_atmosphere_boundary_layer">
@@ -3283,6 +3383,62 @@
                  description="Updraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
       <type units="fraction">real</type>
     </standard_name>
+    <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme"
+                 description="Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme">     
+      <type units="m s-1 kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="turbulent_mixing_length">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="potential_temperature_of_air_at_top_of_viscous_sublayer">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer"
+                 description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="stability_function_for_heat">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface"
+                 description="Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface">
+      <type units="kg kg-1 m s-1">real</type>
+    </standard_name>
+    <standard_name name="upward_temperature_flux_at_surface">
+      <type units="K m s-1">real</type>
+    </standard_name>
+    <standard_name name="monin_obukhov_similarity_function_for_heat">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="monin_obukhov_similarity_function_for_momentum">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m">
+      <type units="ratio">real</type>
+    </standard_name>
+    <standard_name name="reciprocal_of_obukhov_length">
+      <type units="m-1">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface"
+                 description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="ratio_of_height_to_monin_obukhov_length">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="air_pressure_at_surface_on_previous_timestep">
+      <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="air_pressure_at_surface_two_timesteps_back">
+      <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes"
+                 description="Surface specific humidity (water vapor mass mixing ratio with respect to moist air) for Mellor-Yamada-Janjic physics schemes">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="upward_virtual_potential_temperature_flux">
+      <type units="K m s-1">real</type>
+    </standard_name>
   </section>
   <section name="Land surface, subsurface, and vegetation properties">
     <standard_name name="depth_of_soil_layers">
@@ -3295,243 +3451,508 @@
                    description="Maximum soil moisture content for land surface model">
       <type units="m">real</type>
     </standard_name>
-      <standard_name name="thickness_of_soil_layers_for_lsm"
-                   description="Thickness of soil layers for land surface model">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="normalized_soil_wetness_for_lsm"
-                   description="Normalized soil wetness for land surface model">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="temperature_in_surface_snow">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="temperature_in_surface_snow_at_surface_adjacent_layer_over_ice">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="temperature_in_surface_snow_at_surface_adjacent_layer_over_land">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="soil_temperature">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="soil_temperature_for_lsm"
-                   description="Soil temperature for land surface model">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="volumetric_soil_moisture_between_soil_bottom_and_water_table">
-         <type units="m3 m-3">real</type>
-      </standard_name>
-      <standard_name name="surface_snow_mass_content_over_ice">
-         <type units="kg m-2">real</type>
-      </standard_name>
-      <standard_name name="surface_snow_mass_content_over_land">
-         <type units="kg m-2">real</type>
-      </standard_name>
-      <standard_name name="upper_bound_of_max_albedo_assuming_deep_snow"
-                   description="Upper bound of maximum albedo assuming deep snow">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="vegetation_area_fraction">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="canopy_temperature">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="volume_fraction_of_frozen_soil_moisture_for_lsm"
-                   description="Volume fraction of frozen soil moisture for land surface model">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="volume_fraction_of_condensed_water_in_soil">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="volume_fraction_of_soil_moisture_for_lsm"
-                   description="Volume fraction of soil moisture for land surface model">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="volume_fraction_of_unfrozen_water_in_soil">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="volume_fraction_of_unfrozen_soil_moisture_for_lsm"
-                   description="Volume fraction of unfrozen soil moisture for land surface model">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_surface_snow"
-                   description="Liquid water equivalent thickness of surface snow amount">
-         <type units="mm">real</type>
-      </standard_name>
-      <standard_name name="water_storage_in_aquifer">
-         <type units="mm">real</type>
-      </standard_name>
-      <standard_name name="water_storage_in_aquifer_and_saturated_soil">
-         <type units="mm">real</type>
-      </standard_name>
-      <standard_name name="water_table_depth">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="water_table_recharge_assuming_deep">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="water_table_recharge_assuming_shallow">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="ground_temperature">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="leaf_area_index">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="leaf_mass_content">
-         <type units="g m-2">real</type>
-      </standard_name>
-      <standard_name name="deep_soil_temperature">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="volumetric_equilibrium_soil_moisture">
-         <type units="m3 m-3">real</type>
-      </standard_name>
-      <standard_name name="fast_soil_pool_mass_content_of_carbon">
-         <type units="g m-2">real</type>
-      </standard_name>
-      <standard_name name="fine_root_mass_content">
-         <type units="g m-2">real</type>
-      </standard_name>
-      <standard_name name="slow_soil_pool_mass_content_of_carbon">
-         <type units="g m-2">real</type>
-      </standard_name>
-      <standard_name name="albedo_on_previous_timestep_assuming_deep_snow">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="diffuse_shortwave_albedo_on_radiation_timestep"
-                     description="surface albedo for diffuse shortwave radiation on the timestep for radiation physics">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="surface_longwave_emissivity">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep">
-         <type units="W m-2">ddt</type>
-      </standard_name>
-      <standard_name name="nir_albedo_strong_cosz"
-                     description="albedo for near-infrared radiation with strong dependence on cosine of the zenith angle">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="nir_albedo_weak_cosz"
-                     description="albedo for near-infrared radiation with weak dependence on cosine of the zenith angle">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="vis_albedo_strong_cosz"
-                     description="albedo for visible radiation with strong dependence on cosine of the zenith angle">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="vis_albedo_weak_cosz"
-                     description="albedo for visible radiation with weak dependence on cosine of the zenith angle">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="lake_area_fraction">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="lake_depth">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="water_storage_in_lake">
-         <type units="mm">real</type>
-      </standard_name>
-      <standard_name name="land_area_fraction">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="depth_from_snow_surface_at_bottom_interface"
-                     description="depth from the top of the snow surface at the bottom of the soil layer">
-         <type units="m">real</type>
-      </standard_name>
+    <standard_name name="thickness_of_soil_layers_for_lsm"
+                 description="Thickness of soil layers for land surface model">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="normalized_soil_wetness_for_lsm"
+                 description="Normalized soil wetness for land surface model">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="temperature_in_surface_snow">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="temperature_in_surface_snow_at_surface_adjacent_layer_over_ice">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="temperature_in_surface_snow_at_surface_adjacent_layer_over_land">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="soil_temperature">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="soil_temperature_for_lsm"
+                 description="Soil temperature for land surface model">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="volumetric_soil_moisture_between_soil_bottom_and_water_table">
+      <type units="m3 m-3">real</type>
+    </standard_name>
+    <standard_name name="surface_snow_mass_content_over_ice">
+      <type units="kg m-2">real</type>
+    </standard_name>
+    <standard_name name="surface_snow_mass_content_over_land">
+      <type units="kg m-2">real</type>
+    </standard_name>
+    <standard_name name="upper_bound_of_max_albedo_assuming_deep_snow"
+                 description="Upper bound of maximum albedo assuming deep snow">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="vegetation_area_fraction">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="canopy_temperature">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="volume_fraction_of_frozen_soil_moisture_for_lsm"
+                 description="Volume fraction of frozen soil moisture for land surface model">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="volume_fraction_of_condensed_water_in_soil">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="volume_fraction_of_soil_moisture_for_lsm"
+                 description="Volume fraction of soil moisture for land surface model">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="volume_fraction_of_unfrozen_water_in_soil">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="volume_fraction_of_unfrozen_soil_moisture_for_lsm"
+                 description="Volume fraction of unfrozen soil moisture for land surface model">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_surface_snow"
+                 description="Liquid water equivalent thickness of surface snow amount">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="water_storage_in_aquifer">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="water_storage_in_aquifer_and_saturated_soil">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="water_table_depth">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="water_table_recharge_assuming_deep">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="water_table_recharge_assuming_shallow">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="ground_temperature">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="leaf_area_index">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="leaf_mass_content">
+      <type units="g m-2">real</type>
+    </standard_name>
+    <standard_name name="deep_soil_temperature">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="volumetric_equilibrium_soil_moisture">
+      <type units="m3 m-3">real</type>
+    </standard_name>
+    <standard_name name="fast_soil_pool_mass_content_of_carbon">
+      <type units="g m-2">real</type>
+    </standard_name>
+    <standard_name name="fine_root_mass_content">
+      <type units="g m-2">real</type>
+    </standard_name>
+    <standard_name name="slow_soil_pool_mass_content_of_carbon">
+      <type units="g m-2">real</type>
+    </standard_name>
+    <standard_name name="albedo_on_previous_timestep_assuming_deep_snow">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="diffuse_shortwave_albedo_on_radiation_timestep"
+                   description="surface albedo for diffuse shortwave radiation on the timestep for radiation physics">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="surface_longwave_emissivity">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep">
+      <type units="W m-2">ddt</type>
+    </standard_name>
+    <standard_name name="nir_albedo_strong_cosz"
+                   description="albedo for near-infrared radiation with strong dependence on cosine of the zenith angle">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="nir_albedo_weak_cosz"
+                   description="albedo for near-infrared radiation with weak dependence on cosine of the zenith angle">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="vis_albedo_strong_cosz"
+                   description="albedo for visible radiation with strong dependence on cosine of the zenith angle">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="vis_albedo_weak_cosz"
+                   description="albedo for visible radiation with weak dependence on cosine of the zenith angle">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="lake_area_fraction">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="lake_depth">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="water_storage_in_lake">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="land_area_fraction">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="depth_from_snow_surface_at_bottom_interface"
+                   description="depth from the top of the snow surface at the bottom of the soil layer">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls"
+                 description="Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="strong_cosz_area_fraction"
+                 description="Area fraction for albedo with strong dependence on cosine of zenith angle">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="weak_cosz_area_fraction"
+                 description="Area fraction for albedo with weak dependence on cosine of zenith angle">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="frozen_precipitation_density">
+      <type units="kg m-3">real</type>
+    </standard_name>
+    <standard_name name="temperature_in_ice_layer">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="explicit_precipitation_rate_on_previous_timestep">
+      <type units="mm s-1">real</type>
+    </standard_name>
+    <standard_name name="graupel_precipitation_rate_on_previous_timestep">
+      <type units="mm s-1">real</type>
+    </standard_name>
+    <standard_name name="ice_precipitation_rate_on_previous_timestep">
+      <type units="mm s-1">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_convective_precipitation_on_previous_timestep"
+                 description="Liquid water equivalent thickness of convective precipitation amount on previous timestep">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_explicit_precipitation_on_previous_timestep"
+                 description="Liquid water equivalent thickness of explicit precipitation amount on previous timestep">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_graupel_on_previous_timestep"
+                 description="Liquid water equivalent thickness of graupel amount on previous timestep">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_ice_precipitation_on_previous_timestep"
+                 description="Liquid water equivalent thickness of ice precipitation amount on previous timestep">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="snow_mass_on_previous_timestep">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="dimensionless_age_of_surface_snow">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="nonnegative_lwe_thickness_of_precipitation_on_dynamics_timestep"
+                 description="Non-negative liquid water equivalent thickness of precipitation amount on dynamics timestep">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="sea_area_fraction">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="sea_ice_area_fraction_of_sea_area_fraction">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="sea_ice_temperature">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="sea_ice_thickness">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="area_type">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="surface_sensible_heat_due_to_rainfall">
+      <type units="W">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_ice_in_surface_snow"
+                 description="Liquid water equivalent thickness of ice in surface snow">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_liquid_water_in_surface_snow"
+                 description="Liquid water equivalent thickness of liquid water in surface snow">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_snowfall_on_previous_timestep"
+                 description="Liquid water equivalent thickness of snowfall amount on previous timestep">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="lwe_snowfall_rate"
+                 description="Liquid water equivalent snowfall rate">
+      <type units="mm s-1">real</type>
+    </standard_name>
+    <standard_name name="snowfall_rate_on_previous_timestep">
+      <type units="mm s-1">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_2m"
+                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m"
+                   description="mixing ratio of the mass of water vapor to the mass of moist air and hydrometeors, at two meters above surface">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface"
+                 description="Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface">
+      <type units="kg kg-1 m s-1">real</type>
+    </standard_name>
+    <standard_name name="specified_upward_temperature_flux_at_surface">
+      <type units="K m s-1">real</type>
+    </standard_name>
+    <standard_name name="standard_deviation_of_subgrid_orography">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="statistical_measures_of_subgrid_orography_collection_array">
+      <type units="various">real</type>
+    </standard_name>
+    <standard_name name="stem_area_index">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="stem_mass_content">
+      <type units="g m-2">real</type>
+    </standard_name>
+    <standard_name name="molecular_sublayer_temperature_correction_in_sea_water">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="molecular_sublayer_thickness_in_sea_water">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="diffuse_nir_albedo_of_ice"
+                   description="ice surface albedo for diffuse near-infrared radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="diffuse_nir_albedo_of_land"
+                   description="land surface albedo for diffuse near-infrared radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="diffuse_vis_albedo_of_ice"
+                   description="ice surface albedo for diffuse visible radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="diffuse_vis_albedo_of_land"
+                   description="land surface albedo for diffuse visible radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="direct_nir_albedo_of_ice"
+                   description="ice surface albedo for direct near-infrared radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="direct_nir_albedo_of_land"
+                   description="land surface albedo for direct near-infrared radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="direct_vis_albedo_of_ice"
+                   description="ice surface albedo for direct visible radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="direct_vis_albedo_of_land"
+                   description="land surface albedo for direct visible radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="diffuse_shortwave_albedo_of_ice"
+                   description="ice surface albedo for diffuse shortwave radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="diffuse_shortwave_albedo_of_land"
+                   description="land surface albedo for diffuse shortwave radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="surface_friction_velocity">
+      <type units="m s-1">real</type>
+    </standard_name>
+    <standard_name name="surface_friction_velocity_for_momentum">
+      <type units="m s-1">real</type>
+    </standard_name>
+    <standard_name name="upward_latent_heat_flux_at_surface">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="surface_longwave_emissivity_over_ice">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="surface_longwave_emissivity_over_land">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="roughness_length"
+                 description="surface roughness length">
+      <type units="cm">real</type>
+    </standard_name>
+    <standard_name name="roughness_length_from_wave_model"
+                 description="surface roughness length from wave model">
+      <type units="cm">real</type>
+    </standard_name>
+    <standard_name name="roughness_length_over_ice"
+                 description="surface roughness length over ice">
+      <type units="cm">real</type>
+    </standard_name>
+    <standard_name name="roughness_length_over_land"
+                 description="surface roughness length over land">
+      <type units="cm">real</type>
+    </standard_name>
+    <standard_name name="roughness_length_over_water"
+                 description="surface roughness length over water">
+      <type units="cm">real</type>
+    </standard_name>
+    <standard_name name="skin_temperature_at_surface_over_ice"
+                   description="Skin temperature at surface over (or where) ice">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="skin_temperature_at_surface_over_land"
+                   description="Skin temperature at surface over (or where) land">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="skin_temperature_at_surface_over_ocean"
+                   description="Skin temperature at surface over (or where) ocean">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="skin_temperature_at_surface_over_snow"
+                   description="Skin temperature at surface over (or where) snow">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="snow_area_fraction_at_surface_over_ice">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="snow_area_fraction_at_surface_over_land">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="albedo_of_land_assuming_no_snow_cover"
+                 description="surface snow-free albedo over land">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="lwe_surface_snow"
+                 description="Liquid water equivalent surface snow">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="surface_temperature_scale">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="time_since_last_snowfall">
+      <type units="s">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice"
+                 description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over ice">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land"
+                 description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over land">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="wood_mass_content">
+      <type units="g m-2">real</type>
+    </standard_name>
+    <standard_name name="land_ice_area_fraction_of_cell_area"
+                   description="fraction of horizontal area of grid cell that is ice over land">
+      <type units="frac">real</type>
+    </standard_name>
+    <standard_name name="mass_content_of_water_in_top_soil_layer"
+                   description="mass per unit area of water in top layer of soil">
+      <type units="kg m-2">real</type>
+    </standard_name>
+    <standard_name name="density_of_snow_at_surface">
+      <type units="kg m-3">real</type>
+    </standard_name>
+    <standard_name name="urban_area_fraction_of_cell_area"
+                   description="fraction of horizontal area of grid cell that is urban">
+      <type units="frac">real</type>
+    </standard_name>
+    <standard_name name="volume_fraction_of_liquid_water_in_soil_at_critical_point"
+                   description="volume fraction of water in liquid phase in soil at critical point">
+      <type units="m3 m-3">real</type>
+    </standard_name>
+    <standard_name name="volume_fraction_of_liquid_water_in_soil_at_saturation"
+                   description="volume fraction of water in liquid phase in soil at saturation">
+      <type units="m3 m-3">real</type>
+    </standard_name>
+    <standard_name name="volume_fraction_of_liquid_water_in_soil_at_wilting_point"
+                   description="volume fraction of water in liquid phase in soil at wilting point">
+      <type units="m3 m-3">real</type>
+    </standard_name>
+    <standard_name name="wet_canopy_area_fraction">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="baseline_surface_longwave_emissivity">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="baseline_roughness_length"
+                 description="Baseline surface roughness length">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="air_temperature_in_canopy">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="air_vapor_pressure_in_canopy">
+      <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="canopy_intercepted_ice_mass">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="canopy_intercepted_liquid_water">
+      <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="canopy_water_mass_content">
+      <type units="kg m-2">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_rain_on_dynamics_timestep_for_coupling"
+                 description="Liquid water equivalent thickness of rain amount on dynamics timestep for coupling">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling"
+                 description="Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling">
+      <type units="m">real</type>
+    </standard_name>
   </section>
-  <section name="GFS_typedefs_GFS_control_type">
-      <standard_name name="downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme"
-                   description="Downdraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="downdraft_fraction_reaching_surface_over_land_for_deep_convection">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="downdraft_fraction_reaching_surface_over_water_for_deep_convection">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="timescale_for_autoconversion_to_snow">
-         <type units="s">real</type>
-      </standard_name>
-      <standard_name name="number_of_radiatively_active_gases">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_gaussian_quadrature_angles_for_radiation">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_condensate_species">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_cloud_types_in_chikira_sugiyama_deep_convection">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_convective_cloud_variables_in_xyz_dimensioned_restart_array">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_perturbed_land_surface_variables">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_longwave_bands">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_longwave_spectral_points">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_x_points_for_current_cubed_sphere_tile">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_y_points_for_current_cubed_sphere_tile">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_diagnostics_variables_for_radiation">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_ice_roughness_categories">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_spectral_wave_truncation_for_sas_convection"
-                   description="Number of spectral wave truncation for Simplified Arakawa-Schubert deep convection scheme">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_statistical_measures_of_subgrid_orography">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_shortwave_bands">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_shortwave_spectral_points">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_timesteps_between_diagnostics_resetting">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_timesteps_between_longwave_radiation_calls">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_timesteps_between_shortwave_radiation_calls">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_timesteps_between_surface_cycling_calls">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="number_of_timesteps_for_concurrent_radiation_and_remainder_physics_calls_after_model_initialization">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="period_of_max_diagnostics_reset"
-                   description="Period of maximum diagnostics reset">
-         <type units="s">real</type>
-      </standard_name>
-      <standard_name name="timescale_for_rayleigh_damping">
-         <type units="d">real</type>
-      </standard_name>
-    </section>
-   <section name="Tendencies">
+  <section name="Convective physics parameters">
+    <standard_name name="downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme"
+                 description="Downdraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="downdraft_fraction_reaching_surface_over_land_for_deep_convection">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="downdraft_fraction_reaching_surface_over_water_for_deep_convection">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="number_of_cloud_types_in_chikira_sugiyama_deep_convection">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="number_of_spectral_wave_truncation_for_sas_convection"
+                 description="Number of spectral wave truncation for Simplified Arakawa-Schubert deep convection scheme">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="consecutive_calls_for_grell_freitas_convection">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="cloud_fraction_for_mg">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="counter_for_grell_freitas_convection">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type">
+      <type units="kg m-2 s-1">real</type>
+    </standard_name>
+  </section>
+  <section name="Gravity wave drag parameters">
+    <standard_name name="absolute_momentum_flux_due_to_nonorographic_gwd"
+                   description="Absolute momentum flux due to non-orographic gravity wave drag">
+     <type units="various">real</type>
+    </standard_name>
+    <standard_name name="timescale_for_rayleigh_damping">
+      <type units="d">real</type>
+    </standard_name>
+    <standard_name name="number_of_statistical_measures_of_subgrid_orography">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="unfiltered_height_above_mean_sea_level">
+      <type units="m">real</type>
+    </standard_name>
+  </section>
+  <section name="Tendencies">
     <standard_name name="process_split_cumulative_tendency_of_air_temperature">
       <type units="K s-1">real</type>
     </standard_name>
@@ -3699,447 +4120,53 @@
       <type units="m s-2">real</type>
     </standard_name>
   </section>
-   <section name="GFS_typedefs_GFS_tbd_type">
-      <standard_name name="absolute_momentum_flux_due_to_nonorographic_gwd"
-                   description="Absolute momentum flux due to non-orographic gravity wave drag">
-         <type units="various">real</type>
-      </standard_name>
-      <standard_name name="cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls"
-                   description="Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="mass_number_concentration_of_aerosol_from_gocart_climatology">
-         <type units="kg-1">real</type>
-      </standard_name>
-      <standard_name name="atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type">
-         <type units="kg m-2 s-1">real</type>
-      </standard_name>
-      <standard_name name="cloud_fraction_for_mg">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="counter_for_grell_freitas_convection">
-         <type units="count">integer</type>
-      </standard_name>
-      <standard_name name="stratospheric_water_vapor_forcing">
-         <type units="various">real</type>
-      </standard_name>
-      <standard_name name="ice_nucleation_number_from_climatology">
-         <type units="kg-1">real</type>
-      </standard_name>
-      <standard_name name="upward_virtual_potential_temperature_flux">
-         <type units="K m s-1">real</type>
-      </standard_name>
-      <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme"
-                   description="Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme">
-         <type units="m s-1 kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="turbulent_mixing_length">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="ozone_forcing">
-         <type units="various">real</type>
-      </standard_name>
-      <standard_name name="potential_temperature_of_air_at_top_of_viscous_sublayer">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="variance_of_water_vapor_mixing_ratio_wrt_moist_air"
-                   description="Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)">
-         <type units="kg2 kg-2">real</type>
-      </standard_name>
-      <standard_name name="random_number_seed_for_mcica_longwave"
-                   description="Random number seed for Monte-Carlo Independent Column Approximation longwave scheme">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="random_number_seed_for_mcica_shortwave"
-                   description="Random number seed for Monte-Carlo Independent Column Approximation shortwave scheme">
-         <type units="1">integer</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="stability_function_for_heat">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="subgrid_scale_cloud_area_fraction_in_atmosphere_layer">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air"
-                   description="Subgrid-scale cloud ice mass mixing ratio with respect to moist air">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air"
-                   description="Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="air_pressure_at_surface_on_previous_timestep">
-         <type units="Pa">real</type>
-      </standard_name>
-      <standard_name name="air_pressure_at_surface_two_timesteps_back">
-         <type units="Pa">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes"
-                   description="Surface specific humidity (water vapor mass mixing ratio with respect to moist air) for Mellor-Yamada-Janjic physics schemes">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection">
-         <type units="m s-1">real</type>
-      </standard_name>
-      <standard_name name="covariance_of_air_temperature_and_water_vapor_mixing_ratio_wrt_moist_air"
-                   description="Covariance of air temperature and specific humidity (water vapor mass mixing ratio with respect to moist air)">
-         <type units="K kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="variance_of_air_temperature">
-         <type units="K2">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_rain_on_dynamics_timestep_for_coupling"
-                   description="Liquid water equivalent thickness of rain amount on dynamics timestep for coupling">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling"
-                   description="Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="scaling_factor_for_momentum_at_top_of_viscous_sublayer">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="scaling_factor_for_potential_temperature_at_top_of_viscous_sublayer">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer"
-                   description="Scaling factor for specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer">
-         <type units="1">real</type>
-      </standard_name>
-   </section>
-   <section name="GFS_typedefs_GFS_sfcprop_type">
-      <standard_name name="frozen_precipitation_density">
-         <type units="kg m-3">real</type>
-      </standard_name>
-      <standard_name name="heat_content_in_diurnal_thermocline">
-         <type units="K m">real</type>
-      </standard_name>
-      <standard_name name="diurnal_thermocline_layer_thickness">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="explicit_precipitation_rate_on_previous_timestep">
-         <type units="mm s-1">real</type>
-      </standard_name>
-      <standard_name name="precipitation_type">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="strong_cosz_area_fraction">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="weak_cosz_area_fraction">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="free_convection_layer_thickness_in_sea_water">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="consecutive_calls_for_grell_freitas_convection">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="graupel_precipitation_rate_on_previous_timestep">
-         <type units="mm s-1">real</type>
-      </standard_name>
-      <standard_name name="ice_precipitation_rate_on_previous_timestep">
-         <type units="mm s-1">real</type>
-      </standard_name>
-      <standard_name name="temperature_in_ice_layer">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface"
-                   description="Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface">
-         <type units="kg kg-1 m s-1">real</type>
-      </standard_name>
-      <standard_name name="upward_temperature_flux_at_surface">
-         <type units="K m s-1">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_convective_precipitation_on_previous_timestep"
-                   description="Liquid water equivalent thickness of convective precipitation amount on previous timestep">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_explicit_precipitation_on_previous_timestep"
-                   description="Liquid water equivalent thickness of explicit precipitation amount on previous timestep">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_graupel_on_previous_timestep"
-                   description="Liquid water equivalent thickness of graupel amount on previous timestep">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_ice_precipitation_on_previous_timestep"
-                   description="Liquid water equivalent thickness of ice precipitation amount on previous timestep">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="snow_mass_on_previous_timestep">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="monin_obukhov_similarity_function_for_heat">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="monin_obukhov_similarity_function_for_momentum">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="dimensionless_age_of_surface_snow">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="nonnegative_lwe_thickness_of_precipitation_on_dynamics_timestep"
-                   description="Non-negative liquid water equivalent thickness of precipitation amount on dynamics timestep">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="ocean_mixed_layer_thickness">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="height_above_mean_sea_level">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="height_above_mean_sea_level_at_surface"
-                     description="Height above mean sea level at local surface">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="unfiltered_height_above_mean_sea_level">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="potential_temperature_of_air_at_2m">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="ratio_of_wind_at_surface_adjacent_layer_to_wind_at_10m">
-         <type units="ratio">real</type>
-      </standard_name>
-      <standard_name name="reciprocal_of_obukhov_length">
-         <type units="m-1">real</type>
-      </standard_name>
-      <standard_name name="sea_area_fraction">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="sea_ice_area_fraction_of_sea_area_fraction">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="sea_ice_temperature">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="sea_ice_thickness">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="area_type">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="reference_sea_surface_temperature">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="sea_surface_temperature">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="sea_water_salinity_in_diurnal_thermocline">
-         <type units="ppt m">real</type>
-      </standard_name>
-      <standard_name name="surface_sensible_heat_due_to_rainfall">
-         <type units="W">real</type>
-      </standard_name>
-      <standard_name name="derivative_of_heat_content_in_diurnal_thermocline_wrt_surface_skin_temperature">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="derivative_of_diurnal_thermocline_layer_thickness_wrt_surface_skin_temperature">
-         <type units="m K-1">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_ice_in_surface_snow"
-                   description="Liquid water equivalent thickness of ice in surface snow">
-         <type units="mm">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_liquid_water_in_surface_snow"
-                   description="Liquid water equivalent thickness of liquid water in surface snow">
-         <type units="mm">real</type>
-      </standard_name>
-      <standard_name name="lwe_thickness_of_snowfall_on_previous_timestep"
-                   description="Liquid water equivalent thickness of snowfall amount on previous timestep">
-         <type units="mm">real</type>
-      </standard_name>
-      <standard_name name="lwe_snowfall_rate"
-                   description="Liquid water equivalent snowfall rate">
-         <type units="mm s-1">real</type>
-      </standard_name>
-      <standard_name name="snowfall_rate_on_previous_timestep">
-         <type units="mm s-1">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_2m"
-                     description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_2m"
-                     description="mixing ratio of the mass of water vapor to the mass of moist air and hydrometeors, at two meters above surface">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface"
-                   description="Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface">
-         <type units="kg kg-1 m s-1">real</type>
-      </standard_name>
-      <standard_name name="specified_upward_temperature_flux_at_surface">
-         <type units="K m s-1">real</type>
-      </standard_name>
-      <standard_name name="standard_deviation_of_subgrid_orography">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="statistical_measures_of_subgrid_orography_collection_array">
-         <type units="various">real</type>
-      </standard_name>
-      <standard_name name="stem_area_index">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="stem_mass_content">
-         <type units="g m-2">real</type>
-      </standard_name>
-      <standard_name name="molecular_sublayer_temperature_correction_in_sea_water">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="molecular_sublayer_thickness_in_sea_water">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="diffuse_nir_albedo_of_ice"
-                     description="ice surface albedo for diffuse near-infrared radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="diffuse_nir_albedo_of_land"
-                     description="land surface albedo for diffuse near-infrared radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="diffuse_vis_albedo_of_ice"
-                     description="ice surface albedo for diffuse visible radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="diffuse_vis_albedo_of_land"
-                     description="land surface albedo for diffuse visible radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="direct_nir_albedo_of_ice"
-                     description="ice surface albedo for direct near-infrared radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="direct_nir_albedo_of_land"
-                     description="land surface albedo for direct near-infrared radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="direct_vis_albedo_of_ice"
-                     description="ice surface albedo for direct visible radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="direct_vis_albedo_of_land"
-                     description="land surface albedo for direct visible radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="diffuse_shortwave_albedo_of_ice"
-                     description="ice surface albedo for diffuse shortwave radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="diffuse_shortwave_albedo_of_land"
-                     description="land surface albedo for diffuse shortwave radiation">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="surface_friction_velocity">
-         <type units="m s-1">real</type>
-      </standard_name>
-      <standard_name name="surface_friction_velocity_for_momentum">
-         <type units="m s-1">real</type>
-      </standard_name>
-      <standard_name name="upward_latent_heat_flux_at_surface">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="surface_longwave_emissivity_over_ice">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="surface_longwave_emissivity_over_land">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="roughness_length"
-                   description="surface roughness length">
-         <type units="cm">real</type>
-      </standard_name>
-      <standard_name name="roughness_length_from_wave_model"
-                   description="surface roughness length from wave model">
-         <type units="cm">real</type>
-      </standard_name>
-      <standard_name name="roughness_length_over_ice"
-                   description="surface roughness length over ice">
-         <type units="cm">real</type>
-      </standard_name>
-      <standard_name name="roughness_length_over_land"
-                   description="surface roughness length over land">
-         <type units="cm">real</type>
-      </standard_name>
-      <standard_name name="roughness_length_over_water"
-                   description="surface roughness length over water">
-         <type units="cm">real</type>
-      </standard_name>
-      <standard_name name="skin_temperature_at_surface"
-                     description="Skin temperature at surface">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="skin_temperature_at_surface_over_ice"
-                     description="Skin temperature at surface over (or where) ice">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="skin_temperature_at_surface_over_land"
-                     description="Skin temperature at surface over (or where) land">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="skin_temperature_at_surface_over_ocean"
-                     description="Skin temperature at surface over (or where) ocean">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="skin_temperature_at_surface_over_snow"
-                     description="Skin temperature at surface over (or where) snow">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="snow_area_fraction_at_surface_over_ice">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="snow_area_fraction_at_surface_over_land">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="albedo_of_land_assuming_no_snow_cover"
-                   description="surface snow-free albedo over land">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="lwe_surface_snow"
-                   description="Liquid water equivalent surface snow">
-         <type units="mm">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="ratio_of_height_to_monin_obukhov_length">
-         <type units="1">real</type>
-      </standard_name>
-      <standard_name name="surface_temperature_scale">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="time_since_last_snowfall">
-         <type units="s">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over ice">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over land">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="wood_mass_content">
-         <type units="g m-2">real</type>
-      </standard_name>
-   </section>
+  <section name="Other">
+    <standard_name name="stratospheric_water_vapor_forcing">
+      <type units="various">real</type>
+    </standard_name>
+    <standard_name name="ice_nucleation_number_from_climatology">
+      <type units="kg-1">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep"
+                 description="Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="ozone_forcing">
+      <type units="various">real</type>
+    </standard_name>
+    <standard_name name="subgrid_scale_cloud_area_fraction_in_atmosphere_layer">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air"
+                 description="Subgrid-scale cloud ice mass mixing ratio with respect to moist air">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air"
+                 description="Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection">
+      <type units="m s-1">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array"
+                 description="Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back"
+                 description="Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="scaling_factor_for_momentum_at_top_of_viscous_sublayer">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="scaling_factor_for_potential_temperature_at_top_of_viscous_sublayer">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer"
+                 description="Scaling factor for specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer">
+      <type units="1">real</type>
+    </standard_name>
+  </section>
    <section name="GFS_typedefs_GFS_coupling_type">
       <standard_name name="convective_cloud_condensate_after_rainout">
          <type units="kg kg-1">real</type>
@@ -4443,39 +4470,6 @@
       </standard_name>
       <standard_name name="y_wind_at_surface_adjacent_layer">
          <type units="m s-1">real</type>
-      </standard_name>
-   </section>
-   <section name="GFS_typedefs_GFS_stateout_type">
-      <standard_name name="cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state"
-                   description="Cloud liquid water mass mixing ratio with respect to moist air of new state">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state">
-         <type units="kg-1">real</type>
-      </standard_name>
-      <standard_name name="nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="graupel_mixing_ratio_wrt_moist_air_of_new_state"
-                   description="Graupel mass mixing ratio with respect to moist air of new state">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="mass_number_concentration_of_graupel_of_new_state">
-         <type units="kg-1">real</type>
-      </standard_name>
-      <standard_name name="mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state">
-         <type units="kg-1">real</type>
-      </standard_name>
-      <standard_name name="mass_number_concentration_of_hygroscopic_aerosols_of_new_state">
-         <type units="kg-1">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state at surface-adjacent layer">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_of_new_state"
-                   description="Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state">
-         <type units="kg kg-1">real</type>
       </standard_name>
    </section>
 </standard_names>
