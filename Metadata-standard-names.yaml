@@ -1532,6 +1532,78 @@ section:
     type: real
     kind: null
     units: kg2 kg-2
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) at surface-adjacent layer
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: x_wind_at_surface_adjacent_layer
+    description: X wind at surface adjacent layer
+    type: real
+    kind: null
+    units: m s-1
+  - name: y_wind_at_surface_adjacent_layer
+    description: Y wind at surface adjacent layer
+    type: real
+    kind: null
+    units: m s-1
+  - name: dimensionless_exner_function_wrt_surface_pressure
+    description: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
+    type: real
+    kind: null
+    units: 1
+  - name: dimensionless_exner_function_at_surface_adjacent_layer
+    description: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa
+      and p is the pressure at the surface-adjacent layer
+    type: real
+    kind: null
+    units: 1
+  - name: dimensionless_exner_function_at_interfaces
+    description: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa
+      and p is the pressure at vertical layer interfaces
+    type: real
+    kind: null
+    units: 1
+  - name: atmosphere_heat_diffusivity_for_chemistry_coupling
+    description: Atmosphere heat diffusivity for chemistry coupling
+    type: real
+    kind: null
+    units: m2 s-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) on previous timestep
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: subgrid_scale_cloud_area_fraction_in_atmosphere_layer
+    description: Subgrid scale cloud area fraction in atmosphere layer
+    type: real
+    kind: null
+    units: fraction
+  - name: subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air
+    description: Subgrid-scale cloud ice mass mixing ratio with respect to moist air
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air
+    description: Subgrid-scale cloud liquid water mass mixing ratio with respect to
+      moist air
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) on previous timestep in XYZ-dimensioned restart array
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) two timesteps back
+    type: real
+    kind: null
+    units: kg kg-1
 - name: Marine
   comment: null
   standard_names:
@@ -1929,6 +2001,11 @@ section:
       type: real
       kind: null
       units: kg kg-1
+    - name: ozone_mixing_ratio_wrt_moist_air
+      description: Ozone mass mixing ratio with respect to moist air
+      type: real
+      kind: null
+      units: kg kg-1
   - name: precipitation, cloud, and hydrometeor variables
     comment: null
     standard_names:
@@ -2256,6 +2333,37 @@ section:
       type: real
       kind: null
       units: 1
+    - name: convective_cloud_condensate_after_rainout
+      description: Convective cloud condensate after rainout
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer
+      description: Cloud liquid water mass mixing ratio with respect to moist air
+        at surface-adjacent layer
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_number_concentration_of_cloud_liquid_water_particles_in_air
+      description: Mass number concentration of cloud liquid water particles in air
+      type: real
+      kind: null
+      units: kg-1
+    - name: graupel_mixing_ratio_wrt_moist_air
+      description: Graupel mass mixing ratio with respect to moist air
+      type: real
+      kind: null
+      units: kg kg-1
+    - name: mass_number_concentration_of_graupel_in_air
+      description: Mass number concentration of graupel in air
+      type: real
+      kind: null
+      units: kg-1
+    - name: mass_number_concentration_of_cloud_ice_water_crystals_in_air
+      description: Mass number concentration of cloud ice water crystals in air
+      type: real
+      kind: null
+      units: kg-1
   - name: Aerosols
     comment: null
     standard_names:
@@ -2402,6 +2510,16 @@ section:
       units: kg-1
     - name: mass_number_concentration_of_hygroscopic_aerosols_of_new_state
       description: Mass number concentration of hygroscopic aerosols of new state
+      type: real
+      kind: null
+      units: kg-1
+    - name: mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols
+      description: Mass number concentration of nonhygroscopic ice nucleating aerosols
+      type: real
+      kind: null
+      units: kg-1
+    - name: mass_number_concentration_of_hygroscopic_aerosols
+      description: Mass number concentration of hygroscopic aerosols
       type: real
       kind: null
       units: kg-1
@@ -4565,6 +4683,22 @@ section:
     type: real
     kind: null
     units: 1
+  - name: scaling_factor_for_momentum_at_top_of_viscous_sublayer
+    description: Scaling factor for momentum at top of viscous sublayer
+    type: real
+    kind: null
+    units: 1
+  - name: scaling_factor_for_potential_temperature_at_top_of_viscous_sublayer
+    description: Scaling factor for potential temperature at top of viscous sublayer
+    type: real
+    kind: null
+    units: 1
+  - name: scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer
+    description: Scaling factor for specific humidity (water vapor mass mixing ratio
+      with respect to moist air) at the top of the viscous sublayer
+    type: real
+    kind: null
+    units: 1
 - name: Thresholds
   comment: Thresholds represent some value at which the behavior of some process changes,
     including maximums and minimums
@@ -4808,6 +4942,28 @@ section:
     type: real
     kind: null
     units: variable
+  - name: dissipation_estimate_of_air_temperature_at_model_layers
+    description: Dissipation estimate of air temperature at model layers
+    type: real
+    kind: null
+    units: K
+  - name: total_amplitude_of_sppt_perturbation
+    description: Total amplitude of stochastically perturbed physics tendencies perturbation
+    type: real
+    kind: null
+    units: 1
+  - name: tendency_of_air_temperature_to_withhold_from_sppt
+    description: Change of air temperature to withhold from stochastically perturbed
+      physics tendencies per unit time
+    type: real
+    kind: null
+    units: K s-1
+  - name: sppt_scaling_factors_from_coupled_process
+    description: Stochastically perturbed physics tendencies scaling factors from
+      coupled process
+    type: real
+    kind: null
+    units: 1
 - name: Radiation
   comment: null
   standard_names:
@@ -4931,7 +5087,238 @@ section:
     type: integer
     kind: null
     units: 1
-- name: atmospheric surface and boundary layer
+  - name: cumulative_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: cumulative downwelling diffuse near-infrared shortwave flux at the
+      surface level for coupling multiplied by the duration of the timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: cumulative downwelling diffuse ultraviolet and visible shortwave
+      flux at the surface level for coupling multiplied by the duration of the timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: cumulative downwelling direct near-infrared shortwave flux at the
+      surface level for coupling multiplied by the duration of the timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: cumulative downwelling direct ultraviolet and visible shortwave flux
+      at the surface level for coupling multiplied by the duration of the timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: Cumulative downwelling longwave flux at surface for coupling multiplied
+      by timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: Cumulative downwelling shortwave flux at surface for coupling multiplied
+      by timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: cumulative net downwelling diffuse near-infrared shortwave flux at
+      the surface level for coupling multiplied by the duration of the timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: cumulative net downwelling diffuse ultraviolet and visible shortwave
+      flux at the surface level for coupling multiplied by the duration of the timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: cumulative net downwelling direct near-infrared shortwave flux at
+      the surface level for coupling multiplied by the duration of the timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: cumulative net downwelling direct ultraviolet and visible shortwave
+      flux at the surface level for coupling multiplied by the duration of the timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_net_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: Cumulative net downwelling longwave flux at surface for coupling
+      multiplied by timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_net_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: Cumulative net downwelling shortwave flux at surface for coupling
+      multiplied by timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling
+    description: downwelling diffuse near-infrared shortwave flux at the surface level
+      for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling
+    description: downwelling diffuse ultraviolet and visible shortwave flux at the
+      surface level for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_direct_nir_shortwave_flux_at_surface_for_coupling
+    description: downwelling direct near-infrared shortwave flux at the surface level
+      for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling
+    description: downwelling direct ultraviolet and visible shortwave flux at the
+      surface level for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_longwave_flux_at_surface_for_coupling
+    description: Downwelling longwave flux at surface for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_shortwave_flux_at_surface_for_coupling
+    description: Downwelling shortwave flux at surface for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling
+    description: net downwelling diffuse near-infrared shortwave flux at the surface
+      level for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling
+    description: net downwelling diffuse ultraviolet and visible shortwave flux at
+      the surface level for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling
+    description: net downwelling direct near-infrared shortwave flux at the surface
+      level for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling
+    description: net_downwelling direct ultraviolet and visible shortwave flux at
+      the surface level for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: net_downwelling_longwave_flux_at_surface_for_coupling
+    description: Net downwelling longwave flux at surface for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: net_downwelling_shortwave_flux_at_surface_for_coupling
+    description: Net downwelling shortwave flux at surface for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep
+    description: downwelling diffuse near-infrared shortwave flux at the surface level
+      on the radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep
+    description: downwelling diffuse ultraviolet and visible shortwave flux at the
+      surface level on the radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep
+    description: downwelling direct near-infrared shortwave flux at the surface level
+      on the radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep
+    description: downwelling direct ultraviolet and visible shortwave flux at the
+      surface level on the radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_longwave_flux_at_surface_on_radiation_timestep
+    description: Downwelling longwave flux at surface on radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: downwelling_shortwave_flux_at_surface_on_radiation_timestep
+    description: Downwelling shortwave flux at surface on radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: net_downwelling_shortwave_flux_at_surface_on_radiation_timestep
+    description: Net downwelling shortwave flux at surface on radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: rrtmgp_jacobian_of_upward_lw_flux
+    description: Rapid Radiative Transfer Model for General circulation model applications
+      - Parallel (RRTMGP) jacobian of upward longwave flux
+    type: real
+    kind: null
+    units: W m-2 K-1
+  - name: rrtmgp_lw_downward_allsky_flux_profile
+    description: Rapid Radiative Transfer Model for General circulation model applications
+      - Parallel (RRTMGP) longwave downward all-sky flux profile
+    type: real
+    kind: null
+    units: W m-2
+  - name: rrtmgp_lw_upward_allsky_flux_profile
+    description: Rapid Radiative Transfer Model for General circulation model applications
+      - Parallel (RRTMGP) longwave upward all-sky flux profile
+    type: real
+    kind: null
+    units: W m-2
+  - name: upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep
+    description: upwelling diffuse near-infrared shortwave flux at the surface level
+      on the radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep
+    description: upwelling diffuse ultraviolet and visible shortwave flux at the surface
+      level on the radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: upwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep
+    description: upwelling direct near-infrared shortwave flux at the surface level
+      on the radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: upwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep
+    description: upwelling direct ultraviolet and visible shortwave flux at the surface
+      level on the radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+  - name: upwelling_longwave_flux_at_surface_from_coupled_process
+    description: Upwelling longwave flux at surface from coupled process
+    type: real
+    kind: null
+    units: W m-2
+  - name: upwelling_longwave_flux_at_surface_on_radiation_timestep
+    description: Upwelling longwave flux at surface on radiation timestep
+    type: real
+    kind: null
+    units: W m-2
+- name: Atmospheric surface and boundary layer
   comment: null
   standard_names:
   - name: critical_relative_humidity_at_top_of_atmosphere_boundary_layer
@@ -5055,6 +5442,111 @@ section:
     type: real
     kind: null
     units: K m s-1
+  - name: water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) at 2 meters above surface used for coupling
+    type: real
+    kind: null
+    units: kg kg-1
+  - name: air_pressure_at_surface_for_coupling
+    description: Air pressure at surface for coupling
+    type: real
+    kind: null
+    units: Pa
+  - name: surface_skin_temperature_for_coupling
+    description: Surface skin temperature for coupling
+    type: real
+    kind: null
+    units: K
+  - name: upward_latent_heat_flux_at_surface_for_coupling
+    description: Upward latent heat flux at surface for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: upward_sensible_heat_flux_at_surface_for_chemistry_coupling
+    description: Upward sensible heat flux at surface for chemistry coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: upward_sensible_heat_flux_at_surface_for_coupling
+    description: Upward sensible heat flux at surface for coupling
+    type: real
+    kind: null
+    units: W m-2
+  - name: x_momentum_flux_at_surface_for_coupling
+    description: X momentum flux at surface for coupling
+    type: real
+    kind: null
+    units: Pa
+  - name: y_momentum_flux_at_surface_for_coupling
+    description: Y momentum flux at surface for coupling
+    type: real
+    kind: null
+    units: Pa
+  - name: temperature_at_2m_for_coupling
+    description: Temperature at 2m for coupling
+    type: real
+    kind: null
+    units: K
+  - name: x_wind_at_10m_for_coupling
+    description: X wind at 10m for coupling
+    type: real
+    kind: null
+    units: m s-1
+  - name: y_wind_at_10m_for_coupling
+    description: Y wind at 10m for coupling
+    type: real
+    kind: null
+    units: m s-1
+  - name: cumulative_upward_latent_heat_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: Cumulative upward latent heat flux at surface for coupling multiplied
+      by timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_upward_sensible_heat_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: Cumulative upward sensible heat flux at surface for coupling multiplied
+      by timestep
+    type: real
+    kind: null
+    units: J m-2
+  - name: cumulative_x_momentum_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: Cumulative x momentum flux at surface for coupling multiplied by
+      timestep
+    type: real
+    kind: null
+    units: Pa s
+  - name: cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep
+    description: Cumulative y momentum flux at surface for coupling multiplied by
+      timestep
+    type: real
+    kind: null
+    units: Pa s
+  - name: lwe_surface_snow_from_coupled_process
+    description: Liquid water equivalent surface snow from coupled process
+    type: real
+    kind: null
+    units: m
+  - name: upward_latent_heat_flux_at_surface_from_coupled_process
+    description: Upward latent heat flux at surface from coupled process
+    type: real
+    kind: null
+    units: W m-2
+  - name: upward_sensible_heat_flux_at_surface_from_coupled_process
+    description: Upward sensible heat flux at surface from coupled process
+    type: real
+    kind: null
+    units: W m-2
+  - name: x_momentum_flux_at_surface_from_coupled_process
+    description: X momentum flux at surface from coupled process
+    type: real
+    kind: null
+    units: Pa
+  - name: y_momentum_flux_at_surface_from_coupled_process
+    description: Y momentum flux at surface from coupled process
+    type: real
+    kind: null
+    units: Pa
 - name: Land surface, subsurface, and vegetation properties
   comment: null
   standard_names:
@@ -5749,6 +6241,48 @@ section:
     type: real
     kind: null
     units: m
+  - name: diffuse_nir_albedo_for_coupling
+    description: surface albedo for diffuse near-infrared radiation for coupling
+    type: real
+    kind: null
+    units: fraction
+  - name: direct_nir_albedo_for_coupling
+    description: surface albedo for direct near-infrared radiation for coupling
+    type: real
+    kind: null
+    units: fraction
+  - name: diffuse_vis_albedo_for_coupling
+    description: surface albedo for diffuse visible radiation for coupling
+    type: real
+    kind: null
+    units: fraction
+  - name: direct_vis_albedo_for_coupling
+    description: surface albedo for direct visible radiation for coupling
+    type: real
+    kind: null
+    units: fraction
+  - name: cumulative_lwe_thickness_of_convective_precipitation_for_coupling
+    description: Cumulative liquid water equivalent thickness of convective precipitation
+      amount for coupling
+    type: real
+    kind: null
+    units: m
+  - name: cumulative_lwe_thickness_of_precipitation_for_coupling
+    description: Cumulative liquid water equivalent thickness of precipitation amount
+      for coupling
+    type: real
+    kind: null
+    units: m
+  - name: cumulative_lwe_thickness_of_snow_for_coupling
+    description: Cumulative liquid water equivalent thickness of snow amount for coupling
+    type: real
+    kind: null
+    units: m
+  - name: area_type_from_coupled_process
+    description: Area type from coupled process
+    type: real
+    kind: null
+    units: 1
 - name: Convective physics parameters
   comment: null
   standard_names:
@@ -5799,6 +6333,16 @@ section:
     type: real
     kind: null
     units: kg m-2 s-1
+  - name: physics_field_for_coupling
+    description: Physics field for coupling
+    type: real
+    kind: null
+    units: m2 s-2
+  - name: enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection
+    description: Enhancement to wind speed at surface adjacent layer due to convection
+    type: real
+    kind: null
+    units: m s-1
 - name: Gravity wave drag parameters
   comment: null
   standard_names:
@@ -5917,23 +6461,6 @@ section:
     type: real
     kind: null
     units: m s-2
-  - name: total_amplitude_of_sppt_perturbation
-    description: Total amplitude of stochastically perturbed physics tendencies perturbation
-    type: real
-    kind: null
-    units: 1
-  - name: tendency_of_air_temperature_to_withhold_from_sppt
-    description: Change of air temperature to withhold from stochastically perturbed
-      physics tendencies per unit time
-    type: real
-    kind: null
-    units: K s-1
-  - name: sppt_scaling_factors_from_coupled_process
-    description: Stochastically perturbed physics tendencies scaling factors from
-      coupled process
-    type: real
-    kind: null
-    units: 1
   - name: tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_nonphysics
     description: Tendency of specific humidity (water vapor mass mixing ratio with
       respect to moist air) due to non-physics processes
@@ -6080,7 +6607,7 @@ section:
     type: real
     kind: null
     units: m s-2
-- name: Other
+- name: Chemistry processes
   comment: null
   standard_names:
   - name: stratospheric_water_vapor_forcing
@@ -6088,546 +6615,8 @@ section:
     type: real
     kind: null
     units: various
-  - name: ice_nucleation_number_from_climatology
-    description: Ice nucleation number from climatology
-    type: real
-    kind: null
-    units: kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) on previous timestep
-    type: real
-    kind: null
-    units: kg kg-1
   - name: ozone_forcing
     description: Ozone forcing
     type: real
     kind: null
     units: various
-  - name: subgrid_scale_cloud_area_fraction_in_atmosphere_layer
-    description: Subgrid scale cloud area fraction in atmosphere layer
-    type: real
-    kind: null
-    units: fraction
-  - name: subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air
-    description: Subgrid-scale cloud ice mass mixing ratio with respect to moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air
-    description: Subgrid-scale cloud liquid water mass mixing ratio with respect to
-      moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection
-    description: Enhancement to wind speed at surface adjacent layer due to convection
-    type: real
-    kind: null
-    units: m s-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) on previous timestep in XYZ-dimensioned restart array
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) two timesteps back
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: scaling_factor_for_momentum_at_top_of_viscous_sublayer
-    description: Scaling factor for momentum at top of viscous sublayer
-    type: real
-    kind: null
-    units: 1
-  - name: scaling_factor_for_potential_temperature_at_top_of_viscous_sublayer
-    description: Scaling factor for potential temperature at top of viscous sublayer
-    type: real
-    kind: null
-    units: 1
-  - name: scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer
-    description: Scaling factor for specific humidity (water vapor mass mixing ratio
-      with respect to moist air) at the top of the viscous sublayer
-    type: real
-    kind: null
-    units: 1
-- name: GFS_typedefs_GFS_coupling_type
-  comment: null
-  standard_names:
-  - name: convective_cloud_condensate_after_rainout
-    description: Convective cloud condensate after rainout
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: cumulative_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: cumulative downwelling diffuse near-infrared shortwave flux at the
-      surface level for coupling multiplied by the duration of the timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: cumulative downwelling diffuse ultraviolet and visible shortwave
-      flux at the surface level for coupling multiplied by the duration of the timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: cumulative downwelling direct near-infrared shortwave flux at the
-      surface level for coupling multiplied by the duration of the timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: cumulative downwelling direct ultraviolet and visible shortwave flux
-      at the surface level for coupling multiplied by the duration of the timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: Cumulative downwelling longwave flux at surface for coupling multiplied
-      by timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: Cumulative downwelling shortwave flux at surface for coupling multiplied
-      by timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: cumulative net downwelling diffuse near-infrared shortwave flux at
-      the surface level for coupling multiplied by the duration of the timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: cumulative net downwelling diffuse ultraviolet and visible shortwave
-      flux at the surface level for coupling multiplied by the duration of the timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: cumulative net downwelling direct near-infrared shortwave flux at
-      the surface level for coupling multiplied by the duration of the timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: cumulative net downwelling direct ultraviolet and visible shortwave
-      flux at the surface level for coupling multiplied by the duration of the timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_net_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: Cumulative net downwelling longwave flux at surface for coupling
-      multiplied by timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_net_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: Cumulative net downwelling shortwave flux at surface for coupling
-      multiplied by timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_upward_latent_heat_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: Cumulative upward latent heat flux at surface for coupling multiplied
-      by timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_upward_sensible_heat_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: Cumulative upward sensible heat flux at surface for coupling multiplied
-      by timestep
-    type: real
-    kind: null
-    units: J m-2
-  - name: cumulative_x_momentum_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: Cumulative x momentum flux at surface for coupling multiplied by
-      timestep
-    type: real
-    kind: null
-    units: Pa s
-  - name: cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep
-    description: Cumulative y momentum flux at surface for coupling multiplied by
-      timestep
-    type: real
-    kind: null
-    units: Pa s
-  - name: atmosphere_heat_diffusivity_for_chemistry_coupling
-    description: Atmosphere heat diffusivity for chemistry coupling
-    type: real
-    kind: null
-    units: m2 s-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at 2 meters above surface used for coupling
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: air_pressure_at_surface_for_coupling
-    description: Air pressure at surface for coupling
-    type: real
-    kind: null
-    units: Pa
-  - name: downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling
-    description: downwelling diffuse near-infrared shortwave flux at the surface level
-      for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling
-    description: downwelling diffuse ultraviolet and visible shortwave flux at the
-      surface level for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_direct_nir_shortwave_flux_at_surface_for_coupling
-    description: downwelling direct near-infrared shortwave flux at the surface level
-      for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling
-    description: downwelling direct ultraviolet and visible shortwave flux at the
-      surface level for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_longwave_flux_at_surface_for_coupling
-    description: Downwelling longwave flux at surface for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_shortwave_flux_at_surface_for_coupling
-    description: Downwelling shortwave flux at surface for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling
-    description: net downwelling diffuse near-infrared shortwave flux at the surface
-      level for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling
-    description: net downwelling diffuse ultraviolet and visible shortwave flux at
-      the surface level for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling
-    description: net downwelling direct near-infrared shortwave flux at the surface
-      level for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling
-    description: net_downwelling direct ultraviolet and visible shortwave flux at
-      the surface level for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: net_downwelling_longwave_flux_at_surface_for_coupling
-    description: Net downwelling longwave flux at surface for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: net_downwelling_shortwave_flux_at_surface_for_coupling
-    description: Net downwelling shortwave flux at surface for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: surface_skin_temperature_for_coupling
-    description: Surface skin temperature for coupling
-    type: real
-    kind: null
-    units: K
-  - name: upward_latent_heat_flux_at_surface_for_coupling
-    description: Upward latent heat flux at surface for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: upward_sensible_heat_flux_at_surface_for_chemistry_coupling
-    description: Upward sensible heat flux at surface for chemistry coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: upward_sensible_heat_flux_at_surface_for_coupling
-    description: Upward sensible heat flux at surface for coupling
-    type: real
-    kind: null
-    units: W m-2
-  - name: x_momentum_flux_at_surface_for_coupling
-    description: X momentum flux at surface for coupling
-    type: real
-    kind: null
-    units: Pa
-  - name: y_momentum_flux_at_surface_for_coupling
-    description: Y momentum flux at surface for coupling
-    type: real
-    kind: null
-    units: Pa
-  - name: temperature_at_2m_for_coupling
-    description: Temperature at 2m for coupling
-    type: real
-    kind: null
-    units: K
-  - name: x_wind_at_10m_for_coupling
-    description: X wind at 10m for coupling
-    type: real
-    kind: null
-    units: m s-1
-  - name: y_wind_at_10m_for_coupling
-    description: Y wind at 10m for coupling
-    type: real
-    kind: null
-    units: m s-1
-  - name: cumulative_lwe_thickness_of_convective_precipitation_for_coupling
-    description: Cumulative liquid water equivalent thickness of convective precipitation
-      amount for coupling
-    type: real
-    kind: null
-    units: m
-  - name: cumulative_lwe_thickness_of_precipitation_for_coupling
-    description: Cumulative liquid water equivalent thickness of precipitation amount
-      for coupling
-    type: real
-    kind: null
-    units: m
-  - name: cumulative_lwe_thickness_of_snow_for_coupling
-    description: Cumulative liquid water equivalent thickness of snow amount for coupling
-    type: real
-    kind: null
-    units: m
-  - name: physics_field_for_coupling
-    description: Physics field for coupling
-    type: real
-    kind: null
-    units: m2 s-2
-  - name: rrtmgp_jacobian_of_upward_lw_flux
-    description: Rapid Radiative Transfer Model for General circulation model applications
-      - Parallel (RRTMGP) jacobian of upward longwave flux
-    type: real
-    kind: null
-    units: W m-2 K-1
-  - name: rrtmgp_lw_downward_allsky_flux_profile
-    description: Rapid Radiative Transfer Model for General circulation model applications
-      - Parallel (RRTMGP) longwave downward all-sky flux profile
-    type: real
-    kind: null
-    units: W m-2
-  - name: rrtmgp_lw_upward_allsky_flux_profile
-    description: Rapid Radiative Transfer Model for General circulation model applications
-      - Parallel (RRTMGP) longwave upward all-sky flux profile
-    type: real
-    kind: null
-    units: W m-2
-  - name: area_type_from_coupled_process
-    description: Area type from coupled process
-    type: real
-    kind: null
-    units: 1
-  - name: downwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep
-    description: downwelling diffuse near-infrared shortwave flux at the surface level
-      on the radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep
-    description: downwelling diffuse ultraviolet and visible shortwave flux at the
-      surface level on the radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep
-    description: downwelling direct near-infrared shortwave flux at the surface level
-      on the radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep
-    description: downwelling direct ultraviolet and visible shortwave flux at the
-      surface level on the radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_longwave_flux_at_surface_on_radiation_timestep
-    description: Downwelling longwave flux at surface on radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: downwelling_shortwave_flux_at_surface_on_radiation_timestep
-    description: Downwelling shortwave flux at surface on radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: net_downwelling_shortwave_flux_at_surface_on_radiation_timestep
-    description: Net downwelling shortwave flux at surface on radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: diffuse_nir_albedo_for_coupling
-    description: surface albedo for diffuse near-infrared radiation for coupling
-    type: real
-    kind: null
-    units: fraction
-  - name: direct_nir_albedo_for_coupling
-    description: surface albedo for direct near-infrared radiation for coupling
-    type: real
-    kind: null
-    units: fraction
-  - name: lwe_surface_snow_from_coupled_process
-    description: Liquid water equivalent surface snow from coupled process
-    type: real
-    kind: null
-    units: m
-  - name: upward_latent_heat_flux_at_surface_from_coupled_process
-    description: Upward latent heat flux at surface from coupled process
-    type: real
-    kind: null
-    units: W m-2
-  - name: upward_sensible_heat_flux_at_surface_from_coupled_process
-    description: Upward sensible heat flux at surface from coupled process
-    type: real
-    kind: null
-    units: W m-2
-  - name: upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep
-    description: upwelling diffuse near-infrared shortwave flux at the surface level
-      on the radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep
-    description: upwelling diffuse ultraviolet and visible shortwave flux at the surface
-      level on the radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: upwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep
-    description: upwelling direct near-infrared shortwave flux at the surface level
-      on the radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: upwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep
-    description: upwelling direct ultraviolet and visible shortwave flux at the surface
-      level on the radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: upwelling_longwave_flux_at_surface_from_coupled_process
-    description: Upwelling longwave flux at surface from coupled process
-    type: real
-    kind: null
-    units: W m-2
-  - name: upwelling_longwave_flux_at_surface_on_radiation_timestep
-    description: Upwelling longwave flux at surface on radiation timestep
-    type: real
-    kind: null
-    units: W m-2
-  - name: diffuse_vis_albedo_for_coupling
-    description: surface albedo for diffuse visible radiation for coupling
-    type: real
-    kind: null
-    units: fraction
-  - name: direct_vis_albedo_for_coupling
-    description: surface albedo for direct visible radiation for coupling
-    type: real
-    kind: null
-    units: fraction
-  - name: x_momentum_flux_at_surface_from_coupled_process
-    description: X momentum flux at surface from coupled process
-    type: real
-    kind: null
-    units: Pa
-  - name: y_momentum_flux_at_surface_from_coupled_process
-    description: Y momentum flux at surface from coupled process
-    type: real
-    kind: null
-    units: Pa
-- name: GFS_typedefs_GFS_statein_type
-  comment: null
-  standard_names:
-  - name: cloud_liquid_water_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer
-    description: Cloud liquid water mass mixing ratio with respect to moist air at
-      surface-adjacent layer
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_number_concentration_of_cloud_liquid_water_particles_in_air
-    description: Mass number concentration of cloud liquid water particles in air
-    type: real
-    kind: null
-    units: kg-1
-  - name: dimensionless_exner_function_wrt_surface_pressure
-    description: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
-    type: real
-    kind: null
-    units: 1
-  - name: dimensionless_exner_function_at_surface_adjacent_layer
-    description: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa
-      and p is the pressure at the surface-adjacent layer
-    type: real
-    kind: null
-    units: 1
-  - name: dimensionless_exner_function_at_interfaces
-    description: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa
-      and p is the pressure at vertical layer interfaces
-    type: real
-    kind: null
-    units: 1
-  - name: dissipation_estimate_of_air_temperature_at_model_layers
-    description: Dissipation estimate of air temperature at model layers
-    type: real
-    kind: null
-    units: K
-  - name: graupel_mixing_ratio_wrt_moist_air
-    description: Graupel mass mixing ratio with respect to moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_number_concentration_of_graupel_in_air
-    description: Mass number concentration of graupel in air
-    type: real
-    kind: null
-    units: kg-1
-  - name: mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols
-    description: Mass number concentration of nonhygroscopic ice nucleating aerosols
-    type: real
-    kind: null
-    units: kg-1
-  - name: mass_number_concentration_of_cloud_ice_water_crystals_in_air
-    description: Mass number concentration of cloud ice water crystals in air
-    type: real
-    kind: null
-    units: kg-1
-  - name: ozone_mixing_ratio_wrt_moist_air
-    description: Ozone mass mixing ratio with respect to moist air
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: mass_number_concentration_of_hygroscopic_aerosols
-    description: Mass number concentration of hygroscopic aerosols
-    type: real
-    kind: null
-    units: kg-1
-  - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer
-    description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at surface-adjacent layer
-    type: real
-    kind: null
-    units: kg kg-1
-  - name: x_wind_at_surface_adjacent_layer
-    description: X wind at surface adjacent layer
-    type: real
-    kind: null
-    units: m s-1
-  - name: y_wind_at_surface_adjacent_layer
-    description: Y wind at surface adjacent layer
-    type: real
-    kind: null
-    units: m s-1

@@ -17,14 +17,12 @@
 * [Thresholds](#thresholds)
 * [stochastic physics variables](#stochastic-physics-variables)
 * [Radiation](#radiation)
-* [atmospheric surface and boundary layer](#atmospheric-surface-and-boundary-layer)
+* [Atmospheric surface and boundary layer](#atmospheric-surface-and-boundary-layer)
 * [Land surface, subsurface, and vegetation properties](#land-surface-subsurface-and-vegetation-properties)
 * [Convective physics parameters](#convective-physics-parameters)
 * [Gravity wave drag parameters](#gravity-wave-drag-parameters)
 * [Tendencies](#tendencies)
-* [Other](#other)
-* [GFS_typedefs_GFS_coupling_type](#gfs_typedefs_gfs_coupling_type)
-* [GFS_typedefs_GFS_statein_type](#gfs_typedefs_gfs_statein_type)
+* [Chemistry processes](#chemistry-processes)
 
 ## base_names
 Base names are the 'elemental' quantities from which
@@ -651,6 +649,32 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = K2
 * `variance_of_water_vapor_mixing_ratio_wrt_moist_air`: Variance of specific humidity (water vapor mass mixing ratio with respect to moist air)
     * `real`: units = kg2 kg-2
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface-adjacent layer
+    * `real`: units = kg kg-1
+* `x_wind_at_surface_adjacent_layer`: X wind at surface adjacent layer
+    * `real`: units = m s-1
+* `y_wind_at_surface_adjacent_layer`: Y wind at surface adjacent layer
+    * `real`: units = m s-1
+* `dimensionless_exner_function_wrt_surface_pressure`: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
+    * `real`: units = 1
+* `dimensionless_exner_function_at_surface_adjacent_layer`: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer
+    * `real`: units = 1
+* `dimensionless_exner_function_at_interfaces`: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at vertical layer interfaces
+    * `real`: units = 1
+* `atmosphere_heat_diffusivity_for_chemistry_coupling`: Atmosphere heat diffusivity for chemistry coupling
+    * `real`: units = m2 s-1
+* `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep
+    * `real`: units = kg kg-1
+* `subgrid_scale_cloud_area_fraction_in_atmosphere_layer`: Subgrid scale cloud area fraction in atmosphere layer
+    * `real`: units = fraction
+* `subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud ice mass mixing ratio with respect to moist air
+    * `real`: units = kg kg-1
+* `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
+    * `real`: units = kg kg-1
+* `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array
+    * `real`: units = kg kg-1
+* `water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back`: Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back
+    * `real`: units = kg kg-1
 ## Marine
 * `sea_water_potential_temperature`: sea water potential temperature
     * `real`: units = K
@@ -802,6 +826,8 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `real`: units = m-3
 * `ozone_concentration_of_new_state`: Ozone concentration of new state
     * `real`: units = kg kg-1
+* `ozone_mixing_ratio_wrt_moist_air`: Ozone mass mixing ratio with respect to moist air
+    * `real`: units = kg kg-1
 ### precipitation, cloud, and hydrometeor variables
 * `total_precipitation_rate_at_surface`: Total precipitation rate at surface
     * `real`: units = m s-1
@@ -923,6 +949,18 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `integer`: units = count
 * `precipitation_type`: Precipitation type
     * `real`: units = 1
+* `convective_cloud_condensate_after_rainout`: Convective cloud condensate after rainout
+    * `real`: units = kg kg-1
+* `cloud_liquid_water_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer`: Cloud liquid water mass mixing ratio with respect to moist air at surface-adjacent layer
+    * `real`: units = kg kg-1
+* `mass_number_concentration_of_cloud_liquid_water_particles_in_air`: Mass number concentration of cloud liquid water particles in air
+    * `real`: units = kg-1
+* `graupel_mixing_ratio_wrt_moist_air`: Graupel mass mixing ratio with respect to moist air
+    * `real`: units = kg kg-1
+* `mass_number_concentration_of_graupel_in_air`: Mass number concentration of graupel in air
+    * `real`: units = kg-1
+* `mass_number_concentration_of_cloud_ice_water_crystals_in_air`: Mass number concentration of cloud ice water crystals in air
+    * `real`: units = kg-1
 ### Aerosols
 * `mass_fraction_of_dust001_in_air`: GOCART Dust bin1 mass fraction
     * `real`: units = kg kg-1
@@ -979,6 +1017,10 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state`: Mass number concentration of nonhygroscopic ice nucleating aerosols of new state
     * `real`: units = kg-1
 * `mass_number_concentration_of_hygroscopic_aerosols_of_new_state`: Mass number concentration of hygroscopic aerosols of new state
+    * `real`: units = kg-1
+* `mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols`: Mass number concentration of nonhygroscopic ice nucleating aerosols
+    * `real`: units = kg-1
+* `mass_number_concentration_of_hygroscopic_aerosols`: Mass number concentration of hygroscopic aerosols
     * `real`: units = kg-1
 ### emissions
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
@@ -1805,6 +1847,12 @@ Coefficients includes scaling factors, tunable parameters, and other similar var
     * `real`: units = 1
 * `latitude_interpolation_scaling_factor_for_stratospheric_water_vapor_forcing`: Latitude interpolation scaling factor for stratospheric water vapor forcing
     * `real`: units = 1
+* `scaling_factor_for_momentum_at_top_of_viscous_sublayer`: Scaling factor for momentum at top of viscous sublayer
+    * `real`: units = 1
+* `scaling_factor_for_potential_temperature_at_top_of_viscous_sublayer`: Scaling factor for potential temperature at top of viscous sublayer
+    * `real`: units = 1
+* `scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Scaling factor for specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
+    * `real`: units = 1
 ## Thresholds
 Thresholds represent some value at which the behavior of some process changes, including maximums and minimums
 * `relative_humidity_threshold_for_condensation`: Relative humidity threshold for condensation
@@ -1896,6 +1944,14 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = 1
 * `land_surface_perturbation_magnitudes`: Array of magnitudes for perturbations for land surface properties
     * `real`: units = variable
+* `dissipation_estimate_of_air_temperature_at_model_layers`: Dissipation estimate of air temperature at model layers
+    * `real`: units = K
+* `total_amplitude_of_sppt_perturbation`: Total amplitude of stochastically perturbed physics tendencies perturbation
+    * `real`: units = 1
+* `tendency_of_air_temperature_to_withhold_from_sppt`: Change of air temperature to withhold from stochastically perturbed physics tendencies per unit time
+    * `real`: units = K s-1
+* `sppt_scaling_factors_from_coupled_process`: Stochastically perturbed physics tendencies scaling factors from coupled process
+    * `real`: units = 1
 ## Radiation
 * `radiatively_active_gases_as_string`: Radiatively active gases as string
     * `character`: units = none
@@ -1943,7 +1999,87 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `integer`: units = 1
 * `random_number_seed_for_mcica_shortwave`: Random number seed for Monte-Carlo Independent Column Approximation shortwave scheme
     * `integer`: units = 1
-## atmospheric surface and boundary layer
+* `cumulative_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling diffuse near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
+    * `real`: units = J m-2
+* `cumulative_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
+    * `real`: units = J m-2
+* `cumulative_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling direct near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
+    * `real`: units = J m-2
+* `cumulative_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
+    * `real`: units = J m-2
+* `cumulative_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative downwelling longwave flux at surface for coupling multiplied by timestep
+    * `real`: units = J m-2
+* `cumulative_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative downwelling shortwave flux at surface for coupling multiplied by timestep
+    * `real`: units = J m-2
+* `cumulative_net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling diffuse near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
+    * `real`: units = J m-2
+* `cumulative_net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
+    * `real`: units = J m-2
+* `cumulative_net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling direct near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
+    * `real`: units = J m-2
+* `cumulative_net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
+    * `real`: units = J m-2
+* `cumulative_net_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative net downwelling longwave flux at surface for coupling multiplied by timestep
+    * `real`: units = J m-2
+* `cumulative_net_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative net downwelling shortwave flux at surface for coupling multiplied by timestep
+    * `real`: units = J m-2
+* `downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling`: downwelling diffuse near-infrared shortwave flux at the surface level for coupling
+    * `real`: units = W m-2
+* `downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling`: downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling
+    * `real`: units = W m-2
+* `downwelling_direct_nir_shortwave_flux_at_surface_for_coupling`: downwelling direct near-infrared shortwave flux at the surface level for coupling
+    * `real`: units = W m-2
+* `downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling`: downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling
+    * `real`: units = W m-2
+* `downwelling_longwave_flux_at_surface_for_coupling`: Downwelling longwave flux at surface for coupling
+    * `real`: units = W m-2
+* `downwelling_shortwave_flux_at_surface_for_coupling`: Downwelling shortwave flux at surface for coupling
+    * `real`: units = W m-2
+* `net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse near-infrared shortwave flux at the surface level for coupling
+    * `real`: units = W m-2
+* `net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling
+    * `real`: units = W m-2
+* `net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling`: net downwelling direct near-infrared shortwave flux at the surface level for coupling
+    * `real`: units = W m-2
+* `net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling`: net_downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling
+    * `real`: units = W m-2
+* `net_downwelling_longwave_flux_at_surface_for_coupling`: Net downwelling longwave flux at surface for coupling
+    * `real`: units = W m-2
+* `net_downwelling_shortwave_flux_at_surface_for_coupling`: Net downwelling shortwave flux at surface for coupling
+    * `real`: units = W m-2
+* `downwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: downwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep
+    * `real`: units = W m-2
+* `downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: downwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep
+    * `real`: units = W m-2
+* `downwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep`: downwelling direct near-infrared shortwave flux at the surface level on the radiation timestep
+    * `real`: units = W m-2
+* `downwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: downwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep
+    * `real`: units = W m-2
+* `downwelling_longwave_flux_at_surface_on_radiation_timestep`: Downwelling longwave flux at surface on radiation timestep
+    * `real`: units = W m-2
+* `downwelling_shortwave_flux_at_surface_on_radiation_timestep`: Downwelling shortwave flux at surface on radiation timestep
+    * `real`: units = W m-2
+* `net_downwelling_shortwave_flux_at_surface_on_radiation_timestep`: Net downwelling shortwave flux at surface on radiation timestep
+    * `real`: units = W m-2
+* `rrtmgp_jacobian_of_upward_lw_flux`: Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) jacobian of upward longwave flux
+    * `real`: units = W m-2 K-1
+* `rrtmgp_lw_downward_allsky_flux_profile`: Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave downward all-sky flux profile
+    * `real`: units = W m-2
+* `rrtmgp_lw_upward_allsky_flux_profile`: Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave upward all-sky flux profile
+    * `real`: units = W m-2
+* `upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep
+    * `real`: units = W m-2
+* `upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep
+    * `real`: units = W m-2
+* `upwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling direct near-infrared shortwave flux at the surface level on the radiation timestep
+    * `real`: units = W m-2
+* `upwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: upwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep
+    * `real`: units = W m-2
+* `upwelling_longwave_flux_at_surface_from_coupled_process`: Upwelling longwave flux at surface from coupled process
+    * `real`: units = W m-2
+* `upwelling_longwave_flux_at_surface_on_radiation_timestep`: Upwelling longwave flux at surface on radiation timestep
+    * `real`: units = W m-2
+## Atmospheric surface and boundary layer
 * `critical_relative_humidity_at_top_of_atmosphere_boundary_layer`: Critical relative humidity at top of atmosphere boundary layer
     * `real`: units = fraction
 * `surface_layer_scheme_enthalpy_flux_factor`: Surface layer scheme enthalpy flux factor
@@ -1990,6 +2126,46 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = kg kg-1
 * `upward_virtual_potential_temperature_flux`: Upward virtual potential temperature flux
     * `real`: units = K m s-1
+* `water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at 2 meters above surface used for coupling
+    * `real`: units = kg kg-1
+* `air_pressure_at_surface_for_coupling`: Air pressure at surface for coupling
+    * `real`: units = Pa
+* `surface_skin_temperature_for_coupling`: Surface skin temperature for coupling
+    * `real`: units = K
+* `upward_latent_heat_flux_at_surface_for_coupling`: Upward latent heat flux at surface for coupling
+    * `real`: units = W m-2
+* `upward_sensible_heat_flux_at_surface_for_chemistry_coupling`: Upward sensible heat flux at surface for chemistry coupling
+    * `real`: units = W m-2
+* `upward_sensible_heat_flux_at_surface_for_coupling`: Upward sensible heat flux at surface for coupling
+    * `real`: units = W m-2
+* `x_momentum_flux_at_surface_for_coupling`: X momentum flux at surface for coupling
+    * `real`: units = Pa
+* `y_momentum_flux_at_surface_for_coupling`: Y momentum flux at surface for coupling
+    * `real`: units = Pa
+* `temperature_at_2m_for_coupling`: Temperature at 2m for coupling
+    * `real`: units = K
+* `x_wind_at_10m_for_coupling`: X wind at 10m for coupling
+    * `real`: units = m s-1
+* `y_wind_at_10m_for_coupling`: Y wind at 10m for coupling
+    * `real`: units = m s-1
+* `cumulative_upward_latent_heat_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative upward latent heat flux at surface for coupling multiplied by timestep
+    * `real`: units = J m-2
+* `cumulative_upward_sensible_heat_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative upward sensible heat flux at surface for coupling multiplied by timestep
+    * `real`: units = J m-2
+* `cumulative_x_momentum_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative x momentum flux at surface for coupling multiplied by timestep
+    * `real`: units = Pa s
+* `cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative y momentum flux at surface for coupling multiplied by timestep
+    * `real`: units = Pa s
+* `lwe_surface_snow_from_coupled_process`: Liquid water equivalent surface snow from coupled process
+    * `real`: units = m
+* `upward_latent_heat_flux_at_surface_from_coupled_process`: Upward latent heat flux at surface from coupled process
+    * `real`: units = W m-2
+* `upward_sensible_heat_flux_at_surface_from_coupled_process`: Upward sensible heat flux at surface from coupled process
+    * `real`: units = W m-2
+* `x_momentum_flux_at_surface_from_coupled_process`: X momentum flux at surface from coupled process
+    * `real`: units = Pa
+* `y_momentum_flux_at_surface_from_coupled_process`: Y momentum flux at surface from coupled process
+    * `real`: units = Pa
 ## Land surface, subsurface, and vegetation properties
 * `depth_of_soil_layers`: Depth of soil layers
     * `real`: units = m
@@ -2259,6 +2435,22 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 * `lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling`: Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling
     * `real`: units = m
+* `diffuse_nir_albedo_for_coupling`: surface albedo for diffuse near-infrared radiation for coupling
+    * `real`: units = fraction
+* `direct_nir_albedo_for_coupling`: surface albedo for direct near-infrared radiation for coupling
+    * `real`: units = fraction
+* `diffuse_vis_albedo_for_coupling`: surface albedo for diffuse visible radiation for coupling
+    * `real`: units = fraction
+* `direct_vis_albedo_for_coupling`: surface albedo for direct visible radiation for coupling
+    * `real`: units = fraction
+* `cumulative_lwe_thickness_of_convective_precipitation_for_coupling`: Cumulative liquid water equivalent thickness of convective precipitation amount for coupling
+    * `real`: units = m
+* `cumulative_lwe_thickness_of_precipitation_for_coupling`: Cumulative liquid water equivalent thickness of precipitation amount for coupling
+    * `real`: units = m
+* `cumulative_lwe_thickness_of_snow_for_coupling`: Cumulative liquid water equivalent thickness of snow amount for coupling
+    * `real`: units = m
+* `area_type_from_coupled_process`: Area type from coupled process
+    * `real`: units = 1
 ## Convective physics parameters
 * `downdraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Downdraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `real`: units = fraction
@@ -2278,6 +2470,10 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `integer`: units = count
 * `atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type`: Atmosphere updraft convective mass flux at cloud base by cloud type
     * `real`: units = kg m-2 s-1
+* `physics_field_for_coupling`: Physics field for coupling
+    * `real`: units = m2 s-2
+* `enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection`: Enhancement to wind speed at surface adjacent layer due to convection
+    * `real`: units = m s-1
 ## Gravity wave drag parameters
 * `absolute_momentum_flux_due_to_nonorographic_gwd`: Absolute momentum flux due to non-orographic gravity wave drag
     * `real`: units = various
@@ -2320,12 +2516,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m s-2
 * `process_split_cumulative_tendency_of_y_wind`: Process split cumulative tendency of y wind
     * `real`: units = m s-2
-* `total_amplitude_of_sppt_perturbation`: Total amplitude of stochastically perturbed physics tendencies perturbation
-    * `real`: units = 1
-* `tendency_of_air_temperature_to_withhold_from_sppt`: Change of air temperature to withhold from stochastically perturbed physics tendencies per unit time
-    * `real`: units = K s-1
-* `sppt_scaling_factors_from_coupled_process`: Stochastically perturbed physics tendencies scaling factors from coupled process
-    * `real`: units = 1
 * `tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_nonphysics`: Tendency of specific humidity (water vapor mass mixing ratio with respect to moist air) due to non-physics processes
     * `real`: units = kg kg-1 s-1
 * `tendency_of_air_temperature_due_to_nonphysics`: Tendency of air temperature due to nonphysics
@@ -2380,204 +2570,8 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m s-2
 * `tendency_of_northward_wind_due_to_model_physics`: Change in northward wind due to model physics per unit time
     * `real`: units = m s-2
-## Other
+## Chemistry processes
 * `stratospheric_water_vapor_forcing`: Stratospheric water vapor forcing
     * `real`: units = various
-* `ice_nucleation_number_from_climatology`: Ice nucleation number from climatology
-    * `real`: units = kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep
-    * `real`: units = kg kg-1
 * `ozone_forcing`: Ozone forcing
     * `real`: units = various
-* `subgrid_scale_cloud_area_fraction_in_atmosphere_layer`: Subgrid scale cloud area fraction in atmosphere layer
-    * `real`: units = fraction
-* `subgrid_scale_cloud_ice_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud ice mass mixing ratio with respect to moist air
-    * `real`: units = kg kg-1
-* `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
-    * `real`: units = kg kg-1
-* `enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection`: Enhancement to wind speed at surface adjacent layer due to convection
-    * `real`: units = m s-1
-* `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array
-    * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back`: Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back
-    * `real`: units = kg kg-1
-* `scaling_factor_for_momentum_at_top_of_viscous_sublayer`: Scaling factor for momentum at top of viscous sublayer
-    * `real`: units = 1
-* `scaling_factor_for_potential_temperature_at_top_of_viscous_sublayer`: Scaling factor for potential temperature at top of viscous sublayer
-    * `real`: units = 1
-* `scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Scaling factor for specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
-    * `real`: units = 1
-## GFS_typedefs_GFS_coupling_type
-* `convective_cloud_condensate_after_rainout`: Convective cloud condensate after rainout
-    * `real`: units = kg kg-1
-* `cumulative_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling diffuse near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
-    * `real`: units = J m-2
-* `cumulative_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
-    * `real`: units = J m-2
-* `cumulative_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling direct near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
-    * `real`: units = J m-2
-* `cumulative_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
-    * `real`: units = J m-2
-* `cumulative_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative downwelling longwave flux at surface for coupling multiplied by timestep
-    * `real`: units = J m-2
-* `cumulative_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative downwelling shortwave flux at surface for coupling multiplied by timestep
-    * `real`: units = J m-2
-* `cumulative_net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling diffuse near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
-    * `real`: units = J m-2
-* `cumulative_net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
-    * `real`: units = J m-2
-* `cumulative_net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling direct near-infrared shortwave flux at the surface level for coupling multiplied by the duration of the timestep
-    * `real`: units = J m-2
-* `cumulative_net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: cumulative net downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling multiplied by the duration of the timestep
-    * `real`: units = J m-2
-* `cumulative_net_downwelling_longwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative net downwelling longwave flux at surface for coupling multiplied by timestep
-    * `real`: units = J m-2
-* `cumulative_net_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative net downwelling shortwave flux at surface for coupling multiplied by timestep
-    * `real`: units = J m-2
-* `cumulative_upward_latent_heat_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative upward latent heat flux at surface for coupling multiplied by timestep
-    * `real`: units = J m-2
-* `cumulative_upward_sensible_heat_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative upward sensible heat flux at surface for coupling multiplied by timestep
-    * `real`: units = J m-2
-* `cumulative_x_momentum_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative x momentum flux at surface for coupling multiplied by timestep
-    * `real`: units = Pa s
-* `cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative y momentum flux at surface for coupling multiplied by timestep
-    * `real`: units = Pa s
-* `atmosphere_heat_diffusivity_for_chemistry_coupling`: Atmosphere heat diffusivity for chemistry coupling
-    * `real`: units = m2 s-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at 2 meters above surface used for coupling
-    * `real`: units = kg kg-1
-* `air_pressure_at_surface_for_coupling`: Air pressure at surface for coupling
-    * `real`: units = Pa
-* `downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling`: downwelling diffuse near-infrared shortwave flux at the surface level for coupling
-    * `real`: units = W m-2
-* `downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling`: downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling
-    * `real`: units = W m-2
-* `downwelling_direct_nir_shortwave_flux_at_surface_for_coupling`: downwelling direct near-infrared shortwave flux at the surface level for coupling
-    * `real`: units = W m-2
-* `downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling`: downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling
-    * `real`: units = W m-2
-* `downwelling_longwave_flux_at_surface_for_coupling`: Downwelling longwave flux at surface for coupling
-    * `real`: units = W m-2
-* `downwelling_shortwave_flux_at_surface_for_coupling`: Downwelling shortwave flux at surface for coupling
-    * `real`: units = W m-2
-* `net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse near-infrared shortwave flux at the surface level for coupling
-    * `real`: units = W m-2
-* `net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling
-    * `real`: units = W m-2
-* `net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling`: net downwelling direct near-infrared shortwave flux at the surface level for coupling
-    * `real`: units = W m-2
-* `net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling`: net_downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling
-    * `real`: units = W m-2
-* `net_downwelling_longwave_flux_at_surface_for_coupling`: Net downwelling longwave flux at surface for coupling
-    * `real`: units = W m-2
-* `net_downwelling_shortwave_flux_at_surface_for_coupling`: Net downwelling shortwave flux at surface for coupling
-    * `real`: units = W m-2
-* `surface_skin_temperature_for_coupling`: Surface skin temperature for coupling
-    * `real`: units = K
-* `upward_latent_heat_flux_at_surface_for_coupling`: Upward latent heat flux at surface for coupling
-    * `real`: units = W m-2
-* `upward_sensible_heat_flux_at_surface_for_chemistry_coupling`: Upward sensible heat flux at surface for chemistry coupling
-    * `real`: units = W m-2
-* `upward_sensible_heat_flux_at_surface_for_coupling`: Upward sensible heat flux at surface for coupling
-    * `real`: units = W m-2
-* `x_momentum_flux_at_surface_for_coupling`: X momentum flux at surface for coupling
-    * `real`: units = Pa
-* `y_momentum_flux_at_surface_for_coupling`: Y momentum flux at surface for coupling
-    * `real`: units = Pa
-* `temperature_at_2m_for_coupling`: Temperature at 2m for coupling
-    * `real`: units = K
-* `x_wind_at_10m_for_coupling`: X wind at 10m for coupling
-    * `real`: units = m s-1
-* `y_wind_at_10m_for_coupling`: Y wind at 10m for coupling
-    * `real`: units = m s-1
-* `cumulative_lwe_thickness_of_convective_precipitation_for_coupling`: Cumulative liquid water equivalent thickness of convective precipitation amount for coupling
-    * `real`: units = m
-* `cumulative_lwe_thickness_of_precipitation_for_coupling`: Cumulative liquid water equivalent thickness of precipitation amount for coupling
-    * `real`: units = m
-* `cumulative_lwe_thickness_of_snow_for_coupling`: Cumulative liquid water equivalent thickness of snow amount for coupling
-    * `real`: units = m
-* `physics_field_for_coupling`: Physics field for coupling
-    * `real`: units = m2 s-2
-* `rrtmgp_jacobian_of_upward_lw_flux`: Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) jacobian of upward longwave flux
-    * `real`: units = W m-2 K-1
-* `rrtmgp_lw_downward_allsky_flux_profile`: Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave downward all-sky flux profile
-    * `real`: units = W m-2
-* `rrtmgp_lw_upward_allsky_flux_profile`: Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave upward all-sky flux profile
-    * `real`: units = W m-2
-* `area_type_from_coupled_process`: Area type from coupled process
-    * `real`: units = 1
-* `downwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: downwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep
-    * `real`: units = W m-2
-* `downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: downwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep
-    * `real`: units = W m-2
-* `downwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep`: downwelling direct near-infrared shortwave flux at the surface level on the radiation timestep
-    * `real`: units = W m-2
-* `downwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: downwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep
-    * `real`: units = W m-2
-* `downwelling_longwave_flux_at_surface_on_radiation_timestep`: Downwelling longwave flux at surface on radiation timestep
-    * `real`: units = W m-2
-* `downwelling_shortwave_flux_at_surface_on_radiation_timestep`: Downwelling shortwave flux at surface on radiation timestep
-    * `real`: units = W m-2
-* `net_downwelling_shortwave_flux_at_surface_on_radiation_timestep`: Net downwelling shortwave flux at surface on radiation timestep
-    * `real`: units = W m-2
-* `diffuse_nir_albedo_for_coupling`: surface albedo for diffuse near-infrared radiation for coupling
-    * `real`: units = fraction
-* `direct_nir_albedo_for_coupling`: surface albedo for direct near-infrared radiation for coupling
-    * `real`: units = fraction
-* `lwe_surface_snow_from_coupled_process`: Liquid water equivalent surface snow from coupled process
-    * `real`: units = m
-* `upward_latent_heat_flux_at_surface_from_coupled_process`: Upward latent heat flux at surface from coupled process
-    * `real`: units = W m-2
-* `upward_sensible_heat_flux_at_surface_from_coupled_process`: Upward sensible heat flux at surface from coupled process
-    * `real`: units = W m-2
-* `upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep
-    * `real`: units = W m-2
-* `upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep
-    * `real`: units = W m-2
-* `upwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling direct near-infrared shortwave flux at the surface level on the radiation timestep
-    * `real`: units = W m-2
-* `upwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: upwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep
-    * `real`: units = W m-2
-* `upwelling_longwave_flux_at_surface_from_coupled_process`: Upwelling longwave flux at surface from coupled process
-    * `real`: units = W m-2
-* `upwelling_longwave_flux_at_surface_on_radiation_timestep`: Upwelling longwave flux at surface on radiation timestep
-    * `real`: units = W m-2
-* `diffuse_vis_albedo_for_coupling`: surface albedo for diffuse visible radiation for coupling
-    * `real`: units = fraction
-* `direct_vis_albedo_for_coupling`: surface albedo for direct visible radiation for coupling
-    * `real`: units = fraction
-* `x_momentum_flux_at_surface_from_coupled_process`: X momentum flux at surface from coupled process
-    * `real`: units = Pa
-* `y_momentum_flux_at_surface_from_coupled_process`: Y momentum flux at surface from coupled process
-    * `real`: units = Pa
-## GFS_typedefs_GFS_statein_type
-* `cloud_liquid_water_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer`: Cloud liquid water mass mixing ratio with respect to moist air at surface-adjacent layer
-    * `real`: units = kg kg-1
-* `mass_number_concentration_of_cloud_liquid_water_particles_in_air`: Mass number concentration of cloud liquid water particles in air
-    * `real`: units = kg-1
-* `dimensionless_exner_function_wrt_surface_pressure`: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
-    * `real`: units = 1
-* `dimensionless_exner_function_at_surface_adjacent_layer`: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer
-    * `real`: units = 1
-* `dimensionless_exner_function_at_interfaces`: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at vertical layer interfaces
-    * `real`: units = 1
-* `dissipation_estimate_of_air_temperature_at_model_layers`: Dissipation estimate of air temperature at model layers
-    * `real`: units = K
-* `graupel_mixing_ratio_wrt_moist_air`: Graupel mass mixing ratio with respect to moist air
-    * `real`: units = kg kg-1
-* `mass_number_concentration_of_graupel_in_air`: Mass number concentration of graupel in air
-    * `real`: units = kg-1
-* `mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols`: Mass number concentration of nonhygroscopic ice nucleating aerosols
-    * `real`: units = kg-1
-* `mass_number_concentration_of_cloud_ice_water_crystals_in_air`: Mass number concentration of cloud ice water crystals in air
-    * `real`: units = kg-1
-* `ozone_mixing_ratio_wrt_moist_air`: Ozone mass mixing ratio with respect to moist air
-    * `real`: units = kg kg-1
-* `mass_number_concentration_of_hygroscopic_aerosols`: Mass number concentration of hygroscopic aerosols
-    * `real`: units = kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface-adjacent layer
-    * `real`: units = kg kg-1
-* `x_wind_at_surface_adjacent_layer`: X wind at surface adjacent layer
-    * `real`: units = m s-1
-* `y_wind_at_surface_adjacent_layer`: Y wind at surface adjacent layer
-    * `real`: units = m s-1
