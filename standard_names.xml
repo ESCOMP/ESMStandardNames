@@ -1711,6 +1711,9 @@
       <standard_name name="mass_number_concentration_of_cloud_ice_water_crystals_in_air">
          <type units="kg-1">real</type>
       </standard_name>
+      <standard_name name="ice_nucleation_number_from_climatology">
+         <type units="kg-1">real</type>
+      </standard_name>
     </section>
     <section name="Aerosols">
       <standard_name name="mass_fraction_of_dust001_in_air"
@@ -4109,6 +4112,10 @@
     <standard_name name="roughness_length_over_water"
                  description="surface roughness length over water">
       <type units="cm">real</type>
+    </standard_name>
+    <standard_name name="skin_temperature_at_surface"
+                     description="Skin temperature at surface">
+      <type units="K">real</type>
     </standard_name>
     <standard_name name="skin_temperature_at_surface_over_ice"
                    description="Skin temperature at surface over (or where) ice">
