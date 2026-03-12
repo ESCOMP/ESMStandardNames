@@ -85,7 +85,21 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install libxml2-utils
           python -m pip install --upgrade pip
-          python -m pip install PyYaml
+          python -m pip install PyYaml lxml
+
+      - name: Test that sections are alphabetized
+        run: |
+          tools/sort_standard_names.py standard_names.xml
+          if ! git diff --exit-code --quiet; then
+            echo "❌ Standard Names are not alphabetized within each section"
+            echo "Run tools/sort_standard_names.py and commit changes"
+            echo "✅ To fix: Run the following command locally and commit the result:"
+            echo "    tools/sort_standard_names.py standard_names.xml"
+            echo "📘 This script requires the lxml Python package; to install with pip use command:"
+            echo "    python -m pip install lxml"
+            echo "📘 For conda users, environment file tools/environment.yml is provided."
+            echo
+            exit 1
 
       - name: Test rendering xml file to markdown
         run: |
