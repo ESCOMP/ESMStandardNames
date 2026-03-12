@@ -824,8 +824,8 @@ section:
     kind: null
     units: 1
   - name: date_and_time_of_forecast_in_united_states_order
-    description: Integer array of date and time at model initialization in united
-      states order (month, day, year, hour, minute, second)
+    description: Integer array of forecast valid date and time in united states order
+      (month, day, year, hour, minute, second)
     type: integer
     kind: null
     units: 1

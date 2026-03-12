@@ -354,7 +354,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `integer`: units = 1
 * `date_and_time_at_model_initialization_in_united_states_order`: Integer array of date and time at model initialization in united states order (month, day, year, hour, minute, second)
     * `integer`: units = 1
-* `date_and_time_of_forecast_in_united_states_order`: Integer array of date and time at model initialization in united states order (month, day, year, hour, minute, second)
+* `date_and_time_of_forecast_in_united_states_order`: Integer array of forecast valid date and time in united states order (month, day, year, hour, minute, second)
     * `integer`: units = 1
 * `equation_of_time`: Apparent solar time minus mean solar time
     * `real`: units = radian
