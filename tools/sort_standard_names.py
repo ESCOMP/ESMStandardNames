@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """
-Sort the <standard_name> elements alphabetically by their "name" attribute within each <section> (subsection) of an ESM Standard Names XML file.
+Sort the <standard_name> elements alphabetically by their "name" attribute within each <section>
+(subsection) of an ESM Standard Names XML file.
 
-The original file may contain comments, attributes, and nested sections. The script preserves the overall structure, comments, and formatting (except for the indentation added by lxml's pretty‑print).
+The original file may contain comments, attributes, and nested sections. The script preserves the
+overall structure of the XML with all elements and comments, and formats it according to
+lxml's pretty‑print option.
 
 Usage:
     python sort_standard_names.py [input.xml] [output.xml]
@@ -17,9 +20,8 @@ import sys
 from pathlib import Path
 
 try:
-    # lxml provides robust support for comments and pretty‑printing
     from lxml import etree
-except Exception as exc:  # pragma: no cover
+except Exception as exc:
     print("Error: lxml is required to run this script.", file=sys.stderr)
     raise exc
 
@@ -41,8 +43,8 @@ def sort_section(section: etree._Element) -> None:
     if not std_children:
         return
 
-    # Sort by name attribute, case‑insensitive
-    std_children.sort(key=lambda e: e.get("name", "").lower())
+    # Sort by name attribute
+    std_children.sort(key=lambda e: e.get("name", ""))
 
     # Remove all original standard_name children
     for child in std_children:
@@ -68,7 +70,7 @@ def process_file(xml_path: Path) -> etree._ElementTree:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Alphabetically sort standard names within each subsection of an ESM Standard Names XML file.")
+    parser = argparse.ArgumentParser(description="Alphabetically sort standard names within each subsection of the ESM Standard Names XML file.")
     parser.add_argument("input", nargs="?", default="standard_names.xml", help="Input XML file (default: standard_names.xml)")
     parser.add_argument("output", nargs="?", default="", help="Output file (default: overwrite input)")
     args = parser.parse_args()
@@ -81,9 +83,8 @@ def main() -> None:
     tree = process_file(input_path)
 
     output_path = Path(args.output) if args.output else input_path
-    # Write with pretty print while preserving original encoding (assume utf-8)
     tree.write(str(output_path), pretty_print=True, xml_declaration=True, encoding="utf-8")
-    print(f"Sorted standard names written to {output_path!s}")
+    print(f"Sorted standard names written to {output_path}")
 
 
 if __name__ == "__main__":

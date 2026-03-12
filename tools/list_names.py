@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Print an alphabetized list of all <standard_name> names from an ESM Standard Names XML file.
+Print an alphabetized list of all <standard_name> names from ESM Standard Names XML file.
 """
 
 from __future__ import annotations
@@ -10,7 +10,7 @@ from pathlib import Path
 
 try:
     from lxml import etree
-except Exception as exc:  # pragma: no cover
+except Exception as exc:
     print("lxml is required to run this script.", file=sys.stderr)
     raise exc
 
@@ -42,7 +42,7 @@ def main() -> None:
         print(name)
 
 
-if __name__ == "__main__":  # pragma: no cover
+if __name__ == "__main__":
     main()
 
 
