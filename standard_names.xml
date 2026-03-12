@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <standard_names name="Earth System Modeling Standard Name Library" version="1.0">
   <section name="Base names" comment="Base names are the 'elemental' quantities from which the more complex standard names are constructed. Base names can roughly be broken down into three categories, indicated by the following subsections.">
     <section name="Generic names" comment="The following names are too general to be chosen as standard names, but they can serve as base names for more specific standard names.">
