@@ -1,11 +1,11 @@
 library_name: Earth System Modeling Standard Name Library
 section:
-- name: base_names
+- name: Base names
   comment: Base names are the 'elemental' quantities from which the more complex standard
     names are constructed. Base names can roughly be broken down into three categories,
     indicated by the following subsections.
   section:
-  - name: generic_names
+  - name: Generic names
     comment: The following names are too general to be chosen as standard names, but
       they can serve as base names for more specific standard names.
     standard_names:
@@ -225,7 +225,7 @@ section:
       type: real
       kind: null
       units: s-1
-  - name: chemical_species
+  - name: Chemical species
     comment: These are the base names for specific chemical species. They can all
       be assumed to have units of '1'
     standard_names:
@@ -281,7 +281,7 @@ section:
       description: Chemical species containing the sulfate ion
     - name: sulfur_dioxide
       description: so2
-  - name: base_standard_names
+  - name: Base standard Names
     comment: These names are used as bases for other names, but may also be considered
       standard names on their own. See the full list of standard names for further
       details.
@@ -586,7 +586,7 @@ section:
       type: real
       kind: null
       units: Pa
-- name: dimensions
+- name: Dimensions
   comment: Names indicating the size, extent, or bounds of data structures in a model.
   standard_names:
   - name: horizontal_dimension
@@ -680,7 +680,7 @@ section:
     type: integer
     kind: null
     units: count
-- name: constants
+- name: Constants
   comment: Constant parameters that should be identical across a full modeling system
   standard_names:
   - name: avogadro_number
@@ -807,7 +807,7 @@ section:
     type: real
     kind: null
     units: 1
-- name: timing
+- name: Timing
   comment: Variables defining or relating to timing, dates, calendar, and related
     concepts
   standard_names:
@@ -1604,7 +1604,7 @@ section:
 - name: Atmospheric composition
   comment: null
   section:
-  - name: gasses
+  - name: Gasses
     comment: null
     standard_names:
     - name: derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature
@@ -1878,7 +1878,7 @@ section:
       type: real
       kind: null
       units: kg kg-1
-  - name: precipitation, cloud, and hydrometeor variables
+  - name: Precipitation, cloud, and hydrometeor variables
     comment: null
     standard_names:
     - name: aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection
@@ -2400,7 +2400,7 @@ section:
       type: real
       kind: null
       units: m-1
-  - name: emissions
+  - name: Emissions
     comment: Emissions variables, contributed for the Community Emissions Data System
       (CEDS)
     standard_names:
@@ -2558,7 +2558,7 @@ section:
 - name: Application-specific variables
   comment: null
   section:
-  - name: required framework-provided variables
+  - name: Required CCPP framework-provided variables
     comment: Required CCPP framework-provided variables
     standard_names:
     - name: ccpp_error_code
@@ -2571,7 +2571,7 @@ section:
       type: character
       kind: null
       units: none
-  - name: optional framework-provided variables
+  - name: Optional CCPP framework-provided variables
     comment: Optional CCPP framework-provided variables
     standard_names:
     - name: ccpp_block_count
@@ -4829,7 +4829,7 @@ section:
     type: integer
     kind: null
     units: mm
-- name: stochastic physics variables
+- name: Stochastic physics variables
   comment: null
   standard_names:
   - name: atmosphere_heat_diffusivity_from_shoc

@@ -1,10 +1,10 @@
 # Earth System Modeling Standard Name Library
 #### Table of Contents
-* [base_names](#base_names)
-* [dimensions](#dimensions)
-* [constants](#constants)
+* [Base names](#base-names)
+* [Dimensions](#dimensions)
+* [Constants](#constants)
 * [Coordinates](#coordinates)
-* [timing](#timing)
+* [Timing](#timing)
 * [Atmospheric properties](#atmospheric-properties)
 * [Marine](#marine)
 * [Tracers](#tracers)
@@ -15,7 +15,7 @@
 * [Indices](#indices)
 * [Coefficients](#coefficients)
 * [Thresholds](#thresholds)
-* [stochastic physics variables](#stochastic-physics-variables)
+* [Stochastic physics variables](#stochastic-physics-variables)
 * [Radiation](#radiation)
 * [Atmospheric surface and boundary layer](#atmospheric-surface-and-boundary-layer)
 * [Land surface, subsurface, and vegetation properties](#land-surface-subsurface-and-vegetation-properties)
@@ -24,9 +24,9 @@
 * [Tendencies](#tendencies)
 * [Chemistry processes](#chemistry-processes)
 
-## base_names
+## Base names
 Base names are the 'elemental' quantities from which the more complex standard names are constructed. Base names can roughly be broken down into three categories, indicated by the following subsections.
-### generic_names
+### Generic names
 The following names are too general to be chosen as standard names, but they can serve as base names for more specific standard names.
 * `area`: Area
     * `real`: units = m2
@@ -110,7 +110,7 @@ The following names are too general to be chosen as standard names, but they can
     * `real`: units = m3 s-1
 * `vorticity`: The curl of a velocity vector
     * `real`: units = s-1
-### chemical_species
+### Chemical species
 These are the base names for specific chemical species. They can all be assumed to have units of '1'
 * `c5h8`: Isoprene
 * `ccl4`: Tetrachloromethane
@@ -138,7 +138,7 @@ These are the base names for specific chemical species. They can all be assumed 
 * `silicate`: Chemical species containing the silicate ion
 * `sulfate`: Chemical species containing the sulfate ion
 * `sulfur_dioxide`: so2
-### base_standard_names
+### Base standard Names
 These names are used as bases for other names, but may also be considered standard names on their own. See the full list of standard names for further details.
 * `absolute_vorticity`: Vorticity of fluid relative to an inertial frame; the sum of relative and planetary vorticities
     * `real`: units = s-1
@@ -258,7 +258,7 @@ These names are used as bases for other names, but may also be considered standa
     * `real`: units = m s-1
 * `wind_stress`: Shear stress exerted by wind parallel to the surface
     * `real`: units = Pa
-## dimensions
+## Dimensions
 Names indicating the size, extent, or bounds of data structures in a model.
 * `horizontal_dimension`: Length of the horizontal dimension
     * `integer`: units = count
@@ -296,7 +296,7 @@ Names indicating the size, extent, or bounds of data structures in a model.
     * `integer`: units = count
 * `vertical_layer_dimension_minus_one`: Vertical layer dimension minus one
     * `integer`: units = count
-## constants
+## Constants
 Constant parameters that should be identical across a full modeling system
 * `avogadro_number`: Avogadro number
     * `real`: units = molecules mol-1
@@ -348,7 +348,7 @@ Parameters defining or relating to the coordinate system of the model
     * `real`: units = 1
 * `sine_of_latitude`: Sine of latitude
     * `real`: units = 1
-## timing
+## Timing
 Variables defining or relating to timing, dates, calendar, and related concepts
 * `date_and_time_at_model_initialization_in_iso_order`: Integer array of date and time at model initialization in ISO order (year, month, day, hour, minute, second)
     * `integer`: units = 1
@@ -657,7 +657,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `tracer_concentration_of_new_state`: Tracer concentration of new state
     * `real`: units = kg kg-1
 ## Atmospheric composition
-### gasses
+### Gasses
 * `derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature`: derivative of the natural logarithm of water vapor partial pressure at saturation with respect to air temperature
     * `real`: units = K-1
 * `derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature_at_top_interfaces`: derivative of the natural logarithm of water vapor partial pressure at saturation with respect to air temperature at all interfaces excluding surface
@@ -760,7 +760,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces_assuming_saturation`: saturated water vapor mass mixing ratio with respect to moist air and condensed water at all interfaces excluding surface
     * `real`: units = kg kg-1
-### precipitation, cloud, and hydrometeor variables
+### Precipitation, cloud, and hydrometeor variables
 * `aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection`: Aerosol aware multiplicative rain conversion parameter for deep convection
     * `real`: units = 1
 * `aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection`: Aerosol aware multiplicative rain conversion parameter for shallow convection
@@ -956,7 +956,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `real`: units = m-1
 * `volume_extinction_in_air_due_to_aerosol_particles_lambda3`: Extinction due to GOCART aerosols at wavelength3
     * `real`: units = m-1
-### emissions
+### Emissions
 Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_co_due_to_anthropogenic_agriculture`: Carbon monoxide emissions from anthropogenic non-combustion agricultural sector
     * `real`: units = kg m-2 s-1
@@ -1013,13 +1013,13 @@ Emissions variables, contributed for the Community Emissions Data System (CEDS)
 * `emissions_of_no_due_to_anthropogenic_waste`: Nitric oxide emissions from anthropogenic waste disposal and handling
     * `real`: units = kg m-2 s-1
 ## Application-specific variables
-### required framework-provided variables
+### Required CCPP framework-provided variables
 Required CCPP framework-provided variables
 * `ccpp_error_code`: Error code for error handling in CCPP
     * `integer`: units = 1
 * `ccpp_error_message`: Error message for error handling in CCPP
     * `character`: units = none
-### optional framework-provided variables
+### Optional CCPP framework-provided variables
 Optional CCPP framework-provided variables
 * `ccpp_block_count`: CCPP block count
     * `integer`: units = count
@@ -1883,7 +1883,7 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = 1
 * `upper_bound_for_depth_of_sea_temperature_for_nsstm`: Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme
     * `integer`: units = mm
-## stochastic physics variables
+## Stochastic physics variables
 * `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme
     * `real`: units = m2 s-1
 * `cellular_automata_area_fraction_for_deep_convection_from_coupled_process`: Cellular automata area fraction for deep convection from coupled process

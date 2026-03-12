@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <standard_names name="Earth System Modeling Standard Name Library" version="1.0">
-  <section name="base_names" comment="Base names are the 'elemental' quantities from which the more complex standard names are constructed. Base names can roughly be broken down into three categories, indicated by the following subsections.">
-    <section name="generic_names" comment="The following names are too general to be chosen as standard names, but they can serve as base names for more specific standard names.">
+  <section name="Base names" comment="Base names are the 'elemental' quantities from which the more complex standard names are constructed. Base names can roughly be broken down into three categories, indicated by the following subsections.">
+    <section name="Generic names" comment="The following names are too general to be chosen as standard names, but they can serve as base names for more specific standard names.">
       <standard_name name="area">
         <type units="m2">real</type>
       </standard_name>
@@ -126,7 +126,7 @@
         <type units="s-1">real</type>
       </standard_name>
     </section>
-    <section name="chemical_species" comment="These are the base names for specific chemical species. They can all be assumed to have units of '1'">
+    <section name="Chemical species" comment="These are the base names for specific chemical species. They can all be assumed to have units of '1'">
       <standard_name name="c5h8" description="Isoprene">
       </standard_name>
       <standard_name name="ccl4" description="Tetrachloromethane">
@@ -180,7 +180,7 @@
       <standard_name name="sulfur_dioxide" description="so2">
       </standard_name>
     </section>
-    <section name="base_standard_names" comment="These names are used as bases for other names, but may also be considered standard names on their own. See the full list of standard names for further details.">
+    <section name="Base standard Names" comment="These names are used as bases for other names, but may also be considered standard names on their own. See the full list of standard names for further details.">
       <standard_name name="absolute_vorticity" description="Vorticity of fluid relative to an inertial frame; the sum of relative and planetary vorticities">
         <type units="s-1">real</type>
       </standard_name>
@@ -370,7 +370,7 @@
       </standard_name>
       </section>
   </section>
-  <section name="dimensions" comment="Names indicating the size, extent, or bounds of data structures in a model.">
+  <section name="Dimensions" comment="Names indicating the size, extent, or bounds of data structures in a model.">
     <standard_name name="horizontal_dimension" description="Length of the horizontal dimension" comment="In CCPP, horizontal_dimension refers to all horizontal grid columns that an MPI process owns/is responsible for">
       <type units="count">integer</type>
     </standard_name>
@@ -426,7 +426,7 @@
       <type units="count">integer</type>
     </standard_name>
     </section>
-  <section name="constants" comment="Constant parameters that should be identical across a full modeling system">
+  <section name="Constants" comment="Constant parameters that should be identical across a full modeling system">
     <standard_name name="avogadro_number">
       <type units="molecules mol-1">real</type>
     </standard_name>
@@ -502,7 +502,7 @@
       <type units="1">real</type>
     </standard_name>
     </section>
-  <section name="timing" comment="Variables defining or relating to timing, dates, calendar, and related concepts">
+  <section name="Timing" comment="Variables defining or relating to timing, dates, calendar, and related concepts">
     <standard_name name="date_and_time_at_model_initialization_in_iso_order" description="Integer array of date and time at model initialization in ISO order (year, month, day, hour, minute, second)">
       <type units="1">integer</type>
     </standard_name>
@@ -964,7 +964,7 @@
     </standard_name>
   </section>
   <section name="Atmospheric composition">
-    <section name="gasses">
+    <section name="Gasses">
       <standard_name name="derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature" description="derivative of the natural logarithm of water vapor partial pressure at saturation with respect to air temperature">
         <type units="K-1">real</type>
       </standard_name>
@@ -1119,7 +1119,7 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       </section>
-    <section name="precipitation, cloud, and hydrometeor variables">
+    <section name="Precipitation, cloud, and hydrometeor variables">
       <standard_name name="aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection">
         <type units="1">real</type>
       </standard_name>
@@ -1414,7 +1414,7 @@
         <type units="m-1">real</type>
       </standard_name>
       </section>
-    <section name="emissions" comment="Emissions variables, contributed for the Community Emissions Data System (CEDS)">
+    <section name="Emissions" comment="Emissions variables, contributed for the Community Emissions Data System (CEDS)">
       <standard_name name="emissions_of_co_due_to_anthropogenic_agriculture" description="Carbon monoxide emissions from anthropogenic non-combustion agricultural sector">
         <type units="kg m-2 s-1">real</type>
       </standard_name>
@@ -1499,7 +1499,7 @@
       </section>
   </section>
   <section name="Application-specific variables">
-    <section name="required framework-provided variables" comment="Required CCPP framework-provided variables">
+    <section name="Required CCPP framework-provided variables" comment="Required CCPP framework-provided variables">
       <standard_name name="ccpp_error_code" description="Error code for error handling in CCPP">
         <type units="1">integer</type>
       </standard_name>
@@ -1507,7 +1507,7 @@
         <type units="none">character</type>
       </standard_name>
       </section>
-    <section name="optional framework-provided variables" comment="Optional CCPP framework-provided variables">
+    <section name="Optional CCPP framework-provided variables" comment="Optional CCPP framework-provided variables">
       <standard_name name="ccpp_block_count" description="CCPP block count">
          <type units="count">integer</type>
       </standard_name>
@@ -2798,7 +2798,7 @@
       <type units="mm">integer</type>
     </standard_name>
     </section>
-  <section name="stochastic physics variables">
+  <section name="Stochastic physics variables">
     <standard_name name="atmosphere_heat_diffusivity_from_shoc" description="Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme">
       <type units="m2 s-1">real</type>
     </standard_name>
