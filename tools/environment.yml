@@ -3,4 +3,3 @@ channels:
   - conda-forge
 dependencies:
   - pyyaml
-  - lxml

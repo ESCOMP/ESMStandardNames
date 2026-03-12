@@ -7,24 +7,23 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
-
-try:
-    from lxml import etree
-except Exception as exc:
-    print("lxml is required to run this script.", file=sys.stderr)
-    raise exc
+import xml.etree.ElementTree as ET
 
 
 def extract_names(xml_path: Path) -> list[str]:
-    """Return a sorted list of all 'name' attributes from <standard_name> elements."""
-    parser = etree.XMLParser(recover=True, remove_blank_text=True)
-    tree = etree.parse(str(xml_path), parser)
+    """
+    Return a sorted list of all 'name' attributes from <standard_name> elements.
+    """
+    tree = ET.parse(str(xml_path))
+    root = tree.getroot()
 
+    # Find every <standard_name> element anywhere in the document.
     names = [
         elem.get("name")
-        for elem in tree.xpath("//standard_name")
+        for elem in root.iter("standard_name")
         if elem.get("name") is not None
     ]
+
     return sorted(names, key=str.lower)
 
 
@@ -44,5 +43,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
 

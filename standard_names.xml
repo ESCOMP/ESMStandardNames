@@ -365,10 +365,10 @@
       <standard_name name="wind_speed" description="Speed of moving air">
         <type units="m s-1">real</type>
       </standard_name>
-    <standard_name name="wind_stress" description="Shear stress exerted by wind parallel to the surface">
-      <type units="Pa">real</type>
+      <standard_name name="wind_stress" description="Shear stress exerted by wind parallel to the surface">
+        <type units="Pa">real</type>
       </standard_name>
-      </section>
+    </section>
   </section>
   <section name="Dimensions" comment="Names indicating the size, extent, or bounds of data structures in a model.">
     <standard_name name="horizontal_dimension" description="Length of the horizontal dimension" comment="In CCPP, horizontal_dimension refers to all horizontal grid columns that an MPI process owns/is responsible for">
@@ -383,7 +383,7 @@
     <standard_name name="number_of_equatorial_longitude_points">
       <type units="count">integer</type>
     </standard_name>
-  <standard_name name="number_of_latitude_points">
+    <standard_name name="number_of_latitude_points">
       <type units="count">integer</type>
     </standard_name>
     <standard_name name="number_of_snow_layers">
@@ -425,7 +425,7 @@
     <standard_name name="vertical_layer_dimension_minus_one">
       <type units="count">integer</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Constants" comment="Constant parameters that should be identical across a full modeling system">
     <standard_name name="avogadro_number">
       <type units="molecules mol-1">real</type>
@@ -445,7 +445,7 @@
     <standard_name name="density_of_fresh_water">
       <type units="kg m-3">real</type>
     </standard_name>
-  <standard_name name="gas_constant_of_dry_air">
+    <standard_name name="gas_constant_of_dry_air">
       <type units="J kg-1 K-1">real</type>
     </standard_name>
     <standard_name name="latent_heat_of_vaporization_of_water_at_0c" description="Latent heat of vaporization of water at 0 degrees Celsius">
@@ -463,7 +463,7 @@
     <standard_name name="standard_gravitational_acceleration" description="scalar constant representing gravitational acceleration">
       <type units="m s-2">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Coordinates" comment="Parameters defining or relating to the coordinate system of the model">
     <standard_name name="cell_area">
       <type units="m2">real</type>
@@ -483,7 +483,7 @@
     <standard_name name="height_above_mean_sea_level_at_surface" description="Height above mean sea level at local surface">
       <type units="m">real</type>
     </standard_name>
-  <standard_name name="latitude">
+    <standard_name name="latitude">
       <type units="degree_north">real</type>
     </standard_name>
     <standard_name name="longitude">
@@ -501,7 +501,7 @@
     <standard_name name="sine_of_latitude">
       <type units="1">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Timing" comment="Variables defining or relating to timing, dates, calendar, and related concepts">
     <standard_name name="date_and_time_at_model_initialization_in_iso_order" description="Integer array of date and time at model initialization in ISO order (year, month, day, hour, minute, second)">
       <type units="1">integer</type>
@@ -542,10 +542,10 @@
     <standard_name name="time_elapsed_since_diagnostics_reset">
       <type units="h">real</type>
     </standard_name>
-  <standard_name name="timestep_for_dynamics">
+    <standard_name name="timestep_for_dynamics">
       <type units="s">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Atmospheric properties">
     <standard_name name="air_pressure" description="Midpoint air pressure">
       <type units="Pa">real</type>
@@ -613,7 +613,7 @@
     <standard_name name="atmosphere_boundary_layer_thickness">
       <type units="m">real</type>
     </standard_name>
-      <standard_name name="atmosphere_heat_diffusivity_due_to_background">
+    <standard_name name="atmosphere_heat_diffusivity_due_to_background">
       <type units="m2 s-1">real</type>
     </standard_name>
     <standard_name name="atmosphere_heat_diffusivity_for_chemistry_coupling">
@@ -853,13 +853,13 @@
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array">     
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array">
       <type units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back">
       <type units="kg kg-1">real</type>
     </standard_name>
-  <standard_name name="wind_from_direction_at_surface" description="Direction, from north, of wind speed closest to surface">
+    <standard_name name="wind_from_direction_at_surface" description="Direction, from north, of wind speed closest to surface">
       <type units="degrees">real</type>
     </standard_name>
     <standard_name name="wind_speed_at_surface" description="Scalar wind speed closest to surface">
@@ -889,7 +889,7 @@
     <standard_name name="y_wind_of_new_state_at_surface_adjacent_layer">
       <type units="m s-1">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Marine">
     <standard_name name="derivative_of_diurnal_thermocline_layer_thickness_wrt_surface_skin_temperature">
       <type units="m K-1">real</type>
@@ -915,7 +915,7 @@
     <standard_name name="sea_surface_temperature">
       <type units="K">real</type>
     </standard_name>
-  <standard_name name="sea_water_absolute_salinity" description="The absolute salinity of sea water">
+    <standard_name name="sea_water_absolute_salinity" description="The absolute salinity of sea water">
       <type units="g kg-1">real</type>
     </standard_name>
     <standard_name name="sea_water_depth" description="The depth of the ocean floor below the surface of the sea">
@@ -931,7 +931,7 @@
       <type units="ppt m">real</type>
     </standard_name>
     <standard_name name="sea_water_temperature" description="The temperature of sea water">
-        <type units="K">real</type>
+      <type units="K">real</type>
     </standard_name>
     <standard_name name="x_current_in_diurnal_thermocline">
       <type units="m2 s-1">real</type>
@@ -939,7 +939,7 @@
     <standard_name name="y_current_in_diurnal_thermocline">
       <type units="m2 s-1">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Tracers" comment="Tracers are numerically zero-mass particles advected in fluid flow, typically representing some trace gas, particle, or other physical substance">
     <standard_name name="chemical_tracer_scavenging_fractions">
       <type units="fraction">real</type>
@@ -1047,9 +1047,9 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="ozone_mixing_ratio_wrt_moist_air" description="Ozone mass mixing ratio with respect to moist air">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
-    <standard_name name="volume_mixing_ratio_of_c5h8" description="Isoprene volume mixing ratio">
+      <standard_name name="volume_mixing_ratio_of_c5h8" description="Isoprene volume mixing ratio">
         <type units="mol mol-1">real</type>
       </standard_name>
       <standard_name name="volume_mixing_ratio_of_ccl4" description="Tetrachloromethane volume mixing ratio">
@@ -1118,7 +1118,7 @@
       <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water_at_top_interfaces_assuming_saturation" description="saturated water vapor mass mixing ratio with respect to moist air and condensed water at all interfaces excluding surface">
         <type units="kg kg-1">real</type>
       </standard_name>
-      </section>
+    </section>
     <section name="Precipitation, cloud, and hydrometeor variables">
       <standard_name name="aerosol_aware_multiplicative_rain_conversion_parameter_for_deep_convection">
         <type units="1">real</type>
@@ -1127,10 +1127,10 @@
         <type units="1">real</type>
       </standard_name>
       <standard_name name="cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice" description="Cloud condensed water mass mixing ratio with respect to moist air at surface over ice">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land" description="Cloud condensed water mass mixing ratio with respect to moist air at surface over land">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_ice_mixing_ratio_wrt_dry_air" description="Ratio of the mass of cloud ice to the mass of dry air">
         <type units="kg kg-1">real</type>
@@ -1148,7 +1148,7 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_ice_mixing_ratio_wrt_moist_air_of_new_state" description="Cloud ice mass mixing ratio with respect to moist air of new state">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_liquid_water_mixing_ratio_wrt_dry_air" description="Ratio of the mass of cloud liquid water to the mass of dry air">
         <type units="kg kg-1">real</type>
@@ -1166,25 +1166,25 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_liquid_water_mixing_ratio_wrt_moist_air_at_surface_adjacent_layer" description="Cloud liquid water mass mixing ratio with respect to moist air at surface-adjacent layer">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_liquid_water_mixing_ratio_wrt_moist_air_interstitial" description="Cloud liquid water mass mixing ratio with respect to moist air in interstitial scheme">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state" description="Cloud liquid water mass mixing ratio with respect to moist air of new state">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="convective_cloud_area_fraction">
-         <type units="fraction">real</type>
+        <type units="fraction">real</type>
       </standard_name>
       <standard_name name="convective_cloud_condensate_after_rainout">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="convective_cloud_condensate_mixing_ratio_wrt_moist_air" description="Convective cloud condensate mass mixing ratio with respect to moist air">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="convective_precipitation_rate_on_previous_timestep">
-         <type units="mm s-1">real</type>
+        <type units="mm s-1">real</type>
       </standard_name>
       <standard_name name="effective_radius_of_stratiform_cloud_graupel_particle">
         <type units="um">real</type>
@@ -1202,61 +1202,61 @@
         <type units="um">real</type>
       </standard_name>
       <standard_name name="graupel_mixing_ratio_wrt_moist_air" description="Graupel mass mixing ratio with respect to moist air">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="graupel_mixing_ratio_wrt_moist_air_of_new_state" description="Graupel mass mixing ratio with respect to moist air of new state">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="ice_nucleation_number_from_climatology">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
-    <standard_name name="mass_number_concentration_of_cloud_ice_water_crystals_in_air">
-         <type units="kg-1">real</type>
+      <standard_name name="mass_number_concentration_of_cloud_ice_water_crystals_in_air">
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_cloud_ice_water_crystals_in_air_of_new_state">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_cloud_liquid_water_particles_in_air">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_cloud_liquid_water_particles_in_air_of_new_state">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_graupel_in_air">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_graupel_of_new_state">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_rain_in_air">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_rain_of_new_state">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_snow_in_air">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_snow_of_new_state">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_weighted_rime_factor_of_new_state">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="nonconvective_cloud_area_fraction_in_atmosphere_layer_of_new_state">
-         <type units="fraction">real</type>
+        <type units="fraction">real</type>
       </standard_name>
       <standard_name name="number_of_condensate_species">
-         <type units="count">integer</type>
+        <type units="count">integer</type>
       </standard_name>
       <standard_name name="number_of_frozen_precipitation_species">
-         <type units="count">integer</type>
+        <type units="count">integer</type>
       </standard_name>
       <standard_name name="number_of_hydrometeors">
-         <type units="count">integer</type>
+        <type units="count">integer</type>
       </standard_name>
       <standard_name name="precipitation_type">
-         <type units="1">real</type>
+        <type units="1">real</type>
       </standard_name>
       <standard_name name="prescribed_number_concentration_of_cloud_droplets">
         <type units="m-3">real</type>
@@ -1283,22 +1283,22 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="rain_mixing_ratio_wrt_moist_air_of_new_state" description="Rain mass mixing ratio with respect to moist air of new state">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="reciprocal_of_cloud_phase_transition_temperature_range">
         <type units="K-1">real</type>
       </standard_name>
       <standard_name name="relative_variance_of_subgrid_cloud_condensate_distribution">
-         <type units="kg2 kg-2">real</type>
+        <type units="kg2 kg-2">real</type>
       </standard_name>
       <standard_name name="snow_mixing_ratio_wrt_moist_air" description="Snow mass mixing ratio with respect to moist air">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="snow_mixing_ratio_wrt_moist_air_of_new_state" description="Snow mass mixing ratio with respect to moist air of new state">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="timescale_for_autoconversion_to_snow" description="timescale for cloud ice autoconversion to snow">
-         <type units="s">real</type>
+        <type units="s">real</type>
       </standard_name>
       <standard_name name="total_precipitation_rate_at_surface">
         <type units="m s-1">real</type>
@@ -1316,12 +1316,12 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_of_new_state" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state at surface-adjacent layer">
-         <type units="kg kg-1">real</type>
+        <type units="kg kg-1">real</type>
       </standard_name>
-      </section>
+    </section>
     <section name="Aerosols">
       <standard_name name="mass_fraction_of_dust001_in_air" description="GOCART Dust bin1 mass fraction">
         <type units="kg kg-1">real</type>
@@ -1384,16 +1384,16 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_aerosol_from_gocart_climatology">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_hygroscopic_aerosols">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
-    <standard_name name="mass_number_concentration_of_hygroscopic_aerosols_of_new_state">
+      <standard_name name="mass_number_concentration_of_hygroscopic_aerosols_of_new_state">
         <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols">
-         <type units="kg-1">real</type>
+        <type units="kg-1">real</type>
       </standard_name>
       <standard_name name="mass_number_concentration_of_nonhygroscopic_ice_nucleating_aerosols_of_new_state">
         <type units="kg-1">real</type>
@@ -1404,7 +1404,7 @@
       <standard_name name="number_fraction_of_coarse_aerosol_particles_in_air" description="Ratio of number concentration of coarse-mode dust aerosol particles to the molecular concentration of air; i.e., the ratio of the number of coarse-mode dust aerosol particles to the number of air molecules in a unit volume">
         <type units="particles molecules-1">real</type>
       </standard_name>
-        <standard_name name="volume_extinction_in_air_due_to_aerosol_particles_lambda1" description="Extinction due to GOCART aerosols at wavelength1">
+      <standard_name name="volume_extinction_in_air_due_to_aerosol_particles_lambda1" description="Extinction due to GOCART aerosols at wavelength1">
         <type units="m-1">real</type>
       </standard_name>
       <standard_name name="volume_extinction_in_air_due_to_aerosol_particles_lambda2" description="Extinction due to GOCART aerosols at wavelength2">
@@ -1413,7 +1413,7 @@
       <standard_name name="volume_extinction_in_air_due_to_aerosol_particles_lambda3" description="Extinction due to GOCART aerosols at wavelength3">
         <type units="m-1">real</type>
       </standard_name>
-      </section>
+    </section>
     <section name="Emissions" comment="Emissions variables, contributed for the Community Emissions Data System (CEDS)">
       <standard_name name="emissions_of_co_due_to_anthropogenic_agriculture" description="Carbon monoxide emissions from anthropogenic non-combustion agricultural sector">
         <type units="kg m-2 s-1">real</type>
@@ -1469,7 +1469,7 @@
       <standard_name name="emissions_of_hcho_due_to_anthropogenic_waste" description="Formaldehyde emissions from anthropogenic waste disposal and handling">
         <type units="kg m-2 s-1">real</type>
       </standard_name>
-    <standard_name name="emissions_of_no_due_to_anthropogenic_agriculture" description="Nitric oxide emissions from anthropogenic non-combustion agricultural sector">
+      <standard_name name="emissions_of_no_due_to_anthropogenic_agriculture" description="Nitric oxide emissions from anthropogenic non-combustion agricultural sector">
         <type units="kg m-2 s-1">real</type>
       </standard_name>
       <standard_name name="emissions_of_no_due_to_anthropogenic_energy" description="Nitric oxide emissions from anthropogenic non-combustion energy transformation and extraction">
@@ -1496,23 +1496,23 @@
       <standard_name name="emissions_of_no_due_to_anthropogenic_waste" description="Nitric oxide emissions from anthropogenic waste disposal and handling">
         <type units="kg m-2 s-1">real</type>
       </standard_name>
-      </section>
+    </section>
   </section>
   <section name="Application-specific variables">
     <section name="Required CCPP framework-provided variables" comment="Required CCPP framework-provided variables">
       <standard_name name="ccpp_error_code" description="Error code for error handling in CCPP">
         <type units="1">integer</type>
       </standard_name>
-    <standard_name name="ccpp_error_message" description="Error message for error handling in CCPP">
+      <standard_name name="ccpp_error_message" description="Error message for error handling in CCPP">
         <type units="none">character</type>
       </standard_name>
-      </section>
+    </section>
     <section name="Optional CCPP framework-provided variables" comment="Optional CCPP framework-provided variables">
       <standard_name name="ccpp_block_count" description="CCPP block count">
-         <type units="count">integer</type>
+        <type units="count">integer</type>
       </standard_name>
       <standard_name name="ccpp_block_sizes" description="CCPP block sizes">
-         <type units="count">integer</type>
+        <type units="count">integer</type>
       </standard_name>
       <standard_name name="ccpp_constituent_min_values" description="CCPP constituent minimum values">
         <type units="none">real</type>
@@ -1526,7 +1526,7 @@
       <standard_name name="ccpp_instance_number" description="Number of current CCPP instance.">
         <type units="index">integer</type>
       </standard_name>
-    <standard_name name="ccpp_scheme_name" description="CCPP physics scheme name">
+      <standard_name name="ccpp_scheme_name" description="CCPP physics scheme name">
         <type units="none">character</type>
       </standard_name>
       <standard_name name="ccpp_thread_number" description="Number of current OpenMP thread. This variable may only be used during CCPP run phase">
@@ -1538,7 +1538,7 @@
       <standard_name name="number_of_ccpp_instances" description="Number of parallel CCPP instances on this MPI task">
         <type units="count">integer</type>
       </standard_name>
-      </section>
+    </section>
   </section>
   <section name="System variables" comment="Variables related to the compute environment, properties of variables, input/output">
     <standard_name name="directory_for_rte_rrtmgp_source_code" description="Directory for Radiative Transfer for Energetics/Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) source code">
@@ -1664,13 +1664,13 @@
     <standard_name name="period_of_max_diagnostics_reset" description="Period of maximum diagnostics reset">
       <type units="s">real</type>
     </standard_name>
-  <standard_name name="starting_x_index_for_current_mpi_rank">
+    <standard_name name="starting_x_index_for_current_mpi_rank">
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="starting_y_index_for_current_mpi_rank">
       <type units="index">integer</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Control variables" comment="Variables that indicate or control some action.">
     <standard_name name="control_for_additional_diagnostics_in_mynn_pbl_scheme" description="Control for additional diagnostics in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
       <type units="1">integer</type>
@@ -1705,10 +1705,10 @@
     <standard_name name="control_for_edmf_in_mynn_pbl_scheme" description="Control for eddy-diffusivity mass flux in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="control_for_edmf_momentum_transport_in_mynn_pbl_scheme" description="Control for eddy-diffusivity mass flux momentum transport in Mellor-Yamada-Nakanishi-Niino surface layer scheme">     
+    <standard_name name="control_for_edmf_momentum_transport_in_mynn_pbl_scheme" description="Control for eddy-diffusivity mass flux momentum transport in Mellor-Yamada-Nakanishi-Niino surface layer scheme">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="control_for_edmf_partitioning_in_mynn_pbl_scheme" description="Control for eddy-diffusivity mass flux partitioning in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">  
+    <standard_name name="control_for_edmf_partitioning_in_mynn_pbl_scheme" description="Control for eddy-diffusivity mass flux partitioning in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
       <type units="1">integer</type>
     </standard_name>
     <standard_name name="control_for_edmf_tke_transport_in_mynn_pbl_scheme" description="Control for eddy-diffusivity mass flux turbulent kinetic energy transport in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
@@ -1813,7 +1813,7 @@
     <standard_name name="control_for_prescribed_co2">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="control_for_scale_aware_tke_moist_edmf_pbl_scheme" description="Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">     
+    <standard_name name="control_for_scale_aware_tke_moist_edmf_pbl_scheme" description="Control for scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
       <type units="1">integer</type>
     </standard_name>
     <standard_name name="control_for_sgs_cloud_radiation_coupling_in_mynn_pbl_scheme" description="Control for subgrid-scale cloud radiation coupling in Mellor-Yamada-Nakanishi-Niino planetary boundary layer scheme">
@@ -2376,7 +2376,7 @@
     <standard_name name="index_of_cubed_sphere_tile">
       <type units="index">integer</type>
     </standard_name>
-  <standard_name name="index_of_enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convectionin_in_xy_dimensioned_restart_array">
+    <standard_name name="index_of_enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convectionin_in_xy_dimensioned_restart_array">
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="index_of_first_chemical_tracer_in_tracer_concentration_array">
@@ -2523,7 +2523,7 @@
     <standard_name name="vertical_layer_index" description="index of a particular vertical layer">
       <type units="index">integer</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Coefficients" comment="Coefficients includes scaling factors, tunable parameters, and other similar variables">
     <standard_name name="alpha_tuning_coefficient_for_morrison_gettelman_microphysics_scheme">
       <type units="1">real</type>
@@ -2669,10 +2669,10 @@
     <standard_name name="scaling_factor_for_potential_temperature_at_top_of_viscous_sublayer">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer" description="Scaling factor for specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer">   
+    <standard_name name="scaling_factor_for_water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer" description="Scaling factor for specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer">
       <type units="1">real</type>
     </standard_name>
-  <standard_name name="surface_drag_coefficient_for_heat_and_moisture_for_noahmp" description="Surface drag coefficient for heat and moisture for Noah land surface model with multiparameterization options">
+    <standard_name name="surface_drag_coefficient_for_heat_and_moisture_for_noahmp" description="Surface drag coefficient for heat and moisture for Noah land surface model with multiparameterization options">
       <type units="1">real</type>
     </standard_name>
     <standard_name name="surface_drag_coefficient_for_momentum_for_noahmp" description="Surface drag coefficient for momentum for Noah land surface model with multiparameterization options">
@@ -2720,7 +2720,7 @@
     <standard_name name="uncentering_coefficient_for_implicit_tke_integration">
       <type units="1">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Thresholds" comment="Thresholds represent some value at which the behavior of some process changes, including maximums and minimums">
     <standard_name name="air_pressure_at_bottom_extent_of_rayleigh_damping">
       <type units="Pa">real</type>
@@ -2785,7 +2785,7 @@
     <standard_name name="min_vegetation_area_fraction">
       <type units="fraction">real</type>
     </standard_name>
-  <standard_name name="relative_humidity_threshold_for_condensation">
+    <standard_name name="relative_humidity_threshold_for_condensation">
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="relative_humidity_threshold_for_ice_nucleation">
@@ -2797,7 +2797,7 @@
     <standard_name name="upper_bound_for_depth_of_sea_temperature_for_nsstm" description="Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme">
       <type units="mm">integer</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Stochastic physics variables">
     <standard_name name="atmosphere_heat_diffusivity_from_shoc" description="Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme">
       <type units="m2 s-1">real</type>
@@ -2856,7 +2856,7 @@
     <standard_name name="sppt_scaling_factors_from_coupled_process" description="Stochastically perturbed physics tendencies scaling factors from coupled process">
       <type units="1">real</type>
     </standard_name>
-  <standard_name name="subgrid_scale_cloud_fraction_from_shoc" description="Subgrid-scale cloud fraction from Simplified Higher-Order Closure stochastic physics scheme">
+    <standard_name name="subgrid_scale_cloud_fraction_from_shoc" description="Subgrid-scale cloud fraction from Simplified Higher-Order Closure stochastic physics scheme">
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="surface_stochastic_scaling_factors_from_coupled_process">
@@ -2868,7 +2868,7 @@
     <standard_name name="total_amplitude_of_sppt_perturbation" description="Total amplitude of stochastically perturbed physics tendencies perturbation">
       <type units="1">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Radiation">
     <standard_name name="convective_cloud_area_fraction_between_sw_radiation_calls_from_cnvc90" description="Convective cloud area fraction between shortwave radiation calls from GFS Convective Cloud Diagnostics">
       <type units="fraction">real</type>
@@ -2918,67 +2918,67 @@
     <standard_name name="cumulative_net_downwelling_shortwave_flux_at_surface_for_coupling_multiplied_by_timestep">
       <type units="J m-2">real</type>
     </standard_name>
-      <standard_name name="decorrelation_length_used_by_overlap_method">
+    <standard_name name="decorrelation_length_used_by_overlap_method">
       <type units="km">real</type>
     </standard_name>
     <standard_name name="downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling" description="downwelling diffuse near-infrared shortwave flux at the surface level for coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep" description="downwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling" description="downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep" description="downwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_direct_nir_shortwave_flux_at_surface_for_coupling" description="downwelling direct near-infrared shortwave flux at the surface level for coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep" description="downwelling direct near-infrared shortwave flux at the surface level on the radiation timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling" description="downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep" description="downwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_longwave_flux_at_surface_for_coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_longwave_flux_at_surface_on_radiation_timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_shortwave_flux_at_surface_for_coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="downwelling_shortwave_flux_at_surface_on_radiation_timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling" description="net downwelling diffuse near-infrared shortwave flux at the surface level for coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling" description="net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling" description="net downwelling direct near-infrared shortwave flux at the surface level for coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling" description="net_downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="net_downwelling_longwave_flux_at_surface_for_coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="net_downwelling_shortwave_flux_at_surface_for_coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="net_downwelling_shortwave_flux_at_surface_on_radiation_timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="number_of_gaussian_quadrature_angles_for_radiation">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep" description="downwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling" description="downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep" description="downwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_direct_nir_shortwave_flux_at_surface_for_coupling" description="downwelling direct near-infrared shortwave flux at the surface level for coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep" description="downwelling direct near-infrared shortwave flux at the surface level on the radiation timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling" description="downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep" description="downwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_longwave_flux_at_surface_for_coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_longwave_flux_at_surface_on_radiation_timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_shortwave_flux_at_surface_for_coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="downwelling_shortwave_flux_at_surface_on_radiation_timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling" description="net downwelling diffuse near-infrared shortwave flux at the surface level for coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling" description="net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="net_downwelling_direct_nir_shortwave_flux_at_surface_for_coupling" description="net downwelling direct near-infrared shortwave flux at the surface level for coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="net_downwelling_direct_uv_and_vis_shortwave_flux_at_surface_for_coupling" description="net_downwelling direct ultraviolet and visible shortwave flux at the surface level for coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="net_downwelling_longwave_flux_at_surface_for_coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="net_downwelling_shortwave_flux_at_surface_for_coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="net_downwelling_shortwave_flux_at_surface_on_radiation_timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="number_of_gaussian_quadrature_angles_for_radiation">
       <type units="count">integer</type>
     </standard_name>
     <standard_name name="number_of_ice_roughness_categories">
@@ -3024,15 +3024,15 @@
       <type units="1">integer</type>
     </standard_name>
     <standard_name name="rrtmgp_jacobian_of_upward_lw_flux" description="Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) jacobian of upward longwave flux">
-         <type units="W m-2 K-1">real</type>
-      </standard_name>
-      <standard_name name="rrtmgp_lw_downward_allsky_flux_profile" description="Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave downward all-sky flux profile">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="rrtmgp_lw_upward_allsky_flux_profile" description="Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave upward all-sky flux profile">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="sine_of_solar_declination_angle">
+      <type units="W m-2 K-1">real</type>
+    </standard_name>
+    <standard_name name="rrtmgp_lw_downward_allsky_flux_profile" description="Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave downward all-sky flux profile">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="rrtmgp_lw_upward_allsky_flux_profile" description="Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) longwave upward all-sky flux profile">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="sine_of_solar_declination_angle">
       <type units="1">real</type>
     </standard_name>
     <standard_name name="solar_constant">
@@ -3042,29 +3042,29 @@
       <type units="W m-2">ddt</type>
     </standard_name>
     <standard_name name="upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling direct near-infrared shortwave flux at the surface level on the radiation timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upwelling_longwave_flux_at_surface_from_coupled_process">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upwelling_longwave_flux_at_surface_on_radiation_timestep">
-         <type units="W m-2">real</type>
-      </standard_name>
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upwelling_direct_nir_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling direct near-infrared shortwave flux at the surface level on the radiation timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upwelling_direct_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling direct ultraviolet and visible shortwave flux at the surface level on the radiation timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upwelling_longwave_flux_at_surface_from_coupled_process">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upwelling_longwave_flux_at_surface_on_radiation_timestep">
+      <type units="W m-2">real</type>
+    </standard_name>
   </section>
   <section name="Atmospheric surface and boundary layer">
     <standard_name name="air_pressure_at_surface_for_coupling">
-         <type units="Pa">real</type>
-      </standard_name>
-      <standard_name name="air_pressure_at_surface_on_previous_timestep">
+      <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="air_pressure_at_surface_on_previous_timestep">
       <type units="Pa">real</type>
     </standard_name>
     <standard_name name="air_pressure_at_surface_two_timesteps_back">
@@ -3074,21 +3074,21 @@
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="cumulative_upward_latent_heat_flux_at_surface_for_coupling_multiplied_by_timestep">
-         <type units="J m-2">real</type>
-      </standard_name>
-      <standard_name name="cumulative_upward_sensible_heat_flux_at_surface_for_coupling_multiplied_by_timestep">
-         <type units="J m-2">real</type>
-      </standard_name>
-      <standard_name name="cumulative_x_momentum_flux_at_surface_for_coupling_multiplied_by_timestep">
-         <type units="Pa s">real</type>
-      </standard_name>
-      <standard_name name="cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep">
-         <type units="Pa s">real</type>
-      </standard_name>
-      <standard_name name="lwe_surface_snow_from_coupled_process" description="Liquid water equivalent surface snow from coupled process">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="monin_obukhov_similarity_function_for_heat">
+      <type units="J m-2">real</type>
+    </standard_name>
+    <standard_name name="cumulative_upward_sensible_heat_flux_at_surface_for_coupling_multiplied_by_timestep">
+      <type units="J m-2">real</type>
+    </standard_name>
+    <standard_name name="cumulative_x_momentum_flux_at_surface_for_coupling_multiplied_by_timestep">
+      <type units="Pa s">real</type>
+    </standard_name>
+    <standard_name name="cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep">
+      <type units="Pa s">real</type>
+    </standard_name>
+    <standard_name name="lwe_surface_snow_from_coupled_process" description="Liquid water equivalent surface snow from coupled process">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="monin_obukhov_similarity_function_for_heat">
       <type units="1">real</type>
     </standard_name>
     <standard_name name="monin_obukhov_similarity_function_for_momentum">
@@ -3116,12 +3116,12 @@
       <type units="1">real</type>
     </standard_name>
     <standard_name name="surface_skin_temperature_for_coupling">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="temperature_at_2m_for_coupling">
-         <type units="K">real</type>
-      </standard_name>
-      <standard_name name="turbulent_mixing_length">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="temperature_at_2m_for_coupling">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="turbulent_mixing_length">
       <type units="m">real</type>
     </standard_name>
     <standard_name name="updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme" description="Updraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
@@ -3130,34 +3130,34 @@
     <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface">
       <type units="kg kg-1 m s-1">real</type>
     </standard_name>
-    <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme" description="Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme">     
+    <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme" description="Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme">
       <type units="m s-1 kg kg-1">real</type>
     </standard_name>
     <standard_name name="upward_latent_heat_flux_at_surface_for_coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upward_latent_heat_flux_at_surface_from_coupled_process">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upward_sensible_heat_flux_at_surface_for_chemistry_coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upward_sensible_heat_flux_at_surface_for_coupling">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upward_sensible_heat_flux_at_surface_from_coupled_process">
-         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="upward_temperature_flux_at_surface">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upward_latent_heat_flux_at_surface_from_coupled_process">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upward_sensible_heat_flux_at_surface_for_chemistry_coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upward_sensible_heat_flux_at_surface_for_coupling">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upward_sensible_heat_flux_at_surface_from_coupled_process">
+      <type units="W m-2">real</type>
+    </standard_name>
+    <standard_name name="upward_temperature_flux_at_surface">
       <type units="K m s-1">real</type>
     </standard_name>
     <standard_name name="upward_virtual_potential_temperature_flux">
       <type units="K m s-1">real</type>
     </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at 2 meters above surface used for coupling">
-         <type units="kg kg-1">real</type>
-      </standard_name>
-      <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface">
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at 2 meters above surface used for coupling">
+      <type units="kg kg-1">real</type>
+    </standard_name>
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface">
       <type units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes" description="Surface specific humidity (water vapor mass mixing ratio with respect to moist air) for Mellor-Yamada-Janjic physics schemes">
@@ -3167,30 +3167,30 @@
       <type units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="x_momentum_flux_at_surface_for_coupling">
-         <type units="Pa">real</type>
-      </standard_name>
-      <standard_name name="x_momentum_flux_at_surface_from_coupled_process">
-         <type units="Pa">real</type>
-      </standard_name>
-      <standard_name name="x_wind_at_10m_for_coupling">
-         <type units="m s-1">real</type>
-      </standard_name>
-      <standard_name name="x_wind_at_top_of_viscous_sublayer">
+      <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="x_momentum_flux_at_surface_from_coupled_process">
+      <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="x_wind_at_10m_for_coupling">
+      <type units="m s-1">real</type>
+    </standard_name>
+    <standard_name name="x_wind_at_top_of_viscous_sublayer">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="y_momentum_flux_at_surface_for_coupling">
-         <type units="Pa">real</type>
-      </standard_name>
-      <standard_name name="y_momentum_flux_at_surface_from_coupled_process">
-         <type units="Pa">real</type>
-      </standard_name>
-  <standard_name name="y_wind_at_10m_for_coupling">
-         <type units="m s-1">real</type>
-      </standard_name>
-      <standard_name name="y_wind_at_top_of_viscous_sublayer">
+      <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="y_momentum_flux_at_surface_from_coupled_process">
+      <type units="Pa">real</type>
+    </standard_name>
+    <standard_name name="y_wind_at_10m_for_coupling">
       <type units="m s-1">real</type>
     </standard_name>
-    </section>
+    <standard_name name="y_wind_at_top_of_viscous_sublayer">
+      <type units="m s-1">real</type>
+    </standard_name>
+  </section>
   <section name="Land surface, subsurface, and vegetation properties">
     <standard_name name="air_temperature_in_canopy">
       <type units="K">real</type>
@@ -3208,9 +3208,9 @@
       <type units="1">real</type>
     </standard_name>
     <standard_name name="area_type_from_coupled_process">
-         <type units="1">real</type>
-      </standard_name>
-  <standard_name name="baseline_roughness_length" description="Baseline surface roughness length">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="baseline_roughness_length" description="Baseline surface roughness length">
       <type units="m">real</type>
     </standard_name>
     <standard_name name="baseline_surface_longwave_emissivity">
@@ -3232,15 +3232,15 @@
       <type units="m">real</type>
     </standard_name>
     <standard_name name="cumulative_lwe_thickness_of_convective_precipitation_for_coupling" description="Cumulative liquid water equivalent thickness of convective precipitation amount for coupling">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="cumulative_lwe_thickness_of_precipitation_for_coupling" description="Cumulative liquid water equivalent thickness of precipitation amount for coupling">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="cumulative_lwe_thickness_of_snow_for_coupling" description="Cumulative liquid water equivalent thickness of snow amount for coupling">
-         <type units="m">real</type>
-      </standard_name>
-      <standard_name name="deep_soil_temperature">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="cumulative_lwe_thickness_of_precipitation_for_coupling" description="Cumulative liquid water equivalent thickness of precipitation amount for coupling">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="cumulative_lwe_thickness_of_snow_for_coupling" description="Cumulative liquid water equivalent thickness of snow amount for coupling">
+      <type units="m">real</type>
+    </standard_name>
+    <standard_name name="deep_soil_temperature">
       <type units="K">real</type>
     </standard_name>
     <standard_name name="density_of_snow_at_surface">
@@ -3253,9 +3253,9 @@
       <type units="m">real</type>
     </standard_name>
     <standard_name name="diffuse_nir_albedo_for_coupling" description="surface albedo for diffuse near-infrared radiation for coupling">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="diffuse_nir_albedo_of_ice" description="ice surface albedo for diffuse near-infrared radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="diffuse_nir_albedo_of_ice" description="ice surface albedo for diffuse near-infrared radiation">
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="diffuse_nir_albedo_of_land" description="land surface albedo for diffuse near-infrared radiation">
@@ -3271,9 +3271,9 @@
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="diffuse_vis_albedo_for_coupling" description="surface albedo for diffuse visible radiation for coupling">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="diffuse_vis_albedo_of_ice" description="ice surface albedo for diffuse visible radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="diffuse_vis_albedo_of_ice" description="ice surface albedo for diffuse visible radiation">
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="diffuse_vis_albedo_of_land" description="land surface albedo for diffuse visible radiation">
@@ -3283,18 +3283,18 @@
       <type units="1">real</type>
     </standard_name>
     <standard_name name="direct_nir_albedo_for_coupling" description="surface albedo for direct near-infrared radiation for coupling">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="direct_nir_albedo_of_ice" description="ice surface albedo for direct near-infrared radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="direct_nir_albedo_of_ice" description="ice surface albedo for direct near-infrared radiation">
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="direct_nir_albedo_of_land" description="land surface albedo for direct near-infrared radiation">
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="direct_vis_albedo_for_coupling" description="surface albedo for direct visible radiation for coupling">
-         <type units="fraction">real</type>
-      </standard_name>
-      <standard_name name="direct_vis_albedo_of_ice" description="ice surface albedo for direct visible radiation">
+      <type units="fraction">real</type>
+    </standard_name>
+    <standard_name name="direct_vis_albedo_of_ice" description="ice surface albedo for direct visible radiation">
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="direct_vis_albedo_of_land" description="land surface albedo for direct visible radiation">
@@ -3372,7 +3372,7 @@
     <standard_name name="lwe_thickness_of_snowfall_on_dynamics_timestep_for_coupling" description="Liquid water equivalent thickness of snowfall amount on dynamics timestep for coupling">
       <type units="m">real</type>
     </standard_name>
-      <standard_name name="lwe_thickness_of_snowfall_on_previous_timestep" description="Liquid water equivalent thickness of snowfall amount on previous timestep">
+    <standard_name name="lwe_thickness_of_snowfall_on_previous_timestep" description="Liquid water equivalent thickness of snowfall amount on previous timestep">
       <type units="mm">real</type>
     </standard_name>
     <standard_name name="lwe_thickness_of_surface_snow" description="Liquid water equivalent thickness of surface snow amount">
@@ -3621,7 +3621,7 @@
     <standard_name name="wood_mass_content">
       <type units="g m-2">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Convective physics parameters">
     <standard_name name="atmosphere_updraft_convective_mass_flux_at_cloud_base_by_cloud_type">
       <type units="kg m-2 s-1">real</type>
@@ -3647,7 +3647,7 @@
     <standard_name name="enhancement_to_wind_speed_at_surface_adjacent_layer_due_to_convection">
       <type units="m s-1">real</type>
     </standard_name>
-  <standard_name name="number_of_cloud_types_in_chikira_sugiyama_deep_convection">
+    <standard_name name="number_of_cloud_types_in_chikira_sugiyama_deep_convection">
       <type units="count">integer</type>
     </standard_name>
     <standard_name name="number_of_spectral_wave_truncation_for_sas_convection" description="Number of spectral wave truncation for Simplified Arakawa-Schubert deep convection scheme">
@@ -3656,10 +3656,10 @@
     <standard_name name="physics_field_for_coupling">
       <type units="m2 s-2">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Gravity wave drag parameters">
     <standard_name name="absolute_momentum_flux_due_to_nonorographic_gwd" description="Absolute momentum flux due to non-orographic gravity wave drag">
-     <type units="various">real</type>
+      <type units="various">real</type>
     </standard_name>
     <standard_name name="number_of_statistical_measures_of_subgrid_orography">
       <type units="count">integer</type>
@@ -3771,13 +3771,13 @@
     <standard_name name="tendency_of_northward_wind_due_to_model_physics" description="Change in northward wind due to model physics per unit time">
       <type units="m s-2">real</type>
     </standard_name>
-  <standard_name name="tendency_of_potential_temperature_of_air" description="Change in potential temperature per unit time">
+    <standard_name name="tendency_of_potential_temperature_of_air" description="Change in potential temperature per unit time">
       <type units="K s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_potential_temperature_of_air_due_to_model_physics" description="Change of potential temperature of air due to model physics per unit time">
       <type units="K s-1">real</type>
     </standard_name>
-    <standard_name name="tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_moist_convection_for_coupling" description="Tendency of specific humidity (water vapor mass mixing ratio with respect to moist air) due to moist convection used for coupling">      
+    <standard_name name="tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_moist_convection_for_coupling" description="Tendency of specific humidity (water vapor mass mixing ratio with respect to moist air) due to moist convection used for coupling">
       <type units="kg kg-1 s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_water_vapor_mixing_ratio_wrt_moist_air_due_to_nonphysics" description="Tendency of specific humidity (water vapor mass mixing ratio with respect to moist air) due to non-physics processes">
@@ -3801,13 +3801,13 @@
     <standard_name name="updated_tendency_of_air_temperature_due_to_longwave_heating_on_physics_timestep">
       <type units="K s-1">real</type>
     </standard_name>
-    </section>
+  </section>
   <section name="Chemistry processes">
     <standard_name name="ozone_forcing">
       <type units="various">real</type>
     </standard_name>
-   <standard_name name="stratospheric_water_vapor_forcing">
+    <standard_name name="stratospheric_water_vapor_forcing">
       <type units="various">real</type>
     </standard_name>
-    </section>
+  </section>
 </standard_names>
