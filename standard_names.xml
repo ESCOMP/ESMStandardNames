@@ -509,7 +509,7 @@
     <standard_name name="date_and_time_at_model_initialization_in_united_states_order" description="Integer array of date and time at model initialization in united states order (month, day, year, hour, minute, second)">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="date_and_time_of_forecast_in_united_states_order" description="Integer array of date and time at model initialization in united states order (month, day, year, hour, minute, second)">
+    <standard_name name="date_and_time_of_forecast_in_united_states_order" description="Integer array of forecast valid date and time in united states order (month, day, year, hour, minute, second)">
       <type units="1">integer</type>
     </standard_name>
     <standard_name name="equation_of_time" description="Apparent solar time minus mean solar time">
