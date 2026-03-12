@@ -43,8 +43,8 @@ jobs:
 
       - name: Check for duplicate standard names, descriptions
         run: |
-            python3 tools/check_xml_unique.py standard_names.xml
-            python3 tools/check_xml_unique.py standard_names.xml --field="description"
+            tools/check_xml_unique.py standard_names.xml
+            tools/check_xml_unique.py standard_names.xml --field="description"
 
   check-name-rules:
     name: Check standard names against rules
@@ -66,7 +66,7 @@ jobs:
 
       - name: Checks standard names against character rules
         run: |
-          python3 tools/check_name_rules.py -s standard_names.xml
+          tools/check_name_rules.py -s standard_names.xml
 
   test-rendering:
     name: Test rendering xml file to markdown and yaml
@@ -89,7 +89,7 @@ jobs:
 
       - name: Test that sections are alphabetized
         run: |
-          python3 tools/sort_standard_names.py standard_names.xml
+          tools/sort_standard_names.py standard_names.xml
           if ! git diff --exit-code --quiet; then
             echo "❌ Standard Names are not alphabetized within each section"
             echo "Run tools/sort_standard_names.py and commit changes"
@@ -106,7 +106,7 @@ jobs:
         run: |
           # Checks if the saved markdown matches freshly rendered markdown.
           # If this fails, prompt user to update
-          python3 tools/write_standard_name_table.py --output-format md standard_names.xml
+          tools/write_standard_name_table.py --output-format md standard_names.xml
           if ! git diff --exit-code --quiet; then
             echo "❌ Detected that Metadata-standard-names.md is not consistent with standard_names.xml"
             echo "✅ To fix: Run the following command locally and commit the result:"
@@ -120,7 +120,7 @@ jobs:
 
       - name: Test rendering xml file to yaml
         run: |
-          python3 tools/write_standard_name_table.py --output-format yaml standard_names.xml
+          tools/write_standard_name_table.py --output-format yaml standard_names.xml
           if ! git diff --exit-code --quiet; then
             echo "❌ Detected that Metadata-standard-names.yaml is not consistent with standard_names.xml"
             echo "✅ To fix: Run the following command locally and commit the result:"
