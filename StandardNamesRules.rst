@@ -206,7 +206,7 @@ Technical specifications
    does not correspond to a more descriptive non-dimensional type such as "fraction"; see the `section on Units <#units>`_
    for more details.
 
-   These standard_name elements are grouped into sections by "section" elements. These are parsed out into human-readable sections
+   The standard_name elements are grouped into sections by "section" elements. These are parsed out into human-readable sections
    in the generated markdown file (``Metadata-standard-names.md``). Sections can contain nested sections for further categorization.
    Standard Names should be sorted alphabetically by name within a given section. A python tool ``tools/sort_standard_names.py`` is
    provided to sort the names automatically.
