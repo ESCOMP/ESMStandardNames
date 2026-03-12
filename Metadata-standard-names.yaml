@@ -589,25 +589,14 @@ section:
 - name: dimensions
   comment: Names indicating the size, extent, or bounds of data structures in a model.
   standard_names:
-  - name: cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls
-    description: Cumulative maximum vertical index at cloud base between shortwave
-      radiation calls
-    type: real
-    kind: null
-    units: 1
-  - name: cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls
-    description: Cumulative min vertical index at cloud base between sw radiation
-      calls
-    type: real
-    kind: null
-    units: 1
   - name: horizontal_dimension
-    description: Size horizontal dimension
+    description: Length of the horizontal dimension
     type: integer
     kind: null
     units: count
   - name: horizontal_loop_extent
-    description: Horizontal loop extent
+    description: The horizontal extent of data passed to CCPP physics from the host
+      model during time integration (i.e. in the *run* phase)
     type: integer
     kind: null
     units: count
@@ -616,42 +605,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation
-    description: Lower latitude index of absolute momentum flux due to non-orographic
-      gravity wave drag for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_aerosol_forcing_for_interpolation
-    description: Lower latitude index of aerosol forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation
-    description: Lower latitude index of cloud nuclei forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_ozone_forcing_for_interpolation
-    description: Lower latitude index of ozone forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
-    description: Lower latitude index of stratospheric water vapor forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_longitude_index_of_aerosol_forcing_for_interpolation
-    description: Lower longitude index of aerosol forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation
-    description: Lower longitude index of cloud nuclei forcing for interpolation
-    type: integer
-    kind: null
-    units: index
   - name: number_of_equatorial_longitude_points
     description: Number of equatorial longitude points
     type: integer
@@ -672,42 +625,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation
-    description: Upper latitude index of absolute momentum flux due to non-orographic
-      gravity wave drag for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_aerosol_forcing_for_interpolation
-    description: Upper latitude index of aerosol forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation
-    description: Upper latitude index of cloud nuclei forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_ozone_forcing_for_interpolation
-    description: Upper latitude index of ozone forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
-    description: Upper latitude index of stratospheric water vapor forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_longitude_index_of_aerosol_forcing_for_interpolation
-    description: Upper longitude index of aerosol forcing for interpolation
-    type: integer
-    kind: null
-    units: index
-  - name: upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation
-    description: Upper longitude index of cloud nuclei forcing for interpolation
-    type: integer
-    kind: null
-    units: index
   - name: vertical_dimension_for_radiation
     description: Vertical dimension for radiation
     type: integer
@@ -733,26 +650,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: vertical_index_at_surface_adjacent_layer
-    description: Vertical index at surface adjacent layer
-    type: integer
-    kind: null
-    units: index
-  - name: vertical_index_at_surface_interface
-    description: Vertical index at surface interface
-    type: integer
-    kind: null
-    units: index
-  - name: vertical_index_at_top_adjacent_layer
-    description: Vertical index at top adjacent layer
-    type: integer
-    kind: null
-    units: index
-  - name: vertical_index_at_top_interface
-    description: Vertical index at top interface
-    type: integer
-    kind: null
-    units: index
   - name: vertical_interface_dimension
     description: number of vertical interfaces
     type: integer
@@ -768,11 +665,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: vertical_interface_index
-    description: index of a particular vertical interface
-    type: integer
-    kind: null
-    units: index
   - name: vertical_layer_dimension
     description: number of vertical layers
     type: integer
@@ -788,11 +680,6 @@ section:
     type: integer
     kind: null
     units: count
-  - name: vertical_layer_index
-    description: index of a particular vertical layer
-    type: integer
-    kind: null
-    units: index
 - name: constants
   comment: Constant parameters that should be identical across a full modeling system
   standard_names:
@@ -4108,6 +3995,18 @@ section:
 - name: Indices
   comment: Values indicating the index of some array or other data structure
   standard_names:
+  - name: cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls
+    description: Cumulative maximum vertical index at cloud base between shortwave
+      radiation calls
+    type: real
+    kind: null
+    units: 1
+  - name: cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls
+    description: Cumulative min vertical index at cloud base between sw radiation
+      calls
+    type: real
+    kind: null
+    units: 1
   - name: index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array
     description: Index of air pressure at surface on previous timestep in xyz dimensioned
       restart array
@@ -4338,6 +4237,108 @@ section:
     units: index
   - name: index_of_water_vegetation_category
     description: Index of water vegetation category
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation
+    description: Lower latitude index of absolute momentum flux due to non-orographic
+      gravity wave drag for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_aerosol_forcing_for_interpolation
+    description: Lower latitude index of aerosol forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation
+    description: Lower latitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_ozone_forcing_for_interpolation
+    description: Lower latitude index of ozone forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
+    description: Lower latitude index of stratospheric water vapor forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_longitude_index_of_aerosol_forcing_for_interpolation
+    description: Lower longitude index of aerosol forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation
+    description: Lower longitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation
+    description: Upper latitude index of absolute momentum flux due to non-orographic
+      gravity wave drag for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_aerosol_forcing_for_interpolation
+    description: Upper latitude index of aerosol forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation
+    description: Upper latitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_ozone_forcing_for_interpolation
+    description: Upper latitude index of ozone forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation
+    description: Upper latitude index of stratospheric water vapor forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_longitude_index_of_aerosol_forcing_for_interpolation
+    description: Upper longitude index of aerosol forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation
+    description: Upper longitude index of cloud nuclei forcing for interpolation
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_index_at_surface_adjacent_layer
+    description: Vertical index at surface adjacent layer
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_index_at_surface_interface
+    description: Vertical index at surface interface
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_index_at_top_adjacent_layer
+    description: Vertical index at top adjacent layer
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_index_at_top_interface
+    description: Vertical index at top interface
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_interface_index
+    description: index of a particular vertical interface
+    type: integer
+    kind: null
+    units: index
+  - name: vertical_layer_index
+    description: index of a particular vertical layer
     type: integer
     kind: null
     units: index

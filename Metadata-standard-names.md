@@ -260,30 +260,12 @@ These names are used as bases for other names, but may also be considered standa
     * `real`: units = Pa
 ## dimensions
 Names indicating the size, extent, or bounds of data structures in a model.
-* `cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative maximum vertical index at cloud base between shortwave radiation calls
-    * `real`: units = 1
-* `cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative min vertical index at cloud base between sw radiation calls
-    * `real`: units = 1
-* `horizontal_dimension`: Size horizontal dimension
+* `horizontal_dimension`: Length of the horizontal dimension
     * `integer`: units = count
-* `horizontal_loop_extent`: Horizontal loop extent
+* `horizontal_loop_extent`: The horizontal extent of data passed to CCPP physics from the host model during time integration (i.e. in the *run* phase)
     * `integer`: units = count
 * `lower_bound_of_vertical_dimension_of_surface_snow`: lower bound of of snow-related arrays for land surface model
     * `integer`: units = count
-* `lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation`: Lower latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_aerosol_forcing_for_interpolation`: Lower latitude index of aerosol forcing for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation`: Lower latitude index of cloud nuclei forcing for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_ozone_forcing_for_interpolation`: Lower latitude index of ozone forcing for interpolation
-    * `integer`: units = index
-* `lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation`: Lower latitude index of stratospheric water vapor forcing for interpolation
-    * `integer`: units = index
-* `lower_longitude_index_of_aerosol_forcing_for_interpolation`: Lower longitude index of aerosol forcing for interpolation
-    * `integer`: units = index
-* `lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation`: Lower longitude index of cloud nuclei forcing for interpolation
-    * `integer`: units = index
 * `number_of_equatorial_longitude_points`: Number of equatorial longitude points
     * `integer`: units = count
 * `number_of_latitude_points`: Number of latitude points
@@ -292,20 +274,6 @@ Names indicating the size, extent, or bounds of data structures in a model.
     * `real`: units = 1
 * `upper_bound_of_vertical_dimension_of_surface_snow`: upper bound of of snow-related arrays for land surface model
     * `integer`: units = count
-* `upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation`: Upper latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_aerosol_forcing_for_interpolation`: Upper latitude index of aerosol forcing for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation`: Upper latitude index of cloud nuclei forcing for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_ozone_forcing_for_interpolation`: Upper latitude index of ozone forcing for interpolation
-    * `integer`: units = index
-* `upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation`: Upper latitude index of stratospheric water vapor forcing for interpolation
-    * `integer`: units = index
-* `upper_longitude_index_of_aerosol_forcing_for_interpolation`: Upper longitude index of aerosol forcing for interpolation
-    * `integer`: units = index
-* `upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation`: Upper longitude index of cloud nuclei forcing for interpolation
-    * `integer`: units = index
 * `vertical_dimension_for_radiation`: Vertical dimension for radiation
     * `integer`: units = count
 * `vertical_dimension_of_sea_ice`: Vertical dimension of sea ice
@@ -316,30 +284,18 @@ Names indicating the size, extent, or bounds of data structures in a model.
     * `integer`: units = count
 * `vertical_dimension_of_surface_snow`: Vertical dimension of surface snow
     * `integer`: units = count
-* `vertical_index_at_surface_adjacent_layer`: Vertical index at surface adjacent layer
-    * `integer`: units = index
-* `vertical_index_at_surface_interface`: Vertical index at surface interface
-    * `integer`: units = index
-* `vertical_index_at_top_adjacent_layer`: Vertical index at top adjacent layer
-    * `integer`: units = index
-* `vertical_index_at_top_interface`: Vertical index at top interface
-    * `integer`: units = index
 * `vertical_interface_dimension`: number of vertical interfaces
     * `integer`: units = count
 * `vertical_interface_dimension_for_radiation`: Vertical interface dimension for radiation
     * `integer`: units = count
 * `vertical_interface_dimension_interstitial`: Vertical interface dimension interstitial
     * `integer`: units = count
-* `vertical_interface_index`: index of a particular vertical interface
-    * `integer`: units = index
 * `vertical_layer_dimension`: number of vertical layers
     * `integer`: units = count
 * `vertical_layer_dimension_extended_up_by_1`: number of vertical layers extended up by 1
     * `integer`: units = count
 * `vertical_layer_dimension_minus_one`: Vertical layer dimension minus one
     * `integer`: units = count
-* `vertical_layer_index`: index of a particular vertical layer
-    * `integer`: units = index
 ## constants
 Constant parameters that should be identical across a full modeling system
 * `avogadro_number`: Avogadro number
@@ -1617,6 +1573,10 @@ Variables that indicate or control some action.
     * `logical`: units = flag
 ## Indices
 Values indicating the index of some array or other data structure
+* `cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative maximum vertical index at cloud base between shortwave radiation calls
+    * `real`: units = 1
+* `cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative min vertical index at cloud base between sw radiation calls
+    * `real`: units = 1
 * `index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of air pressure at surface on previous timestep in xyz dimensioned restart array
     * `integer`: units = index
 * `index_of_air_pressure_at_surface_two_timesteps_back_in_xyz_dimensioned_tracer_array`: Index of air pressure at surface two timesteps back in xyz dimensioned tracer array
@@ -1698,6 +1658,46 @@ Values indicating the index of some array or other data structure
 * `index_of_water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back_in_xyz_dimensioned_restart_array`: Index of specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back in xyz dimensioned restart array
     * `integer`: units = index
 * `index_of_water_vegetation_category`: Index of water vegetation category
+    * `integer`: units = index
+* `lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation`: Lower latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_aerosol_forcing_for_interpolation`: Lower latitude index of aerosol forcing for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation`: Lower latitude index of cloud nuclei forcing for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_ozone_forcing_for_interpolation`: Lower latitude index of ozone forcing for interpolation
+    * `integer`: units = index
+* `lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation`: Lower latitude index of stratospheric water vapor forcing for interpolation
+    * `integer`: units = index
+* `lower_longitude_index_of_aerosol_forcing_for_interpolation`: Lower longitude index of aerosol forcing for interpolation
+    * `integer`: units = index
+* `lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation`: Lower longitude index of cloud nuclei forcing for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation`: Upper latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_aerosol_forcing_for_interpolation`: Upper latitude index of aerosol forcing for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation`: Upper latitude index of cloud nuclei forcing for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_ozone_forcing_for_interpolation`: Upper latitude index of ozone forcing for interpolation
+    * `integer`: units = index
+* `upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation`: Upper latitude index of stratospheric water vapor forcing for interpolation
+    * `integer`: units = index
+* `upper_longitude_index_of_aerosol_forcing_for_interpolation`: Upper longitude index of aerosol forcing for interpolation
+    * `integer`: units = index
+* `upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation`: Upper longitude index of cloud nuclei forcing for interpolation
+    * `integer`: units = index
+* `vertical_index_at_surface_adjacent_layer`: Vertical index at surface adjacent layer
+    * `integer`: units = index
+* `vertical_index_at_surface_interface`: Vertical index at surface interface
+    * `integer`: units = index
+* `vertical_index_at_top_adjacent_layer`: Vertical index at top adjacent layer
+    * `integer`: units = index
+* `vertical_index_at_top_interface`: Vertical index at top interface
+    * `integer`: units = index
+* `vertical_interface_index`: index of a particular vertical interface
+    * `integer`: units = index
+* `vertical_layer_index`: index of a particular vertical layer
     * `integer`: units = index
 ## Coefficients
 Coefficients includes scaling factors, tunable parameters, and other similar variables

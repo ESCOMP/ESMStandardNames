@@ -371,41 +371,14 @@
       </section>
   </section>
   <section name="dimensions" comment="Names indicating the size, extent, or bounds of data structures in a model.">
-    <standard_name name="cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls" description="Cumulative maximum vertical index at cloud base between shortwave radiation calls">
-      <type units="1">real</type>
-    </standard_name>
-    <standard_name name="cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls">
-      <type units="1">real</type>
-    </standard_name>
-    <standard_name name="horizontal_dimension" description="Size horizontal dimension">
+    <standard_name name="horizontal_dimension" description="Length of the horizontal dimension" comment="In CCPP, horizontal_dimension refers to all horizontal grid columns that an MPI process owns/is responsible for">
       <type units="count">integer</type>
     </standard_name>
-    <standard_name name="horizontal_loop_extent">
+    <standard_name name="horizontal_loop_extent" description="The horizontal extent of data passed to CCPP physics from the host model during time integration (i.e. in the *run* phase)">
       <type units="count">integer</type>
     </standard_name>
     <standard_name name="lower_bound_of_vertical_dimension_of_surface_snow" description="lower bound of of snow-related arrays for land surface model">
       <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation" description="Lower latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="lower_latitude_index_of_aerosol_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="lower_latitude_index_of_ozone_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="lower_longitude_index_of_aerosol_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation">
-      <type units="index">integer</type>
     </standard_name>
     <standard_name name="number_of_equatorial_longitude_points">
       <type units="count">integer</type>
@@ -418,27 +391,6 @@
     </standard_name>
     <standard_name name="upper_bound_of_vertical_dimension_of_surface_snow" description="upper bound of of snow-related arrays for land surface model">
       <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation" description="Upper latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="upper_latitude_index_of_aerosol_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="upper_latitude_index_of_ozone_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="upper_longitude_index_of_aerosol_forcing_for_interpolation">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation">
-      <type units="index">integer</type>
     </standard_name>
     <standard_name name="vertical_dimension_for_radiation">
       <type units="count">integer</type>
@@ -455,18 +407,6 @@
     <standard_name name="vertical_dimension_of_surface_snow">
       <type units="count">integer</type>
     </standard_name>
-    <standard_name name="vertical_index_at_surface_adjacent_layer">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="vertical_index_at_surface_interface">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="vertical_index_at_top_adjacent_layer">
-      <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="vertical_index_at_top_interface">
-      <type units="index">integer</type>
-    </standard_name>
     <standard_name name="vertical_interface_dimension" description="number of vertical interfaces">
       <type units="count">integer</type>
     </standard_name>
@@ -476,9 +416,6 @@
     <standard_name name="vertical_interface_dimension_interstitial">
       <type units="count">integer</type>
     </standard_name>
-    <standard_name name="vertical_interface_index" description="index of a particular vertical interface">
-      <type units="index">integer</type>
-    </standard_name>
     <standard_name name="vertical_layer_dimension" description="number of vertical layers">
       <type units="count">integer</type>
     </standard_name>
@@ -487,9 +424,6 @@
     </standard_name>
     <standard_name name="vertical_layer_dimension_minus_one">
       <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="vertical_layer_index" description="index of a particular vertical layer">
-      <type units="index">integer</type>
     </standard_name>
     </section>
   <section name="constants" comment="Constant parameters that should be identical across a full modeling system">
@@ -2400,6 +2334,12 @@
     </standard_name>
   </section>
   <section name="Indices" comment="Values indicating the index of some array or other data structure">
+    <standard_name name="cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls" description="Cumulative maximum vertical index at cloud base between shortwave radiation calls">
+      <type units="1">real</type>
+    </standard_name>
+    <standard_name name="cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls">
+      <type units="1">real</type>
+    </standard_name>
     <standard_name name="index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array">
       <type units="index">integer</type>
     </standard_name>
@@ -2521,6 +2461,66 @@
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="index_of_water_vegetation_category">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation" description="Lower latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_aerosol_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_cloud_nuclei_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_ozone_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_longitude_index_of_aerosol_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="lower_longitude_index_of_cloud_nuclei_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_absolute_momentum_flux_due_to_nonorographic_gwd_for_interpolation" description="Upper latitude index of absolute momentum flux due to non-orographic gravity wave drag for interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_aerosol_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_cloud_nuclei_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_ozone_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_latitude_index_of_stratospheric_water_vapor_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_longitude_index_of_aerosol_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="upper_longitude_index_of_cloud_nuclei_forcing_for_interpolation">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="vertical_index_at_surface_adjacent_layer">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="vertical_index_at_surface_interface">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="vertical_index_at_top_adjacent_layer">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="vertical_index_at_top_interface">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="vertical_interface_index" description="index of a particular vertical interface">
+      <type units="index">integer</type>
+    </standard_name>
+    <standard_name name="vertical_layer_index" description="index of a particular vertical layer">
       <type units="index">integer</type>
     </standard_name>
     </section>
