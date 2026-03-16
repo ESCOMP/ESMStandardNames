@@ -133,7 +133,7 @@ Variable scope
    need to be kept apart, suitable qualifiers are added to the names of the processes.
    If one process is already established and more common than the other, then it is
    sufficient to only prefix the new process with a suitable qualifier. Example:
-   ``due_to_convective_GWD`` and ``due_to_convenctive_whole_atmosphere_GWD``
+   ``due_to_convective_GWD`` and ``due_to_convective_whole_atmosphere_GWD``
    as discussed in https://github.com/ESCOMP/ESMStandardNames/issues/79.
 
 Terminology
