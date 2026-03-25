@@ -9,7 +9,6 @@ from __future__ import print_function
 import os
 import os.path
 import subprocess
-import sys
 import logging
 from shutil import which
 import xml.etree.ElementTree as ET
@@ -20,8 +19,6 @@ except ImportError:
 # end try
 
 # Find python version
-PY3 = sys.version_info[0] > 2
-PYSUBVER = sys.version_info[1]
 _LOGGER = None
 
 ###############################################################################
@@ -44,35 +41,12 @@ def call_command(commands, logger, silent=False):
         silent = True
     # end if
     try:
-        if PY3:
-            if PYSUBVER > 6:
-                cproc = subprocess.run(commands, check=True,
-                                       capture_output=True)
-                if not silent:
-                    logger.debug(cproc.stdout)
-                # end if
-                result = cproc.returncode == 0
-            elif PYSUBVER >= 5:
-                cproc = subprocess.run(commands, check=True,
-                                       stdout=subprocess.PIPE,
-                                       stderr=subprocess.PIPE)
-                if not silent:
-                    logger.debug(cproc.stdout)
-                # end if
-                result = cproc.returncode == 0
-            else:
-                raise ValueError("Python 3 must be at least version 3.5")
-            # end if
-        else:
-            pproc = subprocess.Popen(commands, stdin=None,
-                                     stdout=subprocess.PIPE,
-                                     stderr=subprocess.PIPE)
-            output, _ = pproc.communicate()
-            if not silent:
-                logger.debug(output)
-            # end if
-            result = pproc.returncode == 0
+        cproc = subprocess.run(commands, check=True,
+                               capture_output=True)
+        if not silent:
+            logger.debug(cproc.stdout)
         # end if
+        result = cproc.returncode == 0
     except (OSError, RuntimeError, subprocess.CalledProcessError) as err:
         if silent:
             result = False
@@ -156,10 +130,7 @@ def read_xml_file(filename, logger=None):
 ###############################################################################
     """Read the XML file, <filename>, and return its tree and root"""
     if os.path.isfile(filename) and os.access(filename, os.R_OK):
-        if PY3:
-            file_open = (lambda x: open(x, 'r', encoding='utf-8'))
-        else:
-            file_open = (lambda x: open(x, 'r'))
+        file_open = (lambda x: open(x, 'r'))
         # end if
         with file_open(filename) as file_:
             try:
