@@ -25,7 +25,7 @@ sys.path.append(os.path.join(_CURR_DIR, "lib"))
 #######################################
 
 from xml_tools import validate_xml_file, read_xml_file
-from xml_tools import find_schema_file, find_schema_version
+from xml_tools import find_schema_file
 
 #######################################
 # Regular expressions
@@ -286,19 +286,17 @@ def main_func():
     # Read the XML file
     _, root = read_xml_file(stdname_file)
     library_name = root.get('name')
-    # Validate the XML file (needs to be here to grab the version)
-    version = find_schema_version(root)
+    # Validate the XML file
     schema_name = os.path.basename(stdname_file)[0:-4]
     schema_root = os.path.dirname(stdname_file)
-    schema_file = find_schema_file(schema_name, version)
+    schema_file = find_schema_file(schema_name)
     if not schema_file:
-        emsg = 'Cannot find schema file, {}, for version {}'
-        raise ValueError(emsg.format(schema_name, version))
+        raise ValueError(f'Cannot find schema file {schema_name}')
     # end if
 
     try:
         emsg = "Invalid standard names file, {}".format(stdname_file)
-        file_ok = validate_xml_file(stdname_file, schema_name, version,
+        file_ok = validate_xml_file(stdname_file, schema_name,
                                      None, schema_path=schema_root,
                                      error_on_noxmllint=True)
     except ValueError as valerr:
