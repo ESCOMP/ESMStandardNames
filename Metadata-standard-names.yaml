@@ -274,6 +274,7 @@ section:
       type: real
       units: m2 s-1
     - name: cloud_area_fraction
+      cfname: cloud_area_fraction
       description: Fraction of an area (usually within a grid cell) containing cloud
       type: real
       units: fraction
@@ -631,7 +632,8 @@ section:
   comment: Parameters defining or relating to the coordinate system of the model
   standard_names:
   - name: cell_area
-    description: Cell area
+    cfname: cell_area
+    description: horizontal area of a grid cell
     type: real
     units: m2
   - name: cell_scaling_factor
@@ -1298,6 +1300,14 @@ section:
     description: Y current in diurnal thermocline
     type: real
     units: m2 s-1
+  - name: molecular_sublayer_temperature_correction_in_sea_water
+    description: Molecular sublayer temperature correction in sea water
+    type: real
+    units: K
+  - name: molecular_sublayer_thickness_in_sea_water
+    description: Molecular sublayer thickness in sea water
+    type: real
+    units: m
 - name: Tracers
   comment: Tracers are numerically zero-mass particles advected in fluid flow, typically
     representing some trace gas, particle, or other physical substance
@@ -1582,6 +1592,7 @@ section:
       type: real
       units: kg kg-1
     - name: cloud_ice_mixing_ratio_wrt_dry_air
+      cfname: cloud_ice_mixing_ratio
       description: Ratio of the mass of cloud ice to the mass of dry air
       type: real
       units: kg kg-1
@@ -1610,6 +1621,7 @@ section:
       type: real
       units: kg kg-1
     - name: cloud_liquid_water_mixing_ratio_wrt_dry_air
+      cfname: cloud_liquid_water_mixing_ratio
       description: Ratio of the mass of cloud liquid water to the mass of dry air
       type: real
       units: kg kg-1
@@ -1648,6 +1660,7 @@ section:
       type: real
       units: kg kg-1
     - name: convective_cloud_area_fraction
+      cfname: convective_cloud_area_fraction
       description: Convective cloud area fraction
       type: real
       units: fraction
@@ -4582,11 +4595,13 @@ section:
     type: real
     units: mm
   - name: canopy_temperature
+    cfname: canopy_temperature
     description: Canopy temperature
     type: real
     units: K
   - name: canopy_water_mass_content
-    description: Canopy water mass content
+    cfname: canopy_water_amount
+    description: Water mass per unit area in the canopy
     type: real
     units: kg m-2
   - name: cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls
@@ -4806,14 +4821,6 @@ section:
     units: kg m-2
   - name: max_soil_moisture_content_for_lsm
     description: Maximum soil moisture content for land surface model
-    type: real
-    units: m
-  - name: molecular_sublayer_temperature_correction_in_sea_water
-    description: Molecular sublayer temperature correction in sea water
-    type: real
-    units: K
-  - name: molecular_sublayer_thickness_in_sea_water
-    description: Molecular sublayer thickness in sea water
     type: real
     units: m
   - name: nir_albedo_strong_cosz

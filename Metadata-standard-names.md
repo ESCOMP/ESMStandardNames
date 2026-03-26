@@ -156,6 +156,7 @@ These names are used as bases for other names, but may also be considered standa
     * Equivalent CF name: atmosphere_heat_diffusivity
     * `real`: units = m2 s-1
 * `cloud_area_fraction`: Fraction of an area (usually within a grid cell) containing cloud
+    * Equivalent CF name: cloud_area_fraction
     * `real`: units = fraction
 * `cloud_condensate`: Amount of condensed water in cloud
 * `cloud_ice_water`: Cloud particles consisting of solid water (ice)
@@ -327,7 +328,8 @@ Constant parameters that should be identical across a full modeling system
     * `real`: units = m s-2
 ## Coordinates
 Parameters defining or relating to the coordinate system of the model
-* `cell_area`: Cell area
+* `cell_area`: horizontal area of a grid cell
+    * Equivalent CF name: cell_area
     * `real`: units = m2
 * `cell_scaling_factor`: Cell scaling factor
     * `real`: units = 1
@@ -652,6 +654,10 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m2 s-1
 * `y_current_in_diurnal_thermocline`: Y current in diurnal thermocline
     * `real`: units = m2 s-1
+* `molecular_sublayer_temperature_correction_in_sea_water`: Molecular sublayer temperature correction in sea water
+    * `real`: units = K
+* `molecular_sublayer_thickness_in_sea_water`: Molecular sublayer thickness in sea water
+    * `real`: units = m
 ## Tracers
 Tracers are numerically zero-mass particles advected in fluid flow, typically representing some trace gas, particle, or other physical substance
 * `chemical_tracer_scavenging_fractions`: Chemical tracer scavenging fractions
@@ -784,6 +790,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land`: Cloud condensed water mass mixing ratio with respect to moist air at surface over land
     * `real`: units = kg kg-1
 * `cloud_ice_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud ice to the mass of dry air
+    * Equivalent CF name: cloud_ice_mixing_ratio
     * `real`: units = kg kg-1
 * `cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud ice to the mass of dry air at all interfaces excluding surface
     * `real`: units = kg kg-1
@@ -796,6 +803,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `cloud_ice_mixing_ratio_wrt_moist_air_of_new_state`: Cloud ice mass mixing ratio with respect to moist air of new state
     * `real`: units = kg kg-1
 * `cloud_liquid_water_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud liquid water to the mass of dry air
+    * Equivalent CF name: cloud_liquid_water_mixing_ratio
     * `real`: units = kg kg-1
 * `cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud liquid water to the mass of dry air at all interfaces excluding surface
     * `real`: units = kg kg-1
@@ -812,6 +820,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state`: Cloud liquid water mass mixing ratio with respect to moist air of new state
     * `real`: units = kg kg-1
 * `convective_cloud_area_fraction`: Convective cloud area fraction
+    * Equivalent CF name: convective_cloud_area_fraction
     * `real`: units = fraction
 * `convective_cloud_condensate_after_rainout`: Convective cloud condensate after rainout
     * `real`: units = kg kg-1
@@ -2181,8 +2190,10 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `canopy_intercepted_liquid_water`: Canopy intercepted liquid water
     * `real`: units = mm
 * `canopy_temperature`: Canopy temperature
+    * Equivalent CF name: canopy_temperature
     * `real`: units = K
-* `canopy_water_mass_content`: Canopy water mass content
+* `canopy_water_mass_content`: Water mass per unit area in the canopy
+    * Equivalent CF name: canopy_water_amount
     * `real`: units = kg m-2
 * `cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls`: Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls
     * `real`: units = m
@@ -2287,10 +2298,6 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `mass_content_of_water_in_top_soil_layer`: mass per unit area of water in top layer of soil
     * `real`: units = kg m-2
 * `max_soil_moisture_content_for_lsm`: Maximum soil moisture content for land surface model
-    * `real`: units = m
-* `molecular_sublayer_temperature_correction_in_sea_water`: Molecular sublayer temperature correction in sea water
-    * `real`: units = K
-* `molecular_sublayer_thickness_in_sea_water`: Molecular sublayer thickness in sea water
     * `real`: units = m
 * `nir_albedo_strong_cosz`: albedo for near-infrared radiation with strong dependence on cosine of the zenith angle
     * `real`: units = fraction

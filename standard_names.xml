@@ -203,6 +203,7 @@
         <type units="m2 s-1">real</type>
       </standard_name>
       <standard_name name="cloud_area_fraction" description="Fraction of an area (usually within a grid cell) containing cloud">
+        <cfname>cloud_area_fraction</cfname>
         <type units="fraction">real</type>
       </standard_name>
       <standard_name name="cloud_condensate" description="Amount of condensed water in cloud">
@@ -468,7 +469,8 @@
     </standard_name>
   </section>
   <section name="Coordinates" comment="Parameters defining or relating to the coordinate system of the model">
-    <standard_name name="cell_area">
+    <standard_name name="cell_area" description="horizontal area of a grid cell">
+      <cfname>cell_area</cfname>
       <type units="m2">real</type>
     </standard_name>
     <standard_name name="cell_scaling_factor">
@@ -951,6 +953,12 @@
     <standard_name name="y_current_in_diurnal_thermocline">
       <type units="m2 s-1">real</type>
     </standard_name>
+    <standard_name name="molecular_sublayer_temperature_correction_in_sea_water">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="molecular_sublayer_thickness_in_sea_water">
+      <type units="m">real</type>
+    </standard_name>
   </section>
   <section name="Tracers" comment="Tracers are numerically zero-mass particles advected in fluid flow, typically representing some trace gas, particle, or other physical substance">
     <standard_name name="chemical_tracer_scavenging_fractions">
@@ -1147,6 +1155,7 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_ice_mixing_ratio_wrt_dry_air" description="Ratio of the mass of cloud ice to the mass of dry air">
+        <cfname>cloud_ice_mixing_ratio</cfname>
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces" description="Ratio of the mass of cloud ice to the mass of dry air at all interfaces excluding surface">
@@ -1165,6 +1174,7 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_liquid_water_mixing_ratio_wrt_dry_air" description="Ratio of the mass of cloud liquid water to the mass of dry air">
+        <cfname>cloud_liquid_water_mixing_ratio</cfname>
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces" description="Ratio of the mass of cloud liquid water to the mass of dry air at all interfaces excluding surface">
@@ -1189,6 +1199,7 @@
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="convective_cloud_area_fraction">
+        <cfname>convective_cloud_area_fraction</cfname>
         <type units="fraction">real</type>
       </standard_name>
       <standard_name name="convective_cloud_condensate_after_rainout">
@@ -3238,9 +3249,11 @@
       <type units="mm">real</type>
     </standard_name>
     <standard_name name="canopy_temperature">
+      <cfname>canopy_temperature</cfname>
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="canopy_water_mass_content">
+    <standard_name name="canopy_water_mass_content" description="Water mass per unit area in the canopy">
+      <cfname>canopy_water_amount</cfname>
       <type units="kg m-2">real</type>
     </standard_name>
     <standard_name name="cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls" description="Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls">
@@ -3397,12 +3410,6 @@
       <type units="kg m-2">real</type>
     </standard_name>
     <standard_name name="max_soil_moisture_content_for_lsm" description="Maximum soil moisture content for land surface model">
-      <type units="m">real</type>
-    </standard_name>
-    <standard_name name="molecular_sublayer_temperature_correction_in_sea_water">
-      <type units="K">real</type>
-    </standard_name>
-    <standard_name name="molecular_sublayer_thickness_in_sea_water">
       <type units="m">real</type>
     </standard_name>
     <standard_name name="nir_albedo_strong_cosz" description="albedo for near-infrared radiation with strong dependence on cosine of the zenith angle">
