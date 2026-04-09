@@ -491,6 +491,7 @@ section:
       type: real
       units: K
     - name: virtual_temperature
+      cfname: virtual_temperature
       description: The theoretical temperature of dry air that would have the same
         density as moist air
       type: real
@@ -500,6 +501,7 @@ section:
     - name: wind
       description: Movement of air with a net displacement
     - name: wind_speed
+      cfname: wind_speed
       description: Speed of moving air
       type: real
       units: m s-1
@@ -1204,6 +1206,7 @@ section:
     type: real
     units: m s-1
   - name: x_wind
+    cfname: x_wind
     description: Horizontal wind in a direction perpendicular to y_wind
     type: real
     units: m s-1
@@ -1220,6 +1223,7 @@ section:
     type: real
     units: m s-1
   - name: y_wind
+    cfname: y_wind
     description: Horizontal wind in a direction perpendicular to x_wind
     type: real
     units: m s-1
@@ -5058,6 +5062,7 @@ section:
     type: real
     units: frac
   - name: vegetation_area_fraction
+    cfname: vegetation_area_fraction
     description: Vegetation area fraction
     type: real
     units: fraction
@@ -5072,6 +5077,7 @@ section:
     type: real
     units: fraction
   - name: volume_fraction_of_condensed_water_in_soil
+    cfname: volume_fraction_of_condensed_water_in_soil
     description: Volume fraction of condensed water in soil
     type: real
     units: fraction
@@ -5326,6 +5332,7 @@ section:
     type: real
     units: kg-1 s-1
   - name: tendency_of_air_temperature
+    cfname: tendency_of_air_temperature
     description: Change in temperature per unit time
     type: real
     units: K s-1
@@ -5345,6 +5352,7 @@ section:
     type: real
     units: K s-1
   - name: tendency_of_air_temperature_due_to_model_physics
+    cfname: tendency_of_air_temperature_due_to_model_physics
     description: Change in air temperature due to model physics per unit time
     type: real
     units: K s-1
@@ -5367,10 +5375,12 @@ section:
     type: real
     units: J kg-1 s-1
   - name: tendency_of_eastward_wind
+    cfname: tendency_of_eastward_wind
     description: Change in eastward wind per unit time
     type: real
     units: m s-2
   - name: tendency_of_eastward_wind_due_to_model_physics
+    cfname: tendency_of_eastward_wind_due_to_parameterized_physics
     description: Change in eastward wind due to model physics per unit time
     type: real
     units: m s-2
@@ -5384,10 +5394,12 @@ section:
     type: real
     units: kg-1 s-1
   - name: tendency_of_northward_wind
+    cfname: tendency_of_northward_wind
     description: Change in northward wind per unit time
     type: real
     units: m s-2
   - name: tendency_of_northward_wind_due_to_model_physics
+    cfname: tendency_of_northward_wind_due_to_parameterized_physics
     description: Change in northward wind due to model physics per unit time
     type: real
     units: m s-2

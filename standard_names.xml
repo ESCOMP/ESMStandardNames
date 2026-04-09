@@ -366,6 +366,7 @@
         <type units="K">real</type>
       </standard_name>
       <standard_name name="virtual_temperature" description="The theoretical temperature of dry air that would have the same density as moist air">
+        <cfname>virtual_temperature</cfname>
         <type units="K">real</type>
       </standard_name>
       <standard_name name="water_vapor" description="Water in the gaseous phase">
@@ -373,6 +374,7 @@
       <standard_name name="wind" description="Movement of air with a net displacement">
       </standard_name>
       <standard_name name="wind_speed" description="Speed of moving air">
+        <cfname>wind_speed</cfname>
         <type units="m s-1">real</type>
       </standard_name>
       <standard_name name="wind_stress" description="Shear stress exerted by wind parallel to the surface">
@@ -887,6 +889,7 @@
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="x_wind" description="Horizontal wind in a direction perpendicular to y_wind">
+      <cfname>x_wind</cfname>
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="x_wind_at_surface_adjacent_layer">
@@ -899,6 +902,7 @@
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="y_wind" description="Horizontal wind in a direction perpendicular to x_wind">
+      <cfname>y_wind</cfname>
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="y_wind_at_surface_adjacent_layer">
@@ -3595,6 +3599,7 @@
       <type units="frac">real</type>
     </standard_name>
     <standard_name name="vegetation_area_fraction">
+      <cfname>vegetation_area_fraction</cfname>
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="vis_albedo_strong_cosz" description="albedo for visible radiation with strong dependence on cosine of the zenith angle">
@@ -3604,6 +3609,7 @@
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="volume_fraction_of_condensed_water_in_soil">
+      <cfname>volume_fraction_of_condensed_water_in_soil</cfname>
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="volume_fraction_of_frozen_soil_moisture_for_lsm" description="Volume fraction of frozen soil moisture for land surface model">
@@ -3779,6 +3785,7 @@
       <type units="kg-1 s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_air_temperature" description="Change in temperature per unit time">
+      <cfname>tendency_of_air_temperature</cfname>
       <type units="K s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_air_temperature_due_to_integrated_dynamics_through_earths_atmosphere">
@@ -3791,6 +3798,7 @@
       <type units="K s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_air_temperature_due_to_model_physics" description="Change in air temperature due to model physics per unit time">
+      <cfname>tendency_of_air_temperature_due_to_model_physics</cfname>
       <type units="K s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_air_temperature_due_to_nonphysics">
@@ -3806,9 +3814,11 @@
       <type units="J kg-1 s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_eastward_wind" description="Change in eastward wind per unit time">
+      <cfname>tendency_of_eastward_wind</cfname>
       <type units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_eastward_wind_due_to_model_physics" description="Change in eastward wind due to model physics per unit time">
+      <cfname>tendency_of_eastward_wind_due_to_parameterized_physics</cfname>
       <type units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_hygroscopic_aerosols_at_surface_adjacent_layer">
@@ -3818,9 +3828,11 @@
       <type units="kg-1 s-1">real</type>
     </standard_name>
     <standard_name name="tendency_of_northward_wind" description="Change in northward wind per unit time">
+      <cfname>tendency_of_northward_wind</cfname>
       <type units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_northward_wind_due_to_model_physics" description="Change in northward wind due to model physics per unit time">
+      <cfname>tendency_of_northward_wind_due_to_parameterized_physics</cfname>
       <type units="m s-2">real</type>
     </standard_name>
     <standard_name name="tendency_of_potential_temperature_of_air" description="Change in potential temperature per unit time">

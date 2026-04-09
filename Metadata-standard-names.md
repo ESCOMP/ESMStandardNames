@@ -262,10 +262,12 @@ These names are used as bases for other names, but may also be considered standa
 * `virtual_potential_temperature`: The theoretical potential temperature of dry air that would have the same density as moist air
     * `real`: units = K
 * `virtual_temperature`: The theoretical temperature of dry air that would have the same density as moist air
+    * Equivalent CF name: virtual_temperature
     * `real`: units = K
 * `water_vapor`: Water in the gaseous phase
 * `wind`: Movement of air with a net displacement
 * `wind_speed`: Speed of moving air
+    * Equivalent CF name: wind_speed
     * `real`: units = m s-1
 * `wind_stress`: Shear stress exerted by wind parallel to the surface
     * `real`: units = Pa
@@ -617,6 +619,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `wind_speed_at_surface`: Scalar wind speed closest to surface
     * `real`: units = m s-1
 * `x_wind`: Horizontal wind in a direction perpendicular to y_wind
+    * Equivalent CF name: x_wind
     * `real`: units = m s-1
 * `x_wind_at_surface_adjacent_layer`: X wind at surface adjacent layer
     * `real`: units = m s-1
@@ -625,6 +628,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `x_wind_of_new_state_at_surface_adjacent_layer`: X wind of new state at surface adjacent layer
     * `real`: units = m s-1
 * `y_wind`: Horizontal wind in a direction perpendicular to x_wind
+    * Equivalent CF name: y_wind
     * `real`: units = m s-1
 * `y_wind_at_surface_adjacent_layer`: Y wind at surface adjacent layer
     * `real`: units = m s-1
@@ -2437,12 +2441,14 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `urban_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is urban
     * `real`: units = frac
 * `vegetation_area_fraction`: Vegetation area fraction
+    * Equivalent CF name: vegetation_area_fraction
     * `real`: units = fraction
 * `vis_albedo_strong_cosz`: albedo for visible radiation with strong dependence on cosine of the zenith angle
     * `real`: units = fraction
 * `vis_albedo_weak_cosz`: albedo for visible radiation with weak dependence on cosine of the zenith angle
     * `real`: units = fraction
 * `volume_fraction_of_condensed_water_in_soil`: Volume fraction of condensed water in soil
+    * Equivalent CF name: volume_fraction_of_condensed_water_in_soil
     * `real`: units = fraction
 * `volume_fraction_of_frozen_soil_moisture_for_lsm`: Volume fraction of frozen soil moisture for land surface model
     * `real`: units = fraction
@@ -2559,6 +2565,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `tendency_of_activated_cloud_condensation_nuclei_from_climatology`: Change of activated cloud condensation nuclei from climatology per unit time
     * `real`: units = kg-1 s-1
 * `tendency_of_air_temperature`: Change in temperature per unit time
+    * Equivalent CF name: tendency_of_air_temperature
     * `real`: units = K s-1
 * `tendency_of_air_temperature_due_to_integrated_dynamics_through_earths_atmosphere`: Tendency of air temperature due to integrated dynamics through earths atmosphere
     * `real`: units = K s-1
@@ -2567,6 +2574,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `tendency_of_air_temperature_due_to_longwave_heating_on_radiation_timestep`: Tendency of air temperature due to longwave heating on radiation timestep
     * `real`: units = K s-1
 * `tendency_of_air_temperature_due_to_model_physics`: Change in air temperature due to model physics per unit time
+    * Equivalent CF name: tendency_of_air_temperature_due_to_model_physics
     * `real`: units = K s-1
 * `tendency_of_air_temperature_due_to_nonphysics`: Tendency of air temperature due to nonphysics
     * `real`: units = K s-1
@@ -2577,16 +2585,20 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `tendency_of_dry_air_enthalpy_at_constant_pressure`: Change of dry air enthalpy per unit time at constant pressure; d/dt(Cp*T)
     * `real`: units = J kg-1 s-1
 * `tendency_of_eastward_wind`: Change in eastward wind per unit time
+    * Equivalent CF name: tendency_of_eastward_wind
     * `real`: units = m s-2
 * `tendency_of_eastward_wind_due_to_model_physics`: Change in eastward wind due to model physics per unit time
+    * Equivalent CF name: tendency_of_eastward_wind_due_to_parameterized_physics
     * `real`: units = m s-2
 * `tendency_of_hygroscopic_aerosols_at_surface_adjacent_layer`: Tendency of hygroscopic aerosols at surface adjacent layer
     * `real`: units = kg-1 s-1
 * `tendency_of_nonhygroscopic_ice_nucleating_aerosols_at_surface_adjacent_layer`: Tendency of nonhygroscopic ice nucleating aerosols at surface adjacent layer
     * `real`: units = kg-1 s-1
 * `tendency_of_northward_wind`: Change in northward wind per unit time
+    * Equivalent CF name: tendency_of_northward_wind
     * `real`: units = m s-2
 * `tendency_of_northward_wind_due_to_model_physics`: Change in northward wind due to model physics per unit time
+    * Equivalent CF name: tendency_of_northward_wind_due_to_parameterized_physics
     * `real`: units = m s-2
 * `tendency_of_potential_temperature_of_air`: Change in potential temperature per unit time
     * `real`: units = K s-1
