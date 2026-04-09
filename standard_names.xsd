@@ -48,6 +48,10 @@
 
   <xs:complexType name="stdname_type">
     <xs:sequence>
+      <xs:element name="cfname"
+                  type="xs:string"
+                  minOccurs="0"
+                  maxOccurs="1"/>
       <xs:element name="type"
                   type="md_type"
                   minOccurs="0"
