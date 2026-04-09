@@ -305,6 +305,7 @@
         <type units="1">integer</type>
       </standard_name>
       <standard_name name="reference_pressure" description="Some pressure value for comparison to or calculation of other values">
+        <cfname>reference_pressure</cfname>
         <type units="Pa">real</type>
       </standard_name>
       <standard_name name="relative_humidity" description="Ratio of the vapor pressure to the saturation vapor pressure (for liquid water unless otherwise specified)">
@@ -327,13 +328,18 @@
       <standard_name name="soil_moisture" description="Water contained within a soil layer">
       </standard_name>
       <standard_name name="soil_temperature" description="Temperature of a soil layer">
+        <cfname>soil_temperature</cfname>
         <type units="K">real</type>
       </standard_name>
       <standard_name name="solar_declination_angle" description="The angle between the equator and Earth's orbital plane with the Sun">
+        <type units="degrees">real</type>
       </standard_name>
       <standard_name name="solar_zenith_angle" description="The angle between the direction to the sun and the local zenith (vertical direction)">
+        <cfname>solar_zenith_angle</cfname>
+        <type units="degrees">real</type>
       </standard_name>
       <standard_name name="surface_skin_temperature" description="The temperature of the topmost layer of the surface">
+        <cfname>surface_skin_temperature</cfname>
         <type units="K">real</type>
       </standard_name>
       <standard_name name="temperature">
@@ -755,9 +761,11 @@
       <type units="m2 s-2">real</type>
     </standard_name>
     <standard_name name="nonconvective_cloud_area_fraction_in_atmosphere_layer" description="cloud area fraction in atmosphere layer excluding clouds produced by the convective schemes">
+      <cfname>stratiform_cloud_area_fraction_in_atmosphere_layer</cfname>
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="northward_wind" description="Wind vector component, positive when directed northward">
+      <cfname>northward_wind</cfname>
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="northward_wind_at_10m" description="Wind vector component at 10 meters above surface, positive when directed northward">
@@ -804,6 +812,7 @@
       <type units="1">real</type>
     </standard_name>
     <standard_name name="relative_humidity">
+      <cfname>relative_humidity</cfname>
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="relative_humidity_at_2m">
@@ -835,6 +844,7 @@
       <type units="s-1">real</type>
     </standard_name>
     <standard_name name="upward_heat_flux_in_air_at_surface">
+      <cfname>surface_upward_heat_flux_in_air</cfname>
       <type units="W m-2">real</type>
     </standard_name>
     <standard_name name="us_standard_air_pressure_at_sea_level" description="US Standard Atmospheric pressure at sea level">
@@ -924,30 +934,37 @@
       <type units="m">real</type>
     </standard_name>
     <standard_name name="ocean_mixed_layer_thickness">
+      <cfname>ocean_mixed_layer_thickness</cfname>
       <type units="m">real</type>
     </standard_name>
     <standard_name name="reference_sea_surface_temperature" description="Foundation/reference temperature for calculating diurnal ocean temperature changes">
       <type units="K">real</type>
     </standard_name>
     <standard_name name="sea_surface_temperature">
+      <cfname>sea_surface_temperature</cfname>
       <type units="K">real</type>
     </standard_name>
     <standard_name name="sea_water_absolute_salinity" description="The absolute salinity of sea water">
+      <cfname>sea_water_absolute_salinity</cfname>
       <type units="g kg-1">real</type>
     </standard_name>
     <standard_name name="sea_water_depth" description="The depth of the ocean floor below the surface of the sea">
+      <cfname>sea_floor_depth_below_geoid</cfname>
       <type units="m">real</type>
     </standard_name>
     <standard_name name="sea_water_potential_temperature" description="sea water potential temperature">
+      <cfname>sea_water_potential_temperature</cfname>
       <type units="K">real</type>
     </standard_name>
     <standard_name name="sea_water_practical_salinity" description="The practical salinity of sea water">
+      <cfname>sea_water_practical_salinity</cfname>
       <type units="PSU">real</type>
     </standard_name>
     <standard_name name="sea_water_salinity_in_diurnal_thermocline">
       <type units="ppt m">real</type>
     </standard_name>
     <standard_name name="sea_water_temperature" description="The temperature of sea water">
+      <cfname>sea_water_temperature</cfname>
       <type units="K">real</type>
     </standard_name>
     <standard_name name="x_current_in_diurnal_thermocline">
@@ -3276,7 +3293,8 @@
     <standard_name name="deep_soil_temperature">
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="density_of_snow_at_surface">
+    <standard_name name="density_of_snow_at_surface" description="Density of snow accumulated on ground surface">
+      <cfname>surface_snow_density</cfname>
       <type units="kg m-3">real</type>
     </standard_name>
     <standard_name name="depth_from_snow_surface_at_bottom_interface" description="depth from the top of the snow surface at the bottom of the soil layer">
@@ -3366,6 +3384,7 @@
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="land_ice_area_fraction_of_cell_area" description="fraction of horizontal area of grid cell that is ice over land">
+      <cfname>land_ice_area_fraction</cfname>
       <type units="frac">real</type>
     </standard_name>
     <standard_name name="land_surface_perturbation_variables">
@@ -3435,6 +3454,7 @@
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="roughness_length" description="surface roughness length">
+      <cfname>surface_roughness_length</cfname>
       <type units="cm">real</type>
     </standard_name>
     <standard_name name="roughness_length_from_wave_model" description="surface roughness length from wave model">
@@ -3456,13 +3476,12 @@
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="sea_ice_temperature">
+      <cfname>sea_ice_temperature</cfname>
       <type units="K">real</type>
     </standard_name>
     <standard_name name="sea_ice_thickness">
+      <cfname>sea_ice_thickness</cfname>
       <type units="m">real</type>
-    </standard_name>
-    <standard_name name="skin_temperature_at_surface" description="Skin temperature at surface">
-      <type units="K">real</type>
     </standard_name>
     <standard_name name="skin_temperature_at_surface_over_ice" description="Skin temperature at surface over (or where) ice">
       <type units="K">real</type>
@@ -3477,6 +3496,7 @@
       <type units="K">real</type>
     </standard_name>
     <standard_name name="slow_soil_pool_mass_content_of_carbon">
+      <cfname>slow_soil_pool_mass_content_of_carbon</cfname>
       <type units="g m-2">real</type>
     </standard_name>
     <standard_name name="snow_area_fraction_at_surface_over_ice">
@@ -3490,9 +3510,6 @@
     </standard_name>
     <standard_name name="snowfall_rate_on_previous_timestep">
       <type units="mm s-1">real</type>
-    </standard_name>
-    <standard_name name="soil_temperature">
-      <type units="K">real</type>
     </standard_name>
     <standard_name name="soil_temperature_for_lsm" description="Soil temperature for land surface model">
       <type units="K">real</type>
@@ -3525,6 +3542,7 @@
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="surface_longwave_emissivity">
+      <cfname>surface_longwave_emissivity</cfname>
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="surface_longwave_emissivity_over_ice">
@@ -3570,6 +3588,7 @@
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="upward_latent_heat_flux_at_surface">
+      <cfname>surface_upward_latent_heat_flux</cfname>
       <type units="W m-2">real</type>
     </standard_name>
     <standard_name name="urban_area_fraction_of_cell_area" description="fraction of horizontal area of grid cell that is urban">

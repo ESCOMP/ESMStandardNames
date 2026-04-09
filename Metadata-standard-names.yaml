@@ -409,6 +409,7 @@ section:
       type: integer
       units: 1
     - name: reference_pressure
+      cfname: reference_pressure
       description: Some pressure value for comparison to or calculation of other values
       type: real
       units: Pa
@@ -440,16 +441,23 @@ section:
     - name: soil_moisture
       description: Water contained within a soil layer
     - name: soil_temperature
+      cfname: soil_temperature
       description: Temperature of a soil layer
       type: real
       units: K
     - name: solar_declination_angle
       description: The angle between the equator and Earth's orbital plane with the
         Sun
+      type: real
+      units: degrees
     - name: solar_zenith_angle
+      cfname: solar_zenith_angle
       description: The angle between the direction to the sun and the local zenith
         (vertical direction)
+      type: real
+      units: degrees
     - name: surface_skin_temperature
+      cfname: surface_skin_temperature
       description: The temperature of the topmost layer of the surface
       type: real
       units: K
@@ -1017,11 +1025,13 @@ section:
     type: real
     units: m2 s-2
   - name: nonconvective_cloud_area_fraction_in_atmosphere_layer
+    cfname: stratiform_cloud_area_fraction_in_atmosphere_layer
     description: cloud area fraction in atmosphere layer excluding clouds produced
       by the convective schemes
     type: real
     units: fraction
   - name: northward_wind
+    cfname: northward_wind
     description: Wind vector component, positive when directed northward
     type: real
     units: m s-1
@@ -1088,6 +1098,7 @@ section:
     type: real
     units: 1
   - name: relative_humidity
+    cfname: relative_humidity
     description: Relative humidity
     type: real
     units: fraction
@@ -1131,6 +1142,7 @@ section:
     type: real
     units: s-1
   - name: upward_heat_flux_in_air_at_surface
+    cfname: surface_upward_heat_flux_in_air
     description: Upward heat flux in air at surface
     type: real
     units: W m-2
@@ -1257,6 +1269,7 @@ section:
     type: real
     units: m
   - name: ocean_mixed_layer_thickness
+    cfname: ocean_mixed_layer_thickness
     description: Ocean mixed layer thickness
     type: real
     units: m
@@ -1266,22 +1279,27 @@ section:
     type: real
     units: K
   - name: sea_surface_temperature
+    cfname: sea_surface_temperature
     description: Sea surface temperature
     type: real
     units: K
   - name: sea_water_absolute_salinity
+    cfname: sea_water_absolute_salinity
     description: The absolute salinity of sea water
     type: real
     units: g kg-1
   - name: sea_water_depth
+    cfname: sea_floor_depth_below_geoid
     description: The depth of the ocean floor below the surface of the sea
     type: real
     units: m
   - name: sea_water_potential_temperature
+    cfname: sea_water_potential_temperature
     description: sea water potential temperature
     type: real
     units: K
   - name: sea_water_practical_salinity
+    cfname: sea_water_practical_salinity
     description: The practical salinity of sea water
     type: real
     units: PSU
@@ -1290,6 +1308,7 @@ section:
     type: real
     units: ppt m
   - name: sea_water_temperature
+    cfname: sea_water_temperature
     description: The temperature of sea water
     type: real
     units: K
@@ -4629,7 +4648,8 @@ section:
     type: real
     units: K
   - name: density_of_snow_at_surface
-    description: Density of snow at surface
+    cfname: surface_snow_density
+    description: Density of snow accumulated on ground surface
     type: real
     units: kg m-3
   - name: depth_from_snow_surface_at_bottom_interface
@@ -4749,6 +4769,7 @@ section:
     type: real
     units: fraction
   - name: land_ice_area_fraction_of_cell_area
+    cfname: land_ice_area_fraction
     description: fraction of horizontal area of grid cell that is ice over land
     type: real
     units: frac
@@ -4849,6 +4870,7 @@ section:
     type: real
     units: fraction
   - name: roughness_length
+    cfname: surface_roughness_length
     description: surface roughness length
     type: real
     units: cm
@@ -4877,17 +4899,15 @@ section:
     type: real
     units: fraction
   - name: sea_ice_temperature
+    cfname: sea_ice_temperature
     description: Sea ice temperature
     type: real
     units: K
   - name: sea_ice_thickness
+    cfname: sea_ice_thickness
     description: Sea ice thickness
     type: real
     units: m
-  - name: skin_temperature_at_surface
-    description: Skin temperature at surface
-    type: real
-    units: K
   - name: skin_temperature_at_surface_over_ice
     description: Skin temperature at surface over (or where) ice
     type: real
@@ -4905,6 +4925,7 @@ section:
     type: real
     units: K
   - name: slow_soil_pool_mass_content_of_carbon
+    cfname: slow_soil_pool_mass_content_of_carbon
     description: Slow soil pool mass content of carbon
     type: real
     units: g m-2
@@ -4924,10 +4945,6 @@ section:
     description: Snowfall rate on previous timestep
     type: real
     units: mm s-1
-  - name: soil_temperature
-    description: Soil temperature
-    type: real
-    units: K
   - name: soil_temperature_for_lsm
     description: Soil temperature for land surface model
     type: real
@@ -4971,6 +4988,7 @@ section:
     type: real
     units: m s-1
   - name: surface_longwave_emissivity
+    cfname: surface_longwave_emissivity
     description: Surface longwave emissivity
     type: real
     units: fraction
@@ -5031,6 +5049,7 @@ section:
     type: real
     units: fraction
   - name: upward_latent_heat_flux_at_surface
+    cfname: surface_upward_latent_heat_flux
     description: Upward latent heat flux at surface
     type: real
     units: W m-2
