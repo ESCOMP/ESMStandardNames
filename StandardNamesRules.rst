@@ -21,6 +21,9 @@ for use with Earth System Models. It describes the
 ESM Standard Name Rules
 ========================
 
+Constructing names
+------------------
+
 #. Standard names should be identical to those from the latest version
    of the `Climate and Forecast (CF) metadata
    conventions <https://cfconventions.org/standard-names.html>`_ unless
@@ -64,9 +67,33 @@ ESM Standard Name Rules
    and ``air_temperature``. When multiple transformations are present, a more detailed description
    should be provided in the ``description`` field to prevent any possible ambiguity.
 
+Variable scope
+--------------
+
 #. Variables are current and instantaneous unless specified. Variables that are not
    current (e.g., previous timestep) or non-instantaneous (e.g., accumulated values)
    should have qualifiers in the standard name to describe what they represent.
+
+#. For accumulated variables, or variables representing a change over some period of time, the
+   following suffixes are available":
+
+   * ``over_[time]`` indicates an accumulation or other change over the previous duration/time
+   * ``reset_every_[date/time]`` an accumulation or other change reset every set duration/time
+     since the start of the simulation
+   * ``since_[date/time]`` indicates an accumulation or other change since a given date/time.
+
+   Dates, times, and durations should follow the `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`
+   international standard, modified only to use lowercase rather than uppercase letters. Note that
+   the standard is slightly different for dates and times vs durations. For example:
+
+   * ``accumulated_precipitation_over_pt3h`` accumulated precipitation over the last 3 hours
+   * ``accumulated_precipitation_over_p1dt12h`` accumulated precipitation over the last 1 day 12 hours
+   * ``accumulated_precipitation_reset_every_pt1h`` accumulated precipitation reset every 1 hour
+   * ``accumulated_precipitation_reset_every_p1y`` accumulated precipitation reset every 1 year
+   * ``accumulated_precipitation_reset_every_p2dt12h`` accumulated precipitation reset every 2 days, 12 hours
+   * ``accumulated_precipitation_since_20230522t120000`` accumulated precipitation since May 22, 2023 at 12:00
+   * ``accumulated_precipitation_since_20251225`` accumulated precipitation since December 25, 2025
+   * ``accumulated_precipitation_since_t00`` accumulated precipitation since 00:00:00 (midnight)
 
 #. By default (when not specified otherwise), variables are grid means or centers
    (defined by the host). If a variable is defined at a different physical location,
@@ -91,6 +118,26 @@ ESM Standard Name Rules
    ``[variable]_at_interfaces`` is defined on ``n+1`` points,
    ``[variable]_at_top_interfaces`` is defined on ``n`` points, and
    ``[variable]_at_bottom_interfaces`` is defined on ``n`` points.
+
+#. If possible, qualifiers should be limited in order to allow for a wide
+   applicability of the variable. In other words, don't qualify with ``_for_specific_context``
+   unless a variable could not conceivably be used outside of the more
+   narrowly-defined context or a variable without the scope-narrowing qualifiers
+   already exists and cannot be reused.
+
+   **Discouraged:** upward_virtual_potential_temperature_flux_for_mellor_yamada_janjic_surface_layer_scheme
+
+   **Preferred:** upward_virtual_potential_temperature_flux
+
+#. If there are two identical quantities from different schemes/processes that
+   need to be kept apart, suitable qualifiers are added to the names of the processes.
+   If one process is already established and more common than the other, then it is
+   sufficient to only prefix the new process with a suitable qualifier. Example:
+   ``due_to_convective_GWD`` and ``due_to_convective_whole_atmosphere_GWD``
+   as discussed in https://github.com/ESCOMP/ESMStandardNames/issues/79.
+
+Terminology
+-----------
 
 #. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
@@ -130,23 +177,6 @@ ESM Standard Name Rules
    an additional prefix or suffix should be added to the standard name specifying what kind(s)
    of clouds the variable represents (e.g. *ice_cloud* if only including glaciated clouds, or
    *cloud_at_500hPa* if only including clouds that exist at 500 hPa).
-
-#. If possible, qualifiers should be limited in order to allow for a wide
-   applicability of the variable. In other words, don't qualify with ``_for_specific_context``
-   unless a variable could not conceivably be used outside of the more
-   narrowly-defined context or a variable without the scope-narrowing qualifiers
-   already exists and cannot be reused.
-
-   **Discouraged:** upward_virtual_potential_temperature_flux_for_mellor_yamada_janjic_surface_layer_scheme
-
-   **Preferred:** upward_virtual_potential_temperature_flux
-
-#. If there are two identical quantities from different schemes/processes that
-   need to be kept apart, suitable qualifiers are added to the names of the processes.
-   If one process is already established and more common than the other, then it is
-   sufficient to only prefix the new process with a suitable qualifier. Example:
-   ``due_to_convective_GWD`` and ``due_to_convenctive_whole_atmosphere_GWD``
-   as discussed in https://github.com/ESCOMP/ESMStandardNames/issues/79.
 
 #. Spell out acronyms unless they are obvious to a vast majority of
    scientists/developers who may come across them. A list of currently-used
@@ -392,6 +422,8 @@ Suffixes
 | on_previous_timestep
 | ``N`` _timesteps_back
 | since_ ``T``
+| over_ ``T``
+| reset_every_ ``T``
 
 Computational
 -------------
