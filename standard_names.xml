@@ -228,6 +228,7 @@
         <type units="1">real</type>
       </standard_name>
       <standard_name name="dimensionless_exner_function" description="Dimensionless formulation of the Exner function with respect to 1000 hPa" comment="The formulation of the exner function in an NWP context is (p/p0)^(Rd/cp), where p0 is some reference pressure. For the purposes of the standard names, this reference pressure is assumed as 1000 hPa unless specified otherwise; i.e. dimensionless_exner_function_wrt_air_pressure_at_surface would use the pressure at the surface as P0. Note that this is numerically equivalent to T/theta (temperature divided by potential temperature), where again theta is calculated with respect to 1000 hPa if not specified. Note that this definition is distinct from the dimensional exner_function standard name; see that entry for further comments. ">
+        <cfname>dimensionless_exner_function</cfname>
         <type units="1">real</type>
       </standard_name>
       <standard_name name="direct_nir_albedo" description="Albedo of direct incident near-infrared radiation">
@@ -264,9 +265,11 @@
         <type units="m s-1">real</type>
       </standard_name>
       <standard_name name="geopotential" description="Gravitational potential energy of a unit mass relative to sea level">
+        <cfname>geopotential</cfname>
         <type units="m2 s-2">real</type>
       </standard_name>
       <standard_name name="geopotential_height" description="Geopotential divided by the gravitational constant">
+        <cfname>geopotential_height</cfname>
         <type units="m">real</type>
       </standard_name>
       <standard_name name="graupel" description="Precipitation consisting of heavily rimed ice crystals">
@@ -287,9 +290,6 @@
       </standard_name>
       <standard_name name="longwave_flux" description="Flux of longwave radiation across a unit surface">
         <type units="W m-2">real</type>
-      </standard_name>
-      <standard_name name="momentum_flux" description="Flux of momentum across a unit surface">
-        <type units="Pa">real</type>
       </standard_name>
       <standard_name name="nonhygroscopic_ice_nucleating_aerosols" description="Ice-nucleating aerosols with the property of not accumulating liquid water">
       </standard_name>
@@ -524,9 +524,6 @@
     <standard_name name="forecast_julian_day">
       <type units="days">real</type>
     </standard_name>
-    <standard_name name="forecast_time">
-      <type units="h">real</type>
-    </standard_name>
     <standard_name name="forecast_time_in_seconds">
       <type units="s">real</type>
     </standard_name>
@@ -664,9 +661,11 @@
       <type units="1">real</type>
     </standard_name>
     <standard_name name="dry_static_energy" description="Dry static energy content of atmosphere layer">
+      <cfname>dry_static_energy_content_of_atmosphere_layer</cfname>
       <type units="J kg-1">real</type>
     </standard_name>
     <standard_name name="eastward_wind" description="Wind vector component, positive when directed eastward">
+      <cfname>eastward_wind</cfname>
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="eastward_wind_at_10m" description="Wind vector component at 10 meters above surface, positive when directed eastward">
@@ -675,17 +674,11 @@
     <standard_name name="eastward_wind_at_surface" description="Wind vector component closest to surface, positive when directed eastward">
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="geopotential">
-      <type units="m2 s-2">real</type>
-    </standard_name>
     <standard_name name="geopotential_at_interfaces">
       <type units="m2 s-2">real</type>
     </standard_name>
     <standard_name name="geopotential_at_surface">
       <type units="m2 s-2">real</type>
-    </standard_name>
-    <standard_name name="geopotential_height" description="geopotential height with respect to sea level">
-      <type units="m">real</type>
     </standard_name>
     <standard_name name="geopotential_height_at_interfaces">
       <type units="m">real</type>
@@ -703,6 +696,7 @@
       <type units="m s-2">real</type>
     </standard_name>
     <standard_name name="horizontal_divergence_of_air" description="The horizontal divergence of the 2-D vector wind field">
+      <cfname>divergence_of_wind</cfname>
       <type units="s-1">real</type>
     </standard_name>
     <standard_name name="horizontal_streamfunction_of_air" description="Scalar function describing the streamlines of the horizontal wind">
@@ -1212,18 +1206,23 @@
         <type units="mm s-1">real</type>
       </standard_name>
       <standard_name name="effective_radius_of_stratiform_cloud_graupel_particle">
+        <cfname>effective_radius_of_stratiform_cloud_graupel_particles</cfname>
         <type units="um">real</type>
       </standard_name>
       <standard_name name="effective_radius_of_stratiform_cloud_ice_particle">
+        <cfname>effective_radius_of_stratiform_cloud_ice_particles</cfname>
         <type units="um">real</type>
       </standard_name>
       <standard_name name="effective_radius_of_stratiform_cloud_liquid_water_particle">
+        <cfname>effective_radius_of_stratiform_cloud_liquid_water_particles</cfname>
         <type units="um">real</type>
       </standard_name>
       <standard_name name="effective_radius_of_stratiform_cloud_rain_particle">
+        <cfname>effective_radius_of_stratiform_cloud_rain_particles</cfname>
         <type units="um">real</type>
       </standard_name>
       <standard_name name="effective_radius_of_stratiform_cloud_snow_particle">
+        <cfname>effective_radius_of_stratiform_cloud_snow_particles</cfname>
         <type units="um">real</type>
       </standard_name>
       <standard_name name="graupel_mixing_ratio_wrt_moist_air" description="Graupel mass mixing ratio with respect to moist air">
@@ -3332,6 +3331,7 @@
       <type units="mm s-1">real</type>
     </standard_name>
     <standard_name name="fast_soil_pool_mass_content_of_carbon">
+      <cfname>fast_soil_pool_mass_content_of_carbon</cfname>
       <type units="g m-2">real</type>
     </standard_name>
     <standard_name name="fine_root_mass_content">
