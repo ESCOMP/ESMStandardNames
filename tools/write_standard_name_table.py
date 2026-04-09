@@ -25,7 +25,7 @@ sys.path.append(os.path.join(_CURR_DIR, "lib"))
 #######################################
 
 from xml_tools import validate_xml_file, read_xml_file
-from xml_tools import find_schema_file, find_schema_version
+from xml_tools import find_schema_file
 
 #######################################
 # Regular expressions
@@ -188,15 +188,8 @@ def parse_section(snl, sec, level='##'):
         for item in std_name:
             if item.tag == 'type':
                 txt = item.text
-                kind = item.get('kind')
-                if kind is None:
-                    kstr = ''
-                else:
-                    kstr = "(kind={})".format(kind)
-                # end if
                 units = item.get('units')
-                snl.write('    * `{}{}`: units = {}\n'.format(txt, kstr,
-                                                              units))
+                snl.write('    * `{}`: units = {}\n'.format(txt, units))
             else:
                 emsg = "Unknown standard name property, '{}'"
                 raise ValueError(emsg.format(item.tag))
@@ -251,7 +244,6 @@ def parse_section_for_yaml(section):
         std_name_data['description'] = stdn_description
         if std_type is not None:
             std_name_data['type'] = std_type.text
-            std_name_data['kind'] = std_type.get('kind')
 
             units = std_type.get('units')
             try:
@@ -286,19 +278,17 @@ def main_func():
     # Read the XML file
     _, root = read_xml_file(stdname_file)
     library_name = root.get('name')
-    # Validate the XML file (needs to be here to grab the version)
-    version = find_schema_version(root)
+    # Validate the XML file
     schema_name = os.path.basename(stdname_file)[0:-4]
     schema_root = os.path.dirname(stdname_file)
-    schema_file = find_schema_file(schema_name, version)
+    schema_file = find_schema_file(schema_name)
     if not schema_file:
-        emsg = 'Cannot find schema file, {}, for version {}'
-        raise ValueError(emsg.format(schema_name, version))
+        raise ValueError(f'Cannot find schema file {schema_name}')
     # end if
 
     try:
         emsg = "Invalid standard names file, {}".format(stdname_file)
-        file_ok = validate_xml_file(stdname_file, schema_name, version,
+        file_ok = validate_xml_file(stdname_file, schema_name,
                                      None, schema_path=schema_root,
                                      error_on_noxmllint=True)
     except ValueError as valerr:

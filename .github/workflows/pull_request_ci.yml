@@ -22,7 +22,7 @@ jobs:
 
       - name: Run xmllint
         run: |
-            xmllint --schema standard_names_v1_0.xsd standard_names.xml --noout
+            xmllint --schema standard_names.xsd standard_names.xml --noout
 
   check-unique-standard-names:
     name: Check for duplicates in standard names

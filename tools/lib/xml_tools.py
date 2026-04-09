@@ -9,7 +9,6 @@ from __future__ import print_function
 import os
 import os.path
 import subprocess
-import sys
 import logging
 from shutil import which
 import xml.etree.ElementTree as ET
@@ -20,8 +19,6 @@ except ImportError:
 # end try
 
 # Find python version
-PY3 = sys.version_info[0] > 2
-PYSUBVER = sys.version_info[1]
 _LOGGER = None
 
 ###############################################################################
@@ -44,35 +41,12 @@ def call_command(commands, logger, silent=False):
         silent = True
     # end if
     try:
-        if PY3:
-            if PYSUBVER > 6:
-                cproc = subprocess.run(commands, check=True,
-                                       capture_output=True)
-                if not silent:
-                    logger.debug(cproc.stdout)
-                # end if
-                result = cproc.returncode == 0
-            elif PYSUBVER >= 5:
-                cproc = subprocess.run(commands, check=True,
-                                       stdout=subprocess.PIPE,
-                                       stderr=subprocess.PIPE)
-                if not silent:
-                    logger.debug(cproc.stdout)
-                # end if
-                result = cproc.returncode == 0
-            else:
-                raise ValueError("Python 3 must be at least version 3.5")
-            # end if
-        else:
-            pproc = subprocess.Popen(commands, stdin=None,
-                                     stdout=subprocess.PIPE,
-                                     stderr=subprocess.PIPE)
-            output, _ = pproc.communicate()
-            if not silent:
-                logger.debug(output)
-            # end if
-            result = pproc.returncode == 0
+        cproc = subprocess.run(commands, check=True,
+                               capture_output=True)
+        if not silent:
+            logger.debug(cproc.stdout)
         # end if
+        result = cproc.returncode == 0
     except (OSError, RuntimeError, subprocess.CalledProcessError) as err:
         if silent:
             result = False
@@ -87,67 +61,13 @@ def call_command(commands, logger, silent=False):
     return result
 
 ###############################################################################
-def find_schema_version(root):
+def find_schema_file(schema_root, schema_path=None):
 ###############################################################################
-    """
-    Find the version of the host registry file represented by root
-    >>> find_schema_version(ET.fromstring('<model name="CAM" version="1.0"></model>'))
-    [1, 0]
-    >>> find_schema_version(ET.fromstring('<model name="CAM" version="1.a"></model>')) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    ValueError: Illegal version string, '1.a'
-    Format must be <integer>.<integer>
-    >>> find_schema_version(ET.fromstring('<model name="CAM" version="0.0"></model>')) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    ValueError: Illegal version string, '0.0'
-    Major version must be at least 1
-    >>> find_schema_version(ET.fromstring('<model name="CAM" version="0.-1"></model>')) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    ValueError: Illegal version string, '0.0'
-    Minor version must be at least 0
-    """
-    verbits = None
-    if 'version' not in root.attrib:
-        raise ValueError("version attribute required")
-    # end if
-    version = root.attrib['version']
-    versplit = version.split('.')
-    try:
-        if len(versplit) != 2:
-            raise ValueError('oops')
-        # end if (no else needed)
-        try:
-            verbits = [int(x) for x in versplit]
-        except ValueError as verr:
-            raise ValueError(verr)
-        # end try
-        if verbits[0] < 1:
-            raise ValueError('Major version must be at least 1')
-        # end if
-        if verbits[1] < 0:
-            raise ValueError('Minor version must be non-negative')
-        # end if
-    except ValueError as verr:
-        errstr = """Illegal version string, '{}'
-        Format must be <integer>.<integer>"""
-        ve_str = str(verr)
-        if ve_str:
-            errstr = ve_str + '\n' + errstr
-        # end if
-        raise ValueError(errstr.format(version))
-    # end try
-    return verbits
-
-###############################################################################
-def find_schema_file(schema_root, version, schema_path=None):
-###############################################################################
-    """Find and return the schema file based on <schema_root> and <version>
-    or return None.
+    """Find and return the schema file based on <schema_root> or return None.
     If <schema_path> is present, use that as the directory to find the
     appropriate schema file. Otherwise, just look in the current directory."""
 
-    verstring = '_'.join([str(x) for x in version])
-    schema_filename = "{}_v{}.xsd".format(schema_root, verstring)
+    schema_filename = f"{schema_root}.xsd".format(schema_root)
     if schema_path:
         schema_file = os.path.join(schema_path, schema_filename)
     else:
@@ -159,7 +79,7 @@ def find_schema_file(schema_root, version, schema_path=None):
     return None
 
 ###############################################################################
-def validate_xml_file(filename, schema_root, version, logger,
+def validate_xml_file(filename, schema_root, logger,
                       schema_path=None, error_on_noxmllint=False):
 ###############################################################################
     """
@@ -174,17 +94,14 @@ def validate_xml_file(filename, schema_root, version, logger,
         raise ValueError("validate_xml_file: Cannot open '{}'".format(filename))
     # end if
     if not schema_path:
-        # Find the schema, based on the model version
+        # Find the schema file
         thispath = os.path.abspath(__file__)
         pdir = os.path.dirname(os.path.dirname(os.path.dirname(thispath)))
         schema_path = os.path.join(pdir, 'schema')
     # end if
-    schema_file = find_schema_file(schema_root, version, schema_path)
+    schema_file = find_schema_file(schema_root, schema_path)
     if not (schema_file and os.path.isfile(schema_file)):
-        verstring = '.'.join([str(x) for x in version])
-        emsg = """validate_xml_file: Cannot find schema for version {},
-        {} does not exist"""
-        raise ValueError(emsg.format(verstring, schema_file))
+        raise ValueError(f"validate_xml_file: Cannot find schema file {schema_file}")
     # end if
     if not os.access(schema_file, os.R_OK):
         emsg = "validate_xml_file: Cannot open schema, '{}'"
@@ -213,10 +130,7 @@ def read_xml_file(filename, logger=None):
 ###############################################################################
     """Read the XML file, <filename>, and return its tree and root"""
     if os.path.isfile(filename) and os.access(filename, os.R_OK):
-        if PY3:
-            file_open = (lambda x: open(x, 'r', encoding='utf-8'))
-        else:
-            file_open = (lambda x: open(x, 'r'))
+        file_open = (lambda x: open(x, 'r'))
         # end if
         with file_open(filename) as file_:
             try:
