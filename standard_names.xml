@@ -483,15 +483,18 @@
       <type units="1">real</type>
     </standard_name>
     <standard_name name="height_above_mean_sea_level">
+      <cfname>height_above_mean_sea_level</cfname>
       <type units="m">real</type>
     </standard_name>
     <standard_name name="height_above_mean_sea_level_at_surface" description="Height above mean sea level at local surface">
       <type units="m">real</type>
     </standard_name>
     <standard_name name="latitude">
+      <cfname>latitude</cfname>
       <type units="degree_north">real</type>
     </standard_name>
     <standard_name name="longitude">
+      <cfname>longitude</cfname>
       <type units="degree_east">real</type>
     </standard_name>
     <standard_name name="sigma_pressure_hybrid_coordinate_a_coefficient">
@@ -914,6 +917,12 @@
     <standard_name name="heat_content_in_diurnal_thermocline">
       <type units="K m">real</type>
     </standard_name>
+    <standard_name name="molecular_sublayer_temperature_correction_in_sea_water">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="molecular_sublayer_thickness_in_sea_water">
+      <type units="m">real</type>
+    </standard_name>
     <standard_name name="ocean_mixed_layer_thickness">
       <type units="m">real</type>
     </standard_name>
@@ -946,12 +955,6 @@
     </standard_name>
     <standard_name name="y_current_in_diurnal_thermocline">
       <type units="m2 s-1">real</type>
-    </standard_name>
-    <standard_name name="molecular_sublayer_temperature_correction_in_sea_water">
-      <type units="K">real</type>
-    </standard_name>
-    <standard_name name="molecular_sublayer_thickness_in_sea_water">
-      <type units="m">real</type>
     </standard_name>
   </section>
   <section name="Tracers" comment="Tracers are numerically zero-mass particles advected in fluid flow, typically representing some trace gas, particle, or other physical substance">
@@ -986,12 +989,15 @@
         <type units="K-1">real</type>
       </standard_name>
       <standard_name name="mole_fraction_of_co2_in_air">
+        <cfname>mole_fraction_of_carbon_dioxide_in_air</cfname>
         <type units="mol mol-1">real</type>
       </standard_name>
       <standard_name name="mole_fraction_of_ozone_in_air">
+        <cfname>mole_fraction_of_ozone_in_air</cfname>
         <type units="mol mol-1">real</type>
       </standard_name>
       <standard_name name="mole_fraction_of_water_vapor">
+        <cfname>mole_fraction_of_water_vapor_in_air</cfname>
         <type units="mol mol-1">real</type>
       </standard_name>
       <standard_name name="number_density_of_anomalous_oxygen" description="Number density of energetic, non-thermal atomic oxygen as defined in MSIS">
@@ -1350,16 +1356,16 @@
       <standard_name name="mass_fraction_of_dust001_in_air" description="GOCART Dust bin1 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
-      <standard_name name="mass_fraction_of_dust002_in_air" description="GOCART DUst bin2 mass fraction">
+      <standard_name name="mass_fraction_of_dust002_in_air" description="GOCART Dust bin2 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
-      <standard_name name="mass_fraction_of_dust003_in_air" description="GOCART DUst bin3 mass fraction">
+      <standard_name name="mass_fraction_of_dust003_in_air" description="GOCART Dust bin3 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
-      <standard_name name="mass_fraction_of_dust004_in_air" description="GOCART DUst bin4 mass fraction">
+      <standard_name name="mass_fraction_of_dust004_in_air" description="GOCART Dust bin4 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
-      <standard_name name="mass_fraction_of_dust005_in_air" description="GOCART DUst bin5 mass fraction">
+      <standard_name name="mass_fraction_of_dust005_in_air" description="GOCART Dust bin5 mass fraction">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="mass_fraction_of_dust_accumulation_aerosol_particles_in_air" description="Mass fraction of accumulation mode dust aerosol particles">
@@ -2770,6 +2776,9 @@
     <standard_name name="max_grid_scale" description="Maximum grid scale">
       <type units="m2 rad-2">real</type>
     </standard_name>
+    <standard_name name="max_soil_moisture_content_for_lsm" description="Maximum soil moisture content for land surface model">
+      <type units="m">real</type>
+    </standard_name>
     <standard_name name="max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation" description="Maximum tendency of air potential temperature due to large-scale precipitation">
       <type units="K s-1">real</type>
     </standard_name>
@@ -3109,9 +3118,6 @@
     <standard_name name="cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep">
       <type units="Pa s">real</type>
     </standard_name>
-    <standard_name name="lwe_surface_snow_from_coupled_process" description="Liquid water equivalent surface snow from coupled process">
-      <type units="m">real</type>
-    </standard_name>
     <standard_name name="monin_obukhov_similarity_function_for_heat">
       <type units="1">real</type>
     </standard_name>
@@ -3356,6 +3362,7 @@
       <type units="m">real</type>
     </standard_name>
     <standard_name name="land_area_fraction">
+      <cfname>land_area_fraction</cfname>
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="land_ice_area_fraction_of_cell_area" description="fraction of horizontal area of grid cell that is ice over land">
@@ -3365,16 +3372,21 @@
       <type units="none">character</type>
     </standard_name>
     <standard_name name="leaf_area_index">
+      <cfname>leaf_area_index</cfname>
       <type units="1">real</type>
     </standard_name>
     <standard_name name="leaf_mass_content">
       <type units="g m-2">real</type>
     </standard_name>
     <standard_name name="lwe_snowfall_rate" description="Liquid water equivalent snowfall rate">
+      <cfname>lwe_snowfall_rate</cfname>
       <type units="mm s-1">real</type>
     </standard_name>
     <standard_name name="lwe_surface_snow" description="Liquid water equivalent surface snow">
       <type units="mm">real</type>
+    </standard_name>
+    <standard_name name="lwe_surface_snow_from_coupled_process" description="Liquid water equivalent surface snow from coupled process">
+      <type units="m">real</type>
     </standard_name>
     <standard_name name="lwe_thickness_of_convective_precipitation_on_previous_timestep" description="Liquid water equivalent thickness of convective precipitation amount on previous timestep">
       <type units="m">real</type>
@@ -3404,13 +3416,11 @@
       <type units="mm">real</type>
     </standard_name>
     <standard_name name="lwe_thickness_of_surface_snow" description="Liquid water equivalent thickness of surface snow amount">
+      <cfname>lwe_thickness_of_surface_snow_amount</cfname>
       <type units="mm">real</type>
     </standard_name>
     <standard_name name="mass_content_of_water_in_top_soil_layer" description="mass per unit area of water in top layer of soil">
       <type units="kg m-2">real</type>
-    </standard_name>
-    <standard_name name="max_soil_moisture_content_for_lsm" description="Maximum soil moisture content for land surface model">
-      <type units="m">real</type>
     </standard_name>
     <standard_name name="nir_albedo_strong_cosz" description="albedo for near-infrared radiation with strong dependence on cosine of the zenith angle">
       <type units="fraction">real</type>
@@ -3695,6 +3705,7 @@
   </section>
   <section name="Tendencies">
     <standard_name name="lagrangian_tendency_of_air_pressure" description="Vertical pressure velocity">
+      <cfname>lagrangian_tendency_of_air_pressure</cfname>
       <type units="Pa s-1">real</type>
     </standard_name>
     <standard_name name="process_split_cumulative_tendency_of_air_temperature">

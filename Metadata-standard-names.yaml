@@ -305,6 +305,7 @@ section:
       type: real
       units: 1
     - name: dimensionless_exner_function
+      cfname: dimensionless_exner_function
       description: Dimensionless formulation of the Exner function with respect to
         1000 hPa
       type: real
@@ -358,10 +359,12 @@ section:
       type: real
       units: m s-1
     - name: geopotential
+      cfname: geopotential
       description: Gravitational potential energy of a unit mass relative to sea level
       type: real
       units: m2 s-2
     - name: geopotential_height
+      cfname: geopotential_height
       description: Geopotential divided by the gravitational constant
       type: real
       units: m
@@ -388,10 +391,6 @@ section:
       description: Flux of longwave radiation across a unit surface
       type: real
       units: W m-2
-    - name: momentum_flux
-      description: Flux of momentum across a unit surface
-      type: real
-      units: Pa
     - name: nonhygroscopic_ice_nucleating_aerosols
       description: Ice-nucleating aerosols with the property of not accumulating liquid
         water
@@ -649,6 +648,7 @@ section:
     type: real
     units: 1
   - name: height_above_mean_sea_level
+    cfname: height_above_mean_sea_level
     description: Height above mean sea level
     type: real
     units: m
@@ -657,10 +657,12 @@ section:
     type: real
     units: m
   - name: latitude
+    cfname: latitude
     description: Latitude
     type: real
     units: degree_north
   - name: longitude
+    cfname: longitude
     description: Longitude
     type: real
     units: degree_east
@@ -708,10 +710,6 @@ section:
     description: Forecast julian day
     type: real
     units: days
-  - name: forecast_time
-    description: Forecast time
-    type: real
-    units: h
   - name: forecast_time_in_seconds
     description: Forecast time in seconds
     type: real
@@ -897,10 +895,12 @@ section:
     type: real
     units: 1
   - name: dry_static_energy
+    cfname: dry_static_energy_content_of_atmosphere_layer
     description: Dry static energy content of atmosphere layer
     type: real
     units: J kg-1
   - name: eastward_wind
+    cfname: eastward_wind
     description: Wind vector component, positive when directed eastward
     type: real
     units: m s-1
@@ -914,10 +914,6 @@ section:
       eastward
     type: real
     units: m s-1
-  - name: geopotential
-    description: Geopotential
-    type: real
-    units: m2 s-2
   - name: geopotential_at_interfaces
     description: Geopotential at interfaces
     type: real
@@ -926,10 +922,6 @@ section:
     description: Geopotential at surface
     type: real
     units: m2 s-2
-  - name: geopotential_height
-    description: geopotential height with respect to sea level
-    type: real
-    units: m
   - name: geopotential_height_at_interfaces
     description: Geopotential height at interfaces
     type: real
@@ -951,6 +943,7 @@ section:
     type: real
     units: m s-2
   - name: horizontal_divergence_of_air
+    cfname: divergence_of_wind
     description: The horizontal divergence of the 2-D vector wind field
     type: real
     units: s-1
@@ -1255,6 +1248,14 @@ section:
     description: Heat content in diurnal thermocline
     type: real
     units: K m
+  - name: molecular_sublayer_temperature_correction_in_sea_water
+    description: Molecular sublayer temperature correction in sea water
+    type: real
+    units: K
+  - name: molecular_sublayer_thickness_in_sea_water
+    description: Molecular sublayer thickness in sea water
+    type: real
+    units: m
   - name: ocean_mixed_layer_thickness
     description: Ocean mixed layer thickness
     type: real
@@ -1300,14 +1301,6 @@ section:
     description: Y current in diurnal thermocline
     type: real
     units: m2 s-1
-  - name: molecular_sublayer_temperature_correction_in_sea_water
-    description: Molecular sublayer temperature correction in sea water
-    type: real
-    units: K
-  - name: molecular_sublayer_thickness_in_sea_water
-    description: Molecular sublayer thickness in sea water
-    type: real
-    units: m
 - name: Tracers
   comment: Tracers are numerically zero-mass particles advected in fluid flow, typically
     representing some trace gas, particle, or other physical substance
@@ -1358,14 +1351,17 @@ section:
       type: real
       units: K-1
     - name: mole_fraction_of_co2_in_air
+      cfname: mole_fraction_of_carbon_dioxide_in_air
       description: Mole fraction of co2 in air
       type: real
       units: mol mol-1
     - name: mole_fraction_of_ozone_in_air
+      cfname: mole_fraction_of_ozone_in_air
       description: Mole fraction of ozone in air
       type: real
       units: mol mol-1
     - name: mole_fraction_of_water_vapor
+      cfname: mole_fraction_of_water_vapor_in_air
       description: Mole fraction of water vapor
       type: real
       units: mol mol-1
@@ -1678,22 +1674,27 @@ section:
       type: real
       units: mm s-1
     - name: effective_radius_of_stratiform_cloud_graupel_particle
+      cfname: effective_radius_of_stratiform_cloud_graupel_particles
       description: Effective radius of stratiform cloud graupel particle
       type: real
       units: um
     - name: effective_radius_of_stratiform_cloud_ice_particle
+      cfname: effective_radius_of_stratiform_cloud_ice_particles
       description: Effective radius of stratiform cloud ice particle
       type: real
       units: um
     - name: effective_radius_of_stratiform_cloud_liquid_water_particle
+      cfname: effective_radius_of_stratiform_cloud_liquid_water_particles
       description: Effective radius of stratiform cloud liquid water particle
       type: real
       units: um
     - name: effective_radius_of_stratiform_cloud_rain_particle
+      cfname: effective_radius_of_stratiform_cloud_rain_particles
       description: Effective radius of stratiform cloud rain particle
       type: real
       units: um
     - name: effective_radius_of_stratiform_cloud_snow_particle
+      cfname: effective_radius_of_stratiform_cloud_snow_particles
       description: Effective radius of stratiform cloud snow particle
       type: real
       units: um
@@ -1875,19 +1876,19 @@ section:
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust002_in_air
-      description: GOCART DUst bin2 mass fraction
+      description: GOCART Dust bin2 mass fraction
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust003_in_air
-      description: GOCART DUst bin3 mass fraction
+      description: GOCART Dust bin3 mass fraction
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust004_in_air
-      description: GOCART DUst bin4 mass fraction
+      description: GOCART Dust bin4 mass fraction
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust005_in_air
-      description: GOCART DUst bin5 mass fraction
+      description: GOCART Dust bin5 mass fraction
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust_accumulation_aerosol_particles_in_air
@@ -3895,6 +3896,10 @@ section:
     description: Maximum grid scale
     type: real
     units: m2 rad-2
+  - name: max_soil_moisture_content_for_lsm
+    description: Maximum soil moisture content for land surface model
+    type: real
+    units: m
   - name: max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation
     description: Maximum tendency of air potential temperature due to large-scale
       precipitation
@@ -4403,10 +4408,6 @@ section:
       timestep
     type: real
     units: Pa s
-  - name: lwe_surface_snow_from_coupled_process
-    description: Liquid water equivalent surface snow from coupled process
-    type: real
-    units: m
   - name: monin_obukhov_similarity_function_for_heat
     description: Monin obukhov similarity function for heat
     type: real
@@ -4710,6 +4711,7 @@ section:
     type: real
     units: mm s-1
   - name: fast_soil_pool_mass_content_of_carbon
+    cfname: fast_soil_pool_mass_content_of_carbon
     description: Fast soil pool mass content of carbon
     type: real
     units: g m-2
@@ -4742,6 +4744,7 @@ section:
     type: real
     units: m
   - name: land_area_fraction
+    cfname: land_area_fraction
     description: Land area fraction
     type: real
     units: fraction
@@ -4754,6 +4757,7 @@ section:
     type: character
     units: none
   - name: leaf_area_index
+    cfname: leaf_area_index
     description: Leaf area index
     type: real
     units: 1
@@ -4762,6 +4766,7 @@ section:
     type: real
     units: g m-2
   - name: lwe_snowfall_rate
+    cfname: lwe_snowfall_rate
     description: Liquid water equivalent snowfall rate
     type: real
     units: mm s-1
@@ -4769,6 +4774,10 @@ section:
     description: Liquid water equivalent surface snow
     type: real
     units: mm
+  - name: lwe_surface_snow_from_coupled_process
+    description: Liquid water equivalent surface snow from coupled process
+    type: real
+    units: m
   - name: lwe_thickness_of_convective_precipitation_on_previous_timestep
     description: Liquid water equivalent thickness of convective precipitation amount
       on previous timestep
@@ -4812,6 +4821,7 @@ section:
     type: real
     units: mm
   - name: lwe_thickness_of_surface_snow
+    cfname: lwe_thickness_of_surface_snow_amount
     description: Liquid water equivalent thickness of surface snow amount
     type: real
     units: mm
@@ -4819,10 +4829,6 @@ section:
     description: mass per unit area of water in top layer of soil
     type: real
     units: kg m-2
-  - name: max_soil_moisture_content_for_lsm
-    description: Maximum soil moisture content for land surface model
-    type: real
-    units: m
   - name: nir_albedo_strong_cosz
     description: albedo for near-infrared radiation with strong dependence on cosine
       of the zenith angle
@@ -5215,6 +5221,7 @@ section:
   comment: null
   standard_names:
   - name: lagrangian_tendency_of_air_pressure
+    cfname: lagrangian_tendency_of_air_pressure
     description: Vertical pressure velocity
     type: real
     units: Pa s-1
