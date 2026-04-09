@@ -188,15 +188,8 @@ def parse_section(snl, sec, level='##'):
         for item in std_name:
             if item.tag == 'type':
                 txt = item.text
-                kind = item.get('kind')
-                if kind is None:
-                    kstr = ''
-                else:
-                    kstr = "(kind={})".format(kind)
-                # end if
                 units = item.get('units')
-                snl.write('    * `{}{}`: units = {}\n'.format(txt, kstr,
-                                                              units))
+                snl.write('    * `{}`: units = {}\n'.format(txt, units))
             else:
                 emsg = "Unknown standard name property, '{}'"
                 raise ValueError(emsg.format(item.tag))
@@ -251,7 +244,6 @@ def parse_section_for_yaml(section):
         std_name_data['description'] = stdn_description
         if std_type is not None:
             std_name_data['type'] = std_type.text
-            std_name_data['kind'] = std_type.get('kind')
 
             units = std_type.get('units')
             try:
