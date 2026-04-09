@@ -31,6 +31,7 @@ The following names are too general to be chosen as standard names, but they can
 * `area`: Area
     * `real`: units = m2
 * `area_fraction`: The fraction of an area where some condition applies
+    * Equivalent CF name: area_fraction
     * `real`: units = 1
 * `binary_mask`: A field consisting of either 0 or 1 at every point
     * `integer`: units = 1
@@ -147,10 +148,12 @@ These names are used as bases for other names, but may also be considered standa
 * `air_pressure_thickness`: The difference in air pressure between two vertical layers
     * `real`: units = Pa
 * `air_temperature`: The temperature of air
+    * Equivalent CF name: air_temperature
     * `real`: units = K
 * `albedo`: The fraction of incident radiation reflected by a surface
     * `real`: units = 1
 * `atmosphere_heat_diffusivity`: Atmosphere heat diffusivity
+    * Equivalent CF name: atmosphere_heat_diffusivity
     * `real`: units = m2 s-1
 * `cloud_area_fraction`: Fraction of an area (usually within a grid cell) containing cloud
     * `real`: units = fraction
@@ -345,6 +348,7 @@ Parameters defining or relating to the coordinate system of the model
 * `sigma_pressure_hybrid_coordinate_b_coefficient`: Sigma pressure hybrid coordinate b coefficient
     * `real`: units = 1
 * `sigma_pressure_hybrid_vertical_coordinate`: Sigma pressure hybrid vertical coordinate
+    * Equivalent CF name: atmosphere_hybrid_sigma_pressure_coordinate
     * `real`: units = 1
 * `sine_of_latitude`: Sine of latitude
     * `real`: units = 1
@@ -380,18 +384,22 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = s
 ## Atmospheric properties
 * `air_pressure`: Midpoint air pressure
+    * Equivalent CF name: air_pressure
     * `real`: units = Pa
 * `air_pressure_at_interfaces`: Air pressure at interfaces
     * `real`: units = Pa
 * `air_pressure_at_lowest_model_interface`: Air pressure at lowest model interface
     * `real`: units = Pa
 * `air_pressure_at_sea_level`: Air pressure at sea level
+    * Equivalent CF name: air_pressure_at_mean_sea_level
     * `real`: units = Pa
 * `air_pressure_at_surface`: Air pressure at local surface
+    * Equivalent CF name: surface_air_pressure
     * `real`: units = Pa
 * `air_pressure_at_surface_adjacent_layer`: Air pressure at surface adjacent layer
     * `real`: units = Pa
 * `air_pressure_at_top_of_atmosphere_model`: Air pressure at top of atmosphere model
+    * Equivalent CF name: air_pressure_at_top_of_atmosphere_model
     * `real`: units = Pa
 * `air_pressure_extended_up_by_1`: Air pressure extended up by 1
     * `real`: units = Pa
@@ -422,6 +430,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `air_temperature_two_timesteps_back`: Air temperature two timesteps back
     * `real`: units = K
 * `atmosphere_boundary_layer_thickness`: Atmosphere boundary layer thickness
+    * Equivalent CF name: atmosphere_boundary_layer_thickness
     * `real`: units = m
 * `atmosphere_heat_diffusivity_due_to_background`: Atmosphere heat diffusivity due to background
     * `real`: units = m2 s-1
@@ -480,6 +489,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `horizontal_streamfunction_of_air`: Scalar function describing the streamlines of the horizontal wind
     * `real`: units = m2 s-1
 * `horizontal_velocity_potential_of_air`: Scalar potential of the horizontal wind
+    * Equivalent CF name: atmosphere_horizontal_velocity_potential
     * `real`: units = m2 s-1
 * `is_initialized_physics_grid`: Flag to indicate if physics grid is initialized
     * `logical`: units = flag
@@ -522,6 +532,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `physics_state_due_to_dynamics`: Physics state due to dynamics
     * `ddt`: units = none
 * `potential_temperature_of_air`: air potential temperature
+    * Equivalent CF name: air_potential_temperature
     * `real`: units = K
 * `potential_temperature_of_air_at_2m`: Potential temperature of air at 2m
     * `real`: units = K
@@ -562,6 +573,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `timestep_for_physics`: Timestep for physics
     * `integer`: units = s
 * `upward_absolute_vorticity_of_air`: The upward (kth) component of the curl of the vector wind field
+    * Equivalent CF name: atmosphere_upward_absolute_vorticity
     * `real`: units = s-1
 * `upward_heat_flux_in_air_at_surface`: Upward heat flux in air at surface
     * `real`: units = W m-2
@@ -747,10 +759,12 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `volume_mixing_ratio_of_so2`: Sulfur dioxide volume mixing ratio
     * `real`: units = mol mol-1
 * `water_vapor_mixing_ratio_wrt_dry_air`: Ratio of the mass of water vapor to the mass of dry air
+    * Equivalent CF name: humidity_mixing_ratio
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of water vapor to the mass of dry air at all interfaces excluding surface
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air`: Ratio of the mass of water vapor to the mass of moist air
+    * Equivalent CF name: specific_humidity
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of water vapor to the mass of moist air and hydrometeors
     * `real`: units = kg kg-1
@@ -2154,6 +2168,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `albedo_on_previous_timestep_assuming_deep_snow`: Albedo on previous timestep assuming deep snow
     * `real`: units = fraction
 * `area_type`: Area type
+    * Equivalent CF name: area_type
     * `real`: units = 1
 * `area_type_from_coupled_process`: Area type from coupled process
     * `real`: units = 1

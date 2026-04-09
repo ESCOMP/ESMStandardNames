@@ -178,22 +178,17 @@ def parse_section(snl, sec, level='##'):
             parse_section(snl, std_name, level + '#')
             continue
         stdn_name = std_name.get('name')
-        cfname_elem = std_name.find('cfname')
-        if cfname_elem is not None and cfname_elem.text is not None:
-            stdn_cfname = cfname_elem.text.strip()
-        else:
-            stdn_cfname = None
         stdn_description = std_name.get('description')
         if stdn_description is None:
             sdict = {'standard_name': stdn_name}
             stdn_description = standard_name_to_description(sdict)
         # end if
         snl.write("* `{}`: {}\n".format(stdn_name, stdn_description))
-        # Should only be a type in the standard_name text
+        # Should only be type or cfname as subelements of standard_name
         for item in std_name:
             if item.tag == 'cfname':
-                continue
-            if item.tag == 'type':
+                snl.write(f"    * Equivalent CF name: {item.text}\n")
+            elif item.tag == 'type':
                 txt = item.text
                 units = item.get('units')
                 snl.write('    * `{}`: units = {}\n'.format(txt, units))
