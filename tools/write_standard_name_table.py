@@ -178,6 +178,11 @@ def parse_section(snl, sec, level='##'):
             parse_section(snl, std_name, level + '#')
             continue
         stdn_name = std_name.get('name')
+        cfname_elem = std_name.find('cfname')
+        if cfname_elem is not None and cfname_elem.text is not None:
+            stdn_cfname = cfname_elem.text.strip()
+        else:
+            stdn_cfname = None
         stdn_description = std_name.get('description')
         if stdn_description is None:
             sdict = {'standard_name': stdn_name}
@@ -186,6 +191,8 @@ def parse_section(snl, sec, level='##'):
         snl.write("* `{}`: {}\n".format(stdn_name, stdn_description))
         # Should only be a type in the standard_name text
         for item in std_name:
+            if item.tag == 'cfname':
+                continue
             if item.tag == 'type':
                 txt = item.text
                 units = item.get('units')
@@ -231,6 +238,11 @@ def parse_section_for_yaml(section):
 
     for std_name in section.findall('standard_name'):
         stdn_name = std_name.get('name')
+        cfname_elem = std_name.find('cfname')
+        if cfname_elem is not None and cfname_elem.text is not None:
+            stdn_cfname = cfname_elem.text.strip()
+        else:
+            stdn_cfname = None
         stdn_description = std_name.get('description')
 
         if stdn_description is None:
@@ -241,6 +253,8 @@ def parse_section_for_yaml(section):
 
         std_name_data = OrderedDict()
         std_name_data['name'] = stdn_name
+        if stdn_cfname:
+            std_name_data['cfname'] = stdn_cfname
         std_name_data['description'] = stdn_description
         if std_type is not None:
             std_name_data['type'] = std_type.text
