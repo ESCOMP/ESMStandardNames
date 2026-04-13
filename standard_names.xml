@@ -186,6 +186,7 @@
         <type units="s-1">real</type>
       </standard_name>
       <standard_name name="air_pressure" description="The pressure of air">
+        <cfname>air_pressure</cfname>
         <type units="Pa">real</type>
       </standard_name>
       <standard_name name="air_pressure_thickness" description="The difference in air pressure between two vertical layers">
@@ -293,9 +294,6 @@
       </standard_name>
       <standard_name name="nonhygroscopic_ice_nucleating_aerosols" description="Ice-nucleating aerosols with the property of not accumulating liquid water">
       </standard_name>
-      <standard_name name="pressure">
-        <type units="Pa">real</type>
-      </standard_name>
       <standard_name name="rain" description="Precipitation of liquid water from clouds">
       </standard_name>
       <standard_name name="random_number">
@@ -309,9 +307,11 @@
         <type units="Pa">real</type>
       </standard_name>
       <standard_name name="relative_humidity" description="Ratio of the vapor pressure to the saturation vapor pressure (for liquid water unless otherwise specified)">
+        <cfname>relative_humidity</cfname>
         <type units="fraction">real</type>
       </standard_name>
       <standard_name name="roughness_length" description="Also called surface roughness length; the height above a surface where the wind speed would be zero according to an idealized logarithmic wind profile">
+        <cfname>surface_roughness_length</cfname>
         <type units="m">real</type>
       </standard_name>
       <standard_name name="sensible_heat_flux" description="Flux of sensible heat across a unit surface">
@@ -340,9 +340,6 @@
       </standard_name>
       <standard_name name="surface_skin_temperature" description="The temperature of the topmost layer of the surface">
         <cfname>surface_skin_temperature</cfname>
-        <type units="K">real</type>
-      </standard_name>
-      <standard_name name="temperature">
         <type units="K">real</type>
       </standard_name>
       <standard_name name="temperature_flux" description="Flux of temperature across a unit surface">
@@ -561,10 +558,6 @@
     </standard_name>
   </section>
   <section name="Atmospheric properties">
-    <standard_name name="air_pressure" description="Midpoint air pressure">
-      <cfname>air_pressure</cfname>
-      <type units="Pa">real</type>
-    </standard_name>
     <standard_name name="air_pressure_at_interfaces">
       <type units="Pa">real</type>
     </standard_name>
@@ -595,14 +588,8 @@
     <standard_name name="air_pressure_of_dry_air_at_interfaces">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="air_pressure_thickness">
-      <type units="Pa">real</type>
-    </standard_name>
     <standard_name name="air_pressure_thickness_of_dry_air">
       <type units="Pa">real</type>
-    </standard_name>
-    <standard_name name="air_temperature">
-      <type units="K">real</type>
     </standard_name>
     <standard_name name="air_temperature_at_2m">
       <type units="K">real</type>
@@ -702,9 +689,6 @@
     </standard_name>
     <standard_name name="geopotential_height_wrt_surface_at_interfaces" description="geopotential height with respect to local surface at interfaces">
       <type units="m">real</type>
-    </standard_name>
-    <standard_name name="gravitational_acceleration">
-      <type units="m s-2">real</type>
     </standard_name>
     <standard_name name="horizontal_divergence_of_air" description="The horizontal divergence of the 2-D vector wind field">
       <cfname>divergence_of_wind</cfname>
@@ -812,10 +796,6 @@
     </standard_name>
     <standard_name name="reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure" description="Reference pressure in atmosphere layer normalized by surface reference pressure">
       <type units="1">real</type>
-    </standard_name>
-    <standard_name name="relative_humidity">
-      <cfname>relative_humidity</cfname>
-      <type units="fraction">real</type>
     </standard_name>
     <standard_name name="relative_humidity_at_2m">
       <type units="fraction">real</type>
@@ -3456,10 +3436,6 @@
     </standard_name>
     <standard_name name="normalized_soil_wetness_for_lsm" description="Normalized soil wetness for land surface model">
       <type units="fraction">real</type>
-    </standard_name>
-    <standard_name name="roughness_length" description="surface roughness length">
-      <cfname>surface_roughness_length</cfname>
-      <type units="cm">real</type>
     </standard_name>
     <standard_name name="roughness_length_from_wave_model" description="surface roughness length from wave model">
       <type units="cm">real</type>
