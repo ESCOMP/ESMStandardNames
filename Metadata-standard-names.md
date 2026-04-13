@@ -144,6 +144,7 @@ These names are used as bases for other names, but may also be considered standa
 * `absolute_vorticity`: Vorticity of fluid relative to an inertial frame; the sum of relative and planetary vorticities
     * `real`: units = s-1
 * `air_pressure`: The pressure of air
+    * Equivalent CF name: air_pressure
     * `real`: units = Pa
 * `air_pressure_thickness`: The difference in air pressure between two vertical layers
     * `real`: units = Pa
@@ -214,8 +215,6 @@ These names are used as bases for other names, but may also be considered standa
 * `longwave_flux`: Flux of longwave radiation across a unit surface
     * `real`: units = W m-2
 * `nonhygroscopic_ice_nucleating_aerosols`: Ice-nucleating aerosols with the property of not accumulating liquid water
-* `pressure`: Pressure
-    * `real`: units = Pa
 * `rain`: Precipitation of liquid water from clouds
 * `random_number`: Random number
     * `real`: units = 1
@@ -225,8 +224,10 @@ These names are used as bases for other names, but may also be considered standa
     * Equivalent CF name: reference_pressure
     * `real`: units = Pa
 * `relative_humidity`: Ratio of the vapor pressure to the saturation vapor pressure (for liquid water unless otherwise specified)
+    * Equivalent CF name: relative_humidity
     * `real`: units = fraction
 * `roughness_length`: Also called surface roughness length; the height above a surface where the wind speed would be zero according to an idealized logarithmic wind profile
+    * Equivalent CF name: surface_roughness_length
     * `real`: units = m
 * `sensible_heat_flux`: Flux of sensible heat across a unit surface
     * `real`: units = W m-2
@@ -246,8 +247,6 @@ These names are used as bases for other names, but may also be considered standa
     * `real`: units = degrees
 * `surface_skin_temperature`: The temperature of the topmost layer of the surface
     * Equivalent CF name: surface_skin_temperature
-    * `real`: units = K
-* `temperature`: Temperature
     * `real`: units = K
 * `temperature_flux`: Flux of temperature across a unit surface
     * `real`: units = K m s-1
@@ -395,9 +394,6 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `timestep_for_dynamics`: Timestep for dynamics
     * `real`: units = s
 ## Atmospheric properties
-* `air_pressure`: Midpoint air pressure
-    * Equivalent CF name: air_pressure
-    * `real`: units = Pa
 * `air_pressure_at_interfaces`: Air pressure at interfaces
     * `real`: units = Pa
 * `air_pressure_at_lowest_model_interface`: Air pressure at lowest model interface
@@ -419,12 +415,8 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = Pa
 * `air_pressure_of_dry_air_at_interfaces`: Air pressure of dry air at interfaces
     * `real`: units = Pa
-* `air_pressure_thickness`: Air pressure thickness
-    * `real`: units = Pa
 * `air_pressure_thickness_of_dry_air`: Air pressure thickness of dry air
     * `real`: units = Pa
-* `air_temperature`: Air temperature
-    * `real`: units = K
 * `air_temperature_at_2m`: Air temperature at 2m
     * `real`: units = K
 * `air_temperature_at_surface_adjacent_layer`: Air temperature at surface adjacent layer
@@ -492,8 +484,6 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m
 * `geopotential_height_wrt_surface_at_interfaces`: geopotential height with respect to local surface at interfaces
     * `real`: units = m
-* `gravitational_acceleration`: Gravitational acceleration
-    * `real`: units = m s-2
 * `horizontal_divergence_of_air`: The horizontal divergence of the 2-D vector wind field
     * Equivalent CF name: divergence_of_wind
     * `real`: units = s-1
@@ -567,9 +557,6 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = Pa
 * `reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure`: Reference pressure in atmosphere layer normalized by surface reference pressure
     * `real`: units = 1
-* `relative_humidity`: Relative humidity
-    * Equivalent CF name: relative_humidity
-    * `real`: units = fraction
 * `relative_humidity_at_2m`: Relative humidity at 2m
     * `real`: units = fraction
 * `specific_heat_of_dry_air_at_constant_pressure`: Specific heat of dry air at constant pressure
@@ -2344,9 +2331,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 * `normalized_soil_wetness_for_lsm`: Normalized soil wetness for land surface model
     * `real`: units = fraction
-* `roughness_length`: surface roughness length
-    * Equivalent CF name: surface_roughness_length
-    * `real`: units = cm
 * `roughness_length_from_wave_model`: surface roughness length from wave model
     * `real`: units = cm
 * `roughness_length_over_ice`: surface roughness length over ice

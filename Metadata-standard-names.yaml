@@ -252,6 +252,7 @@ section:
       type: real
       units: s-1
     - name: air_pressure
+      cfname: air_pressure
       description: The pressure of air
       type: real
       units: Pa
@@ -394,10 +395,6 @@ section:
     - name: nonhygroscopic_ice_nucleating_aerosols
       description: Ice-nucleating aerosols with the property of not accumulating liquid
         water
-    - name: pressure
-      description: Pressure
-      type: real
-      units: Pa
     - name: rain
       description: Precipitation of liquid water from clouds
     - name: random_number
@@ -414,11 +411,13 @@ section:
       type: real
       units: Pa
     - name: relative_humidity
+      cfname: relative_humidity
       description: Ratio of the vapor pressure to the saturation vapor pressure (for
         liquid water unless otherwise specified)
       type: real
       units: fraction
     - name: roughness_length
+      cfname: surface_roughness_length
       description: Also called surface roughness length; the height above a surface
         where the wind speed would be zero according to an idealized logarithmic wind
         profile
@@ -459,10 +458,6 @@ section:
     - name: surface_skin_temperature
       cfname: surface_skin_temperature
       description: The temperature of the topmost layer of the surface
-      type: real
-      units: K
-    - name: temperature
-      description: Temperature
       type: real
       units: K
     - name: temperature_flux
@@ -755,11 +750,6 @@ section:
 - name: Atmospheric properties
   comment: null
   standard_names:
-  - name: air_pressure
-    cfname: air_pressure
-    description: Midpoint air pressure
-    type: real
-    units: Pa
   - name: air_pressure_at_interfaces
     description: Air pressure at interfaces
     type: real
@@ -799,18 +789,10 @@ section:
     description: Air pressure of dry air at interfaces
     type: real
     units: Pa
-  - name: air_pressure_thickness
-    description: Air pressure thickness
-    type: real
-    units: Pa
   - name: air_pressure_thickness_of_dry_air
     description: Air pressure thickness of dry air
     type: real
     units: Pa
-  - name: air_temperature
-    description: Air temperature
-    type: real
-    units: K
   - name: air_temperature_at_2m
     description: Air temperature at 2m
     type: real
@@ -948,10 +930,6 @@ section:
     description: geopotential height with respect to local surface at interfaces
     type: real
     units: m
-  - name: gravitational_acceleration
-    description: Gravitational acceleration
-    type: real
-    units: m s-2
   - name: horizontal_divergence_of_air
     cfname: divergence_of_wind
     description: The horizontal divergence of the 2-D vector wind field
@@ -1099,11 +1077,6 @@ section:
       pressure
     type: real
     units: 1
-  - name: relative_humidity
-    cfname: relative_humidity
-    description: Relative humidity
-    type: real
-    units: fraction
   - name: relative_humidity_at_2m
     description: Relative humidity at 2m
     type: real
@@ -4873,11 +4846,6 @@ section:
     description: Normalized soil wetness for land surface model
     type: real
     units: fraction
-  - name: roughness_length
-    cfname: surface_roughness_length
-    description: surface roughness length
-    type: real
-    units: cm
   - name: roughness_length_from_wave_model
     description: surface roughness length from wave model
     type: real
