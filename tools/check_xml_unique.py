@@ -9,7 +9,7 @@ import sys
 import os.path
 
 #Import custom helper functions from lib/ directory
-from lib import find_schema_file, validate_xml_file, read_xml_file
+from lib import validate_xml_file, read_xml_file
 
 def parse_command_line(args, description):
     parser = argparse.ArgumentParser(description=description,
@@ -35,17 +35,9 @@ def main_func():
     _, root = read_xml_file(stdname_file)
 
     # Validate the XML file
-    schema_name = os.path.basename(stdname_file)[0:-4]
     schema_root = os.path.dirname(stdname_file)
-    schema_path = os.path.join(schema_root,schema_name)
-    if find_schema_file(schema_path):
-        try:
-            validate_xml_file(stdname_file, schema_name, None,
-                            schema_path=schema_root, error_on_noxmllint=True)
-        except ValueError as exc:
-            raise ValueError(f"Invalid standard names file, {stdname_file}") from exc
-    else:
-        raise FileNotFoundError(f'Cannot find schema file, {schema_name}')
+    schema_path = os.path.join(schema_root,"standard_names.xsd")
+    validate_xml_file(stdname_file, schema_path, schema_path=schema_root, error_on_noxmllint=True)
 
     #get list of all standard names
     all_std_names = []
