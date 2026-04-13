@@ -5,23 +5,12 @@ Check standard names database file for violations of standard name character rul
 """
 
 import argparse
-import sys
 import os.path
 import re
 import xml.etree.ElementTree as ET
 
-################################################
-# Add lib modules to python path
-################################################
-
-_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(_CURR_DIR, "lib"))
-
-#######################################
-#Import needed framework python modules
-#######################################
-
-from xml_tools import find_schema_file, validate_xml_file, read_xml_file
+#Import custom helper functions from lib/ directory
+from lib import validate_xml_file, read_xml_file
 
 def main():
     """Parse the standard names database file and output a dictionary
@@ -31,33 +20,25 @@ def main():
     #Parse arguments
     parser = argparse.ArgumentParser(description=__doc__)
 
-    parser.add_argument("-s","--standard_name_file",
-                        metavar='<standard names filename>',required=True,
+    parser.add_argument("-s","--standard_name_file",default="standard_names.xml",
+                        metavar='<standard names filename>',
                         type=str, help="XML file with standard name library")
     args = parser.parse_args()
 
+    # pylint: disable=duplicate-code
     stdname_file = os.path.abspath(args.standard_name_file)
-    tree, root = read_xml_file(stdname_file)
+    _, root = read_xml_file(stdname_file)
 
     # Validate the XML file
-    schema_name = os.path.basename(stdname_file)[0:-4]
     schema_root = os.path.dirname(stdname_file)
-    schema_path = os.path.join(schema_root,schema_name)
-    schema_file = find_schema_file(schema_path)
-    if schema_file:
-        try:
-            validate_xml_file(stdname_file, schema_name, None,
-                            schema_path=schema_root, error_on_noxmllint=True)
-        except ValueError:
-            raise ValueError(f"Invalid standard names file, {stdname_file}")
-    else:
-        raise ValueError(f'Cannot find schema file, {schema_name}')
+    schema_path = os.path.join(schema_root,"standard_names.xsd")
+    validate_xml_file(stdname_file, schema_path, logger=None, error_on_noxmllint=True)
 
     #Parse list of standard names and see if any names violate one or more rules
     violators = {}
     legal_first_char = re.compile('[a-z]')
     valid_name_chars = re.compile('[a-z0-9_]')
-    for name in root.findall('./section/standard_name'):
+    for name in root.findall('.//standard_name'):
         sname = name.attrib['name']
         violations = []
         if legal_first_char.sub('', sname[0]):
@@ -70,9 +51,6 @@ def main():
         if violations:
             violators[sname] = violations
 
-    if violators:
-        raise Exception(f"Violating standard names found:\n{violators}")
-
     # Check for non-ascii characters (ord > 127)
     for elem in ET.tostringlist(root, encoding='unicode'):
         violations = []
@@ -84,7 +62,7 @@ def main():
             violators[elem] = f'Non-ascii characters found: {badchars}'
 
     if violators:
-        raise Exception(f"Violating entries found:\n{violators}")
+        raise Exception(f"Violating entries found:\n{violators}") # pylint: disable=broad-exception-raised
 
     print(f'Success! All entries in {args.standard_name_file} follow the rules.')
 

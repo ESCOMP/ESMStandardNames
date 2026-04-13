@@ -31,6 +31,7 @@ The following names are too general to be chosen as standard names, but they can
 * `area`: Area
     * `real`: units = m2
 * `area_fraction`: The fraction of an area where some condition applies
+    * Equivalent CF name: area_fraction
     * `real`: units = 1
 * `binary_mask`: A field consisting of either 0 or 1 at every point
     * `integer`: units = 1
@@ -143,16 +144,20 @@ These names are used as bases for other names, but may also be considered standa
 * `absolute_vorticity`: Vorticity of fluid relative to an inertial frame; the sum of relative and planetary vorticities
     * `real`: units = s-1
 * `air_pressure`: The pressure of air
+    * Equivalent CF name: air_pressure
     * `real`: units = Pa
 * `air_pressure_thickness`: The difference in air pressure between two vertical layers
     * `real`: units = Pa
 * `air_temperature`: The temperature of air
+    * Equivalent CF name: air_temperature
     * `real`: units = K
 * `albedo`: The fraction of incident radiation reflected by a surface
     * `real`: units = 1
 * `atmosphere_heat_diffusivity`: Atmosphere heat diffusivity
+    * Equivalent CF name: atmosphere_heat_diffusivity
     * `real`: units = m2 s-1
 * `cloud_area_fraction`: Fraction of an area (usually within a grid cell) containing cloud
+    * Equivalent CF name: cloud_area_fraction
     * `real`: units = fraction
 * `cloud_condensate`: Amount of condensed water in cloud
 * `cloud_ice_water`: Cloud particles consisting of solid water (ice)
@@ -168,6 +173,7 @@ These names are used as bases for other names, but may also be considered standa
 * `diffuse_vis_albedo`: Albedo of diffuse incident visible radiation
     * `real`: units = 1
 * `dimensionless_exner_function`: Dimensionless formulation of the Exner function with respect to 1000 hPa
+    * Equivalent CF name: dimensionless_exner_function
     * `real`: units = 1
 * `direct_nir_albedo`: Albedo of direct incident near-infrared radiation
     * `real`: units = 1
@@ -192,8 +198,10 @@ These names are used as bases for other names, but may also be considered standa
 * `friction_velocity`: A measure of shear stress within a fluid layer with units of distance per time
     * `real`: units = m s-1
 * `geopotential`: Gravitational potential energy of a unit mass relative to sea level
+    * Equivalent CF name: geopotential
     * `real`: units = m2 s-2
 * `geopotential_height`: Geopotential divided by the gravitational constant
+    * Equivalent CF name: geopotential_height
     * `real`: units = m
 * `graupel`: Precipitation consisting of heavily rimed ice crystals
 * `gravitational_acceleration`: Gravitational acceleration
@@ -206,21 +214,20 @@ These names are used as bases for other names, but may also be considered standa
 * `liquid_water`: Liquid water
 * `longwave_flux`: Flux of longwave radiation across a unit surface
     * `real`: units = W m-2
-* `momentum_flux`: Flux of momentum across a unit surface
-    * `real`: units = Pa
 * `nonhygroscopic_ice_nucleating_aerosols`: Ice-nucleating aerosols with the property of not accumulating liquid water
-* `pressure`: Pressure
-    * `real`: units = Pa
 * `rain`: Precipitation of liquid water from clouds
 * `random_number`: Random number
     * `real`: units = 1
 * `random_number_seed`: Random number seed
     * `integer`: units = 1
 * `reference_pressure`: Some pressure value for comparison to or calculation of other values
+    * Equivalent CF name: reference_pressure
     * `real`: units = Pa
 * `relative_humidity`: Ratio of the vapor pressure to the saturation vapor pressure (for liquid water unless otherwise specified)
+    * Equivalent CF name: relative_humidity
     * `real`: units = fraction
 * `roughness_length`: Also called surface roughness length; the height above a surface where the wind speed would be zero according to an idealized logarithmic wind profile
+    * Equivalent CF name: surface_roughness_length
     * `real`: units = m
 * `sensible_heat_flux`: Flux of sensible heat across a unit surface
     * `real`: units = W m-2
@@ -231,12 +238,15 @@ These names are used as bases for other names, but may also be considered standa
     * `real`: units = fraction
 * `soil_moisture`: Water contained within a soil layer
 * `soil_temperature`: Temperature of a soil layer
+    * Equivalent CF name: soil_temperature
     * `real`: units = K
 * `solar_declination_angle`: The angle between the equator and Earth's orbital plane with the Sun
+    * `real`: units = degrees
 * `solar_zenith_angle`: The angle between the direction to the sun and the local zenith (vertical direction)
+    * Equivalent CF name: solar_zenith_angle
+    * `real`: units = degrees
 * `surface_skin_temperature`: The temperature of the topmost layer of the surface
-    * `real`: units = K
-* `temperature`: Temperature
+    * Equivalent CF name: surface_skin_temperature
     * `real`: units = K
 * `temperature_flux`: Flux of temperature across a unit surface
     * `real`: units = K m s-1
@@ -251,10 +261,12 @@ These names are used as bases for other names, but may also be considered standa
 * `virtual_potential_temperature`: The theoretical potential temperature of dry air that would have the same density as moist air
     * `real`: units = K
 * `virtual_temperature`: The theoretical temperature of dry air that would have the same density as moist air
+    * Equivalent CF name: virtual_temperature
     * `real`: units = K
 * `water_vapor`: Water in the gaseous phase
 * `wind`: Movement of air with a net displacement
 * `wind_speed`: Speed of moving air
+    * Equivalent CF name: wind_speed
     * `real`: units = m s-1
 * `wind_stress`: Shear stress exerted by wind parallel to the surface
     * `real`: units = Pa
@@ -324,7 +336,8 @@ Constant parameters that should be identical across a full modeling system
     * `real`: units = m s-2
 ## Coordinates
 Parameters defining or relating to the coordinate system of the model
-* `cell_area`: Cell area
+* `cell_area`: horizontal area of a grid cell
+    * Equivalent CF name: cell_area
     * `real`: units = m2
 * `cell_scaling_factor`: Cell scaling factor
     * `real`: units = 1
@@ -333,18 +346,22 @@ Parameters defining or relating to the coordinate system of the model
 * `cosine_of_latitude`: Cosine of latitude
     * `real`: units = 1
 * `height_above_mean_sea_level`: Height above mean sea level
+    * Equivalent CF name: height_above_mean_sea_level
     * `real`: units = m
 * `height_above_mean_sea_level_at_surface`: Height above mean sea level at local surface
     * `real`: units = m
 * `latitude`: Latitude
+    * Equivalent CF name: latitude
     * `real`: units = degree_north
 * `longitude`: Longitude
+    * Equivalent CF name: longitude
     * `real`: units = degree_east
 * `sigma_pressure_hybrid_coordinate_a_coefficient`: Sigma pressure hybrid coordinate a coefficient
     * `real`: units = Pa
 * `sigma_pressure_hybrid_coordinate_b_coefficient`: Sigma pressure hybrid coordinate b coefficient
     * `real`: units = 1
 * `sigma_pressure_hybrid_vertical_coordinate`: Sigma pressure hybrid vertical coordinate
+    * Equivalent CF name: atmosphere_hybrid_sigma_pressure_coordinate
     * `real`: units = 1
 * `sine_of_latitude`: Sine of latitude
     * `real`: units = 1
@@ -360,8 +377,6 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = radian
 * `forecast_julian_day`: Forecast julian day
     * `real`: units = days
-* `forecast_time`: Forecast time
-    * `real`: units = h
 * `forecast_time_in_seconds`: Forecast time in seconds
     * `real`: units = s
 * `forecast_time_on_previous_timestep`: Forecast time on previous timestep
@@ -379,19 +394,20 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `timestep_for_dynamics`: Timestep for dynamics
     * `real`: units = s
 ## Atmospheric properties
-* `air_pressure`: Midpoint air pressure
-    * `real`: units = Pa
 * `air_pressure_at_interfaces`: Air pressure at interfaces
     * `real`: units = Pa
 * `air_pressure_at_lowest_model_interface`: Air pressure at lowest model interface
     * `real`: units = Pa
 * `air_pressure_at_sea_level`: Air pressure at sea level
+    * Equivalent CF name: air_pressure_at_mean_sea_level
     * `real`: units = Pa
 * `air_pressure_at_surface`: Air pressure at local surface
+    * Equivalent CF name: surface_air_pressure
     * `real`: units = Pa
 * `air_pressure_at_surface_adjacent_layer`: Air pressure at surface adjacent layer
     * `real`: units = Pa
 * `air_pressure_at_top_of_atmosphere_model`: Air pressure at top of atmosphere model
+    * Equivalent CF name: air_pressure_at_top_of_atmosphere_model
     * `real`: units = Pa
 * `air_pressure_extended_up_by_1`: Air pressure extended up by 1
     * `real`: units = Pa
@@ -399,12 +415,8 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = Pa
 * `air_pressure_of_dry_air_at_interfaces`: Air pressure of dry air at interfaces
     * `real`: units = Pa
-* `air_pressure_thickness`: Air pressure thickness
-    * `real`: units = Pa
 * `air_pressure_thickness_of_dry_air`: Air pressure thickness of dry air
     * `real`: units = Pa
-* `air_temperature`: Air temperature
-    * `real`: units = K
 * `air_temperature_at_2m`: Air temperature at 2m
     * `real`: units = K
 * `air_temperature_at_surface_adjacent_layer`: Air temperature at surface adjacent layer
@@ -422,6 +434,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `air_temperature_two_timesteps_back`: Air temperature two timesteps back
     * `real`: units = K
 * `atmosphere_boundary_layer_thickness`: Atmosphere boundary layer thickness
+    * Equivalent CF name: atmosphere_boundary_layer_thickness
     * `real`: units = m
 * `atmosphere_heat_diffusivity_due_to_background`: Atmosphere heat diffusivity due to background
     * `real`: units = m2 s-1
@@ -450,21 +463,19 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `dimensionless_exner_function_wrt_surface_pressure`: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
     * `real`: units = 1
 * `dry_static_energy`: Dry static energy content of atmosphere layer
+    * Equivalent CF name: dry_static_energy_content_of_atmosphere_layer
     * `real`: units = J kg-1
 * `eastward_wind`: Wind vector component, positive when directed eastward
+    * Equivalent CF name: eastward_wind
     * `real`: units = m s-1
 * `eastward_wind_at_10m`: Wind vector component at 10 meters above surface, positive when directed eastward
     * `real`: units = m s-1
 * `eastward_wind_at_surface`: Wind vector component closest to surface, positive when directed eastward
     * `real`: units = m s-1
-* `geopotential`: Geopotential
-    * `real`: units = m2 s-2
 * `geopotential_at_interfaces`: Geopotential at interfaces
     * `real`: units = m2 s-2
 * `geopotential_at_surface`: Geopotential at surface
     * `real`: units = m2 s-2
-* `geopotential_height`: geopotential height with respect to sea level
-    * `real`: units = m
 * `geopotential_height_at_interfaces`: Geopotential height at interfaces
     * `real`: units = m
 * `geopotential_height_at_surface`: Geopotential height at local surface with respect to sea level
@@ -473,13 +484,13 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m
 * `geopotential_height_wrt_surface_at_interfaces`: geopotential height with respect to local surface at interfaces
     * `real`: units = m
-* `gravitational_acceleration`: Gravitational acceleration
-    * `real`: units = m s-2
 * `horizontal_divergence_of_air`: The horizontal divergence of the 2-D vector wind field
+    * Equivalent CF name: divergence_of_wind
     * `real`: units = s-1
 * `horizontal_streamfunction_of_air`: Scalar function describing the streamlines of the horizontal wind
     * `real`: units = m2 s-1
 * `horizontal_velocity_potential_of_air`: Scalar potential of the horizontal wind
+    * Equivalent CF name: atmosphere_horizontal_velocity_potential
     * `real`: units = m2 s-1
 * `is_initialized_physics_grid`: Flag to indicate if physics grid is initialized
     * `logical`: units = flag
@@ -512,8 +523,10 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `nonadvected_tke_multiplied_by_2`: Non-advected turbulent kinetic energy multiplied by 2
     * `real`: units = m2 s-2
 * `nonconvective_cloud_area_fraction_in_atmosphere_layer`: cloud area fraction in atmosphere layer excluding clouds produced by the convective schemes
+    * Equivalent CF name: stratiform_cloud_area_fraction_in_atmosphere_layer
     * `real`: units = fraction
 * `northward_wind`: Wind vector component, positive when directed northward
+    * Equivalent CF name: northward_wind
     * `real`: units = m s-1
 * `northward_wind_at_10m`: Wind vector component at 10 meters above surface, positive when directed northward
     * `real`: units = m s-1
@@ -522,6 +535,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `physics_state_due_to_dynamics`: Physics state due to dynamics
     * `ddt`: units = none
 * `potential_temperature_of_air`: air potential temperature
+    * Equivalent CF name: air_potential_temperature
     * `real`: units = K
 * `potential_temperature_of_air_at_2m`: Potential temperature of air at 2m
     * `real`: units = K
@@ -543,8 +557,6 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = Pa
 * `reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure`: Reference pressure in atmosphere layer normalized by surface reference pressure
     * `real`: units = 1
-* `relative_humidity`: Relative humidity
-    * `real`: units = fraction
 * `relative_humidity_at_2m`: Relative humidity at 2m
     * `real`: units = fraction
 * `specific_heat_of_dry_air_at_constant_pressure`: Specific heat of dry air at constant pressure
@@ -562,8 +574,10 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `timestep_for_physics`: Timestep for physics
     * `integer`: units = s
 * `upward_absolute_vorticity_of_air`: The upward (kth) component of the curl of the vector wind field
+    * Equivalent CF name: atmosphere_upward_absolute_vorticity
     * `real`: units = s-1
 * `upward_heat_flux_in_air_at_surface`: Upward heat flux in air at surface
+    * Equivalent CF name: surface_upward_heat_flux_in_air
     * `real`: units = W m-2
 * `us_standard_air_pressure_at_sea_level`: US Standard Atmospheric pressure at sea level
     * `real`: units = Pa
@@ -592,6 +606,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `wind_speed_at_surface`: Scalar wind speed closest to surface
     * `real`: units = m s-1
 * `x_wind`: Horizontal wind in a direction perpendicular to y_wind
+    * Equivalent CF name: x_wind
     * `real`: units = m s-1
 * `x_wind_at_surface_adjacent_layer`: X wind at surface adjacent layer
     * `real`: units = m s-1
@@ -600,6 +615,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `x_wind_of_new_state_at_surface_adjacent_layer`: X wind of new state at surface adjacent layer
     * `real`: units = m s-1
 * `y_wind`: Horizontal wind in a direction perpendicular to x_wind
+    * Equivalent CF name: y_wind
     * `real`: units = m s-1
 * `y_wind_at_surface_adjacent_layer`: Y wind at surface adjacent layer
     * `real`: units = m s-1
@@ -618,23 +634,34 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m
 * `heat_content_in_diurnal_thermocline`: Heat content in diurnal thermocline
     * `real`: units = K m
+* `molecular_sublayer_temperature_correction_in_sea_water`: Molecular sublayer temperature correction in sea water
+    * `real`: units = K
+* `molecular_sublayer_thickness_in_sea_water`: Molecular sublayer thickness in sea water
+    * `real`: units = m
 * `ocean_mixed_layer_thickness`: Ocean mixed layer thickness
+    * Equivalent CF name: ocean_mixed_layer_thickness
     * `real`: units = m
 * `reference_sea_surface_temperature`: Foundation/reference temperature for calculating diurnal ocean temperature changes
     * `real`: units = K
 * `sea_surface_temperature`: Sea surface temperature
+    * Equivalent CF name: sea_surface_temperature
     * `real`: units = K
 * `sea_water_absolute_salinity`: The absolute salinity of sea water
+    * Equivalent CF name: sea_water_absolute_salinity
     * `real`: units = g kg-1
 * `sea_water_depth`: The depth of the ocean floor below the surface of the sea
+    * Equivalent CF name: sea_floor_depth_below_geoid
     * `real`: units = m
 * `sea_water_potential_temperature`: sea water potential temperature
+    * Equivalent CF name: sea_water_potential_temperature
     * `real`: units = K
 * `sea_water_practical_salinity`: The practical salinity of sea water
+    * Equivalent CF name: sea_water_practical_salinity
     * `real`: units = PSU
 * `sea_water_salinity_in_diurnal_thermocline`: Sea water salinity in diurnal thermocline
     * `real`: units = ppt m
 * `sea_water_temperature`: The temperature of sea water
+    * Equivalent CF name: sea_water_temperature
     * `real`: units = K
 * `x_current_in_diurnal_thermocline`: X current in diurnal thermocline
     * `real`: units = m2 s-1
@@ -663,10 +690,13 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `derivative_of_ln_water_vapor_partial_pressure_assuming_saturation_wrt_air_temperature_at_top_interfaces`: derivative of the natural logarithm of water vapor partial pressure at saturation with respect to air temperature at all interfaces excluding surface
     * `real`: units = K-1
 * `mole_fraction_of_co2_in_air`: Mole fraction of co2 in air
+    * Equivalent CF name: mole_fraction_of_carbon_dioxide_in_air
     * `real`: units = mol mol-1
 * `mole_fraction_of_ozone_in_air`: Mole fraction of ozone in air
+    * Equivalent CF name: mole_fraction_of_ozone_in_air
     * `real`: units = mol mol-1
 * `mole_fraction_of_water_vapor`: Mole fraction of water vapor
+    * Equivalent CF name: mole_fraction_of_water_vapor_in_air
     * `real`: units = mol mol-1
 * `number_density_of_anomalous_oxygen`: Number density of energetic, non-thermal atomic oxygen as defined in MSIS
     * `real`: units = m-3
@@ -747,10 +777,12 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `volume_mixing_ratio_of_so2`: Sulfur dioxide volume mixing ratio
     * `real`: units = mol mol-1
 * `water_vapor_mixing_ratio_wrt_dry_air`: Ratio of the mass of water vapor to the mass of dry air
+    * Equivalent CF name: humidity_mixing_ratio
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of water vapor to the mass of dry air at all interfaces excluding surface
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air`: Ratio of the mass of water vapor to the mass of moist air
+    * Equivalent CF name: specific_humidity
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water`: Ratio of the mass of water vapor to the mass of moist air and hydrometeors
     * `real`: units = kg kg-1
@@ -770,6 +802,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land`: Cloud condensed water mass mixing ratio with respect to moist air at surface over land
     * `real`: units = kg kg-1
 * `cloud_ice_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud ice to the mass of dry air
+    * Equivalent CF name: cloud_ice_mixing_ratio
     * `real`: units = kg kg-1
 * `cloud_ice_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud ice to the mass of dry air at all interfaces excluding surface
     * `real`: units = kg kg-1
@@ -782,6 +815,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `cloud_ice_mixing_ratio_wrt_moist_air_of_new_state`: Cloud ice mass mixing ratio with respect to moist air of new state
     * `real`: units = kg kg-1
 * `cloud_liquid_water_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud liquid water to the mass of dry air
+    * Equivalent CF name: cloud_liquid_water_mixing_ratio
     * `real`: units = kg kg-1
 * `cloud_liquid_water_mixing_ratio_wrt_dry_air_at_top_interfaces`: Ratio of the mass of cloud liquid water to the mass of dry air at all interfaces excluding surface
     * `real`: units = kg kg-1
@@ -798,6 +832,7 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `cloud_liquid_water_mixing_ratio_wrt_moist_air_of_new_state`: Cloud liquid water mass mixing ratio with respect to moist air of new state
     * `real`: units = kg kg-1
 * `convective_cloud_area_fraction`: Convective cloud area fraction
+    * Equivalent CF name: convective_cloud_area_fraction
     * `real`: units = fraction
 * `convective_cloud_condensate_after_rainout`: Convective cloud condensate after rainout
     * `real`: units = kg kg-1
@@ -806,14 +841,19 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `convective_precipitation_rate_on_previous_timestep`: Convective precipitation rate on previous timestep
     * `real`: units = mm s-1
 * `effective_radius_of_stratiform_cloud_graupel_particle`: Effective radius of stratiform cloud graupel particle
+    * Equivalent CF name: effective_radius_of_stratiform_cloud_graupel_particles
     * `real`: units = um
 * `effective_radius_of_stratiform_cloud_ice_particle`: Effective radius of stratiform cloud ice particle
+    * Equivalent CF name: effective_radius_of_stratiform_cloud_ice_particles
     * `real`: units = um
 * `effective_radius_of_stratiform_cloud_liquid_water_particle`: Effective radius of stratiform cloud liquid water particle
+    * Equivalent CF name: effective_radius_of_stratiform_cloud_liquid_water_particles
     * `real`: units = um
 * `effective_radius_of_stratiform_cloud_rain_particle`: Effective radius of stratiform cloud rain particle
+    * Equivalent CF name: effective_radius_of_stratiform_cloud_rain_particles
     * `real`: units = um
 * `effective_radius_of_stratiform_cloud_snow_particle`: Effective radius of stratiform cloud snow particle
+    * Equivalent CF name: effective_radius_of_stratiform_cloud_snow_particles
     * `real`: units = um
 * `graupel_mixing_ratio_wrt_moist_air`: Graupel mass mixing ratio with respect to moist air
     * `real`: units = kg kg-1
@@ -898,13 +938,13 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 ### Aerosols
 * `mass_fraction_of_dust001_in_air`: GOCART Dust bin1 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_dust002_in_air`: GOCART DUst bin2 mass fraction
+* `mass_fraction_of_dust002_in_air`: GOCART Dust bin2 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_dust003_in_air`: GOCART DUst bin3 mass fraction
+* `mass_fraction_of_dust003_in_air`: GOCART Dust bin3 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_dust004_in_air`: GOCART DUst bin4 mass fraction
+* `mass_fraction_of_dust004_in_air`: GOCART Dust bin4 mass fraction
     * `real`: units = kg kg-1
-* `mass_fraction_of_dust005_in_air`: GOCART DUst bin5 mass fraction
+* `mass_fraction_of_dust005_in_air`: GOCART Dust bin5 mass fraction
     * `real`: units = kg kg-1
 * `mass_fraction_of_dust_accumulation_aerosol_particles_in_air`: Mass fraction of accumulation mode dust aerosol particles
     * `real`: units = kg kg-1
@@ -1849,6 +1889,8 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = fraction
 * `max_grid_scale`: Maximum grid scale
     * `real`: units = m2 rad-2
+* `max_soil_moisture_content_for_lsm`: Maximum soil moisture content for land surface model
+    * `real`: units = m
 * `max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation`: Maximum tendency of air potential temperature due to large-scale precipitation
     * `real`: units = K s-1
 * `max_vegetation_area_fraction`: Maximum vegetation area fraction
@@ -2074,8 +2116,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = Pa s
 * `cumulative_y_momentum_flux_at_surface_for_coupling_multiplied_by_timestep`: Cumulative y momentum flux at surface for coupling multiplied by timestep
     * `real`: units = Pa s
-* `lwe_surface_snow_from_coupled_process`: Liquid water equivalent surface snow from coupled process
-    * `real`: units = m
 * `monin_obukhov_similarity_function_for_heat`: Monin obukhov similarity function for heat
     * `real`: units = 1
 * `monin_obukhov_similarity_function_for_momentum`: Monin obukhov similarity function for momentum
@@ -2154,6 +2194,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `albedo_on_previous_timestep_assuming_deep_snow`: Albedo on previous timestep assuming deep snow
     * `real`: units = fraction
 * `area_type`: Area type
+    * Equivalent CF name: area_type
     * `real`: units = 1
 * `area_type_from_coupled_process`: Area type from coupled process
     * `real`: units = 1
@@ -2166,8 +2207,10 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `canopy_intercepted_liquid_water`: Canopy intercepted liquid water
     * `real`: units = mm
 * `canopy_temperature`: Canopy temperature
+    * Equivalent CF name: canopy_temperature
     * `real`: units = K
-* `canopy_water_mass_content`: Canopy water mass content
+* `canopy_water_mass_content`: Water mass per unit area in the canopy
+    * Equivalent CF name: canopy_water_amount
     * `real`: units = kg m-2
 * `cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls`: Cumulative liquid water equivalent thickness of convective precipitation amount between shortwave radiation calls
     * `real`: units = m
@@ -2179,7 +2222,8 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 * `deep_soil_temperature`: Deep soil temperature
     * `real`: units = K
-* `density_of_snow_at_surface`: Density of snow at surface
+* `density_of_snow_at_surface`: Density of snow accumulated on ground surface
+    * Equivalent CF name: surface_snow_density
     * `real`: units = kg m-3
 * `depth_from_snow_surface_at_bottom_interface`: depth from the top of the snow surface at the bottom of the soil layer
     * `real`: units = m
@@ -2220,6 +2264,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `explicit_precipitation_rate_on_previous_timestep`: Explicit precipitation rate on previous timestep
     * `real`: units = mm s-1
 * `fast_soil_pool_mass_content_of_carbon`: Fast soil pool mass content of carbon
+    * Equivalent CF name: fast_soil_pool_mass_content_of_carbon
     * `real`: units = g m-2
 * `fine_root_mass_content`: Fine root mass content
     * `real`: units = g m-2
@@ -2236,19 +2281,25 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `lake_depth`: Lake depth
     * `real`: units = m
 * `land_area_fraction`: Land area fraction
+    * Equivalent CF name: land_area_fraction
     * `real`: units = fraction
 * `land_ice_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is ice over land
+    * Equivalent CF name: land_ice_area_fraction
     * `real`: units = frac
 * `land_surface_perturbation_variables`: Land surface perturbation variables
     * `character`: units = none
 * `leaf_area_index`: Leaf area index
+    * Equivalent CF name: leaf_area_index
     * `real`: units = 1
 * `leaf_mass_content`: Leaf mass content
     * `real`: units = g m-2
 * `lwe_snowfall_rate`: Liquid water equivalent snowfall rate
+    * Equivalent CF name: lwe_snowfall_rate
     * `real`: units = mm s-1
 * `lwe_surface_snow`: Liquid water equivalent surface snow
     * `real`: units = mm
+* `lwe_surface_snow_from_coupled_process`: Liquid water equivalent surface snow from coupled process
+    * `real`: units = m
 * `lwe_thickness_of_convective_precipitation_on_previous_timestep`: Liquid water equivalent thickness of convective precipitation amount on previous timestep
     * `real`: units = m
 * `lwe_thickness_of_explicit_precipitation_on_previous_timestep`: Liquid water equivalent thickness of explicit precipitation amount on previous timestep
@@ -2268,15 +2319,10 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `lwe_thickness_of_snowfall_on_previous_timestep`: Liquid water equivalent thickness of snowfall amount on previous timestep
     * `real`: units = mm
 * `lwe_thickness_of_surface_snow`: Liquid water equivalent thickness of surface snow amount
+    * Equivalent CF name: lwe_thickness_of_surface_snow_amount
     * `real`: units = mm
 * `mass_content_of_water_in_top_soil_layer`: mass per unit area of water in top layer of soil
     * `real`: units = kg m-2
-* `max_soil_moisture_content_for_lsm`: Maximum soil moisture content for land surface model
-    * `real`: units = m
-* `molecular_sublayer_temperature_correction_in_sea_water`: Molecular sublayer temperature correction in sea water
-    * `real`: units = K
-* `molecular_sublayer_thickness_in_sea_water`: Molecular sublayer thickness in sea water
-    * `real`: units = m
 * `nir_albedo_strong_cosz`: albedo for near-infrared radiation with strong dependence on cosine of the zenith angle
     * `real`: units = fraction
 * `nir_albedo_weak_cosz`: albedo for near-infrared radiation with weak dependence on cosine of the zenith angle
@@ -2285,8 +2331,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 * `normalized_soil_wetness_for_lsm`: Normalized soil wetness for land surface model
     * `real`: units = fraction
-* `roughness_length`: surface roughness length
-    * `real`: units = cm
 * `roughness_length_from_wave_model`: surface roughness length from wave model
     * `real`: units = cm
 * `roughness_length_over_ice`: surface roughness length over ice
@@ -2300,11 +2344,11 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `sea_ice_area_fraction_of_sea_area_fraction`: Sea ice area fraction of sea area fraction
     * `real`: units = fraction
 * `sea_ice_temperature`: Sea ice temperature
+    * Equivalent CF name: sea_ice_temperature
     * `real`: units = K
 * `sea_ice_thickness`: Sea ice thickness
+    * Equivalent CF name: sea_ice_thickness
     * `real`: units = m
-* `skin_temperature_at_surface`: Skin temperature at surface
-    * `real`: units = K
 * `skin_temperature_at_surface_over_ice`: Skin temperature at surface over (or where) ice
     * `real`: units = K
 * `skin_temperature_at_surface_over_land`: Skin temperature at surface over (or where) land
@@ -2314,6 +2358,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `skin_temperature_at_surface_over_snow`: Skin temperature at surface over (or where) snow
     * `real`: units = K
 * `slow_soil_pool_mass_content_of_carbon`: Slow soil pool mass content of carbon
+    * Equivalent CF name: slow_soil_pool_mass_content_of_carbon
     * `real`: units = g m-2
 * `snow_area_fraction_at_surface_over_ice`: Snow area fraction at surface over ice
     * `real`: units = fraction
@@ -2323,8 +2368,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 * `snowfall_rate_on_previous_timestep`: Snowfall rate on previous timestep
     * `real`: units = mm s-1
-* `soil_temperature`: Soil temperature
-    * `real`: units = K
 * `soil_temperature_for_lsm`: Soil temperature for land surface model
     * `real`: units = K
 * `specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
@@ -2346,6 +2389,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `surface_friction_velocity_for_momentum`: Surface friction velocity for momentum
     * `real`: units = m s-1
 * `surface_longwave_emissivity`: Surface longwave emissivity
+    * Equivalent CF name: surface_longwave_emissivity
     * `real`: units = fraction
 * `surface_longwave_emissivity_over_ice`: Surface longwave emissivity over ice
     * `real`: units = fraction
@@ -2376,16 +2420,19 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `upper_bound_of_max_albedo_assuming_deep_snow`: Upper bound of maximum albedo assuming deep snow
     * `real`: units = fraction
 * `upward_latent_heat_flux_at_surface`: Upward latent heat flux at surface
+    * Equivalent CF name: surface_upward_latent_heat_flux
     * `real`: units = W m-2
 * `urban_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is urban
     * `real`: units = frac
 * `vegetation_area_fraction`: Vegetation area fraction
+    * Equivalent CF name: vegetation_area_fraction
     * `real`: units = fraction
 * `vis_albedo_strong_cosz`: albedo for visible radiation with strong dependence on cosine of the zenith angle
     * `real`: units = fraction
 * `vis_albedo_weak_cosz`: albedo for visible radiation with weak dependence on cosine of the zenith angle
     * `real`: units = fraction
 * `volume_fraction_of_condensed_water_in_soil`: Volume fraction of condensed water in soil
+    * Equivalent CF name: volume_fraction_of_condensed_water_in_soil
     * `real`: units = fraction
 * `volume_fraction_of_frozen_soil_moisture_for_lsm`: Volume fraction of frozen soil moisture for land surface model
     * `real`: units = fraction
@@ -2465,6 +2512,7 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 ## Tendencies
 * `lagrangian_tendency_of_air_pressure`: Vertical pressure velocity
+    * Equivalent CF name: lagrangian_tendency_of_air_pressure
     * `real`: units = Pa s-1
 * `process_split_cumulative_tendency_of_air_temperature`: Process split cumulative tendency of air temperature
     * `real`: units = K s-1
@@ -2501,6 +2549,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `tendency_of_activated_cloud_condensation_nuclei_from_climatology`: Change of activated cloud condensation nuclei from climatology per unit time
     * `real`: units = kg-1 s-1
 * `tendency_of_air_temperature`: Change in temperature per unit time
+    * Equivalent CF name: tendency_of_air_temperature
     * `real`: units = K s-1
 * `tendency_of_air_temperature_due_to_integrated_dynamics_through_earths_atmosphere`: Tendency of air temperature due to integrated dynamics through earths atmosphere
     * `real`: units = K s-1
@@ -2509,6 +2558,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `tendency_of_air_temperature_due_to_longwave_heating_on_radiation_timestep`: Tendency of air temperature due to longwave heating on radiation timestep
     * `real`: units = K s-1
 * `tendency_of_air_temperature_due_to_model_physics`: Change in air temperature due to model physics per unit time
+    * Equivalent CF name: tendency_of_air_temperature_due_to_model_physics
     * `real`: units = K s-1
 * `tendency_of_air_temperature_due_to_nonphysics`: Tendency of air temperature due to nonphysics
     * `real`: units = K s-1
@@ -2519,16 +2569,20 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `tendency_of_dry_air_enthalpy_at_constant_pressure`: Change of dry air enthalpy per unit time at constant pressure; d/dt(Cp*T)
     * `real`: units = J kg-1 s-1
 * `tendency_of_eastward_wind`: Change in eastward wind per unit time
+    * Equivalent CF name: tendency_of_eastward_wind
     * `real`: units = m s-2
 * `tendency_of_eastward_wind_due_to_model_physics`: Change in eastward wind due to model physics per unit time
+    * Equivalent CF name: tendency_of_eastward_wind_due_to_parameterized_physics
     * `real`: units = m s-2
 * `tendency_of_hygroscopic_aerosols_at_surface_adjacent_layer`: Tendency of hygroscopic aerosols at surface adjacent layer
     * `real`: units = kg-1 s-1
 * `tendency_of_nonhygroscopic_ice_nucleating_aerosols_at_surface_adjacent_layer`: Tendency of nonhygroscopic ice nucleating aerosols at surface adjacent layer
     * `real`: units = kg-1 s-1
 * `tendency_of_northward_wind`: Change in northward wind per unit time
+    * Equivalent CF name: tendency_of_northward_wind
     * `real`: units = m s-2
 * `tendency_of_northward_wind_due_to_model_physics`: Change in northward wind due to model physics per unit time
+    * Equivalent CF name: tendency_of_northward_wind_due_to_parameterized_physics
     * `real`: units = m s-2
 * `tendency_of_potential_temperature_of_air`: Change in potential temperature per unit time
     * `real`: units = K s-1

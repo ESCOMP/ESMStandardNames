@@ -6,26 +6,14 @@ Convert a metadata standard-name XML library file to another format.
 
 # Python library imports
 from collections import OrderedDict
-import xml.etree.ElementTree as ET
 import os.path
 import argparse
 import sys
 import re
 import yaml
 
-################################################
-# Add lib modules to python path
-################################################
-
-_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(_CURR_DIR, "lib"))
-
-#######################################
-# Import needed framework python modules
-#######################################
-
-from xml_tools import validate_xml_file, read_xml_file
-from xml_tools import find_schema_file
+#Import custom helper functions from lib/ directory
+from lib import validate_xml_file, read_xml_file
 
 #######################################
 # Regular expressions
@@ -35,11 +23,12 @@ _REAL_SUBST_RE = re.compile(r"(.*\d)p(\d.*)")
 
 _DROPPED_LINK_CHARS_RE = re.compile(r"[^a-z_-]")
 
-#######################################
-# Custom representer for OrderedDict
-#######################################
+########################################################################
+# Custom representer for OrderedDict allows neat representation of written YAML Metadata file
+########################################################################
 
 def ordered_dict_representer(dumper, data):
+    """Custom YAML representer for OrderedDict to allow for nice format YAML output."""
     return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.items())
 yaml.add_representer(OrderedDict, ordered_dict_representer)
 
@@ -47,10 +36,8 @@ yaml.add_representer(OrderedDict, ordered_dict_representer)
 def convert_text_to_link(text_str):
 ########################################################################
     """
-    When Markdown converts a header string into
-    an internal document link it applies certain
-    text conversion rules.  This function thus
-    applies those same rules to a given string
+    When Markdown converts a header string into an internal document link it applies certain
+    text conversion rules.  This function thus applies those same rules to a given string
     in order to produce the correct link.
     """
 
@@ -70,25 +57,9 @@ def convert_text_to_link(text_str):
     return link_str
 
 ########################################################################
-def standard_name_to_description(prop_dict, context=None):
+def standard_name_to_description(prop_dict):
 ########################################################################
-    """Translate a standard_name to its default description
-    Note: This code is copied from the CCPP Framework.
-    >>> standard_name_to_description({'standard_name':'cloud_optical_depth_layers_from_0p55mu_to_0p99mu'})
-    'Cloud optical depth layers from 0.55mu to 0.99mu'
-    >>> standard_name_to_description({'local_name':'foo'}) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    CCPPError: No standard name to convert foo to description
-    >>> standard_name_to_description({}) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    CCPPError: No standard name to convert to description
-    >>> standard_name_to_description({'local_name':'foo'}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    CCPPError: No standard name to convert foo to description at foo.F90:3
-    >>> standard_name_to_description({}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    CCPPError: No standard name to convert to description at foo.F90:3
-    """
+    """Translate a standard_name to its default description"""
     # We assume that standard_name has been checked for validity
     # Make the first char uppercase and replace each underscore with a space
     if 'standard_name' in prop_dict:
@@ -98,33 +69,22 @@ def standard_name_to_description(prop_dict, context=None):
                                                           standard_name[1:])
         else:
             description = ''
-        # end if
         # Next, substitute a decimal point for the p in [:digit]p[:digit]
         match = _REAL_SUBST_RE.match(description)
         while match is not None:
             description = match.group(1) + '.' + match.group(2)
             match = _REAL_SUBST_RE.match(description)
-        # end while
     else:
-        description = ''
-        if 'local_name' in prop_dict:
-            lname = ' {}'.format(prop_dict['local_name'])
-        else:
-            lname = ''
-        # end if
-        ctxt = context_string(context)
-        emsg = 'No standard name to convert{} to description{}'
-        raise CCPPError(emsg.format(lname, ctxt))
-    # end if
+        raise KeyError('No standard_name found in dictionary')
     return description
 
-###############################################################################
+
 def parse_command_line(args, program_description):
-###############################################################################
+    """Function to parse command line arguments"""
     parser = argparse.ArgumentParser(description=program_description,
                                      formatter_class=argparse.RawTextHelpFormatter)
 
-    parser.add_argument("standard_name_file",
+    parser.add_argument("-s","--standard_name_file",default="standard_names.xml",
                         metavar='<standard names filename>',
                         type=str, help="XML file with standard name library")
     parser.add_argument("--output-filename", metavar='<output filename>',
@@ -135,24 +95,23 @@ def parse_command_line(args, program_description):
     pargs = parser.parse_args(args)
     return pargs
 
-###############################################################################
+
 def convert_xml_to_markdown(root, library_name, snl):
-###############################################################################
-    snl.write('# {}\n'.format(library_name))
+    """Convert XML root element to Markdown format and write to file object snl."""
+    snl.write(f'# {library_name}\n')
     # Write a table of contents for top-level sections
     snl.write('#### Table of Contents\n')
     for section in root:
         sec_name = section.get('name')
         sec_name_link = convert_text_to_link(sec_name)  # convert string to link text
         snl.write(f"* [{sec_name}](#{sec_name_link})\n")
-    # end for
     snl.write('\n')
     for section in root:
         parse_section(snl, section)
 
-###############################################################################
+
 def parse_section(snl, sec, level='##'):
-###############################################################################
+    """Parse a section element and its children, writing Markdown to snl file object."""
     # Step through the sections
     sec_name = sec.get('name')
     sec_comment = sec.get('comment')
@@ -165,14 +124,11 @@ def parse_section(snl, sec, level='##'):
             sec_comment = sec_comment.lstrip()
             cind = sec_comment.find('\\n')
             if cind > 0:
-                snl.write('{}\n'.format(sec_comment[0:cind]))
+                snl.write(f'{sec_comment[0:cind]}\n')
                 sec_comment = sec_comment[cind + 2:]
             else:
-                snl.write('{}\n'.format(sec_comment))
+                snl.write(f'{sec_comment}\n')
                 sec_comment = ''
-            # end if
-        # end while
-    # end if
     for std_name in sec:
         if std_name.tag == 'section':
             parse_section(snl, std_name, level + '#')
@@ -182,25 +138,22 @@ def parse_section(snl, sec, level='##'):
         if stdn_description is None:
             sdict = {'standard_name': stdn_name}
             stdn_description = standard_name_to_description(sdict)
-        # end if
-        snl.write("* `{}`: {}\n".format(stdn_name, stdn_description))
-        # Should only be a type in the standard_name text
+        snl.write(f"* `{stdn_name}`: {stdn_description}\n")
+        # Should only be type or cfname as subelements of standard_name
         for item in std_name:
-            if item.tag == 'type':
+            if item.tag == 'cfname':
+                snl.write(f"    * Equivalent CF name: {item.text}\n")
+            elif item.tag == 'type':
                 txt = item.text
                 units = item.get('units')
-                snl.write('    * `{}`: units = {}\n'.format(txt, units))
+                snl.write(f'    * `{txt}`: units = {units}\n')
             else:
                 emsg = "Unknown standard name property, '{}'"
                 raise ValueError(emsg.format(item.tag))
-            # end if
-        # end for
-    # end for
-# end for
 
-###############################################################################
+
 def convert_xml_to_yaml(root, library_name, yaml_file):
-###############################################################################
+    """Convert XML root element to YAML format and write to file object yaml_file."""
     yaml_data = OrderedDict()
     yaml_data['library_name'] = library_name
     yaml_data['section'] = []
@@ -211,9 +164,8 @@ def convert_xml_to_yaml(root, library_name, yaml_file):
     yaml.dump(yaml_data, yaml_file, default_flow_style=False)
 
 
-###############################################################################
 def parse_section_for_yaml(section):
-###############################################################################
+    """Parse a section element into an OrderedDict suitable for YAML output."""
     sec_data = OrderedDict()
     sec_data['name'] = section.get('name')
 
@@ -231,6 +183,11 @@ def parse_section_for_yaml(section):
 
     for std_name in section.findall('standard_name'):
         stdn_name = std_name.get('name')
+        cfname_elem = std_name.find('cfname')
+        if cfname_elem is not None and cfname_elem.text is not None:
+            stdn_cfname = cfname_elem.text.strip()
+        else:
+            stdn_cfname = None
         stdn_description = std_name.get('description')
 
         if stdn_description is None:
@@ -241,6 +198,8 @@ def parse_section_for_yaml(section):
 
         std_name_data = OrderedDict()
         std_name_data['name'] = stdn_name
+        if stdn_cfname:
+            std_name_data['cfname'] = stdn_cfname
         std_name_data['description'] = stdn_description
         if std_type is not None:
             std_name_data['type'] = std_type.text
@@ -267,9 +226,8 @@ def parse_section_for_yaml(section):
 
     return sec_data
 
-###############################################################################
+
 def main_func():
-###############################################################################
     """Validate and parse the standard names database file and generate
     a document containing the data."""
     # Parse command line arguments
@@ -279,44 +237,19 @@ def main_func():
     _, root = read_xml_file(stdname_file)
     library_name = root.get('name')
     # Validate the XML file
-    schema_name = os.path.basename(stdname_file)[0:-4]
     schema_root = os.path.dirname(stdname_file)
-    schema_file = find_schema_file(schema_name)
-    if not schema_file:
-        raise ValueError(f'Cannot find schema file {schema_name}')
-    # end if
-
-    try:
-        emsg = "Invalid standard names file, {}".format(stdname_file)
-        file_ok = validate_xml_file(stdname_file, schema_name,
-                                     None, schema_path=schema_root,
-                                     error_on_noxmllint=True)
-    except ValueError as valerr:
-        cemsg = "{}".format(valerr).split('\n')[0]
-        if cemsg[0:12] == 'Execution of':
-            xstart = cemsg.find("'")
-            if xstart >= 0:
-                xend = cemsg[xstart + 1:].find("'") + xstart + 1
-                emsg += '\n' + cemsg[xstart + 1:xend]
-            # end if (else, just keep original message)
-        elif cemsg[0:18] == 'validate_xml_file:':
-            emsg += "\n" + cemsg
-        # end if
-        raise ValueError(emsg)
-    # end try
+    schema_path = os.path.join(schema_root,"standard_names.xsd")
+    validate_xml_file(stdname_file, schema_path, logger=None, error_on_noxmllint=True)
 
     outfile_name = args.output_filename
     if args.output_format == 'md':
-        with open(f"{outfile_name}.md", "w") as md_file:
+        with open(f"{outfile_name}.md", "w", encoding="utf-8") as md_file:
             convert_xml_to_markdown(root, library_name, md_file)
     elif args.output_format == 'yaml':
-        with open(f"{outfile_name}.yaml", "w") as yaml_file:
+        with open(f"{outfile_name}.yaml", "w", encoding="utf-8") as yaml_file:
             convert_xml_to_yaml(root, library_name, yaml_file)
     else:
-        emsg = "Unsupported output format, '{}'"
-        raise ValueError(emsg.format(args.output_format))
-    # end if
+        raise ValueError(f"Unsupported output format, {args.output_format}")
 
-###############################################################################
 if __name__ == "__main__":
     main_func()
