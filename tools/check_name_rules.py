@@ -31,7 +31,7 @@ def main():
     # Validate the XML file
     schema_root = os.path.dirname(stdname_file)
     schema_path = os.path.join(schema_root,"standard_names.xsd")
-    validate_xml_file(stdname_file, schema_path, schema_path=schema_root, error_on_noxmllint=True)
+    validate_xml_file(stdname_file, schema_path, logger=None, error_on_noxmllint=True)
 
     #Parse list of standard names and see if any names violate one or more rules
     violators = {}

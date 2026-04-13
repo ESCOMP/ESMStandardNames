@@ -37,15 +37,10 @@ from lib import read_xml_file, get_standard_names_as_set
 #Helper functions
 #################
 
-#++++++++++++++++++++++++++++++
-#Input Argument parser function
-#++++++++++++++++++++++++++++++
-
 def parse_arguments():
 
     """
-    Parses command-line input arguments
-    using the argparse python module and
+    Parses command-line input arguments using the argparse python module and
     outputs the final argument object.
     """
 
