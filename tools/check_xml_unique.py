@@ -70,7 +70,16 @@ def main_func():
     all_std_names = []
     for name in root.findall('.//standard_name'):
         try:
-            all_std_names.append(name.attrib[args.field])
+            if args.field == 'cfname':
+                # Extract from cfname subelement
+                cfname_elem = name.find('cfname')
+                if cfname_elem is not None and cfname_elem.text is not None:
+                    all_std_names.append(cfname_elem.text.strip())
+                elif args.debug:
+                    print(f"WARNING: no cfname subelement for standard name '{name.attrib['name']}'")
+            else:
+                # Extract from attribute
+                all_std_names.append(name.attrib[args.field])
         except KeyError:
             if (args.debug):
                 print(f"WARNING: no field '{args.field}' for standard name '{name.attrib['name']}' ")
@@ -88,9 +97,15 @@ def main_func():
     if len(dup_std_names)>0:
         print(f'The following duplicate {args.field} entries were found:')
         for dup in dup_std_names:
-            rm_elements = root.findall(f'.//standard_name[@{args.field}="{dup}"]')[1:]
+            if args.field == 'cfname':
+                rm_elements = root.findall(f'.//standard_name[cfname="{dup}"]')[1:]
+            else:
+                rm_elements = root.findall(f'.//standard_name[@{args.field}="{dup}"]')[1:]
             print(f"{dup}, ({len(rm_elements)} duplicate(s))")
-        if args.overwrite:
+        if args.field == 'cfname':
+            if args.overwrite:
+                print(f'Note: --overwrite is ignored for cfname field; duplicates are reported only.')
+        elif args.overwrite:
             print(f'Removing duplicates and overwriting {stdname_file}')
             for dup in dup_std_names:
                 first_use = True #Logical that indicates the first use of the duplicated name
