@@ -47,7 +47,7 @@ sys.path.append(os.path.join(_CURR_DIR, "lib"))
 #Import needed framework python modules
 #######################################
 
-from xml_tools import read_xml_file
+from xml_tools import read_xml_file, get_standard_names_as_set
 
 #################
 #Helper functions
@@ -75,12 +75,12 @@ def parse_arguments():
     #Add input arguments to be parsed:
     parser.add_argument('-m', '--metafile-loc',
                         metavar='<path to directory or file>',
-                        action='store', type=str,
+                        action='store', type=str, required=True,
                         help="Location of metadata file(s)")
 
     parser.add_argument('-s', '--stdname-dict',
                         metavar='<path to file>',
-                        action='store', type=str,
+                        action='store', type=str, default='standard_names.xml',
                         help="Location of standard name dictionary (XML file)")
 
     #Parse Argument inputs
@@ -88,28 +88,6 @@ def parse_arguments():
 
     return args.metafile_loc, args.stdname_dict
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#Function to extract standard names from element tree root
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-def get_dict_stdnames(xml_tree_root):
-
-    """
-    Extract all elements with the "standard_name" tag,
-    find the "name" attribute for that tag, and collect
-    all of those "names" in a set.
-    """
-
-    #Create empty set to store standard name names:
-    std_dict_names = set()
-
-    #Loop over all standard_name tags"
-    for stdname in xml_tree_root.findall('./section/standard_name'):
-        #Add the "name" attribute to the set:
-        std_dict_names.add(stdname.attrib['name'])
-    #End for
-
-    return std_dict_names
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #Function to parse a list of strings from a metadata file
@@ -295,7 +273,7 @@ metafile_loc, stdname_xml = parse_arguments()
 _, stdname_dict_root = read_xml_file(stdname_xml)
 
 #Extract all standard names from dictionary:
-std_names = get_dict_stdnames(stdname_dict_root)
+std_names = get_standard_names_as_set(stdname_dict_root)
 
 #Create new meta file/missing names dictionary:
 meta_miss_names_dict = OrderedDict()

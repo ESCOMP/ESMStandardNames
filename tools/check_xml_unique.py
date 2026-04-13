@@ -68,7 +68,7 @@ def main_func():
 
     #get list of all standard names
     all_std_names = []
-    for name in root.findall('./section/standard_name'):
+    for name in root.findall('.//standard_name'):
         try:
             all_std_names.append(name.attrib[args.field])
         except KeyError:
@@ -88,13 +88,13 @@ def main_func():
     if len(dup_std_names)>0:
         print(f'The following duplicate {args.field} entries were found:')
         for dup in dup_std_names:
-            rm_elements = root.findall(f'./section/standard_name[@{args.field}="{dup}"]')[1:]
+            rm_elements = root.findall(f'.//standard_name[@{args.field}="{dup}"]')[1:]
             print(f"{dup}, ({len(rm_elements)} duplicate(s))")
         if args.overwrite:
             print(f'Removing duplicates and overwriting {stdname_file}')
             for dup in dup_std_names:
                 first_use = True #Logical that indicates the first use of the duplicated name
-                rm_parents = root.findall('./section/standard_name[@name="%s"]..'%dup)
+                rm_parents = root.findall('.//standard_name[@name="%s"]..'%dup)
                 for par in rm_parents:
                     rm_ele = par.findall('./standard_name[@name="%s"]'%dup)
                     for ele in rm_ele:
