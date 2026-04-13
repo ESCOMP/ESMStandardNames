@@ -1,3 +1,5 @@
+"""Shared utilities for ESM Standard Names tools."""
+
 from .xml_tools import (
     call_command,
     validate_xml_file,

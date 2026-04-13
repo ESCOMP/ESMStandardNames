@@ -25,6 +25,7 @@ def main():
                         type=str, help="XML file with standard name library")
     args = parser.parse_args()
 
+    # pylint: disable=duplicate-code
     stdname_file = os.path.abspath(args.standard_name_file)
     _, root = read_xml_file(stdname_file)
 
