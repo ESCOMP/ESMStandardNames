@@ -8,6 +8,17 @@ on:
       - release/*
 
 jobs:
+  check-tools:
+    name: Pylint all python files under tools/
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run pylint
+        run: |
+            pylint tools/**
+
   validate-xml:
     name: Use xmlllint to validate the xml file against the schema file
     runs-on: ubuntu-latest
