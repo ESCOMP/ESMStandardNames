@@ -45,6 +45,7 @@ jobs:
         run: |
             tools/check_xml_unique.py -s standard_names.xml
             tools/check_xml_unique.py -s standard_names.xml --field="description"
+            tools/check_xml_unique.py -s standard_names.xml --field="cfname"
 
   check-name-rules:
     name: Check standard names against rules
