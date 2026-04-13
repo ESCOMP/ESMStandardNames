@@ -27,7 +27,7 @@ jobs:
 
       - name: Run pylint
         run: |
-            pylint tools/**
+            pylint tools/**py
 
   validate-xml:
     name: Use xmlllint to validate the xml file against the schema file
