@@ -63,9 +63,13 @@ def process_file(xml_path: Path) -> ET.ElementTree:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Alphabetically sort standard names within each subsection of the ESM Standard Names XML file.")
-    parser.add_argument("input", nargs="?", default="standard_names.xml", help="Input XML file (default: standard_names.xml)")
-    parser.add_argument("output", nargs="?", default="", help="Output file (default: overwrite input)")
+    """Main function for command-line execution"""
+    parser = argparse.ArgumentParser(description="Alphabetically sort standard names within each "\
+                                                 "subsection of the ESM Standard Names XML file.")
+    parser.add_argument("input", nargs="?", default="standard_names.xml",
+                        help="Input XML file (default: standard_names.xml)")
+    parser.add_argument("output", nargs="?", default="",
+                        help="Output file (default: overwrite input)")
     args = parser.parse_args()
 
     input_path = Path(args.input)

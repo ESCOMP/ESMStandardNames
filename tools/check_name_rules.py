@@ -5,25 +5,15 @@ Check standard names database file for violations of standard name character rul
 """
 
 import argparse
-import sys
 import os.path
 import re
 import xml.etree.ElementTree as ET
 
-################################################
-# Add lib modules to python path
-################################################
-
-_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(_CURR_DIR, "lib"))
-
-#######################################
-#Import needed framework python modules
-#######################################
-
-from xml_tools import find_schema_file, validate_xml_file, read_xml_file
+#Import custom helper functions from lib/ directory
+from lib import find_schema_file, validate_xml_file, read_xml_file
 
 def main():
+    # pylint: disable=too-many-locals
     """Parse the standard names database file and output a dictionary
     where the keys are any standard names in violation of character rules,
     and the values are lists of the specific rules violated
@@ -37,7 +27,7 @@ def main():
     args = parser.parse_args()
 
     stdname_file = os.path.abspath(args.standard_name_file)
-    tree, root = read_xml_file(stdname_file)
+    _, root = read_xml_file(stdname_file)
 
     # Validate the XML file
     schema_name = os.path.basename(stdname_file)[0:-4]
@@ -48,10 +38,10 @@ def main():
         try:
             validate_xml_file(stdname_file, schema_name, None,
                             schema_path=schema_root, error_on_noxmllint=True)
-        except ValueError:
-            raise ValueError(f"Invalid standard names file, {stdname_file}")
+        except ValueError as exc:
+            raise ValueError(f"Invalid standard names file, {stdname_file}") from exc
     else:
-        raise ValueError(f'Cannot find schema file, {schema_name}')
+        raise FileNotFoundError(f'Cannot find schema file, {schema_name}')
 
     #Parse list of standard names and see if any names violate one or more rules
     violators = {}
@@ -70,9 +60,6 @@ def main():
         if violations:
             violators[sname] = violations
 
-    if violators:
-        raise Exception(f"Violating standard names found:\n{violators}")
-
     # Check for non-ascii characters (ord > 127)
     for elem in ET.tostringlist(root, encoding='unicode'):
         violations = []
@@ -84,7 +71,7 @@ def main():
             violators[elem] = f'Non-ascii characters found: {badchars}'
 
     if violators:
-        raise Exception(f"Violating entries found:\n{violators}")
+        raise Exception(f"Violating entries found:\n{violators}") # pylint: disable=broad-exception-raised
 
     print(f'Success! All entries in {args.standard_name_file} follow the rules.')
 

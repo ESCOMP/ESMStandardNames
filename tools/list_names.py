@@ -28,6 +28,7 @@ def extract_names(xml_path: Path) -> list[str]:
 
 
 def main() -> None:
+    """Main function for command-line execution"""
     if len(sys.argv) != 2:
         print(f"Usage: {sys.argv[0]} <standard_names.xml>", file=sys.stderr)
         sys.exit(1)
@@ -43,4 +44,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
