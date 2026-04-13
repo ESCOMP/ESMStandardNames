@@ -31,8 +31,8 @@ def main():
     #Parse arguments
     parser = argparse.ArgumentParser(description=__doc__)
 
-    parser.add_argument("-s","--standard_name_file",
-                        metavar='<standard names filename>',required=True,
+    parser.add_argument("-s","--standard_name_file",default="standard_names.xml",
+                        metavar='<standard names filename>',
                         type=str, help="XML file with standard name library")
     args = parser.parse_args()
 
