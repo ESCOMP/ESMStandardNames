@@ -47,10 +47,8 @@ yaml.add_representer(OrderedDict, ordered_dict_representer)
 def convert_text_to_link(text_str):
 ########################################################################
     """
-    When Markdown converts a header string into
-    an internal document link it applies certain
-    text conversion rules.  This function thus
-    applies those same rules to a given string
+    When Markdown converts a header string into an internal document link it applies certain
+    text conversion rules.  This function thus applies those same rules to a given string
     in order to produce the correct link.
     """
 
@@ -72,22 +70,23 @@ def convert_text_to_link(text_str):
 ########################################################################
 def standard_name_to_description(prop_dict, context=None):
 ########################################################################
+    # pylint: disable=line-too-long
     """Translate a standard_name to its default description
     Note: This code is copied from the CCPP Framework.
     >>> standard_name_to_description({'standard_name':'cloud_optical_depth_layers_from_0p55mu_to_0p99mu'})
     'Cloud optical depth layers from 0.55mu to 0.99mu'
     >>> standard_name_to_description({'local_name':'foo'}) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert foo to description
+    KeyError: No standard name to convert foo to description
     >>> standard_name_to_description({}) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert to description
+    KeyError: No standard name to convert to description
     >>> standard_name_to_description({'local_name':'foo'}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert foo to description at foo.F90:3
+    KeyError: No standard name to convert foo to description at foo.F90:3
     >>> standard_name_to_description({}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
-    CCPPError: No standard name to convert to description at foo.F90:3
+    KeyError: No standard name to convert to description at foo.F90:3
     """
     # We assume that standard_name has been checked for validity
     # Make the first char uppercase and replace each underscore with a space
@@ -114,7 +113,7 @@ def standard_name_to_description(prop_dict, context=None):
         # end if
         ctxt = context_string(context)
         emsg = 'No standard name to convert{} to description{}'
-        raise CCPPError(emsg.format(lname, ctxt))
+        raise KeyError(emsg.format(lname, ctxt))
     # end if
     return description
 
@@ -297,9 +296,9 @@ def main_func():
 
     try:
         emsg = "Invalid standard names file, {}".format(stdname_file)
-        file_ok = validate_xml_file(stdname_file, schema_name,
-                                     None, schema_path=schema_root,
-                                     error_on_noxmllint=True)
+        validate_xml_file(stdname_file, schema_name,
+                          None, schema_path=schema_root,
+                          error_on_noxmllint=True)
     except ValueError as valerr:
         cemsg = "{}".format(valerr).split('\n')[0]
         if cemsg[0:12] == 'Execution of':
