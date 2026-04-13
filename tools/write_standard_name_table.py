@@ -124,7 +124,7 @@ def parse_command_line(args, program_description):
     parser = argparse.ArgumentParser(description=program_description,
                                      formatter_class=argparse.RawTextHelpFormatter)
 
-    parser.add_argument("standard_name_file",
+    parser.add_argument("-s","--standard_name_file",default="standard_names.xml",
                         metavar='<standard names filename>',
                         type=str, help="XML file with standard name library")
     parser.add_argument("--output-filename", metavar='<output filename>',
