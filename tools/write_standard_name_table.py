@@ -251,6 +251,5 @@ def main_func():
     else:
         raise ValueError(f"Unsupported output format, {args.output_format}")
 
-###############################################################################
 if __name__ == "__main__":
     main_func()

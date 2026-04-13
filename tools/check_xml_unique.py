@@ -83,6 +83,5 @@ def main_func():
         print(f'No duplicate {args.field}s were found.')
 
 
-###############################################################################
 if __name__ == "__main__":
     main_func()
