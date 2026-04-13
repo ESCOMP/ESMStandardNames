@@ -23,11 +23,12 @@ _REAL_SUBST_RE = re.compile(r"(.*\d)p(\d.*)")
 
 _DROPPED_LINK_CHARS_RE = re.compile(r"[^a-z_-]")
 
-#######################################
-# Custom representer for OrderedDict
-#######################################
+########################################################################
+# Custom representer for OrderedDict allows neat representation of written YAML Metadata file
+########################################################################
 
 def ordered_dict_representer(dumper, data):
+    """Custom YAML representer for OrderedDict to allow for nice format YAML output."""
     return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.items())
 yaml.add_representer(OrderedDict, ordered_dict_representer)
 
@@ -56,26 +57,9 @@ def convert_text_to_link(text_str):
     return link_str
 
 ########################################################################
-def standard_name_to_description(prop_dict, context=None):
+def standard_name_to_description(prop_dict):
 ########################################################################
-    # pylint: disable=line-too-long
-    """Translate a standard_name to its default description
-    Note: This code is copied from the CCPP Framework.
-    >>> standard_name_to_description({'standard_name':'cloud_optical_depth_layers_from_0p55mu_to_0p99mu'})
-    'Cloud optical depth layers from 0.55mu to 0.99mu'
-    >>> standard_name_to_description({'local_name':'foo'}) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    KeyError: No standard name to convert foo to description
-    >>> standard_name_to_description({}) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    KeyError: No standard name to convert to description
-    >>> standard_name_to_description({'local_name':'foo'}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    KeyError: No standard name to convert foo to description at foo.F90:3
-    >>> standard_name_to_description({}, context=ParseContext(linenum=3, filename='foo.F90')) #doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    KeyError: No standard name to convert to description at foo.F90:3
-    """
+    """Translate a standard_name to its default description"""
     # We assume that standard_name has been checked for validity
     # Make the first char uppercase and replace each underscore with a space
     if 'standard_name' in prop_dict:
@@ -91,17 +75,10 @@ def standard_name_to_description(prop_dict, context=None):
             description = match.group(1) + '.' + match.group(2)
             match = _REAL_SUBST_RE.match(description)
     else:
-        description = ''
-        if 'local_name' in prop_dict:
-            lname = f" {prop_dict['local_name']}"
-        else:
-            lname = ''
-        ctxt = context_string(context)
-        emsg = 'No standard name to convert{} to description{}'
-        raise KeyError(emsg.format(lname, ctxt))
+        raise KeyError('No standard_name found in dictionary')
     return description
 
-###############################################################################
+
 def parse_command_line(args, program_description):
     """Function to parse command line arguments"""
     parser = argparse.ArgumentParser(description=program_description,
@@ -118,8 +95,10 @@ def parse_command_line(args, program_description):
     pargs = parser.parse_args(args)
     return pargs
 
+
 def convert_xml_to_markdown(root, library_name, snl):
-    snl.write('# {}\n'.format(library_name))
+    """Convert XML root element to Markdown format and write to file object snl."""
+    snl.write(f'# {library_name}\n')
     # Write a table of contents for top-level sections
     snl.write('#### Table of Contents\n')
     for section in root:
@@ -132,6 +111,7 @@ def convert_xml_to_markdown(root, library_name, snl):
 
 
 def parse_section(snl, sec, level='##'):
+    """Parse a section element and its children, writing Markdown to snl file object."""
     # Step through the sections
     sec_name = sec.get('name')
     sec_comment = sec.get('comment')
@@ -173,6 +153,7 @@ def parse_section(snl, sec, level='##'):
 
 
 def convert_xml_to_yaml(root, library_name, yaml_file):
+    """Convert XML root element to YAML format and write to file object yaml_file."""
     yaml_data = OrderedDict()
     yaml_data['library_name'] = library_name
     yaml_data['section'] = []
@@ -184,6 +165,7 @@ def convert_xml_to_yaml(root, library_name, yaml_file):
 
 
 def parse_section_for_yaml(section):
+    """Parse a section element into an OrderedDict suitable for YAML output."""
     sec_data = OrderedDict()
     sec_data['name'] = section.get('name')
 
@@ -257,7 +239,7 @@ def main_func():
     # Validate the XML file
     schema_root = os.path.dirname(stdname_file)
     schema_path = os.path.join(schema_root,"standard_names.xsd")
-    validate_xml_file(stdname_file, schema_path, schema_path=schema_root, error_on_noxmllint=True)
+    validate_xml_file(stdname_file, schema_path, logger=None, error_on_noxmllint=True)
 
     outfile_name = args.output_filename
     if args.output_format == 'md':

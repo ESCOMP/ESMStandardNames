@@ -12,6 +12,7 @@ import os.path
 from lib import validate_xml_file, read_xml_file
 
 def parse_command_line(args, description):
+    """Parse and return command-line arguments"""
     parser = argparse.ArgumentParser(description=description,
                                      formatter_class=argparse.RawTextHelpFormatter)
 
@@ -27,6 +28,7 @@ def parse_command_line(args, description):
     return pargs
 
 def main_func():
+    # pylint: disable=too-many-branches
     """Parse the standard names database file and notify of duplicates.
     """
     # Parse command line arguments
@@ -37,7 +39,7 @@ def main_func():
     # Validate the XML file
     schema_root = os.path.dirname(stdname_file)
     schema_path = os.path.join(schema_root,"standard_names.xsd")
-    validate_xml_file(stdname_file, schema_path, schema_path=schema_root, error_on_noxmllint=True)
+    validate_xml_file(stdname_file, schema_path, logger=None, error_on_noxmllint=True)
 
     #get list of all standard names
     all_std_names = []
