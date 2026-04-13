@@ -57,7 +57,7 @@ def main():
     violators = {}
     legal_first_char = re.compile('[a-z]')
     valid_name_chars = re.compile('[a-z0-9_]')
-    for name in root.findall('./section/standard_name'):
+    for name in root.findall('.//standard_name'):
         sname = name.attrib['name']
         violations = []
         if legal_first_char.sub('', sname[0]):

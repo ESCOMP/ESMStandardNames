@@ -151,6 +151,18 @@ def read_xml_file(filename, logger=None):
     return tree, root
 
 ###############################################################################
+def get_standard_names_as_set(root):
+###############################################################################
+    """
+    Extract all standard_name elements from root (at any nesting depth),
+    collect their 'name' attributes, and return as a set.
+    """
+    std_names = set()
+    for stdname in root.findall('.//standard_name'):
+        std_names.add(stdname.attrib['name'])
+    return std_names
+
+###############################################################################
 
 if __name__ == "__main__":
     _LOGGER = logging.getLogger('xml_tools')
