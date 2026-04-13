@@ -50,10 +50,10 @@ def call_command(commands, logger, silent=False):
             result = False
         else:
             cmd = ' '.join(commands)
-            emsg = "Execution of '{}' failed with code:\n"
+            emsg = "Execution of '{cmd}' failed with code: {err.returncode}\n"
             outstr = emsg.format(cmd, err.returncode)
-            outstr += "{}".format(err.output)
-            raise RuntimeError(outstr)
+            outstr += f"{err.output}"
+            raise RuntimeError(outstr) from err
     return result
 
 
@@ -65,9 +65,9 @@ def validate_xml_file(filename, schema_file, logger, error_on_noxmllint=False):
     """
     # Check the filename
     if not os.path.isfile(filename):
-        raise ValueError("validate_xml_file: Filename, '{}', does not exist".format(filename))
+        raise ValueError("validate_xml_file: Filename, '{filename}', does not exist")
     if not os.access(filename, os.R_OK):
-        raise ValueError("validate_xml_file: Cannot open '{}'".format(filename))
+        raise ValueError("validate_xml_file: Cannot open '{filename}'")
     if not os.path.isfile(schema_file):
         raise ValueError(f"validate_xml_file: Cannot find schema file {schema_file}")
     if not os.access(schema_file, os.R_OK):
@@ -91,22 +91,20 @@ def validate_xml_file(filename, schema_file, logger, error_on_noxmllint=False):
 def read_xml_file(filename, logger=None):
 ###############################################################################
     """Read the XML file, <filename>, and return its tree and root"""
-    if os.path.isfile(filename) and os.access(filename, os.R_OK):
-        file_open = (lambda x: open(x, 'r'))
-        with file_open(filename) as file_:
-            try:
-                tree = ET.parse(file_)
-                root = tree.getroot()
-            except ET.ParseError as perr:
-                emsg = "read_xml_file: Cannot read {}, {}"
-                raise ValueError(emsg.format(filename, perr))
-    elif not os.access(filename, os.R_OK):
-        raise ValueError("read_xml_file: Cannot open '{}'".format(filename))
-    else:
-        emsg = "read_xml_file: Filename, '{}', does not exist"
-        raise ValueError(emsg.format(filename))
+    if not os.path.isfile(filename):
+        raise ValueError(f"read_xml_file: Filename, '{filename}', does not exist")
+    if not os.access(filename, os.R_OK):
+        raise ValueError(f"read_xml_file: Cannot open '{filename}'")
+
+    try:
+        with open(filename, 'r', encoding="utf-8") as file_:
+            tree = ET.parse(file_)
+            root = tree.getroot()
+    except ET.ParseError as perr:
+        raise ValueError(f"read_xml_file: Cannot read {filename}, {perr}") from perr
+
     if logger:
-        logger.debug("Read XML file, '{}'".format(filename))
+        logger.debug(f"Read XML file, '{filename}'")
     return tree, root
 
 ###############################################################################
@@ -133,5 +131,4 @@ if __name__ == "__main__":
         import doctest
         doctest.testmod()
     except ValueError as cerr:
-        print("{}".format(cerr))
-# no else:
+        print("{cerr}")
