@@ -187,7 +187,7 @@ def parse_section(snl, sec, level='##'):
         # Should only be type or cfname as subelements of standard_name
         for item in std_name:
             if item.tag == 'cfname':
-                snl.write(f"    * Equivalent CF name: {item.text}\n")
+                snl.write(f"    * `Equivalent CF name`: {item.text}\n")
             elif item.tag == 'type':
                 txt = item.text
                 units = item.get('units')
