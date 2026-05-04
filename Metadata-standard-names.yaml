@@ -14,6 +14,7 @@ section:
       type: real
       units: m2
     - name: area_fraction
+      cfname: area_fraction
       description: The fraction of an area where some condition applies
       type: real
       units: 1
@@ -259,6 +260,7 @@ section:
       type: real
       units: Pa
     - name: air_temperature
+      cfname: air_temperature
       description: The temperature of air
       type: real
       units: K
@@ -267,10 +269,12 @@ section:
       type: real
       units: 1
     - name: atmosphere_heat_diffusivity
+      cfname: atmosphere_heat_diffusivity
       description: Atmosphere heat diffusivity
       type: real
       units: m2 s-1
     - name: cloud_area_fraction
+      cfname: cloud_area_fraction
       description: Fraction of an area (usually within a grid cell) containing cloud
       type: real
       units: fraction
@@ -301,6 +305,7 @@ section:
       type: real
       units: 1
     - name: dimensionless_exner_function
+      cfname: dimensionless_exner_function
       description: Dimensionless formulation of the Exner function with respect to
         1000 hPa
       type: real
@@ -354,10 +359,12 @@ section:
       type: real
       units: m s-1
     - name: geopotential
+      cfname: geopotential
       description: Gravitational potential energy of a unit mass relative to sea level
       type: real
       units: m2 s-2
     - name: geopotential_height
+      cfname: geopotential_height
       description: Geopotential divided by the gravitational constant
       type: real
       units: m
@@ -384,10 +391,6 @@ section:
       description: Flux of longwave radiation across a unit surface
       type: real
       units: W m-2
-    - name: momentum_flux
-      description: Flux of momentum across a unit surface
-      type: real
-      units: Pa
     - name: nonhygroscopic_ice_nucleating_aerosols
       description: Ice-nucleating aerosols with the property of not accumulating liquid
         water
@@ -406,6 +409,7 @@ section:
       type: integer
       units: 1
     - name: reference_pressure
+      cfname: reference_pressure
       description: Some pressure value for comparison to or calculation of other values
       type: real
       units: Pa
@@ -437,16 +441,23 @@ section:
     - name: soil_moisture
       description: Water contained within a soil layer
     - name: soil_temperature
+      cfname: soil_temperature
       description: Temperature of a soil layer
       type: real
       units: K
     - name: solar_declination_angle
       description: The angle between the equator and Earth's orbital plane with the
         Sun
+      type: real
+      units: degrees
     - name: solar_zenith_angle
+      cfname: solar_zenith_angle
       description: The angle between the direction to the sun and the local zenith
         (vertical direction)
+      type: real
+      units: degrees
     - name: surface_skin_temperature
+      cfname: surface_skin_temperature
       description: The temperature of the topmost layer of the surface
       type: real
       units: K
@@ -480,6 +491,7 @@ section:
       type: real
       units: K
     - name: virtual_temperature
+      cfname: virtual_temperature
       description: The theoretical temperature of dry air that would have the same
         density as moist air
       type: real
@@ -489,6 +501,7 @@ section:
     - name: wind
       description: Movement of air with a net displacement
     - name: wind_speed
+      cfname: wind_speed
       description: Speed of moving air
       type: real
       units: m s-1
@@ -628,7 +641,8 @@ section:
   comment: Parameters defining or relating to the coordinate system of the model
   standard_names:
   - name: cell_area
-    description: Cell area
+    cfname: cell_area
+    description: horizontal area of a grid cell
     type: real
     units: m2
   - name: cell_scaling_factor
@@ -644,6 +658,7 @@ section:
     type: real
     units: 1
   - name: height_above_mean_sea_level
+    cfname: height_above_mean_sea_level
     description: Height above mean sea level
     type: real
     units: m
@@ -652,10 +667,12 @@ section:
     type: real
     units: m
   - name: latitude
+    cfname: latitude
     description: Latitude
     type: real
     units: degree_north
   - name: longitude
+    cfname: longitude
     description: Longitude
     type: real
     units: degree_east
@@ -668,6 +685,7 @@ section:
     type: real
     units: 1
   - name: sigma_pressure_hybrid_vertical_coordinate
+    cfname: atmosphere_hybrid_sigma_pressure_coordinate
     description: Sigma pressure hybrid vertical coordinate
     type: real
     units: 1
@@ -702,10 +720,6 @@ section:
     description: Forecast julian day
     type: real
     units: days
-  - name: forecast_time
-    description: Forecast time
-    type: real
-    units: h
   - name: forecast_time_in_seconds
     description: Forecast time in seconds
     type: real
@@ -742,6 +756,7 @@ section:
   comment: null
   standard_names:
   - name: air_pressure
+    cfname: air_pressure
     description: Midpoint air pressure
     type: real
     units: Pa
@@ -754,10 +769,12 @@ section:
     type: real
     units: Pa
   - name: air_pressure_at_sea_level
+    cfname: air_pressure_at_mean_sea_level
     description: Air pressure at sea level
     type: real
     units: Pa
   - name: air_pressure_at_surface
+    cfname: surface_air_pressure
     description: Air pressure at local surface
     type: real
     units: Pa
@@ -766,6 +783,7 @@ section:
     type: real
     units: Pa
   - name: air_pressure_at_top_of_atmosphere_model
+    cfname: air_pressure_at_top_of_atmosphere_model
     description: Air pressure at top of atmosphere model
     type: real
     units: Pa
@@ -826,6 +844,7 @@ section:
     type: real
     units: K
   - name: atmosphere_boundary_layer_thickness
+    cfname: atmosphere_boundary_layer_thickness
     description: Atmosphere boundary layer thickness
     type: real
     units: m
@@ -886,10 +905,12 @@ section:
     type: real
     units: 1
   - name: dry_static_energy
+    cfname: dry_static_energy_content_of_atmosphere_layer
     description: Dry static energy content of atmosphere layer
     type: real
     units: J kg-1
   - name: eastward_wind
+    cfname: eastward_wind
     description: Wind vector component, positive when directed eastward
     type: real
     units: m s-1
@@ -903,10 +924,6 @@ section:
       eastward
     type: real
     units: m s-1
-  - name: geopotential
-    description: Geopotential
-    type: real
-    units: m2 s-2
   - name: geopotential_at_interfaces
     description: Geopotential at interfaces
     type: real
@@ -915,10 +932,6 @@ section:
     description: Geopotential at surface
     type: real
     units: m2 s-2
-  - name: geopotential_height
-    description: geopotential height with respect to sea level
-    type: real
-    units: m
   - name: geopotential_height_at_interfaces
     description: Geopotential height at interfaces
     type: real
@@ -940,6 +953,7 @@ section:
     type: real
     units: m s-2
   - name: horizontal_divergence_of_air
+    cfname: divergence_of_wind
     description: The horizontal divergence of the 2-D vector wind field
     type: real
     units: s-1
@@ -948,6 +962,7 @@ section:
     type: real
     units: m2 s-1
   - name: horizontal_velocity_potential_of_air
+    cfname: atmosphere_horizontal_velocity_potential
     description: Scalar potential of the horizontal wind
     type: real
     units: m2 s-1
@@ -1012,11 +1027,13 @@ section:
     type: real
     units: m2 s-2
   - name: nonconvective_cloud_area_fraction_in_atmosphere_layer
+    cfname: stratiform_cloud_area_fraction_in_atmosphere_layer
     description: cloud area fraction in atmosphere layer excluding clouds produced
       by the convective schemes
     type: real
     units: fraction
   - name: northward_wind
+    cfname: northward_wind
     description: Wind vector component, positive when directed northward
     type: real
     units: m s-1
@@ -1035,6 +1052,7 @@ section:
     type: ddt
     units: none
   - name: potential_temperature_of_air
+    cfname: air_potential_temperature
     description: air potential temperature
     type: real
     units: K
@@ -1082,6 +1100,7 @@ section:
     type: real
     units: 1
   - name: relative_humidity
+    cfname: relative_humidity
     description: Relative humidity
     type: real
     units: fraction
@@ -1120,10 +1139,12 @@ section:
     type: integer
     units: s
   - name: upward_absolute_vorticity_of_air
+    cfname: atmosphere_upward_absolute_vorticity
     description: The upward (kth) component of the curl of the vector wind field
     type: real
     units: s-1
   - name: upward_heat_flux_in_air_at_surface
+    cfname: surface_upward_heat_flux_in_air
     description: Upward heat flux in air at surface
     type: real
     units: W m-2
@@ -1185,6 +1206,7 @@ section:
     type: real
     units: m s-1
   - name: x_wind
+    cfname: x_wind
     description: Horizontal wind in a direction perpendicular to y_wind
     type: real
     units: m s-1
@@ -1201,6 +1223,7 @@ section:
     type: real
     units: m s-1
   - name: y_wind
+    cfname: y_wind
     description: Horizontal wind in a direction perpendicular to x_wind
     type: real
     units: m s-1
@@ -1241,7 +1264,16 @@ section:
     description: Heat content in diurnal thermocline
     type: real
     units: K m
+  - name: molecular_sublayer_temperature_correction_in_sea_water
+    description: Molecular sublayer temperature correction in sea water
+    type: real
+    units: K
+  - name: molecular_sublayer_thickness_in_sea_water
+    description: Molecular sublayer thickness in sea water
+    type: real
+    units: m
   - name: ocean_mixed_layer_thickness
+    cfname: ocean_mixed_layer_thickness
     description: Ocean mixed layer thickness
     type: real
     units: m
@@ -1251,22 +1283,27 @@ section:
     type: real
     units: K
   - name: sea_surface_temperature
+    cfname: sea_surface_temperature
     description: Sea surface temperature
     type: real
     units: K
   - name: sea_water_absolute_salinity
+    cfname: sea_water_absolute_salinity
     description: The absolute salinity of sea water
     type: real
     units: g kg-1
   - name: sea_water_depth
+    cfname: sea_floor_depth_below_geoid
     description: The depth of the ocean floor below the surface of the sea
     type: real
     units: m
   - name: sea_water_potential_temperature
+    cfname: sea_water_potential_temperature
     description: sea water potential temperature
     type: real
     units: K
   - name: sea_water_practical_salinity
+    cfname: sea_water_practical_salinity
     description: The practical salinity of sea water
     type: real
     units: PSU
@@ -1275,6 +1312,7 @@ section:
     type: real
     units: ppt m
   - name: sea_water_temperature
+    cfname: sea_water_temperature
     description: The temperature of sea water
     type: real
     units: K
@@ -1336,14 +1374,17 @@ section:
       type: real
       units: K-1
     - name: mole_fraction_of_co2_in_air
+      cfname: mole_fraction_of_carbon_dioxide_in_air
       description: Mole fraction of co2 in air
       type: real
       units: mol mol-1
     - name: mole_fraction_of_ozone_in_air
+      cfname: mole_fraction_of_ozone_in_air
       description: Mole fraction of ozone in air
       type: real
       units: mol mol-1
     - name: mole_fraction_of_water_vapor
+      cfname: mole_fraction_of_water_vapor_in_air
       description: Mole fraction of water vapor
       type: real
       units: mol mol-1
@@ -1513,6 +1554,7 @@ section:
       type: real
       units: mol mol-1
     - name: water_vapor_mixing_ratio_wrt_dry_air
+      cfname: humidity_mixing_ratio
       description: Ratio of the mass of water vapor to the mass of dry air
       type: real
       units: kg kg-1
@@ -1522,6 +1564,7 @@ section:
       type: real
       units: kg kg-1
     - name: water_vapor_mixing_ratio_wrt_moist_air
+      cfname: specific_humidity
       description: Ratio of the mass of water vapor to the mass of moist air
       type: real
       units: kg kg-1
@@ -1568,6 +1611,7 @@ section:
       type: real
       units: kg kg-1
     - name: cloud_ice_mixing_ratio_wrt_dry_air
+      cfname: cloud_ice_mixing_ratio
       description: Ratio of the mass of cloud ice to the mass of dry air
       type: real
       units: kg kg-1
@@ -1596,6 +1640,7 @@ section:
       type: real
       units: kg kg-1
     - name: cloud_liquid_water_mixing_ratio_wrt_dry_air
+      cfname: cloud_liquid_water_mixing_ratio
       description: Ratio of the mass of cloud liquid water to the mass of dry air
       type: real
       units: kg kg-1
@@ -1634,6 +1679,7 @@ section:
       type: real
       units: kg kg-1
     - name: convective_cloud_area_fraction
+      cfname: convective_cloud_area_fraction
       description: Convective cloud area fraction
       type: real
       units: fraction
@@ -1651,22 +1697,27 @@ section:
       type: real
       units: mm s-1
     - name: effective_radius_of_stratiform_cloud_graupel_particle
+      cfname: effective_radius_of_stratiform_cloud_graupel_particles
       description: Effective radius of stratiform cloud graupel particle
       type: real
       units: um
     - name: effective_radius_of_stratiform_cloud_ice_particle
+      cfname: effective_radius_of_stratiform_cloud_ice_particles
       description: Effective radius of stratiform cloud ice particle
       type: real
       units: um
     - name: effective_radius_of_stratiform_cloud_liquid_water_particle
+      cfname: effective_radius_of_stratiform_cloud_liquid_water_particles
       description: Effective radius of stratiform cloud liquid water particle
       type: real
       units: um
     - name: effective_radius_of_stratiform_cloud_rain_particle
+      cfname: effective_radius_of_stratiform_cloud_rain_particles
       description: Effective radius of stratiform cloud rain particle
       type: real
       units: um
     - name: effective_radius_of_stratiform_cloud_snow_particle
+      cfname: effective_radius_of_stratiform_cloud_snow_particles
       description: Effective radius of stratiform cloud snow particle
       type: real
       units: um
@@ -1848,19 +1899,19 @@ section:
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust002_in_air
-      description: GOCART DUst bin2 mass fraction
+      description: GOCART Dust bin2 mass fraction
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust003_in_air
-      description: GOCART DUst bin3 mass fraction
+      description: GOCART Dust bin3 mass fraction
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust004_in_air
-      description: GOCART DUst bin4 mass fraction
+      description: GOCART Dust bin4 mass fraction
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust005_in_air
-      description: GOCART DUst bin5 mass fraction
+      description: GOCART Dust bin5 mass fraction
       type: real
       units: kg kg-1
     - name: mass_fraction_of_dust_accumulation_aerosol_particles_in_air
@@ -3868,6 +3919,10 @@ section:
     description: Maximum grid scale
     type: real
     units: m2 rad-2
+  - name: max_soil_moisture_content_for_lsm
+    description: Maximum soil moisture content for land surface model
+    type: real
+    units: m
   - name: max_tendency_of_potential_temperature_of_air_due_to_large_scale_precipitation
     description: Maximum tendency of air potential temperature due to large-scale
       precipitation
@@ -4376,10 +4431,6 @@ section:
       timestep
     type: real
     units: Pa s
-  - name: lwe_surface_snow_from_coupled_process
-    description: Liquid water equivalent surface snow from coupled process
-    type: real
-    units: m
   - name: monin_obukhov_similarity_function_for_heat
     description: Monin obukhov similarity function for heat
     type: real
@@ -4543,6 +4594,7 @@ section:
     type: real
     units: fraction
   - name: area_type
+    cfname: area_type
     description: Area type
     type: real
     units: 1
@@ -4567,11 +4619,13 @@ section:
     type: real
     units: mm
   - name: canopy_temperature
+    cfname: canopy_temperature
     description: Canopy temperature
     type: real
     units: K
   - name: canopy_water_mass_content
-    description: Canopy water mass content
+    cfname: canopy_water_amount
+    description: Water mass per unit area in the canopy
     type: real
     units: kg m-2
   - name: cumulative_lwe_thickness_of_convective_precipitation_between_sw_radiation_calls
@@ -4598,7 +4652,8 @@ section:
     type: real
     units: K
   - name: density_of_snow_at_surface
-    description: Density of snow at surface
+    cfname: surface_snow_density
+    description: Density of snow accumulated on ground surface
     type: real
     units: kg m-3
   - name: depth_from_snow_surface_at_bottom_interface
@@ -4680,6 +4735,7 @@ section:
     type: real
     units: mm s-1
   - name: fast_soil_pool_mass_content_of_carbon
+    cfname: fast_soil_pool_mass_content_of_carbon
     description: Fast soil pool mass content of carbon
     type: real
     units: g m-2
@@ -4712,10 +4768,12 @@ section:
     type: real
     units: m
   - name: land_area_fraction
+    cfname: land_area_fraction
     description: Land area fraction
     type: real
     units: fraction
   - name: land_ice_area_fraction_of_cell_area
+    cfname: land_ice_area_fraction
     description: fraction of horizontal area of grid cell that is ice over land
     type: real
     units: frac
@@ -4724,6 +4782,7 @@ section:
     type: character
     units: none
   - name: leaf_area_index
+    cfname: leaf_area_index
     description: Leaf area index
     type: real
     units: 1
@@ -4732,6 +4791,7 @@ section:
     type: real
     units: g m-2
   - name: lwe_snowfall_rate
+    cfname: lwe_snowfall_rate
     description: Liquid water equivalent snowfall rate
     type: real
     units: mm s-1
@@ -4739,6 +4799,10 @@ section:
     description: Liquid water equivalent surface snow
     type: real
     units: mm
+  - name: lwe_surface_snow_from_coupled_process
+    description: Liquid water equivalent surface snow from coupled process
+    type: real
+    units: m
   - name: lwe_thickness_of_convective_precipitation_on_previous_timestep
     description: Liquid water equivalent thickness of convective precipitation amount
       on previous timestep
@@ -4782,6 +4846,7 @@ section:
     type: real
     units: mm
   - name: lwe_thickness_of_surface_snow
+    cfname: lwe_thickness_of_surface_snow_amount
     description: Liquid water equivalent thickness of surface snow amount
     type: real
     units: mm
@@ -4789,18 +4854,6 @@ section:
     description: mass per unit area of water in top layer of soil
     type: real
     units: kg m-2
-  - name: max_soil_moisture_content_for_lsm
-    description: Maximum soil moisture content for land surface model
-    type: real
-    units: m
-  - name: molecular_sublayer_temperature_correction_in_sea_water
-    description: Molecular sublayer temperature correction in sea water
-    type: real
-    units: K
-  - name: molecular_sublayer_thickness_in_sea_water
-    description: Molecular sublayer thickness in sea water
-    type: real
-    units: m
   - name: nir_albedo_strong_cosz
     description: albedo for near-infrared radiation with strong dependence on cosine
       of the zenith angle
@@ -4821,6 +4874,7 @@ section:
     type: real
     units: fraction
   - name: roughness_length
+    cfname: surface_roughness_length
     description: surface roughness length
     type: real
     units: cm
@@ -4849,17 +4903,15 @@ section:
     type: real
     units: fraction
   - name: sea_ice_temperature
+    cfname: sea_ice_temperature
     description: Sea ice temperature
     type: real
     units: K
   - name: sea_ice_thickness
+    cfname: sea_ice_thickness
     description: Sea ice thickness
     type: real
     units: m
-  - name: skin_temperature_at_surface
-    description: Skin temperature at surface
-    type: real
-    units: K
   - name: skin_temperature_at_surface_over_ice
     description: Skin temperature at surface over (or where) ice
     type: real
@@ -4877,6 +4929,7 @@ section:
     type: real
     units: K
   - name: slow_soil_pool_mass_content_of_carbon
+    cfname: slow_soil_pool_mass_content_of_carbon
     description: Slow soil pool mass content of carbon
     type: real
     units: g m-2
@@ -4896,10 +4949,6 @@ section:
     description: Snowfall rate on previous timestep
     type: real
     units: mm s-1
-  - name: soil_temperature
-    description: Soil temperature
-    type: real
-    units: K
   - name: soil_temperature_for_lsm
     description: Soil temperature for land surface model
     type: real
@@ -4943,6 +4992,7 @@ section:
     type: real
     units: m s-1
   - name: surface_longwave_emissivity
+    cfname: surface_longwave_emissivity
     description: Surface longwave emissivity
     type: real
     units: fraction
@@ -5003,6 +5053,7 @@ section:
     type: real
     units: fraction
   - name: upward_latent_heat_flux_at_surface
+    cfname: surface_upward_latent_heat_flux
     description: Upward latent heat flux at surface
     type: real
     units: W m-2
@@ -5011,6 +5062,7 @@ section:
     type: real
     units: frac
   - name: vegetation_area_fraction
+    cfname: vegetation_area_fraction
     description: Vegetation area fraction
     type: real
     units: fraction
@@ -5025,6 +5077,7 @@ section:
     type: real
     units: fraction
   - name: volume_fraction_of_condensed_water_in_soil
+    cfname: volume_fraction_of_condensed_water_in_soil
     description: Volume fraction of condensed water in soil
     type: real
     units: fraction
@@ -5193,6 +5246,7 @@ section:
   comment: null
   standard_names:
   - name: lagrangian_tendency_of_air_pressure
+    cfname: lagrangian_tendency_of_air_pressure
     description: Vertical pressure velocity
     type: real
     units: Pa s-1
@@ -5278,6 +5332,7 @@ section:
     type: real
     units: kg-1 s-1
   - name: tendency_of_air_temperature
+    cfname: tendency_of_air_temperature
     description: Change in temperature per unit time
     type: real
     units: K s-1
@@ -5297,6 +5352,7 @@ section:
     type: real
     units: K s-1
   - name: tendency_of_air_temperature_due_to_model_physics
+    cfname: tendency_of_air_temperature_due_to_model_physics
     description: Change in air temperature due to model physics per unit time
     type: real
     units: K s-1
@@ -5319,10 +5375,12 @@ section:
     type: real
     units: J kg-1 s-1
   - name: tendency_of_eastward_wind
+    cfname: tendency_of_eastward_wind
     description: Change in eastward wind per unit time
     type: real
     units: m s-2
   - name: tendency_of_eastward_wind_due_to_model_physics
+    cfname: tendency_of_eastward_wind_due_to_parameterized_physics
     description: Change in eastward wind due to model physics per unit time
     type: real
     units: m s-2
@@ -5336,10 +5394,12 @@ section:
     type: real
     units: kg-1 s-1
   - name: tendency_of_northward_wind
+    cfname: tendency_of_northward_wind
     description: Change in northward wind per unit time
     type: real
     units: m s-2
   - name: tendency_of_northward_wind_due_to_model_physics
+    cfname: tendency_of_northward_wind_due_to_parameterized_physics
     description: Change in northward wind due to model physics per unit time
     type: real
     units: m s-2
