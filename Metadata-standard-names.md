@@ -2448,10 +2448,10 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = fraction
 * `volume_fraction_of_unfrozen_water_in_soil`: Volume fraction of unfrozen water in soil
     * `real`: units = fraction
-* `volumetric_equilibrium_soil_moisture`: Volumetric equilibrium soil moisture
-    * `real`: units = m3 m-3
-* `volumetric_soil_moisture_between_soil_bottom_and_water_table`: Volumetric soil moisture between soil bottom and water table
-    * `real`: units = m3 m-3
+* `volume_fraction_of_equilibrium_soil_moisture`: Volume fraction of equilibrium soil moisture
+    * `real`: units = fraction
+* `volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table`: Volume fraction of soil moisture between soil bottom and water table
+    * `real`: units = fraction
 * `water_storage_in_aquifer`: Water storage in aquifer
     * `real`: units = mm
 * `water_storage_in_aquifer_and_saturated_soil`: Water storage in aquifer and saturated soil

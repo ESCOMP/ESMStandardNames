@@ -5077,14 +5077,14 @@ section:
     description: Volume fraction of unfrozen water in soil
     type: real
     units: fraction
-  - name: volumetric_equilibrium_soil_moisture
-    description: Volumetric equilibrium soil moisture
+  - name: volume_fraction_of_equilibrium_soil_moisture
+    description: Volume fraction of equilibrium soil moisture
     type: real
-    units: m3 m-3
-  - name: volumetric_soil_moisture_between_soil_bottom_and_water_table
-    description: Volumetric soil moisture between soil bottom and water table
+    units: fraction
+  - name: volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table
+    description: Volume fraction of soil moisture between soil bottom and water table
     type: real
-    units: m3 m-3
+    units: fraction
   - name: water_storage_in_aquifer
     description: Water storage in aquifer
     type: real

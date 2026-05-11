@@ -3609,11 +3609,11 @@
     <standard_name name="volume_fraction_of_unfrozen_water_in_soil">
       <type units="fraction">real</type>
     </standard_name>
-    <standard_name name="volumetric_equilibrium_soil_moisture">
-      <type units="m3 m-3">real</type>
+    <standard_name name="volume_fraction_of_equilibrium_soil_moisture">
+      <type units="fraction">real</type>
     </standard_name>
-    <standard_name name="volumetric_soil_moisture_between_soil_bottom_and_water_table">
-      <type units="m3 m-3">real</type>
+    <standard_name name="volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table">
+      <type units="fraction">real</type>
     </standard_name>
     <standard_name name="water_storage_in_aquifer">
       <type units="mm">real</type>
