@@ -425,13 +425,13 @@
     <standard_name name="vertical_interface_dimension_interstitial">
       <type units="count">integer</type>
     </standard_name>
-    <standard_name name="vertical_layer_dimension" description="number of vertical layers">
+    <standard_name name="vertical_dimension" description="number of vertical layers">
       <type units="count">integer</type>
     </standard_name>
-    <standard_name name="vertical_layer_dimension_extended_up_by_1" description="number of vertical layers extended up by 1">
+    <standard_name name="vertical_dimension_extended_up_by_1" description="number of vertical layers extended up by 1">
       <type units="count">integer</type>
     </standard_name>
-    <standard_name name="vertical_layer_dimension_minus_one">
+    <standard_name name="vertical_dimension_minus_one">
       <type units="count">integer</type>
     </standard_name>
   </section>

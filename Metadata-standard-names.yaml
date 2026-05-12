@@ -568,16 +568,16 @@ section:
     description: Vertical interface dimension interstitial
     type: integer
     units: count
-  - name: vertical_layer_dimension
+  - name: vertical_dimension
     description: number of vertical layers
     type: integer
     units: count
-  - name: vertical_layer_dimension_extended_up_by_1
+  - name: vertical_dimension_extended_up_by_1
     description: number of vertical layers extended up by 1
     type: integer
     units: count
-  - name: vertical_layer_dimension_minus_one
-    description: Vertical layer dimension minus one
+  - name: vertical_dimension_minus_one
+    description: Vertical dimension minus one
     type: integer
     units: count
 - name: Constants

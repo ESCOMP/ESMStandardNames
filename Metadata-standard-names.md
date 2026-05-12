@@ -302,11 +302,11 @@ Names indicating the size, extent, or bounds of data structures in a model.
     * `integer`: units = count
 * `vertical_interface_dimension_interstitial`: Vertical interface dimension interstitial
     * `integer`: units = count
-* `vertical_layer_dimension`: number of vertical layers
+* `vertical_dimension`: number of vertical layers
     * `integer`: units = count
-* `vertical_layer_dimension_extended_up_by_1`: number of vertical layers extended up by 1
+* `vertical_dimension_extended_up_by_1`: number of vertical layers extended up by 1
     * `integer`: units = count
-* `vertical_layer_dimension_minus_one`: Vertical layer dimension minus one
+* `vertical_dimension_minus_one`: Vertical dimension minus one
     * `integer`: units = count
 ## Constants
 Constant parameters that should be identical across a full modeling system
