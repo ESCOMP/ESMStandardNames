@@ -50,8 +50,7 @@ def call_command(commands, logger, silent=False):
             result = False
         else:
             cmd = ' '.join(commands)
-            emsg = "Execution of '{cmd}' failed with code: {err.returncode}\n"
-            outstr = emsg.format(cmd, err.returncode)
+            outstr = f"Execution of '{cmd}' failed with code: {err.returncode}\n"
             outstr += f"{err.output}"
             raise RuntimeError(outstr) from err
     return result
@@ -65,9 +64,9 @@ def validate_xml_file(filename, schema_file, logger, error_on_noxmllint=False):
     """
     # Check the filename
     if not os.path.isfile(filename):
-        raise ValueError("validate_xml_file: Filename, '{filename}', does not exist")
+        raise ValueError(f"validate_xml_file: Filename, '{filename}', does not exist")
     if not os.access(filename, os.R_OK):
-        raise ValueError("validate_xml_file: Cannot open '{filename}'")
+        raise ValueError(f"validate_xml_file: Cannot open '{filename}'")
     if not os.path.isfile(schema_file):
         raise ValueError(f"validate_xml_file: Cannot find schema file {schema_file}")
     if not os.access(schema_file, os.R_OK):
@@ -131,4 +130,4 @@ if __name__ == "__main__":
         import doctest
         doctest.testmod()
     except ValueError as cerr:
-        print("{cerr}")
+        print(f"{cerr}")
