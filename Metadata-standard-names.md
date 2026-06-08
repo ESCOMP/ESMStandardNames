@@ -398,7 +398,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = Pa
 * `air_pressure_at_lowest_model_interface`: Air pressure at lowest model interface
     * `real`: units = Pa
-* `air_pressure_at_sea_level`: Air pressure at sea level
+* `air_pressure_at_mean_sea_level`: Air pressure at mean sea level
     * Equivalent CF name: `air_pressure_at_mean_sea_level`
     * `real`: units = Pa
 * `air_pressure_at_surface`: Air pressure at local surface
@@ -579,7 +579,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `upward_heat_flux_in_air_at_surface`: Upward heat flux in air at surface
     * Equivalent CF name: `surface_upward_heat_flux_in_air`
     * `real`: units = W m-2
-* `us_standard_air_pressure_at_sea_level`: US Standard Atmospheric pressure at sea level
+* `us_standard_air_pressure_at_mean_sea_level`: US Standard Atmospheric pressure at sea level
     * `real`: units = Pa
 * `variance_of_air_temperature`: Variance of air temperature
     * `real`: units = K2

@@ -758,9 +758,9 @@ section:
     description: Air pressure at lowest model interface
     type: real
     units: Pa
-  - name: air_pressure_at_sea_level
+  - name: air_pressure_at_mean_sea_level
     cfname: air_pressure_at_mean_sea_level
-    description: Air pressure at sea level
+    description: Air pressure at mean sea level
     type: real
     units: Pa
   - name: air_pressure_at_surface
@@ -1121,7 +1121,7 @@ section:
     description: Upward heat flux in air at surface
     type: real
     units: W m-2
-  - name: us_standard_air_pressure_at_sea_level
+  - name: us_standard_air_pressure_at_mean_sea_level
     description: US Standard Atmospheric pressure at sea level
     type: real
     units: Pa

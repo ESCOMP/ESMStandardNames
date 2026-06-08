@@ -564,7 +564,7 @@
     <standard_name name="air_pressure_at_lowest_model_interface">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="air_pressure_at_sea_level">
+    <standard_name name="air_pressure_at_mean_sea_level">
       <cfname>air_pressure_at_mean_sea_level</cfname>
       <type units="Pa">real</type>
     </standard_name>
@@ -829,7 +829,7 @@
       <cfname>surface_upward_heat_flux_in_air</cfname>
       <type units="W m-2">real</type>
     </standard_name>
-    <standard_name name="us_standard_air_pressure_at_sea_level" description="US Standard Atmospheric pressure at sea level">
+    <standard_name name="us_standard_air_pressure_at_mean_sea_level" description="US Standard Atmospheric pressure at sea level">
       <type units="Pa">real</type>
     </standard_name>
     <standard_name name="variance_of_air_temperature">
