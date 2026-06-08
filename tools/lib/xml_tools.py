@@ -64,13 +64,9 @@ def validate_xml_file(filename, schema_file, logger, error_on_noxmllint=False):
     """
     # Check the filename
     if not os.path.isfile(filename):
-        raise ValueError(f"validate_xml_file: Filename, '{filename}', does not exist")
-    if not os.access(filename, os.R_OK):
-        raise ValueError(f"validate_xml_file: Cannot open '{filename}'")
+        raise FileNotFoundError(f"validate_xml_file: Filename, '{filename}', does not exist")
     if not os.path.isfile(schema_file):
-        raise ValueError(f"validate_xml_file: Cannot find schema file {schema_file}")
-    if not os.access(schema_file, os.R_OK):
-        raise ValueError(f"validate_xml_file: Cannot open schema, '{schema_file}'")
+        raise FileNotFoundError(f"validate_xml_file: Cannot find schema file {schema_file}")
     if _XMLLINT is not None:
         if logger is not None:
             logger.debug(f"Checking file {filename} against schema {schema_file}")
@@ -79,7 +75,7 @@ def validate_xml_file(filename, schema_file, logger, error_on_noxmllint=False):
         return result
     lmsg = f"xmllint not found, could not validate file {filename}"
     if error_on_noxmllint:
-        raise ValueError("validate_xml_file: " + lmsg)
+        raise ImportError("validate_xml_file: " + lmsg)
     if logger is not None:
         logger.warning(lmsg)
     return True # We could not check but still need to proceed
