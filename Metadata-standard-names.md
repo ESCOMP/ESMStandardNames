@@ -286,7 +286,13 @@ Names indicating the size, extent, or bounds of data structures in a model.
     * `real`: units = 1
 * `upper_bound_of_vertical_dimension_of_surface_snow`: upper bound of of snow-related arrays for land surface model
     * `integer`: units = count
+* `vertical_dimension`: number of vertical layers
+    * `integer`: units = count
+* `vertical_dimension_extended_up_by_1`: number of vertical layers extended up by 1
+    * `integer`: units = count
 * `vertical_dimension_for_radiation`: Vertical dimension for radiation
+    * `integer`: units = count
+* `vertical_dimension_minus_one`: Vertical dimension minus one
     * `integer`: units = count
 * `vertical_dimension_of_sea_ice`: Vertical dimension of sea ice
     * `integer`: units = count
@@ -301,12 +307,6 @@ Names indicating the size, extent, or bounds of data structures in a model.
 * `vertical_interface_dimension_for_radiation`: Vertical interface dimension for radiation
     * `integer`: units = count
 * `vertical_interface_dimension_interstitial`: Vertical interface dimension interstitial
-    * `integer`: units = count
-* `vertical_dimension`: number of vertical layers
-    * `integer`: units = count
-* `vertical_dimension_extended_up_by_1`: number of vertical layers extended up by 1
-    * `integer`: units = count
-* `vertical_dimension_minus_one`: Vertical dimension minus one
     * `integer`: units = count
 ## Constants
 Constant parameters that should be identical across a full modeling system
@@ -2434,6 +2434,8 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `volume_fraction_of_condensed_water_in_soil`: Volume fraction of condensed water in soil
     * Equivalent CF name: `volume_fraction_of_condensed_water_in_soil`
     * `real`: units = fraction
+* `volume_fraction_of_equilibrium_soil_moisture`: Volume fraction of equilibrium soil moisture
+    * `real`: units = fraction
 * `volume_fraction_of_frozen_soil_moisture_for_lsm`: Volume fraction of frozen soil moisture for land surface model
     * `real`: units = fraction
 * `volume_fraction_of_liquid_water_in_soil_at_critical_point`: volume fraction of water in liquid phase in soil at critical point
@@ -2442,15 +2444,13 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m3 m-3
 * `volume_fraction_of_liquid_water_in_soil_at_wilting_point`: volume fraction of water in liquid phase in soil at wilting point
     * `real`: units = m3 m-3
+* `volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table`: Volume fraction of soil moisture between soil bottom and water table
+    * `real`: units = fraction
 * `volume_fraction_of_soil_moisture_for_lsm`: Volume fraction of soil moisture for land surface model
     * `real`: units = fraction
 * `volume_fraction_of_unfrozen_soil_moisture_for_lsm`: Volume fraction of unfrozen soil moisture for land surface model
     * `real`: units = fraction
 * `volume_fraction_of_unfrozen_water_in_soil`: Volume fraction of unfrozen water in soil
-    * `real`: units = fraction
-* `volume_fraction_of_equilibrium_soil_moisture`: Volume fraction of equilibrium soil moisture
-    * `real`: units = fraction
-* `volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table`: Volume fraction of soil moisture between soil bottom and water table
     * `real`: units = fraction
 * `water_storage_in_aquifer`: Water storage in aquifer
     * `real`: units = mm

@@ -536,8 +536,20 @@ section:
     description: upper bound of of snow-related arrays for land surface model
     type: integer
     units: count
+  - name: vertical_dimension
+    description: number of vertical layers
+    type: integer
+    units: count
+  - name: vertical_dimension_extended_up_by_1
+    description: number of vertical layers extended up by 1
+    type: integer
+    units: count
   - name: vertical_dimension_for_radiation
     description: Vertical dimension for radiation
+    type: integer
+    units: count
+  - name: vertical_dimension_minus_one
+    description: Vertical dimension minus one
     type: integer
     units: count
   - name: vertical_dimension_of_sea_ice
@@ -566,18 +578,6 @@ section:
     units: count
   - name: vertical_interface_dimension_interstitial
     description: Vertical interface dimension interstitial
-    type: integer
-    units: count
-  - name: vertical_dimension
-    description: number of vertical layers
-    type: integer
-    units: count
-  - name: vertical_dimension_extended_up_by_1
-    description: number of vertical layers extended up by 1
-    type: integer
-    units: count
-  - name: vertical_dimension_minus_one
-    description: Vertical dimension minus one
     type: integer
     units: count
 - name: Constants
@@ -5049,6 +5049,10 @@ section:
     description: Volume fraction of condensed water in soil
     type: real
     units: fraction
+  - name: volume_fraction_of_equilibrium_soil_moisture
+    description: Volume fraction of equilibrium soil moisture
+    type: real
+    units: fraction
   - name: volume_fraction_of_frozen_soil_moisture_for_lsm
     description: Volume fraction of frozen soil moisture for land surface model
     type: real
@@ -5065,6 +5069,10 @@ section:
     description: volume fraction of water in liquid phase in soil at wilting point
     type: real
     units: m3 m-3
+  - name: volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table
+    description: Volume fraction of soil moisture between soil bottom and water table
+    type: real
+    units: fraction
   - name: volume_fraction_of_soil_moisture_for_lsm
     description: Volume fraction of soil moisture for land surface model
     type: real
@@ -5075,14 +5083,6 @@ section:
     units: fraction
   - name: volume_fraction_of_unfrozen_water_in_soil
     description: Volume fraction of unfrozen water in soil
-    type: real
-    units: fraction
-  - name: volume_fraction_of_equilibrium_soil_moisture
-    description: Volume fraction of equilibrium soil moisture
-    type: real
-    units: fraction
-  - name: volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table
-    description: Volume fraction of soil moisture between soil bottom and water table
     type: real
     units: fraction
   - name: water_storage_in_aquifer
