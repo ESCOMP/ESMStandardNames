@@ -8,6 +8,27 @@ on:
       - release/*
 
 jobs:
+  check-tools:
+    name: Pylint all python files under tools/
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pylint pyyaml
+
+      - name: Run pylint
+        run: |
+            pylint tools/**py
+
   validate-xml:
     name: Use xmlllint to validate the xml file against the schema file
     runs-on: ubuntu-latest
@@ -43,8 +64,9 @@ jobs:
 
       - name: Check for duplicate standard names, descriptions
         run: |
-            tools/check_xml_unique.py standard_names.xml
-            tools/check_xml_unique.py standard_names.xml --field="description"
+            tools/check_xml_unique.py -s standard_names.xml
+            tools/check_xml_unique.py -s standard_names.xml --field="description"
+            tools/check_xml_unique.py -s standard_names.xml --field="cfname"
 
   check-name-rules:
     name: Check standard names against rules
@@ -89,7 +111,7 @@ jobs:
 
       - name: Test that sections are alphabetized
         run: |
-          tools/sort_standard_names.py standard_names.xml
+          tools/sort_standard_names.py -s standard_names.xml
           if ! git diff --exit-code --quiet; then
             echo "❌ Standard Names are not alphabetized within each section"
             echo "Run tools/sort_standard_names.py and commit changes"
@@ -103,11 +125,11 @@ jobs:
         run: |
           # Checks if the saved markdown matches freshly rendered markdown.
           # If this fails, prompt user to update
-          tools/write_standard_name_table.py --output-format md standard_names.xml
+          tools/write_standard_name_table.py --output-format md -s standard_names.xml
           if ! git diff --exit-code --quiet; then
             echo "❌ Detected that Metadata-standard-names.md is not consistent with standard_names.xml"
             echo "✅ To fix: Run the following command locally and commit the result:"
-            echo "    tools/write_standard_name_table.py --output-format md standard_names.xml"
+            echo "    tools/write_standard_name_table.py --output-format md -s standard_names.xml"
             echo "📘 This script requires the pyyaml Python package; to install with pip use command:"
             echo "    python -m pip install PyYaml"
             echo "📘 For conda users, environment file tools/environment.yml is provided."
@@ -117,11 +139,11 @@ jobs:
 
       - name: Test rendering xml file to yaml
         run: |
-          tools/write_standard_name_table.py --output-format yaml standard_names.xml
+          tools/write_standard_name_table.py --output-format yaml -s standard_names.xml
           if ! git diff --exit-code --quiet; then
             echo "❌ Detected that Metadata-standard-names.yaml is not consistent with standard_names.xml"
             echo "✅ To fix: Run the following command locally and commit the result:"
-            echo "    tools/write_standard_name_table.py --output-format yaml standard_names.xml"
+            echo "    tools/write_standard_name_table.py --output-format yaml -s standard_names.xml"
             echo "📘 This script requires the pyyaml Python package; to install with pip use command:"
             echo "    python -m pip install PyYaml"
             echo "📘 For conda users, environment file tools/environment.yml is provided."

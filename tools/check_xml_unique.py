@@ -7,33 +7,18 @@ Remove duplicates from a metadata standard-name XML library file.
 import argparse
 import sys
 import os.path
-import xml.etree.ElementTree as ET
-import copy
 
-################################################
-# Add lib modules to python path
-################################################
+#Import custom helper functions from lib/ directory
+from lib import validate_xml_file, read_xml_file
 
-_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(_CURR_DIR, "lib"))
-
-#######################################
-#Import needed framework python modules
-#######################################
-
-from xml_tools import find_schema_file, validate_xml_file, read_xml_file
-
-###############################################################################
 def parse_command_line(args, description):
-###############################################################################
+    """Parse and return command-line arguments"""
     parser = argparse.ArgumentParser(description=description,
                                      formatter_class=argparse.RawTextHelpFormatter)
 
-    parser.add_argument("standard_name_file",
+    parser.add_argument("-s", "--standard_name_file", default="standard_names.xml",
                         metavar='<standard names filename>',
                         type=str, help="XML file with standard name library")
-    parser.add_argument("--overwrite", action='store_true',
-                        help="flag to remove duplicates and overwrite the file")
     parser.add_argument("--field", type=str, default="name",
                         help="Field to check for uniqueness; default is 'name'")
     parser.add_argument("--debug", action='store_true',
@@ -42,38 +27,37 @@ def parse_command_line(args, description):
     pargs = parser.parse_args(args)
     return pargs
 
-###############################################################################
 def main_func():
-###############################################################################
+    # pylint: disable=too-many-branches
     """Parse the standard names database file and notify of duplicates.
     """
     # Parse command line arguments
     args = parse_command_line(sys.argv[1:], __doc__)
     stdname_file = os.path.abspath(args.standard_name_file)
-    tree, root = read_xml_file(stdname_file)
+    _, root = read_xml_file(stdname_file)
 
     # Validate the XML file
-    schema_name = os.path.basename(stdname_file)[0:-4]
     schema_root = os.path.dirname(stdname_file)
-    schema_path = os.path.join(schema_root,schema_name)
-    schema_file = find_schema_file(schema_path)
-    if schema_file:
-        try:
-            validate_xml_file(stdname_file, schema_name, None,
-                            schema_path=schema_root, error_on_noxmllint=True)
-        except ValueError:
-            raise ValueError(f"Invalid standard names file, {stdname_file}")
-    else:
-        raise ValueError(f'Cannot find schema file, {schema_name}')
+    schema_path = os.path.join(schema_root,"standard_names.xsd")
+    validate_xml_file(stdname_file, schema_path, logger=None, error_on_noxmllint=True)
 
     #get list of all standard names
     all_std_names = []
-    for name in root.findall('./section/standard_name'):
+    for name in root.findall('.//standard_name'):
         try:
-            all_std_names.append(name.attrib[args.field])
+            if args.field == 'cfname':
+                # Extract from cfname subelement
+                cfname_elem = name.find('cfname')
+                if cfname_elem is not None and cfname_elem.text is not None:
+                    all_std_names.append(cfname_elem.text.strip())
+                elif args.debug:
+                    print(f"WARNING: no cfname subelement for standard name {name.attrib['name']}")
+            else:
+                # Extract from attribute
+                all_std_names.append(name.attrib[args.field])
         except KeyError:
-            if (args.debug):
-                print(f"WARNING: no field '{args.field}' for standard name '{name.attrib['name']}' ")
+            if args.debug:
+                print(f"WARNING: no field {args.field} for standard name {name.attrib['name']} ")
     #get list of all unique and duplicate standard names, in source order
     seen = set()
     uniq_std_names = []
@@ -88,30 +72,16 @@ def main_func():
     if len(dup_std_names)>0:
         print(f'The following duplicate {args.field} entries were found:')
         for dup in dup_std_names:
-            rm_elements = root.findall(f'./section/standard_name[@{args.field}="{dup}"]')[1:]
+            if args.field == 'cfname':
+                rm_elements = root.findall(f'.//standard_name[cfname="{dup}"]')[1:]
+            else:
+                rm_elements = root.findall(f'.//standard_name[@{args.field}="{dup}"]')[1:]
             print(f"{dup}, ({len(rm_elements)} duplicate(s))")
-        if args.overwrite:
-            print(f'Removing duplicates and overwriting {stdname_file}')
-            for dup in dup_std_names:
-                first_use = True #Logical that indicates the first use of the duplicated name
-                rm_parents = root.findall('./section/standard_name[@name="%s"]..'%dup)
-                for par in rm_parents:
-                    rm_ele = par.findall('./standard_name[@name="%s"]'%dup)
-                    for ele in rm_ele:
-                        if first_use:
-                            #Now all future uses of the name will be removed:
-                            first_use = False
-                        else:
-                            par.remove(ele)
-            #Overwrite the xml file with the new, duplicate-free element tree:
-            tree.write(stdname_file, "utf-8")
-        else:
-            # If not overwriting, exit with status 1 to indicate failure
+            # exit with status 1 to indicate failure
             sys.exit(1)
     else:
         print(f'No duplicate {args.field}s were found.')
 
 
-###############################################################################
 if __name__ == "__main__":
     main_func()

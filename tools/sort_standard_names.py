@@ -63,12 +63,16 @@ def process_file(xml_path: Path) -> ET.ElementTree:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Alphabetically sort standard names within each subsection of the ESM Standard Names XML file.")
-    parser.add_argument("input", nargs="?", default="standard_names.xml", help="Input XML file (default: standard_names.xml)")
-    parser.add_argument("output", nargs="?", default="", help="Output file (default: overwrite input)")
+    """Main function for command-line execution"""
+    parser = argparse.ArgumentParser(description="Alphabetically sort standard names within each "\
+                                                 "subsection of the ESM Standard Names XML file.")
+    parser.add_argument("-s", "--standard_name_file", nargs="?", default="standard_names.xml",
+                        help="Input XML file (default: standard_names.xml)")
+    parser.add_argument("-o", "--output", nargs="?", default="",
+                        help="Output file (default: overwrite input)")
     args = parser.parse_args()
 
-    input_path = Path(args.input)
+    input_path = Path(args.standard_name_file)
     if not input_path.exists():
         print(f"Error: input file {input_path} does not exist.", file=sys.stderr)
         sys.exit(1)

@@ -25,96 +25,45 @@ The tool currently has two options:
 
 """
 
-######################################
-#Import needed standard python modules
-######################################
-
 import argparse
-import sys
 import os
-import os.path
 import datetime
 from collections import OrderedDict
 
-################################################
-# Add lib modules to python path
-################################################
+# Import custom helper functions from lib/ directory
+from lib import read_xml_file, get_standard_names_as_set
 
-_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(_CURR_DIR, "lib"))
-
-#######################################
-#Import needed framework python modules
-#######################################
-
-from xml_tools import read_xml_file
-
-#################
-#Helper functions
-#################
-
-#++++++++++++++++++++++++++++++
-#Input Argument parser function
-#++++++++++++++++++++++++++++++
 
 def parse_arguments():
 
     """
-    Parses command-line input arguments
-    using the argparse python module and
+    Parses command-line input arguments using the argparse python module and
     outputs the final argument object.
     """
 
-    #Create description:
+    # Create description:
     desc = "Check if the metafile contains variable standard names\n"
     desc += "that are not in the provided standard names dictionary."
 
-    #Create parser object:
+    # Create parser object:
     parser = argparse.ArgumentParser(description=desc)
 
-    #Add input arguments to be parsed:
+    # Add input arguments to be parsed:
     parser.add_argument('-m', '--metafile-loc',
                         metavar='<path to directory or file>',
-                        action='store', type=str,
+                        action='store', type=str, required=True,
                         help="Location of metadata file(s)")
 
     parser.add_argument('-s', '--stdname-dict',
                         metavar='<path to file>',
-                        action='store', type=str,
+                        action='store', type=str, default='standard_names.xml',
                         help="Location of standard name dictionary (XML file)")
 
-    #Parse Argument inputs
+    # Parse Argument inputs
     args = parser.parse_args()
 
     return args.metafile_loc, args.stdname_dict
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#Function to extract standard names from element tree root
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-def get_dict_stdnames(xml_tree_root):
-
-    """
-    Extract all elements with the "standard_name" tag,
-    find the "name" attribute for that tag, and collect
-    all of those "names" in a set.
-    """
-
-    #Create empty set to store standard name names:
-    std_dict_names = set()
-
-    #Loop over all standard_name tags"
-    for stdname in xml_tree_root.findall('./section/standard_name'):
-        #Add the "name" attribute to the set:
-        std_dict_names.add(stdname.attrib['name'])
-    #End for
-
-    return std_dict_names
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#Function to parse a list of strings from a metadata file
-#in order to find all standard names
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 def find_metafile_stdnames(metafile_obj):
 
@@ -137,48 +86,30 @@ def find_metafile_stdnames(metafile_obj):
     expanding on this function or script.
     """
 
-    #Create empty set to store found standard names:
+    # Create empty set to store found standard names:
     meta_stdname_set = set()
 
-    #Loop over lines in metadata file object:
     for line in metafile_obj:
-
-        #Check if line starts with "standard_name":
         if line.lstrip().startswith("standard_name"):
-
-            #Attempt to find string index for "equals" sign:
+            # Attempt to find string index for "equals" sign:
             equals_index = line.find("=")
-
-            #Check if an equals sign actually
-            #exists:
             if equals_index != -1:
 
-                #If so, then extract all text to the right
-                #of the equals sign:
+                # Extract all text to the right of the equals sign
                 stdname_text = line[equals_index+1:]
 
-                #Attempt to find the index for a comment delimiter:
+                # Attempt to find the index for a comment delimiter:
                 comment_index = stdname_text.find("#")
 
-                #If comment exists, then remove
-                #it from the standard name text:
+                # If comment exists, then remove it from the standard name text
                 if comment_index != -1:
                     stdname_text = stdname_text[:comment_index]
-                #End if
-            #End if
 
-            #Add stripped/trimmed text to the standardname set:
+            # Add stripped/trimmed text to the standardname set
             meta_stdname_set.add(stdname_text.strip())
-
-        #End if
-    #End for
 
     return meta_stdname_set
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#Function to extract standard names in CCPP metadata file
-#that are not in a provided set of accepted standard names
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 def missing_metafile_names(metafile, stdname_set):
 
@@ -189,22 +120,21 @@ def missing_metafile_names(metafile, stdname_set):
     name set.
     """
 
-    #Open metadata file:
+    # Open metadata file:
     with open(metafile,'r', encoding='utf-8') as mfile:
 
-        #Find all standard names in metadata file
+        # Find all standard names in metadata file
         meta_stdname_set = find_metafile_stdnames(mfile)
-    #End with
 
-    #Create set of all standard names not in dictionary set:
+    # Create set of all standard names not in dictionary set:
     missing_stdname_set = meta_stdname_set.difference(stdname_set)
 
-    #Return sorted list of missing standard names:
+    # Return sorted list of missing standard names:
     return sorted(missing_stdname_set)
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#Function to find the paths to all metadata files within
-#a given directory path
+# Function to find the paths to all metadata files within
+# a given directory path
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 def find_metadata_files(dir_path):
@@ -215,33 +145,30 @@ def find_metadata_files(dir_path):
     metadata files.
     """
 
-    #Create new, empy list to store metadata file paths:
+    # Create new, empy list to store metadata file paths:
     metadata_files = []
 
-    #Walk through provided directory:
+    # Walk through provided directory:
     for root, _, files in os.walk(dir_path):
-        #Ignore git directories:
+        # Ignore git directories:
         if '.git' not in root:
 
-            #Find all metadata files in current root location:
+            # Find all metadata files in current root location:
             local_meta_files = [mfil for mfil in files if mfil[-5:] == '.meta']
 
 
-            #Add all found metadata files to metadata list,
-            #including their full path:
+            # Add all found metadata files to metadata list,
+            # including their full path:
             for local_file in local_meta_files:
                 metadata_files.append(os.path.join(root, local_file))
-            #End for
-        #End if
-    #End for
 
-    #Return list of metadata files:
+    # Return list of metadata files:
     return metadata_files
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#Function to print a "human-readable" list of all of the
-#standard names in the provided CCPP metadata files that
-#were not found in the provided standard name dictionary
+# Function to print a "human-readable" list of all of the
+# standard names in the provided CCPP metadata files that
+# were not found in the provided standard name dictionary
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 def print_missing_names(missing_names_dict):
@@ -253,7 +180,7 @@ def print_missing_names(missing_names_dict):
     file a list of each "missing" standard name.
     """
 
-    #Get current date/time:
+    # Get current date/time:
     curr_time = datetime.datetime.now()
 
     print("\n#######################")
@@ -264,102 +191,67 @@ def print_missing_names(missing_names_dict):
     msg += " metadata files:"
     print(msg)
 
-    #Loop over dictionary keys, which should be
-    #paths to metadata files:
+    # Loop over dictionary keys, which should be paths to metadata files:
     for metafile in missing_names_dict:
 
         print("\n--------------------------\n")
         print(f"{metafile}\n")
 
-        #Extract standard names for file:
+        # Extract standard names for file:
         missing_names_list = missing_names_dict[metafile]
 
         for stdname in missing_names_list:
             print(f"    - {stdname}")
-        #End for
-
-    #End for
 
     print("\n#######################")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-############
-#Main script
-############
+def main_func():
+    """Main function for command-line execution"""
 
-#Parse command-line arguments:
-metafile_loc, stdname_xml = parse_arguments()
+    # Parse command-line arguments:
+    metafile_loc, stdname_xml = parse_arguments()
 
-#Open standard name dictionary:
-_, stdname_dict_root = read_xml_file(stdname_xml)
+    # Open standard name dictionary:
+    _, stdname_dict_root = read_xml_file(stdname_xml)
 
-#Extract all standard names from dictionary:
-std_names = get_dict_stdnames(stdname_dict_root)
+    # Extract all standard names from dictionary:
+    std_names = get_standard_names_as_set(stdname_dict_root)
 
-#Create new meta file/missing names dictionary:
-meta_miss_names_dict = OrderedDict()
+    # Create new meta file/missing names dictionary:
+    meta_miss_names_dict = OrderedDict()
 
-#Check if user passed in single metadata file:
-if os.path.isfile(metafile_loc):
-
-    #Find all metadata standard names
-    #that are not in the dictionary:
-    missing_stdnames = missing_metafile_names(metafile_loc,
-                                              std_names)
-
-    #If missing stdnames exist, then add the
-    #file and missing names to dictionary:
-    if missing_stdnames:
-        meta_miss_names_dict[metafile_loc] = missing_stdnames
-    #End if
-
-#If not a file, then check if a directory:
-elif os.path.isdir(metafile_loc):
-
-    #Find all CCPP metadata files that are
-    #located in or under this directory:
-    meta_files = find_metadata_files(metafile_loc)
-
-    #Loop through all metadata files:
-    for meta_file in meta_files:
-
-        #Find all metadata standard names
-        #that are not in the dictionary
-        missing_stdnames = missing_metafile_names(meta_file,
-                                              std_names)
-
-        #If missing stdnames exist, then add the
-        #file and missing names to dictionary:
+    # Check if user passed in single metadata file:
+    if os.path.isfile(metafile_loc):
+        # Find all metadata standard names that are not in the dictionary:
+        missing_stdnames = missing_metafile_names(metafile_loc,std_names)
         if missing_stdnames:
-            meta_miss_names_dict[meta_file] = missing_stdnames
-        #End if
-    #End for
+            meta_miss_names_dict[metafile_loc] = missing_stdnames
 
-else:
-    #This is a non-supported input, so raise
-    #an error:
-    emsg = f"The metafile-loc arg input, '{metafile_loc}'\n"
-    emsg += "is neither a file nor a directory,"
-    emsg += " so script will end here."
-    raise FileNotFoundError(emsg)
-#End if
+    # If not a file, then check if a directory:
+    elif os.path.isdir(metafile_loc):
+        # Find all CCPP metadata files that are located in or under this directory:
+        meta_files = find_metadata_files(metafile_loc)
+        for meta_file in meta_files:
+            # Find all metadata standard names that are not in the dictionary
+            missing_stdnames = missing_metafile_names(meta_file,std_names)
+            if missing_stdnames:
+                meta_miss_names_dict[meta_file] = missing_stdnames
 
-#Print list of metadata file standard
-#names that are not in the dictionary:
-if meta_miss_names_dict:
-    #Print organized, human-readable
-    #list of "missing" standard names
-    #to the screen, along with the
-    #metadata file they are associated
-    #with
-    print_missing_names(meta_miss_names_dict)
-else:
-    #Notify user that all standard names
-    #exist in the dictionary:
-    print("All standard names are in the dictionary!")
-#End if
+    else:
+        # This is a non-supported input, so raise an error:
+        emsg = f"The metafile-loc arg input, '{metafile_loc}' is neither a file nor a directory."
+        raise FileNotFoundError(emsg)
+
+    # Print list of metadata file standard names that are not in the dictionary:
+    if meta_miss_names_dict:
+        # Print organized, human-readable list of "missing" standard names to the screen, along with
+        # the metadata file they are associated with
+        print_missing_names(meta_miss_names_dict)
+    else:
+        print("All standard names are in the dictionary!")
 
 
-##############
-#End of script
+if __name__ == "__main__":
+    main_func()
