@@ -436,6 +436,8 @@ Prefixes
 | unfiltered
 | nonnegative
 | flag_for
+| do
+| is
 | control_for
 | number_of
 | index_of
