@@ -196,8 +196,8 @@ Terminology
    not valid standard name characters); e.g. ``number_density_of_plus_1_ionized_he``
 
 #. For control-oriented variables, if the variable is a Fortran logical,
-   use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
-   should be Fortran logicals.
+   use *flag_for*, *do*, or *is* as a prefix to the variable name, for example ``flag_for_X`` or ``do_Y`` or ``is_Z``. If it is any other data type, use the prefix *control_for*, for example ``control_for_XYZ``.
+
 
 #. **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
    ambiguity.
