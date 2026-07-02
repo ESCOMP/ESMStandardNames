@@ -529,6 +529,9 @@
     <standard_name name="equation_of_time" description="Apparent solar time minus mean solar time">
       <type units="radian">real</type>
     </standard_name>
+    <standard_name name="flag_for_first_timestep" description="Indicates whether the current timestep is the first timestep">
+      <type units="flag">logical</type>
+    </standard_name>
     <standard_name name="forecast_julian_day">
       <type units="days">real</type>
     </standard_name>
@@ -543,9 +546,6 @@
     </standard_name>
     <standard_name name="index_of_timestep">
       <type units="index">integer</type>
-    </standard_name>
-    <standard_name name="is_first_timestep">
-      <type units="flag">logical</type>
     </standard_name>
     <standard_name name="number_of_days_in_current_year">
       <type units="days">integer</type>
@@ -672,6 +672,9 @@
     <standard_name name="eastward_wind_at_surface" description="Wind vector component closest to surface, positive when directed eastward">
       <type units="m s-1">real</type>
     </standard_name>
+    <standard_name name="flag_for_initialized_physics_grid" description="Flag to indicate if physics grid is initialized">
+      <type units="flag">logical</type>
+    </standard_name>
     <standard_name name="geopotential_at_interfaces">
       <type units="m2 s-2">real</type>
     </standard_name>
@@ -700,9 +703,6 @@
     <standard_name name="horizontal_velocity_potential_of_air" description="Scalar potential of the horizontal wind">
       <cfname>atmosphere_horizontal_velocity_potential</cfname>
       <type units="m2 s-1">real</type>
-    </standard_name>
-    <standard_name name="is_initialized_physics_grid" description="Flag to indicate if physics grid is initialized">
-      <type units="flag">logical</type>
     </standard_name>
     <standard_name name="largest_model_top_pressure_that_allows_molecular_diffusion">
       <type units="Pa">real</type>
@@ -1901,9 +1901,6 @@
     <standard_name name="control_for_vertical_index_direction" description="control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="disable_precipitation_radiative_effect">
-      <type units="flag">logical</type>
-    </standard_name>
     <standard_name name="do_aerosol_physics">
       <type units="flag">logical</type>
     </standard_name>
@@ -1965,6 +1962,9 @@
       <type units="flag">logical</type>
     </standard_name>
     <standard_name name="do_diagnostics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_disable_precipitation_radiative_effect">
       <type units="flag">logical</type>
     </standard_name>
     <standard_name name="do_dominant_precipitation_type_partition">
@@ -2273,6 +2273,9 @@
     <standard_name name="do_ysu_pbl_scheme" description="Do Yonsei University (YSU) planetary boundary layer scheme">
       <type units="flag">logical</type>
     </standard_name>
+    <standard_name name="flag_for_restart" description="Flag indicating whether or not this is a restart run">
+      <type units="flag">logical</type>
+    </standard_name>
     <standard_name name="identifier_for_2018_scale_aware_tke_moist_edmf_pbl" description="Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
       <type units="1">integer</type>
     </standard_name>
@@ -2359,9 +2362,6 @@
     </standard_name>
     <standard_name name="identifier_for_zhao_carr_pdf_microphysics_scheme" description="Identifier for Zhao-Carr probability density function microphysics scheme">
       <type units="1">integer</type>
-    </standard_name>
-    <standard_name name="is_restart">
-      <type units="flag">logical</type>
     </standard_name>
   </section>
   <section name="Indices" comment="Values indicating the index of some array or other data structure">
