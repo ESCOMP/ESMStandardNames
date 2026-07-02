@@ -195,9 +195,29 @@ Terminology
    relevant, the net ionization charge should be included as a prefix (in words, because +/- are
    not valid standard name characters); e.g. ``number_density_of_plus_1_ionized_he``
 
-#. For control-oriented variables, if the variable is a Fortran logical,
-   use flag_for ``_X``. If it is any other data type, use control_for ``_X``. All flags
-   should be Fortran logicals.
+#. For control-oriented variables, there are a few different prefixes that should be used depending on
+   the use case for that specific variable:
+
+   +-------------------+-----------+-----------------------------------------------------------------------------------------------+
+   | **Prefix**        |  **Type** | **Use case**                    | **Example**                                                 |
+   +===================+===========+=================================+=============================================================+
+   | `flag_for_`       | `logical` | A flag indicating some state or | `flag_for_mpi_root` indicates whether or not the code is    |
+   |                   |           | condition is true or false      | running on the MPI root process                             |
+   +-------------------+-----------+-------------------------------- +-------------------------------------------------------------+
+   | `do_`             | `logical` | A flag whose value directs some | `do_chemical_tracer_diagnostics` indicates to a physics     |
+   |                   |           | behavior                        | scheme that it should compute chemical tracer diagnostics   |
+   +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
+   | `identifier_for_` | `integer` | A parameter indicating some     | `identifier_for_noah_land_surface_scheme` is an integer     |
+   |                   |           | state or condition              | identifying the Noah land surface model                     |
+   +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
+   | `control_for_`    | `integer` | A control whose value directs   | `control_for_land_surface_scheme` is an integer identifying |
+   |                   |           | some behavior                   | the land surface scheme type                                |
+   +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
+   | `index_of_`       | `integer` | An index entry for an array     | `index_of_ice_vegetation_category` is an index describing   |
+   |                   |           |                                 | the location of the ice vegetation category in the array of |
+   |                   |           |                                 | vegetation categories                                       |
+   +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
+
 
 #. **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
    ambiguity.
