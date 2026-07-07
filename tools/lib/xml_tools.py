@@ -66,7 +66,7 @@ def validate_xml_file(filename, schema_file, logger, error_on_noxmllint=False):
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"validate_xml_file: Filename, '{filename}', does not exist")
     if not os.path.isfile(schema_file):
-        raise FileNotFoundError(f"validate_xml_file: Cannot find schema file {schema_file}")
+        raise FileNotFoundError(f"validate_xml_file: Cannot find schema file '{schema_file}' ")
     if _XMLLINT is not None:
         if logger is not None:
             logger.debug(f"Checking file {filename} against schema {schema_file}")
