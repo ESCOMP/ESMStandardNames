@@ -201,8 +201,8 @@ Terminology
    +-------------------+-----------+-----------------------------------------------------------------------------------------------+
    | **Prefix**        |  **Type** | **Use case**                    | **Example**                                                 |
    +===================+===========+=================================+=============================================================+
-   | `flag_for_`       | `logical` | A flag indicating some state or | `flag_for_mpi_root` indicates whether or not the code is    |
-   |                   |           | condition is true or false      | running on the MPI root process                             |
+   | `is_`             | `logical` | A flag indicating some state or | `is_mpi_root` indicates whether or not the code is running  |
+   |                   |           | condition is true or false      | on the MPI root process                                     |
    +-------------------+-----------+-------------------------------- +-------------------------------------------------------------+
    | `do_`             | `logical` | A flag whose value directs some | `do_chemical_tracer_diagnostics` indicates to a physics     |
    |                   |           | behavior                        | scheme that it should compute chemical tracer diagnostics   |
@@ -455,7 +455,9 @@ Prefixes
 | upper_bound_of
 | unfiltered
 | nonnegative
-| flag_for
+| is
+| do
+| identifier_for
 | control_for
 | number_of
 | index_of
@@ -478,7 +480,6 @@ Infixes
 ^^^^^^^
 
 | directory_for ``_X`` _source_code
-| flag_for_reading ``_X`` _from_input
 
 Suffixes
 ^^^^^^^^

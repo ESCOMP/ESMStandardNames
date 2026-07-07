@@ -711,10 +711,6 @@ section:
     description: Apparent solar time minus mean solar time
     type: real
     units: radian
-  - name: flag_for_first_timestep
-    description: Indicates whether the current timestep is the first timestep
-    type: logical
-    units: flag
   - name: forecast_julian_day
     description: Forecast julian day
     type: real
@@ -735,6 +731,10 @@ section:
     description: Index of timestep
     type: integer
     units: index
+  - name: is_first_timestep
+    description: Indicates whether the current timestep is the first timestep
+    type: logical
+    units: flag
   - name: number_of_days_in_current_year
     description: Number of days in current year
     type: integer
@@ -906,10 +906,6 @@ section:
       eastward
     type: real
     units: m s-1
-  - name: flag_for_initialized_physics_grid
-    description: Flag to indicate if physics grid is initialized
-    type: logical
-    units: flag
   - name: geopotential_at_interfaces
     description: Geopotential at interfaces
     type: real
@@ -948,6 +944,10 @@ section:
     description: Scalar potential of the horizontal wind
     type: real
     units: m2 s-1
+  - name: is_initialized_physics_grid
+    description: Flag to indicate if physics grid is initialized
+    type: logical
+    units: flag
   - name: largest_model_top_pressure_that_allows_molecular_diffusion
     description: Largest model top pressure that allows molecular diffusion
     type: real
@@ -2221,10 +2221,6 @@ section:
       model applications - Parallel (RRTMGP) shortwave k-distribution
     type: character
     units: none
-  - name: flag_for_mpi_root
-    description: Flag for MPI root process
-    type: logical
-    units: flag
   - name: iounit_of_log
     description: Iounit of log
     type: integer
@@ -2233,6 +2229,10 @@ section:
     description: Iounit of namelist
     type: integer
     units: 1
+  - name: is_mpi_root
+    description: Flag for MPI root process
+    type: logical
+    units: flag
   - name: log_output_unit
     description: Fortran logical unit for output log file
     type: integer
@@ -3158,10 +3158,6 @@ section:
     description: Do Yonsei University (YSU) planetary boundary layer scheme
     type: logical
     units: flag
-  - name: flag_for_restart
-    description: Flag indicating whether or not this is a restart run
-    type: logical
-    units: flag
   - name: identifier_for_2018_scale_aware_tke_moist_edmf_pbl
     description: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux
       planetary boundary layer scheme
@@ -3283,6 +3279,10 @@ section:
       scheme
     type: integer
     units: 1
+  - name: is_restart
+    description: Flag indicating whether or not this is a restart run
+    type: logical
+    units: flag
 - name: Indices
   comment: Values indicating the index of some array or other data structure
   standard_names:

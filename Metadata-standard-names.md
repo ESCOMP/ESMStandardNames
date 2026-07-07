@@ -375,8 +375,6 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `integer`: units = 1
 * `equation_of_time`: Apparent solar time minus mean solar time
     * `real`: units = radian
-* `flag_for_first_timestep`: Indicates whether the current timestep is the first timestep
-    * `logical`: units = flag
 * `forecast_julian_day`: Forecast julian day
     * `real`: units = days
 * `forecast_time_in_seconds`: Forecast time in seconds
@@ -387,6 +385,8 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = h
 * `index_of_timestep`: Index of timestep
     * `integer`: units = index
+* `is_first_timestep`: Indicates whether the current timestep is the first timestep
+    * `logical`: units = flag
 * `number_of_days_in_current_year`: Number of days in current year
     * `integer`: units = days
 * `time_elapsed_since_diagnostics_reset`: Time elapsed since diagnostics reset
@@ -472,8 +472,6 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m s-1
 * `eastward_wind_at_surface`: Wind vector component closest to surface, positive when directed eastward
     * `real`: units = m s-1
-* `flag_for_initialized_physics_grid`: Flag to indicate if physics grid is initialized
-    * `logical`: units = flag
 * `geopotential_at_interfaces`: Geopotential at interfaces
     * `real`: units = m2 s-2
 * `geopotential_at_surface`: Geopotential at surface
@@ -494,6 +492,8 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `horizontal_velocity_potential_of_air`: Scalar potential of the horizontal wind
     * Equivalent CF name: `atmosphere_horizontal_velocity_potential`
     * `real`: units = m2 s-1
+* `is_initialized_physics_grid`: Flag to indicate if physics grid is initialized
+    * `logical`: units = flag
 * `largest_model_top_pressure_that_allows_molecular_diffusion`: Largest model top pressure that allows molecular diffusion
     * `real`: units = Pa
 * `ln_air_pressure`: Ln air pressure
@@ -1099,12 +1099,12 @@ Variables related to the compute environment, properties of variables, input/out
     * `character`: units = none
 * `filename_of_rrtmgp_shortwave_k_distribution`: File name of Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) shortwave k-distribution
     * `character`: units = none
-* `flag_for_mpi_root`: Flag for MPI root process
-    * `logical`: units = flag
 * `iounit_of_log`: Iounit of log
     * `integer`: units = 1
 * `iounit_of_namelist`: Iounit of namelist
     * `integer`: units = 1
+* `is_mpi_root`: Flag for MPI root process
+    * `logical`: units = flag
 * `log_output_unit`: Fortran logical unit for output log file
     * `integer`: units = 1
 * `map_of_block_column_number_to_global_i_index`: Map of block column number to global i index
@@ -1551,8 +1551,6 @@ Variables that indicate or control some action.
     * `logical`: units = flag
 * `do_ysu_pbl_scheme`: Do Yonsei University (YSU) planetary boundary layer scheme
     * `logical`: units = flag
-* `flag_for_restart`: Flag indicating whether or not this is a restart run
-    * `logical`: units = flag
 * `identifier_for_2018_scale_aware_tke_moist_edmf_pbl`: Identifier for 2018 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `integer`: units = 1
 * `identifier_for_2019_scale_aware_tke_moist_edmf_pbl`: Identifier for 2019 scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
@@ -1611,6 +1609,8 @@ Variables that indicate or control some action.
     * `integer`: units = 1
 * `identifier_for_zhao_carr_pdf_microphysics_scheme`: Identifier for Zhao-Carr probability density function microphysics scheme
     * `integer`: units = 1
+* `is_restart`: Flag indicating whether or not this is a restart run
+    * `logical`: units = flag
 ## Indices
 Values indicating the index of some array or other data structure
 * `cumulative_max_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative maximum vertical index at cloud base between shortwave radiation calls
