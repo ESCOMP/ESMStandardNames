@@ -544,7 +544,7 @@
     <standard_name name="index_of_timestep">
       <type units="index">integer</type>
     </standard_name>
-    <standard_name name="is_first_timestep">
+    <standard_name name="is_first_timestep" description="Indicates whether the current timestep is the first timestep">
       <type units="flag">logical</type>
     </standard_name>
     <standard_name name="number_of_days_in_current_year">
@@ -1596,14 +1596,14 @@
     <standard_name name="filename_of_rrtmgp_shortwave_k_distribution" description="File name of Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) shortwave k-distribution">
       <type units="none">character</type>
     </standard_name>
-    <standard_name name="flag_for_mpi_root" description="Flag for MPI root process">
-      <type units="flag">logical</type>
-    </standard_name>
     <standard_name name="iounit_of_log">
       <type units="1">integer</type>
     </standard_name>
     <standard_name name="iounit_of_namelist">
       <type units="1">integer</type>
+    </standard_name>
+    <standard_name name="is_mpi_root" description="Flag for MPI root process">
+      <type units="flag">logical</type>
     </standard_name>
     <standard_name name="log_output_unit" description="Fortran logical unit for output log file">
       <type units="1">integer</type>
@@ -1901,9 +1901,6 @@
     <standard_name name="control_for_vertical_index_direction" description="control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="disable_precipitation_radiative_effect">
-      <type units="flag">logical</type>
-    </standard_name>
     <standard_name name="do_aerosol_physics">
       <type units="flag">logical</type>
     </standard_name>
@@ -1965,6 +1962,9 @@
       <type units="flag">logical</type>
     </standard_name>
     <standard_name name="do_diagnostics">
+      <type units="flag">logical</type>
+    </standard_name>
+    <standard_name name="do_disable_precipitation_radiative_effect">
       <type units="flag">logical</type>
     </standard_name>
     <standard_name name="do_dominant_precipitation_type_partition">
@@ -2360,7 +2360,7 @@
     <standard_name name="identifier_for_zhao_carr_pdf_microphysics_scheme" description="Identifier for Zhao-Carr probability density function microphysics scheme">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="is_restart">
+    <standard_name name="is_restart" description="Flag indicating whether or not this is a restart run">
       <type units="flag">logical</type>
     </standard_name>
   </section>

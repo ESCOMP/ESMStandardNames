@@ -732,7 +732,7 @@ section:
     type: integer
     units: index
   - name: is_first_timestep
-    description: Is first timestep
+    description: Indicates whether the current timestep is the first timestep
     type: logical
     units: flag
   - name: number_of_days_in_current_year
@@ -2221,10 +2221,6 @@ section:
       model applications - Parallel (RRTMGP) shortwave k-distribution
     type: character
     units: none
-  - name: flag_for_mpi_root
-    description: Flag for MPI root process
-    type: logical
-    units: flag
   - name: iounit_of_log
     description: Iounit of log
     type: integer
@@ -2233,6 +2229,10 @@ section:
     description: Iounit of namelist
     type: integer
     units: 1
+  - name: is_mpi_root
+    description: Flag for MPI root process
+    type: logical
+    units: flag
   - name: log_output_unit
     description: Fortran logical unit for output log file
     type: integer
@@ -2642,10 +2642,6 @@ section:
       toa to surface, 1 indicates index from surface to toa
     type: integer
     units: 1
-  - name: disable_precipitation_radiative_effect
-    description: Disable precipitation radiative effect
-    type: logical
-    units: flag
   - name: do_aerosol_physics
     description: Do aerosol physics
     type: logical
@@ -2728,6 +2724,10 @@ section:
     units: flag
   - name: do_diagnostics
     description: Do diagnostics
+    type: logical
+    units: flag
+  - name: do_disable_precipitation_radiative_effect
+    description: Do disable precipitation radiative effect
     type: logical
     units: flag
   - name: do_dominant_precipitation_type_partition
@@ -3280,7 +3280,7 @@ section:
     type: integer
     units: 1
   - name: is_restart
-    description: Is restart
+    description: Flag indicating whether or not this is a restart run
     type: logical
     units: flag
 - name: Indices

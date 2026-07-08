@@ -385,7 +385,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = h
 * `index_of_timestep`: Index of timestep
     * `integer`: units = index
-* `is_first_timestep`: Is first timestep
+* `is_first_timestep`: Indicates whether the current timestep is the first timestep
     * `logical`: units = flag
 * `number_of_days_in_current_year`: Number of days in current year
     * `integer`: units = days
@@ -1099,12 +1099,12 @@ Variables related to the compute environment, properties of variables, input/out
     * `character`: units = none
 * `filename_of_rrtmgp_shortwave_k_distribution`: File name of Rapid Radiative Transfer Model for General circulation model applications - Parallel (RRTMGP) shortwave k-distribution
     * `character`: units = none
-* `flag_for_mpi_root`: Flag for MPI root process
-    * `logical`: units = flag
 * `iounit_of_log`: Iounit of log
     * `integer`: units = 1
 * `iounit_of_namelist`: Iounit of namelist
     * `integer`: units = 1
+* `is_mpi_root`: Flag for MPI root process
+    * `logical`: units = flag
 * `log_output_unit`: Fortran logical unit for output log file
     * `integer`: units = 1
 * `map_of_block_column_number_to_global_i_index`: Map of block column number to global i index
@@ -1303,8 +1303,6 @@ Variables that indicate or control some action.
     * `integer`: units = 1
 * `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa
     * `integer`: units = 1
-* `disable_precipitation_radiative_effect`: Disable precipitation radiative effect
-    * `logical`: units = flag
 * `do_aerosol_physics`: Do aerosol physics
     * `logical`: units = flag
 * `do_allow_supersaturation_after_sedimentation`: Do allow supersaturation after sedimentation
@@ -1346,6 +1344,8 @@ Variables that indicate or control some action.
 * `do_debug_output`: Do debug output
     * `logical`: units = flag
 * `do_diagnostics`: Do diagnostics
+    * `logical`: units = flag
+* `do_disable_precipitation_radiative_effect`: Do disable precipitation radiative effect
     * `logical`: units = flag
 * `do_dominant_precipitation_type_partition`: Do dominant precipitation type partition
     * `logical`: units = flag
@@ -1609,7 +1609,7 @@ Variables that indicate or control some action.
     * `integer`: units = 1
 * `identifier_for_zhao_carr_pdf_microphysics_scheme`: Identifier for Zhao-Carr probability density function microphysics scheme
     * `integer`: units = 1
-* `is_restart`: Is restart
+* `is_restart`: Flag indicating whether or not this is a restart run
     * `logical`: units = flag
 ## Indices
 Values indicating the index of some array or other data structure
