@@ -64,26 +64,20 @@ def validate_xml_file(filename, schema_file, logger, error_on_noxmllint=False):
     """
     # Check the filename
     if not os.path.isfile(filename):
-        raise ValueError(f"validate_xml_file: Filename, '{filename}', does not exist")
-    if not os.access(filename, os.R_OK):
-        raise ValueError(f"validate_xml_file: Cannot open '{filename}'")
+        raise FileNotFoundError(f"validate_xml_file: Filename, '{filename}', does not exist")
     if not os.path.isfile(schema_file):
-        raise ValueError(f"validate_xml_file: Cannot find schema file {schema_file}")
-    if not os.access(schema_file, os.R_OK):
-        emsg = "validate_xml_file: Cannot open schema, '{}'"
-        raise ValueError(emsg.format(schema_file))
+        raise FileNotFoundError(f"validate_xml_file: Cannot find schema file '{schema_file}' ")
     if _XMLLINT is not None:
         if logger is not None:
-            lmsg = "Checking file {} against schema {}"
-            logger.debug(lmsg.format(filename, schema_file))
+            logger.debug(f"Checking file {filename} against schema {schema_file}")
         cmd = [_XMLLINT, '--noout', '--schema', schema_file, filename]
         result = call_command(cmd, logger)
         return result
-    lmsg = "xmllint not found, could not validate file {}"
+    lmsg = f"xmllint not found, could not validate file {filename}"
     if error_on_noxmllint:
-        raise ValueError("validate_xml_file: " + lmsg.format(filename))
+        raise ImportError("validate_xml_file: " + lmsg)
     if logger is not None:
-        logger.warning(lmsg.format(filename))
+        logger.warning(lmsg)
     return True # We could not check but still need to proceed
 
 ###############################################################################

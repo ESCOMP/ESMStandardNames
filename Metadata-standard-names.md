@@ -286,7 +286,13 @@ Names indicating the size, extent, or bounds of data structures in a model.
     * `real`: units = 1
 * `upper_bound_of_vertical_dimension_of_surface_snow`: upper bound of of snow-related arrays for land surface model
     * `integer`: units = count
+* `vertical_dimension`: number of vertical layers
+    * `integer`: units = count
+* `vertical_dimension_extended_up_by_1`: number of vertical layers extended up by 1
+    * `integer`: units = count
 * `vertical_dimension_for_radiation`: Vertical dimension for radiation
+    * `integer`: units = count
+* `vertical_dimension_minus_one`: Vertical dimension minus one
     * `integer`: units = count
 * `vertical_dimension_of_sea_ice`: Vertical dimension of sea ice
     * `integer`: units = count
@@ -301,12 +307,6 @@ Names indicating the size, extent, or bounds of data structures in a model.
 * `vertical_interface_dimension_for_radiation`: Vertical interface dimension for radiation
     * `integer`: units = count
 * `vertical_interface_dimension_interstitial`: Vertical interface dimension interstitial
-    * `integer`: units = count
-* `vertical_layer_dimension`: number of vertical layers
-    * `integer`: units = count
-* `vertical_layer_dimension_extended_up_by_1`: number of vertical layers extended up by 1
-    * `integer`: units = count
-* `vertical_layer_dimension_minus_one`: Vertical layer dimension minus one
     * `integer`: units = count
 ## Constants
 Constant parameters that should be identical across a full modeling system
@@ -398,7 +398,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = Pa
 * `air_pressure_at_lowest_model_interface`: Air pressure at lowest model interface
     * `real`: units = Pa
-* `air_pressure_at_sea_level`: Air pressure at sea level
+* `air_pressure_at_mean_sea_level`: Air pressure at mean sea level
     * Equivalent CF name: `air_pressure_at_mean_sea_level`
     * `real`: units = Pa
 * `air_pressure_at_surface`: Air pressure at local surface
@@ -579,7 +579,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `upward_heat_flux_in_air_at_surface`: Upward heat flux in air at surface
     * Equivalent CF name: `surface_upward_heat_flux_in_air`
     * `real`: units = W m-2
-* `us_standard_air_pressure_at_sea_level`: US Standard Atmospheric pressure at sea level
+* `us_standard_air_pressure_at_mean_sea_level`: US Standard Atmospheric pressure at sea level
     * `real`: units = Pa
 * `variance_of_air_temperature`: Variance of air temperature
     * `real`: units = K2
@@ -2434,6 +2434,8 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `volume_fraction_of_condensed_water_in_soil`: Volume fraction of condensed water in soil
     * Equivalent CF name: `volume_fraction_of_condensed_water_in_soil`
     * `real`: units = fraction
+* `volume_fraction_of_equilibrium_soil_moisture`: Volume fraction of equilibrium soil moisture
+    * `real`: units = fraction
 * `volume_fraction_of_frozen_soil_moisture_for_lsm`: Volume fraction of frozen soil moisture for land surface model
     * `real`: units = fraction
 * `volume_fraction_of_liquid_water_in_soil_at_critical_point`: volume fraction of water in liquid phase in soil at critical point
@@ -2442,16 +2444,14 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m3 m-3
 * `volume_fraction_of_liquid_water_in_soil_at_wilting_point`: volume fraction of water in liquid phase in soil at wilting point
     * `real`: units = m3 m-3
+* `volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table`: Volume fraction of soil moisture between soil bottom and water table
+    * `real`: units = fraction
 * `volume_fraction_of_soil_moisture_for_lsm`: Volume fraction of soil moisture for land surface model
     * `real`: units = fraction
 * `volume_fraction_of_unfrozen_soil_moisture_for_lsm`: Volume fraction of unfrozen soil moisture for land surface model
     * `real`: units = fraction
 * `volume_fraction_of_unfrozen_water_in_soil`: Volume fraction of unfrozen water in soil
     * `real`: units = fraction
-* `volumetric_equilibrium_soil_moisture`: Volumetric equilibrium soil moisture
-    * `real`: units = m3 m-3
-* `volumetric_soil_moisture_between_soil_bottom_and_water_table`: Volumetric soil moisture between soil bottom and water table
-    * `real`: units = m3 m-3
 * `water_storage_in_aquifer`: Water storage in aquifer
     * `real`: units = mm
 * `water_storage_in_aquifer_and_saturated_soil`: Water storage in aquifer and saturated soil
