@@ -401,7 +401,16 @@
     <standard_name name="upper_bound_of_vertical_dimension_of_surface_snow" description="upper bound of of snow-related arrays for land surface model">
       <type units="count">integer</type>
     </standard_name>
+    <standard_name name="vertical_dimension" description="number of vertical layers">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_dimension_extended_up_by_1" description="number of vertical layers extended up by 1">
+      <type units="count">integer</type>
+    </standard_name>
     <standard_name name="vertical_dimension_for_radiation">
+      <type units="count">integer</type>
+    </standard_name>
+    <standard_name name="vertical_dimension_minus_one">
       <type units="count">integer</type>
     </standard_name>
     <standard_name name="vertical_dimension_of_sea_ice">
@@ -423,15 +432,6 @@
       <type units="count">integer</type>
     </standard_name>
     <standard_name name="vertical_interface_dimension_interstitial">
-      <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="vertical_layer_dimension" description="number of vertical layers">
-      <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="vertical_layer_dimension_extended_up_by_1" description="number of vertical layers extended up by 1">
-      <type units="count">integer</type>
-    </standard_name>
-    <standard_name name="vertical_layer_dimension_minus_one">
       <type units="count">integer</type>
     </standard_name>
   </section>
@@ -564,7 +564,7 @@
     <standard_name name="air_pressure_at_lowest_model_interface">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="air_pressure_at_sea_level">
+    <standard_name name="air_pressure_at_mean_sea_level">
       <cfname>air_pressure_at_mean_sea_level</cfname>
       <type units="Pa">real</type>
     </standard_name>
@@ -829,7 +829,7 @@
       <cfname>surface_upward_heat_flux_in_air</cfname>
       <type units="W m-2">real</type>
     </standard_name>
-    <standard_name name="us_standard_air_pressure_at_sea_level" description="US Standard Atmospheric pressure at sea level">
+    <standard_name name="us_standard_air_pressure_at_mean_sea_level" description="US Standard Atmospheric pressure at sea level">
       <type units="Pa">real</type>
     </standard_name>
     <standard_name name="variance_of_air_temperature">
@@ -3588,6 +3588,9 @@
       <cfname>volume_fraction_of_condensed_water_in_soil</cfname>
       <type units="fraction">real</type>
     </standard_name>
+    <standard_name name="volume_fraction_of_equilibrium_soil_moisture">
+      <type units="fraction">real</type>
+    </standard_name>
     <standard_name name="volume_fraction_of_frozen_soil_moisture_for_lsm" description="Volume fraction of frozen soil moisture for land surface model">
       <type units="fraction">real</type>
     </standard_name>
@@ -3600,6 +3603,9 @@
     <standard_name name="volume_fraction_of_liquid_water_in_soil_at_wilting_point" description="volume fraction of water in liquid phase in soil at wilting point">
       <type units="m3 m-3">real</type>
     </standard_name>
+    <standard_name name="volume_fraction_of_soil_moisture_between_soil_bottom_and_water_table">
+      <type units="fraction">real</type>
+    </standard_name>
     <standard_name name="volume_fraction_of_soil_moisture_for_lsm" description="Volume fraction of soil moisture for land surface model">
       <type units="fraction">real</type>
     </standard_name>
@@ -3608,12 +3614,6 @@
     </standard_name>
     <standard_name name="volume_fraction_of_unfrozen_water_in_soil">
       <type units="fraction">real</type>
-    </standard_name>
-    <standard_name name="volumetric_equilibrium_soil_moisture">
-      <type units="m3 m-3">real</type>
-    </standard_name>
-    <standard_name name="volumetric_soil_moisture_between_soil_bottom_and_water_table">
-      <type units="m3 m-3">real</type>
     </standard_name>
     <standard_name name="water_storage_in_aquifer">
       <type units="mm">real</type>

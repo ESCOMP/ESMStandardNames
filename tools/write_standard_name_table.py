@@ -148,8 +148,7 @@ def parse_section(snl, sec, level='##'):
                 units = item.get('units')
                 snl.write(f'    * `{txt}`: units = {units}\n')
             else:
-                emsg = "Unknown standard name property, '{}'"
-                raise ValueError(emsg.format(item.tag))
+                raise ValueError(f"Unknown standard name property, '{item.tag}'")
 
 
 def convert_xml_to_yaml(root, library_name, yaml_file):
