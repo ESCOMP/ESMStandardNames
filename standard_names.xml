@@ -669,7 +669,7 @@
     <standard_name name="eastward_wind_at_10m" description="Wind vector component at 10 meters above surface, positive when directed eastward">
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="eastward_wind_at_surface" description="Wind vector component closest to surface, positive when directed eastward">
+    <standard_name name="eastward_wind_at_surface_adjacent_layer" description="Wind vector component at layer closest to surface, positive when directed eastward">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="geopotential_at_interfaces">
@@ -757,7 +757,7 @@
     <standard_name name="northward_wind_at_10m" description="Wind vector component at 10 meters above surface, positive when directed northward">
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="northward_wind_at_surface" description="Wind vector component closest to surface, positive when directed northward">
+    <standard_name name="northward_wind_at_surface_adjacent_layer" description="Wind vector component at layer closest to surface, positive when directed northward">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="physics_state_due_to_dynamics">
@@ -872,7 +872,7 @@
       <cfname>x_wind</cfname>
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="x_wind_at_surface_adjacent_layer">
+    <standard_name name="x_wind_at_surface_adjacent_layer" description="Wind vector component at layer closest to surface, perpendicular to y_wind">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="x_wind_of_new_state">
@@ -885,7 +885,7 @@
       <cfname>y_wind</cfname>
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="y_wind_at_surface_adjacent_layer">
+    <standard_name name="y_wind_at_surface_adjacent_layer" description="Wind vector component at layer closest to surface, perpendicular to x_wind">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="y_wind_of_new_state">

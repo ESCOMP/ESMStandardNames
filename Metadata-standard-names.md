@@ -470,7 +470,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m s-1
 * `eastward_wind_at_10m`: Wind vector component at 10 meters above surface, positive when directed eastward
     * `real`: units = m s-1
-* `eastward_wind_at_surface`: Wind vector component closest to surface, positive when directed eastward
+* `eastward_wind_at_surface_adjacent_layer`: Wind vector component at layer closest to surface, positive when directed eastward
     * `real`: units = m s-1
 * `geopotential_at_interfaces`: Geopotential at interfaces
     * `real`: units = m2 s-2
@@ -530,7 +530,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m s-1
 * `northward_wind_at_10m`: Wind vector component at 10 meters above surface, positive when directed northward
     * `real`: units = m s-1
-* `northward_wind_at_surface`: Wind vector component closest to surface, positive when directed northward
+* `northward_wind_at_surface_adjacent_layer`: Wind vector component at layer closest to surface, positive when directed northward
     * `real`: units = m s-1
 * `physics_state_due_to_dynamics`: Physics state due to dynamics
     * `ddt`: units = none
@@ -608,7 +608,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `x_wind`: Horizontal wind in a direction perpendicular to y_wind
     * Equivalent CF name: `x_wind`
     * `real`: units = m s-1
-* `x_wind_at_surface_adjacent_layer`: X wind at surface adjacent layer
+* `x_wind_at_surface_adjacent_layer`: Wind vector component at layer closest to surface, perpendicular to y_wind
     * `real`: units = m s-1
 * `x_wind_of_new_state`: X wind of new state
     * `real`: units = m s-1
@@ -617,7 +617,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `y_wind`: Horizontal wind in a direction perpendicular to x_wind
     * Equivalent CF name: `y_wind`
     * `real`: units = m s-1
-* `y_wind_at_surface_adjacent_layer`: Y wind at surface adjacent layer
+* `y_wind_at_surface_adjacent_layer`: Wind vector component at layer closest to surface, perpendicular to x_wind
     * `real`: units = m s-1
 * `y_wind_of_new_state`: Y wind of new state
     * `real`: units = m s-1
