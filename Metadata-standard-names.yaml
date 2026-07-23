@@ -901,9 +901,9 @@ section:
       eastward
     type: real
     units: m s-1
-  - name: eastward_wind_at_surface
-    description: Wind vector component closest to surface, positive when directed
-      eastward
+  - name: eastward_wind_at_surface_adjacent_layer
+    description: Wind vector component at layer closest to surface, positive when
+      directed eastward
     type: real
     units: m s-1
   - name: geopotential_at_interfaces
@@ -1020,9 +1020,9 @@ section:
       northward
     type: real
     units: m s-1
-  - name: northward_wind_at_surface
-    description: Wind vector component closest to surface, positive when directed
-      northward
+  - name: northward_wind_at_surface_adjacent_layer
+    description: Wind vector component at layer closest to surface, positive when
+      directed northward
     type: real
     units: m s-1
   - name: physics_state_due_to_dynamics
@@ -1170,21 +1170,28 @@ section:
       moist air) two timesteps back
     type: real
     units: kg kg-1
-  - name: wind_from_direction_at_surface
-    description: Direction, from north, of wind speed closest to surface
+  - name: wind_from_direction_at_surface_adjacent_layer
+    description: Direction (clockwise from north) wind vector is pointing away from,
+      at the layer closest to surface.
     type: real
     units: degrees
-  - name: wind_speed_at_surface
-    description: Scalar wind speed closest to surface
+  - name: wind_speed_at_surface_adjacent_layer
+    description: Scalar wind speed at layer closest to surface
     type: real
     units: m s-1
+  - name: wind_to_direction_at_surface_adjacent_layer
+    description: Direction (clockwise from north) wind vector is pointing towards
+      at the layer closest to surface.
+    type: real
+    units: degrees
   - name: x_wind
     cfname: x_wind
     description: Horizontal wind in a direction perpendicular to y_wind
     type: real
     units: m s-1
   - name: x_wind_at_surface_adjacent_layer
-    description: X wind at surface adjacent layer
+    description: Wind vector component at layer closest to surface, perpendicular
+      to y_wind
     type: real
     units: m s-1
   - name: x_wind_of_new_state
@@ -1201,7 +1208,8 @@ section:
     type: real
     units: m s-1
   - name: y_wind_at_surface_adjacent_layer
-    description: Y wind at surface adjacent layer
+    description: Wind vector component at layer closest to surface, perpendicular
+      to x_wind
     type: real
     units: m s-1
   - name: y_wind_of_new_state

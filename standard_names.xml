@@ -669,7 +669,7 @@
     <standard_name name="eastward_wind_at_10m" description="Wind vector component at 10 meters above surface, positive when directed eastward">
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="eastward_wind_at_surface" description="Wind vector component closest to surface, positive when directed eastward">
+    <standard_name name="eastward_wind_at_surface_adjacent_layer" description="Wind vector component at layer closest to surface, positive when directed eastward">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="geopotential_at_interfaces">
@@ -757,7 +757,7 @@
     <standard_name name="northward_wind_at_10m" description="Wind vector component at 10 meters above surface, positive when directed northward">
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="northward_wind_at_surface" description="Wind vector component closest to surface, positive when directed northward">
+    <standard_name name="northward_wind_at_surface_adjacent_layer" description="Wind vector component at layer closest to surface, positive when directed northward">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="physics_state_due_to_dynamics">
@@ -862,17 +862,20 @@
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="wind_from_direction_at_surface" description="Direction, from north, of wind speed closest to surface">
+    <standard_name name="wind_from_direction_at_surface_adjacent_layer" description="Direction (clockwise from north) wind vector is pointing away from, at the layer closest to surface.">
       <type units="degrees">real</type>
     </standard_name>
-    <standard_name name="wind_speed_at_surface" description="Scalar wind speed closest to surface">
+    <standard_name name="wind_speed_at_surface_adjacent_layer" description="Scalar wind speed at layer closest to surface">
       <type units="m s-1">real</type>
+    </standard_name>
+    <standard_name name="wind_to_direction_at_surface_adjacent_layer" description="Direction (clockwise from north) wind vector is pointing towards at the layer closest to surface.">
+      <type units="degrees">real</type>
     </standard_name>
     <standard_name name="x_wind" description="Horizontal wind in a direction perpendicular to y_wind">
       <cfname>x_wind</cfname>
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="x_wind_at_surface_adjacent_layer">
+    <standard_name name="x_wind_at_surface_adjacent_layer" description="Wind vector component at layer closest to surface, perpendicular to y_wind">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="x_wind_of_new_state">
@@ -885,7 +888,7 @@
       <cfname>y_wind</cfname>
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="y_wind_at_surface_adjacent_layer">
+    <standard_name name="y_wind_at_surface_adjacent_layer" description="Wind vector component at layer closest to surface, perpendicular to x_wind">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="y_wind_of_new_state">
