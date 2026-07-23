@@ -862,11 +862,14 @@
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="wind_from_direction_at_surface" description="Direction, from north, of wind speed closest to surface">
+    <standard_name name="wind_from_direction_at_surface_adjacent_layer" description="Direction (clockwise from north) wind vector is pointing away from, at the layer closest to surface.">
       <type units="degrees">real</type>
     </standard_name>
-    <standard_name name="wind_speed_at_surface" description="Scalar wind speed closest to surface">
+    <standard_name name="wind_speed_at_surface_adjacent_layer" description="Scalar wind speed at layer closest to surface">
       <type units="m s-1">real</type>
+    </standard_name>
+    <standard_name name="wind_to_direction_at_surface_adjacent_layer" description="Direction (clockwise from north) wind vector is pointing towards at the layer closest to surface.">
+      <type units="degrees">real</type>
     </standard_name>
     <standard_name name="x_wind" description="Horizontal wind in a direction perpendicular to y_wind">
       <cfname>x_wind</cfname>

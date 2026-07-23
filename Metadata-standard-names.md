@@ -601,10 +601,12 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back`: Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back
     * `real`: units = kg kg-1
-* `wind_from_direction_at_surface`: Direction, from north, of wind speed closest to surface
+* `wind_from_direction_at_surface_adjacent_layer`: Direction (clockwise from north) wind vector is pointing away from, at the layer closest to surface.
     * `real`: units = degrees
-* `wind_speed_at_surface`: Scalar wind speed closest to surface
+* `wind_speed_at_surface_adjacent_layer`: Scalar wind speed at layer closest to surface
     * `real`: units = m s-1
+* `wind_to_direction_at_surface_adjacent_layer`: Direction (clockwise from north) wind vector is pointing towards at the layer closest to surface.
+    * `real`: units = degrees
 * `x_wind`: Horizontal wind in a direction perpendicular to y_wind
     * Equivalent CF name: `x_wind`
     * `real`: units = m s-1

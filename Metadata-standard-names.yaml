@@ -1170,14 +1170,20 @@ section:
       moist air) two timesteps back
     type: real
     units: kg kg-1
-  - name: wind_from_direction_at_surface
-    description: Direction, from north, of wind speed closest to surface
+  - name: wind_from_direction_at_surface_adjacent_layer
+    description: Direction (clockwise from north) wind vector is pointing away from,
+      at the layer closest to surface.
     type: real
     units: degrees
-  - name: wind_speed_at_surface
-    description: Scalar wind speed closest to surface
+  - name: wind_speed_at_surface_adjacent_layer
+    description: Scalar wind speed at layer closest to surface
     type: real
     units: m s-1
+  - name: wind_to_direction_at_surface_adjacent_layer
+    description: Direction (clockwise from north) wind vector is pointing towards
+      at the layer closest to surface.
+    type: real
+    units: degrees
   - name: x_wind
     cfname: x_wind
     description: Horizontal wind in a direction perpendicular to y_wind
