@@ -218,6 +218,7 @@ Terminology
    |                   |           |                                 | vegetation categories                                       |
    +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
 
+#. The ``direction`` of a vector, unless noted otherwise, is the geographical bearing measured in the positive clockwise direction from due north. For example, ``wind_to_direction = 90`` is the same as ``wind_from_direction = 270``, meaning wind blowing towards the east.
 
 #. **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
    ambiguity.
