@@ -21,7 +21,7 @@
       <standard_name name="energy">
         <type units="J">real</type>
       </standard_name>
-      <standard_name name="energy_content" description="Total energy within some surface">
+      <standard_name name="energy_content" description="Total energy within some ideal surface">
         <type units="J m-2">real</type>
       </standard_name>
       <standard_name name="energy_density" description="Total energy within some volume">
@@ -196,7 +196,7 @@
         <cfname>air_temperature</cfname>
         <type units="K">real</type>
       </standard_name>
-      <standard_name name="albedo" description="The fraction of incident radiation reflected by a surface">
+      <standard_name name="albedo" description="The fraction of incident radiation reflected by a physical surface">
         <type units="1">real</type>
       </standard_name>
       <standard_name name="atmosphere_heat_diffusivity">
@@ -228,7 +228,7 @@
       <standard_name name="diffuse_vis_albedo" description="Albedo of diffuse incident visible radiation">
         <type units="1">real</type>
       </standard_name>
-      <standard_name name="dimensionless_exner_function" description="Dimensionless formulation of the Exner function with respect to 1000 hPa" comment="The formulation of the exner function in an NWP context is (p/p0)^(Rd/cp), where p0 is some reference pressure. For the purposes of the standard names, this reference pressure is assumed as 1000 hPa unless specified otherwise; i.e. dimensionless_exner_function_wrt_air_pressure_at_surface would use the pressure at the surface as P0. Note that this is numerically equivalent to T/theta (temperature divided by potential temperature), where again theta is calculated with respect to 1000 hPa if not specified. Note that this definition is distinct from the dimensional exner_function standard name; see that entry for further comments. ">
+      <standard_name name="dimensionless_exner_function" description="Dimensionless formulation of the Exner function with respect to 1000 hPa" comment="The formulation of the exner function in an NWP context is (p/p0)^(Rd/cp), where p0 is some reference pressure. For the purposes of the standard names, this reference pressure is assumed as 1000 hPa unless specified otherwise; i.e. dimensionless_exner_function_wrt_air_pressure_at_boa would use the pressure at the surface (bottom of atmosphere) as P0. Note that this is numerically equivalent to T/theta (temperature divided by potential temperature), where again theta is calculated with respect to 1000 hPa if not specified. Note that this definition is distinct from the dimensional exner_function standard name; see that entry for further comments. ">
         <cfname>dimensionless_exner_function</cfname>
         <type units="1">real</type>
       </standard_name>
@@ -338,7 +338,7 @@
         <cfname>solar_zenith_angle</cfname>
         <type units="degrees">real</type>
       </standard_name>
-      <standard_name name="surface_skin_temperature" description="The temperature of the topmost layer of the surface">
+      <standard_name name="surface_skin_temperature" description="The temperature of the interface of the surface and the atmosphere" comment="Usage of the term 'surface skin temperature' varies among different fields in the literature. In the Standard Names we have adopted what we deem the most common definition for 'surface_skin_temperature': the temperature of the interface of the atmosphere and the surface below. This may be considered equivalent to the radiometric temperature derived from satellite or airborne radiometers, provided a known surface_emissivity. This definition derives from discussion in Chapter 4 of 'Introduction to Micrometeorology' by S. Pal Arya.">
         <cfname>surface_skin_temperature</cfname>
         <type units="K">real</type>
       </standard_name>
@@ -3481,16 +3481,16 @@
       <cfname>sea_ice_thickness</cfname>
       <type units="m">real</type>
     </standard_name>
-    <standard_name name="skin_temperature_at_surface_over_ice" description="Skin temperature at surface over (or where) ice">
+    <standard_name name="surface_skin_temperature_over_ice" description="Surface skin temperature over (or where) ice">
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="skin_temperature_at_surface_over_land" description="Skin temperature at surface over (or where) land">
+    <standard_name name="surface_skin_temperature_over_land" description="Surface skin temperature over (or where) land">
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="skin_temperature_at_surface_over_ocean" description="Skin temperature at surface over (or where) ocean">
+    <standard_name name="surface_skin_temperature_over_ocean" description="Surface skin temperatura over (or where) ocean">
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="skin_temperature_at_surface_over_snow" description="Skin temperature at surface over (or where) snow">
+    <standard_name name="surface_skin_temperature_over_snow" description="Surface skin temperature over (or where) snow">
       <type units="K">real</type>
     </standard_name>
     <standard_name name="slow_soil_pool_mass_content_of_carbon">
