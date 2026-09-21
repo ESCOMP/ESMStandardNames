@@ -139,6 +139,21 @@ Variable scope
 Terminology
 -----------
 
+   `annotated image detailing some of the terminology in this section <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_terms.png>`_
+
+#. A "layer" is a vertical level of a model, as defined by the host. An "interface" is the boundary above or below a layer.
+
+#. By default, *surface* refers to the liquid or solid substance immediately beneath the atmosphere
+   for a given vertical column. This can be land, ocean, ice, lake, etc.
+
+   For "surface" variables describing properties of the atmosphere, near/adjacent to the actual surface,
+   care should be taken to specify the specific "surface variable" quantity needed for a specific application:
+
+   *  ``[variable]_at_boa`` ("bottom of atmosphere") is the lowest point of the atmosphere, adjacent to the surface.
+      This is equivalent to the bottom interface (as described above).
+   *  ``[variable]_at_surface_adjacent_layer`` is the bottom layer of the atmospheric model
+   *  ``[variable]_at_[level]`` for variables defined at specific height above the surface, e.g. ``temperature_at_2m``, ``wind_at_10m``
+
 #. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
    Mass mixing ratios should contain information regarding
@@ -178,9 +193,8 @@ Terminology
    of clouds the variable represents (e.g. *ice_cloud* if only including glaciated clouds, or
    *cloud_at_500hPa* if only including clouds that exist at 500 hPa).
 
-#. Spell out acronyms unless they are obvious to a vast majority of
-   scientists/developers who may come across them. A list of currently-used
-   aliases is below. Whenever such an alias exist, use the alias in the
+#. Spell out acronyms unless they are defined in the list of "Acronyms, Abbreviations, and Aliases"
+   below. Whenever such an alias exist, use the alias in the
    standard name and the full term in the description.
 
 #. Chemical species in standard names should be denoted by chemical formulae (e.g. ``co2``,
@@ -292,7 +306,8 @@ Prefixes
 None. Note that this is a departure from the CF conventions, which in
 many cases - but not all - use surface_ as a prefix. This departure from
 the CF convention is to maintain consistency with all other level
-qualifiers that are used as _at_level-qualifier (i.e. as suffix).
+qualifiers that are used as _at_level-qualifier (i.e. as suffix), as well as
+reducing ambiguity between different uses of the word "surface" (see above).
 
 Suffixes
 ^^^^^^^^
@@ -311,6 +326,7 @@ Suffixes
 | at_top_of_atmosphere_model
 | at_top_of_dry_convection
 | at_interfaces
+| at_boa
 | at_toa
 | at_tropopause
 | at_surface
@@ -578,6 +594,8 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 | specific               | per unit mass unless otherwise stated                                               |
 +------------------------+-------------------------------------------------------------------------------------+
+| surface                | The top of the solid or liquid medium below the bottom of the atmosphere            |
++------------------------+-------------------------------------------------------------------------------------+
 | unfrozen_water         | liquid and vapor                                                                    |
 +------------------------+-------------------------------------------------------------------------------------+
 | water                  | water in all phases if not otherwise qualified                                      |
@@ -599,6 +617,8 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | **Short**           |  **Meaning**                                            |
 +=====================+=========================================================+
+| boa                 | bottom of atmosphere (atmosphere interface with surface)|
++---------------------+---------------------------------------------------------+
 | cnvc90              | GFS Convective Cloud Diagnostics                        |
 +---------------------+---------------------------------------------------------+
 | edmf                | eddy-diffusivity/mass-flux                              |
