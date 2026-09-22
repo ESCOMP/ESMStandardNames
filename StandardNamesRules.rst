@@ -17,4 +17,4 @@ The source for the rules now lives under `docs/chapters/ <docs/chapters/>`_ in t
 See `docs/index.rst <docs/index.rst>`_ for the table of contents, or build the docs locally with::
 
     python -m pip install -r docs/requirements.txt
-    sphinx-build -b html docs docs/_build/html
+    sphinx-build -b html docs docs/html
