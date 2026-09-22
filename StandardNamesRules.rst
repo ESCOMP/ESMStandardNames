@@ -141,16 +141,16 @@ Terminology
 
    `annotated image detailing some of the terminology in this section <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_terms.png>`_
 
-#. A "layer" is a vertical level of a model, as defined by the host. An "interface" is the boundary above or below a layer.
+#. A "layer" is a vertical level of a model. A variable for a given layer is either at the vertical centerpoint of a level, or the vertical average of a level, as defined by the host (see above). An "interface" is the boundary above or below a layer. A variable specified at a given interface
 
 #. By default, *surface* refers to the liquid or solid substance immediately beneath the atmosphere
    for a given vertical column. This can be land, ocean, ice, lake, etc.
 
-   For "surface" variables describing properties of the atmosphere, near/adjacent to the actual surface,
+   For variables describing properties of the atmosphere near/adjacent to the actual surface,
    care should be taken to specify the specific "surface variable" quantity needed for a specific application:
 
-   *  ``[variable]_at_boa`` ("bottom of atmosphere") is the lowest point of the atmosphere, adjacent to the surface.
-      This is equivalent to the bottom interface (as described above).
+   *  ``[variable]_at_surface`` is the lowest interface of the atmospheric model, adjacent to the surface.
+      This is equivalent to the surface-adjacent/bottom interface (as described above).
    *  ``[variable]_at_surface_adjacent_layer`` is the bottom layer of the atmospheric model
    *  ``[variable]_at_[level]`` for variables defined at specific height above the surface, e.g. ``temperature_at_2m``, ``wind_at_10m``
 
@@ -326,7 +326,6 @@ Suffixes
 | at_top_of_atmosphere_model
 | at_top_of_dry_convection
 | at_interfaces
-| at_boa
 | at_toa
 | at_tropopause
 | at_surface
@@ -594,7 +593,7 @@ Special phrases
 +------------------------+-------------------------------------------------------------------------------------+
 | specific               | per unit mass unless otherwise stated                                               |
 +------------------------+-------------------------------------------------------------------------------------+
-| surface                | The top of the solid or liquid medium below the bottom of the atmosphere            |
+| surface                | The top of the solid or liquid medium below the atmosphere                          |
 +------------------------+-------------------------------------------------------------------------------------+
 | unfrozen_water         | liquid and vapor                                                                    |
 +------------------------+-------------------------------------------------------------------------------------+
@@ -617,8 +616,6 @@ Acronyms, Abbreviations, and Aliases
 +---------------------+---------------------------------------------------------+
 | **Short**           |  **Meaning**                                            |
 +=====================+=========================================================+
-| boa                 | bottom of atmosphere (atmosphere interface with surface)|
-+---------------------+---------------------------------------------------------+
 | cnvc90              | GFS Convective Cloud Diagnostics                        |
 +---------------------+---------------------------------------------------------+
 | edmf                | eddy-diffusivity/mass-flux                              |
