@@ -3,9 +3,9 @@
 
    <br />
 
-*******************
+*******************************************
 Earth System Modeling (ESM) Standard Names
-*******************
+*******************************************
 
 This document contains information about the rules used to create Standard Names
 for use with Earth System Models. It describes the

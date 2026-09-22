@@ -13,7 +13,7 @@ Technical specifications
    but it can be used to inform the contents of that field. The ``standard_name`` XML entry also contains a nested
    ``type`` entry, indicating the data type that a ``standard_name`` should represent, and as an attribute the
    physical units of that variable quantity (see the :ref:`section on Units <units_section>`). For example, the element
-   for the variable name ``exner_function`` may look similar to this:
+   for the variable name ``exner_function`` may look similar to this::
 
     <standard_name name="exner_function"
                    description="exner function, (p/p0)^(Rd/cp), where p0 is 1000 hPa">
