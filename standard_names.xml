@@ -3533,10 +3533,10 @@
     <standard_name name="strong_cosz_area_fraction" description="Area fraction for albedo with strong dependence on cosine of zenith angle">
       <type units="fraction">real</type>
     </standard_name>
-    <standard_name name="surface_friction_velocity">
+    <standard_name name="friction_velocity">
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="surface_friction_velocity_for_momentum">
+    <standard_name name="friction_velocity_for_momentum">
       <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="surface_longwave_emissivity">
