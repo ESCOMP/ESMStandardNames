@@ -1,4 +1,4 @@
-.. _Rules
+.. _Rules:
 
 ESM Standard Name Rules
 ========================
@@ -213,12 +213,12 @@ Terminology
 #. For control-oriented variables, there are a few different prefixes that should be used depending on
    the use case for that specific variable:
 
-   +-------------------+-----------+-----------------------------------------------------------------------------------------------+
+   +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
    | **Prefix**        |  **Type** | **Use case**                    | **Example**                                                 |
    +===================+===========+=================================+=============================================================+
    | `is_`             | `logical` | A flag indicating some state or | `is_mpi_root` indicates whether or not the code is running  |
    |                   |           | condition is true or false      | on the MPI root process                                     |
-   +-------------------+-----------+-------------------------------- +-------------------------------------------------------------+
+   +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
    | `do_`             | `logical` | A flag whose value directs some | `do_chemical_tracer_diagnostics` indicates to a physics     |
    |                   |           | behavior                        | scheme that it should compute chemical tracer diagnostics   |
    +-------------------+-----------+---------------------------------+-------------------------------------------------------------+

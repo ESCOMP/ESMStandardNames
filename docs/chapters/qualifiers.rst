@@ -12,7 +12,7 @@ Prefixes
 ^^^^^^^^
 
 None. Note that this is a departure from the CF conventions, which in
-many cases - but not all - use surface_ as a prefix. This departure from
+many cases - but not all - use surface\_ as a prefix. This departure from
 the CF convention is to maintain consistency with all other level
 qualifiers that are used as _at_level-qualifier (i.e. as suffix), as well as
 reducing ambiguity between different uses of the word "surface" (see above).
@@ -165,9 +165,9 @@ Suffixes
 | on_radiation_timestep
 | on_previous_timestep
 | ``N`` _timesteps_back
-| since_ ``T``
-| over_ ``T``
-| reset_every_ ``T``
+| since\_ ``T``
+| over\_ ``T``
+| reset_every\_ ``T``
 
 Computational
 -------------
