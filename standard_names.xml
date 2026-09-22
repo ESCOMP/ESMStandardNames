@@ -3561,7 +3561,7 @@
     <standard_name name="surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep">
       <type units="W m-2">ddt</type>
     </standard_name>
-    <standard_name name="surface_temperature_scale">
+    <standard_name name="friction_temperature" description="Friction temperature, a.k.a. temperature scale" comment="Defined in Olson et al. 2021 'A Description of the MYNN Surface-Layer Scheme' as negative sensible heat flux divided by the product of density, specific heat Cp, and friction velocity u*">
       <type units="K">real</type>
     </standard_name>
     <standard_name name="temperature_in_ice_layer">
