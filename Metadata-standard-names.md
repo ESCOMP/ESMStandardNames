@@ -64,6 +64,7 @@ The following names are too general to be chosen as standard names, but they can
 * `mass_transport`: Movement of some specified mass by advection
     * `real`: units = kg s-1
 * `mixing_ratio`: A ratio of the amount of one substance to another; when unqualified refers to the ratio of the mass of one substance to the total mass in a given volume
+* `comment`: See Standard Name Rules for further details about disambiguation of this term
     * `real`: units = kg kg-1
 * `mole_flux`: The number of molecules or atoms of a substance traveling through an area per unit time
     * `real`: units = mol m-2 s-1
@@ -173,6 +174,7 @@ These names are used as bases for other names, but may also be considered standa
 * `diffuse_vis_albedo`: Albedo of diffuse incident visible radiation
     * `real`: units = 1
 * `dimensionless_exner_function`: Dimensionless formulation of the Exner function with respect to 1000 hPa
+* `comment`: The formulation of the exner function in an NWP context is (p/p0)^(Rd/cp), where p0 is some reference pressure. For the purposes of the standard names, this reference pressure is assumed as 1000 hPa unless specified otherwise; i.e. dimensionless_exner_function_wrt_air_pressure_at_surface would use the surface pressure as P0. Note that this is numerically equivalent to T/theta (temperature divided by potential temperature), where again theta is calculated with respect to 1000 hPa if not specified. Note that this definition is distinct from the dimensional exner_function standard name; see that entry for further comments. 
     * Equivalent CF name: `dimensionless_exner_function`
     * `real`: units = 1
 * `direct_nir_albedo`: Albedo of direct incident near-infrared radiation
@@ -190,6 +192,7 @@ These names are used as bases for other names, but may also be considered standa
 * `dry_air_enthalpy_at_constant_pressure`: Specific enthalpy of dry air, h = Cp*T; Cp = Specific heat of dry air at constant pressure, T = temperature
     * `real`: units = J kg-1
 * `exner_function`: Exner function, cp * (p/p0)^(Rd/cp), where p0 is some reference pressure (1000 hPa if not specified), Rd is the dry air specific gas constant, and cp is the dry air specific heat capacity.
+* `comment`: The formulation for the exner function comes in two forms: a dimensional form cp * (p/p0)^(Rd/cp) = cp * (T/theta), and a dimensionless form (p/p0)^(Rd/cp) = (T/theta). In the standard names, we use the unqualified exner_function to refer to the dimensional form, and dimensionless_exner_function to refer to the dimensionless form. See the base name entry for dimensionless_exner_function for further comments.
     * `real`: units = 1
 * `filename`: Filename
     * `character`: units = none
@@ -246,6 +249,7 @@ These names are used as bases for other names, but may also be considered standa
     * Equivalent CF name: `solar_zenith_angle`
     * `real`: units = degrees
 * `surface_skin_temperature`: The temperature of the interface of the surface and the atmosphere
+* `comment`: Usage of the term 'skin temperature' varies among different fields in the literature. In the Standard Names we have adopted what we deem the most common definition for 'surface_skin_temperature': the temperature of the interface of the atmosphere and the surface below. This may be considered equivalent to the radiometric temperature derived from satellite or airborne radiometers, provided a known surface_emissivity, though for water specifically there may be special considerations for measured quantities (see comment on 'sea_surface_skin_temperature'). This definition derives from discussion in Chapter 4 of 'Introduction to Micrometeorology' by S. Pal Arya. This quantity should not be confused with 'skin_temperature_at_toa' or 'sea_surface_skin_temperature', which are both sometimes referred to simply as 'skin_temperature'.
     * Equivalent CF name: `surface_skin_temperature`
     * `real`: units = K
 * `temperature_flux`: Flux of temperature across a unit surface
@@ -273,6 +277,7 @@ These names are used as bases for other names, but may also be considered standa
 ## Dimensions
 Names indicating the size, extent, or bounds of data structures in a model.
 * `horizontal_dimension`: Length of the horizontal dimension
+* `comment`: In CCPP, horizontal_dimension refers to all horizontal grid columns that an MPI process owns/is responsible for
     * `integer`: units = count
 * `horizontal_loop_extent`: The horizontal extent of data passed to CCPP physics from the host model during time integration (i.e. in the *run* phase)
     * `integer`: units = count
@@ -656,6 +661,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `reference_sea_surface_temperature`: Foundation/reference temperature for calculating diurnal ocean temperature changes
     * `real`: units = K
 * `sea_surface_skin_temperature`: The temperature of the upper layer of sea surface, typically ~10-100 micrometers, as measured by an infrared radiometer
+* `comment`: Usage of the term 'skin temperature' varies among different fields in the literature. In the Standard Names we have adopted what we deem the most common definition for 'sea_surface_skin_temperature', derived from the CF Standard Names. While there may be some dependence on the IR wavelength used for a measurement, per Donlon et al. (2002) 'Toward Improved Validation of Satellite Sea Surface Skin Temperature Measurements for Climate Research', the difference should not be significant. This quantity should not be confused with 'skin_temperature_at_toa' or 'surface_skin_temperature', which are both sometimes referred to simply as 'skin_temperature'.
     * Equivalent CF name: `sea_surface_skin_temperature`
     * `real`: units = K
 * `sea_surface_temperature`: Sea surface temperature
@@ -2101,6 +2107,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `sine_of_solar_declination_angle`: Sine of solar declination angle
     * `real`: units = 1
 * `skin_temperature_at_toa`: The temperature that a theoretical infinitely thin air layer above the atmosphere would have in radiative equilibrium
+* `comment`: Usage of the term 'skin temperature' varies among different fields in the literature. In the Standard Names we have adopted what we deem the most common definition for 'skin_temperature_at_toa', which is commonly referred to as simply 'skin_temperature' but top-of-atmosphere is included in the name for clarity and disambiguation. This definition is taken directly from Goessling and  Bathiany (2016) 'Why CO2 cools the middle atmosphere - a consolidating model perspective', but very similar definitions can be found broadly in the literature. This quantity should not be confused with 'surface_skin_temperature' or 'sea_surface_skin_temperature', which are both sometimes referred to simply as 'skin_temperature'.
     * `real`: units = K
 * `solar_constant`: Solar constant
     * `real`: units = W m-2
@@ -2286,6 +2293,7 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `fine_root_mass_content`: Fine root mass content
     * `real`: units = g m-2
 * `friction_temperature`: Friction temperature, a.k.a. temperature scale
+* `comment`: Defined in Olson et al. 2021 'A Description of the MYNN Surface-Layer Scheme' as negative sensible heat flux divided by the product of density, specific heat Cp, and friction velocity u*
     * `real`: units = K
 * `friction_velocity_for_momentum`: Friction velocity for momentum
     * `real`: units = m s-1
