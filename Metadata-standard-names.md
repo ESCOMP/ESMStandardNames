@@ -655,6 +655,9 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = m
 * `reference_sea_surface_temperature`: Foundation/reference temperature for calculating diurnal ocean temperature changes
     * `real`: units = K
+* `sea_surface_skin_temperature`: The temperature of the upper layer of sea surface, typically ~10-100 micrometers, as measured by an infrared radiometer
+    * Equivalent CF name: `sea_surface_skin_temperature`
+    * `real`: units = K
 * `sea_surface_temperature`: Sea surface temperature
     * Equivalent CF name: `sea_surface_temperature`
     * `real`: units = K
@@ -2097,6 +2100,8 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = W m-2
 * `sine_of_solar_declination_angle`: Sine of solar declination angle
     * `real`: units = 1
+* `skin_temperature_at_toa`: The temperature that a theoretical infinitely thin air layer above the atmosphere would have in radiative equilibrium
+    * `real`: units = K
 * `solar_constant`: Solar constant
     * `real`: units = W m-2
 * `upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep

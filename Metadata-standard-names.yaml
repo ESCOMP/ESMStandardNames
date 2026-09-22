@@ -1287,6 +1287,12 @@ section:
       changes
     type: real
     units: K
+  - name: sea_surface_skin_temperature
+    cfname: sea_surface_skin_temperature
+    description: The temperature of the upper layer of sea surface, typically ~10-100
+      micrometers, as measured by an infrared radiometer
+    type: real
+    units: K
   - name: sea_surface_temperature
     cfname: sea_surface_temperature
     description: Sea surface temperature
@@ -4367,6 +4373,11 @@ section:
     description: Sine of solar declination angle
     type: real
     units: 1
+  - name: skin_temperature_at_toa
+    description: The temperature that a theoretical infinitely thin air layer above
+      the atmosphere would have in radiative equilibrium
+    type: real
+    units: K
   - name: solar_constant
     description: Solar constant
     type: real

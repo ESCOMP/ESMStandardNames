@@ -154,6 +154,11 @@ Terminology
    *  ``[variable]_at_surface_adjacent_layer`` is the bottom layer of the atmospheric model
    *  ``[variable]_at_[level]`` for variables defined at specific height above the surface, e.g. ``temperature_at_2m``, ``wind_at_10m``
 
+   Note that some commonly used terms with a prefix ``surface_`` are unavoidable due to the common
+   definition being fundamentally different from unqualified ``X``. For example, ``surface_skin_temperature``
+   is a fundamentally different quantity than the unqualified ``skin_temperature``. In cases such as these,
+   a comment should be included noting this special usage of the word "surface".
+
 #. By default, `water` refers to all types of water in any phase (e.g. solid, liquid, gas,
    fresh water, salt water, etc.). The terms `sea` and `ocean` are synonymous, though new names
    should default to using `ocean` unless part of one of the following phrases:
