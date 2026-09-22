@@ -35,14 +35,20 @@ Constructing names
    The following table provides a few concrete examples of standard names and how they are constructed
    with respect to the guideline template.
 
-   `image of table providing standard name construction examples <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png>`_
+   .. figure:: https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png
+      :alt: Table of example standard names showing how each is built from a base name plus qualifiers such as component, medium, level, and process, according to the naming guideline template.
+
+      Examples of standard names and how they are constructed with respect to the guideline template.
 
    Note that "transformations" are a special case, where multiple transformations may be applied,
    and multiple quantities may be compared, operated on, etc. For transformations involving
    multiple quantities (e.g. ``ratio_of_X_to_Y``; see the :ref:`section on Transformations <transformations>`
    for more information), the above formula may be extended around multiple base names.
 
-   `image of table providing standard name construction examples with multiple transformations <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png>`_
+   .. figure:: https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png
+      :alt: Table of example standard names showing how the construction template extends around multiple base names when more than one transformation or quantity is involved.
+
+      Examples of standard name construction for transformations involving multiple quantities.
 
    In the latter example, ``ln`` is operating on the quantity ``water_vapor_partial_pressure_assuming_saturation``,
    while ``derivative_of`` is a combined transformation of ``water_vapor_partial_pressure_assuming_saturation``
@@ -121,7 +127,10 @@ Variable scope
 Terminology
 -----------
 
-   `annotated image detailing some of the terminology in this section <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_terms.png>`_
+   .. figure:: https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_terms.png
+      :alt: Annotated diagram illustrating standard-name terminology such as layer, interface, and surface as used throughout this section.
+
+      Annotated diagram detailing some of the terminology used in this section.
 
 #. A "layer" is a vertical level of a model. A variable for a given layer is either at the vertical
    centerpoint of a level, or the vertical average of a level, as defined by the host (see above).
