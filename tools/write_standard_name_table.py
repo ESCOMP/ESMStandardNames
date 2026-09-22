@@ -135,10 +135,13 @@ def parse_section(snl, sec, level='##'):
             continue
         stdn_name = std_name.get('name')
         stdn_description = std_name.get('description')
+        stdn_comment = std_name.get('comment')
         if stdn_description is None:
             sdict = {'standard_name': stdn_name}
             stdn_description = standard_name_to_description(sdict)
         snl.write(f"* `{stdn_name}`: {stdn_description}\n")
+        if stdn_comment is not None:
+            snl.write(f"* `comment`: {stdn_comment}\n")
         # Should only be type or cfname as subelements of standard_name
         for item in std_name:
             if item.tag == 'cfname':
@@ -194,12 +197,14 @@ def parse_section_for_yaml(section):
             stdn_description = standard_name_to_description(sdict)
 
         std_type = std_name.find('type')
-
+        std_comment = std_name.get('comment')
         std_name_data = OrderedDict()
         std_name_data['name'] = stdn_name
         if stdn_cfname:
             std_name_data['cfname'] = stdn_cfname
         std_name_data['description'] = stdn_description
+        if std_comment is not None:
+            std_name_data['comment'] = std_comment
         if std_type is not None:
             std_name_data['type'] = std_type.text
 
