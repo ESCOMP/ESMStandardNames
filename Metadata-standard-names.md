@@ -195,7 +195,7 @@ These names are used as bases for other names, but may also be considered standa
     * `character`: units = none
 * `forecast_time`: Forecast time
     * `real`: units = h
-* `friction_velocity`: A measure of shear stress within a fluid layer with units of distance per time
+* `friction_velocity`: A measure of shear stress within a fluid layer due to friction against a surface, with units of distance per time
     * `real`: units = m s-1
 * `geopotential`: Gravitational potential energy of a unit mass relative to sea level
     * Equivalent CF name: `geopotential`
@@ -2282,8 +2282,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = g m-2
 * `friction_temperature`: Friction temperature, a.k.a. temperature scale
     * `real`: units = K
-* `friction_velocity`: Friction velocity
-    * `real`: units = m s-1
 * `friction_velocity_for_momentum`: Friction velocity for momentum
     * `real`: units = m s-1
 * `frozen_precipitation_density`: Frozen precipitation density

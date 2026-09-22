@@ -262,7 +262,7 @@
       <standard_name name="forecast_time">
         <type units="h">real</type>
       </standard_name>
-      <standard_name name="friction_velocity" description="A measure of shear stress within a fluid layer with units of distance per time">
+      <standard_name name="friction_velocity" description="A measure of shear stress within a fluid layer due to friction against a surface, with units of distance per time">
         <type units="m s-1">real</type>
       </standard_name>
       <standard_name name="geopotential" description="Gravitational potential energy of a unit mass relative to sea level">
@@ -3365,9 +3365,6 @@
     </standard_name>
     <standard_name name="friction_temperature" description="Friction temperature, a.k.a. temperature scale" comment="Defined in Olson et al. 2021 'A Description of the MYNN Surface-Layer Scheme' as negative sensible heat flux divided by the product of density, specific heat Cp, and friction velocity u*">
       <type units="K">real</type>
-    </standard_name>
-    <standard_name name="friction_velocity">
-      <type units="m s-1">real</type>
     </standard_name>
     <standard_name name="friction_velocity_for_momentum">
       <type units="m s-1">real</type>

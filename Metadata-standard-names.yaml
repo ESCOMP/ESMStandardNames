@@ -355,8 +355,8 @@ section:
       type: real
       units: h
     - name: friction_velocity
-      description: A measure of shear stress within a fluid layer with units of distance
-        per time
+      description: A measure of shear stress within a fluid layer due to friction
+        against a surface, with units of distance per time
       type: real
       units: m s-1
     - name: geopotential
@@ -4756,10 +4756,6 @@ section:
     description: Friction temperature, a.k.a. temperature scale
     type: real
     units: K
-  - name: friction_velocity
-    description: Friction velocity
-    type: real
-    units: m s-1
   - name: friction_velocity_for_momentum
     description: Friction velocity for momentum
     type: real
