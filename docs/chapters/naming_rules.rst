@@ -17,7 +17,7 @@ Constructing names
    while the words in ``this font`` indicate other words or phrases to be substituted.
    The new standard name is constructed by joining the base standard name to the qualifiers using underscores.
 
-   [``transformation``] [``component``] [``non-instant time``] base_name [*in*/*of* ``medium``] [*at* ``level``] [*due_to* ``process``] [``non-current time``] [*assuming* ``condition``]
+   [``transformation``] [``component``] [``non-instant time``] base_name [*in* or *of* ``medium``] [*at* ``level``] [*due_to* ``process``] [``non-current time``] [*assuming* ``condition``]
 
    This construction was originally based on rules set forth in the
    `CF guidelines <http://cfconventions.org/Data/cf-standard-names/docs/guidelines.html>`_,
@@ -70,7 +70,7 @@ Variable scope
      since the start of the simulation
    * ``since_[date/time]`` indicates an accumulation or other change since a given date/time.
 
-   Dates, times, and durations should follow the `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`
+   Dates, times, and durations should follow the `ISO 8601 <https://en.wikipedia.org/wiki/ISO_8601>`_
    international standard, modified only to use lowercase rather than uppercase letters. Note that
    the standard is slightly different for dates and times vs durations. For example:
 
@@ -113,9 +113,9 @@ Variable scope
    narrowly-defined context or a variable without the scope-narrowing qualifiers
    already exists and cannot be reused.
 
-   **Discouraged:** upward_virtual_potential_temperature_flux_for_mellor_yamada_janjic_surface_layer_scheme
+   **Discouraged:** ``upward_virtual_potential_temperature_flux_for_mellor_yamada_janjic_surface_layer_scheme``
 
-   **Preferred:** upward_virtual_potential_temperature_flux
+   **Preferred:** ``upward_virtual_potential_temperature_flux``
 
 #. If there are two identical quantities from different schemes/processes that
    need to be kept apart, suitable qualifiers are added to the names of the processes.
@@ -155,57 +155,61 @@ Terminology
 #. By default, `water` refers to all types of water in any phase (e.g. solid, liquid, gas,
    fresh water, salt water, etc.). The terms `sea` and `ocean` are synonymous, though new names
    should default to using `ocean` unless part of one of the following phrases:
-   * sea_water
-   * sea_ice
-   * sea_level
-   * sea_salt
-   * sea_surface
-   * sea_floor
-   * sea_binary_mask
-   * sea_area 
+
+   * ``sea_water``
+   * ``sea_ice``
+   * ``sea_level``
+   * ``sea_salt``
+   * ``sea_surface``
+   * ``sea_floor``
+   * ``sea_binary_mask``
+   * ``sea_area``
+
+.. _mixing_ratio:
 
 #. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
    Mass mixing ratios should contain information regarding
-   with respect to what quantity they are defined, and options are *wrt_dry_air*,
-   *wrt_moist_air*, or *wrt_moist_air_and_condensed_water*, where *moist_air*
-   refers to dry air plus vapor and *moist_air_and_condensed_water* refers
+   with respect to what quantity they are defined, and options are ``wrt_dry_air``,
+   ``wrt_moist_air``, or ``wrt_moist_air_and_condensed_water``, where ``moist_air``
+   refers to dry air plus vapor and ``moist_air_and_condensed_water`` refers
    to dry air plus vapor and hydrometeors.
 
-   Use of the term *specific_humidity* should be avoided, as there is no consensus on
-   whether it refers to *water_vapor_mixing_ratio_wrt_moist_air* or
-   *water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water*.
-   *total_water* can be used to designate water in every form, i.e. water
+   **Use of the term** ***specific_humidity*** **should be avoided**, as there are differing
+   conventions as to whether it refers to ``water_vapor_mixing_ratio_wrt_moist_air`` or
+   ``water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water``.
+
+   ``total_water`` can be used to designate water in every form, i.e. water
    vapor plus condensed water.
 
-   Volume mixing ratios should be qualified as *volume_mixing_ratio*.
+   Volume mixing ratios should be qualified as ``volume_mixing_ratio``.
 
-#. By default, *mole_fraction_of_X_in_Y* refers to the total amount of *Y*. So, for example,
-   *mole_fraction_of_ozone_in_air* refers to the total amount of (moist) air. (In the case of air,
-   the default meaning is moist air, as described in the *mixing ratio* rule.) When this is not
-   the case, a qualifier should be used to denote this. *e.g.*, *mole_fraction_of_ozone_in_dry_air*.
+#. By default, ``mole_fraction_of_X_in_Y`` refers to the total amount of *Y*. So, for example,
+   ``mole_fraction_of_ozone_in_air`` refers to the total amount of (moist) air. (In the case of air,
+   the default meaning is moist air, as described in the :ref:`*mixing ratio* rule <mixing_ratio>`.) When this is not
+   the case, a qualifier should be used to denote this. *e.g.*, ``mole_fraction_of_ozone_in_dry_air``.
 
 #. When referring to soil quantities,
    *volume_fraction* should be used to express the volumetric soil moisture.
 
-#. Number concentration should appear as a prefix, that is, *number_concentration_of*. By default,
+#. Number concentration should appear as a prefix, that is, ``number_concentration_of_X``. By default,
    number concentrations are specified per unit of volume. When they are specified per
-   unit of mass, they should be written as *mass_number_concentration_of*.
+   unit of mass, they should be written as ``mass_number_concentration_of_X``.
 
-#. By default, *precipitation* refers to the sum of all phases of precipitating hydrometeors,
-   for example rain plus graupel plus hail.  The term *frozen_precipitation* refers to the
-   sum of all frozen precipitating hydrometers, for example graupel plus hail (but not rain).
+#. By default, ``precipitation`` refers to the sum of all phases of precipitating hydrometeors,
+   for example "rain plus graupel plus hail".  The term ``frozen_precipitation`` refers to the
+   sum of all frozen precipitating hydrometers, for example "graupel plus hail" (but not rain).
    Otherwise the standard name should explicitly state the type of hydrometeor(s) the
-   named quantity represents (e.g. *graupel*).
+   named quantity represents (e.g. ``graupel``).
 
-#. By default, the term *cloud* refers to all cloud phases and cloud types. Otherwise
+#. By default, the term ``cloud`` refers to all cloud phases and cloud types. Otherwise
    an additional prefix or suffix should be added to the standard name specifying what kind(s)
-   of clouds the variable represents (e.g. *ice_cloud* if only including glaciated clouds, or
-   *cloud_at_500hPa* if only including clouds that exist at 500 hPa).
+   of clouds the variable represents (e.g. ``ice_cloud`` if only including glaciated clouds, or
+   ``cloud_at_500hPa`` if only including clouds that exist at 500 hPa).
 
-#. Spell out acronyms unless they are defined in the list of "Acronyms, Abbreviations, and Aliases"
-   below. Whenever such an alias exist, use the alias in the
-   standard name and the full term in the description.
+#. Spell out acronyms unless they are defined in the
+   :ref"`list of "Acronyms, Abbreviations, and Aliases" <Aliases>`. Whenever such an alias exists,
+   use the alias in the standard name and the full term in the description.
 
 #. Chemical species in standard names should be denoted by chemical formulae (e.g. ``co2``,
    ``ch4``, ``c5h8``) or commonly accepted designations (e.g. ``cfc12``); generally when there are
@@ -225,30 +229,42 @@ Terminology
    +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
    | **Prefix**        |  **Type** | **Use case**                    | **Example**                                                 |
    +===================+===========+=================================+=============================================================+
-   | `is_`             | `logical` | A flag indicating some state or | `is_mpi_root` indicates whether or not the code is running  |
+   | ``is_``           |``logical``| A flag indicating some state or | ``is_mpi_root`` indicates whether or not the code is running|
    |                   |           | condition is true or false      | on the MPI root process                                     |
    +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
-   | `do_`             | `logical` | A flag whose value directs some | `do_chemical_tracer_diagnostics` indicates to a physics     |
+   | ``do_``           |``logical``| A flag whose value directs some | ``do_chemical_tracer_diagnostics`` indicates to a physics   |
    |                   |           | behavior                        | scheme that it should compute chemical tracer diagnostics   |
    +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
-   | `identifier_for_` | `integer` | A parameter indicating some     | `identifier_for_noah_land_surface_scheme` is an integer     |
+   |``identifier_for_``|``integer``| A parameter indicating some     | ``identifier_for_noah_land_surface_scheme`` is an integer   |
    |                   |           | state or condition              | identifying the Noah land surface model                     |
    +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
-   | `control_for_`    | `integer` | A control whose value directs   | `control_for_land_surface_scheme` is an integer identifying |
-   |                   |           | some behavior                   | the land surface scheme type                                |
+   | ``control_for_``  |``integer``| A control whose value directs   | ``control_for_land_surface_scheme`` is an integer           |
+   |                   |           | some behavior                   | identifying the land surface scheme type                    |
    +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
-   | `index_of_`       | `integer` | An index entry for an array     | `index_of_ice_vegetation_category` is an index describing   |
+   | ``index_of_``     |``integer``| An index entry for an array     | ``index_of_ice_vegetation_category`` is an index describing |
    |                   |           |                                 | the location of the ice vegetation category in the array of |
    |                   |           |                                 | vegetation categories                                       |
    +-------------------+-----------+---------------------------------+-------------------------------------------------------------+
 
 #. The ``direction`` of a vector, unless noted otherwise, is the geographical bearing measured in the positive clockwise direction from due north. For example, ``wind_to_direction = 90`` is the same as ``wind_from_direction = 270``, meaning wind blowing towards the east.
 
-#. **Disallowed terms:** A few terms are disallowed as standard name components for various reasons; mostly due to
-   ambiguity.
+Disallowed terms
+----------------
 
-   - ``specific_humidity`` Disallowed due to ambiguity and different definitions between different fields. See above section describing ``mixing_ratio`` for more information.
-   - ``amount`` In most contexts this word is superfluous, and in all contexts it is non-descriptive. Consider a more specific term such as ``mass_content``
+A few terms are disallowed as standard name components for various reasons; mostly due to ambiguity:
 
-#. **Reserved names:** The prefix ``ccpp_`` is reserved for CCPP framework-provided variables.
-   All other standard names should avoid the use of ``ccpp`` in their name.
+   - ``specific_humidity``
+
+     Disallowed due to ambiguity and different definitions between different fields. See above section describing ``mixing_ratio`` for more information.
+   - ``amount``
+
+     In most contexts this word is superfluous, and in all contexts it is non-descriptive. Consider a more specific term such as ``mass_content``
+
+Reserved names
+--------------
+
+Currently there is only one "reserved" phrase that should only be used by a specific modeling
+system component. Others may be added here in the future as needed.
+
+#. The prefix ``ccpp_`` is reserved for CCPP framework-provided variables. All other standard names
+   should avoid the use of ``ccpp`` in their name.
