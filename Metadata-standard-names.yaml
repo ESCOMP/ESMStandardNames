@@ -1046,6 +1046,10 @@ section:
     description: Potentially advected quantities
     type: real
     units: various
+  - name: pressure_of_dry_air_at_surface
+    description: surface pressure of dry air
+    type: real
+    units: Pa
   - name: ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one
     description: Ratio of gas constants of water vapor to composition-dependent dry
       air minus one; (Rwv / Rdair) - 1.0
@@ -1068,6 +1072,11 @@ section:
     description: reference pressure normalized by surface pressure
     type: real
     units: 1
+  - name: reference_pressure_at_surface
+    description: Reference surface air pressure used in definition of some other quantity
+      (e.g. potential temperature, Exner function, etc.)
+    type: real
+    units: Pa
   - name: reference_pressure_in_atmosphere_layer
     description: Reference pressure in atmosphere layer
     type: real
@@ -1098,15 +1107,6 @@ section:
       moist air
     type: real
     units: kg kg-1
-  - name: pressure_of_dry_air_at_surface
-    description: surface pressure of dry air
-    type: real
-    units: Pa
-  - name: reference_pressure_at_surface
-    description: Reference surface air pressure used in definition of some other quantity
-      (e.g. potential temperature, Exner function, etc.)
-    type: real
-    units: Pa
   - name: timestep_for_physics
     description: Timestep for physics
     type: integer
@@ -3912,7 +3912,7 @@ section:
     description: Cloud phase transition threshold temperature
     type: real
     units: K
-  - name: lower_bound_for_depth_of_sea_temperature_for_nsstm
+  - name: lower_bound_for_depth_of_ocean_temperature_for_nsstm
     description: Lower bound for depth of sea temperature for GFS near-surface sea
       temperature scheme
     type: integer
@@ -3999,7 +3999,7 @@ section:
     description: Sigma pressure threshold at upper extent of background diffusion
     type: real
     units: 1
-  - name: upper_bound_for_depth_of_sea_temperature_for_nsstm
+  - name: upper_bound_for_depth_of_ocean_temperature_for_nsstm
     description: Upper bound for depth of sea temperature for GFS near-surface sea
       temperature scheme
     type: integer
@@ -4247,6 +4247,11 @@ section:
     description: Downwelling shortwave flux at surface on radiation timestep
     type: real
     units: W m-2
+  - name: lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep
+    description: longwave total sky fluxes at surface interface, assuming clear sky,
+      on radiation timestep
+    type: ddt
+    units: W m-2
   - name: net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling
     description: net downwelling diffuse near-infrared shortwave flux at the surface
       level for coupling
@@ -4365,11 +4370,6 @@ section:
   - name: solar_constant
     description: Solar constant
     type: real
-    units: W m-2
-  - name: lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep
-    description: longwave total sky fluxes at surface interface, assuming clear sky,
-      on radiation timestep
-    type: ddt
     units: W m-2
   - name: upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep
     description: upwelling diffuse near-infrared shortwave flux at the surface level
@@ -4752,6 +4752,18 @@ section:
     description: Fine root mass content
     type: real
     units: g m-2
+  - name: friction_temperature
+    description: Friction temperature, a.k.a. temperature scale
+    type: real
+    units: K
+  - name: friction_velocity
+    description: Friction velocity
+    type: real
+    units: m s-1
+  - name: friction_velocity_for_momentum
+    description: Friction velocity for momentum
+    type: real
+    units: m s-1
   - name: frozen_precipitation_density
     description: Frozen precipitation density
     type: real
@@ -4918,22 +4930,6 @@ section:
     description: Sea ice thickness
     type: real
     units: m
-  - name: surface_skin_temperature_over_ice
-    description: Surface skin temperature over (or where) ice
-    type: real
-    units: K
-  - name: surface_skin_temperature_over_land
-    description: Surface skin temperature over (or where) land
-    type: real
-    units: K
-  - name: surface_skin_temperature_over_ocean
-    description: Surface skin temperatura over (or where) ocean
-    type: real
-    units: K
-  - name: surface_skin_temperature_over_snow
-    description: Surface skin temperature over (or where) snow
-    type: real
-    units: K
   - name: slow_soil_pool_mass_content_of_carbon
     cfname: slow_soil_pool_mass_content_of_carbon
     description: Slow soil pool mass content of carbon
@@ -4989,14 +4985,6 @@ section:
       angle
     type: real
     units: fraction
-  - name: friction_velocity
-    description: Friction velocity
-    type: real
-    units: m s-1
-  - name: friction_velocity_for_momentum
-    description: Friction velocity for momentum
-    type: real
-    units: m s-1
   - name: surface_longwave_emissivity
     cfname: surface_longwave_emissivity
     description: Surface longwave emissivity
@@ -5014,6 +5002,22 @@ section:
     description: Surface sensible heat due to rainfall
     type: real
     units: W
+  - name: surface_skin_temperature_over_ice
+    description: Surface skin temperature over (or where) ice
+    type: real
+    units: K
+  - name: surface_skin_temperature_over_land
+    description: Surface skin temperature over (or where) land
+    type: real
+    units: K
+  - name: surface_skin_temperature_over_ocean
+    description: Surface skin temperatura over (or where) ocean
+    type: real
+    units: K
+  - name: surface_skin_temperature_over_snow
+    description: Surface skin temperature over (or where) snow
+    type: real
+    units: K
   - name: surface_snow_mass_content_over_ice
     description: Surface snow mass content over ice
     type: real
@@ -5026,10 +5030,6 @@ section:
     description: Surface sw fluxes assuming total and clear sky on radiation timestep
     type: ddt
     units: W m-2
-  - name: friction_temperature
-    description: Friction temperature, a.k.a. temperature scale
-    type: real
-    units: K
   - name: temperature_in_ice_layer
     description: Temperature in ice layer
     type: real

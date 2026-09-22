@@ -2786,7 +2786,7 @@
     <standard_name name="cloud_phase_transition_threshold_temperature">
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="lower_bound_for_depth_of_sea_temperature_for_nsstm" description="Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme">
+    <standard_name name="lower_bound_for_depth_of_ocean_temperature_for_nsstm" description="Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme">
       <type units="mm">integer</type>
     </standard_name>
     <standard_name name="max_critical_relative_humidity" description="Maximum critical relative humidity">
@@ -2846,7 +2846,7 @@
     <standard_name name="sigma_pressure_threshold_at_upper_extent_of_background_diffusion">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="upper_bound_for_depth_of_sea_temperature_for_nsstm" description="Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme">
+    <standard_name name="upper_bound_for_depth_of_ocean_temperature_for_nsstm" description="Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme">
       <type units="mm">integer</type>
     </standard_name>
   </section>

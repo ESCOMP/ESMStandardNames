@@ -154,6 +154,18 @@ Terminology
    *  ``[variable]_at_surface_adjacent_layer`` is the bottom layer of the atmospheric model
    *  ``[variable]_at_[level]`` for variables defined at specific height above the surface, e.g. ``temperature_at_2m``, ``wind_at_10m``
 
+#. By default, `water` refers to all types of water in any phase (e.g. solid, liquid, gas,
+   fresh water, salt water, etc.). The terms `sea` and `ocean` are synonymous, though new names
+   should default to using `ocean` unless part of one of the following phrases:
+   * sea_water
+   * sea_ice
+   * sea_level
+   * sea_salt
+   * sea_surface
+   * sea_floor
+   * sea_binary_mask
+   * sea_area 
+
 #. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
    Mass mixing ratios should contain information regarding

@@ -543,6 +543,8 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = K
 * `potentially_advected_quantities`: Potentially advected quantities
     * `real`: units = various
+* `pressure_of_dry_air_at_surface`: surface pressure of dry air
+    * `real`: units = Pa
 * `ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one`: Ratio of gas constants of water vapor to composition-dependent dry air minus one; (Rwv / Rdair) - 1.0
     * `real`: units = 1
 * `reciprocal_of_air_pressure_thickness`: Reciprocal of air pressure thickness
@@ -553,6 +555,8 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = 1
 * `reference_air_pressure_normalized_by_air_pressure_at_surface`: reference pressure normalized by surface pressure
     * `real`: units = 1
+* `reference_pressure_at_surface`: Reference surface air pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)
+    * `real`: units = Pa
 * `reference_pressure_in_atmosphere_layer`: Reference pressure in atmosphere layer
     * `real`: units = Pa
 * `reference_pressure_in_atmosphere_layer_normalized_by_reference_pressure_at_surface`: Reference pressure in atmosphere layer normalized by surface reference pressure
@@ -567,10 +571,6 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = kg kg-1
 * `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
     * `real`: units = kg kg-1
-* `pressure_of_dry_air_at_surface`: surface pressure of dry air
-    * `real`: units = Pa
-* `reference_pressure_at_surface`: Reference surface air pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)
-    * `real`: units = Pa
 * `timestep_for_physics`: Timestep for physics
     * `integer`: units = s
 * `upward_absolute_vorticity_of_air`: The upward (kth) component of the curl of the vector wind field
@@ -1895,7 +1895,7 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m s-1
 * `cloud_phase_transition_threshold_temperature`: Cloud phase transition threshold temperature
     * `real`: units = K
-* `lower_bound_for_depth_of_sea_temperature_for_nsstm`: Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme
+* `lower_bound_for_depth_of_ocean_temperature_for_nsstm`: Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme
     * `integer`: units = mm
 * `max_critical_relative_humidity`: Maximum critical relative humidity
     * `real`: units = fraction
@@ -1935,7 +1935,7 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = fraction
 * `sigma_pressure_threshold_at_upper_extent_of_background_diffusion`: Sigma pressure threshold at upper extent of background diffusion
     * `real`: units = 1
-* `upper_bound_for_depth_of_sea_temperature_for_nsstm`: Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme
+* `upper_bound_for_depth_of_ocean_temperature_for_nsstm`: Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme
     * `integer`: units = mm
 ## Stochastic physics variables
 * `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme
@@ -2043,6 +2043,8 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = W m-2
 * `downwelling_shortwave_flux_at_surface_on_radiation_timestep`: Downwelling shortwave flux at surface on radiation timestep
     * `real`: units = W m-2
+* `lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep`: longwave total sky fluxes at surface interface, assuming clear sky, on radiation timestep
+    * `ddt`: units = W m-2
 * `net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse near-infrared shortwave flux at the surface level for coupling
     * `real`: units = W m-2
 * `net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling
@@ -2097,8 +2099,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = 1
 * `solar_constant`: Solar constant
     * `real`: units = W m-2
-* `lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep`: longwave total sky fluxes at surface interface, assuming clear sky, on radiation timestep
-    * `ddt`: units = W m-2
 * `upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep
     * `real`: units = W m-2
 * `upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep
@@ -2280,6 +2280,12 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = g m-2
 * `fine_root_mass_content`: Fine root mass content
     * `real`: units = g m-2
+* `friction_temperature`: Friction temperature, a.k.a. temperature scale
+    * `real`: units = K
+* `friction_velocity`: Friction velocity
+    * `real`: units = m s-1
+* `friction_velocity_for_momentum`: Friction velocity for momentum
+    * `real`: units = m s-1
 * `frozen_precipitation_density`: Frozen precipitation density
     * `real`: units = kg m-3
 * `graupel_precipitation_rate_on_previous_timestep`: Graupel precipitation rate on previous timestep
@@ -2361,14 +2367,6 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `sea_ice_thickness`: Sea ice thickness
     * Equivalent CF name: `sea_ice_thickness`
     * `real`: units = m
-* `surface_skin_temperature_over_ice`: Surface skin temperature over (or where) ice
-    * `real`: units = K
-* `surface_skin_temperature_over_land`: Surface skin temperature over (or where) land
-    * `real`: units = K
-* `surface_skin_temperature_over_ocean`: Surface skin temperatura over (or where) ocean
-    * `real`: units = K
-* `surface_skin_temperature_over_snow`: Surface skin temperature over (or where) snow
-    * `real`: units = K
 * `slow_soil_pool_mass_content_of_carbon`: Slow soil pool mass content of carbon
     * Equivalent CF name: `slow_soil_pool_mass_content_of_carbon`
     * `real`: units = g m-2
@@ -2396,10 +2394,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = g m-2
 * `strong_cosz_area_fraction`: Area fraction for albedo with strong dependence on cosine of zenith angle
     * `real`: units = fraction
-* `friction_velocity`: Friction velocity
-    * `real`: units = m s-1
-* `friction_velocity_for_momentum`: Friction velocity for momentum
-    * `real`: units = m s-1
 * `surface_longwave_emissivity`: Surface longwave emissivity
     * Equivalent CF name: `surface_longwave_emissivity`
     * `real`: units = fraction
@@ -2409,14 +2403,20 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = fraction
 * `surface_sensible_heat_due_to_rainfall`: Surface sensible heat due to rainfall
     * `real`: units = W
+* `surface_skin_temperature_over_ice`: Surface skin temperature over (or where) ice
+    * `real`: units = K
+* `surface_skin_temperature_over_land`: Surface skin temperature over (or where) land
+    * `real`: units = K
+* `surface_skin_temperature_over_ocean`: Surface skin temperatura over (or where) ocean
+    * `real`: units = K
+* `surface_skin_temperature_over_snow`: Surface skin temperature over (or where) snow
+    * `real`: units = K
 * `surface_snow_mass_content_over_ice`: Surface snow mass content over ice
     * `real`: units = kg m-2
 * `surface_snow_mass_content_over_land`: Surface snow mass content over land
     * `real`: units = kg m-2
 * `surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep`: Surface sw fluxes assuming total and clear sky on radiation timestep
     * `ddt`: units = W m-2
-* `friction_temperature`: Friction temperature, a.k.a. temperature scale
-    * `real`: units = K
 * `temperature_in_ice_layer`: Temperature in ice layer
     * `real`: units = K
 * `temperature_in_surface_snow`: Temperature in surface snow
