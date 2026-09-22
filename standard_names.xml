@@ -1916,7 +1916,7 @@
     <standard_name name="control_for_vegetation_dataset">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="control_for_vertical_index_direction" description="control flag for direction of vertical index; 0 indicates index from top of atmosphere to surface, 1 indicates index from surface to toa">
+    <standard_name name="control_for_vertical_index_direction" description="control flag for direction of vertical index; 0 indicates index from top-of-atmosphere to surface, 1 indicates index from surface to top-of-atmosphere">
       <type units="1">integer</type>
     </standard_name>
     <standard_name name="do_aerosol_physics">

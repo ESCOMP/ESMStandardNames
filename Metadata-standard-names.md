@@ -1313,7 +1313,7 @@ Variables that indicate or control some action.
     * `real`: units = 1
 * `control_for_vegetation_dataset`: Control for vegetation dataset
     * `integer`: units = 1
-* `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from top of atmosphere to surface, 1 indicates index from surface to toa
+* `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from top-of-atmosphere to surface, 1 indicates index from surface to top-of-atmosphere
     * `integer`: units = 1
 * `do_aerosol_physics`: Do aerosol physics
     * `logical`: units = flag
