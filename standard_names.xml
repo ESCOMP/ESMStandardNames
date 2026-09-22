@@ -776,6 +776,9 @@
     <standard_name name="potentially_advected_quantities">
       <type units="various">real</type>
     </standard_name>
+    <standard_name name="pressure_of_dry_air_at_surface" description="surface pressure of dry air">
+      <type units="Pa">real</type>
+    </standard_name>
     <standard_name name="ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one" description="Ratio of gas constants of water vapor to composition-dependent dry air minus one; (Rwv / Rdair) - 1.0">
       <type units="1">real</type>
     </standard_name>
@@ -790,6 +793,9 @@
     </standard_name>
     <standard_name name="reference_air_pressure_normalized_by_air_pressure_at_surface" description="reference pressure normalized by surface pressure">
       <type units="1">real</type>
+    </standard_name>
+    <standard_name name="reference_pressure_at_surface" description="Reference surface air pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)">
+      <type units="Pa">real</type>
     </standard_name>
     <standard_name name="reference_pressure_in_atmosphere_layer">
       <type units="Pa">real</type>
@@ -811,12 +817,6 @@
     </standard_name>
     <standard_name name="subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air" description="Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air">
       <type units="kg kg-1">real</type>
-    </standard_name>
-    <standard_name name="pressure_of_dry_air_at_surface" description="surface pressure of dry air">
-      <type units="Pa">real</type>
-    </standard_name>
-    <standard_name name="reference_pressure_at_surface" description="Reference surface air pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)">
-      <type units="Pa">real</type>
     </standard_name>
     <standard_name name="timestep_for_physics">
       <type units="s">integer</type>
@@ -3009,6 +3009,9 @@
     <standard_name name="downwelling_shortwave_flux_at_surface_on_radiation_timestep">
       <type units="W m-2">real</type>
     </standard_name>
+    <standard_name name="lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep" description="longwave total sky fluxes at surface interface, assuming clear sky, on radiation timestep">
+      <type units="W m-2">ddt</type>
+    </standard_name>
     <standard_name name="net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling" description="net downwelling diffuse near-infrared shortwave flux at the surface level for coupling">
       <type units="W m-2">real</type>
     </standard_name>
@@ -3089,9 +3092,6 @@
     </standard_name>
     <standard_name name="solar_constant">
       <type units="W m-2">real</type>
-    </standard_name>
-    <standard_name name="lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep" description="longwave total sky fluxes at surface interface, assuming clear sky, on radiation timestep">
-      <type units="W m-2">ddt</type>
     </standard_name>
     <standard_name name="upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep">
       <type units="W m-2">real</type>
@@ -3363,6 +3363,15 @@
     <standard_name name="fine_root_mass_content">
       <type units="g m-2">real</type>
     </standard_name>
+    <standard_name name="friction_temperature" description="Friction temperature, a.k.a. temperature scale" comment="Defined in Olson et al. 2021 'A Description of the MYNN Surface-Layer Scheme' as negative sensible heat flux divided by the product of density, specific heat Cp, and friction velocity u*">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="friction_velocity">
+      <type units="m s-1">real</type>
+    </standard_name>
+    <standard_name name="friction_velocity_for_momentum">
+      <type units="m s-1">real</type>
+    </standard_name>
     <standard_name name="frozen_precipitation_density">
       <type units="kg m-3">real</type>
     </standard_name>
@@ -3481,18 +3490,6 @@
       <cfname>sea_ice_thickness</cfname>
       <type units="m">real</type>
     </standard_name>
-    <standard_name name="surface_skin_temperature_over_ice" description="Surface skin temperature over (or where) ice">
-      <type units="K">real</type>
-    </standard_name>
-    <standard_name name="surface_skin_temperature_over_land" description="Surface skin temperature over (or where) land">
-      <type units="K">real</type>
-    </standard_name>
-    <standard_name name="surface_skin_temperature_over_ocean" description="Surface skin temperatura over (or where) ocean">
-      <type units="K">real</type>
-    </standard_name>
-    <standard_name name="surface_skin_temperature_over_snow" description="Surface skin temperature over (or where) snow">
-      <type units="K">real</type>
-    </standard_name>
     <standard_name name="slow_soil_pool_mass_content_of_carbon">
       <cfname>slow_soil_pool_mass_content_of_carbon</cfname>
       <type units="g m-2">real</type>
@@ -3533,12 +3530,6 @@
     <standard_name name="strong_cosz_area_fraction" description="Area fraction for albedo with strong dependence on cosine of zenith angle">
       <type units="fraction">real</type>
     </standard_name>
-    <standard_name name="friction_velocity">
-      <type units="m s-1">real</type>
-    </standard_name>
-    <standard_name name="friction_velocity_for_momentum">
-      <type units="m s-1">real</type>
-    </standard_name>
     <standard_name name="surface_longwave_emissivity">
       <cfname>surface_longwave_emissivity</cfname>
       <type units="fraction">real</type>
@@ -3552,6 +3543,18 @@
     <standard_name name="surface_sensible_heat_due_to_rainfall">
       <type units="W">real</type>
     </standard_name>
+    <standard_name name="surface_skin_temperature_over_ice" description="Surface skin temperature over (or where) ice">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="surface_skin_temperature_over_land" description="Surface skin temperature over (or where) land">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="surface_skin_temperature_over_ocean" description="Surface skin temperatura over (or where) ocean">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="surface_skin_temperature_over_snow" description="Surface skin temperature over (or where) snow">
+      <type units="K">real</type>
+    </standard_name>
     <standard_name name="surface_snow_mass_content_over_ice">
       <type units="kg m-2">real</type>
     </standard_name>
@@ -3560,9 +3563,6 @@
     </standard_name>
     <standard_name name="surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep">
       <type units="W m-2">ddt</type>
-    </standard_name>
-    <standard_name name="friction_temperature" description="Friction temperature, a.k.a. temperature scale" comment="Defined in Olson et al. 2021 'A Description of the MYNN Surface-Layer Scheme' as negative sensible heat flux divided by the product of density, specific heat Cp, and friction velocity u*">
-      <type units="K">real</type>
     </standard_name>
     <standard_name name="temperature_in_ice_layer">
       <type units="K">real</type>

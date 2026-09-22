@@ -37,7 +37,7 @@ section:
       type: real
       units: J
     - name: energy_content
-      description: Total energy within some surface
+      description: Total energy within some ideal surface
       type: real
       units: J m-2
     - name: energy_density
@@ -266,7 +266,7 @@ section:
       type: real
       units: K
     - name: albedo
-      description: The fraction of incident radiation reflected by a surface
+      description: The fraction of incident radiation reflected by a physical surface
       type: real
       units: 1
     - name: atmosphere_heat_diffusivity
@@ -457,7 +457,7 @@ section:
       units: degrees
     - name: surface_skin_temperature
       cfname: surface_skin_temperature
-      description: The temperature of the topmost layer of the surface
+      description: The temperature of the interface of the surface and the atmosphere
       type: real
       units: K
     - name: temperature_flux
@@ -765,7 +765,7 @@ section:
     units: Pa
   - name: air_pressure_at_surface
     cfname: surface_air_pressure
-    description: Air pressure at local surface
+    description: Air pressure at surface; i.e. surface pressure
     type: real
     units: Pa
   - name: air_pressure_at_surface_adjacent_layer
@@ -882,7 +882,7 @@ section:
       and p is the pressure at the surface-adjacent layer
     type: real
     units: 1
-  - name: dimensionless_exner_function_wrt_surface_pressure
+  - name: dimensionless_exner_function_wrt_pressure_at_surface
     description: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
     type: real
     units: 1
@@ -1072,7 +1072,7 @@ section:
     description: Reference pressure in atmosphere layer
     type: real
     units: Pa
-  - name: reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure
+  - name: reference_pressure_in_atmosphere_layer_normalized_by_reference_pressure_at_surface
     description: Reference pressure in atmosphere layer normalized by surface reference
       pressure
     type: real
@@ -1098,13 +1098,13 @@ section:
       moist air
     type: real
     units: kg kg-1
-  - name: surface_pressure_of_dry_air
-    description: Surface pressure of dry air
+  - name: pressure_of_dry_air_at_surface
+    description: surface pressure of dry air
     type: real
     units: Pa
-  - name: surface_reference_pressure
-    description: Reference pressure used in definition of some other quantity (e.g.
-      potential temperature, Exner function, etc.)
+  - name: reference_pressure_at_surface
+    description: Reference surface air pressure used in definition of some other quantity
+      (e.g. potential temperature, Exner function, etc.)
     type: real
     units: Pa
   - name: timestep_for_physics
@@ -1118,7 +1118,7 @@ section:
     units: s-1
   - name: upward_heat_flux_in_air_at_surface
     cfname: surface_upward_heat_flux_in_air
-    description: Upward heat flux in air at surface
+    description: Upward heat flux in air at surface interface
     type: real
     units: W m-2
   - name: us_standard_air_pressure_at_mean_sea_level
@@ -1167,7 +1167,7 @@ section:
     units: kg kg-1
   - name: water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back
     description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) two timesteps back
+      moist air) two timesteps before the current timestep
     type: real
     units: kg kg-1
   - name: wind_from_direction_at_10m
@@ -1607,12 +1607,12 @@ section:
       units: 1
     - name: cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice
       description: Cloud condensed water mass mixing ratio with respect to moist air
-        at surface over ice
+        at surface interface over ice
       type: real
       units: kg kg-1
     - name: cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land
       description: Cloud condensed water mass mixing ratio with respect to moist air
-        at surface over land
+        at surface interface over land
       type: real
       units: kg kg-1
     - name: cloud_ice_mixing_ratio_wrt_dry_air
@@ -2671,7 +2671,7 @@ section:
     units: 1
   - name: control_for_vertical_index_direction
     description: control flag for direction of vertical index; 0 indicates index from
-      toa to surface, 1 indicates index from surface to toa
+      top of atmosphere to surface, 1 indicates index from surface to toa
     type: integer
     units: 1
   - name: do_aerosol_physics
@@ -3329,13 +3329,13 @@ section:
     type: real
     units: 1
   - name: index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array
-    description: Index of air pressure at surface on previous timestep in xyz dimensioned
+    description: Index of surface pressure on previous timestep in xyz-dimensioned
       restart array
     type: integer
     units: index
   - name: index_of_air_pressure_at_surface_two_timesteps_back_in_xyz_dimensioned_tracer_array
-    description: Index of air pressure at surface two timesteps back in xyz dimensioned
-      tracer array
+    description: Index of surface pressure two timesteps before the current timestep
+      in xyz-dimensioned tracer array
     type: integer
     units: index
   - name: index_of_air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array
@@ -3513,7 +3513,8 @@ section:
     units: index
   - name: index_of_water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back_in_xyz_dimensioned_restart_array
     description: Index of specific humidity (water vapor mass mixing ratio with respect
-      to moist air) two timesteps back in xyz dimensioned restart array
+      to moist air) two timesteps before the current timestep in xyz dimensioned restart
+      array
     type: integer
     units: index
   - name: index_of_water_vegetation_category
@@ -3667,7 +3668,7 @@ section:
     type: real
     units: 1
   - name: critical_relative_humidity_at_surface
-    description: Critical relative humidity at surface
+    description: Critical relative humidity at the surface interface
     type: real
     units: fraction
   - name: critical_relative_humidity_at_toa
@@ -4365,8 +4366,9 @@ section:
     description: Solar constant
     type: real
     units: W m-2
-  - name: surface_lw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep
-    description: Surface lw fluxes assuming total and clear sky on radiation timestep
+  - name: lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep
+    description: longwave total sky fluxes at surface interface, assuming clear sky,
+      on radiation timestep
     type: ddt
     units: W m-2
   - name: upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep
@@ -4401,15 +4403,15 @@ section:
   comment: null
   standard_names:
   - name: air_pressure_at_surface_for_coupling
-    description: Air pressure at surface for coupling
+    description: Surface pressure for coupling
     type: real
     units: Pa
   - name: air_pressure_at_surface_on_previous_timestep
-    description: Air pressure at surface on previous timestep
+    description: Surface pressure on previous timestep
     type: real
     units: Pa
   - name: air_pressure_at_surface_two_timesteps_back
-    description: Air pressure at surface two timesteps back
+    description: Surface pressure two timesteps before the current timestep
     type: real
     units: Pa
   - name: critical_relative_humidity_at_top_of_atmosphere_boundary_layer
@@ -4491,12 +4493,12 @@ section:
     units: fraction
   - name: upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface
     description: Upward specific humidity (water vapor mass mixing ratio with respect
-      to moist air) flux at surface
+      to moist air) flux at surface interface
     type: real
     units: kg kg-1 m s-1
   - name: upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme
     description: Upward flux of specific humidity (water vapor mass mixing ratio with
-      respect to moist air) at surface for MYJ surface layer scheme
+      respect to moist air) at surface interface for MYJ surface layer scheme
     type: real
     units: m s-1 kg kg-1
   - name: upward_latent_heat_flux_at_surface_for_coupling
@@ -4534,12 +4536,12 @@ section:
     units: kg kg-1
   - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface
     description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at surface
+      moist air) at surface interface
     type: real
     units: kg kg-1
   - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes
-    description: Surface specific humidity (water vapor mass mixing ratio with respect
-      to moist air) for Mellor-Yamada-Janjic physics schemes
+    description: Specific humidity (water vapor mass mixing ratio with respect to
+      moist air) at surface interface for Mellor-Yamada-Janjic physics schemes
     type: real
     units: kg kg-1
   - name: water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer
@@ -4548,11 +4550,12 @@ section:
     type: real
     units: kg kg-1
   - name: x_momentum_flux_at_surface_for_coupling
-    description: X momentum flux at surface for coupling
+    description: Momentum flux in the x-direction at the surface interface for coupling
     type: real
     units: Pa
   - name: x_momentum_flux_at_surface_from_coupled_process
-    description: X momentum flux at surface from coupled process
+    description: Momentum flux in the x-direction at the surface interface from a
+      coupled process
     type: real
     units: Pa
   - name: x_wind_at_10m_for_coupling
@@ -4564,11 +4567,12 @@ section:
     type: real
     units: m s-1
   - name: y_momentum_flux_at_surface_for_coupling
-    description: Y momentum flux at surface for coupling
+    description: Momentum flux in the y-direction at the surface interface for coupling
     type: real
     units: Pa
   - name: y_momentum_flux_at_surface_from_coupled_process
-    description: Y momentum flux at surface from coupled process
+    description: Momentum flux in the y-direction at the surface interface from a
+      coupled process
     type: real
     units: Pa
   - name: y_wind_at_10m_for_coupling
@@ -4801,11 +4805,12 @@ section:
     type: real
     units: mm s-1
   - name: lwe_surface_snow
-    description: Liquid water equivalent surface snow
+    description: Liquid water equivalent of snow accumulated on surface
     type: real
     units: mm
   - name: lwe_surface_snow_from_coupled_process
-    description: Liquid water equivalent surface snow from coupled process
+    description: Liquid water equivalent of snow accumulated on surface from coupled
+      process
     type: real
     units: m
   - name: lwe_thickness_of_convective_precipitation_on_previous_timestep
@@ -4823,7 +4828,7 @@ section:
     type: real
     units: m
   - name: lwe_thickness_of_ice_in_surface_snow
-    description: Liquid water equivalent thickness of ice in surface snow
+    description: Liquid water equivalent thickness of ice in snow accumulated on surface
     type: real
     units: mm
   - name: lwe_thickness_of_ice_precipitation_on_previous_timestep
@@ -4832,7 +4837,8 @@ section:
     type: real
     units: m
   - name: lwe_thickness_of_liquid_water_in_surface_snow
-    description: Liquid water equivalent thickness of liquid water in surface snow
+    description: Liquid water equivalent thickness of liquid water in snow accumulated
+      on surface
     type: real
     units: mm
   - name: lwe_thickness_of_rain_on_dynamics_timestep_for_coupling
@@ -4852,7 +4858,7 @@ section:
     units: mm
   - name: lwe_thickness_of_surface_snow
     cfname: lwe_thickness_of_surface_snow_amount
-    description: Liquid water equivalent thickness of surface snow amount
+    description: Liquid water equivalent thickness of snow accumulated on surface
     type: real
     units: mm
   - name: mass_content_of_water_in_top_soil_layer
@@ -4912,20 +4918,20 @@ section:
     description: Sea ice thickness
     type: real
     units: m
-  - name: skin_temperature_at_surface_over_ice
-    description: Skin temperature at surface over (or where) ice
+  - name: surface_skin_temperature_over_ice
+    description: Surface skin temperature over (or where) ice
     type: real
     units: K
-  - name: skin_temperature_at_surface_over_land
-    description: Skin temperature at surface over (or where) land
+  - name: surface_skin_temperature_over_land
+    description: Surface skin temperature over (or where) land
     type: real
     units: K
-  - name: skin_temperature_at_surface_over_ocean
-    description: Skin temperature at surface over (or where) ocean
+  - name: surface_skin_temperature_over_ocean
+    description: Surface skin temperatura over (or where) ocean
     type: real
     units: K
-  - name: skin_temperature_at_surface_over_snow
-    description: Skin temperature at surface over (or where) snow
+  - name: surface_skin_temperature_over_snow
+    description: Surface skin temperature over (or where) snow
     type: real
     units: K
   - name: slow_soil_pool_mass_content_of_carbon
@@ -4955,11 +4961,11 @@ section:
     units: K
   - name: specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface
     description: Specified upward specific humidity (water vapor mass mixing ratio
-      with respect to moist air) flux at surface
+      with respect to moist air) flux at surface interface
     type: real
     units: kg kg-1 m s-1
   - name: specified_upward_temperature_flux_at_surface
-    description: Specified upward temperature flux at surface
+    description: Specified upward temperature flux at surface interface
     type: real
     units: K m s-1
   - name: standard_deviation_of_subgrid_orography
@@ -4983,12 +4989,12 @@ section:
       angle
     type: real
     units: fraction
-  - name: surface_friction_velocity
-    description: Surface friction velocity
+  - name: friction_velocity
+    description: Friction velocity
     type: real
     units: m s-1
-  - name: surface_friction_velocity_for_momentum
-    description: Surface friction velocity for momentum
+  - name: friction_velocity_for_momentum
+    description: Friction velocity for momentum
     type: real
     units: m s-1
   - name: surface_longwave_emissivity
@@ -5020,8 +5026,8 @@ section:
     description: Surface sw fluxes assuming total and clear sky on radiation timestep
     type: ddt
     units: W m-2
-  - name: surface_temperature_scale
-    description: Surface temperature scale
+  - name: friction_temperature
+    description: Friction temperature, a.k.a. temperature scale
     type: real
     units: K
   - name: temperature_in_ice_layer
@@ -5054,7 +5060,7 @@ section:
     units: fraction
   - name: upward_latent_heat_flux_at_surface
     cfname: surface_upward_latent_heat_flux
-    description: Upward latent heat flux at surface
+    description: Upward latent heat flux at surface interface
     type: real
     units: W m-2
   - name: urban_area_fraction_of_cell_area
@@ -5153,12 +5159,12 @@ section:
     units: kg kg-1
   - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice
     description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at surface over ice
+      moist air) at surface interface over ice
     type: real
     units: kg kg-1
   - name: water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land
     description: Specific humidity (water vapor mass mixing ratio with respect to
-      moist air) at surface over land
+      moist air) at surface interface over land
     type: real
     units: kg kg-1
   - name: weak_cosz_area_fraction
