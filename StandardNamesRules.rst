@@ -158,8 +158,9 @@ Terminology
 
    Note that some commonly used terms with a prefix ``surface_`` are unavoidable due to the common
    definition being fundamentally different from unqualified ``X``. For example, ``surface_skin_temperature``
-   is a fundamentally different quantity than the unqualified ``skin_temperature``. In cases such as these,
-   a comment should be included noting this special usage of the word "surface".
+   is a fundamentally different quantity than the unqualified ``skin_temperature`` (as in the name
+   ``skin_temperature_at_toa``). In cases such as these, a comment should be included noting this
+   special usage of the word "surface".
 
 #. By default, `water` refers to all types of water in any phase (e.g. solid, liquid, gas,
    fresh water, salt water, etc.). The terms `sea` and `ocean` are synonymous, though new names
