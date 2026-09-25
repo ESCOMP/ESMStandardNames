@@ -139,11 +139,13 @@ Variable scope
 Terminology
 -----------
 
+   In this section we define terms that are used within these rules, the Standard Names, and their descriptions.
+
    `annotated image detailing some of the terminology in this section <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_terms.png>`_
 
 #. A "layer" is a vertical level of a model. A variable for a given layer is either at the vertical
    centerpoint of a level, or the vertical average of a level, as defined by the host (see above).
-   An "interface" is the boundary above or below a layer.
+   An "interface" is the boundary at the top or bottom of a layer.
 
 #. By default, *surface* refers to the liquid or solid substance immediately beneath the atmosphere
    for a given vertical column. This can be land, ocean, ice, lake, etc.

@@ -245,7 +245,7 @@ These names are used as bases for other names, but may also be considered standa
 * `solar_zenith_angle`: The angle between the direction to the sun and the local zenith (vertical direction)
     * Equivalent CF name: `solar_zenith_angle`
     * `real`: units = degrees
-* `surface_skin_temperature`: The temperature of the interface of the surface and the atmosphere
+* `surface_skin_temperature`: The temperature of the shared interface between the surface and the atmosphere
     * Equivalent CF name: `surface_skin_temperature`
     * `real`: units = K
 * `temperature_flux`: Flux of temperature across a unit surface

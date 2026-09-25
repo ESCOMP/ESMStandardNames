@@ -457,7 +457,8 @@ section:
       units: degrees
     - name: surface_skin_temperature
       cfname: surface_skin_temperature
-      description: The temperature of the interface of the surface and the atmosphere
+      description: The temperature of the shared interface between the surface and
+        the atmosphere
       type: real
       units: K
     - name: temperature_flux
