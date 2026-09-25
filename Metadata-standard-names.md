@@ -41,7 +41,7 @@ The following names are too general to be chosen as standard names, but they can
     * `real`: units = kg m-3
 * `energy`: Energy
     * `real`: units = J
-* `energy_content`: Total energy within some surface
+* `energy_content`: Total energy within some ideal surface
     * `real`: units = J m-2
 * `energy_density`: Total energy within some volume
     * `real`: units = J m-3
@@ -151,7 +151,7 @@ These names are used as bases for other names, but may also be considered standa
 * `air_temperature`: The temperature of air
     * Equivalent CF name: `air_temperature`
     * `real`: units = K
-* `albedo`: The fraction of incident radiation reflected by a surface
+* `albedo`: The fraction of incident radiation reflected by a physical surface
     * `real`: units = 1
 * `atmosphere_heat_diffusivity`: Atmosphere heat diffusivity
     * Equivalent CF name: `atmosphere_heat_diffusivity`
@@ -195,7 +195,7 @@ These names are used as bases for other names, but may also be considered standa
     * `character`: units = none
 * `forecast_time`: Forecast time
     * `real`: units = h
-* `friction_velocity`: A measure of shear stress within a fluid layer with units of distance per time
+* `friction_velocity`: A measure of shear stress within a fluid layer due to friction against a surface, with units of distance per time
     * `real`: units = m s-1
 * `geopotential`: Gravitational potential energy of a unit mass relative to sea level
     * Equivalent CF name: `geopotential`
@@ -245,7 +245,7 @@ These names are used as bases for other names, but may also be considered standa
 * `solar_zenith_angle`: The angle between the direction to the sun and the local zenith (vertical direction)
     * Equivalent CF name: `solar_zenith_angle`
     * `real`: units = degrees
-* `surface_skin_temperature`: The temperature of the topmost layer of the surface
+* `surface_skin_temperature`: The temperature of the shared interface between the surface and the atmosphere
     * Equivalent CF name: `surface_skin_temperature`
     * `real`: units = K
 * `temperature_flux`: Flux of temperature across a unit surface
@@ -401,7 +401,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
 * `air_pressure_at_mean_sea_level`: Air pressure at mean sea level
     * Equivalent CF name: `air_pressure_at_mean_sea_level`
     * `real`: units = Pa
-* `air_pressure_at_surface`: Air pressure at local surface
+* `air_pressure_at_surface`: Air pressure at surface; i.e. surface pressure
     * Equivalent CF name: `surface_air_pressure`
     * `real`: units = Pa
 * `air_pressure_at_surface_adjacent_layer`: Air pressure at surface adjacent layer
@@ -460,7 +460,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = 1
 * `dimensionless_exner_function_at_surface_adjacent_layer`: Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer
     * `real`: units = 1
-* `dimensionless_exner_function_wrt_surface_pressure`: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
+* `dimensionless_exner_function_wrt_pressure_at_surface`: Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)
     * `real`: units = 1
 * `dry_static_energy`: Dry static energy content of atmosphere layer
     * Equivalent CF name: `dry_static_energy_content_of_atmosphere_layer`
@@ -543,6 +543,8 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = K
 * `potentially_advected_quantities`: Potentially advected quantities
     * `real`: units = various
+* `pressure_of_dry_air_at_surface`: surface pressure of dry air
+    * `real`: units = Pa
 * `ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one`: Ratio of gas constants of water vapor to composition-dependent dry air minus one; (Rwv / Rdair) - 1.0
     * `real`: units = 1
 * `reciprocal_of_air_pressure_thickness`: Reciprocal of air pressure thickness
@@ -553,9 +555,11 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = 1
 * `reference_air_pressure_normalized_by_air_pressure_at_surface`: reference pressure normalized by surface pressure
     * `real`: units = 1
+* `reference_pressure_at_surface`: Reference surface air pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)
+    * `real`: units = Pa
 * `reference_pressure_in_atmosphere_layer`: Reference pressure in atmosphere layer
     * `real`: units = Pa
-* `reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure`: Reference pressure in atmosphere layer normalized by surface reference pressure
+* `reference_pressure_in_atmosphere_layer_normalized_by_reference_pressure_at_surface`: Reference pressure in atmosphere layer normalized by surface reference pressure
     * `real`: units = 1
 * `relative_humidity_at_2m`: Relative humidity at 2m
     * `real`: units = fraction
@@ -567,16 +571,12 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = kg kg-1
 * `subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air`: Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air
     * `real`: units = kg kg-1
-* `surface_pressure_of_dry_air`: Surface pressure of dry air
-    * `real`: units = Pa
-* `surface_reference_pressure`: Reference pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)
-    * `real`: units = Pa
 * `timestep_for_physics`: Timestep for physics
     * `integer`: units = s
 * `upward_absolute_vorticity_of_air`: The upward (kth) component of the curl of the vector wind field
     * Equivalent CF name: `atmosphere_upward_absolute_vorticity`
     * `real`: units = s-1
-* `upward_heat_flux_in_air_at_surface`: Upward heat flux in air at surface
+* `upward_heat_flux_in_air_at_surface`: Upward heat flux in air at surface interface
     * Equivalent CF name: `surface_upward_heat_flux_in_air`
     * `real`: units = W m-2
 * `us_standard_air_pressure_at_mean_sea_level`: US Standard Atmospheric pressure at sea level
@@ -599,7 +599,7 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array`: Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array
     * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back`: Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back
+* `water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back`: Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps before the current timestep
     * `real`: units = kg kg-1
 * `wind_from_direction_at_10m`: Direction (clockwise from north) wind vector is pointing away from, at 10 meters above surface.
     * `real`: units = degrees
@@ -654,6 +654,9 @@ Variables defining or relating to timing, dates, calendar, and related concepts
     * Equivalent CF name: `ocean_mixed_layer_thickness`
     * `real`: units = m
 * `reference_sea_surface_temperature`: Foundation/reference temperature for calculating diurnal ocean temperature changes
+    * `real`: units = K
+* `sea_surface_skin_temperature`: The temperature of the upper layer of sea surface, typically ~10-100 micrometers, as measured by an infrared radiometer
+    * Equivalent CF name: `sea_surface_skin_temperature`
     * `real`: units = K
 * `sea_surface_temperature`: Sea surface temperature
     * Equivalent CF name: `sea_surface_temperature`
@@ -809,9 +812,9 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `real`: units = 1
 * `aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection`: Aerosol aware multiplicative rain conversion parameter for shallow convection
     * `real`: units = 1
-* `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Cloud condensed water mass mixing ratio with respect to moist air at surface over ice
+* `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Cloud condensed water mass mixing ratio with respect to moist air at surface interface over ice
     * `real`: units = kg kg-1
-* `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land`: Cloud condensed water mass mixing ratio with respect to moist air at surface over land
+* `cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land`: Cloud condensed water mass mixing ratio with respect to moist air at surface interface over land
     * `real`: units = kg kg-1
 * `cloud_ice_mixing_ratio_wrt_dry_air`: Ratio of the mass of cloud ice to the mass of dry air
     * Equivalent CF name: `cloud_ice_mixing_ratio`
@@ -1313,7 +1316,7 @@ Variables that indicate or control some action.
     * `real`: units = 1
 * `control_for_vegetation_dataset`: Control for vegetation dataset
     * `integer`: units = 1
-* `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa
+* `control_for_vertical_index_direction`: control flag for direction of vertical index; 0 indicates index from top-of-atmosphere to surface, 1 indicates index from surface to top-of-atmosphere
     * `integer`: units = 1
 * `do_aerosol_physics`: Do aerosol physics
     * `logical`: units = flag
@@ -1629,9 +1632,9 @@ Values indicating the index of some array or other data structure
     * `real`: units = 1
 * `cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls`: Cumulative min vertical index at cloud base between sw radiation calls
     * `real`: units = 1
-* `index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of air pressure at surface on previous timestep in xyz dimensioned restart array
+* `index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of surface pressure on previous timestep in xyz-dimensioned restart array
     * `integer`: units = index
-* `index_of_air_pressure_at_surface_two_timesteps_back_in_xyz_dimensioned_tracer_array`: Index of air pressure at surface two timesteps back in xyz dimensioned tracer array
+* `index_of_air_pressure_at_surface_two_timesteps_back_in_xyz_dimensioned_tracer_array`: Index of surface pressure two timesteps before the current timestep in xyz-dimensioned tracer array
     * `integer`: units = index
 * `index_of_air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of air temperature on previous timestep in xyz dimensioned restart array
     * `integer`: units = index
@@ -1707,7 +1710,7 @@ Values indicating the index of some array or other data structure
     * `integer`: units = index
 * `index_of_water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array`: Index of specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in xyz dimensioned restart array
     * `integer`: units = index
-* `index_of_water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back_in_xyz_dimensioned_restart_array`: Index of specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back in xyz dimensioned restart array
+* `index_of_water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back_in_xyz_dimensioned_restart_array`: Index of specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps before the current timestep in xyz dimensioned restart array
     * `integer`: units = index
 * `index_of_water_vegetation_category`: Index of water vegetation category
     * `integer`: units = index
@@ -1783,7 +1786,7 @@ Coefficients includes scaling factors, tunable parameters, and other similar var
     * `real`: units = 1
 * `coefficient_w_d`: Coefficient w d
     * `real`: units = 1
-* `critical_relative_humidity_at_surface`: Critical relative humidity at surface
+* `critical_relative_humidity_at_surface`: Critical relative humidity at the surface interface
     * `real`: units = fraction
 * `critical_relative_humidity_at_toa`: Critical relative humidity at the top of the atmosphere
     * `real`: units = fraction
@@ -1895,7 +1898,7 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m s-1
 * `cloud_phase_transition_threshold_temperature`: Cloud phase transition threshold temperature
     * `real`: units = K
-* `lower_bound_for_depth_of_sea_temperature_for_nsstm`: Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme
+* `lower_bound_for_depth_of_ocean_temperature_for_nsstm`: Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme
     * `integer`: units = mm
 * `max_critical_relative_humidity`: Maximum critical relative humidity
     * `real`: units = fraction
@@ -1935,7 +1938,7 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = fraction
 * `sigma_pressure_threshold_at_upper_extent_of_background_diffusion`: Sigma pressure threshold at upper extent of background diffusion
     * `real`: units = 1
-* `upper_bound_for_depth_of_sea_temperature_for_nsstm`: Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme
+* `upper_bound_for_depth_of_ocean_temperature_for_nsstm`: Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme
     * `integer`: units = mm
 ## Stochastic physics variables
 * `atmosphere_heat_diffusivity_from_shoc`: Atmospheric heat diffusivity from Simplified Higher-Order Closure stochastic physics scheme
@@ -2043,6 +2046,8 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = W m-2
 * `downwelling_shortwave_flux_at_surface_on_radiation_timestep`: Downwelling shortwave flux at surface on radiation timestep
     * `real`: units = W m-2
+* `lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep`: longwave total sky fluxes at surface interface, assuming clear sky, on radiation timestep
+    * `ddt`: units = W m-2
 * `net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse near-infrared shortwave flux at the surface level for coupling
     * `real`: units = W m-2
 * `net_downwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_for_coupling`: net downwelling diffuse ultraviolet and visible shortwave flux at the surface level for coupling
@@ -2095,10 +2100,10 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = W m-2
 * `sine_of_solar_declination_angle`: Sine of solar declination angle
     * `real`: units = 1
+* `skin_temperature_at_toa`: The temperature that a theoretical infinitely thin air layer above the atmosphere would have in radiative equilibrium
+    * `real`: units = K
 * `solar_constant`: Solar constant
     * `real`: units = W m-2
-* `surface_lw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep`: Surface lw fluxes assuming total and clear sky on radiation timestep
-    * `ddt`: units = W m-2
 * `upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep
     * `real`: units = W m-2
 * `upwelling_diffuse_uv_and_vis_shortwave_flux_at_surface_on_radiation_timestep`: upwelling diffuse ultraviolet and visible shortwave flux at the surface level on the radiation timestep
@@ -2112,11 +2117,11 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `upwelling_longwave_flux_at_surface_on_radiation_timestep`: Upwelling longwave flux at surface on radiation timestep
     * `real`: units = W m-2
 ## Atmospheric surface and boundary layer
-* `air_pressure_at_surface_for_coupling`: Air pressure at surface for coupling
+* `air_pressure_at_surface_for_coupling`: Surface pressure for coupling
     * `real`: units = Pa
-* `air_pressure_at_surface_on_previous_timestep`: Air pressure at surface on previous timestep
+* `air_pressure_at_surface_on_previous_timestep`: Surface pressure on previous timestep
     * `real`: units = Pa
-* `air_pressure_at_surface_two_timesteps_back`: Air pressure at surface two timesteps back
+* `air_pressure_at_surface_two_timesteps_back`: Surface pressure two timesteps before the current timestep
     * `real`: units = Pa
 * `critical_relative_humidity_at_top_of_atmosphere_boundary_layer`: Critical relative humidity at top of atmosphere boundary layer
     * `real`: units = fraction
@@ -2154,9 +2159,9 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 * `updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme`: Updraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme
     * `real`: units = fraction
-* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
+* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface interface
     * `real`: units = kg kg-1 m s-1
-* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme`: Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme
+* `upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme`: Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface for MYJ surface layer scheme
     * `real`: units = m s-1 kg kg-1
 * `upward_latent_heat_flux_at_surface_for_coupling`: Upward latent heat flux at surface for coupling
     * `real`: units = W m-2
@@ -2174,23 +2179,23 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = K m s-1
 * `water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at 2 meters above surface used for coupling
     * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface
     * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes`: Surface specific humidity (water vapor mass mixing ratio with respect to moist air) for Mellor-Yamada-Janjic physics schemes
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface for Mellor-Yamada-Janjic physics schemes
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer
     * `real`: units = kg kg-1
-* `x_momentum_flux_at_surface_for_coupling`: X momentum flux at surface for coupling
+* `x_momentum_flux_at_surface_for_coupling`: Momentum flux in the x-direction at the surface interface for coupling
     * `real`: units = Pa
-* `x_momentum_flux_at_surface_from_coupled_process`: X momentum flux at surface from coupled process
+* `x_momentum_flux_at_surface_from_coupled_process`: Momentum flux in the x-direction at the surface interface from a coupled process
     * `real`: units = Pa
 * `x_wind_at_10m_for_coupling`: X wind at 10m for coupling
     * `real`: units = m s-1
 * `x_wind_at_top_of_viscous_sublayer`: X wind at top of viscous sublayer
     * `real`: units = m s-1
-* `y_momentum_flux_at_surface_for_coupling`: Y momentum flux at surface for coupling
+* `y_momentum_flux_at_surface_for_coupling`: Momentum flux in the y-direction at the surface interface for coupling
     * `real`: units = Pa
-* `y_momentum_flux_at_surface_from_coupled_process`: Y momentum flux at surface from coupled process
+* `y_momentum_flux_at_surface_from_coupled_process`: Momentum flux in the y-direction at the surface interface from a coupled process
     * `real`: units = Pa
 * `y_wind_at_10m_for_coupling`: Y wind at 10m for coupling
     * `real`: units = m s-1
@@ -2280,6 +2285,10 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = g m-2
 * `fine_root_mass_content`: Fine root mass content
     * `real`: units = g m-2
+* `friction_temperature`: Friction temperature, a.k.a. temperature scale
+    * `real`: units = K
+* `friction_velocity_for_momentum`: Friction velocity for momentum
+    * `real`: units = m s-1
 * `frozen_precipitation_density`: Frozen precipitation density
     * `real`: units = kg m-3
 * `graupel_precipitation_rate_on_previous_timestep`: Graupel precipitation rate on previous timestep
@@ -2308,9 +2317,9 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `lwe_snowfall_rate`: Liquid water equivalent snowfall rate
     * Equivalent CF name: `lwe_snowfall_rate`
     * `real`: units = mm s-1
-* `lwe_surface_snow`: Liquid water equivalent surface snow
+* `lwe_surface_snow`: Liquid water equivalent of snow accumulated on surface
     * `real`: units = mm
-* `lwe_surface_snow_from_coupled_process`: Liquid water equivalent surface snow from coupled process
+* `lwe_surface_snow_from_coupled_process`: Liquid water equivalent of snow accumulated on surface from coupled process
     * `real`: units = m
 * `lwe_thickness_of_convective_precipitation_on_previous_timestep`: Liquid water equivalent thickness of convective precipitation amount on previous timestep
     * `real`: units = m
@@ -2318,11 +2327,11 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 * `lwe_thickness_of_graupel_on_previous_timestep`: Liquid water equivalent thickness of graupel amount on previous timestep
     * `real`: units = m
-* `lwe_thickness_of_ice_in_surface_snow`: Liquid water equivalent thickness of ice in surface snow
+* `lwe_thickness_of_ice_in_surface_snow`: Liquid water equivalent thickness of ice in snow accumulated on surface
     * `real`: units = mm
 * `lwe_thickness_of_ice_precipitation_on_previous_timestep`: Liquid water equivalent thickness of ice precipitation amount on previous timestep
     * `real`: units = m
-* `lwe_thickness_of_liquid_water_in_surface_snow`: Liquid water equivalent thickness of liquid water in surface snow
+* `lwe_thickness_of_liquid_water_in_surface_snow`: Liquid water equivalent thickness of liquid water in snow accumulated on surface
     * `real`: units = mm
 * `lwe_thickness_of_rain_on_dynamics_timestep_for_coupling`: Liquid water equivalent thickness of rain amount on dynamics timestep for coupling
     * `real`: units = m
@@ -2330,7 +2339,7 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = m
 * `lwe_thickness_of_snowfall_on_previous_timestep`: Liquid water equivalent thickness of snowfall amount on previous timestep
     * `real`: units = mm
-* `lwe_thickness_of_surface_snow`: Liquid water equivalent thickness of surface snow amount
+* `lwe_thickness_of_surface_snow`: Liquid water equivalent thickness of snow accumulated on surface
     * Equivalent CF name: `lwe_thickness_of_surface_snow_amount`
     * `real`: units = mm
 * `mass_content_of_water_in_top_soil_layer`: mass per unit area of water in top layer of soil
@@ -2361,14 +2370,6 @@ Thresholds represent some value at which the behavior of some process changes, i
 * `sea_ice_thickness`: Sea ice thickness
     * Equivalent CF name: `sea_ice_thickness`
     * `real`: units = m
-* `skin_temperature_at_surface_over_ice`: Skin temperature at surface over (or where) ice
-    * `real`: units = K
-* `skin_temperature_at_surface_over_land`: Skin temperature at surface over (or where) land
-    * `real`: units = K
-* `skin_temperature_at_surface_over_ocean`: Skin temperature at surface over (or where) ocean
-    * `real`: units = K
-* `skin_temperature_at_surface_over_snow`: Skin temperature at surface over (or where) snow
-    * `real`: units = K
 * `slow_soil_pool_mass_content_of_carbon`: Slow soil pool mass content of carbon
     * Equivalent CF name: `slow_soil_pool_mass_content_of_carbon`
     * `real`: units = g m-2
@@ -2382,9 +2383,9 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = mm s-1
 * `soil_temperature_for_lsm`: Soil temperature for land surface model
     * `real`: units = K
-* `specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface
+* `specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface`: Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface interface
     * `real`: units = kg kg-1 m s-1
-* `specified_upward_temperature_flux_at_surface`: Specified upward temperature flux at surface
+* `specified_upward_temperature_flux_at_surface`: Specified upward temperature flux at surface interface
     * `real`: units = K m s-1
 * `standard_deviation_of_subgrid_orography`: Standard deviation of subgrid orography
     * `real`: units = m
@@ -2396,10 +2397,6 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = g m-2
 * `strong_cosz_area_fraction`: Area fraction for albedo with strong dependence on cosine of zenith angle
     * `real`: units = fraction
-* `surface_friction_velocity`: Surface friction velocity
-    * `real`: units = m s-1
-* `surface_friction_velocity_for_momentum`: Surface friction velocity for momentum
-    * `real`: units = m s-1
 * `surface_longwave_emissivity`: Surface longwave emissivity
     * Equivalent CF name: `surface_longwave_emissivity`
     * `real`: units = fraction
@@ -2409,14 +2406,20 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = fraction
 * `surface_sensible_heat_due_to_rainfall`: Surface sensible heat due to rainfall
     * `real`: units = W
+* `surface_skin_temperature_over_ice`: Surface skin temperature over (or where) ice
+    * `real`: units = K
+* `surface_skin_temperature_over_land`: Surface skin temperature over (or where) land
+    * `real`: units = K
+* `surface_skin_temperature_over_ocean`: Surface skin temperatura over (or where) ocean
+    * `real`: units = K
+* `surface_skin_temperature_over_snow`: Surface skin temperature over (or where) snow
+    * `real`: units = K
 * `surface_snow_mass_content_over_ice`: Surface snow mass content over ice
     * `real`: units = kg m-2
 * `surface_snow_mass_content_over_land`: Surface snow mass content over land
     * `real`: units = kg m-2
 * `surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep`: Surface sw fluxes assuming total and clear sky on radiation timestep
     * `ddt`: units = W m-2
-* `surface_temperature_scale`: Surface temperature scale
-    * `real`: units = K
 * `temperature_in_ice_layer`: Temperature in ice layer
     * `real`: units = K
 * `temperature_in_surface_snow`: Temperature in surface snow
@@ -2431,7 +2434,7 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = s
 * `upper_bound_of_max_albedo_assuming_deep_snow`: Upper bound of maximum albedo assuming deep snow
     * `real`: units = fraction
-* `upward_latent_heat_flux_at_surface`: Upward latent heat flux at surface
+* `upward_latent_heat_flux_at_surface`: Upward latent heat flux at surface interface
     * Equivalent CF name: `surface_upward_latent_heat_flux`
     * `real`: units = W m-2
 * `urban_area_fraction_of_cell_area`: fraction of horizontal area of grid cell that is urban
@@ -2480,9 +2483,9 @@ Thresholds represent some value at which the behavior of some process changes, i
     * `real`: units = kg kg-1
 * `water_vapor_mixing_ratio_wrt_moist_air_at_2m`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface
     * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over ice
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface over ice
     * `real`: units = kg kg-1
-* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over land
+* `water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land`: Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface over land
     * `real`: units = kg kg-1
 * `weak_cosz_area_fraction`: Area fraction for albedo with weak dependence on cosine of zenith angle
     * `real`: units = fraction

@@ -139,6 +139,43 @@ Variable scope
 Terminology
 -----------
 
+   In this section we define terms that are used within these rules, the Standard Names, and their descriptions.
+
+   `annotated image detailing some of the terminology in this section <https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_terms.png>`_
+
+#. A "layer" is a vertical level of a model. A variable for a given layer is either at the vertical
+   centerpoint of a level, or the vertical average of a level, as defined by the host (see above).
+   An "interface" is the boundary at the top or bottom of a layer.
+
+#. By default, *surface* refers to the liquid or solid substance immediately beneath the atmosphere
+   for a given vertical column. This can be land, ocean, ice, lake, etc.
+
+   For variables describing properties of the atmosphere near/adjacent to the actual surface,
+   care should be taken to specify the specific "surface variable" quantity needed for a specific application:
+
+   *  ``[variable]_at_surface`` is the lowest interface of the atmospheric model, adjacent to the surface.
+      This is equivalent to the surface-adjacent/bottom interface (as described above).
+   *  ``[variable]_at_surface_adjacent_layer`` is the bottom layer of the atmospheric model
+   *  ``[variable]_at_[level]`` for variables defined at specific height above the surface, e.g. ``temperature_at_2m``, ``wind_at_10m``
+
+   Note that some commonly used terms with a prefix ``surface_`` are unavoidable due to the common
+   definition being fundamentally different from unqualified ``X``. For example, ``surface_skin_temperature``
+   is a fundamentally different quantity than the unqualified ``skin_temperature`` (as in the name
+   ``skin_temperature_at_toa``). In cases such as these, a comment should be included noting this
+   special usage of the word "surface".
+
+#. By default, `water` refers to all types of water in any phase (e.g. solid, liquid, gas,
+   fresh water, salt water, etc.). The terms `sea` and `ocean` are synonymous, though new names
+   should default to using `ocean` unless part of one of the following phrases:
+   * sea_water
+   * sea_ice
+   * sea_level
+   * sea_salt
+   * sea_surface
+   * sea_floor
+   * sea_binary_mask
+   * sea_area 
+
 #. By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
    Mass mixing ratios should contain information regarding
@@ -178,9 +215,8 @@ Terminology
    of clouds the variable represents (e.g. *ice_cloud* if only including glaciated clouds, or
    *cloud_at_500hPa* if only including clouds that exist at 500 hPa).
 
-#. Spell out acronyms unless they are obvious to a vast majority of
-   scientists/developers who may come across them. A list of currently-used
-   aliases is below. Whenever such an alias exist, use the alias in the
+#. Spell out acronyms unless they are defined in the list of "Acronyms, Abbreviations, and Aliases"
+   below. Whenever such an alias exist, use the alias in the
    standard name and the full term in the description.
 
 #. Chemical species in standard names should be denoted by chemical formulae (e.g. ``co2``,
@@ -292,7 +328,8 @@ Prefixes
 None. Note that this is a departure from the CF conventions, which in
 many cases - but not all - use surface_ as a prefix. This departure from
 the CF convention is to maintain consistency with all other level
-qualifiers that are used as _at_level-qualifier (i.e. as suffix).
+qualifiers that are used as _at_level-qualifier (i.e. as suffix), as well as
+reducing ambiguity between different uses of the word "surface" (see above).
 
 Suffixes
 ^^^^^^^^
@@ -577,6 +614,8 @@ Special phrases
 | shortwave              | Shortwave radiation. Defined as electromagnetic emissions from the sun              |
 +------------------------+-------------------------------------------------------------------------------------+
 | specific               | per unit mass unless otherwise stated                                               |
++------------------------+-------------------------------------------------------------------------------------+
+| surface                | The top of the solid or liquid medium below the atmosphere                          |
 +------------------------+-------------------------------------------------------------------------------------+
 | unfrozen_water         | liquid and vapor                                                                    |
 +------------------------+-------------------------------------------------------------------------------------+
