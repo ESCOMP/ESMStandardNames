@@ -1,5 +1,3 @@
-(Rules)=
-
 # ESM Standard Name Rules
 
 ## Constructing names
@@ -23,7 +21,7 @@
    than was originally envisioned by the CF conventions. "`medium`" should be specified when
    the variable in question is a substance or other quantity contained within some other medium
    (e.g. for `mole_fraction_of_ozone_in_air`, the base name is "ozone", while the medium is "air").
-   "Transformation" refers to descriptors such as "`tendency_of`", "`log10`", or other operations or processes describing some transformation or adjustment of a variable; a detailed list of possible transformations can be found {ref}`later in this document <transformations>`.
+   "Transformation" refers to descriptors such as "`tendency_of`", "`log10`", or other operations or processes describing some transformation or adjustment of a variable; a detailed list of possible transformations can be found [later in this document](qualifiers.md#transformations).
    Other parts of the construction provide information about a variable's horizontal surface
    (e.g. `at_cloud_base`), component (i.e. direction of variable, e.g. `downward`), process (e.g.
    `due_to_deep_convection`), or condition (e.g., `assuming_clear_sky`). These qualifications do not
@@ -33,22 +31,18 @@
    The following table provides a few concrete examples of standard names and how they are constructed
    with respect to the guideline template.
 
-   ```{figure} https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png
-   :alt: Table of example standard names showing how each is built from a base name plus qualifiers such as component, medium, level, and process, according to the naming guideline template.
+   ![Table of example standard names showing how each is built from a base name plus qualifiers such as component, medium, level, and process, according to the naming guideline template.](https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_construction_examples.png)
 
-   Examples of standard names and how they are constructed with respect to the guideline template.
-   ```
+   *Examples of standard names and how they are constructed with respect to the guideline template.*
 
    Note that "transformations" are a special case, where multiple transformations may be applied,
    and multiple quantities may be compared, operated on, etc. For transformations involving
-   multiple quantities (e.g. `ratio_of_X_to_Y`; see the {ref}`section on Transformations <transformations>`
+   multiple quantities (e.g. `ratio_of_X_to_Y`; see the [section on Transformations](qualifiers.md#transformations)
    for more information), the above formula may be extended around multiple base names.
 
-   ```{figure} https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png
-   :alt: Table of example standard names showing how the construction template extends around multiple base names when more than one transformation or quantity is involved.
+   ![Table of example standard names showing how the construction template extends around multiple base names when more than one transformation or quantity is involved.](https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png)
 
-   Examples of standard name construction for transformations involving multiple quantities.
-   ```
+   *Examples of standard name construction for transformations involving multiple quantities.*
 
    In the latter example, `ln` is operating on the quantity `water_vapor_partial_pressure_assuming_saturation`,
    while `derivative_of` is a combined transformation of `water_vapor_partial_pressure_assuming_saturation`
@@ -123,11 +117,9 @@
 
 ## Terminology
 
-```{figure} https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_terms.png
-:alt: Annotated diagram illustrating standard-name terminology such as layer, interface, and surface as used throughout this section.
+![Annotated diagram illustrating standard-name terminology such as layer, interface, and surface as used throughout this section.](https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_terms.png)
 
-Annotated diagram detailing some of the terminology used in this section.
-```
+*Annotated diagram detailing some of the terminology used in this section.*
 
 1. A "layer" is a vertical level of a model. A variable for a given layer is either at the vertical
    centerpoint of a level, or the vertical average of a level, as defined by the host (see above).
@@ -163,9 +155,7 @@ Annotated diagram detailing some of the terminology used in this section.
    * `sea_binary_mask`
    * `sea_area`
 
-(mixing_ratio)=
-
-1. By default, *mixing_ratio* refers to mass mixing ratios. The description should
+1. <a id="mixing_ratio"></a>By default, *mixing_ratio* refers to mass mixing ratios. The description should
    explicitly specify that it refers to the *mass* mixing ratio.
    Mass mixing ratios should contain information regarding
    with respect to what quantity they are defined, and options are `wrt_dry_air`,
@@ -184,7 +174,7 @@ Annotated diagram detailing some of the terminology used in this section.
 
 1. By default, `mole_fraction_of_X_in_Y` refers to the total amount of *Y*. So, for example,
    `mole_fraction_of_ozone_in_air` refers to the total amount of (moist) air. (In the case of air,
-   the default meaning is moist air, as described in the {ref}`*mixing ratio* rule <mixing_ratio>`.) When this is not
+   the default meaning is moist air, as described in the [*mixing ratio* rule](#mixing_ratio).) When this is not
    the case, a qualifier should be used to denote this. *e.g.*, `mole_fraction_of_ozone_in_dry_air`.
 
 1. When referring to soil quantities,
@@ -206,7 +196,7 @@ Annotated diagram detailing some of the terminology used in this section.
    `cloud_at_500hPa` if only including clouds that exist at 500 hPa).
 
 1. Spell out acronyms unless they are defined in the
-   {ref}`list of "Acronyms, Abbreviations, and Aliases" <Aliases>`. Whenever such an alias exists,
+   [list of "Acronyms, Abbreviations, and Aliases"](aliases.md#acronyms-abbreviations-and-aliases). Whenever such an alias exists,
    use the alias in the standard name and the full term in the description.
 
 1. Chemical species in standard names should be denoted by chemical formulae (e.g. `co2`,

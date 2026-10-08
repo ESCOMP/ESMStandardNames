@@ -1,5 +1,3 @@
-(qualifiers)=
-
 # Qualifiers
 
 * `X`, `Y`, `Z`, etc. = words or phrases to be substituted
@@ -199,8 +197,6 @@ reducing ambiguity between different uses of the word "surface" (see above).
 * `_for_radiation`
 * `_for_deep_convection`
 * `_for_microphysics`
-
-(transformations)=
 
 ## Transformations
 

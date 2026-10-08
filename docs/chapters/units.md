@@ -1,5 +1,3 @@
-(units_section)=
-
 # Units
 
 Entries in the Standard Names dictionary contain a "units" property that serves to indicate the

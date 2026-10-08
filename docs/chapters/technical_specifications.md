@@ -1,5 +1,3 @@
-(tech_specs)=
-
 # Technical specifications
 
 1. The standard name dictionary consists of a number of individual XML elements:
@@ -11,7 +9,7 @@
    in the [CCPP Technical Documentation](https://ccpp-techdoc.readthedocs.io/en/latest/CompliantPhysicsParams.html#ccpp-arg-table),
    but it can be used to inform the contents of that field. The `standard_name` XML entry also contains a nested
    `type` entry, indicating the data type that a `standard_name` should represent, and as an attribute the
-   physical units of that variable quantity (see the {ref}`section on Units <units_section>`). For example, the element
+   physical units of that variable quantity (see the [section on Units](units.md#units)). For example, the element
    for the variable name `exner_function` may look similar to this:
 
    ```xml
@@ -23,7 +21,7 @@
 
    This XML element indicates that the variable `exner_function` represents the quantity described by the `description`
    attribute. It is a real variable with units of "1", meaning it is non-dimensional and
-   does not correspond to a more descriptive non-dimensional type such as "fraction"; see the {ref}`section on Units <units_section>`
+   does not correspond to a more descriptive non-dimensional type such as "fraction"; see the [section on Units](units.md#units)
    for more details.
 
    The standard_name elements are grouped into sections by "section" elements. These are parsed out into human-readable sections

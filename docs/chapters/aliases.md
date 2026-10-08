@@ -1,5 +1,3 @@
-(Aliases)=
-
 # Acronyms, Abbreviations, and Aliases
 
 | **Short** | **Meaning** |
