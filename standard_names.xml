@@ -21,7 +21,7 @@
       <standard_name name="energy">
         <type units="J">real</type>
       </standard_name>
-      <standard_name name="energy_content" description="Total energy within some surface">
+      <standard_name name="energy_content" description="Total energy within some ideal surface">
         <type units="J m-2">real</type>
       </standard_name>
       <standard_name name="energy_density" description="Total energy within some volume">
@@ -196,7 +196,7 @@
         <cfname>air_temperature</cfname>
         <type units="K">real</type>
       </standard_name>
-      <standard_name name="albedo" description="The fraction of incident radiation reflected by a surface">
+      <standard_name name="albedo" description="The fraction of incident radiation reflected by a physical surface">
         <type units="1">real</type>
       </standard_name>
       <standard_name name="atmosphere_heat_diffusivity">
@@ -228,7 +228,7 @@
       <standard_name name="diffuse_vis_albedo" description="Albedo of diffuse incident visible radiation">
         <type units="1">real</type>
       </standard_name>
-      <standard_name name="dimensionless_exner_function" description="Dimensionless formulation of the Exner function with respect to 1000 hPa" comment="The formulation of the exner function in an NWP context is (p/p0)^(Rd/cp), where p0 is some reference pressure. For the purposes of the standard names, this reference pressure is assumed as 1000 hPa unless specified otherwise; i.e. dimensionless_exner_function_wrt_air_pressure_at_surface would use the pressure at the surface as P0. Note that this is numerically equivalent to T/theta (temperature divided by potential temperature), where again theta is calculated with respect to 1000 hPa if not specified. Note that this definition is distinct from the dimensional exner_function standard name; see that entry for further comments. ">
+      <standard_name name="dimensionless_exner_function" description="Dimensionless formulation of the Exner function with respect to 1000 hPa" comment="The formulation of the exner function in an NWP context is (p/p0)^(Rd/cp), where p0 is some reference pressure. For the purposes of the standard names, this reference pressure is assumed as 1000 hPa unless specified otherwise; i.e. dimensionless_exner_function_wrt_air_pressure_at_surface would use the surface pressure as P0. Note that this is numerically equivalent to T/theta (temperature divided by potential temperature), where again theta is calculated with respect to 1000 hPa if not specified. Note that this definition is distinct from the dimensional exner_function standard name; see that entry for further comments. ">
         <cfname>dimensionless_exner_function</cfname>
         <type units="1">real</type>
       </standard_name>
@@ -262,7 +262,7 @@
       <standard_name name="forecast_time">
         <type units="h">real</type>
       </standard_name>
-      <standard_name name="friction_velocity" description="A measure of shear stress within a fluid layer with units of distance per time">
+      <standard_name name="friction_velocity" description="A measure of shear stress within a fluid layer due to friction against a surface, with units of distance per time">
         <type units="m s-1">real</type>
       </standard_name>
       <standard_name name="geopotential" description="Gravitational potential energy of a unit mass relative to sea level">
@@ -338,7 +338,7 @@
         <cfname>solar_zenith_angle</cfname>
         <type units="degrees">real</type>
       </standard_name>
-      <standard_name name="surface_skin_temperature" description="The temperature of the topmost layer of the surface">
+      <standard_name name="surface_skin_temperature" description="The temperature of the shared interface between the surface and the atmosphere" comment="Usage of the term 'skin temperature' varies among different fields in the literature. In the Standard Names we have adopted what we deem the most common definition for 'surface_skin_temperature': the temperature of the physical interface of the atmosphere and the surface below. This may be considered equivalent to the radiometric temperature derived from satellite or airborne radiometers, provided a known surface_emissivity, though for water specifically there may be special considerations for measured quantities (see comment on 'sea_surface_skin_temperature'). This definition derives from discussion in Chapter 4 of 'Introduction to Micrometeorology' by S. Pal Arya. This quantity should not be confused with 'skin_temperature_at_toa' or 'sea_surface_skin_temperature', which are both sometimes referred to simply as 'skin_temperature'.">
         <cfname>surface_skin_temperature</cfname>
         <type units="K">real</type>
       </standard_name>
@@ -425,7 +425,7 @@
     <standard_name name="vertical_dimension_of_surface_snow">
       <type units="count">integer</type>
     </standard_name>
-    <standard_name name="vertical_interface_dimension" description="number of vertical interfaces">
+    <standard_name name="vertical_interface_dimension" description="number of vertical interfaces" comment="an interface is the upper or lower boundary of a model layer. See the rules document for more details about these terms">
       <type units="count">integer</type>
     </standard_name>
     <standard_name name="vertical_interface_dimension_for_radiation">
@@ -568,7 +568,7 @@
       <cfname>air_pressure_at_mean_sea_level</cfname>
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="air_pressure_at_surface" description="Air pressure at local surface">
+    <standard_name name="air_pressure_at_surface" description="Air pressure at surface; i.e. surface pressure">
       <cfname>surface_air_pressure</cfname>
       <type units="Pa">real</type>
     </standard_name>
@@ -655,7 +655,7 @@
     <standard_name name="dimensionless_exner_function_at_surface_adjacent_layer" description="Dimensionless exner function (p/p0)^(Rd/cp), where p0 is 1000 hPa and p is the pressure at the surface-adjacent layer">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="dimensionless_exner_function_wrt_surface_pressure" description="Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)">
+    <standard_name name="dimensionless_exner_function_wrt_pressure_at_surface" description="Dimensionless exner function with respect to surface pressure, (p/ps)^(Rd/cp)">
       <type units="1">real</type>
     </standard_name>
     <standard_name name="dry_static_energy" description="Dry static energy content of atmosphere layer">
@@ -776,6 +776,9 @@
     <standard_name name="potentially_advected_quantities">
       <type units="various">real</type>
     </standard_name>
+    <standard_name name="pressure_of_dry_air_at_surface" description="surface pressure of dry air">
+      <type units="Pa">real</type>
+    </standard_name>
     <standard_name name="ratio_of_water_vapor_gas_constant_to_composition_dependent_dry_air_gas_constant_minus_one" description="Ratio of gas constants of water vapor to composition-dependent dry air minus one; (Rwv / Rdair) - 1.0">
       <type units="1">real</type>
     </standard_name>
@@ -791,10 +794,13 @@
     <standard_name name="reference_air_pressure_normalized_by_air_pressure_at_surface" description="reference pressure normalized by surface pressure">
       <type units="1">real</type>
     </standard_name>
+    <standard_name name="reference_pressure_at_surface" description="Reference surface air pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)">
+      <type units="Pa">real</type>
+    </standard_name>
     <standard_name name="reference_pressure_in_atmosphere_layer">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="reference_pressure_in_atmosphere_layer_normalized_by_surface_reference_pressure" description="Reference pressure in atmosphere layer normalized by surface reference pressure">
+    <standard_name name="reference_pressure_in_atmosphere_layer_normalized_by_reference_pressure_at_surface" description="Reference pressure in atmosphere layer normalized by surface reference pressure">
       <type units="1">real</type>
     </standard_name>
     <standard_name name="relative_humidity_at_2m">
@@ -812,12 +818,6 @@
     <standard_name name="subgrid_scale_cloud_liquid_water_mixing_ratio_wrt_moist_air" description="Subgrid-scale cloud liquid water mass mixing ratio with respect to moist air">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="surface_pressure_of_dry_air">
-      <type units="Pa">real</type>
-    </standard_name>
-    <standard_name name="surface_reference_pressure" description="Reference pressure used in definition of some other quantity (e.g. potential temperature, Exner function, etc.)">
-      <type units="Pa">real</type>
-    </standard_name>
     <standard_name name="timestep_for_physics">
       <type units="s">integer</type>
     </standard_name>
@@ -825,7 +825,7 @@
       <cfname>atmosphere_upward_absolute_vorticity</cfname>
       <type units="s-1">real</type>
     </standard_name>
-    <standard_name name="upward_heat_flux_in_air_at_surface">
+    <standard_name name="upward_heat_flux_in_air_at_surface" description="Upward heat flux in air at surface interface">
       <cfname>surface_upward_heat_flux_in_air</cfname>
       <type units="W m-2">real</type>
     </standard_name>
@@ -859,7 +859,7 @@
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in XYZ-dimensioned restart array">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back">
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps before the current timestep">
       <type units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="wind_from_direction_at_10m" description="Direction (clockwise from north) wind vector is pointing away from, at 10 meters above surface.">
@@ -940,6 +940,10 @@
       <type units="m">real</type>
     </standard_name>
     <standard_name name="reference_sea_surface_temperature" description="Foundation/reference temperature for calculating diurnal ocean temperature changes">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="sea_surface_skin_temperature" description="The temperature of the upper layer of sea surface, typically ~10-100 micrometers, as measured by an infrared radiometer" comment="Usage of the term 'skin temperature' varies among different fields in the literature. In the Standard Names we have adopted what we deem the most common definition for 'sea_surface_skin_temperature', derived from the CF Standard Names. While there may be some dependence on the IR wavelength used for a measurement, per Donlon et al. (2002) 'Toward Improved Validation of Satellite Sea Surface Skin Temperature Measurements for Climate Research', the difference should not be significant. This quantity should not be confused with 'skin_temperature_at_toa' or 'surface_skin_temperature', which are both sometimes referred to simply as 'skin_temperature'.">
+      <cfname>sea_surface_skin_temperature</cfname>
       <type units="K">real</type>
     </standard_name>
     <standard_name name="sea_surface_temperature">
@@ -1167,10 +1171,10 @@
       <standard_name name="aerosol_aware_multiplicative_rain_conversion_parameter_for_shallow_convection">
         <type units="1">real</type>
       </standard_name>
-      <standard_name name="cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice" description="Cloud condensed water mass mixing ratio with respect to moist air at surface over ice">
+      <standard_name name="cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_ice" description="Cloud condensed water mass mixing ratio with respect to moist air at surface interface over ice">
         <type units="kg kg-1">real</type>
       </standard_name>
-      <standard_name name="cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land" description="Cloud condensed water mass mixing ratio with respect to moist air at surface over land">
+      <standard_name name="cloud_condensed_water_mixing_ratio_wrt_moist_air_at_surface_over_land" description="Cloud condensed water mass mixing ratio with respect to moist air at surface interface over land">
         <type units="kg kg-1">real</type>
       </standard_name>
       <standard_name name="cloud_ice_mixing_ratio_wrt_dry_air" description="Ratio of the mass of cloud ice to the mass of dry air">
@@ -1916,7 +1920,7 @@
     <standard_name name="control_for_vegetation_dataset">
       <type units="1">integer</type>
     </standard_name>
-    <standard_name name="control_for_vertical_index_direction" description="control flag for direction of vertical index; 0 indicates index from toa to surface, 1 indicates index from surface to toa">
+    <standard_name name="control_for_vertical_index_direction" description="control flag for direction of vertical index; 0 indicates index from top-of-atmosphere to surface, 1 indicates index from surface to top-of-atmosphere">
       <type units="1">integer</type>
     </standard_name>
     <standard_name name="do_aerosol_physics">
@@ -2389,10 +2393,10 @@
     <standard_name name="cumulative_min_vertical_index_at_cloud_base_between_sw_radiation_calls">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array">
+    <standard_name name="index_of_air_pressure_at_surface_on_previous_timestep_in_xyz_dimensioned_restart_array" description="Index of surface pressure on previous timestep in xyz-dimensioned restart array">
       <type units="index">integer</type>
     </standard_name>
-    <standard_name name="index_of_air_pressure_at_surface_two_timesteps_back_in_xyz_dimensioned_tracer_array">
+    <standard_name name="index_of_air_pressure_at_surface_two_timesteps_back_in_xyz_dimensioned_tracer_array" description="Index of surface pressure two timesteps before the current timestep in xyz-dimensioned tracer array">
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="index_of_air_temperature_on_previous_timestep_in_xyz_dimensioned_restart_array">
@@ -2506,7 +2510,7 @@
     <standard_name name="index_of_water_vapor_mixing_ratio_wrt_moist_air_on_previous_timestep_in_xyz_dimensioned_restart_array" description="Index of specific humidity (water vapor mass mixing ratio with respect to moist air) on previous timestep in xyz dimensioned restart array">
       <type units="index">integer</type>
     </standard_name>
-    <standard_name name="index_of_water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back_in_xyz_dimensioned_restart_array" description="Index of specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps back in xyz dimensioned restart array">
+    <standard_name name="index_of_water_vapor_mixing_ratio_wrt_moist_air_two_timesteps_back_in_xyz_dimensioned_restart_array" description="Index of specific humidity (water vapor mass mixing ratio with respect to moist air) two timesteps before the current timestep in xyz dimensioned restart array">
       <type units="index">integer</type>
     </standard_name>
     <standard_name name="index_of_water_vegetation_category">
@@ -2619,7 +2623,7 @@
     <standard_name name="coefficient_w_d">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="critical_relative_humidity_at_surface">
+    <standard_name name="critical_relative_humidity_at_surface" description="Critical relative humidity at the surface interface">
       <type units="fraction">real</type>
     </standard_name>
     <standard_name name="critical_relative_humidity_at_toa" description="Critical relative humidity at the top of the atmosphere">
@@ -2786,7 +2790,7 @@
     <standard_name name="cloud_phase_transition_threshold_temperature">
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="lower_bound_for_depth_of_sea_temperature_for_nsstm" description="Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme">
+    <standard_name name="lower_bound_for_depth_of_ocean_temperature_for_nsstm" description="Lower bound for depth of sea temperature for GFS near-surface sea temperature scheme">
       <type units="mm">integer</type>
     </standard_name>
     <standard_name name="max_critical_relative_humidity" description="Maximum critical relative humidity">
@@ -2846,7 +2850,7 @@
     <standard_name name="sigma_pressure_threshold_at_upper_extent_of_background_diffusion">
       <type units="1">real</type>
     </standard_name>
-    <standard_name name="upper_bound_for_depth_of_sea_temperature_for_nsstm" description="Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme">
+    <standard_name name="upper_bound_for_depth_of_ocean_temperature_for_nsstm" description="Upper bound for depth of sea temperature for GFS near-surface sea temperature scheme">
       <type units="mm">integer</type>
     </standard_name>
   </section>
@@ -3009,6 +3013,9 @@
     <standard_name name="downwelling_shortwave_flux_at_surface_on_radiation_timestep">
       <type units="W m-2">real</type>
     </standard_name>
+    <standard_name name="lw_fluxes_at_surface_assuming_total_and_clear_sky_on_radiation_timestep" description="longwave total sky fluxes at surface interface, assuming clear sky, on radiation timestep">
+      <type units="W m-2">ddt</type>
+    </standard_name>
     <standard_name name="net_downwelling_diffuse_nir_shortwave_flux_at_surface_for_coupling" description="net downwelling diffuse near-infrared shortwave flux at the surface level for coupling">
       <type units="W m-2">real</type>
     </standard_name>
@@ -3087,11 +3094,11 @@
     <standard_name name="sine_of_solar_declination_angle">
       <type units="1">real</type>
     </standard_name>
+    <standard_name name="skin_temperature_at_toa" description="The temperature that a theoretical infinitely thin air layer above the atmosphere would have in radiative equilibrium" comment="Usage of the term 'skin temperature' varies among different fields in the literature. In the Standard Names we have adopted what we deem the most common definition for 'skin_temperature_at_toa', which is commonly referred to as simply 'skin_temperature' but top-of-atmosphere is included in the name for clarity and disambiguation. This definition is taken directly from Goessling and  Bathiany (2016) 'Why CO2 cools the middle atmosphere - a consolidating model perspective', but very similar definitions can be found broadly in the literature. This quantity should not be confused with 'surface_skin_temperature' or 'sea_surface_skin_temperature', which are both sometimes referred to simply as 'skin_temperature'.">
+      <type units="K">real</type>
+    </standard_name>
     <standard_name name="solar_constant">
       <type units="W m-2">real</type>
-    </standard_name>
-    <standard_name name="surface_lw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep">
-      <type units="W m-2">ddt</type>
     </standard_name>
     <standard_name name="upwelling_diffuse_nir_shortwave_flux_at_surface_on_radiation_timestep" description="upwelling diffuse near-infrared shortwave flux at the surface level on the radiation timestep">
       <type units="W m-2">real</type>
@@ -3113,13 +3120,13 @@
     </standard_name>
   </section>
   <section name="Atmospheric surface and boundary layer">
-    <standard_name name="air_pressure_at_surface_for_coupling">
+    <standard_name name="air_pressure_at_surface_for_coupling" description="Surface pressure for coupling">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="air_pressure_at_surface_on_previous_timestep">
+    <standard_name name="air_pressure_at_surface_on_previous_timestep" description="Surface pressure on previous timestep">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="air_pressure_at_surface_two_timesteps_back">
+    <standard_name name="air_pressure_at_surface_two_timesteps_back" description="Surface pressure two timesteps before the current timestep">
       <type units="Pa">real</type>
     </standard_name>
     <standard_name name="critical_relative_humidity_at_top_of_atmosphere_boundary_layer">
@@ -3176,10 +3183,10 @@
     <standard_name name="updraft_area_fraction_in_scale_aware_tke_moist_edmf_pbl_scheme" description="Updraft area fraction in scale-aware turbulent kinetic energy moist eddy-diffusivity/mass-flux planetary boundary layer scheme">
       <type units="fraction">real</type>
     </standard_name>
-    <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface">
+    <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface interface">
       <type units="kg kg-1 m s-1">real</type>
     </standard_name>
-    <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme" description="Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface for MYJ surface layer scheme">
+    <standard_name name="upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_surface_layer_scheme" description="Upward flux of specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface for MYJ surface layer scheme">
       <type units="m s-1 kg kg-1">real</type>
     </standard_name>
     <standard_name name="upward_latent_heat_flux_at_surface_for_coupling">
@@ -3206,19 +3213,19 @@
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_2m_for_coupling" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at 2 meters above surface used for coupling">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface">
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes" description="Surface specific humidity (water vapor mass mixing ratio with respect to moist air) for Mellor-Yamada-Janjic physics schemes">
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_for_myj_schemes" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface for Mellor-Yamada-Janjic physics schemes">
       <type units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_top_of_viscous_sublayer" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at the top of the viscous sublayer">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="x_momentum_flux_at_surface_for_coupling">
+    <standard_name name="x_momentum_flux_at_surface_for_coupling" description="Momentum flux in the x-direction at the surface interface for coupling">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="x_momentum_flux_at_surface_from_coupled_process">
+    <standard_name name="x_momentum_flux_at_surface_from_coupled_process" description="Momentum flux in the x-direction at the surface interface from a coupled process">
       <type units="Pa">real</type>
     </standard_name>
     <standard_name name="x_wind_at_10m_for_coupling">
@@ -3227,10 +3234,10 @@
     <standard_name name="x_wind_at_top_of_viscous_sublayer">
       <type units="m s-1">real</type>
     </standard_name>
-    <standard_name name="y_momentum_flux_at_surface_for_coupling">
+    <standard_name name="y_momentum_flux_at_surface_for_coupling" description="Momentum flux in the y-direction at the surface interface for coupling">
       <type units="Pa">real</type>
     </standard_name>
-    <standard_name name="y_momentum_flux_at_surface_from_coupled_process">
+    <standard_name name="y_momentum_flux_at_surface_from_coupled_process" description="Momentum flux in the y-direction at the surface interface from a coupled process">
       <type units="Pa">real</type>
     </standard_name>
     <standard_name name="y_wind_at_10m_for_coupling">
@@ -3363,6 +3370,12 @@
     <standard_name name="fine_root_mass_content">
       <type units="g m-2">real</type>
     </standard_name>
+    <standard_name name="friction_temperature" description="Friction temperature, a.k.a. temperature scale" comment="Defined in Olson et al. 2021 'A Description of the MYNN Surface-Layer Scheme' as negative sensible heat flux divided by the product of density, specific heat Cp, and friction velocity u*">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="friction_velocity_for_momentum">
+      <type units="m s-1">real</type>
+    </standard_name>
     <standard_name name="frozen_precipitation_density">
       <type units="kg m-3">real</type>
     </standard_name>
@@ -3403,10 +3416,10 @@
       <cfname>lwe_snowfall_rate</cfname>
       <type units="mm s-1">real</type>
     </standard_name>
-    <standard_name name="lwe_surface_snow" description="Liquid water equivalent surface snow">
+    <standard_name name="lwe_surface_snow" description="Liquid water equivalent of snow accumulated on surface">
       <type units="mm">real</type>
     </standard_name>
-    <standard_name name="lwe_surface_snow_from_coupled_process" description="Liquid water equivalent surface snow from coupled process">
+    <standard_name name="lwe_surface_snow_from_coupled_process" description="Liquid water equivalent of snow accumulated on surface from coupled process">
       <type units="m">real</type>
     </standard_name>
     <standard_name name="lwe_thickness_of_convective_precipitation_on_previous_timestep" description="Liquid water equivalent thickness of convective precipitation amount on previous timestep">
@@ -3418,13 +3431,13 @@
     <standard_name name="lwe_thickness_of_graupel_on_previous_timestep" description="Liquid water equivalent thickness of graupel amount on previous timestep">
       <type units="m">real</type>
     </standard_name>
-    <standard_name name="lwe_thickness_of_ice_in_surface_snow" description="Liquid water equivalent thickness of ice in surface snow">
+    <standard_name name="lwe_thickness_of_ice_in_surface_snow" description="Liquid water equivalent thickness of ice in snow accumulated on surface">
       <type units="mm">real</type>
     </standard_name>
     <standard_name name="lwe_thickness_of_ice_precipitation_on_previous_timestep" description="Liquid water equivalent thickness of ice precipitation amount on previous timestep">
       <type units="m">real</type>
     </standard_name>
-    <standard_name name="lwe_thickness_of_liquid_water_in_surface_snow" description="Liquid water equivalent thickness of liquid water in surface snow">
+    <standard_name name="lwe_thickness_of_liquid_water_in_surface_snow" description="Liquid water equivalent thickness of liquid water in snow accumulated on surface">
       <type units="mm">real</type>
     </standard_name>
     <standard_name name="lwe_thickness_of_rain_on_dynamics_timestep_for_coupling" description="Liquid water equivalent thickness of rain amount on dynamics timestep for coupling">
@@ -3436,7 +3449,7 @@
     <standard_name name="lwe_thickness_of_snowfall_on_previous_timestep" description="Liquid water equivalent thickness of snowfall amount on previous timestep">
       <type units="mm">real</type>
     </standard_name>
-    <standard_name name="lwe_thickness_of_surface_snow" description="Liquid water equivalent thickness of surface snow amount">
+    <standard_name name="lwe_thickness_of_surface_snow" description="Liquid water equivalent thickness of snow accumulated on surface">
       <cfname>lwe_thickness_of_surface_snow_amount</cfname>
       <type units="mm">real</type>
     </standard_name>
@@ -3481,18 +3494,6 @@
       <cfname>sea_ice_thickness</cfname>
       <type units="m">real</type>
     </standard_name>
-    <standard_name name="skin_temperature_at_surface_over_ice" description="Skin temperature at surface over (or where) ice">
-      <type units="K">real</type>
-    </standard_name>
-    <standard_name name="skin_temperature_at_surface_over_land" description="Skin temperature at surface over (or where) land">
-      <type units="K">real</type>
-    </standard_name>
-    <standard_name name="skin_temperature_at_surface_over_ocean" description="Skin temperature at surface over (or where) ocean">
-      <type units="K">real</type>
-    </standard_name>
-    <standard_name name="skin_temperature_at_surface_over_snow" description="Skin temperature at surface over (or where) snow">
-      <type units="K">real</type>
-    </standard_name>
     <standard_name name="slow_soil_pool_mass_content_of_carbon">
       <cfname>slow_soil_pool_mass_content_of_carbon</cfname>
       <type units="g m-2">real</type>
@@ -3512,10 +3513,10 @@
     <standard_name name="soil_temperature_for_lsm" description="Soil temperature for land surface model">
       <type units="K">real</type>
     </standard_name>
-    <standard_name name="specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface">
+    <standard_name name="specified_upward_flux_of_water_vapor_mixing_ratio_wrt_moist_air_at_surface" description="Specified upward specific humidity (water vapor mass mixing ratio with respect to moist air) flux at surface interface">
       <type units="kg kg-1 m s-1">real</type>
     </standard_name>
-    <standard_name name="specified_upward_temperature_flux_at_surface">
+    <standard_name name="specified_upward_temperature_flux_at_surface" description="Specified upward temperature flux at surface interface">
       <type units="K m s-1">real</type>
     </standard_name>
     <standard_name name="standard_deviation_of_subgrid_orography">
@@ -3533,12 +3534,6 @@
     <standard_name name="strong_cosz_area_fraction" description="Area fraction for albedo with strong dependence on cosine of zenith angle">
       <type units="fraction">real</type>
     </standard_name>
-    <standard_name name="surface_friction_velocity">
-      <type units="m s-1">real</type>
-    </standard_name>
-    <standard_name name="surface_friction_velocity_for_momentum">
-      <type units="m s-1">real</type>
-    </standard_name>
     <standard_name name="surface_longwave_emissivity">
       <cfname>surface_longwave_emissivity</cfname>
       <type units="fraction">real</type>
@@ -3552,6 +3547,18 @@
     <standard_name name="surface_sensible_heat_due_to_rainfall">
       <type units="W">real</type>
     </standard_name>
+    <standard_name name="surface_skin_temperature_over_ice" description="Surface skin temperature over (or where) ice">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="surface_skin_temperature_over_land" description="Surface skin temperature over (or where) land">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="surface_skin_temperature_over_ocean" description="Surface skin temperatura over (or where) ocean">
+      <type units="K">real</type>
+    </standard_name>
+    <standard_name name="surface_skin_temperature_over_snow" description="Surface skin temperature over (or where) snow">
+      <type units="K">real</type>
+    </standard_name>
     <standard_name name="surface_snow_mass_content_over_ice">
       <type units="kg m-2">real</type>
     </standard_name>
@@ -3560,9 +3567,6 @@
     </standard_name>
     <standard_name name="surface_sw_fluxes_assuming_total_and_clear_sky_on_radiation_timestep">
       <type units="W m-2">ddt</type>
-    </standard_name>
-    <standard_name name="surface_temperature_scale">
-      <type units="K">real</type>
     </standard_name>
     <standard_name name="temperature_in_ice_layer">
       <type units="K">real</type>
@@ -3585,7 +3589,7 @@
     <standard_name name="upper_bound_of_max_albedo_assuming_deep_snow" description="Upper bound of maximum albedo assuming deep snow">
       <type units="fraction">real</type>
     </standard_name>
-    <standard_name name="upward_latent_heat_flux_at_surface">
+    <standard_name name="upward_latent_heat_flux_at_surface" description="Upward latent heat flux at surface interface">
       <cfname>surface_upward_latent_heat_flux</cfname>
       <type units="W m-2">real</type>
     </standard_name>
@@ -3657,10 +3661,10 @@
     <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_2m" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at two meters above surface">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over ice">
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_ice" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface over ice">
       <type units="kg kg-1">real</type>
     </standard_name>
-    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface over land">
+    <standard_name name="water_vapor_mixing_ratio_wrt_moist_air_at_surface_over_land" description="Specific humidity (water vapor mass mixing ratio with respect to moist air) at surface interface over land">
       <type units="kg kg-1">real</type>
     </standard_name>
     <standard_name name="weak_cosz_area_fraction" description="Area fraction for albedo with weak dependence on cosine of zenith angle">
