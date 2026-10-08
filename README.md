@@ -2,7 +2,10 @@
 
 The Earth System Modeling Standard Names Repository contains community-accepted Standard Names, publishing tools, and search tools.
 
-Rules governing the designation and format of standard names can be found in [StandardNamesRules.rst](https://github.com/ESCOMP/ESMStandardNames/blob/main/StandardNamesRules.rst).
+Rules governing the designation and format of standard names are published as a chaptered
+Sphinx/Read the Docs site built from the [docs/](docs/) directory; see
+[docs/index.rst](https://github.com/ESCOMP/ESMStandardNames/blob/main/docs/index.rst) for the
+table of contents, or build it locally with `sphinx-build -b html docs docs/_build/html`.
 
 A [Markdown file describing the standard names is included](https://github.com/ESCOMP/ESMStandardNames/blob/main/Metadata-standard-names.md), as well as a [YAML version of the XML file](https://github.com/ESCOMP/ESMStandardNames/blob/main/Metadata-standard-names.yaml).
 
