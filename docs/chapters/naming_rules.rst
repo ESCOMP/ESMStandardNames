@@ -134,7 +134,7 @@ Terminology
 
 #. A "layer" is a vertical level of a model. A variable for a given layer is either at the vertical
    centerpoint of a level, or the vertical average of a level, as defined by the host (see above).
-   An "interface" is the boundary above or below a layer.
+   An "interface" is the boundary at the top or bottom of a layer.
 
 #. By default, *surface* refers to the liquid or solid substance immediately beneath the atmosphere
    for a given vertical column. This can be land, ocean, ice, lake, etc.
@@ -149,8 +149,9 @@ Terminology
 
    Note that some commonly used terms with a prefix ``surface_`` are unavoidable due to the common
    definition being fundamentally different from unqualified ``X``. For example, ``surface_skin_temperature``
-   is a fundamentally different quantity than the unqualified ``skin_temperature``. In cases such as these,
-   a comment should be included noting this special usage of the word "surface".
+   is a fundamentally different quantity than the unqualified ``skin_temperature`` (as in the name
+   ``skin_temperature_at_toa``). In cases such as these, a comment should be included noting this
+   special usage of the word "surface".
 
 #. By default, `water` refers to all types of water in any phase (e.g. solid, liquid, gas,
    fresh water, salt water, etc.). The terms `sea` and `ocean` are synonymous, though new names
