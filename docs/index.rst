@@ -22,4 +22,4 @@ for use with Earth System Models. It describes the
 
    chapters/naming_rules
    chapters/technical_specifications
-   chapters/reference
+   chapters/vocabulary
