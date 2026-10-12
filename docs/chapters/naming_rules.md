@@ -21,7 +21,7 @@
    than was originally envisioned by the CF conventions. "`medium`" should be specified when
    the variable in question is a substance or other quantity contained within some other medium
    (e.g. for `mole_fraction_of_ozone_in_air`, the base name is "ozone", while the medium is "air").
-   "Transformation" refers to descriptors such as "`tendency_of`", "`log10`", or other operations or processes describing some transformation or adjustment of a variable; a detailed list of possible transformations can be found [later in this document](qualifiers.md#transformations).
+   "Transformation" refers to descriptors such as "`tendency_of`", "`log10`", or other operations or processes describing some transformation or adjustment of a variable; a detailed list of possible transformations can be found [later in this document](reference.md#transformations).
    Other parts of the construction provide information about a variable's horizontal surface
    (e.g. `at_cloud_base`), component (i.e. direction of variable, e.g. `downward`), process (e.g.
    `due_to_deep_convection`), or condition (e.g., `assuming_clear_sky`). These qualifications do not
@@ -37,7 +37,7 @@
 
    Note that "transformations" are a special case, where multiple transformations may be applied,
    and multiple quantities may be compared, operated on, etc. For transformations involving
-   multiple quantities (e.g. `ratio_of_X_to_Y`; see the [section on Transformations](qualifiers.md#transformations)
+   multiple quantities (e.g. `ratio_of_X_to_Y`; see the [section on Transformations](reference.md#transformations)
    for more information), the above formula may be extended around multiple base names.
 
    ![Table of example standard names showing how the construction template extends around multiple base names when more than one transformation or quantity is involved.](https://raw.githubusercontent.com/wiki/ESCOMP/ESMStandardNames/images/standard_name_transformation_examples.png)
@@ -196,7 +196,7 @@
    `cloud_at_500hPa` if only including clouds that exist at 500 hPa).
 
 1. Spell out acronyms unless they are defined in the
-   [list of "Acronyms, Abbreviations, and Aliases"](aliases.md#acronyms-abbreviations-and-aliases). Whenever such an alias exists,
+   [list of "Acronyms, Abbreviations, and Aliases"](reference.md#acronyms-abbreviations-and-aliases). Whenever such an alias exists,
    use the alias in the standard name and the full term in the description.
 
 1. Chemical species in standard names should be denoted by chemical formulae (e.g. `co2`,
