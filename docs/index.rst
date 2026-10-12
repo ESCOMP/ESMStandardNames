@@ -22,7 +22,4 @@ for use with Earth System Models. It describes the
 
    chapters/naming_rules
    chapters/technical_specifications
-   chapters/qualifiers
-   chapters/common_components
-   chapters/aliases
-   chapters/units
+   chapters/reference

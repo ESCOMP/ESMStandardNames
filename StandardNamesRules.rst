@@ -9,10 +9,7 @@ The source for the rules now lives under `docs/chapters/ <docs/chapters/>`_ in t
 
 * `docs/chapters/naming_rules.rst <docs/chapters/naming_rules.rst>`_ -- ESM Standard Name rules
 * `docs/chapters/technical_specifications.rst <docs/chapters/technical_specifications.rst>`_ -- Technical specifications
-* `docs/chapters/qualifiers.rst <docs/chapters/qualifiers.rst>`_ -- Qualifiers
-* `docs/chapters/common_components.rst <docs/chapters/common_components.rst>`_ -- Other common standard name components
-* `docs/chapters/aliases.rst <docs/chapters/aliases.rst>`_ -- Acronyms, abbreviations, and aliases
-* `docs/chapters/units.rst <docs/chapters/units.rst>`_ -- Units
+* `docs/chapters/reference.rst <docs/chapters/reference.rst>`_ -- Qualifiers, other common standard name components, acronyms/abbreviations/aliases, and units
 
 See `docs/index.rst <docs/index.rst>`_ for the table of contents, or build the docs locally with::
 
