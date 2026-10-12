@@ -118,17 +118,9 @@ def parse_section(snl, sec, level='##'):
     snl.write(f'{level} {sec_name}\n')
     if sec_comment is not None:
         # First, squeeze out the spacing
-        while sec_comment.find('  ') >= 0:
-            sec_comment = sec_comment.replace('  ', ' ')
-        while sec_comment:
-            sec_comment = sec_comment.lstrip()
-            cind = sec_comment.find('\\n')
-            if cind > 0:
-                snl.write(f'{sec_comment[0:cind]}\n')
-                sec_comment = sec_comment[cind + 2:]
-            else:
-                snl.write(f'{sec_comment}\n')
-                sec_comment = ''
+        sec_comment = re.sub(' +', ' ', sec_comment)
+        for line in sec_comment.split('\\n'):
+            snl.write(f'{line.strip()}\n')
     for std_name in sec:
         if std_name.tag == 'section':
             parse_section(snl, std_name, level + '#')
