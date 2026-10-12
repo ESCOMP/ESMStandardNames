@@ -12,7 +12,7 @@ The source for the rules now lives under `docs/chapters/ <docs/chapters/>`_ in t
 
 * `docs/chapters/naming_rules.md <docs/chapters/naming_rules.md>`_ -- ESM Standard Name rules
 * `docs/chapters/technical_specifications.md <docs/chapters/technical_specifications.md>`_ -- Technical specifications
-* `docs/chapters/reference.md <docs/chapters/reference.md>`_ -- Qualifiers, other common standard name components, acronyms/abbreviations/aliases, and units
+* `docs/chapters/vocabulary.md <docs/chapters/vocabulary.md>`_ -- Qualifiers, other common standard name components, acronyms/abbreviations/aliases, and units
 
 See `docs/index.md <docs/index.md>`_ for the table of contents, or build the docs locally with::
 
