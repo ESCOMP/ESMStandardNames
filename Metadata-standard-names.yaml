@@ -1934,6 +1934,22 @@ section:
       description: Mass fraction of coarse mode dust aerosol particles
       type: real
       units: kg kg-1
+    - name: mass_fraction_of_dust_fine_in_air
+      description: Mass fraction of PM2p5 portion of dust aerosol particles for NOAA/RRFS
+      type: real
+      units: kg kg-1
+    - name: mass_fraction_of_dust_coarse_in_air
+      description: Mass fraction of (PM10-PM2p5) portion of dust aerosol particles for NOAA/RRFS
+      type: real
+      units: kg kg-1
+    - name: mass_fraction_of_smoke_fine_in_air
+      description: Mass fraction of PM2p5 portion of smoke aerosol particles for NOAA/RRFS
+      type: real
+      units: kg kg-1
+    - name: mass_fraction_of_anthro_fine_in_air
+      description: Mass fraction of PM2p5 portion of anthropogenic aerosol particles for NOAA/RRFS
+      type: real
+      units: kg kg-1
     - name: mass_fraction_of_hydrophilic_black_carbon_in_air
       description: Hydrophilic black carbon mass fraction
       type: real

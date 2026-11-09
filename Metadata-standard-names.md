@@ -965,6 +965,14 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
     * `real`: units = kg kg-1
 * `mass_fraction_of_dust_coarse_aerosol_particles_in_air`: Mass fraction of coarse mode dust aerosol particles
     * `real`: units = kg kg-1
+* `mass_fraction_of_dust_fine_in_air`: Mass fraction of PM2p5 portion of dust aerosol particles for NOAA/RRFS
+    * `real`: units = kg kg-1
+* `mass_fraction_of_dust_coarse_in_air`: Mass fraction of (PM10-PM2p5) portion of dust aerosol particles for NOAA/RRFS
+    * `real`: units = kg kg-1
+* `mass_fraction_of_smoke_fine_in_air`: Mass fraction of PM2p5 portion of smoke aerosol particles for NOAA/RRFS
+    * `real`: units = kg kg-1
+* `mass_fraction_of_anthro_fine_in_air`: Mass fraction of PM2p5 portion of anthropogenic aerosol particles for NOAA/RRFS
+    * `real`: units = kg kg-1
 * `mass_fraction_of_hydrophilic_black_carbon_in_air`: Hydrophilic black carbon mass fraction
     * `real`: units = kg kg-1
 * `mass_fraction_of_hydrophilic_organic_carbon_in_air`: Hydrophilic organic carbon mass fraction
