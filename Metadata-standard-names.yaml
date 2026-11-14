@@ -1906,6 +1906,10 @@ section:
   - name: Aerosols
     comment: null
     standard_names:
+    - name: mass_fraction_of_anthropogenic_fine_particles_in_air
+      description: Mass fraction of PM2p5 portion of anthropogenic aerosol particles
+      type: real
+      units: kg kg-1
     - name: mass_fraction_of_dust001_in_air
       description: GOCART Dust bin1 mass fraction
       type: real
@@ -1934,20 +1938,12 @@ section:
       description: Mass fraction of coarse mode dust aerosol particles
       type: real
       units: kg kg-1
-    - name: mass_fraction_of_dust_fine_particles_in_air
-      description: Mass fraction of PM2p5 portion of dust aerosol particles
-      type: real
-      units: kg kg-1
     - name: mass_fraction_of_dust_coarse_particles_in_air
       description: Mass fraction of (PM10-PM2p5) portion of dust aerosol particles
       type: real
       units: kg kg-1
-    - name: mass_fraction_of_smoke_fine_particles_in_air
-      description: Mass fraction of PM2p5 portion of smoke aerosol particles
-      type: real
-      units: kg kg-1
-    - name: mass_fraction_of_anthropogenic_fine_particles_in_air
-      description: Mass fraction of PM2p5 portion of anthropogenic aerosol particles
+    - name: mass_fraction_of_dust_fine_particles_in_air
+      description: Mass fraction of PM2p5 portion of dust aerosol particles
       type: real
       units: kg kg-1
     - name: mass_fraction_of_hydrophilic_black_carbon_in_air
@@ -1996,6 +1992,10 @@ section:
       units: kg kg-1
     - name: mass_fraction_of_sea_salt005_in_air
       description: GOCART Sea salt bin5 mass fraction
+      type: real
+      units: kg kg-1
+    - name: mass_fraction_of_smoke_fine_particles_in_air
+      description: Mass fraction of PM2p5 portion of smoke aerosol particles
       type: real
       units: kg kg-1
     - name: mass_fraction_of_sulfate_in_air
