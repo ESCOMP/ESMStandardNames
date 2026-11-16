@@ -951,6 +951,8 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `water_vapor_mixing_ratio_wrt_moist_air_of_new_state_at_surface_adjacent_layer`: Specific humidity (water vapor mass mixing ratio with respect to moist air) of new state at surface-adjacent layer
     * `real`: units = kg kg-1
 ### Aerosols
+* `mass_fraction_of_anthropogenic_fine_particles_in_air`: Mass fraction of PM2p5 portion of anthropogenic aerosol particles
+    * `real`: units = kg kg-1
 * `mass_fraction_of_dust001_in_air`: GOCART Dust bin1 mass fraction
     * `real`: units = kg kg-1
 * `mass_fraction_of_dust002_in_air`: GOCART Dust bin2 mass fraction
@@ -964,6 +966,10 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `mass_fraction_of_dust_accumulation_aerosol_particles_in_air`: Mass fraction of accumulation mode dust aerosol particles
     * `real`: units = kg kg-1
 * `mass_fraction_of_dust_coarse_aerosol_particles_in_air`: Mass fraction of coarse mode dust aerosol particles
+    * `real`: units = kg kg-1
+* `mass_fraction_of_dust_coarse_particles_in_air`: Mass fraction of (PM10-PM2p5) portion of dust aerosol particles
+    * `real`: units = kg kg-1
+* `mass_fraction_of_dust_fine_particles_in_air`: Mass fraction of PM2p5 portion of dust aerosol particles
     * `real`: units = kg kg-1
 * `mass_fraction_of_hydrophilic_black_carbon_in_air`: Hydrophilic black carbon mass fraction
     * `real`: units = kg kg-1
@@ -988,6 +994,8 @@ Tracers are numerically zero-mass particles advected in fluid flow, typically re
 * `mass_fraction_of_sea_salt004_in_air`: GOCART Sea salt bin4 mass fraction
     * `real`: units = kg kg-1
 * `mass_fraction_of_sea_salt005_in_air`: GOCART Sea salt bin5 mass fraction
+    * `real`: units = kg kg-1
+* `mass_fraction_of_smoke_fine_particles_in_air`: Mass fraction of PM2p5 portion of smoke aerosol particles
     * `real`: units = kg kg-1
 * `mass_fraction_of_sulfate_in_air`: Sulfate mass fraction
     * `real`: units = kg kg-1
